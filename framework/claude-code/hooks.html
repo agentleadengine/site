@@ -219,81 +219,142 @@
 <a href="../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../what-is-autonomous-ai.html">What is autonomous AI</a></li><li><a href="../the-autonomy-spectrum.html">The autonomy spectrum</a></li><li><a href="../glossary.html">Glossary</a></li></ul><h4>Claude</h4><ul><li><a href="../claude/overview.html">Overview</a></li><li><a href="../claude/prompting-for-agents.html">Prompting for agents</a></li><li><a href="../claude/extended-thinking.html">Extended thinking</a></li><li><a href="../claude/tool-use.html">Tool use</a></li></ul><h4>MCP</h4><ul><li><a href="../mcp/index.html">Overview</a></li><li><a href="../mcp/what-is-mcp.html">What is MCP</a></li><li><a href="../mcp/anatomy.html">Anatomy</a></li><li><a href="../mcp/transports.html">Transports</a></li><li><a href="../mcp/servers.html">Servers</a></li><li><a href="../mcp/clients.html">Clients</a></li><li><a href="../mcp/security.html">Security</a></li><li><a href="../mcp/directory.html">Directory</a></li></ul><h4>Plugins</h4><ul><li><a href="../plugins/index.html">Overview</a></li><li><a href="../plugins/vs-mcp.html">Plugins vs MCP</a></li><li><a href="../plugins/marketplace.html">Marketplace</a></li></ul><h4>Claude Code</h4><ul><li><a href="../claude-code/index.html">Overview</a></li><li><a href="../claude-code/settings.html">Settings</a></li><li><a href="../claude-code/permissions.html">Permissions</a></li><li><a href="../claude-code/hooks.html" class="active">Hooks</a></li><li><a href="../claude-code/skills.html">Skills</a></li><li><a href="../claude-code/memory.html">Memory</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/index.html">Overview</a></li><li><a href="../patterns/react-loop.html">ReAct loop</a></li><li><a href="../patterns/plan-execute.html">Plan-execute</a></li><li><a href="../patterns/multi-agent.html">Multi-agent</a></li><li><a href="../patterns/evaluation.html">Evaluation</a></li><li><a href="../patterns/prompt-caching.html">Prompt caching</a></li></ul><h4>Autonomous</h4><ul><li><a href="../autonomous/index.html">Overview</a></li><li><a href="../autonomous/headless.html">Headless</a></li><li><a href="../autonomous/scheduling.html">Scheduling</a></li><li><a href="../autonomous/self-monitoring.html">Self-monitoring</a></li><li><a href="../autonomous/safety.html">Safety</a></li></ul><h4>Build Guides</h4><ul><li><a href="../build/index.html">Overview</a></li><li><a href="../build/first-agent.html">First agent (60 min)</a></li><li><a href="../build/voice-agent.html">Voice agent</a></li><li><a href="../build/research-agent.html">Research agent</a></li></ul><h4>Tools</h4><ul><li><a href="../tools/browser-automation.html">Browser automation</a></li><li><a href="../tools/desktop-control.html">Desktop control</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Framework</a><span class="sep">›</span><a href="../claude-code/index.html">Claude Code</a><span class="sep">›</span><span>Hooks, event-driven automation</span></div><h1 class="title" style="font-size:clamp(32px,4.5vw,42px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">Hooks, event-driven automation</h1><div class="article-meta"><span>📖 5 min read</span><span>Updated 2026-04-18</span></div>
-<p class="lede">Hooks are bits of code that run on events, before a tool is called, after a session ends, when a specific prompt is submitted. They turn Claude Code from a manual agent into an automated one.</p>
+<p class="lede">Hooks are where Claude Code goes from "a tool you use" to "a system you build on." They're little scripts that run automatically when something happens inside the agent, before a tool is called, when a session starts, when the model finishes thinking. They let you inject your own logic into the agent's loop without modifying Claude Code itself. If permissions are the agent's safety rail, hooks are the agent's instrumentation, automation, and custom glue all at once.</p>
 
-<h2>Hook types</h2>
-<ul>
-  <li><strong>PreToolUse</strong>, runs before a tool call. Can block the call, modify arguments, or just log.</li>
-  <li><strong>PostToolUse</strong>, runs after a tool returns. Log results, trigger side effects, transform output.</li>
-  <li><strong>SessionStart</strong>, runs when a Claude Code session begins. Initialize state, load context.</li>
-  <li><strong>SessionEnd</strong>, runs when a session ends. Save memory, send a summary.</li>
-  <li><strong>UserPromptSubmit</strong>, runs when the user submits a prompt. Pre-process, log, reject.</li>
-  <li><strong>Stop</strong>, runs when Claude stops generating. Check output for policy violations.</li>
-</ul>
+<h2>The mental model: hooks as middleware.</h2>
+<p>If you've worked with web servers, you know middleware: code that runs between the request and the response, doing things like logging, authentication, and rate limiting. Hooks are the same idea, but for an AI agent. Each hook is a script that runs at a specific moment in the agent's lifecycle. The script can observe, modify, or block what's happening.</p>
 
-<h2>Anatomy of a hook</h2>
-<p>Defined in <code>settings.json</code>:</p>
+<p>This is the mental frame: <strong>Claude Code is doing its work, and hooks are things that fire on the side.</strong> They don't change Claude's behavior in the model. They change what happens around each Claude step.</p>
+
+<h2>The six events you can hook into.</h2>
+
+<div class="sketch" data-viewbox="0 0 900 400" id="dg-hook-types">
+  <svg></svg>
+  <div class="sketch-caption">~ six hook points across the agent lifecycle ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-hook-types');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.table(svg, rc, {
+    x: 20, y: 30,
+    cols: [
+      { title: 'Hook event',        w: 200 },
+      { title: 'When it fires',     w: 270 },
+      { title: 'Typical use',       w: 390 }
+    ],
+    rows: [
+      ['SessionStart',       'you launch claude',               'inject dashboard URL, load team context'],
+      ['UserPromptSubmit',   'after you type a prompt',         'log prompts, pre-process, reject patterns'],
+      ['PreToolUse',         'model wants to run a tool',       'extra safety checks, block dangerous calls'],
+      ['PostToolUse',        'after a tool returns',            'audit log, notifications, format output'],
+      ['Stop',               'model finished generating',       'scan output for secrets, verify claims'],
+      ['SessionEnd',         'session terminated',              'commit, summary email, upload state']
+    ]
+  });
+});
+</script>
+
+<p>Each one receives a JSON payload telling it what's happening (which tool, which args, what the model is about to say), and each one can return a JSON response telling Claude Code to proceed, modify, or stop.</p>
+
+<h2>How a hook is actually wired up.</h2>
+<p>Hooks live in the same <code>settings.json</code> file as your permissions. A hook entry has three parts: which event to hook into, what to match on (so you only run it for certain tools), and what command to run.</p>
+
 <pre><code>{
   "hooks": {
     "PreToolUse": [
       {
         "matcher": "Bash",
         "hooks": [
-          {
-            "type": "command",
-            "command": "/path/to/your/script.sh"
-          }
+          { "type": "command", "command": "/path/to/safety-check.sh" }
         ]
       }
     ]
   }
 }</code></pre>
-<p>The <code>matcher</code> filters to specific tools. The command receives JSON on stdin describing the call, and returns JSON on stdout saying whether to proceed (and optionally what to change).</p>
 
-<h2>Use cases</h2>
+<p>What this does: every time Claude wants to run a Bash command, the agent pauses, sends a JSON description of the call to <code>safety-check.sh</code> via stdin, waits for it to return a JSON response on stdout, and then decides based on that response whether to proceed. Exit code 0 = allow; non-zero = block.</p>
 
-<h3>1. Audit logging</h3>
-<p>PostToolUse hook logs every tool call to a file or analytics system. Answers "what did the agent do last Thursday?"</p>
+<h2>The six use cases that cover 90% of real hooks.</h2>
 
-<h3>2. Extra safety checks</h3>
-<p>PreToolUse hook inspects Bash commands for patterns your deny list might miss. Can block or warn.</p>
+<div class="sketch" data-viewbox="0 0 900 360" id="dg-hook-uses">
+  <svg></svg>
+  <div class="sketch-caption">~ hook use cases, by impact ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-hook-uses');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.bars(svg, rc, {
+    x: 30, y: 30, w: 840, barH: 34, gap: 16, labelW: 220,
+    items: [
+      { label: 'Audit logging',         value: 95, note: 'every tool call, forever' },
+      { label: 'Safety checks',         value: 90, note: 'catch what deny list misses' },
+      { label: 'Output secret scanning',value: 85, note: 'stop credential leaks' },
+      { label: 'Context enrichment',    value: 75, note: 'inject dates, issues, state' },
+      { label: 'Notifications',         value: 65, note: 'ping me when long job ends' },
+      { label: 'State sync',            value: 55, note: 'commit + upload on session end' }
+    ]
+  });
+});
+</script>
 
-<h3>3. State sync</h3>
-<p>SessionEnd hook uploads recent changes to a shared location (git commit, cloud backup, Notion page).</p>
+<h3>1. Audit logging (PostToolUse).</h3>
+<p>Every tool call gets appended to a log file with a timestamp. Answers the question "what did the agent actually do in that 4-hour session?" If something goes sideways, the log is how you find out exactly what happened. Set this up once, on every agent, before you do anything else.</p>
 
-<h3>4. Context enrichment</h3>
-<p>SessionStart hook injects the date, weather, recent GitHub issues into the agent's context so it doesn't have to fetch them.</p>
+<h3>2. Extra safety checks (PreToolUse).</h3>
+<p>Your deny list catches the obvious stuff. A PreToolUse hook catches the subtler stuff: "don't run this Bash command if it contains <code>DROP TABLE</code>," "don't let Edit touch any file under <code>production/</code>," "don't send a POST with this customer ID." Anything that would require a regex smarter than the deny list can handle.</p>
 
-<h3>5. Output validation</h3>
-<p>Stop hook checks that the agent's final output doesn't contain secrets (scans for API keys, passwords).</p>
+<h3>3. Output secret scanning (Stop).</h3>
+<p>Before the agent's final message is shown or saved, scan it for things that look like API keys, tokens, passwords. If anything matches, redact or refuse. This is how you make sure the agent never leaks secrets back to a user or a log, even if it accidentally reads them from somewhere.</p>
 
-<h3>6. Notifications</h3>
-<p>PostToolUse hook on long-running commands sends a Telegram/Slack notification so you're pinged when the agent finishes.</p>
+<h3>4. Context enrichment (SessionStart).</h3>
+<p>When a session starts, run a script that gathers useful context and injects it into the agent's system prompt: today's date, recent open GitHub issues, what team is oncall, the URL of your team dashboard. The agent starts every session already up to speed.</p>
 
-<h2>Hook contract</h2>
-<p>Your hook script:</p>
+<h3>5. Notifications (PostToolUse or SessionEnd).</h3>
+<p>If your agent is running a long task, you probably don't want to sit and watch. A hook can ping Telegram, Slack, or email when a long job finishes, or when something surprising happens. The agent becomes something you check back on, not something you babysit.</p>
+
+<h3>6. State sync (SessionEnd).</h3>
+<p>When the session ends, commit any uncommitted changes, upload your notes to a team page, or write a summary of what was done to a log. The agent becomes a team member whose work is automatically captured.</p>
+
+<h2>The hook contract, precisely.</h2>
+<p>Every hook script follows the same protocol:</p>
+
 <ol>
-  <li>Reads a JSON payload from stdin</li>
-  <li>Does whatever logic it does (side effects, checks)</li>
-  <li>Writes a JSON response to stdout</li>
-  <li>Exits with code 0 (allow) or non-zero (block)</li>
+  <li><strong>Read JSON from stdin.</strong> Claude Code writes a description of the event: what tool, what arguments, what the agent is trying to do.</li>
+  <li><strong>Do whatever work you need to do.</strong> Log, call an API, run a check, whatever.</li>
+  <li><strong>Write JSON to stdout.</strong> Tell Claude Code whether to continue, and optionally attach a reason.</li>
+  <li><strong>Exit 0 to allow, non-zero to block.</strong></li>
 </ol>
 
-<p>Example response to allow:</p>
-<pre><code>{ "continue": true }</code></pre>
-<p>Response to block with a message:</p>
-<pre><code>{ "continue": false, "stopReason": "detected a prod API key in the command" }</code></pre>
+<p>The two canonical responses:</p>
 
-<h2>Best practices</h2>
+<pre><code># Allow the call to proceed
+{ "continue": true }
+
+# Block the call with a human-readable reason
+{ "continue": false, "stopReason": "detected a production API key in the command" }</code></pre>
+
+<h2>Best practices you'll learn the hard way if you don't just start with them.</h2>
+
 <ul>
-  <li><strong>Keep hooks fast.</strong> They're in the critical path, a 5-second hook means 5s per tool call.</li>
-  <li><strong>Fail open for non-critical checks.</strong> A logging hook shouldn't block the agent if it can't write.</li>
-  <li><strong>Fail closed for safety checks.</strong> A secret-scanning hook SHOULD block.</li>
-  <li><strong>Log hook errors.</strong> Silent hook failures are a debugging nightmare.</li>
+  <li><strong>Keep hooks fast.</strong> Hooks run in the critical path of the agent. A 5-second hook means every tool call takes 5 extra seconds. Aim for under 200ms. If you need something slower, make it async (fire and forget; do the real work in the background).</li>
+  <li><strong>Fail open for non-critical hooks.</strong> If your logging hook can't reach the log server, don't let that stop the agent. Log locally, retry later, keep going.</li>
+  <li><strong>Fail closed for safety hooks.</strong> If your secret-scanner can't run, it should BLOCK. Never let the agent proceed because a safety check was broken. "It's probably fine" is how bad things happen.</li>
+  <li><strong>Log hook errors loudly.</strong> A hook that silently fails is a hook that's not doing its job, and you won't know. Every hook should have its own error log.</li>
+  <li><strong>Version hooks with your project.</strong> Check <code>.claude/hooks/</code> into git. Your team inherits the same safety rails you do.</li>
 </ul>
 
-<h2>Hooks as the skeleton of autonomy</h2>
-<p>Once you start composing hooks, you're building an agent <em>platform</em>, not just an agent. PreToolUse for safety. SessionStart for context. SessionEnd for reporting. The agent becomes a service that runs with hooks as middleware.</p>
+<h2>Hooks as the skeleton of autonomy.</h2>
+<p>Once you start composing hooks, something interesting happens: you're not building an agent anymore, you're building a <em>platform</em> that the agent runs on. PreToolUse for safety. SessionStart for context. PostToolUse for audit. SessionEnd for reporting. The agent itself becomes a service, and your hooks are the middleware that turns it from a chatbot-in-a-loop into something production-shaped.</p>
+
+<p>This is roughly where the line between "I use Claude Code" and "I've built a system on top of Claude Code" gets crossed. The pages on <a href="../autonomous/index.html">going autonomous</a> depend heavily on hooks, because that's how you make an agent safe to run without you watching.</p>
 <div class="prev-next"><a href="permissions.html" class="prev"><div class="label">← Previous</div><div class="title">Permissions</div></a><a href="skills.html" class="next"><div class="label">Next →</div><div class="title">Skills</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../framework/index.html">Framework</a></p>
 </div></footer><script>
