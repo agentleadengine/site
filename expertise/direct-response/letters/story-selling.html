@@ -231,6 +231,24 @@
 </ul>
 
 <h2>The core story shapes</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Four proven story shapes');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Shape', w: 220},
+    {title: 'Template', w: 580}
+  ], rows: [
+    ['Founder origin', '"I was struggling until I discovered..."'],
+    ['Customer transformation', '"Jane tried everything; then..."'],
+    ['Failure to breakthrough', '"This is how I almost quit before..."'],
+    ['Unlikely insight', '"The weird lesson a [X] taught me..."']
+  ]});
+});
+</script>
 
 <h3>1. The founder origin</h3>
 <p>"Two years ago, I was where you are." Personal story of the problem, the journey, the solution. Works because the reader identifies with the past-you, which makes them trust the current-you.</p>
