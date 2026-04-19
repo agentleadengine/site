@@ -219,50 +219,124 @@
 <a href="../../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="../foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="../foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="../foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="../loops/react.html">ReAct</a></li><li><a href="../loops/tool-use.html">Tool use</a></li><li><a href="../loops/planning.html">Planning loops</a></li><li><a href="../loops/reflection.html">Reflection</a></li><li><a href="../loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="../tools/tool-design.html" class="active">Tool design</a></li><li><a href="../tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="../tools/error-handling.html">Tool error handling</a></li><li><a href="../tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="../tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="../memory/short-term.html">Short-term memory</a></li><li><a href="../memory/long-term.html">Long-term memory</a></li><li><a href="../memory/episodic.html">Episodic memory</a></li><li><a href="../memory/procedural.html">Procedural memory</a></li><li><a href="../memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="../multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="../multi/peer-agents.html">Peer agents</a></li><li><a href="../multi/debate.html">Debate + consensus</a></li><li><a href="../multi/handoffs.html">Agent handoffs</a></li><li><a href="../multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="../eval/why-eval-agents.html">Why eval agents</a></li><li><a href="../eval/task-completion.html">Task completion</a></li><li><a href="../eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="../eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="../prod/observability.html">Observability + tracing</a></li><li><a href="../prod/cost-control.html">Cost control</a></li><li><a href="../prod/latency.html">Latency optimization</a></li><li><a href="../prod/safety.html">Safety + guardrails</a></li><li><a href="../prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/research-agent.html">Research agent</a></li><li><a href="../patterns/coding-agent.html">Coding agent</a></li><li><a href="../patterns/customer-support.html">Customer support agent</a></li><li><a href="../patterns/data-analyst.html">Data analyst agent</a></li><li><a href="../patterns/browser-agent.html">Browser agent</a></li><li><a href="../patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="../frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="../frameworks/langgraph.html">LangGraph</a></li><li><a href="../frameworks/crewai.html">CrewAI</a></li><li><a href="../frameworks/autogen.html">AutoGen</a></li><li><a href="../frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>Tool design</span></div><h1 class="title">Tool design</h1><div class="article-meta"><span>📖 4 min read</span><span>Updated 2026-04-19</span></div>
-<p class="lede">Tools are where agents interact with the real world. A well-designed tool is easy for the LLM to use correctly, hard to misuse, and returns results the LLM can reason about. Bad tool design is the most common reason agents underperform.</p>
+<p class="lede">Tool design is where most agents win or lose. You can use the best model and the smartest prompt, and if your tools are badly shaped the agent will still stumble. Good tools are named like what they do, do one thing each, have few parameters with strong types, and return results the model can reason about. This page is the field guide.</p>
 
-<h2>The principles</h2>
+<h2>The mental model</h2>
+<p>Think of your tools as the UI the model sees. Just like a human UI, clarity matters more than cleverness. The model has to pick the right tool and pass the right arguments based on a short description. If the UI is messy, the model makes bad choices. If the UI is clear, the model rarely picks wrong.</p>
+
+<h2>The six principles</h2>
+<div class="sketch" data-viewbox="0 0 900 340"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 340);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Tool design principles');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Principle', w: 260},
+    {title: 'What it looks like', w: 540}
+  ], rows: [
+    ['One tool, one job', 'search_web, not do_anything_with_web(action)'],
+    ['Name like a beginner', 'search_internal_docs, not query_kb_v2'],
+    ['2–4 parameters', 'Split or default the rest'],
+    ['Strong types', 'Enums + integers + schemas, not free-form strings'],
+    ['Sensible defaults', 'Every optional param has a reasonable fallback'],
+    ['Bounded output', 'Truncate long results, return what matters']
+  ]});
+});
+</script>
 
 <h3>One tool, one job</h3>
-<p>Don't build a do-everything tool with 15 optional parameters. Split it into focused tools. An LLM chooses better from specific options than generic ones.</p>
+<p>A tool with 15 optional parameters is really 15 tools pretending to be one. The model has to figure out which combination of parameters corresponds to the job at hand. That's harder than picking from 4 specific tools. Split them.</p>
 
 <h3>Name tools like a beginner would</h3>
-<p>Tool names should be obviously-related to their function. <code>search_internal_docs</code> is better than <code>query_kb_v2</code>.</p>
-
-<h3>Descriptions are prompts</h3>
-<p>The tool description is what the LLM reads to decide whether to call it. Write descriptions like you're briefing a new hire on when to use each tool. See <a href="tool-descriptions.html">tool descriptions matter</a>.</p>
+<p>A new hire reading your tool list should understand what each one does from the name alone. <code>search_internal_docs</code> passes. <code>query_kb_v2</code> fails. The model reads the name first and pattern-matches; help it.</p>
 
 <h3>Keep parameter count low</h3>
-<p>2-4 parameters per tool is the sweet spot. 6+ parameters means the LLM will sometimes miss required ones or hallucinate values. Split or default.</p>
+<p>2–4 parameters is the sweet spot. At 6+ parameters, the model starts missing required ones or hallucinating values. If you truly need more inputs, the tool should probably be split or should take a structured config object with defaults.</p>
 
-<h3>Sensible defaults</h3>
-<p>Every optional parameter should have a sensible default. Makes it easier for the LLM to call the tool correctly on first try.</p>
+<h3>Strong types beat free-form strings</h3>
+<p>A <code>recency</code> parameter typed as <code>enum: ["day", "week", "month"]</code> can't be wrong. Typed as <code>string</code>, the model might pass "recent" or "1d" or "last week" and surprise you. Constrain the shape.</p>
 
-<h3>Types matter</h3>
-<p>Constrained types (enums for fixed choices, integers for counts) reduce hallucination. Free-form strings invite mistakes.</p>
+<h3>Sensible defaults for optional params</h3>
+<p>Every optional parameter should default to what a reasonable first call would use. The model gets the tool right on turn 1 instead of turn 3.</p>
 
-<h2>Tool granularity</h2>
-<p>Too coarse: <code>do_everything_with_database(action, params)</code></p>
-<p>Too fine: separate tools for <code>start_transaction</code>, <code>insert_row</code>, <code>commit</code></p>
-<p>Right: high-level intents like <code>save_customer</code>, <code>find_orders_for_customer</code></p>
+<h3>Bounded output</h3>
+<p>A tool that can return 50KB of JSON is a tool that blows up the context window. Truncate, paginate, or return a summary. If the model needs more, give it a follow-up tool.</p>
 
-<h2>Response shape</h2>
-<p>Tool responses should be:</p>
+<h2>Granularity, the Goldilocks problem</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Three granularities of tool');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Granularity', w: 180},
+    {title: 'Example', w: 360},
+    {title: 'Problem', w: 260}
+  ], rows: [
+    ['Too coarse', 'do_anything_with_db(action, params)', 'Model has to know SQL'],
+    ['Too fine', 'start_tx, insert_row, commit_tx', 'Too many calls to finish'],
+    ['Just right', 'save_customer, find_orders_for(customer)', 'One call = one intent']
+  ]});
+});
+</script>
+<p>The right granularity is <em>intent-level</em>: each tool maps to one thing a user would actually want to do. Not "manipulate the database" and not the individual SQL primitives. Intents.</p>
+
+<h2>A worked example: redesigning a bad tool</h2>
+<p><strong>Before:</strong></p>
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
+{
+  "name": "crm",
+  "description": "Do stuff with the CRM.",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "action": {"type": "string"},
+      "entity": {"type": "string"},
+      "filter": {"type": "string"},
+      "data": {"type": "object"},
+      "limit": {"type": "integer"},
+      "include_archived": {"type": "boolean"}
+    }
+  }
+}</pre>
+<p>The model has to invent the right combination of action + entity + filter. It guesses. It gets it wrong. Fix: split into intent-level tools.</p>
+<p><strong>After:</strong></p>
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
+find_contact(name)            → list of contacts
+get_contact(id)               → full contact
+create_contact(name, email)   → new contact id
+update_contact(id, fields)    → ok
+find_deals_for(contact_id)    → list of deals</pre>
+<p>Each tool has one intent. The model doesn't have to invent a schema; it picks the tool that matches what it wants to do. Accuracy jumps, bugs drop.</p>
+
+<h2>Response shape: what to return</h2>
+<p>Your tool return value is what the model reads on the next turn. Shape it for reasoning:</p>
 <ul>
-<li>Text or simple structured data (JSON)</li>
-<li>Meaningful to the LLM (context, not just raw data)</li>
-<li>Bounded in size (truncate long results)</li>
-<li>Error-rich (specific errors so the LLM can recover)</li>
+<li><strong>Structured JSON, not free-form text.</strong> The model parses it more reliably.</li>
+<li><strong>Include context, not just raw data.</strong> "Found 3 customers matching 'Smith'" beats <code>[{"id":1},{"id":2},{"id":3}]</code>.</li>
+<li><strong>Errors as data.</strong> <code>{"error": "not_found", "message": "...", "suggestion": "..."}</code> not a thrown exception.</li>
+<li><strong>Bounded.</strong> If the raw result is 500 rows, return the first 20 + a "showing 20 of 500" marker.</li>
 </ul>
 
 <h2>Common mistakes</h2>
 <ul>
-<li>Tool name that tells you nothing ("run_function")</li>
-<li>Description that doesn't specify when to use the tool</li>
-<li>Optional params without defaults</li>
-<li>Tools that return huge unstructured blobs</li>
-<li>Tools that succeed silently when they actually failed</li>
-<li>Too many overlapping tools ("which one do I use?")</li>
+<li><strong>Generic names.</strong> <code>run_function</code>, <code>process_data</code>, <code>do_it</code>. The model has no way to pick.</li>
+<li><strong>Silent success on failure.</strong> Returns <code>[]</code> when the API was actually down. Model thinks "no results" and answers the user with wrong info.</li>
+<li><strong>Optional params without defaults.</strong> Every call becomes a guessing game about what the default should be.</li>
+<li><strong>Two tools that overlap.</strong> <code>search_docs</code> and <code>find_docs</code>. The model flips between them randomly.</li>
+<li><strong>Raw SDKs as tools.</strong> Exposing your HTTP client directly instead of shaped-for-the-agent tools. Too much surface, too little clarity.</li>
+<li><strong>Huge untruncated results.</strong> Tool returns a 200KB doc, context fills, agent fails.</li>
+</ul>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Audit your current agent's tools against the six principles. Usually at least 2 of them are violated.</li>
+<li>Read <a href="tool-descriptions.html">tool descriptions matter</a> for the prose half of tool design.</li>
+<li>Read <a href="error-handling.html">tool error handling</a> for the error-as-data pattern.</li>
 </ul>
 <div class="prev-next"><a href="../loops/self-correction.html" class="prev"><div class="label">← Previous</div><div class="title">Self-correction</div></a><a href="tool-descriptions.html" class="next"><div class="label">Next →</div><div class="title">Tool descriptions matter</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>

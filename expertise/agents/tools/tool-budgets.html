@@ -219,51 +219,98 @@
 <a href="../../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="../foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="../foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="../foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="../loops/react.html">ReAct</a></li><li><a href="../loops/tool-use.html">Tool use</a></li><li><a href="../loops/planning.html">Planning loops</a></li><li><a href="../loops/reflection.html">Reflection</a></li><li><a href="../loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="../tools/tool-design.html">Tool design</a></li><li><a href="../tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="../tools/error-handling.html">Tool error handling</a></li><li><a href="../tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="../tools/tool-budgets.html" class="active">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="../memory/short-term.html">Short-term memory</a></li><li><a href="../memory/long-term.html">Long-term memory</a></li><li><a href="../memory/episodic.html">Episodic memory</a></li><li><a href="../memory/procedural.html">Procedural memory</a></li><li><a href="../memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="../multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="../multi/peer-agents.html">Peer agents</a></li><li><a href="../multi/debate.html">Debate + consensus</a></li><li><a href="../multi/handoffs.html">Agent handoffs</a></li><li><a href="../multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="../eval/why-eval-agents.html">Why eval agents</a></li><li><a href="../eval/task-completion.html">Task completion</a></li><li><a href="../eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="../eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="../prod/observability.html">Observability + tracing</a></li><li><a href="../prod/cost-control.html">Cost control</a></li><li><a href="../prod/latency.html">Latency optimization</a></li><li><a href="../prod/safety.html">Safety + guardrails</a></li><li><a href="../prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/research-agent.html">Research agent</a></li><li><a href="../patterns/coding-agent.html">Coding agent</a></li><li><a href="../patterns/customer-support.html">Customer support agent</a></li><li><a href="../patterns/data-analyst.html">Data analyst agent</a></li><li><a href="../patterns/browser-agent.html">Browser agent</a></li><li><a href="../patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="../frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="../frameworks/langgraph.html">LangGraph</a></li><li><a href="../frameworks/crewai.html">CrewAI</a></li><li><a href="../frameworks/autogen.html">AutoGen</a></li><li><a href="../frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>Tool budgets + limits</span></div><h1 class="title">Tool budgets + limits</h1><div class="article-meta"><span>📖 3 min read</span><span>Updated 2026-04-19</span></div>
-<p class="lede">A runaway agent can make hundreds of tool calls in minutes. Without budgets, this means exhausted API quotas, massive bills, and sometimes infinite loops. Budget enforcement is a non-negotiable production practice.</p>
+<p class="lede">Without budgets, a single stuck agent can make 200 tool calls in three minutes, exhaust your API quota, run up $50 in LLM spend, and produce nothing useful. Budgets are the circuit breakers that stop this. They're not optional for production: they're the line between "tried an agent once" and "can actually run agents at scale."</p>
 
-<h2>The layers of budget</h2>
+<h2>The four layers of budget</h2>
+<div class="sketch" data-viewbox="0 0 900 300"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 300);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Four budgets, from inner to outer');
+  sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 54, layers: [
+    {label: 'Per-session', sub: 'max steps, tokens, time, cost per agent run'},
+    {label: 'Per-tool', sub: 'max N calls to this specific tool per session'},
+    {label: 'Per-user', sub: 'max $X per user per day'},
+    {label: 'Global', sub: 'max concurrent sessions, max $ per hour'}
+  ]});
+});
+</script>
+<p>Each layer catches a different failure mode. Per-session catches a stuck agent. Per-tool catches overuse of an expensive operation. Per-user catches one runaway user. Global is the last line of defense when multiple of the above go wrong at once.</p>
 
-<h3>Per-session</h3>
-<p>Max tool calls, max LLM tokens, max total time, max dollar cost per agent session. If any limit hits, the agent is stopped.</p>
-
-<h3>Per-tool</h3>
-<p>Rate limits per tool. "This tool can be called 10 times per session max." Prevents overuse of specific expensive operations.</p>
-
-<h3>Per-user</h3>
-<p>Cost limit per user per day. Prevents one user's runaway session from consuming the whole budget.</p>
-
-<h3>Global</h3>
-<p>Hard cap on total concurrent agent sessions or total spend per hour. Last line of defense.</p>
-
-<h2>Hard stops</h2>
+<h2>Per-session, the first thing you ship</h2>
+<p>The minimum agent should have all four of these caps from day one:</p>
 <ul>
-<li>Max iterations reached (e.g., 30 steps)</li>
-<li>Max cost reached (e.g., $2 per session)</li>
-<li>Max time elapsed (e.g., 5 minutes)</li>
-<li>Infinite loop detected (same tool + args called N times)</li>
+<li><strong>Max steps:</strong> 10–30. Stops runaway loops.</li>
+<li><strong>Max tokens:</strong> a ceiling on total LLM tokens across all turns in a session.</li>
+<li><strong>Max time:</strong> 60 seconds for user-facing, minutes for background work.</li>
+<li><strong>Max cost:</strong> $0.50 per session for most agents; adjust by value.</li>
 </ul>
+<p>Whichever one trips first wins. The session ends gracefully (see below) instead of continuing into expensive territory.</p>
 
-<h2>Loop detection</h2>
-<p>Track a hash of (tool_name, args) per session. If the same hash appears 3 times in a row, the agent is probably stuck. Break and return what you have.</p>
-
-<h2>Graceful termination</h2>
-<p>When budget is reached, don't just stop. Give the LLM one final turn: "Your budget is reached. Summarize what you've found and give the best answer you can with current info."</p>
-
-<h2>Surface budget status to the LLM</h2>
-<p>Include remaining budget in the agent's context. "You have 5 tool calls and $0.20 remaining." The agent can self-ration.</p>
-
-<h2>Per-tool rate limiting</h2>
-<p>Some tools are expensive (GPU inference, third-party API with per-call fees). Rate-limit them specifically:</p>
+<h2>Per-tool limits</h2>
+<p>Some tools are disproportionately expensive. A call to a heavy ML model might cost $0.20 each. A web search is a cent. You don't want an agent that happily calls the expensive one 20 times in a session.</p>
 <pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
 tool_limits = {
-    "expensive_ml_model": 3,  # max 3 calls per session
+    "expensive_ml_model": 3,   # max 3 per session
     "search_web": 10,
     "read_file": 50,
-}
-</pre>
+}</pre>
+<p>When the limit is hit, the tool returns an error the model can reason about: "You've called expensive_ml_model 3 times this session, the limit. Use a different approach."</p>
 
-<h2>Observability of budget usage</h2>
-<p>Log every session's final budget consumption. Alert on sessions that hit budget ceilings frequently, signal of bad prompts, buggy tools, or adversarial users.</p>
+<h2>Loop detection</h2>
+<p>The most common runaway pattern: model calls the same tool with the same arguments repeatedly, hoping for a different result. Detect it:</p>
+<ul>
+<li>Hash every <code>(tool_name, args)</code> pair.</li>
+<li>If the same hash appears 3 times consecutively, halt the session.</li>
+<li>Return whatever partial results you have and log the trace for review.</li>
+</ul>
+<p>This catches most runaways before they rack up meaningful cost.</p>
+
+<h2>Graceful termination</h2>
+<p>When a budget limit is hit, don't just kill the session. Give the model one final turn with the message: "Your budget is reached. Summarize what you've found and return the best answer you can with the current information." This produces a useful "here's what I learned" response instead of a raw timeout. User-facing agents should always do this.</p>
+
+<h2>Telling the model its budget</h2>
+<p>Surface the remaining budget in the agent's context every turn:</p>
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
+[Budget: 6 tool calls remaining, $0.18 left, 45 seconds to go]</pre>
+<p>A well-prompted model will self-ration: pick cheaper tools, parallelize, wrap up early. Hidden budgets produce surprise cutoffs; surfaced budgets produce smart agents.</p>
+
+<h2>A worked example: a research agent with budgets</h2>
+<ul>
+<li>Max steps: 15</li>
+<li>Max cost: $0.30</li>
+<li>Per-tool: <code>web_search</code> ≤ 10, <code>fetch_page</code> ≤ 8, <code>llm_summarize</code> ≤ 5</li>
+<li>Loop detection: 3 duplicates halts</li>
+<li>Graceful termination: "You have 1 step left, summarize now"</li>
+</ul>
+<p>With these caps, a single research session costs at most $0.30 and takes at most 15 turns. If the task needs more, the agent returns what it has and the user can ask for more. No runaway, no surprise bill, and 99% of real tasks complete well inside these caps.</p>
+
+<h2>Observability</h2>
+<p>Log every session's final budget consumption. Metrics to track:</p>
+<ul>
+<li>Distribution of sessions by cost, latency, and step count.</li>
+<li>Percentage of sessions that hit a cap (should be small; if ~20% are hitting max steps you need bigger caps or better tools).</li>
+<li>Which tools are most frequently hitting per-tool limits.</li>
+<li>Per-user cost over time (catch abusers or misuse).</li>
+</ul>
+
+<h2>Pitfalls</h2>
+<ul>
+<li><strong>No budget at all.</strong> One bug costs you a four-figure bill.</li>
+<li><strong>Too-loose budgets.</strong> "Max 100 steps" is basically unlimited. Start tight, widen if real tasks hit the cap.</li>
+<li><strong>Too-tight budgets.</strong> Max 5 steps makes every real task fail. Tune with production data.</li>
+<li><strong>Silent budget hits.</strong> The user sees "session ended" with no summary. Add graceful termination.</li>
+<li><strong>No global cap.</strong> Per-session is fine until something triggers 10,000 sessions in a minute. Global caps catch this.</li>
+</ul>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Add all four budget layers to your agent today if they don't exist. Code is short; savings are enormous.</li>
+<li>Read <a href="../prod/cost-control.html">cost control</a> for the bigger picture on agent spend.</li>
+<li>Read <a href="../prod/observability.html">observability + tracing</a> so you can actually see when budgets are firing.</li>
+</ul>
 <div class="prev-next"><a href="parallel-tools.html" class="prev"><div class="label">← Previous</div><div class="title">Parallel tool calls</div></a><a href="../memory/short-term.html" class="next"><div class="label">Next →</div><div class="title">Short-term memory</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

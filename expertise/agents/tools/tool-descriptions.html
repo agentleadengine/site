@@ -219,53 +219,129 @@
 <a href="../../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="../foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="../foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="../foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="../loops/react.html">ReAct</a></li><li><a href="../loops/tool-use.html">Tool use</a></li><li><a href="../loops/planning.html">Planning loops</a></li><li><a href="../loops/reflection.html">Reflection</a></li><li><a href="../loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="../tools/tool-design.html">Tool design</a></li><li><a href="../tools/tool-descriptions.html" class="active">Tool descriptions matter</a></li><li><a href="../tools/error-handling.html">Tool error handling</a></li><li><a href="../tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="../tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="../memory/short-term.html">Short-term memory</a></li><li><a href="../memory/long-term.html">Long-term memory</a></li><li><a href="../memory/episodic.html">Episodic memory</a></li><li><a href="../memory/procedural.html">Procedural memory</a></li><li><a href="../memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="../multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="../multi/peer-agents.html">Peer agents</a></li><li><a href="../multi/debate.html">Debate + consensus</a></li><li><a href="../multi/handoffs.html">Agent handoffs</a></li><li><a href="../multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="../eval/why-eval-agents.html">Why eval agents</a></li><li><a href="../eval/task-completion.html">Task completion</a></li><li><a href="../eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="../eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="../prod/observability.html">Observability + tracing</a></li><li><a href="../prod/cost-control.html">Cost control</a></li><li><a href="../prod/latency.html">Latency optimization</a></li><li><a href="../prod/safety.html">Safety + guardrails</a></li><li><a href="../prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/research-agent.html">Research agent</a></li><li><a href="../patterns/coding-agent.html">Coding agent</a></li><li><a href="../patterns/customer-support.html">Customer support agent</a></li><li><a href="../patterns/data-analyst.html">Data analyst agent</a></li><li><a href="../patterns/browser-agent.html">Browser agent</a></li><li><a href="../patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="../frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="../frameworks/langgraph.html">LangGraph</a></li><li><a href="../frameworks/crewai.html">CrewAI</a></li><li><a href="../frameworks/autogen.html">AutoGen</a></li><li><a href="../frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>Tool descriptions matter</span></div><h1 class="title">Tool descriptions matter</h1><div class="article-meta"><span>📖 3 min read</span><span>Updated 2026-04-19</span></div>
-<p class="lede">Your tool description is read by the LLM at every step of the loop. It's the most important prompt in your agent that most developers treat as an afterthought. A weak description produces inconsistent tool use. A precise description produces reliable behavior.</p>
+<p class="lede">The tool description is the single most important piece of prose in your agent. The model reads it at every turn to decide whether to call this tool. A one-liner produces random behavior. A precise description produces reliable behavior. Most teams ship agents with descriptions that look like afterthoughts. Spend thirty minutes rewriting them and your accuracy jumps.</p>
 
-<h2>What a good description includes</h2>
-<ol>
-<li><strong>What the tool does</strong>, one sentence, active voice</li>
-<li><strong>When to use it</strong>, the scenarios this is the right choice</li>
-<li><strong>When NOT to use it</strong>, common misapplications</li>
-<li><strong>What it returns</strong>, shape + meaning of the result</li>
-<li><strong>Constraints or limits</strong>, rate limits, size limits, latency</li>
-</ol>
+<h2>Why descriptions are effectively prompts</h2>
+<p>When you register a tool, you send the model its name, description, and input schema. That's all it sees. There's no magic. When the model decides "should I call search_web here?" it's reading your description and pattern-matching the current situation against it. If the description is vague, the match is vague. If the description is specific, the match is specific.</p>
 
-<h2>Example: weak description</h2>
+<h2>The five-ingredient recipe</h2>
+<div class="sketch" data-viewbox="0 0 900 300"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 300);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Every tool description needs these five things');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Ingredient', w: 240},
+    {title: 'Example', w: 560}
+  ], rows: [
+    ['What it does', 'Search the public web for recent news'],
+    ['When to use it', 'Use for current events, post-training-cutoff facts'],
+    ['When NOT to use it', 'Don\'t use for internal docs or math'],
+    ['What it returns', 'Top 5 results with title, URL, snippet'],
+    ['Constraints', 'Rate limited to 30 calls/minute']
+  ]});
+});
+</script>
+
+<h2>Weak vs strong, side by side</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'The quality jump from a rewrite');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Weak description', items: [
+      '"Search the web."',
+      'Model calls it for everything',
+      'Confused when other tools exist',
+      'No idea what it returns',
+      'No idea about limits'
+    ]},
+    right: {title: 'Strong description', items: [
+      'Exact purpose in one sentence',
+      'Explicit when-to-use scenarios',
+      '"Do NOT use for X" to route away',
+      'Describes return shape + units',
+      'States rate limits + latency'
+    ]}
+  });
+});
+</script>
+
+<h2>The rewrite, concrete</h2>
+<p><strong>Weak:</strong></p>
 <pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
-"Search the web."
-</pre>
-
-<h2>Example: strong description</h2>
+"Search the web."</pre>
+<p><strong>Strong:</strong></p>
 <pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
-"Search the public web for recent news and information. Use this
-when the user asks about current events, recent developments, or
-facts that may have changed since your training cutoff. Returns
-top 5 results with title, URL, and snippet. Do NOT use for
-searching internal documents (use search_internal_docs instead)
-or for math (use calculator). Rate limited to 30 calls per minute."
-</pre>
+"Search the public web for recent news and information. Use this when
+the user asks about current events, recent developments, or facts
+that may have changed since your training cutoff. Returns top 5
+results with title, URL, and snippet. Do NOT use for searching
+internal company documents (use search_internal_docs instead) or
+for math (use calculator). Rate limited to 30 calls per minute."</pre>
+<p>Same tool. The second version tells the model exactly when to reach for it, when to reach for a different tool, and what it'll get back. Accuracy on ambiguous prompts typically jumps from ~60% to ~90% with this kind of rewrite. Free quality.</p>
 
-<h2>Parameter descriptions matter too</h2>
-<p>Each parameter gets its own description. Tell the LLM what format, what valid values, any constraints.</p>
+<h2>Parameter descriptions, too</h2>
+<p>Each parameter gets its own description. Specify format, valid values, examples of what "good" looks like:</p>
 <pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
 {
   "query": {
     "type": "string",
-    "description": "Natural language search query. 3-10 words works best. Include specific entities and timeframes."
+    "description": "Natural language search query. 3–10 words works best. Include specific entities and timeframes, e.g. 'Apple iPhone 16 launch date'."
   },
   "recency": {
     "type": "string",
     "enum": ["day", "week", "month", "year"],
-    "description": "How recent results should be. Default is 'month'."
+    "description": "How recent results should be. Default: 'month'."
   }
-}
-</pre>
+}</pre>
 
-<h2>The "when not to use" is critical</h2>
-<p>When you have multiple similar tools, each description must explicitly route the LLM to the right one. Without negative examples, the LLM picks more or less randomly when tools overlap.</p>
+<h2>The "do NOT use" is the superpower</h2>
+<p>When your agent has several similar tools, you need explicit routing. The model will not know that <code>search_web</code> and <code>search_internal_docs</code> are different unless you tell it. Every description should say what <em>not</em> to use the tool for and which tool to reach for instead. Without that, overlapping tools get picked at random.</p>
 
-<h2>Test your descriptions</h2>
-<p>Run your agent with intentionally ambiguous tasks and watch which tools it calls. If it's calling the wrong tool consistently, the descriptions need work, not the model.</p>
+<h2>A worked example: routing between three search tools</h2>
+<p>Imagine you have three tools: <code>search_web</code>, <code>search_internal_docs</code>, <code>search_support_kb</code>.</p>
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
+search_web
+  Use for: news, public companies, things outside the company.
+  Do NOT use for: internal policies, company-specific info.
+
+search_internal_docs
+  Use for: internal policies, HR, engineering wiki.
+  Do NOT use for: customer support tickets or public information.
+
+search_support_kb
+  Use for: known support questions and past ticket resolutions.
+  Do NOT use for: internal engineering docs or general web info.</pre>
+<p>Now when a user asks "what's our PTO policy" the model has no ambiguity: that's internal_docs, not the others.</p>
+
+<h2>How to test descriptions</h2>
+<ul>
+<li>Write 10 prompts where the "right" tool is obvious to a human.</li>
+<li>Run your agent. Count how often it picked the right tool.</li>
+<li>If &lt;90%, the descriptions need work. Not the model.</li>
+<li>For each wrong pick, read the trace. Your description failed to route the model away from the other tool. Add a "do NOT use" line.</li>
+</ul>
+
+<h2>Pitfalls</h2>
+<ul>
+<li><strong>Copy-pasting internal docstrings.</strong> What's useful for a human dev reviewing code is not what's useful for the model at decision time.</li>
+<li><strong>Jargon.</strong> If the description uses internal acronyms or obscure library names, the model has to guess. Write plainly.</li>
+<li><strong>"Returns result."</strong> Describe the shape, the units, the meaning. "Returns price in USD as a float" not "returns a number."</li>
+<li><strong>Silently changing descriptions.</strong> Treat them like prompts. Version them. Test after every change.</li>
+</ul>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Open your agent's tool list. Read every description. Rewrite anything under two sentences.</li>
+<li>Read <a href="tool-design.html">tool design</a> for the structural half.</li>
+<li>Read <a href="tool-budgets.html">tool budgets + limits</a> for the constraints sentence of every description.</li>
+</ul>
 <div class="prev-next"><a href="tool-design.html" class="prev"><div class="label">← Previous</div><div class="title">Tool design</div></a><a href="error-handling.html" class="next"><div class="label">Next →</div><div class="title">Tool error handling</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

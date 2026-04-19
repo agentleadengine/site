@@ -219,48 +219,105 @@
 <a href="../../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="../foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="../foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="../foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="../loops/react.html">ReAct</a></li><li><a href="../loops/tool-use.html">Tool use</a></li><li><a href="../loops/planning.html">Planning loops</a></li><li><a href="../loops/reflection.html">Reflection</a></li><li><a href="../loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="../tools/tool-design.html">Tool design</a></li><li><a href="../tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="../tools/error-handling.html" class="active">Tool error handling</a></li><li><a href="../tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="../tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="../memory/short-term.html">Short-term memory</a></li><li><a href="../memory/long-term.html">Long-term memory</a></li><li><a href="../memory/episodic.html">Episodic memory</a></li><li><a href="../memory/procedural.html">Procedural memory</a></li><li><a href="../memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="../multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="../multi/peer-agents.html">Peer agents</a></li><li><a href="../multi/debate.html">Debate + consensus</a></li><li><a href="../multi/handoffs.html">Agent handoffs</a></li><li><a href="../multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="../eval/why-eval-agents.html">Why eval agents</a></li><li><a href="../eval/task-completion.html">Task completion</a></li><li><a href="../eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="../eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="../prod/observability.html">Observability + tracing</a></li><li><a href="../prod/cost-control.html">Cost control</a></li><li><a href="../prod/latency.html">Latency optimization</a></li><li><a href="../prod/safety.html">Safety + guardrails</a></li><li><a href="../prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/research-agent.html">Research agent</a></li><li><a href="../patterns/coding-agent.html">Coding agent</a></li><li><a href="../patterns/customer-support.html">Customer support agent</a></li><li><a href="../patterns/data-analyst.html">Data analyst agent</a></li><li><a href="../patterns/browser-agent.html">Browser agent</a></li><li><a href="../patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="../frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="../frameworks/langgraph.html">LangGraph</a></li><li><a href="../frameworks/crewai.html">CrewAI</a></li><li><a href="../frameworks/autogen.html">AutoGen</a></li><li><a href="../frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>Tool error handling</span></div><h1 class="title">Tool error handling</h1><div class="article-meta"><span>📖 3 min read</span><span>Updated 2026-04-19</span></div>
-<p class="lede">Tool calls fail in production. APIs go down, rate limits hit, timeouts expire, inputs get rejected. The agent's ability to handle errors gracefully is what separates a prototype from a production system.</p>
+<p class="lede">Every tool will fail eventually. APIs go down, rate limits hit, arguments get rejected, timeouts expire. The question is: when a tool fails, does your agent die, get wrong answers, or handle it gracefully? The answer depends almost entirely on how you structure errors. The headline rule: <strong>return errors as data</strong>, don't throw them as exceptions. That one change moves agents from demo-quality to production-quality.</p>
 
-<h2>The principle: return errors as data</h2>
-<p>Don't throw exceptions that crash the agent loop. Return structured error responses the LLM can reason about:</p>
+<h2>The core principle</h2>
+<p>An exception kills the agent loop. A structured error is just another piece of information the model can read and respond to. Which means the agent can retry, pivot, or escalate, exactly like a human would. Your whole error strategy flows from this one shift.</p>
+
+<h2>What a good error return looks like</h2>
 <pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
 {
   "error": "rate_limit",
   "message": "Rate limit exceeded. Try again in 60 seconds.",
   "retry_after": 60
-}
-</pre>
-<p>Or:</p>
+}</pre>
 <pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
 {
   "error": "not_found",
-  "message": "No results found for query 'xyz'. Try a different search term."
-}
-</pre>
+  "message": "No customer found matching 'acme'. Try a broader search or list all customers."
+}</pre>
+<p>Two things to notice. There's always a typed <code>error</code> code so the agent can branch on the category. There's always a <code>message</code> and often a <em>hint</em> about what to do next. The agent reads both and picks an intelligent next move.</p>
 
-<h2>Error categories</h2>
-<ul>
-<li><strong>Transient</strong> (network, rate limit): LLM should retry, possibly with delay</li>
-<li><strong>Permanent</strong> (bad arg, auth failure): LLM should not retry; pivot to different approach</li>
-<li><strong>Empty result</strong>: LLM should try different query or conclude "no data"</li>
-<li><strong>Ambiguous</strong> (multiple matches): LLM should ask for clarification or pick best</li>
-</ul>
+<h2>The four error categories</h2>
+<div class="sketch" data-viewbox="0 0 900 300"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 300);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'How the agent should respond by category');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Category', w: 200},
+    {title: 'Example', w: 320},
+    {title: 'Right response', w: 280}
+  ], rows: [
+    ['Transient', '500, rate limit, network', 'Retry with backoff'],
+    ['Permanent', 'Bad argument, auth failure', 'Don\'t retry; pivot'],
+    ['Empty result', 'Query returned nothing', 'Broaden query, or conclude'],
+    ['Ambiguous', 'Multiple matches', 'Ask user, or pick best']
+  ]});
+});
+</script>
 
-<h2>Retries</h2>
-<p>Transient errors should be retried automatically by the orchestrator (not by the LLM). Expose permanent errors to the LLM after retries fail.</p>
-<p>Rule of thumb: 3 retries with exponential backoff for transient errors before returning to the LLM.</p>
+<h2>Where retries belong</h2>
+<p>Transient errors should be retried by your orchestrator, not by the model. You don't want to spend three LLM turns retrying a rate limit. The orchestrator does 3 retries with exponential backoff internally, and only if those fail does the model see the error. That keeps the agent's context clean and its reasoning focused.</p>
+<p>Permanent errors (bad args, wrong auth) are surfaced immediately. Retrying them wastes time. The model needs to see "this is a permanent error" and change tack.</p>
 
 <h2>Timeouts</h2>
-<p>Every tool call should have a timeout. If a tool hangs, the whole agent session hangs. Set aggressive timeouts (5-30 seconds) and return a timeout error the LLM can handle.</p>
+<p>Every tool call needs a timeout. A hung tool hangs the whole agent session. Set aggressive per-tool timeouts (5–30 seconds). When a timeout fires, return it as a structured error so the agent can respond.</p>
 
-<h2>Error message quality</h2>
-<p>Cryptic errors waste LLM context. "Error 4040" is useless. "File not found at path /foo/bar.txt, check the path or list the directory first" is actionable.</p>
+<h2>A worked example: data-lookup agent</h2>
+<p>User: "How many tickets did Acme file last quarter?"</p>
+<ol>
+<li><strong>Agent calls:</strong> <code>search_customer(name: "Acme")</code>.</li>
+<li><strong>Tool returns:</strong> <code>{"error": "ambiguous", "message": "5 customers match 'Acme'. Please refine or pass customer_id.", "candidates": [...]}</code></li>
+<li><strong>Agent reads ambiguity:</strong> "5 matches, I should pick the most likely or ask." Lists the 5 to the user.</li>
+<li><strong>User clarifies:</strong> "Acme Industries Inc."</li>
+<li><strong>Agent calls:</strong> <code>search_customer(name: "Acme Industries Inc.")</code> → returns exactly one customer.</li>
+<li><strong>Agent calls:</strong> <code>count_tickets(customer_id: 1234, quarter: "2026-Q1")</code>.</li>
+<li><strong>Tool returns:</strong> <code>{"error": "rate_limit", "retry_after": 60}</code>.</li>
+<li><strong>Orchestrator retries internally</strong> 3 times, succeeds on the third.</li>
+<li><strong>Agent answers:</strong> "Acme Industries filed 47 tickets in Q1 2026."</li>
+</ol>
+<p>Four different error situations in one run (ambiguous match, rate limit, successful retry, clean result). Nothing crashed. The agent handled each in the natural way because errors were data, not exceptions.</p>
 
 <h2>The silent-failure disaster</h2>
-<p>Worst case: tool fails, returns empty or null result, LLM assumes success, produces wrong final answer. Always fail loudly. "I couldn't find X" beats "here's what I didn't find and made up."</p>
+<p>Worst thing a tool can do: return an empty list or null when it actually failed. The model assumes "no results = genuine no results" and confidently gives the user wrong info. Ban this. If the search failed, say so: <code>{"error": "backend_down", ...}</code>. "I couldn't check" is always better than "here's a made-up answer."</p>
+
+<h2>Message quality</h2>
+<p>Error messages are context the model has to reason over. Cryptic messages waste tokens and produce bad recoveries. Compare:</p>
+<ul>
+<li>Bad: <code>"Error 4040"</code></li>
+<li>Bad: <code>"Internal server error"</code></li>
+<li>Good: <code>"File not found at /data/q1.csv. Use list_files() to see available files."</code></li>
+<li>Good: <code>"API key rejected. The configured credentials may have expired."</code></li>
+</ul>
+<p>Good error messages tell the model <em>what happened</em> and <em>what to try next</em>. Those two sentences rescue most recoveries.</p>
 
 <h2>Testing error paths</h2>
-<p>In your eval suite, include test cases where tools fail intentionally. Verify the agent handles it correctly (retries, pivots, or escalates to human).</p>
+<p>Include failure scenarios in your eval set. A failing eval is not "the tool failed to work." It's "the agent failed to handle the tool failing." Evaluate:</p>
+<ul>
+<li>Can the agent retry a transient failure correctly?</li>
+<li>Can the agent pivot to a different tool on a permanent failure?</li>
+<li>Can the agent ask the user when input is ambiguous?</li>
+<li>Does the agent stop gracefully when all retries are exhausted?</li>
+</ul>
+
+<h2>Pitfalls</h2>
+<ul>
+<li><strong>Throwing instead of returning.</strong> One unhandled exception kills the session.</li>
+<li><strong>One-word errors.</strong> <code>"error"</code> tells the model nothing.</li>
+<li><strong>No retry logic in the orchestrator.</strong> Every flaky call becomes an agent turn.</li>
+<li><strong>Endless retries.</strong> 3 is the right number for most transient errors. More is just burning budget.</li>
+<li><strong>Silent successes.</strong> Returning empty data on actual failure is worse than any error.</li>
+</ul>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Audit your tools: do they throw or return errors? Fix the throwers first.</li>
+<li>Read <a href="../loops/self-correction.html">self-correction</a> for the pattern that builds on good error handling.</li>
+<li>Read <a href="tool-budgets.html">tool budgets + limits</a> to cap how far retries and loops can go.</li>
+</ul>
 <div class="prev-next"><a href="tool-descriptions.html" class="prev"><div class="label">← Previous</div><div class="title">Tool descriptions matter</div></a><a href="parallel-tools.html" class="next"><div class="label">Next →</div><div class="title">Parallel tool calls</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

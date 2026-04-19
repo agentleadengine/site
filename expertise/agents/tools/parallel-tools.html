@@ -219,48 +219,102 @@
 <a href="../../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="../foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="../foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="../foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="../loops/react.html">ReAct</a></li><li><a href="../loops/tool-use.html">Tool use</a></li><li><a href="../loops/planning.html">Planning loops</a></li><li><a href="../loops/reflection.html">Reflection</a></li><li><a href="../loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="../tools/tool-design.html">Tool design</a></li><li><a href="../tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="../tools/error-handling.html">Tool error handling</a></li><li><a href="../tools/parallel-tools.html" class="active">Parallel tool calls</a></li><li><a href="../tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="../memory/short-term.html">Short-term memory</a></li><li><a href="../memory/long-term.html">Long-term memory</a></li><li><a href="../memory/episodic.html">Episodic memory</a></li><li><a href="../memory/procedural.html">Procedural memory</a></li><li><a href="../memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="../multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="../multi/peer-agents.html">Peer agents</a></li><li><a href="../multi/debate.html">Debate + consensus</a></li><li><a href="../multi/handoffs.html">Agent handoffs</a></li><li><a href="../multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="../eval/why-eval-agents.html">Why eval agents</a></li><li><a href="../eval/task-completion.html">Task completion</a></li><li><a href="../eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="../eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="../prod/observability.html">Observability + tracing</a></li><li><a href="../prod/cost-control.html">Cost control</a></li><li><a href="../prod/latency.html">Latency optimization</a></li><li><a href="../prod/safety.html">Safety + guardrails</a></li><li><a href="../prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/research-agent.html">Research agent</a></li><li><a href="../patterns/coding-agent.html">Coding agent</a></li><li><a href="../patterns/customer-support.html">Customer support agent</a></li><li><a href="../patterns/data-analyst.html">Data analyst agent</a></li><li><a href="../patterns/browser-agent.html">Browser agent</a></li><li><a href="../patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="../frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="../frameworks/langgraph.html">LangGraph</a></li><li><a href="../frameworks/crewai.html">CrewAI</a></li><li><a href="../frameworks/autogen.html">AutoGen</a></li><li><a href="../frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>Parallel tool calls</span></div><h1 class="title">Parallel tool calls</h1><div class="article-meta"><span>📖 3 min read</span><span>Updated 2026-04-19</span></div>
-<p class="lede">Modern tool-use APIs (Claude, GPT-4, Gemini) let the LLM request multiple tool calls in a single response. The orchestrator runs them in parallel and feeds back all results. This dramatically cuts latency for independent tasks.</p>
+<p class="lede">Modern tool-use APIs let the model request several tool calls in a single turn. Your orchestrator runs them in parallel. You get back all the results at once. It's the cheapest, easiest latency win in an agent: zero extra cost, often 3–5× faster on turns that fetch independent data. If your agent does more than one tool call per turn, you probably want this on.</p>
 
-<h2>When parallel makes sense</h2>
-<p>When tool calls are independent: don't depend on each other's results.</p>
-<ul>
-<li>"Search for X, search for Y, search for Z", three independent searches</li>
-<li>"Look up user info AND their order history AND their support tickets", independent queries</li>
-<li>"Check availability at 3 different providers", independent checks</li>
-</ul>
-
-<h2>When NOT parallel</h2>
-<p>When each call depends on the prior result:</p>
-<ul>
-<li>"Search for X, then based on what you find, search for Y"</li>
-<li>"Look up user, then based on their plan, query different databases"</li>
-</ul>
-<p>These must be sequential.</p>
+<h2>The mechanic</h2>
+<p>Instead of emitting one <code>tool_use</code> block, the model emits three. Your orchestrator sees the three calls, dispatches them concurrently (<code>asyncio.gather</code>, promise-all, thread pool, whatever you like), waits for all of them to finish, then packages all three results into a single response back to the model. The model reads them together and continues.</p>
 
 <h2>The latency math</h2>
-<p>Three tool calls, each 500ms:</p>
-<ul>
-<li>Sequential: 1500ms total</li>
-<li>Parallel: 500ms total (slowest of the three)</li>
-</ul>
-<p>At agent scale (many tool calls), the savings compound.</p>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Three tool calls at 500ms each');
+  sketch.bars(svg, rc, {x: 40, y: 60, w: 820, labelW: 200, items: [
+    {label: 'Sequential', value: 90, note: '~1500ms'},
+    {label: 'Parallel', value: 30, note: '~500ms (slowest one)'}
+  ]});
+});
+</script>
+<p>At three calls the gap is ~1 second. At ten calls it's multiple seconds. Over an entire agent run with dozens of parallelizable moments, you routinely shave half the wall-clock. Users notice.</p>
 
-<h2>Implementation</h2>
-<p>The LLM returns multiple tool_use blocks in one response. Your orchestrator must detect this and dispatch them concurrently:</p>
+<h2>When parallel is the right shape</h2>
+<div class="sketch" data-viewbox="0 0 900 240"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 240);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Parallelize when calls are independent');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 160,
+    left: {title: 'Parallel (independent)', items: [
+      '"Search X, search Y, search Z"',
+      'Look up user + orders + tickets',
+      'Check 3 providers\' availability'
+    ]},
+    right: {title: 'Sequential (dependent)', items: [
+      '"Search X, then based on result search Y"',
+      'Get user → query plan-specific DB',
+      'Find PR → get its CI status'
+    ]}
+  });
+});
+</script>
+
+<h2>A worked example: customer lookup</h2>
+<p>User: "Give me the full picture on customer 1234."</p>
+<p><strong>Sequential version (slow):</strong></p>
+<ol>
+<li>Call <code>get_customer(1234)</code> → wait 400ms</li>
+<li>Call <code>get_orders(1234)</code> → wait 500ms</li>
+<li>Call <code>get_tickets(1234)</code> → wait 600ms</li>
+</ol>
+<p>Total: 1500ms.</p>
+<p><strong>Parallel version:</strong> model emits all three <code>tool_use</code> blocks in one response. Orchestrator runs them concurrently. Wall time: max(400, 500, 600) = 600ms.</p>
+<p>Same answer, less than half the wait, zero additional cost, same number of tokens sent to the model.</p>
+
+<h2>Implementation sketch</h2>
 <pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
 async def execute_tool_calls(calls):
-    return await asyncio.gather(*[execute(c) for c in calls])
-</pre>
+    return await asyncio.gather(*[execute(c) for c in calls])</pre>
+<p>Five lines. That's most of what you need. The model already knows how to emit multiple tool calls when it makes sense; your orchestrator just has to dispatch them concurrently instead of sequentially.</p>
 
 <h2>Cost doesn't change</h2>
-<p>Parallel calls don't cost more than sequential, same number of tool invocations. Sometimes cost is slightly lower because the orchestrator only sends one LLM prompt back with batched results.</p>
+<p>Parallel calls are the same number of tool invocations. Model tokens can even drop slightly because the orchestrator batches results into one response instead of sending three separate follow-up prompts. So: faster, same cost, occasionally cheaper. There's basically no downside.</p>
 
-<h2>Error handling in parallel</h2>
-<p>If one of three parallel calls fails, do you wait for the others? Fail fast? Return partial results?</p>
-<p>Typically: wait for all to complete, return results (including any errors) to the LLM. LLM decides how to proceed. This keeps the programming model simple.</p>
+<h2>Handling partial failures</h2>
+<p>Three calls, one fails. What do you do?</p>
+<ul>
+<li><strong>Default:</strong> wait for all three, return all three results (including the error) to the model. The model decides how to proceed. This is the simplest programming model and works for 95% of cases.</li>
+<li><strong>Fail-fast:</strong> abort the other calls as soon as one fails. Right when the calls are expensive or when a failure invalidates the others.</li>
+<li><strong>Partial results:</strong> return what succeeded, mark the failure. Good when the agent can often proceed with incomplete info.</li>
+</ul>
+<p>Start with the default. It's predictable and the model handles mixed results well.</p>
 
-<h2>When the LLM doesn't parallelize naturally</h2>
-<p>Some models default to sequential tool use even when parallel would be faster. Prompt engineering can nudge them: "When you need multiple pieces of independent information, request them all in one response."</p>
+<h2>Getting the model to actually parallelize</h2>
+<p>Some models default to sequential tool use even when parallel would be cheaper. Prompt nudges that work:</p>
+<ul>
+<li>"When you need multiple pieces of independent information, request them in one response."</li>
+<li>"Prefer calling multiple tools in parallel when their inputs don't depend on each other."</li>
+<li>An example in the system prompt showing the model emitting multiple tool_use blocks at once.</li>
+</ul>
+
+<h2>Pitfalls</h2>
+<ul>
+<li><strong>Parallelizing dependent calls.</strong> If call 2 needs call 1's result, parallel gives you garbage. The model usually figures this out, but watch traces.</li>
+<li><strong>Rate limit collision.</strong> Three parallel calls to the same API can trip rate limits the sequential version wouldn't. Add per-provider concurrency limits.</li>
+<li><strong>Error swallowing.</strong> If your <code>asyncio.gather</code> swallows exceptions, the model never sees the failures. Use <code>return_exceptions=True</code> or structured errors.</li>
+<li><strong>Assuming all APIs support concurrent access.</strong> Some internal services don't. Test.</li>
+</ul>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Turn on parallel dispatch in your orchestrator. Add a system-prompt nudge if your model doesn't use it naturally.</li>
+<li>Read <a href="../prod/latency.html">latency optimization</a> for the bigger picture on cutting wall-clock.</li>
+<li>Read <a href="error-handling.html">tool error handling</a> for the partial-failure patterns.</li>
+</ul>
 <div class="prev-next"><a href="error-handling.html" class="prev"><div class="label">← Previous</div><div class="title">Tool error handling</div></a><a href="tool-budgets.html" class="next"><div class="label">Next →</div><div class="title">Tool budgets + limits</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
