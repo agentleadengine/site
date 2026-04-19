@@ -232,6 +232,24 @@
 </ul>
 
 <h2>Four strategies for tables</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Four ways to handle tables in RAG');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Strategy', w: 220},
+    {title: 'When it fits', w: 580}
+  ], rows: [
+    ['Serialize as text rows', 'Small tables, sparse content'],
+    ['Keep as HTML / markdown', 'LLM reads structure natively'],
+    ['Summarize each table', 'Huge tables, semantic query match'],
+    ['Extract → query as data', 'Numerical / aggregable data']
+  ]});
+});
+</script>
 
 <h3>1. Serialize as readable prose</h3>
 <p>Convert each row into a sentence: "In 2023, Revenue was $4.2M, COGS was $1.8M, Gross Margin was 57%." Preserves semantics in a format embeddings handle well. Loses compactness but gains retrievability.</p>

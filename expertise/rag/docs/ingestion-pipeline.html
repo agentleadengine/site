@@ -222,6 +222,22 @@
 <p class="lede">Ingestion is the unsexy 80% of any production RAG system. Demos skip it. Real systems live and die by it. If your ingestion is broken, no amount of retrieval sophistication saves you, you're doing advanced reasoning on garbage.</p>
 
 <h2>The canonical pipeline</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Ingestion pipeline: source → index');
+  sketch.numberedSteps(svg, rc, {direction: 'h', x: 30, y: 80, w: 840, items: [
+    {title: 'Connect', sub: 'fetch from source'},
+    {title: 'Parse', sub: 'extract text'},
+    {title: 'Clean', sub: 'normalize'},
+    {title: 'Chunk', sub: 'split units'},
+    {title: 'Embed + store', sub: 'index-ready'}
+  ]});
+});
+</script>
 <ol>
   <li><strong>Connect to source</strong> (API, filesystem, storage bucket, database)</li>
   <li><strong>Detect changes</strong> (full, delta, or event-driven)</li>

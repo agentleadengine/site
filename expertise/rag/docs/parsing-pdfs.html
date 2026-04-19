@@ -222,6 +222,23 @@
 <p class="lede">PDFs are where the "we'll just parse the docs" plan meets reality. PDF is not a document format, it's a visual layout format that happens to contain text. Every serious RAG project eventually has a PDF problem. Here's how I think about it.</p>
 
 <h2>The three kinds of PDFs</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Know which PDF you have');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Kind', w: 220},
+    {title: 'How to detect', w: 580}
+  ], rows: [
+    ['Text-native', 'Copy-paste works; low file size per page'],
+    ['Scanned image', 'Copy-paste returns nothing; needs OCR'],
+    ['Born-digital with layout', 'Text works but columns / tables are the challenge']
+  ]});
+});
+</script>
 
 <h3>1. Born-digital with clean text layer</h3>
 <p>Generated from Word, LaTeX, or pandoc. Text is extractable with basic tools. Usually has a coherent reading order. Still may have headers/footers/page numbers that pollute text.</p>
