@@ -183,9 +183,9 @@ nav.topbar .nav-group {
     position: relative;
 }
 /* Dropdown PANEL — the floating sheet that drops down from the nav.
-   Intentionally distinct from both the white nav above and the white
-   page below: tinted background, purple accent strip, heavier shadow,
-   clear top gap so it reads as its own surface. */
+   Opens/closes exclusively via the .is-open class driven by JS (hover intent
+   + close delay). Pure CSS :hover is intentionally NOT used so brief mouse
+   drift doesn't dismiss the menu. */
 nav.topbar .nav-submenu {
     position: absolute;
     top: 100%;
@@ -200,22 +200,28 @@ nav.topbar .nav-submenu {
     padding: 14px;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.18s ease, transform 0.18s ease;
+    transition: opacity 0.2s ease, transform 0.2s ease;
     z-index: 1001;
     max-height: calc(100vh - 140px);
     overflow-y: auto;
 }
-nav.topbar .nav-group:hover > .nav-submenu,
-nav.topbar .nav-group:focus-within > .nav-submenu,
+/* Invisible hover bridge so the mouse can travel from trigger to panel
+   without crossing a "dead zone" that would trigger mouseleave. */
+nav.topbar .nav-submenu::before {
+    content: '';
+    position: absolute;
+    top: -18px;
+    left: 0; right: 0;
+    height: 18px;
+}
 nav.topbar .nav-group.is-open > .nav-submenu {
     opacity: 1;
     pointer-events: auto;
     transform: translateX(-50%) translateY(0);
 }
 
-/* Items inside a SIMPLE dropdown (Framework, Playbooks) —
-   white tiles on the tinted panel so each feels like a discrete module. */
-nav.topbar .nav-submenu a {
+/* Simple dropdown items (Framework, Playbooks) — white tiles on panel. */
+nav.topbar .nav-submenu:not(.nav-mega) > a {
     display: block;
     padding: 11px 16px;
     font-size: 13.5px;
@@ -231,90 +237,128 @@ nav.topbar .nav-submenu a {
     margin-bottom: 4px;
     transition: all 0.15s ease;
 }
-nav.topbar .nav-submenu a:last-child { margin-bottom: 0; }
-nav.topbar .nav-submenu a::after { display: none; }
-nav.topbar .nav-submenu a:hover {
+nav.topbar .nav-submenu:not(.nav-mega) > a:last-child { margin-bottom: 0; }
+nav.topbar .nav-submenu > a::after { display: none; }
+nav.topbar .nav-submenu:not(.nav-mega) > a:hover {
     background: var(--primary-purple);
     color: #ffffff;
     border-color: var(--primary-purple);
     transform: translateX(2px);
 }
 
-/* MEGA submenu (Expertise — brain map). Panel with card modules inside. */
+/* ============================================================
+   EXPERTISE MEGA — nested flyout ("menu inside of menu")
+   Left: 10 category rows. Right: subpages of the *hovered* category.
+   Sub-items are hidden until a category is hovered, so nothing is
+   "directly visible" as a giant wall of links.
+   ============================================================ */
 nav.topbar .nav-group-wide { position: static; }
-nav.topbar .nav-submenu-multi {
+nav.topbar .nav-mega {
     left: 50%;
     transform: translateX(-50%) translateY(14px);
     display: grid;
-    grid-template-columns: repeat(5, minmax(180px, 1fr));
-    gap: 14px;
-    min-width: min(1180px, calc(100vw - 48px));
-    padding: 20px;
+    grid-template-columns: 260px 1fr;
+    gap: 16px;
+    width: min(960px, calc(100vw - 48px));
+    padding: 18px;
+    min-width: 0;
 }
-nav.topbar .nav-group-wide:hover > .nav-submenu-multi,
-nav.topbar .nav-group-wide:focus-within > .nav-submenu-multi,
-nav.topbar .nav-group-wide.is-open > .nav-submenu-multi {
+nav.topbar .nav-group.is-open > .nav-mega {
     transform: translateX(-50%) translateY(0);
 }
-
-/* Each COLUMN is its own card-module on the tinted panel. */
-nav.topbar .nav-col {
+nav.topbar .nav-mega-cats {
     display: flex;
     flex-direction: column;
-    gap: 0;
+    gap: 2px;
     background: #ffffff;
     border: 1px solid #e5e5ea;
     border-radius: 12px;
-    padding: 14px 14px 12px;
-    transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+    padding: 8px;
+    align-self: start;
 }
-nav.topbar .nav-col:hover {
-    border-color: rgba(98, 0, 255, 0.35);
-    box-shadow: 0 10px 28px -8px rgba(98, 0, 255, 0.18);
-    transform: translateY(-2px);
+nav.topbar .nav-mega-cats .nav-cat {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 10px 14px;
+    font-size: 13.5px;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--gray-900);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.15s ease, color 0.15s ease;
+    white-space: nowrap;
+}
+nav.topbar .nav-mega-cats .nav-cat::after { display: none; }
+nav.topbar .nav-mega-cats .nav-cat .nav-cat-arrow {
+    color: #a1a1aa;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1;
+    transition: transform 0.15s ease, color 0.15s ease;
+}
+nav.topbar .nav-mega-cats .nav-cat:hover,
+nav.topbar .nav-mega-cats .nav-cat.is-active {
+    background: var(--primary-purple);
+    color: #ffffff;
+}
+nav.topbar .nav-mega-cats .nav-cat:hover .nav-cat-arrow,
+nav.topbar .nav-mega-cats .nav-cat.is-active .nav-cat-arrow {
+    color: #ffffff;
+    transform: translateX(2px);
 }
 
-/* Category HEADER — colored title like a module label, clearly above its items. */
-nav.topbar .nav-col-head {
-    font-weight: 800 !important;
-    font-size: 12px !important;
-    letter-spacing: 0.1em !important;
-    text-transform: uppercase !important;
-    color: var(--primary-purple) !important;
-    padding: 6px 10px !important;
-    background: rgba(98, 0, 255, 0.08) !important;
-    border: none !important;
-    border-radius: 8px !important;
-    margin-bottom: 8px !important;
-    display: block;
-    white-space: nowrap !important;
-    transform: none !important;
+/* Right panel: shows the active category's subpages. Only one visible at a time. */
+nav.topbar .nav-mega-content {
+    position: relative;
+    min-height: 280px;
+    background: #ffffff;
+    border: 1px solid #e5e5ea;
+    border-radius: 12px;
+    padding: 20px 22px;
 }
-nav.topbar .nav-col-head:hover {
-    background: var(--primary-purple) !important;
-    color: #ffffff !important;
-    transform: translateX(0) !important;
+nav.topbar .nav-cat-panel {
+    display: none;
+}
+nav.topbar .nav-cat-panel.is-active { display: block; }
+nav.topbar .nav-cat-panel-head {
+    display: block;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--primary-purple);
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ececef;
     text-decoration: none;
 }
-
-/* Items INSIDE a module — clearly subordinate to the header. */
-nav.topbar .nav-col a:not(.nav-col-head) {
-    padding: 6px 10px;
-    font-size: 12.5px;
-    font-weight: 500;
-    letter-spacing: 0;
-    color: #525258;
-    background: transparent;
-    border: none;
-    border-radius: 6px;
-    margin: 0;
-    white-space: normal;
-    line-height: 1.35;
+nav.topbar .nav-cat-panel-head::after { display: none; }
+nav.topbar .nav-cat-panel-head:hover { color: #4a00e0; text-decoration: underline; }
+nav.topbar .nav-cat-panel-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px 12px;
 }
-nav.topbar .nav-col a:not(.nav-col-head):hover {
+nav.topbar .nav-cat-panel-list a {
+    display: block;
+    padding: 8px 10px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #3f3f46;
+    border-radius: 6px;
+    text-decoration: none;
+    letter-spacing: 0;
+    text-transform: none;
+    line-height: 1.3;
+}
+nav.topbar .nav-cat-panel-list a::after { display: none; }
+nav.topbar .nav-cat-panel-list a:hover {
     background: #f4f4f7;
-    color: var(--gray-900);
-    transform: none;
+    color: var(--primary-purple);
 }
 
 /* Hamburger (hidden on desktop) */
@@ -1189,8 +1233,8 @@ footer p { margin: 0; letter-spacing: 0.02em; }
     nav.topbar .nav-group.is-open .nav-has-submenu::after {
         content: '−';
     }
-    nav.topbar .nav-submenu,
-    nav.topbar .nav-submenu-multi {
+    /* Mobile dropdown panels: static accordion layout */
+    nav.topbar .nav-submenu {
         position: static;
         transform: none !important;
         display: none;
@@ -1204,18 +1248,13 @@ footer p { margin: 0; letter-spacing: 0.02em; }
         padding: 12px 16px 14px;
         min-width: 0;
         max-height: none;
-        grid-template-columns: 1fr;
-        gap: 10px;
+        width: 100%;
     }
-    nav.topbar .nav-group.is-open > .nav-submenu,
-    nav.topbar .nav-group.is-open > .nav-submenu-multi {
-        display: block;
-    }
-    nav.topbar .nav-submenu-multi { display: none; }
-    nav.topbar .nav-group.is-open > .nav-submenu-multi { display: grid; }
+    nav.topbar .nav-submenu::before { display: none; }
+    nav.topbar .nav-group.is-open > .nav-submenu { display: block; }
 
-    /* Simple submenu items on mobile: white tiles on tinted panel */
-    nav.topbar .nav-submenu a {
+    /* Simple submenu (Framework/Playbooks) links: white tiles */
+    nav.topbar .nav-submenu:not(.nav-mega) > a {
         padding: 12px 16px;
         font-size: 13.5px;
         white-space: normal;
@@ -1226,46 +1265,45 @@ footer p { margin: 0; letter-spacing: 0.02em; }
         display: block;
         justify-content: flex-start;
     }
-    nav.topbar .nav-submenu a:hover,
-    nav.topbar .nav-submenu a:active {
+    nav.topbar .nav-submenu:not(.nav-mega) > a:hover,
+    nav.topbar .nav-submenu:not(.nav-mega) > a:active {
         transform: none;
         background: var(--primary-purple);
         color: #ffffff;
         border-color: var(--primary-purple);
     }
 
-    /* Mega menu columns on mobile: same card-module look */
-    nav.topbar .nav-col {
-        margin-bottom: 0;
+    /* Mega on mobile: flat accordion — cats stack, each with its subpages */
+    nav.topbar .nav-mega {
+        display: block;
+        grid-template-columns: 1fr;
+        gap: 0;
+        padding: 12px 16px 14px;
+        width: 100%;
+    }
+    nav.topbar .nav-mega-cats {
+        background: transparent;
+        border: none;
+        padding: 0;
+        gap: 4px;
+    }
+    nav.topbar .nav-mega-cats .nav-cat {
         background: #ffffff;
         border: 1px solid #e5e5ea;
-        border-radius: 12px;
-        padding: 12px;
+        padding: 14px 16px;
+        font-size: 14px;
+        border-radius: 10px;
+        margin-bottom: 6px;
     }
-    nav.topbar .nav-col:hover {
-        transform: none;
-        box-shadow: none;
-    }
-    nav.topbar .nav-col-head {
-        padding: 8px 12px !important;
-        font-size: 12px !important;
-        border-bottom: none !important;
-        background: rgba(98, 0, 255, 0.08) !important;
-        border-radius: 8px !important;
-        margin-bottom: 8px !important;
-        letter-spacing: 0.1em !important;
-    }
-    nav.topbar .nav-col a:not(.nav-col-head) {
-        padding: 9px 12px;
-        border: none;
-        background: transparent;
-        margin-bottom: 0;
-        border-radius: 6px;
-    }
-    nav.topbar .nav-col a:not(.nav-col-head):hover {
-        background: #f4f4f7;
+    nav.topbar .nav-mega-cats .nav-cat.is-active {
+        background: #ffffff;
         color: var(--gray-900);
     }
+    nav.topbar .nav-mega-cats .nav-cat.is-active .nav-cat-arrow {
+        color: var(--primary-purple);
+    }
+    /* Hide the big content panel on mobile — keep menu simple */
+    nav.topbar .nav-mega-content { display: none; }
 
     .framework-layout {
         grid-template-columns: 1fr;

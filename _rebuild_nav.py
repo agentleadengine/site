@@ -185,16 +185,34 @@ def build_nav(R: str) -> str:
         lines.append(f'<a href="{R}{href}">{label}</a>')
     lines.append('</div></div>')
 
-    # Expertise mega dropdown
+    # Expertise mega dropdown — 2-col: category list (left) + active cat's subpages (right).
+    # Children hidden until user hovers a category (menu-inside-menu).
     lines.append('<div class="nav-group nav-group-wide">')
     lines.append(f'<a href="{R}expertise/index.html" class="nav-link nav-has-submenu">Expertise</a>')
-    lines.append('<div class="nav-submenu nav-submenu-multi">')
-    for section_label, section_href, subpages in EXPERTISE:
-        lines.append('<div class="nav-col">')
-        lines.append(f'<a href="{R}{section_href}" class="nav-col-head">{section_label}</a>')
+    lines.append('<div class="nav-submenu nav-mega">')
+    lines.append('<div class="nav-mega-cats">')
+    for i, (section_label, section_href, _subpages) in enumerate(EXPERTISE):
+        cat_id = f"cat{i}"
+        active = ' is-active' if i == 0 else ''
+        lines.append(
+            f'<a href="{R}{section_href}" class="nav-cat{active}" data-cat="{cat_id}">'
+            f'<span>{section_label}</span>'
+            f'<span class="nav-cat-arrow">›</span>'
+            f'</a>'
+        )
+    lines.append('</div>')  # nav-mega-cats
+    lines.append('<div class="nav-mega-content">')
+    for i, (section_label, section_href, subpages) in enumerate(EXPERTISE):
+        cat_id = f"cat{i}"
+        active = ' is-active' if i == 0 else ''
+        lines.append(f'<div class="nav-cat-panel{active}" data-cat="{cat_id}">')
+        lines.append(f'<a href="{R}{section_href}" class="nav-cat-panel-head">{section_label}. Section overview →</a>')
+        lines.append('<div class="nav-cat-panel-list">')
         for sub_label, sub_href in subpages:
             lines.append(f'<a href="{R}{sub_href}">{sub_label}</a>')
         lines.append('</div>')
+        lines.append('</div>')
+    lines.append('</div>')  # nav-mega-content
     lines.append('</div></div>')
 
     # Playbooks dropdown
@@ -220,8 +238,16 @@ NAV_SCRIPT = """<script>
   const bar = document.querySelector('nav.topbar');
   if (!bar || bar.dataset.navInit) return;
   bar.dataset.navInit = '1';
+
+  const OPEN_DELAY = 120;   // ms — hover intent
+  const CLOSE_DELAY = 450;  // ms — forgiving close
+  const isMobile = () => window.matchMedia('(max-width: 960px)').matches;
+
   const hamb = bar.querySelector('.hamburger');
   const links = bar.querySelector('.nav-links');
+  const groups = Array.from(bar.querySelectorAll('.nav-group'));
+
+  // --- Mobile hamburger ---------------------------------------------------
   if (hamb && links) {
     hamb.addEventListener('click', function(e) {
       e.stopPropagation();
@@ -229,35 +255,91 @@ NAV_SCRIPT = """<script>
       hamb.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
   }
-  // Mobile accordion: tapping a dropdown trigger toggles its submenu
-  // instead of navigating. Desktop uses :hover so tap still navigates there.
-  const groups = bar.querySelectorAll('.nav-group');
+
+  // --- Per-group hover-intent open/close ---------------------------------
   groups.forEach(function(group) {
+    let openTimer = null;
+    let closeTimer = null;
+
+    const open = () => {
+      clearTimeout(closeTimer); closeTimer = null;
+      if (openTimer) return;
+      openTimer = setTimeout(() => {
+        groups.forEach(g => { if (g !== group) g.classList.remove('is-open'); });
+        group.classList.add('is-open');
+        openTimer = null;
+      }, OPEN_DELAY);
+    };
+    const close = () => {
+      clearTimeout(openTimer); openTimer = null;
+      clearTimeout(closeTimer);
+      closeTimer = setTimeout(() => {
+        group.classList.remove('is-open');
+        closeTimer = null;
+      }, CLOSE_DELAY);
+    };
+    const cancelClose = () => { clearTimeout(closeTimer); closeTimer = null; };
+
+    // Desktop: hover opens, mouseleave closes after delay
+    group.addEventListener('mouseenter', () => { if (!isMobile()) open(); });
+    group.addEventListener('mouseleave', () => { if (!isMobile()) close(); });
+    // If cursor re-enters while closing, cancel the close
+    group.addEventListener('pointerenter', () => { if (!isMobile()) cancelClose(); });
+
+    // Click trigger: mobile toggles accordion; desktop follows the link
     const trigger = group.querySelector('.nav-has-submenu');
-    if (!trigger) return;
-    trigger.addEventListener('click', function(e) {
-      // Only intercept on mobile-width
-      if (window.matchMedia('(max-width: 960px)').matches) {
-        e.preventDefault();
-        const wasOpen = group.classList.contains('is-open');
-        // Close sibling accordions for clarity
-        groups.forEach(g => g.classList.remove('is-open'));
-        if (!wasOpen) group.classList.add('is-open');
-      }
+    if (trigger) {
+      trigger.addEventListener('click', function(e) {
+        if (isMobile()) {
+          e.preventDefault();
+          const wasOpen = group.classList.contains('is-open');
+          groups.forEach(g => g.classList.remove('is-open'));
+          if (!wasOpen) group.classList.add('is-open');
+        }
+      });
+    }
+  });
+
+  // --- Expertise mega: swap right-panel content on category hover --------
+  const megaCats = bar.querySelectorAll('.nav-mega-cats .nav-cat');
+  const megaPanels = bar.querySelectorAll('.nav-mega-content .nav-cat-panel');
+  let catTimer = null;
+  megaCats.forEach(function(cat) {
+    cat.addEventListener('mouseenter', function() {
+      clearTimeout(catTimer);
+      const id = cat.dataset.cat;
+      catTimer = setTimeout(() => {
+        megaCats.forEach(c => c.classList.toggle('is-active', c.dataset.cat === id));
+        megaPanels.forEach(p => p.classList.toggle('is-active', p.dataset.cat === id));
+      }, 80); // snappier than top-level hover intent
     });
   });
-  // Close menu when a leaf link (non-trigger) is clicked
-  links && links.querySelectorAll('a').forEach(function(a) {
-    if (a.classList.contains('nav-has-submenu')) return;
-    a.addEventListener('click', function() {
+
+  // --- Close menu when a leaf link is clicked ----------------------------
+  if (links) {
+    links.querySelectorAll('a').forEach(function(a) {
+      if (a.classList.contains('nav-has-submenu')) return;
+      if (a.classList.contains('nav-cat')) return; // cat label also navigates, but don't auto-close
+      a.addEventListener('click', function() {
+        bar.classList.remove('nav-open');
+        if (hamb) hamb.setAttribute('aria-expanded', 'false');
+        groups.forEach(g => g.classList.remove('is-open'));
+      });
+    });
+  }
+
+  // --- Close on outside click ---------------------------------------------
+  document.addEventListener('click', function(e) {
+    if (!bar.contains(e.target)) {
       bar.classList.remove('nav-open');
       if (hamb) hamb.setAttribute('aria-expanded', 'false');
       groups.forEach(g => g.classList.remove('is-open'));
-    });
+    }
   });
-  // Tapping outside closes mobile menu
-  document.addEventListener('click', function(e) {
-    if (!bar.contains(e.target)) {
+
+  // --- Escape key closes everything ---------------------------------------
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
       bar.classList.remove('nav-open');
       if (hamb) hamb.setAttribute('aria-expanded', 'false');
       groups.forEach(g => g.classList.remove('is-open'));
