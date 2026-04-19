@@ -219,57 +219,112 @@
 <a href="../../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="../foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="../foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="../foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="../loops/react.html">ReAct</a></li><li><a href="../loops/tool-use.html">Tool use</a></li><li><a href="../loops/planning.html">Planning loops</a></li><li><a href="../loops/reflection.html">Reflection</a></li><li><a href="../loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="../tools/tool-design.html">Tool design</a></li><li><a href="../tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="../tools/error-handling.html">Tool error handling</a></li><li><a href="../tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="../tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="../memory/short-term.html">Short-term memory</a></li><li><a href="../memory/long-term.html" class="active">Long-term memory</a></li><li><a href="../memory/episodic.html">Episodic memory</a></li><li><a href="../memory/procedural.html">Procedural memory</a></li><li><a href="../memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="../multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="../multi/peer-agents.html">Peer agents</a></li><li><a href="../multi/debate.html">Debate + consensus</a></li><li><a href="../multi/handoffs.html">Agent handoffs</a></li><li><a href="../multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="../eval/why-eval-agents.html">Why eval agents</a></li><li><a href="../eval/task-completion.html">Task completion</a></li><li><a href="../eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="../eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="../prod/observability.html">Observability + tracing</a></li><li><a href="../prod/cost-control.html">Cost control</a></li><li><a href="../prod/latency.html">Latency optimization</a></li><li><a href="../prod/safety.html">Safety + guardrails</a></li><li><a href="../prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/research-agent.html">Research agent</a></li><li><a href="../patterns/coding-agent.html">Coding agent</a></li><li><a href="../patterns/customer-support.html">Customer support agent</a></li><li><a href="../patterns/data-analyst.html">Data analyst agent</a></li><li><a href="../patterns/browser-agent.html">Browser agent</a></li><li><a href="../patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="../frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="../frameworks/langgraph.html">LangGraph</a></li><li><a href="../frameworks/crewai.html">CrewAI</a></li><li><a href="../frameworks/autogen.html">AutoGen</a></li><li><a href="../frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>Long-term memory</span></div><h1 class="title">Long-term memory</h1><div class="article-meta"><span>📖 3 min read</span><span>Updated 2026-04-19</span></div>
-<p class="lede">Long-term memory is everything the agent remembers across sessions. Without it, every conversation starts from zero. With it, the agent builds relationship, knows preferences, and remembers what worked.</p>
+<p class="lede">Long-term memory is what the agent remembers <em>across</em> sessions. Without it, every conversation starts fresh and the agent feels like an amnesiac intern. With it, the agent knows your preferences, recalls past decisions, builds context over time. But long-term memory is also where agents get weird: they remember wrong things, forget important things, or leak info across users. Design it deliberately or don't ship it.</p>
 
-<h2>What belongs in long-term</h2>
+<h2>What belongs in long-term vs what doesn't</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Long-term memory: save vs skip');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Save', items: [
+      'User preferences ("always metric units")',
+      'Persistent facts ("allergic to peanuts")',
+      'Prior decisions the agent should honor',
+      'Domain knowledge the agent learned',
+      'End-of-session outcomes'
+    ]},
+    right: {title: 'Don\'t save', items: [
+      'Every message verbatim',
+      'Transient chat that doesn\'t matter tomorrow',
+      'PII without explicit consent',
+      'One-off questions',
+      'Context that\'s already in the codebase / docs'
+    ]}
+  });
+});
+</script>
+
+<h2>Four storage models</h2>
+<div class="sketch" data-viewbox="0 0 900 300"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 300);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Pick storage by the shape of the memory');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Store', w: 180},
+    {title: 'Best for', w: 300},
+    {title: 'Retrieval', w: 320}
+  ], rows: [
+    ['Key-value', 'Structured facts, settings', 'Direct lookup by key'],
+    ['Vector', 'Conversations, notes, docs', 'Similarity search'],
+    ['Document', 'Free-form agent notes', 'Scan or summarize'],
+    ['Graph', 'People, projects, relationships', 'Traversal queries']
+  ]});
+});
+</script>
+<p>Most production agents use two stores: a key-value for stable facts (loaded on every session) and a vector store for rich history (queried on demand).</p>
+
+<h2>What to write, when</h2>
+<p>Writing policy is more important than read policy. The wrong writes are how long-term memory gets noisy and stale.</p>
 <ul>
-<li>User profile and preferences</li>
-<li>Past decisions that should inform future ones</li>
-<li>Accumulated knowledge about the domain</li>
-<li>Documented patterns the agent has learned</li>
-<li>Facts the user has shared once that should persist</li>
+<li><strong>Always write:</strong> user-explicit "remember this" requests.</li>
+<li><strong>Sometimes write:</strong> strong preferences inferred from repeated behavior. (But tell the user: "I'll remember you prefer X. Is that right?")</li>
+<li><strong>Rarely write:</strong> end-of-session summaries when the session was meaningful.</li>
+<li><strong>Never write:</strong> PII that wasn't explicitly opted in, one-off chatter, anything the user said in passing.</li>
 </ul>
 
-<h2>Storage models</h2>
-
-<h3>Key-value store</h3>
-<p>Structured facts: user_name, preferences, settings. Fast, bounded, simple.</p>
-
-<h3>Vector store</h3>
-<p>Embeddings of past conversations or artifacts. Retrieve by semantic similarity at query time.</p>
-
-<h3>Document store</h3>
-<p>Plain-text notes the agent writes to itself. Reviewed or summarized at intervals.</p>
-
-<h3>Graph</h3>
-<p>Entities and relationships (people, projects, decisions, dates). Query by traversal.</p>
-
-<h2>What and when to write</h2>
-<p>Not every utterance needs persisted. Good patterns:</p>
+<h2>Retrieval: when the agent pulls memory in</h2>
+<p>Memory is only valuable if it's retrieved at the right moment. Three retrieval patterns:</p>
 <ul>
-<li>Explicit "remember this" requests from the user</li>
-<li>Significant decisions or preferences ("I'm allergic to peanuts")</li>
-<li>Recurring patterns ("You always ask for X context")</li>
-<li>End-of-session summaries of what happened</li>
+<li><strong>On session start:</strong> load a small user profile (name, prefs). Always relevant, cheap.</li>
+<li><strong>On demand:</strong> expose a <code>recall(topic)</code> tool. The agent decides when it needs older context.</li>
+<li><strong>Automatic:</strong> vector-search the current turn against memory and inject top-k matches. Works well for chatty assistants, overkill for task agents.</li>
 </ul>
 
-<h2>What not to write</h2>
+<h2>A worked example: remembering a preference</h2>
+<p><strong>Session 1.</strong> User says: "Please always use metric units in your answers." Agent saves: <code>{user_id: 42, pref_units: "metric"}</code> into a key-value store.</p>
+<p><strong>Session 2, a week later.</strong> User: "How far is the moon?" Agent loads user profile on start, sees <code>pref_units: "metric"</code>, answers "about 384,400 km" instead of miles. The agent "remembers" without ever being told again.</p>
+<p>That's the payoff. A 20-byte row in a key-value store turns a stateless model into one that feels like it knows you.</p>
+
+<h2>Staleness: the silent killer</h2>
+<p>A preference from 2024 might be wrong in 2026. A fact stored once becomes a lie the agent confidently repeats. Build in:</p>
 <ul>
-<li>Every message verbatim (storage bloat + retrieval noise)</li>
-<li>Sensitive information without user consent</li>
-<li>Transient context that doesn't matter tomorrow</li>
+<li><strong>TTL on volatile facts.</strong> "User's job title" probably has a 1-year expiration.</li>
+<li><strong>Update semantics.</strong> When new info contradicts old, overwrite or supersede. Don't append both.</li>
+<li><strong>Confidence decay.</strong> Facts stored 2 years ago should be hedged ("last you mentioned...").</li>
+<li><strong>User-facing controls.</strong> Let users see, edit, and delete what the agent has stored about them. Legally often required, usability-wise always good.</li>
 </ul>
 
-<h2>The retrieval problem</h2>
-<p>Long-term memory is only useful if the agent retrieves the right piece at the right moment. Patterns:</p>
+<h2>Privacy and isolation</h2>
+<p>Long-term memory is where data leaks happen. Make sure:</p>
 <ul>
-<li>Retrieve on session start (load the user profile)</li>
-<li>Retrieve on demand (agent tool: <code>recall_about(topic)</code>)</li>
-<li>Retrieve automatically on similarity match (vector search at each turn)</li>
+<li>Every memory row is scoped to a user id.</li>
+<li>Retrieval queries always include the user id filter.</li>
+<li>Vector searches can't return another user's embeddings.</li>
+<li>PII in memory obeys your retention policy.</li>
 </ul>
 
-<h2>The staleness problem</h2>
-<p>User's preferences change. Facts become outdated. Have explicit update and expiry semantics, not just append-only.</p>
+<h2>Pitfalls</h2>
+<ul>
+<li><strong>Saving everything.</strong> Vector store gets noisy, retrieval returns garbage. Be picky about writes.</li>
+<li><strong>Never deleting.</strong> Users ask you to forget; honor it.</li>
+<li><strong>Append-only with no supersede.</strong> Agent recalls contradictory facts and gets confused.</li>
+<li><strong>Retrieval on every turn.</strong> Expensive and often unhelpful. Prefer on-demand via a tool.</li>
+<li><strong>No cross-user barrier.</strong> A single missing filter leaks user A's memories to user B.</li>
+</ul>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Start small: key-value store for 5–10 clearly-useful fields. Add more only when evidence supports it.</li>
+<li>Read <a href="episodic.html">episodic memory</a> for remembering whole past interactions.</li>
+<li>Read <a href="procedural.html">procedural memory</a> for remembering "how to do this task."</li>
+</ul>
 <div class="prev-next"><a href="short-term.html" class="prev"><div class="label">← Previous</div><div class="title">Short-term memory</div></a><a href="episodic.html" class="next"><div class="label">Next →</div><div class="title">Episodic memory</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

@@ -219,54 +219,99 @@
 <a href="../../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="../foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="../foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="../foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="../loops/react.html">ReAct</a></li><li><a href="../loops/tool-use.html">Tool use</a></li><li><a href="../loops/planning.html">Planning loops</a></li><li><a href="../loops/reflection.html">Reflection</a></li><li><a href="../loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="../tools/tool-design.html">Tool design</a></li><li><a href="../tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="../tools/error-handling.html">Tool error handling</a></li><li><a href="../tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="../tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="../memory/short-term.html" class="active">Short-term memory</a></li><li><a href="../memory/long-term.html">Long-term memory</a></li><li><a href="../memory/episodic.html">Episodic memory</a></li><li><a href="../memory/procedural.html">Procedural memory</a></li><li><a href="../memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="../multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="../multi/peer-agents.html">Peer agents</a></li><li><a href="../multi/debate.html">Debate + consensus</a></li><li><a href="../multi/handoffs.html">Agent handoffs</a></li><li><a href="../multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="../eval/why-eval-agents.html">Why eval agents</a></li><li><a href="../eval/task-completion.html">Task completion</a></li><li><a href="../eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="../eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="../prod/observability.html">Observability + tracing</a></li><li><a href="../prod/cost-control.html">Cost control</a></li><li><a href="../prod/latency.html">Latency optimization</a></li><li><a href="../prod/safety.html">Safety + guardrails</a></li><li><a href="../prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/research-agent.html">Research agent</a></li><li><a href="../patterns/coding-agent.html">Coding agent</a></li><li><a href="../patterns/customer-support.html">Customer support agent</a></li><li><a href="../patterns/data-analyst.html">Data analyst agent</a></li><li><a href="../patterns/browser-agent.html">Browser agent</a></li><li><a href="../patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="../frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="../frameworks/langgraph.html">LangGraph</a></li><li><a href="../frameworks/crewai.html">CrewAI</a></li><li><a href="../frameworks/autogen.html">AutoGen</a></li><li><a href="../frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>Short-term memory</span></div><h1 class="title">Short-term memory</h1><div class="article-meta"><span>📖 3 min read</span><span>Updated 2026-04-19</span></div>
-<p class="lede">Short-term memory is whatever's in the agent's context window right now. It's what the model sees in the current LLM call. Managing short-term memory well means keeping the relevant, trimming the stale, and surviving long sessions without quality collapse.</p>
+<p class="lede">Short-term memory is everything that's in the model's context window right now. Not some exotic abstraction. Just: the system prompt, the user's question, the conversation so far, the tool calls made, the results that came back. That's what the model reads every time it takes a step. If you don't manage it, long sessions get slow, expensive, and, worst, wrong. The model starts forgetting what it was doing.</p>
 
-<h2>What lives in short-term</h2>
+<h2>What's actually in short-term</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'What the model sees on turn N');
+  sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 42, layers: [
+    {label: 'System prompt', sub: 'role, constraints, tool list'},
+    {label: 'User message', sub: 'the current request'},
+    {label: 'Prior turns', sub: 'everything said before'},
+    {label: 'Tool calls + results', sub: 'everything done before'},
+    {label: 'Scratch / reasoning', sub: 'the model\'s own notes'}
+  ]});
+});
+</script>
+<p>Every LLM call includes all of the above. After 15 turns of tool use, that's 30+ blocks of content piling up. Which is where the problems start.</p>
+
+<h2>The long-session collapse</h2>
+<p>Left unmanaged, short-term memory explodes:</p>
 <ul>
-<li>System prompt</li>
-<li>User's current message</li>
-<li>Recent turns in conversation</li>
-<li>Tool call history for this session</li>
-<li>Any context the agent actively needs</li>
+<li><strong>Cost grows linearly.</strong> Every call pays for the full context. A 50K-token context at 15 turns costs 15× what a 3K one does.</li>
+<li><strong>Latency grows.</strong> Long contexts take longer to process.</li>
+<li><strong>"Lost in the middle."</strong> Models attend less to content in the middle of long contexts. Important info from turn 3 gets ignored by turn 15.</li>
+<li><strong>Reasoning decays.</strong> At very long contexts, models get confused about what step they're on and what they're trying to do.</li>
+</ul>
+<p>The cure is aggressive management: trim, summarize, or retrieve. Not "just use a longer context window."</p>
+
+<h2>Four strategies for keeping it lean</h2>
+<div class="sketch" data-viewbox="0 0 900 300"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 300);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Four ways to keep context short');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Strategy', w: 200},
+    {title: 'How', w: 600}
+  ], rows: [
+    ['Trim', 'Drop old tool results once consumed. Keep the answer, drop the raw page.'],
+    ['Summarize', 'When context passes a threshold, compress old turns into a paragraph.'],
+    ['Chunk', 'Break the task into sub-sessions. Each has its own bounded context.'],
+    ['Retrieve', 'Store everything externally, pull only what the current step needs.']
+  ]});
+});
+</script>
+
+<h2>Keep in full, trim the rest</h2>
+<p>The always-keep list, regardless of session length:</p>
+<ul>
+<li>System prompt (tells the model who it is)</li>
+<li>Original user request (the goal)</li>
+<li>Last 2–3 turns (so replies feel connected)</li>
+<li>Ground-truth artifacts (the doc being edited, the current plan)</li>
+<li>Active tool call results still being reasoned over</li>
+</ul>
+<p>The trim-aggressively list:</p>
+<ul>
+<li>Old tool results whose info has been used</li>
+<li>Search results the model skimmed but didn't pick</li>
+<li>Intermediate reasoning from earlier phases</li>
+<li>Completed planning steps</li>
 </ul>
 
-<h2>The long-session problem</h2>
-<p>After 20-30 tool calls, a session's context can balloon to 50K+ tokens. Problems:</p>
+<h2>A worked example: long research session</h2>
+<p>After 20 turns, the agent's context is 80K tokens. You can either pay 20× the cost per subsequent turn, or intervene. Here's the intervention:</p>
+<ol>
+<li><strong>Insert a summary turn.</strong> Replace turns 1–12 with: "Earlier in this session: user asked about X, I found sources A, B, C, key facts [list], decided to pursue angle Y."</li>
+<li><strong>Keep turns 13–20 in full.</strong> These are where the model is currently working.</li>
+<li><strong>Context drops from 80K to ~20K.</strong> Cost per turn falls 4×. Quality goes up because "lost in the middle" stops happening.</li>
+</ol>
+<p>Do this automatically at a threshold (e.g., whenever context crosses 30K tokens).</p>
+
+<h2>Retrieval blurs the line</h2>
+<p>The advanced move: store <em>everything</em> externally (a vector store, a scratch file), and retrieve only what the current step needs. Short-term memory becomes a working set, not a log. This is how you get agents that run for hours without collapsing.</p>
+
+<h2>Pitfalls</h2>
 <ul>
-<li><strong>"Lost in the middle"</strong>, the model under-attends to middle sections of long context</li>
-<li><strong>Cost</strong>, every LLM call pays for the full context</li>
-<li><strong>Latency</strong>, longer context = slower inference</li>
-<li><strong>Quality decay</strong>, models' reasoning degrades with very long contexts</li>
+<li><strong>Trimming too aggressively.</strong> Dropped the tool result the model actually still needs. Symptom: model asks the same tool question twice.</li>
+<li><strong>Trimming the system prompt.</strong> Don't. It's small, and dropping it breaks everything.</li>
+<li><strong>Summarizing too late.</strong> Model already lost track by turn 25; summary at turn 30 can't recover.</li>
+<li><strong>Believing "big context window = no management needed."</strong> 200K context windows cost 200K tokens of money. And "lost in the middle" happens even at 200K.</li>
 </ul>
 
-<h2>Strategies</h2>
-
-<h3>Trimming</h3>
-<p>Drop old tool call results once they're no longer relevant. Keep a summary, drop the raw data.</p>
-
-<h3>Summarization</h3>
-<p>When context exceeds a threshold, compress old parts into a summary. "Earlier in this session: [key facts, decisions, results]."</p>
-
-<h3>Chunking</h3>
-<p>Break very long tasks into sub-sessions. Each sub-session has bounded context; final summary bridges them.</p>
-
-<h3>Selective recall</h3>
-<p>Store everything externally (vector DB); retrieve only what's relevant for the current step. This blends short-term and long-term.</p>
-
-<h2>What to keep in full</h2>
+<h2>What to do with this</h2>
 <ul>
-<li>Original user request</li>
-<li>System prompt</li>
-<li>Last 2-3 turns of conversation</li>
-<li>Most recent tool results (if still relevant)</li>
-<li>Any ground-truth artifacts (the document being edited, the plan)</li>
-</ul>
-
-<h2>What to trim or summarize</h2>
-<ul>
-<li>Old tool calls whose results were consumed</li>
-<li>Intermediate reasoning traces from earlier phases</li>
-<li>Search results that were skimmed, not used</li>
+<li>Add a context-size monitor to your agent. When it passes a threshold, insert a summary.</li>
+<li>Read <a href="long-term.html">long-term memory</a> for what happens <em>between</em> sessions.</li>
+<li>Read <a href="memory-systems.html">memory system design</a> for how all the memory types compose.</li>
 </ul>
 <div class="prev-next"><a href="../tools/tool-budgets.html" class="prev"><div class="label">← Previous</div><div class="title">Tool budgets</div></a><a href="long-term.html" class="next"><div class="label">Next →</div><div class="title">Long-term memory</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>

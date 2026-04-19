@@ -219,45 +219,89 @@
 <a href="../../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="../foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="../foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="../foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="../loops/react.html">ReAct</a></li><li><a href="../loops/tool-use.html">Tool use</a></li><li><a href="../loops/planning.html">Planning loops</a></li><li><a href="../loops/reflection.html">Reflection</a></li><li><a href="../loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="../tools/tool-design.html">Tool design</a></li><li><a href="../tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="../tools/error-handling.html">Tool error handling</a></li><li><a href="../tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="../tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="../memory/short-term.html">Short-term memory</a></li><li><a href="../memory/long-term.html">Long-term memory</a></li><li><a href="../memory/episodic.html" class="active">Episodic memory</a></li><li><a href="../memory/procedural.html">Procedural memory</a></li><li><a href="../memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="../multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="../multi/peer-agents.html">Peer agents</a></li><li><a href="../multi/debate.html">Debate + consensus</a></li><li><a href="../multi/handoffs.html">Agent handoffs</a></li><li><a href="../multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="../eval/why-eval-agents.html">Why eval agents</a></li><li><a href="../eval/task-completion.html">Task completion</a></li><li><a href="../eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="../eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="../prod/observability.html">Observability + tracing</a></li><li><a href="../prod/cost-control.html">Cost control</a></li><li><a href="../prod/latency.html">Latency optimization</a></li><li><a href="../prod/safety.html">Safety + guardrails</a></li><li><a href="../prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/research-agent.html">Research agent</a></li><li><a href="../patterns/coding-agent.html">Coding agent</a></li><li><a href="../patterns/customer-support.html">Customer support agent</a></li><li><a href="../patterns/data-analyst.html">Data analyst agent</a></li><li><a href="../patterns/browser-agent.html">Browser agent</a></li><li><a href="../patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="../frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="../frameworks/langgraph.html">LangGraph</a></li><li><a href="../frameworks/crewai.html">CrewAI</a></li><li><a href="../frameworks/autogen.html">AutoGen</a></li><li><a href="../frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>Episodic memory</span></div><h1 class="title">Episodic memory</h1><div class="article-meta"><span>📖 2 min read</span><span>Updated 2026-04-19</span></div>
-<p class="lede">Episodic memory is the agent's record of specific past events. Unlike structured facts ("user likes Python") or general knowledge, episodic memory captures whole interactions or trajectories the agent can reference.</p>
+<p class="lede">Episodic memory is the agent remembering specific <em>past events</em>, not just facts. "Last week when we debugged that deployment issue." "In our session on Tuesday, we decided to skip the retry." It's the difference between an agent that knows things about you and an agent that feels like a long-term collaborator who remembers the shared history.</p>
 
-<h2>What it enables</h2>
-<ul>
-<li>"Last week when I helped you debug this issue..."</li>
-<li>"In our last session, we decided X"</li>
-<li>"That approach we tried in project Y didn't work"</li>
-</ul>
-<p>Reference to specific prior episodes makes the agent feel less amnesic and more like a long-term collaborator.</p>
+<h2>Episodic vs the other memory types</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Four kinds of memory, compared');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Memory', w: 180},
+    {title: 'Holds', w: 620}
+  ], rows: [
+    ['Short-term', 'What\'s in the current context window'],
+    ['Long-term (facts)', 'User prefs, stable facts: "allergic to peanuts"'],
+    ['Episodic', 'Specific past interactions: "last Tuesday we fixed the DB timeout"'],
+    ['Procedural', '"How I usually do X" recipes']
+  ]});
+});
+</script>
+<p>Long-term facts say <em>what</em> is true. Episodic memory says <em>what happened</em>, when, with what outcome.</p>
 
-<h2>Implementation</h2>
-<p>Store full session transcripts (or distilled summaries) keyed by timestamp and topic. At the start of a new session, retrieve episodes relevant to the current task.</p>
-
-<p>Typical structure:</p>
+<h2>What an episode looks like</h2>
 <pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
 {
   "episode_id": "session_2026_04_19_abc",
   "timestamp": "2026-04-19T14:30:00Z",
   "user": "user_123",
   "topic_tags": ["debugging", "python", "database"],
-  "summary": "User had a database timeout issue. We traced it to missing index, added one.",
-  "artifacts": [...],  // code changes, docs created
+  "summary": "User hit a database timeout. We traced it to a missing index on the orders table. Added the index. Query went from 4.2s to 180ms.",
+  "artifacts": ["migrations/020_add_index.sql"],
   "outcome": "resolved"
-}
-</pre>
+}</pre>
+<p>Not the full transcript. A distilled record: who, when, what happened, what worked, what artifact was produced. Small enough to store millions of them.</p>
 
-<h2>Retrieval</h2>
-<p>At session start, query episodic memory:</p>
+<h2>How the agent uses episodes</h2>
+<p>At the start of a new session, or when the agent reaches for recall mid-task:</p>
 <ul>
-<li>By user</li>
-<li>By recent time window</li>
-<li>By topic similarity to current request</li>
+<li><strong>Load by user</strong> → bring in this user's recent episodes.</li>
+<li><strong>Filter by topic similarity</strong> → "the current task mentions database timeouts, pull episodes tagged database."</li>
+<li><strong>Weight by recency</strong> → newer episodes get more attention unless an older one is strongly relevant.</li>
 </ul>
+<p>A handful of relevant episodes gets injected into context. Now the agent can reference "last week when we added the index" without being told.</p>
+
+<h2>A worked example</h2>
+<p><strong>Session 1.</strong> User and agent work through a timeout. Agent writes an episode summary at session end.</p>
+<p><strong>Session 2, a month later.</strong> User: "I'm seeing slow queries on the orders table again." Agent retrieves the previous episode (topic match + user match), loads it into context, opens with: "Last month we added an index on orders(customer_id, created_at) which fixed a 4.2s timeout. Is this a different slow query, or has that regressed?"</p>
+<p>That's the payoff. The agent isn't smarter. It just has the history available so it doesn't start from zero.</p>
 
 <h2>The summarization step</h2>
-<p>Raw session transcripts are too long. Distill each session into a brief episode record at session end. Agent can expand into the full transcript only if needed.</p>
+<p>Raw transcripts are too long to store and retrieve efficiently. At the end of every session that produced something meaningful:</p>
+<ol>
+<li>Generate a short summary (3–5 sentences).</li>
+<li>Tag with 2–5 topic keywords.</li>
+<li>Record outcome (resolved, abandoned, escalated, etc.).</li>
+<li>Store alongside references to artifacts (files, PRs, docs).</li>
+</ol>
+<p>If the agent later needs the full transcript, it can expand from the episode record. But most of the time the summary is enough.</p>
 
-<h2>Privacy considerations</h2>
-<p>Episodes contain sensitive information. Respect retention limits, access controls, and user deletion rights.</p>
+<h2>Privacy and retention</h2>
+<p>Episodes contain everything the user and agent discussed. Respect:</p>
+<ul>
+<li>Retention limits (auto-delete after N months unless explicitly marked keep).</li>
+<li>Access control (this user's episodes, not someone else's).</li>
+<li>Deletion rights (user can ask you to forget a session; actually forget it).</li>
+<li>Redaction (strip secrets before writing to the episode store).</li>
+</ul>
+
+<h2>Pitfalls</h2>
+<ul>
+<li><strong>Storing raw transcripts instead of summaries.</strong> Your retrieval gets noisy; the model's context gets huge.</li>
+<li><strong>No topic tagging.</strong> You can only retrieve by user+time, which misses the interesting semantic matches.</li>
+<li><strong>Recency blindness.</strong> Agent loads a three-year-old episode about a stack that doesn't exist anymore.</li>
+<li><strong>No outcome field.</strong> Agent doesn't know whether last time's approach worked; may repeat a mistake.</li>
+</ul>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Start by writing episode summaries at session end. Even without retrieval, you'll have a useful audit log.</li>
+<li>Read <a href="procedural.html">procedural memory</a> for the "how to do this" complement to "what happened last time."</li>
+<li>Read <a href="memory-systems.html">memory system design</a> for composing all the memory types.</li>
+</ul>
 <div class="prev-next"><a href="long-term.html" class="prev"><div class="label">← Previous</div><div class="title">Long-term memory</div></a><a href="procedural.html" class="next"><div class="label">Next →</div><div class="title">Procedural memory</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

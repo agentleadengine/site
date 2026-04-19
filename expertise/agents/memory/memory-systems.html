@@ -219,61 +219,111 @@
 <a href="../../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="../foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="../foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="../foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="../loops/react.html">ReAct</a></li><li><a href="../loops/tool-use.html">Tool use</a></li><li><a href="../loops/planning.html">Planning loops</a></li><li><a href="../loops/reflection.html">Reflection</a></li><li><a href="../loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="../tools/tool-design.html">Tool design</a></li><li><a href="../tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="../tools/error-handling.html">Tool error handling</a></li><li><a href="../tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="../tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="../memory/short-term.html">Short-term memory</a></li><li><a href="../memory/long-term.html">Long-term memory</a></li><li><a href="../memory/episodic.html">Episodic memory</a></li><li><a href="../memory/procedural.html">Procedural memory</a></li><li><a href="../memory/memory-systems.html" class="active">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="../multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="../multi/peer-agents.html">Peer agents</a></li><li><a href="../multi/debate.html">Debate + consensus</a></li><li><a href="../multi/handoffs.html">Agent handoffs</a></li><li><a href="../multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="../eval/why-eval-agents.html">Why eval agents</a></li><li><a href="../eval/task-completion.html">Task completion</a></li><li><a href="../eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="../eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="../prod/observability.html">Observability + tracing</a></li><li><a href="../prod/cost-control.html">Cost control</a></li><li><a href="../prod/latency.html">Latency optimization</a></li><li><a href="../prod/safety.html">Safety + guardrails</a></li><li><a href="../prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/research-agent.html">Research agent</a></li><li><a href="../patterns/coding-agent.html">Coding agent</a></li><li><a href="../patterns/customer-support.html">Customer support agent</a></li><li><a href="../patterns/data-analyst.html">Data analyst agent</a></li><li><a href="../patterns/browser-agent.html">Browser agent</a></li><li><a href="../patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="../frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="../frameworks/langgraph.html">LangGraph</a></li><li><a href="../frameworks/crewai.html">CrewAI</a></li><li><a href="../frameworks/autogen.html">AutoGen</a></li><li><a href="../frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>Memory system design</span></div><h1 class="title">Memory system design</h1><div class="article-meta"><span>📖 3 min read</span><span>Updated 2026-04-19</span></div>
-<p class="lede">A real agent memory system combines short-term, long-term, episodic, and procedural memory into one architecture. Here's how to design it so the agent has the right context at the right time without drowning in data.</p>
+<p class="lede">You've got four memory types: short-term, long-term facts, episodic, procedural. A real agent uses all of them, layered. The art is picking what to pull in when, and what to write out, so the agent has the right context at the right moment without drowning in its own history. This page is the architecture.</p>
 
-<h2>The layered architecture</h2>
+<h2>The layered stack</h2>
+<div class="sketch" data-viewbox="0 0 900 360"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 360);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Five layers of memory in production');
+  sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 54, layers: [
+    {label: 'Session context (short-term)', sub: 'in-memory, per-session'},
+    {label: 'User profile (long-term, structured)', sub: 'key-value, loaded on session start'},
+    {label: 'Semantic memory (long-term, unstructured)', sub: 'vector store, retrieved on demand'},
+    {label: 'Episodic log', sub: 'past session summaries, queryable'},
+    {label: 'Procedure library', sub: 'named how-to recipes'}
+  ]});
+});
+</script>
+<p>Most production agents don't need all five. The minimum useful system has short-term + user profile. Add vector and episodic when you want "remembers past conversations." Add procedures when you want the agent to get better at recurring tasks.</p>
 
-<h3>Layer 1: Session context (short-term)</h3>
-<p>In-memory, per-session. Current conversation and recent tool results. Cleaned up at session end.</p>
-
-<h3>Layer 2: User profile (long-term, structured)</h3>
-<p>Key-value store. Preferences, settings, stable facts. Loaded at session start.</p>
-
-<h3>Layer 3: Semantic memory (long-term, unstructured)</h3>
-<p>Vector store of past conversations, notes, artifacts. Retrieved on demand by similarity.</p>
-
-<h3>Layer 4: Episodic log (history)</h3>
-<p>Chronological record of past sessions with summaries. Queryable by time or topic.</p>
-
-<h3>Layer 5: Procedure library</h3>
-<p>Named how-to recipes the agent can invoke.</p>
-
-<h2>The retrieval stack</h2>
-<p>At each agent step, the orchestrator decides what memory to pull:</p>
+<h2>The retrieval stack: what gets pulled in when</h2>
 <ol>
-<li>Always: user profile (short, cheap, always relevant)</li>
-<li>On session start: relevant recent episodes</li>
-<li>On demand: agent calls <code>recall(topic)</code> tool to fetch specific memories</li>
-<li>Automatic: vector search for semantically related memories when the task matches</li>
+<li><strong>Always (every turn):</strong> user profile. Small, cheap, always relevant.</li>
+<li><strong>On session start:</strong> recent episodes matching the current task.</li>
+<li><strong>On demand:</strong> agent calls <code>recall(topic)</code> when it needs older context.</li>
+<li><strong>Automatic vector pull:</strong> for chat-heavy assistants, vector-search the current turn and inject top-k matches.</li>
+<li><strong>Procedure match:</strong> at task start, check if a known procedure matches.</li>
 </ol>
+<p>Each retrieval path is a separate decision. Aggressive always-retrieve = slow, expensive, noisy. Too conservative = agent feels amnesic. Tune per retrieval path, not as one dial.</p>
 
-<h2>Writes are as important as reads</h2>
-<p>Writing to long-term memory should be deliberate, not automatic:</p>
-<ul>
-<li><strong>Always write</strong>: explicit user-requested facts ("I'm allergic to peanuts")</li>
-<li><strong>Sometimes write</strong>: preferences inferred from repeated behavior</li>
-<li><strong>Rarely write</strong>: transient conversation details</li>
-<li><strong>Never write</strong>: PII the user hasn't consented to persist</li>
-</ul>
+<h2>Writes: deliberate, not automatic</h2>
+<p>Writing is where memory systems rot if you're not careful. Default rules:</p>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Write policy by category');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Signal', w: 300},
+    {title: 'Write policy', w: 500}
+  ], rows: [
+    ['User says "remember this"', 'Always write. Confirm what you\'re saving.'],
+    ['Stable preference inferred from repeats', 'Sometimes write, ask first'],
+    ['End-of-session summary of meaningful work', 'Write as an episode'],
+    ['Successful recurring task', 'Write as a procedure after review'],
+    ['Transient chatter / one-off', 'Don\'t write'],
+    ['PII without explicit consent', 'Never write']
+  ]});
+});
+</script>
+
+<h2>Expose memory as tools</h2>
+<p>The cleanest way to give the agent access to memory is to expose it as tools the model can call:</p>
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
+remember(fact)              # write to long-term facts
+recall(topic)               # semantic search over memory
+list_episodes(user, days)   # browse recent sessions
+get_procedure(name)         # load a procedure
+forget(fact_id)             # delete on user request</pre>
+<p>Now the model can decide when to reach for memory, same as it decides when to reach for a search tool. This keeps the loop clean and traceable.</p>
+
+<h2>A worked example: a coding assistant, all five layers</h2>
+<p>User: "Fix the failing tests in the billing module."</p>
+<ol>
+<li><strong>Session context:</strong> the current conversation. Empty, first turn.</li>
+<li><strong>User profile loaded:</strong> this user uses Python 3.12, prefers pytest, no JS background.</li>
+<li><strong>Episode match:</strong> retrieved a session from 3 weeks ago where we fixed a different bug in the billing module. Context about that module's quirks is available.</li>
+<li><strong>Procedure match:</strong> <code>fix_failing_tests</code> procedure retrieved. Steps: run the tests, read the failure, narrow to the specific assertion, read surrounding code, propose fix, re-run.</li>
+<li><strong>Vector memory:</strong> on a specific turn, agent calls <code>recall("billing timezone bug")</code> and finds a note from the past saying the team standardized on UTC.</li>
+</ol>
+<p>Five different memory layers, each contributing something the agent couldn't have figured out from scratch. The task that would've taken 20 tool calls takes 8.</p>
 
 <h2>Expiry and updates</h2>
-<p>Memory that never decays or updates becomes wrong. Build explicit:</p>
+<p>Memory that never decays becomes wrong memory:</p>
 <ul>
-<li>TTL on volatile facts</li>
-<li>Update semantics (overwrite, append, supersede)</li>
-<li>User-facing memory management (view, edit, delete)</li>
+<li><strong>TTL on volatile facts.</strong> Job titles: 1 year. Team memberships: 6 months. Preferences: indefinite but re-confirmed on use.</li>
+<li><strong>Supersede, don't append.</strong> When new info contradicts old, replace. Don't stack both.</li>
+<li><strong>User controls.</strong> Let users view, edit, delete anything stored about them.</li>
+<li><strong>Confidence decay.</strong> Old facts get hedged. "Last I knew, you used Python 3.12 — still true?"</li>
 </ul>
 
-<h2>Tools for memory</h2>
-<p>Expose memory operations as tools the LLM can call:</p>
+<h2>Isolation: never leak across users</h2>
+<p>Every memory operation must be scoped to a user ID. One missing filter somewhere and user A's private facts leak into user B's session. Build a memory layer API that takes user_id as a required arg everywhere; never let a raw DB query into your retrieval path.</p>
+
+<h2>Observability</h2>
+<p>Track: what memory was loaded per session, how much context it consumed, how often each retrieval path produced something the agent actually used. Unused retrievals are cost you can cut.</p>
+
+<h2>Pitfalls</h2>
 <ul>
-<li><code>remember(fact)</code>, write to long-term</li>
-<li><code>recall(topic)</code>, semantic retrieval</li>
-<li><code>forget(fact_id)</code>, delete</li>
-<li><code>list_procedures()</code>, browse procedure library</li>
+<li><strong>All retrieval paths on always.</strong> You're loading 20K tokens of memory every turn and the agent ignores most of it.</li>
+<li><strong>Write-anything, retrieve-anything.</strong> Memory store becomes noise; retrievals return garbage.</li>
+<li><strong>No forget path.</strong> You'll regret this the first time a user asks you to delete their data.</li>
+<li><strong>Cross-user leaks.</strong> The only kind of memory bug users will sue you over.</li>
+<li><strong>Monolithic "memory" abstraction.</strong> Different layers have different rules. Don't collapse them into one blob.</li>
 </ul>
 
-<p>The LLM uses these as first-class citizens alongside its other tools.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>Start minimal: session context + a 5-field user profile. Ship. Add layers only when a real need shows up.</li>
+<li>Map every memory read to a specific question the agent is trying to answer. Unused retrievals are waste.</li>
+<li>Revisit <a href="short-term.html">short-term</a>, <a href="long-term.html">long-term</a>, <a href="episodic.html">episodic</a>, and <a href="procedural.html">procedural</a> for the pieces.</li>
+</ul>
 <div class="prev-next"><a href="procedural.html" class="prev"><div class="label">← Previous</div><div class="title">Procedural memory</div></a><a href="../multi/orchestrator-worker.html" class="next"><div class="label">Next →</div><div class="title">Orchestrator-worker</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

@@ -219,22 +219,15 @@
 <a href="../../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="../foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="../foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="../foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="../loops/react.html">ReAct</a></li><li><a href="../loops/tool-use.html">Tool use</a></li><li><a href="../loops/planning.html">Planning loops</a></li><li><a href="../loops/reflection.html">Reflection</a></li><li><a href="../loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="../tools/tool-design.html">Tool design</a></li><li><a href="../tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="../tools/error-handling.html">Tool error handling</a></li><li><a href="../tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="../tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="../memory/short-term.html">Short-term memory</a></li><li><a href="../memory/long-term.html">Long-term memory</a></li><li><a href="../memory/episodic.html">Episodic memory</a></li><li><a href="../memory/procedural.html" class="active">Procedural memory</a></li><li><a href="../memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="../multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="../multi/peer-agents.html">Peer agents</a></li><li><a href="../multi/debate.html">Debate + consensus</a></li><li><a href="../multi/handoffs.html">Agent handoffs</a></li><li><a href="../multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="../eval/why-eval-agents.html">Why eval agents</a></li><li><a href="../eval/task-completion.html">Task completion</a></li><li><a href="../eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="../eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="../prod/observability.html">Observability + tracing</a></li><li><a href="../prod/cost-control.html">Cost control</a></li><li><a href="../prod/latency.html">Latency optimization</a></li><li><a href="../prod/safety.html">Safety + guardrails</a></li><li><a href="../prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/research-agent.html">Research agent</a></li><li><a href="../patterns/coding-agent.html">Coding agent</a></li><li><a href="../patterns/customer-support.html">Customer support agent</a></li><li><a href="../patterns/data-analyst.html">Data analyst agent</a></li><li><a href="../patterns/browser-agent.html">Browser agent</a></li><li><a href="../patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="../frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="../frameworks/langgraph.html">LangGraph</a></li><li><a href="../frameworks/crewai.html">CrewAI</a></li><li><a href="../frameworks/autogen.html">AutoGen</a></li><li><a href="../frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>Procedural memory</span></div><h1 class="title">Procedural memory</h1><div class="article-meta"><span>📖 2 min read</span><span>Updated 2026-04-19</span></div>
-<p class="lede">Procedural memory is the agent's how-to knowledge. Not facts, not episodes, skills. "How I usually handle this kind of task." "The recipe that worked last time." Agents that build up procedural memory get better at recurring tasks over time.</p>
+<p class="lede">Procedural memory is the agent remembering <em>how to do things</em>. Not facts, not past events. Skills. "Here's the recipe that worked for this kind of task." "Here are the defaults that made it succeed." An agent with procedural memory gets better at recurring tasks over time because it doesn't reason from scratch every run. It starts from a known-good recipe and adapts.</p>
 
-<h2>What qualifies</h2>
-<ul>
-<li>Step-by-step recipes for recurring tasks</li>
-<li>Default parameters that worked in prior cases</li>
-<li>Decision rules: "if X, usually do Y"</li>
-<li>Templates for common outputs</li>
-</ul>
-
-<h2>How it's built</h2>
-<p>After a successful task, agent (or human) distills the solution into a reusable recipe:</p>
+<h2>What a procedure is</h2>
+<p>A procedure is a named, reusable recipe for a class of task. It includes the steps, the default parameters, the constraints, and the signals that a given situation matches it.</p>
 <pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
 {
   "procedure_id": "deploy_staging",
-  "description": "How to deploy a branch to staging",
+  "description": "Deploy a branch to staging",
+  "when_to_use": "User says 'deploy to staging' or 'push this to staging'",
   "steps": [
     "Confirm branch is up to date with main",
     "Run tests locally",
@@ -242,29 +235,87 @@
     "Trigger staging deploy workflow",
     "Verify at staging.example.com"
   ],
-  "constraints": "Don't deploy on Fridays after 3pm"
-}
-</pre>
+  "defaults": {"timeout_minutes": 10},
+  "constraints": "Don't deploy on Fridays after 3pm ET"
+}</pre>
 
-<h2>How it's used</h2>
-<p>When agent starts a task matching an existing procedure, retrieve it and follow (or adapt). Much faster than reasoning from scratch.</p>
+<h2>How procedures get built</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'The learning loop');
+  sketch.numberedSteps(svg, rc, {direction: 'h', x: 30, y: 80, w: 840, items: [
+    {title: 'Explore', sub: 'first run, figure it out'},
+    {title: 'Distill', sub: 'summarize what worked'},
+    {title: 'Store', sub: 'procedure library'},
+    {title: 'Reuse', sub: 'next time, retrieve + adapt'}
+  ]});
+});
+</script>
+<p>The first time you ask the agent to do a task, it explores: tries things, hits dead ends, eventually succeeds. Post-task, you (or the agent) distill that successful trajectory into a procedure. Next time, the agent retrieves the procedure and follows it (or adapts when the situation is different).</p>
 
-<h2>The learning loop</h2>
-<ol>
-<li>Agent attempts new task, succeeds after some exploration</li>
-<li>Post-task: distill successful trajectory into a procedure</li>
-<li>Next similar task: retrieve the procedure, apply directly</li>
-<li>Refine procedure over time as edge cases emerge</li>
-</ol>
+<h2>How procedures get used</h2>
+<p>At the start of a task, the agent searches the procedure library: "Does any existing procedure match this task?" If yes, it retrieves the steps and uses them as a scaffold. If no, it plans from scratch and maybe writes a new procedure after.</p>
+<p>The retrieval can be keyword-based (simple: match on description), vector-based (semantic: current task embedding vs procedure embeddings), or explicit (the user says "use the staging deploy procedure").</p>
 
-<h2>Relationship to other memory types</h2>
+<h2>A worked example: a customer-support agent getting smarter</h2>
+<p><strong>Month 1.</strong> Agent sees 50 "my invoice is wrong" tickets. It figures out the right flow: check the customer record, pull the latest invoice, compare line items to the order history, identify the discrepancy, either issue a credit or escalate if over $200.</p>
+<p><strong>Post-ticket distillation.</strong> Agent writes a procedure <code>resolve_invoice_discrepancy</code> with those five steps and a "escalate above $200" constraint.</p>
+<p><strong>Month 2.</strong> A new "my invoice is wrong" ticket arrives. Agent retrieves <code>resolve_invoice_discrepancy</code>, follows it directly. Resolves in 4 tool calls instead of 12. Success rate climbs from 70% to 95%.</p>
+<p>Same model. Same tools. The only thing that changed is the agent started with a known recipe instead of exploring from scratch.</p>
+
+<h2>The four memory types, together</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'How procedural fits');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Memory', w: 200},
+    {title: 'Answers the question', w: 600}
+  ], rows: [
+    ['Short-term', 'What\'s going on right now?'],
+    ['Long-term', 'What\'s true about this user / world?'],
+    ['Episodic', 'What happened in past sessions?'],
+    ['Procedural', 'How do I do this kind of task?']
+  ]});
+});
+</script>
+
+<h2>Who writes procedures</h2>
 <ul>
-<li><strong>Short-term</strong> = current working memory</li>
-<li><strong>Long-term</strong> = facts that persist</li>
-<li><strong>Episodic</strong> = specific past events</li>
-<li><strong>Procedural</strong> = reusable how-to</li>
+<li><strong>Humans.</strong> Safest and cleanest for high-stakes tasks. Team writes procedures; agent uses them.</li>
+<li><strong>Agents, auto-distilled.</strong> Post-task, a separate LLM call summarizes the successful trajectory into a procedure. Cheap, fast, noisy. Good for low-stakes tasks.</li>
+<li><strong>Hybrid.</strong> Agent drafts a procedure; human reviews and publishes. Usually the best of both.</li>
 </ul>
-<p>A mature agent system has all four, layered.</p>
+
+<h2>Refinement over time</h2>
+<p>Procedures drift from reality. Build in review:</p>
+<ul>
+<li>Track success rate per procedure. If a procedure starts failing, flag for review.</li>
+<li>Log adaptations the agent had to make ("step 3 failed, had to try Y"). Feed these back into the procedure.</li>
+<li>Version procedures, keep the old versions, measure whether updates actually help.</li>
+</ul>
+
+<h2>Pitfalls</h2>
+<ul>
+<li><strong>Over-trusting procedures.</strong> Following a stale procedure blindly. Procedures are scaffolds, not scripts.</li>
+<li><strong>No match signal.</strong> Agent uses a procedure that doesn't actually fit. Add explicit "when to use" criteria.</li>
+<li><strong>Auto-writing from failed runs.</strong> Model mistakes a failure for success and writes a bad procedure. Validate before publishing.</li>
+<li><strong>Procedure sprawl.</strong> 200 procedures, agent can't pick the right one. Merge, rename, keep the library tight.</li>
+</ul>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Write 3–5 procedures for your agent's most common tasks by hand. You'll feel the quality improvement immediately.</li>
+<li>Read <a href="memory-systems.html">memory system design</a> for composing all four memory types.</li>
+<li>Read <a href="../loops/planning.html">planning loops</a>, which frequently retrieve procedures as the plan skeleton.</li>
+</ul>
 <div class="prev-next"><a href="episodic.html" class="prev"><div class="label">← Previous</div><div class="title">Episodic memory</div></a><a href="memory-systems.html" class="next"><div class="label">Next →</div><div class="title">Memory system design</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
