@@ -239,6 +239,25 @@
 </ul>
 
 <h2>The core metrics</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Paid-ads metrics stack');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Metric', w: 200},
+    {title: 'What it tells you', w: 600}
+  ], rows: [
+    ['CPM', 'What you pay per 1000 impressions'],
+    ['CTR', 'Is the creative working?'],
+    ['CPC / CPL', 'Cost per click / cost per lead'],
+    ['CVR', 'Landing page + offer strength'],
+    ['CAC / ROAS', 'The one that pays the bills']
+  ]});
+});
+</script>
 <ul>
  <li><strong>CPM</strong>, cost per thousand impressions. Platform / audience priced.</li>
  <li><strong>CTR</strong>, click-through rate. Creative quality proxy.</li>

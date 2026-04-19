@@ -225,6 +225,24 @@
 <p>One-to-one contact with people who already know you, directly, or through a shared connection strong enough to make the conversation natural. Not cold DMs. Not mass emails to your list. Individual, personal, context-specific messages to specific humans.</p>
 
 <h2>Who's in your warm network</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Warm network tiers');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Tier', w: 240},
+    {title: 'Approach', w: 560}
+  ], rows: [
+    ['Inner circle (close)', 'Direct ask; no preamble needed'],
+    ['Past customers', 'Reactivate with a relevant offer'],
+    ['Past prospects (no)', 'Revisit with new angle or result'],
+    ['Lapsed leads', 'Re-engage with a lead magnet']
+  ]});
+});
+</script>
 <p>More than you think. Before you write anyone off as "not relevant":</p>
 <ul>
  <li>Current and former colleagues</li>

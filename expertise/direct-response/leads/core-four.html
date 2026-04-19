@@ -222,6 +222,24 @@
 <p class="lede">The core four is the cleanest map of lead generation anyone has drawn. It divides every possible way to get a lead into four categories, and the categories are exhaustive. Learn all four. Pick your primary. Pick your second. Operate them both as disciplines. You will never again have the "where do we get customers" problem.</p>
 
 <h2>The matrix</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Hormozi\'s Core Four');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Quadrant', w: 260},
+    {title: 'What it is', w: 540}
+  ], rows: [
+    ['Warm outreach', 'One-to-one, people who know you'],
+    ['Warm content', 'One-to-many, audience you\'ve built'],
+    ['Cold outreach', 'One-to-one, people who don\'t know you'],
+    ['Cold content / paid ads', 'One-to-many, strangers']
+  ]});
+});
+</script>
 <p>Two dimensions. Two levels each. Four quadrants.</p>
 <ul>
  <li><strong>Dimension 1:</strong> How many people you're reaching, one at a time, or one-to-many.</li>
