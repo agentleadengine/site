@@ -427,6 +427,54 @@ nav.topbar.nav-open .hamburger span:nth-child(3) { transform: translateY(-8px) r
     overflow: hidden;
     text-align: center;
 }
+
+/* Compact hero for section/subsection landing pages.
+   Keeps the purple background, forces every child to contrast correctly. */
+.hero.hero-compact {
+    padding: 72px 0 56px;
+    text-align: left;
+}
+.hero.hero-compact .container {
+    text-align: left;
+}
+.hero.hero-compact h1 {
+    font-size: 56px;
+    text-transform: none;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+    text-align: left;
+    color: var(--white);
+}
+.hero.hero-compact h1 em { color: rgba(255,255,255,0.85); }
+.hero.hero-compact .eyebrow {
+    color: rgba(255,255,255,0.85) !important;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+.hero.hero-compact .eyebrow a {
+    color: #ffffff !important;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.35);
+    transition: border-color 0.15s ease;
+}
+.hero.hero-compact .eyebrow a:hover {
+    border-bottom-color: #ffffff;
+}
+.hero.hero-compact .lead {
+    color: rgba(255,255,255,0.92) !important;
+    max-width: 720px;
+    margin: 0;
+    font-size: 19px;
+    line-height: 1.6;
+}
+@media (max-width: 900px) {
+    .hero.hero-compact { padding: 48px 0 40px; }
+    .hero.hero-compact h1 { font-size: 38px; }
+    .hero.hero-compact .lead { font-size: 17px; }
+}
 .hero::before {
     content: '';
     position: absolute;
