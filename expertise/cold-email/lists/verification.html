@@ -222,6 +222,24 @@
 <p class="lede">Every email you send to a non-existent or invalid address is a hard bounce. Bounces are the #1 reputation destroyer in cold email. Email verification is the prerequisite to every send, and the step most teams skip when they're in a rush.</p>
 
 <h2>What email verification does</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Verification tiers');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Result', w: 220},
+    {title: 'What to do', w: 580}
+  ], rows: [
+    ['Valid', 'Send with confidence'],
+    ['Risky / catch-all', 'Treat cautiously; sample first'],
+    ['Unknown', 'Skip or low-volume test'],
+    ['Invalid', 'Never send; skip entirely']
+  ]});
+});
+</script>
 <p>Checks whether an email address actually exists and will accept mail before you try to send. Methods:</p>
 <ol>
   <li>Check syntax (is it formatted correctly?)</li>

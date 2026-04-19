@@ -236,6 +236,25 @@
 <p>Clay, Rocketreach, Bouncer. Enrich existing lists with additional data.</p>
 
 <h2>The main providers</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Contact databases: who fits what');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Provider', w: 200},
+    {title: 'Sweet spot', w: 600}
+  ], rows: [
+    ['Apollo', 'All-in-one: data + sequences; best price/coverage'],
+    ['ZoomInfo', 'Enterprise accuracy; expensive'],
+    ['Lusha / RocketReach', 'Browser-based prospecting'],
+    ['Cognism', 'EU-compliant data'],
+    ['Clay', 'Build/enrich your own lists from many sources']
+  ]});
+});
+</script>
 
 <h3>Apollo</h3>
 <p>Most popular for cold outbound in 2026. Large database, reasonable pricing, includes sequencing tool (so it's an all-in-one).</p>

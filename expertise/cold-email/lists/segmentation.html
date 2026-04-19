@@ -222,6 +222,24 @@
 <p class="lede">A single 10,000-person list with one email template will underperform. Segmentation splits the list into smaller groups, each with tailored copy. More work, dramatically better conversion. Most cold email operations leave 2-5x pipeline on the table by running one campaign where five would work.</p>
 
 <h2>The segmentation dimensions</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Dimensions to segment on');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Dimension', w: 240},
+    {title: 'Why copy should differ', w: 560}
+  ], rows: [
+    ['Role', 'VPs care about outcomes, ICs about workflow'],
+    ['Industry', 'Different vocabulary + pain points'],
+    ['Company size', 'SMB vs enterprise speak very differently'],
+    ['Intent signal', 'Mention the specific trigger']
+  ]});
+});
+</script>
 
 <h3>By ICP</h3>
 <p>If you have multiple ICPs, each gets its own campaign. VP Sales and Founder need different angles.</p>

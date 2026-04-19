@@ -227,6 +227,25 @@
 <p>Output: a fully enriched list with whatever fields you need, firmographics, tech stack, recent funding, LinkedIn activity, buying signals, AI-written first lines, all in a single table ready to push to your cold email tool.</p>
 
 <h2>The core capabilities</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'What Clay lets you do');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Capability', w: 240},
+    {title: 'Use case', w: 560}
+  ], rows: [
+    ['50+ data providers', 'Query all from one interface'],
+    ['Enrichment waterfall', 'Try source 1, fall back to 2, 3...'],
+    ['Built-in AI', 'Research each lead with an LLM'],
+    ['Web scraping', 'Custom enrichment from any site'],
+    ['Push to CRM / sender', 'Direct integration']
+  ]});
+});
+</script>
 
 <h3>1. Data waterfall</h3>
 <p>Try multiple providers in order for each row. Clearbit for firmographics → Apollo if Clearbit missed → LinkedIn scraper if both missed. Use first successful result.</p>

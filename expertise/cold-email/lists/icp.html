@@ -227,6 +227,22 @@
 <p>A real ICP answers: "Who has this problem acutely right now, has the budget to solve it, and can make the decision?"</p>
 
 <h2>The layered definition</h2>
+<div class="sketch" data-viewbox="0 0 900 320"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 320);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'ICP layers, narrowest to widest');
+  sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 48, layers: [
+    {label: 'Trigger signal', sub: 'recently did X (raised, hired, launched)'},
+    {label: 'Persona', sub: 'role, seniority, reporting to'},
+    {label: 'Problem awareness', sub: 'already feel the pain'},
+    {label: 'Company firmographics', sub: 'size, stage, geo, industry'},
+    {label: 'Firmographics alone', sub: 'widest; weakest filter'}
+  ]});
+});
+</script>
 
 <h3>Layer 1: Firmographics</h3>
 <ul>
