@@ -1,0 +1,172 @@
+# Session notes: site-wide teaching-depth rewrite + hand-drawn diagrams
+
+This file is the baton for whichever session is continuing the work. Read it
+top-to-bottom before starting.
+
+## Goal
+
+Rewrite every page on samuelochoa.com at **teaching depth** (not encyclopedia
+depth) with **hand-drawn Blueprint × Purple Marker diagrams** wherever a
+visual would help a reader understand faster. The user wants the site to be
+where people come to **actually learn** — not a check-box that shows topics
+are covered.
+
+## Voice rules (critical)
+
+- Second-person, direct, no marketing fluff
+- Short sentences preferred. Contractions fine.
+- Build intuition FIRST (stories, analogies, "why you'd care"), then
+  mechanics, then a worked example, then pitfalls
+- Plain English, no unexplained jargon. When introducing a term, define it
+  inline the first time.
+- Never condescending. Trust the reader; just explain the thing.
+- **No em-dashes** (user has strict preference — use commas instead)
+- **No "serial entrepreneur" / "I run X" / "Yardi"** (user privacy rules)
+- Use `. ` (period + space) where other writers would use " — "
+
+## Target structure for each flagship page
+
+Most teaching pages are ~1,500–2,500 words, structured as:
+
+1. **Lede** (1 paragraph) — what is this, why does it matter, what you'll leave knowing
+2. **Mindset / setup** — intuition before mechanics
+3. **The core idea** — plain-English definition, usually with a diagram
+4. **Mechanics** — how it actually works, with ≥1 diagram
+5. **Worked example** — a specific scenario walked through end-to-end
+6. **Edge cases / pitfalls** — common failure modes + their fixes
+7. **What to do with this** — actionable next steps
+
+## The diagram library (`js/sketch.js`)
+
+Already injected into all 1,097 pages via `_inject_sketch.py`. Every page
+can drop in a `<div class="sketch" data-viewbox="...">` and call the
+`sketch:ready` listener.
+
+**Available primitives** (keep this list current):
+
+- `sketch.box(svg, rc, {x,y,w,h, title, sub, dim?})` — main rectangle node
+- `sketch.circle(svg, rc, {cx, cy, r, title, sub})` — circular node
+- `sketch.arrow(svg, rc, {x1, x2, y, label?, bidirectional?, color?})` — horizontal arrow
+  (supports `y1`/`y2` for diagonal; `bidirectional: false` for one-way)
+- `sketch.note(svg, x, y, text, {size, color})` — handwritten scribble
+- `sketch.crosshair(svg, x, y, color)` — blueprint corner mark
+- `sketch.stack(svg, rc, {x, y, w, layerH, layers: [{label, sub, color?}]})` — layered architecture
+- `sketch.numberedSteps(svg, rc, {direction: 'h'|'v', x, y, w, items: [{title, sub}]})` — numbered sequence
+- `sketch.bars(svg, rc, {x, y, w, labelW, items: [{label, value, note?, color?}]})` — horizontal bar chart
+- `sketch.compare(svg, rc, {x, y, w, h, left: {title, items}, right: {title, items}})` — two-column side-by-side
+- `sketch.table(svg, rc, {x, y, cols: [{title, w}], rows: [[...]]})` — hand-drawn table with purple header
+- `sketch.annotate(svg, rc, {fromX, fromY, toX, toY, text})` — curved dashed arrow with label
+- `sketch.venn(svg, rc, {x, y, sets: [{label, fill?}]})` — overlapping circles
+
+**Diagram coordinate conventions:**
+- ViewBox height usually 280–340; width 900 fits comfortably
+- Keep labels clear of boxes (see existing diagrams for spacing)
+- `sketch.arrow` without `bidirectional: false` puts arrowheads on BOTH ends
+- For curved loop-back arrows, use a raw SVG `<path>` with Q command — see
+  `framework/what-is-autonomous-ai.html` for the pattern
+
+**Style notes:**
+- Stick with the Blueprint × Purple Marker palette. Never use other colors
+  without good reason. Purple `#4a00e0` for strong strokes; `#8b5cf6` for
+  soft / secondary; `#f1ecff` for fills; `#faf7f2` cream background.
+- Kalam font for titles; Caveat for captions; JetBrains Mono for dims
+
+## Completed pages (do NOT redo)
+
+### Framework flagship pages rewritten at teaching depth + diagrams
+
+- `framework/index.html` (hub intro)
+- `framework/what-is-autonomous-ai.html` (+ agent loop, 4-layer stack)
+- `framework/the-autonomy-spectrum.html` (+ 5-rung ladder)
+
+### Claude section
+
+- `framework/claude/overview.html` (+ family table, strengths bar chart)
+- `framework/claude/prompting-for-agents.html` (+ sections table, error-recovery bars)
+
+### MCP section (all 7 pages)
+
+- `framework/mcp/index.html` (+ hub-and-spoke)
+- `framework/mcp/what-is-mcp.html` (+ Model↔Client↔Server flow)
+- `framework/mcp/anatomy.html` (+ architecture diagram)
+- `framework/mcp/servers.html` — content rewritten, **NEEDS DIAGRAM STILL**
+- `framework/mcp/clients.html` (+ client-jobs steps, ecosystem table)
+- `framework/mcp/transports.html` (+ transport table, comparison bars)
+- `framework/mcp/security.html` (+ threat table, principles bars)
+
+### Claude Code section
+
+- `framework/claude-code/index.html` (+ 5-layer stack, reasons bars)
+- `framework/claude-code/permissions.html` (+ eval-flow, tiers table, workflow)
+- `framework/claude-code/hooks.html` (+ events table, uses bars)
+- `framework/claude-code/skills.html` (+ anatomy table, skills-vs-hooks-vs-mcps)
+
+### Patterns section
+
+- `framework/patterns/index.html` (+ patterns table)
+- `framework/patterns/react-loop.html` (+ loop, why-bars, failures table)
+
+### Autonomous section
+
+- `framework/autonomous/index.html` (+ 6-layer stack, worth-it compare, progression)
+- `framework/autonomous/safety.html` (+ safety stack, kill-switch bars, never-list, drill)
+
+### Glossary
+
+- 25 AI terms rewritten in the richer format (see `glossary/*.html` with
+  `.gloss-explain`, `.gloss-example`, `.gloss-why` sections)
+
+## Remaining framework pages — in section-completion order
+
+Do in this order:
+
+**Claude** (2 pages): extended-thinking, tool-use
+**Claude Code** (2 pages): settings, memory
+**Patterns** (4 pages): plan-execute, multi-agent, evaluation, prompt-caching
+**Autonomous** (3 pages): headless, scheduling, self-monitoring
+**Build** (4 pages): index, first-agent, voice-agent, research-agent
+**Plugins** (3 pages): index, vs-mcp, marketplace
+**Tools** (2 pages): browser-automation, desktop-control
+**MCP loose ends**: directory page + add a diagram to servers.html
+
+Total: ~20 pages remaining in the framework.
+
+## After the framework
+
+- 79 remaining glossary terms (Direct Response, Marketing, Business, Sales, SEO) — use same 4-section template as the AI glossary (def / explain / example / why)
+- 10 expertise hub pages (SEO, Agents, RAG, Direct Response, etc.)
+- 89 expertise subsection index pages
+- ~800 expertise deep articles
+
+That's roughly 1,000 pages total still to rewrite. Expect multiple sessions.
+
+## Git state
+
+All work is committed to `main` in roughly atomic chunks ("Rewrite X at
+teaching depth + N diagrams"). Many commits queued locally; user pushes
+manually (no auth from this env).
+
+Run `git log --oneline -20` to see the recent commit history.
+
+## User preferences / context (captured so far)
+
+- Dismisses em-dashes as "nasty"
+- Wants things "easy for a third grader but thorough"
+- Loves the iPad-drawn aesthetic
+- Got upset by a visual bug once; asks for fixes, not apologies
+- Responds well to specific file paths + clear status updates
+- Is in **auto mode** — minimize interruptions, keep going, commit often
+
+## Typical commit message style
+
+```
+Rewrite framework/<section>/<page>.html at teaching depth + N diagrams
+
+~X,XXX words:
+- bullet of what the page opens with / mindset
+- bullet of diagrams added
+- bullet of key sections
+- bullet of what the page closes with
+```
+
+Keep it concise. User pushes when convenient.
