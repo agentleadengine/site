@@ -222,6 +222,24 @@
 <p class="lede">The right number of emails in a sequence depends on deal size, cycle length, and your patience. Most B2B teams default to 5-7 touches. Below 3 and you leave money on the table. Above 10 and you annoy your ICP.</p>
 
 <h2>The standard by context</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Sequence length by use case');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Use case', w: 260},
+    {title: 'Typical length', w: 540}
+  ], rows: [
+    ['Warm / executive', '3 touches max'],
+    ['Standard B2B outbound', '4–6 touches'],
+    ['Commoditized category', '7–9 touches'],
+    ['Re-engagement (lapsed)', '2–3 touches']
+  ]});
+});
+</script>
 
 <h3>SMB (under $3K ACV, short cycles)</h3>
 <p>3-5 emails over 10-14 days. Impulse buyers decide fast. Long sequences waste tokens.</p>

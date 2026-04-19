@@ -232,6 +232,26 @@
 </ul>
 
 <h2>The 3-channel default sequence</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Email + LinkedIn + phone sequence');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Day', w: 140},
+    {title: 'Action', w: 660}
+  ], rows: [
+    ['Day 0', 'Email 1'],
+    ['Day 2', 'LinkedIn connection request'],
+    ['Day 5', 'Email 2 (different angle)'],
+    ['Day 8', 'LinkedIn DM or voice note'],
+    ['Day 12', 'Email 3 (breakup)'],
+    ['Day 15', 'Phone call (if applicable)']
+  ]});
+});
+</script>
 
 <ul>
 <li><strong>Day 0:</strong> Email 1 + LinkedIn connection request</li>

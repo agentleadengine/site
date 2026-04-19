@@ -222,6 +222,24 @@
 <p class="lede">Send too often and you're spam. Send too slowly and they forget. Good cadence is respectful enough to feel human and frequent enough to stay top of mind. The defaults below work in B2B.</p>
 
 <h2>The standard cadence</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Day + time to send');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Factor', w: 200},
+    {title: 'Default', w: 600}
+  ], rows: [
+    ['Day spacing', '3 / 4 / 5 / 6 days between touches'],
+    ['Day of week', 'Tue–Thu best; Mon/Fri worse'],
+    ['Time of day', '8–10am recipient local time'],
+    ['Skip', 'Mondays before 9am, Fridays after 3pm']
+  ]});
+});
+</script>
 <p>For a 5-touch sequence over 22-25 days:</p>
 
 <ul>

@@ -222,6 +222,20 @@
 <p class="lede">The breakup email closes the loop. It tells the prospect "I'm moving on unless you tell me otherwise." Done right, it's the highest-reply email in the sequence. Done wrong, it's a whiny "sorry to bother you" that burns trust.</p>
 
 <h2>What a good breakup does</h2>
+<div class="sketch" data-viewbox="0 0 900 240"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 240);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'The breakup email has three jobs');
+  sketch.numberedSteps(svg, rc, {direction: 'h', x: 30, y: 80, w: 840, items: [
+    {title: 'Acknowledge', sub: '"I\'ve reached out a few times"'},
+    {title: 'Close the loop', sub: '"Assuming no interest..."'},
+    {title: 'Last easy CTA', sub: '"Reply with X to stay / opt out"'}
+  ]});
+});
+</script>
 <ul>
 <li>States you're closing the loop</li>
 <li>Gives a specific trigger for future re-engagement</li>
