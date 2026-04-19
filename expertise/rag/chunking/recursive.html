@@ -222,6 +222,22 @@
 <p class="lede">Recursive chunking is the pragmatic middle ground: try to split on natural boundaries (paragraphs, then sentences, then spaces), but enforce a size limit. It's simple, fast, and usually the best default. It's what LangChain's RecursiveCharacterTextSplitter does, and it's a big improvement over pure fixed-size chunking.</p>
 
 <h2>The algorithm</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Recursive: try biggest boundary first');
+  sketch.numberedSteps(svg, rc, {direction: 'h', x: 30, y: 80, w: 840, items: [
+    {title: 'Try \\n\\n', sub: 'split on blank lines'},
+    {title: 'Try \\n', sub: 'then on newlines'},
+    {title: 'Try period', sub: 'sentence boundaries'},
+    {title: 'Try space', sub: 'word boundaries'},
+    {title: 'Char split', sub: 'last resort'}
+  ]});
+});
+</script>
 <ol>
   <li>Define a list of separators in order of preference: typically ["\n\n", "\n", ". ", " ", ""]</li>
   <li>Try to split the text on the first separator</li>

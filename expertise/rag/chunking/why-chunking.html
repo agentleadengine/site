@@ -239,6 +239,31 @@
 <p>Fixed-size chunking often fails on all three. A 1000-character window can split mid-sentence, blend two topics, and lose enough context that the chunk is meaningless standalone.</p>
 
 <h2>The chunking trade-off curve</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Chunk size: small vs large');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 200,
+    left: {title: 'Small chunks (200-400 tokens)', items: [
+      'Precise retrieval',
+      'Higher recall on narrow queries',
+      'Easy to cite',
+      'Lose surrounding context',
+      'More chunks to retrieve + rank'
+    ]},
+    right: {title: 'Large chunks (800-1500 tokens)', items: [
+      'More self-contained',
+      'Better for broad queries',
+      'Preserve cross-paragraph logic',
+      'Noisier retrieval',
+      'Wasted context on mixed topics'
+    ]}
+  });
+});
+</script>
 
 <h3>Too small</h3>
 <ul>

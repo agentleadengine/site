@@ -251,6 +251,25 @@
 </ul>
 
 <h2>The chunking strategy by code type</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Chunk by code structure, not by line count');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Code unit', w: 220},
+    {title: 'Chunking rule', w: 580}
+  ], rows: [
+    ['Function / method', 'One function = one chunk; include signature + body'],
+    ['Class', 'Big classes split per method; keep class comment with each'],
+    ['Module-level code', 'Keep imports + constants as one chunk'],
+    ['Test file', 'One test case per chunk; include fixtures'],
+    ['Config file', 'Keep whole unless >1K lines']
+  ]});
+});
+</script>
 
 <h3>Small file (&lt; 500 tokens)</h3>
 <p>One chunk for the whole file.</p>

@@ -222,6 +222,21 @@
 <p class="lede">Semantic chunking splits text where the meaning changes, not where a character counter runs out. Instead of "1000 characters from here, then overlap, then 1000 more," it asks: "where does one idea end and the next begin?" The result is chunks that look more like coherent thoughts, which usually retrieve better than arbitrary slices.</p>
 
 <h2>The core idea</h2>
+<div class="sketch" data-viewbox="0 0 900 240"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 240);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Semantic chunking: split where topic shifts');
+  sketch.numberedSteps(svg, rc, {direction: 'h', x: 30, y: 80, w: 840, items: [
+    {title: 'Embed sentences', sub: 'one vector each'},
+    {title: 'Similarity over rolling window', sub: 'neighbor-to-neighbor'},
+    {title: 'Find dips', sub: 'topic shifts'},
+    {title: 'Cut there', sub: 'chunk boundaries'}
+  ]});
+});
+</script>
 <ol>
   <li>Split the document into candidate boundaries (sentences or paragraphs)</li>
   <li>Embed each candidate</li>

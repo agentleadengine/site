@@ -238,6 +238,24 @@
 <p>Use token-based chunking in production. Character-based is fine for prototyping.</p>
 
 <h2>The sweet spots</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Fixed-size chunk presets');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Content', w: 240},
+    {title: 'Chunk / overlap', w: 560}
+  ], rows: [
+    ['FAQ / short articles', '300–500 tokens / 50 overlap'],
+    ['Technical docs', '500–800 / 100 overlap'],
+    ['Long-form essays', '800–1200 / 150 overlap'],
+    ['Policy / legal', '400–600 / 100 overlap']
+  ]});
+});
+</script>
 <ul>
   <li><strong>Short, factual content (FAQs, definitions):</strong> 100-200 tokens</li>
   <li><strong>Typical prose:</strong> 400-600 tokens</li>
