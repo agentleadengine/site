@@ -219,83 +219,202 @@
 <a href="../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../what-is-autonomous-ai.html">What is autonomous AI</a></li><li><a href="../the-autonomy-spectrum.html">The autonomy spectrum</a></li><li><a href="../glossary.html">Glossary</a></li></ul><h4>Claude</h4><ul><li><a href="../claude/overview.html">Overview</a></li><li><a href="../claude/prompting-for-agents.html">Prompting for agents</a></li><li><a href="../claude/extended-thinking.html">Extended thinking</a></li><li><a href="../claude/tool-use.html">Tool use</a></li></ul><h4>MCP</h4><ul><li><a href="../mcp/index.html">Overview</a></li><li><a href="../mcp/what-is-mcp.html">What is MCP</a></li><li><a href="../mcp/anatomy.html">Anatomy</a></li><li><a href="../mcp/transports.html">Transports</a></li><li><a href="../mcp/servers.html">Servers</a></li><li><a href="../mcp/clients.html">Clients</a></li><li><a href="../mcp/security.html">Security</a></li><li><a href="../mcp/directory.html">Directory</a></li></ul><h4>Plugins</h4><ul><li><a href="../plugins/index.html">Overview</a></li><li><a href="../plugins/vs-mcp.html">Plugins vs MCP</a></li><li><a href="../plugins/marketplace.html">Marketplace</a></li></ul><h4>Claude Code</h4><ul><li><a href="../claude-code/index.html">Overview</a></li><li><a href="../claude-code/settings.html">Settings</a></li><li><a href="../claude-code/permissions.html" class="active">Permissions</a></li><li><a href="../claude-code/hooks.html">Hooks</a></li><li><a href="../claude-code/skills.html">Skills</a></li><li><a href="../claude-code/memory.html">Memory</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/index.html">Overview</a></li><li><a href="../patterns/react-loop.html">ReAct loop</a></li><li><a href="../patterns/plan-execute.html">Plan-execute</a></li><li><a href="../patterns/multi-agent.html">Multi-agent</a></li><li><a href="../patterns/evaluation.html">Evaluation</a></li><li><a href="../patterns/prompt-caching.html">Prompt caching</a></li></ul><h4>Autonomous</h4><ul><li><a href="../autonomous/index.html">Overview</a></li><li><a href="../autonomous/headless.html">Headless</a></li><li><a href="../autonomous/scheduling.html">Scheduling</a></li><li><a href="../autonomous/self-monitoring.html">Self-monitoring</a></li><li><a href="../autonomous/safety.html">Safety</a></li></ul><h4>Build Guides</h4><ul><li><a href="../build/index.html">Overview</a></li><li><a href="../build/first-agent.html">First agent (60 min)</a></li><li><a href="../build/voice-agent.html">Voice agent</a></li><li><a href="../build/research-agent.html">Research agent</a></li></ul><h4>Tools</h4><ul><li><a href="../tools/browser-automation.html">Browser automation</a></li><li><a href="../tools/desktop-control.html">Desktop control</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Framework</a><span class="sep">›</span><a href="../claude-code/index.html">Claude Code</a><span class="sep">›</span><span>Permissions</span></div><h1 class="title" style="font-size:clamp(32px,4.5vw,42px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">Permissions</h1><div class="article-meta"><span>📖 5 min read</span><span>Updated 2026-04-18</span></div>
-<p class="lede">Permissions are the difference between a fast autonomous agent and a fast autonomous disaster. Designing them well is the single highest-leverage config decision you'll make.</p>
+<p class="lede">Permissions are the difference between a fast autonomous agent and a fast autonomous disaster. Everything else about Claude Code matters, but <em>this one page</em> decides whether your agent is safe to run without watching. Get it right and the agent handles 95% of your work without interrupting. Get it wrong and you either get buried in approval prompts or you wake up one morning to find something got deleted. Let's go through how to design it well.</p>
 
-<h2>The three modes</h2>
+<h2>The mental model.</h2>
+<p>Every time Claude wants to do something in the real world, use a tool, run a Bash command, call an MCP, Claude Code checks your permission rules first. The rules can say three things:</p>
+
 <ul>
-  <li><strong>manual</strong>, every tool call requires explicit approval. Safe. Slow.</li>
-  <li><strong>auto</strong>, pre-approved actions run; unknown actions prompt. The default for real work.</li>
-  <li><strong>plan</strong>, generate a plan first, user approves plan, execute.</li>
+  <li><strong>Allow</strong>, run it without asking.</li>
+  <li><strong>Ask</strong>, pop up a confirmation before running.</li>
+  <li><strong>Deny</strong>, never run, don't even ask.</li>
 </ul>
 
-<h2>Allow lists, what to say yes to</h2>
-<p>Think in tiers:</p>
+<p>That's it. Three verdicts. The art is writing rules that sort actions into those three buckets correctly for your work.</p>
 
-<h3>Always safe (allow widely)</h3>
+<div class="sketch" data-viewbox="0 0 900 280" id="dg-perm-flow">
+  <svg></svg>
+  <div class="sketch-caption">~ how a tool call is evaluated ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-perm-flow');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.numberedSteps(svg, rc, {
+    direction: 'h', x: 30, y: 100, w: 860,
+    items: [
+      { title: 'Model wants tool', sub: 'e.g. Bash(git push)' },
+      { title: 'Check deny list',  sub: 'match? BLOCK' },
+      { title: 'Check allow list', sub: 'match? RUN' },
+      { title: 'Fallback: ask',    sub: 'user approves' }
+    ]
+  });
+});
+</script>
+
+<p>One thing to burn into memory: <strong>the deny list always wins.</strong> If a tool call matches both an allow pattern and a deny pattern, it's denied. This is what makes the system usable in practice: you can allow broad categories and deny narrow dangerous things inside them.</p>
+
+<h2>The four tiers of tool safety.</h2>
+<p>Before writing rules, it helps to classify actions into tiers by how much damage they can do. Every tool falls into one of these:</p>
+
+<div class="sketch" data-viewbox="0 0 900 380" id="dg-tiers">
+  <svg></svg>
+  <div class="sketch-caption">~ four safety tiers ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-tiers');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.table(svg, rc, {
+    x: 20, y: 30,
+    cols: [
+      { title: 'Tier', w: 220 },
+      { title: 'Example actions', w: 310 },
+      { title: 'Verdict',   w: 170 },
+      { title: 'Blast radius', w: 150 }
+    ],
+    rows: [
+      ['1. Reads',              'Read, Glob, Grep, git status, git diff',   'ALLOW widely',     'zero'],
+      ['2. Local writes',       'Edit, Write, npm install, git add/commit', 'ALLOW with care',  'your laptop'],
+      ['3. External writes',    'git push, PR create, send email, API POST', 'ASK each time',    'team/internet'],
+      ['4. Destructive',        'rm -rf, git reset --hard, sudo, DROP TABLE', 'DENY always',      'catastrophic']
+    ]
+  });
+});
+</script>
+
+<h3>Tier 1: Reads. Always safe. Allow widely.</h3>
+<p>Anything that just looks at data. Reading a file, listing a directory, grepping for a string, checking git status. These are information-gathering tools. They can't do harm. Allow them without thinking.</p>
+
+<p>Example patterns for your allow list:</p>
 <ul>
-  <li><code>Read</code>, <code>Glob</code>, <code>Grep</code>, reading files</li>
+  <li><code>Read</code>, <code>Glob</code>, <code>Grep</code>, the built-in read tools</li>
   <li><code>Bash(ls:*)</code>, <code>Bash(cat:*)</code>, <code>Bash(head:*)</code>, <code>Bash(tail:*)</code></li>
   <li><code>Bash(git status)</code>, <code>Bash(git log:*)</code>, <code>Bash(git diff:*)</code></li>
-  <li>Information-gathering MCPs: <code>mcp__search__*</code>, <code>mcp__docs__*</code></li>
+  <li>Read-only MCP tools: <code>mcp__notion__search</code>, <code>mcp__github__read_*</code></li>
 </ul>
 
-<h3>Mostly safe (allow with patterns)</h3>
+<h3>Tier 2: Local writes. Mostly safe. Allow with patterns.</h3>
+<p>Things that modify your own machine: editing files, running <code>npm install</code>, making local commits. These can go wrong (e.g., a bad edit), but the damage stays on your machine and is usually trivial to reverse with git.</p>
+
+<p>Example patterns:</p>
 <ul>
-  <li><code>Edit</code>, <code>Write</code>, file modifications</li>
-  <li><code>Bash(npm install:*)</code>, <code>Bash(bun install:*)</code>, dependency installs (within trusted dirs)</li>
-  <li><code>Bash(git add:*)</code>, <code>Bash(git commit:*)</code>, local git work</li>
-  <li>Most MCP read operations</li>
+  <li><code>Edit</code>, <code>Write</code>, file modifications (within your project)</li>
+  <li><code>Bash(npm install:*)</code>, <code>Bash(bun install:*)</code>, dependency installs</li>
+  <li><code>Bash(git add:*)</code>, <code>Bash(git commit:*)</code>, local git operations</li>
+  <li><code>Bash(npm run:*)</code>, <code>Bash(bun run:*)</code>, running project scripts</li>
 </ul>
 
-<h3>Risky, require explicit approval</h3>
+<h3>Tier 3: External writes. Risky. Ask every time.</h3>
+<p>Anything that affects the outside world. Pushing to a remote, creating a PR, sending an email, charging a credit card, posting to Slack. Once these go, you can't undo them quietly. Always ask.</p>
+
+<p>Leave these OFF your allow list entirely. Claude Code's default behavior (ask) is the right answer:</p>
 <ul>
   <li><code>Bash(git push:*)</code>, pushes to remote</li>
-  <li><code>Bash(curl:*)</code> with POST to unknown endpoints</li>
-  <li>MCP tools that modify external state: <code>mcp__github__create_pr</code>, <code>mcp__stripe__charge</code></li>
-  <li>Anything touching production systems</li>
+  <li><code>Bash(curl -X POST:*)</code>, network POSTs to unknown endpoints</li>
+  <li><code>mcp__github__create_pull_request</code>, <code>mcp__stripe__charge</code></li>
+  <li>Anything that touches production systems</li>
 </ul>
 
-<h3>Never, deny always</h3>
+<h3>Tier 4: Destructive. Deny always. No exceptions.</h3>
+<p>Things you never want the agent to do under any circumstances, not even with your explicit approval. Put these in the deny list so they don't even show up as prompts.</p>
+
+<p>Canonical deny patterns:</p>
 <ul>
-  <li><code>Bash(sudo:*)</code>, no</li>
-  <li><code>Bash(rm -rf:*)</code>, no</li>
-  <li><code>Bash(security dump-keychain:*)</code>, keychain exfiltration</li>
-  <li>MCP <code>delete_*</code> patterns on production services</li>
-  <li><code>Bash(dd:*)</code>, <code>mkfs:*</code>, <code>diskutil erase*</code>, destructive disk ops</li>
+  <li><code>Bash(sudo:*)</code>, elevating to root, just no</li>
+  <li><code>Bash(rm -rf:*)</code>, recursive delete</li>
+  <li><code>Bash(dd:*)</code>, <code>Bash(mkfs:*)</code>, <code>Bash(diskutil erase*)</code>, disk destruction</li>
+  <li><code>Bash(security dump-keychain:*)</code>, credential exfiltration</li>
+  <li><code>mcp__*__delete_*</code> on production services</li>
+  <li>Anything that runs <code>git reset --hard</code>, <code>git push --force</code>, or <code>git clean -f</code></li>
 </ul>
 
-<h2>Pattern syntax</h2>
-<p>Allow/deny entries use a specific pattern syntax:</p>
+<h2>The pattern syntax.</h2>
+<p>Rules use a compact pattern language:</p>
+
 <ul>
-  <li><code>Bash(ls)</code>, exactly <code>ls</code> with no args</li>
-  <li><code>Bash(ls:*)</code>. <code>ls</code> with any args</li>
-  <li><code>mcp__notion__*</code>, any tool from the notion MCP</li>
-  <li><code>Edit</code>, allow the built-in Edit tool (no pattern needed, it's a non-Bash tool)</li>
+  <li><code>Bash(ls)</code>, exactly the literal command <code>ls</code> with no arguments</li>
+  <li><code>Bash(ls:*)</code>, <code>ls</code> with any arguments</li>
+  <li><code>Bash(npm:*)</code>, any <code>npm</code> subcommand</li>
+  <li><code>mcp__notion__*</code>, any tool from the Notion MCP server</li>
+  <li><code>Edit</code>, the built-in Edit tool (no Bash wrapping, no args)</li>
+  <li><code>Bash(git push origin main)</code>, an exact push command (deny this specifically)</li>
 </ul>
 
-<h2>The deny list always wins</h2>
-<p>If a call matches both an allow pattern and a deny pattern, it's denied. Use this: broad allows + surgical denies.</p>
+<p>Glob-style; no regex. Simple enough to reason about, expressive enough to cover what you need.</p>
 
-<pre><code>"allow": ["Bash(git:*)"],
-"deny": ["Bash(git push:*)", "Bash(git reset --hard:*)"]</code></pre>
-<p>Result: agent can do all git operations except push and hard-reset.</p>
+<h2>The canonical setup: broad allows + surgical denies.</h2>
+<p>The most maintainable pattern is to allow broad categories of action and then cut out the dangerous narrow cases. Example:</p>
 
-<h2>Auto mode strategy</h2>
-<p>The goal of auto mode is "zero interruptions for 95% of work." Design it in two passes:</p>
-<ol>
-  <li><strong>Start conservative.</strong> Small allow list: read-only tools, safe shell commands, known MCPs.</li>
-  <li><strong>Expand on friction.</strong> Every time you approve the same thing twice, consider adding it to the allow list.</li>
-</ol>
-<p>The <code>/fewer-permission-prompts</code> skill in Claude Code can analyze your recent session history and suggest allow-list additions.</p>
+<pre><code>"allow": [
+  "Read", "Glob", "Grep",
+  "Edit", "Write",
+  "Bash(git:*)",
+  "Bash(npm:*)", "Bash(bun:*)",
+  "mcp__notion__*",
+  "mcp__github__read_*"
+],
+"deny": [
+  "Bash(sudo:*)",
+  "Bash(rm -rf:*)",
+  "Bash(git push:*)",
+  "Bash(git reset --hard:*)",
+  "Bash(git push --force:*)",
+  "mcp__github__delete_*"
+]</code></pre>
 
-<h2>Per-project permissions</h2>
-<p>Drop a <code>.claude/settings.json</code> in a project directory to override permissions for that project. Useful for prod repos (stricter) vs, playground repos (looser).</p>
+<p>Reading the list like a person: "You can do git stuff, npm stuff, read/edit files, and everything in Notion. But you can't sudo, can't rm -rf, can't push, can't force-push, can't hard-reset, and can't delete things on GitHub." That's usually exactly the right balance for a developer workflow.</p>
 
-<h2>Audit log</h2>
-<p>Claude Code records every tool call. Review periodically. If something surprising got auto-approved, tighten the allow list.</p>
+<h2>Building your list: two passes.</h2>
+<p>Don't try to design the perfect list upfront. Build it the way a veteran sysadmin builds firewall rules: tight at first, then loosen where you're hitting friction.</p>
+
+<div class="sketch" data-viewbox="0 0 900 240" id="dg-two-passes">
+  <svg></svg>
+  <div class="sketch-caption">~ the two-pass workflow ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-two-passes');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.numberedSteps(svg, rc, {
+    direction: 'h', x: 30, y: 90, w: 860,
+    items: [
+      { title: 'Start conservative',   sub: 'reads + safe shell + known MCPs' },
+      { title: 'Run real tasks',        sub: 'get prompted on new things' },
+      { title: 'Approve same thing 2×?', sub: 'consider adding to allow' },
+      { title: 'Quarterly: audit',     sub: 'tighten anything surprising' }
+    ]
+  });
+});
+</script>
+
+<p>Claude Code ships a <code>/fewer-permission-prompts</code> skill that scans your session history and suggests patterns to add. It's the fastest way to tune a list from good to excellent.</p>
+
+<h2>Per-project overrides.</h2>
+<p>Drop a <code>.claude/settings.json</code> inside any project directory. Claude Code picks it up automatically when you run <code>claude</code> from that project. This lets you have:</p>
+
+<ul>
+  <li>A <strong>permissive</strong> global config for your personal playground</li>
+  <li>A <strong>strict</strong> per-project config on production repos (no Bash, no MCP writes, ask on every edit)</li>
+  <li>A <strong>custom-denied</strong> per-project config for repos with unusual hazards (e.g., "deny any command that touches <code>production/</code>")</li>
+</ul>
+
+<p>You can also commit these configs into git so the whole team inherits the same guardrails.</p>
+
+<h2>The audit log.</h2>
+<p>Every tool call Claude Code runs goes into an audit log. Periodically, skim it. If you see something surprising, "oh, the agent ran <code>mcp__stripe__list_charges</code>, I didn't know it could do that", tighten the allow list. The audit log is how you find rules you should have denied and didn't.</p>
 
 <div class="callout insight">
-  <strong>Insight:</strong> A good permission model is felt as <em>absence</em>, absence of interruptions, absence of surprises. If you're constantly either approving things or getting surprised, your list needs work.
+  <strong>The test for a good permission model:</strong> you stop noticing it. Not because you gave it everything, but because the friction lands exactly where real risk is. If you're constantly approving things, your allow list is too narrow. If you're ever surprised by something the agent did, your allow list is too broad. A well-tuned list is silent and safe.
 </div>
 <div class="prev-next"><a href="settings.html" class="prev"><div class="label">← Previous</div><div class="title">Settings</div></a><a href="hooks.html" class="next"><div class="label">Next →</div><div class="title">Hooks</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../framework/index.html">Framework</a></p>
