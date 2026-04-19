@@ -231,6 +231,24 @@
 </ol>
 
 <h2>Where queries come from</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Four sources for eval queries');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Source', w: 220},
+    {title: 'Use for', w: 580}
+  ], rows: [
+    ['Real production logs', 'Most realistic; privacy-review first'],
+    ['Internal team writing', 'Known-good cases with ground truth'],
+    ['LLM-generated synthetic', 'Fast coverage; validate with humans'],
+    ['Customer support history', 'Real user phrasings + known answers']
+  ]});
+});
+</script>
 
 <h3>Production logs (best)</h3>
 <p>If you have any production traffic, real user queries are gold. They show actual phrasing, actual intent, actual edge cases.</p>

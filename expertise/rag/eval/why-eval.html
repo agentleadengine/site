@@ -236,6 +236,20 @@
 <p>Team members have mental models of what works. These models drift from reality. Eval data grounds decisions in current truth.</p>
 
 <h2>The evaluation stack</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Three layers of RAG eval');
+  sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 50, layers: [
+    {label: 'End-to-end quality', sub: 'did users actually get good answers?'},
+    {label: 'Generation quality', sub: 'faithfulness, relevance, completeness'},
+    {label: 'Retrieval quality', sub: 'are right chunks retrieved at all?'}
+  ]});
+});
+</script>
 <p>A production RAG evaluation stack has three layers:</p>
 
 <h3>1. Component eval</h3>

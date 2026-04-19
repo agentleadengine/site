@@ -222,6 +222,23 @@
 <p class="lede">Retrieval metrics tell you if the right chunks were found. Generation metrics tell you if the LLM used them to produce a good answer. Both matter. A system with great retrieval and bad generation is still bad. A system with bad retrieval and great generation hallucinates confidently.</p>
 
 <h2>The three metrics</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'The three generation-quality dimensions');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Metric', w: 220},
+    {title: 'What it catches', w: 580}
+  ], rows: [
+    ['Faithfulness', 'Is every claim in the answer supported by retrieved context?'],
+    ['Answer relevance', 'Does the answer actually address the question?'],
+    ['Context relevance', 'Is the retrieved context relevant to the question?']
+  ]});
+});
+</script>
 
 <h3>Faithfulness</h3>
 <p>Does the answer only say things supported by the retrieved context? Or does it hallucinate?</p>
