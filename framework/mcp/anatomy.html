@@ -218,10 +218,33 @@
 <a href="../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../what-is-autonomous-ai.html">What is autonomous AI</a></li><li><a href="../the-autonomy-spectrum.html">The autonomy spectrum</a></li><li><a href="../glossary.html">Glossary</a></li></ul><h4>Claude</h4><ul><li><a href="../claude/overview.html">Overview</a></li><li><a href="../claude/prompting-for-agents.html">Prompting for agents</a></li><li><a href="../claude/extended-thinking.html">Extended thinking</a></li><li><a href="../claude/tool-use.html">Tool use</a></li></ul><h4>MCP</h4><ul><li><a href="../mcp/index.html">Overview</a></li><li><a href="../mcp/what-is-mcp.html">What is MCP</a></li><li><a href="../mcp/anatomy.html" class="active">Anatomy</a></li><li><a href="../mcp/transports.html">Transports</a></li><li><a href="../mcp/servers.html">Servers</a></li><li><a href="../mcp/clients.html">Clients</a></li><li><a href="../mcp/security.html">Security</a></li><li><a href="../mcp/directory.html">Directory</a></li></ul><h4>Plugins</h4><ul><li><a href="../plugins/index.html">Overview</a></li><li><a href="../plugins/vs-mcp.html">Plugins vs MCP</a></li><li><a href="../plugins/marketplace.html">Marketplace</a></li></ul><h4>Claude Code</h4><ul><li><a href="../claude-code/index.html">Overview</a></li><li><a href="../claude-code/settings.html">Settings</a></li><li><a href="../claude-code/permissions.html">Permissions</a></li><li><a href="../claude-code/hooks.html">Hooks</a></li><li><a href="../claude-code/skills.html">Skills</a></li><li><a href="../claude-code/memory.html">Memory</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/index.html">Overview</a></li><li><a href="../patterns/react-loop.html">ReAct loop</a></li><li><a href="../patterns/plan-execute.html">Plan-execute</a></li><li><a href="../patterns/multi-agent.html">Multi-agent</a></li><li><a href="../patterns/evaluation.html">Evaluation</a></li><li><a href="../patterns/prompt-caching.html">Prompt caching</a></li></ul><h4>Autonomous</h4><ul><li><a href="../autonomous/index.html">Overview</a></li><li><a href="../autonomous/headless.html">Headless</a></li><li><a href="../autonomous/scheduling.html">Scheduling</a></li><li><a href="../autonomous/self-monitoring.html">Self-monitoring</a></li><li><a href="../autonomous/safety.html">Safety</a></li></ul><h4>Build Guides</h4><ul><li><a href="../build/index.html">Overview</a></li><li><a href="../build/first-agent.html">First agent (60 min)</a></li><li><a href="../build/voice-agent.html">Voice agent</a></li><li><a href="../build/research-agent.html">Research agent</a></li></ul><h4>Tools</h4><ul><li><a href="../tools/browser-automation.html">Browser automation</a></li><li><a href="../tools/desktop-control.html">Desktop control</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Framework</a><span class="sep">›</span><a href="../mcp/index.html">MCP</a><span class="sep">›</span><span>Anatomy of an MCP</span></div><h1 class="title" style="font-size:clamp(32px,4.5vw,42px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">Anatomy of an MCP</h1><div class="article-meta"><span>📖 4 min read</span><span>Updated 2026-04-18</span></div>
-<p class="lede">MCP has five primitives. Understand these and you understand the whole protocol.</p>
+<p class="lede">If you understood <a href="what-is-mcp.html">what MCP is</a>, you have the big picture. This page is about what's actually inside an MCP. It turns out there are only five pieces, and once you can name them, the whole protocol feels obvious. Nothing here requires a coding background, but we'll look at a little bit of code because the structure is easier to see than to describe.</p>
 
-<h2>1. Tools</h2>
-<p>Functions the model can call. Same mental model as <a href="../claude/tool-use.html">tool use</a>, the MCP server declares a name, description, and input schema; the model decides when to call it.</p>
+<h2>The five pieces. A quick map.</h2>
+<p>Everything in MCP is one of these five things. If you see a new MCP concept, it's going to be one of these, or a way they relate to each other.</p>
+
+<ul>
+  <li><strong>Tools</strong>, things the AI can DO (send an email, run a query)</li>
+  <li><strong>Resources</strong>, things the AI can READ (a document, a row, a log)</li>
+  <li><strong>Prompts</strong>, pre-written instructions the AI can BORROW</li>
+  <li><strong>Servers</strong>, the programs that offer tools, resources, and prompts</li>
+  <li><strong>Clients</strong>, the programs that consume them</li>
+</ul>
+
+<p>Let's walk through each one with enough detail that you could explain it to a friend over coffee.</p>
+
+<h2>1. Tools. The verbs the AI can use.</h2>
+<p>A tool is an action. Specifically, it's a function the AI can ask to run. When the model decides it wants to use a tool, it names the tool and fills in some arguments, and the tool does its thing and hands back a result.</p>
+
+<p>Every tool has three parts:</p>
+<ul>
+  <li>A <strong>name</strong>, so the model can call it by something.</li>
+  <li>A <strong>description</strong>, written in plain language, that tells the model when to use it. This is critical. Models decide which tool to pick based almost entirely on the description.</li>
+  <li>An <strong>input schema</strong>, which lists what arguments the tool expects and in what format.</li>
+</ul>
+
+<p>Here's what a tool looks like written out. Don't worry about the syntax; just see the shape.</p>
+
 <pre><code>{
   "name": "search_email",
   "description": "Search the user's email inbox. Use when the user asks about recent messages or needs context from email.",
@@ -235,13 +258,30 @@
   }
 }</code></pre>
 
-<h2>2. Resources</h2>
-<p>Data the model can read. Unlike tools, resources don't execute code, they just return content. Examples: a specific document, a database row, a file.</p>
-<p>Resources are addressed by URI (like <code>file:///path/to/doc.md</code> or <code>postgres://table/row?id=123</code>). The server can list available resources and return content on demand.</p>
-<p>Why not just use a tool? Resources are <em>declaratively addressable</em>, the client can show the user which resources are available and let them pin specific ones into context.</p>
+<p>That's it. Name, description, arguments. If someone hands this tool description to a model, the model can decide to call <code>search_email</code> with a <code>query</code> string and get back email results. The server on the other side actually talks to Gmail and returns real data.</p>
 
-<h2>3. Prompts</h2>
-<p>Reusable prompt templates the server provides to the client. Less widely adopted than tools/resources, but useful for common workflows.</p>
+<p>Almost every useful thing an agent does in the world is done through a tool call. If you want your agent to be able to do something new, you usually give it a new tool.</p>
+
+<h2>2. Resources. The nouns the AI can look at.</h2>
+<p>A resource is a piece of data the AI can read. Not run, not execute, just read. A file. A row in a database. A log entry. The Wikipedia page for "Paris."</p>
+
+<p>Every resource has an address (called a <em>URI</em>, which is a fancy term for "a string that uniquely identifies a thing"). The address tells the client where to find the content. Some examples:</p>
+
+<ul>
+  <li><code>file:///Users/sam/notes.md</code>, a file on your computer</li>
+  <li><code>postgres://orders/row?id=123</code>, a specific row in a database</li>
+  <li><code>https://company.slack/channel/general</code>, a Slack channel</li>
+</ul>
+
+<p>The server says "here are the resources I know about," the client shows them to the user or the model, and when someone wants to read one, the server hands back the content.</p>
+
+<p>You might be asking: if a tool can return a file too, why have a separate concept of resources? Fair question. The difference is that resources are <em>listable</em> and <em>addressable</em> in advance. A tool is a function the model decides to call in the moment. A resource is a thing the user (or the client) can browse, pin, and select before the agent even starts running. If you want a user to say "focus on these three documents," resources are how you structure that. Tools are for the agent to drive; resources are more for the human to curate.</p>
+
+<h2>3. Prompts. Reusable instructions you can borrow.</h2>
+<p>A prompt, in the MCP sense, is a pre-written template of instructions that a server offers to the client. The idea is that writing good prompts is a skill. Instead of every user of a tool writing their own prompt from scratch, the maker of the server can package up well-tested prompts and ship them along with the tools.</p>
+
+<p>Here's an example:</p>
+
 <pre><code>{
   "name": "summarize_thread",
   "description": "Summarize a conversation thread",
@@ -249,27 +289,41 @@
     { "name": "thread_id", "required": true }
   ]
 }</code></pre>
-<p>The client can expose these as slash-commands or menu options. The user picks one, fills in the arguments, and the server returns a filled-in prompt the client sends to the model.</p>
 
-<h2>4. Servers</h2>
-<p>The program exposing tools, resources, and prompts. A server is a process (local) or an HTTP endpoint (remote) that speaks the MCP protocol.</p>
-<p>Servers have a lifecycle: <code>initialize</code> → <code>list_tools</code> / <code>list_resources</code> / <code>list_prompts</code> → <code>call_tool</code> / <code>read_resource</code> / <code>get_prompt</code> → <code>shutdown</code>.</p>
-<p>See <a href="servers.html">Building servers</a> for patterns.</p>
+<p>Your Slack MCP server might ship with this <code>summarize_thread</code> prompt baked in. The client (like Claude Code) can display this as a command or menu item. You click it, pick a thread, and the server hands back a fully-formed prompt like "Please summarize the following Slack thread, focusing on decisions made and open questions. Thread contents: [pasted content]." The model then runs on that prompt.</p>
 
-<h2>5. Clients</h2>
-<p>The program consuming MCP. It connects to one or more servers, discovers what they expose, and makes those primitives available to the model.</p>
-<p>The client handles:</p>
+<p>You don't see prompts as often as tools, partly because not every server ships them and partly because they're a newer concept. But when you find a server with well-crafted prompts, they can be a huge time-saver; you're borrowing someone else's prompt-engineering work.</p>
+
+<h2>4. Servers. The programs that offer tools, resources, and prompts.</h2>
+<p>A server is the "offering" side of an MCP connection. It's a program, running somewhere, that says "here are the tools, resources, and prompts I expose." When a client connects, the server tells it what's available and stands ready to fulfill requests.</p>
+
+<p>Two important things to know about servers:</p>
+
+<p><strong>Where they run.</strong> Some servers run locally, as a small program on your machine, spawned by the client when it starts up. These are called <em>stdio servers</em> because they talk over standard input/output pipes. Other servers run remotely, as HTTP endpoints, reachable over the network. These are useful when the server needs access to cloud data (like a company's central database) or when it's shared by multiple users.</p>
+
+<p><strong>Their lifecycle.</strong> Every server goes through the same cycle with a client: initialize (say hi and announce what's available), list capabilities (what tools, resources, and prompts it offers), handle requests (execute tools, return resources), and shut down when done.</p>
+
+<p>The key thing: writing an MCP server is <em>easy</em>. The protocol is open. The spec is published. Most languages have libraries. A useful server can be 50-100 lines of code. This is why hundreds of MCP servers already exist, and why you can build your own in an afternoon. For more on that, see <a href="servers.html">Building servers</a>.</p>
+
+<h2>5. Clients. The programs that use what servers offer.</h2>
+<p>The client is the other side of the connection: the program that connects to servers and makes their capabilities available to a model.</p>
+
+<p>A client has a LOT of responsibilities. Among them:</p>
+
 <ul>
-  <li>Starting and managing server processes (for stdio transport)</li>
-  <li>Connecting to server URLs (for SSE/HTTP transport)</li>
-  <li>Exposing tools to the model as tool definitions</li>
-  <li>Routing tool calls to the right server</li>
-  <li>Formatting results for the model</li>
-  <li>Permissions: which tools the model can call without approval</li>
+  <li><strong>Managing servers</strong>: starting them up, maintaining connections, restarting them when they crash.</li>
+  <li><strong>Discovery</strong>: asking each server "what can you do?" and keeping track of everyone's tools, resources, and prompts.</li>
+  <li><strong>Presenting to the model</strong>: when the model asks "what can I do?", the client hands it a list of every tool from every connected server.</li>
+  <li><strong>Routing calls</strong>: when the model wants to use a tool, the client figures out which server owns that tool and forwards the call there.</li>
+  <li><strong>Returning results</strong>: the server's response gets packaged up and sent back to the model in a form the model can read.</li>
+  <li><strong>Permissions</strong>: the client enforces rules about which tools the model can call automatically versus which require the user's approval first.</li>
 </ul>
-<p>Claude Code is a client. IDE extensions are clients. See <a href="clients.html">Clients</a>.</p>
 
-<h2>How they fit together</h2>
+<p>Claude Code, Claude.ai, Cursor, Zed, and many custom agent frameworks are all MCP clients. Most of the "user experience" you see when working with MCP is really the client's doing. The server is anonymous plumbing underneath. See <a href="clients.html">Clients</a> for a deeper look at what makes a good one.</p>
+
+<h2>How the five pieces actually connect.</h2>
+<p>Here's the traffic pattern, at the level that will stick in your head:</p>
+
 <pre><code>┌──────────────┐   MCP    ┌──────────────┐
 │   CLIENT     │◄────────►│   SERVER     │
 │ (Claude Code)│          │  (Gmail MCP) │
@@ -283,9 +337,25 @@
 │  (Claude)    │
 └──────────────┘</code></pre>
 
+<p>Notice something important: the model never talks to the server directly. The client is always the middleman. This is intentional and it's one of the most important design choices in MCP.</p>
+
+<p>Why does this matter? Because it means the client is the single place where permissions get checked. The model can want to send an email all it wants; the client is the one that decides whether to let that tool call through to the server or pause and ask the user first. If the model could talk to the server directly, there would be no chokepoint to enforce safety rules. By inserting the client as middleman, every call goes through a point where rules can be applied.</p>
+
 <div class="callout note">
-  <strong>Note:</strong> The model never talks to the server directly. The client is the intermediary. This keeps permission boundaries tight.
+  <strong>Remember:</strong> Model ↔ Client ↔ Server. The model thinks. The server does. The client is the well-behaved middleman enforcing the rules. Every MCP interaction follows this pattern.
 </div>
+
+<h2>A tiny mental check.</h2>
+<p>If I said: "I want my AI agent to be able to pull the latest issue from my GitHub repo and draft a reply," can you now sketch out what parts of MCP you'd need?</p>
+
+<p>You'd need: a <strong>server</strong> that speaks MCP and knows how to talk to GitHub (the <code>GitHub MCP</code>, which exists). That server would expose <strong>tools</strong> like <code>get_issue</code> and <code>list_issues</code>. A <strong>client</strong> (like Claude Code) would connect to it, discover those tools, and make them available to the <strong>model</strong>. The model would decide when and how to call them. It might also expose GitHub issues as <strong>resources</strong> so you could pin one into context before you even start. That's the whole picture.</p>
+
+<p>If that sketch made sense, the anatomy is clicking.</p>
+
+<h2>What to read next.</h2>
+<p>Once the pieces are in your head, two natural questions follow: "How do servers and clients actually talk to each other?" and "How do I build one?" Those are the next two pages.</p>
+
+<p><a href="transports.html">Transports</a> covers the three ways (stdio, SSE, HTTP) a client and server can connect, and when to use which. <a href="servers.html">Building servers</a> walks through how to make your own.</p>
 <div class="prev-next"><a href="what-is-mcp.html" class="prev"><div class="label">← Previous</div><div class="title">What is MCP</div></a><a href="transports.html" class="next"><div class="label">Next →</div><div class="title">Transports</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../framework/index.html">Framework</a></p>
 </div></footer><script>
