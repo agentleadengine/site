@@ -222,6 +222,21 @@
 <p class="lede">Every major ad platform runs an auction. Advertisers bid; the platform picks winners based on bid + expected outcome + ad quality. Understanding this mechanism changes how you think about targeting, bidding, and creative.</p>
 
 <h2>The auction in 60 seconds</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'How ad auctions actually pick a winner');
+  sketch.numberedSteps(svg, rc, {direction: 'h', x: 30, y: 80, w: 840, items: [
+    {title: 'Impression open', sub: 'someone hits a page'},
+    {title: 'Eligible ads queue', sub: 'targeting matches'},
+    {title: 'Score each', sub: 'bid × quality × relevance'},
+    {title: 'Winner shows', sub: 'pays ~2nd-highest price'}
+  ]});
+});
+</script>
 <p>When a user triggers an ad slot, the platform looks at every advertiser who's eligible to show. For each, it computes:</p>
 <pre style="background:#f5f5f7; padding:14px; border-radius:6px;">Expected revenue to platform = bid × expected conversion rate × ad quality</pre>
 <p>Highest expected revenue wins. The platform optimizes its own revenue, not yours.</p>

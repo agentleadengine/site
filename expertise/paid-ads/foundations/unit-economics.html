@@ -222,6 +222,26 @@
 <p class="lede">Paid ads aren't magical. They work when cost to acquire a customer is materially less than the customer's lifetime value. Before you spend a dollar, know the math.</p>
 
 <h2>The core metrics</h2>
+<div class="sketch" data-viewbox="0 0 900 300"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 300);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Paid ads unit economics glossary');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Metric', w: 180},
+    {title: 'What it means', w: 620}
+  ], rows: [
+    ['CAC', 'Customer acquisition cost: ad spend ÷ customers'],
+    ['LTV', 'Lifetime value: how much revenue per customer'],
+    ['LTV:CAC ratio', 'Healthy at 3:1 or better'],
+    ['Payback period', 'Months until LTV ≥ CAC'],
+    ['Gross margin', 'Revenue − COGS; caps what you can spend'],
+    ['ROAS', 'Revenue ÷ ad spend (first-order or lifetime)']
+  ]});
+});
+</script>
 <ul>
 <li><strong>CAC</strong>: cost to acquire one paying customer = spend / customers</li>
 <li><strong>LTV</strong>: lifetime value of a customer (gross profit over their lifecycle)</li>
