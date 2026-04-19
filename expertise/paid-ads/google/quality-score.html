@@ -222,6 +222,23 @@
 <p class="lede">Quality Score (1-10) is Google's assessment of your ad's relevance to the query and landing page. Higher Quality Score = lower CPC for the same position. It compounds: 30% cheaper CPC on a $10K/month budget = $3K/month in savings.</p>
 
 <h2>The three components</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Quality Score = three things');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Component', w: 240},
+    {title: 'How to improve', w: 560}
+  ], rows: [
+    ['Expected CTR', 'Sharper headlines, tighter keyword-ad match'],
+    ['Ad relevance', 'Ad copy mirrors the keyword'],
+    ['Landing page experience', 'Fast, matching, useful landing page']
+  ]});
+});
+</script>
 <ul>
 <li><strong>Expected CTR</strong>: will people click this ad?</li>
 <li><strong>Ad Relevance</strong>: does the ad match the keyword?</li>

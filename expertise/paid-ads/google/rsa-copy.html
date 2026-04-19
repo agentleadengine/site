@@ -222,6 +222,24 @@
 <p class="lede">Responsive Search Ads (RSAs) replaced Expanded Text Ads. You provide up to 15 headlines and 4 descriptions; Google combines them dynamically. Writing for RSAs requires a different approach than old-style ads.</p>
 
 <h2>The constraints</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'RSA asset limits');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Asset', w: 220},
+    {title: 'Limit', w: 580}
+  ], rows: [
+    ['Headlines', 'Up to 15, each ≤ 30 chars'],
+    ['Descriptions', 'Up to 4, each ≤ 90 chars'],
+    ['Path fields', '2 × 15 chars'],
+    ['Final URL', 'Required; landing page match matters']
+  ]});
+});
+</script>
 <ul>
 <li>Up to 15 headlines, 30 characters each</li>
 <li>Up to 4 descriptions, 90 characters each</li>

@@ -222,6 +222,24 @@
 <p class="lede">Match types tell Google how closely a search must match your keyword for your ad to show. Broad is the widest; exact is the narrowest. Picking wrong either starves you of volume or wastes spend on irrelevant clicks.</p>
 
 <h2>The match types</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Match types from tight to loose');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Match', w: 200},
+    {title: 'What it matches', w: 600}
+  ], rows: [
+    ['Exact [brackets]', 'Close variants of the term; tightest'],
+    ['Phrase "quotes"', 'Phrase + close variants in that order'],
+    ['Broad (no symbols)', 'Semantic intent; broadest + riskiest'],
+    ['Negative -minus', 'Blocks specific terms; use aggressively']
+  ]});
+});
+</script>
 
 <h3>Exact match</h3>
 <p>Search must match your keyword or a close variant. Most control, least volume.</p>

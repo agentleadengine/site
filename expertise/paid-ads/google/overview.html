@@ -222,6 +222,25 @@
 <p class="lede">Google Ads isn't one product, it's a collection of properties under one billing system: Search, Shopping, Display, Video (YouTube), Discovery, and Performance Max. Each has different intent and different best-fit products.</p>
 
 <h2>The properties</h2>
+<div class="sketch" data-viewbox="0 0 900 300"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 300);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Google ad properties + when to use');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Property', w: 200},
+    {title: 'Best for', w: 600}
+  ], rows: [
+    ['Search', 'High-intent keyword traffic; usually start here'],
+    ['Performance Max', 'Mature account, broad inventory, automated'],
+    ['Display / Discovery', 'Top-funnel awareness, retargeting'],
+    ['YouTube (video)', 'Story-driven creative, remarketing'],
+    ['Shopping', 'Ecommerce product listing']
+  ]});
+});
+</script>
 <ul>
 <li><strong>Search</strong>: text ads on search results. Highest intent. The most valuable.</li>
 <li><strong>Shopping</strong>: product ads with image + price. For e-commerce.</li>
