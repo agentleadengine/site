@@ -79,10 +79,12 @@ can drop in a `<div class="sketch" data-viewbox="...">` and call the
 - `framework/what-is-autonomous-ai.html` (+ agent loop, 4-layer stack)
 - `framework/the-autonomy-spectrum.html` (+ 5-rung ladder)
 
-### Claude section
+### Claude section (COMPLETE, 4/4)
 
 - `framework/claude/overview.html` (+ family table, strengths bar chart)
 - `framework/claude/prompting-for-agents.html` (+ sections table, error-recovery bars)
+- `framework/claude/extended-thinking.html` (+ worth-it compare, budget bars, truths table)
+- `framework/claude/tool-use.html` (+ 5-step loop, error compare, schema rules, failures table)
 
 ### MCP section (all 7 pages)
 
@@ -94,17 +96,21 @@ can drop in a `<div class="sketch" data-viewbox="...">` and call the
 - `framework/mcp/transports.html` (+ transport table, comparison bars)
 - `framework/mcp/security.html` (+ threat table, principles bars)
 
-### Claude Code section
+### Claude Code section (COMPLETE, 6/6)
 
 - `framework/claude-code/index.html` (+ 5-layer stack, reasons bars)
+- `framework/claude-code/settings.html` (+ layer stack, don't-do table)
 - `framework/claude-code/permissions.html` (+ eval-flow, tiers table, workflow)
 - `framework/claude-code/hooks.html` (+ events table, uses bars)
 - `framework/claude-code/skills.html` (+ anatomy table, skills-vs-hooks-vs-mcps)
+- `framework/claude-code/memory.html` (+ 4-kinds table, save-vs-don't compare)
 
-### Patterns section
+### Patterns section (3/5 done)
 
 - `framework/patterns/index.html` (+ patterns table)
 - `framework/patterns/react-loop.html` (+ loop, why-bars, failures table)
+- `framework/patterns/plan-execute.html` (+ flow, why-bars, when-compare)
+- `framework/patterns/multi-agent.html` (+ architecture, why-bars, when-compare)
 
 ### Autonomous section
 
@@ -120,16 +126,14 @@ can drop in a `<div class="sketch" data-viewbox="...">` and call the
 
 Do in this order:
 
-**Claude** (2 pages): extended-thinking, tool-use
-**Claude Code** (2 pages): settings, memory
-**Patterns** (4 pages): plan-execute, multi-agent, evaluation, prompt-caching
-**Autonomous** (3 pages): headless, scheduling, self-monitoring
-**Build** (4 pages): index, first-agent, voice-agent, research-agent
-**Plugins** (3 pages): index, vs-mcp, marketplace
-**Tools** (2 pages): browser-automation, desktop-control
+**Patterns** (2 left): evaluation, prompt-caching
+**Autonomous** (3 left): headless, scheduling, self-monitoring
+**Build** (4): index, first-agent, voice-agent, research-agent
+**Plugins** (3): index, vs-mcp, marketplace
+**Tools** (2): browser-automation, desktop-control
 **MCP loose ends**: directory page + add a diagram to servers.html
 
-Total: ~20 pages remaining in the framework.
+Total: ~14 pages remaining in the framework.
 
 ## After the framework
 
