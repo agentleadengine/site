@@ -222,6 +222,25 @@
 <p class="lede">Internal knowledge RAG gives employees a natural-language interface to company docs, wiki, Drive, Confluence, Notion, Slack. It's the most common enterprise RAG use case and one of the hardest to get right because of access control, data freshness, and content heterogeneity.</p>
 
 <h2>The content sources</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Internal KB RAG: where content lives');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Source', w: 220},
+    {title: 'Access model', w: 580}
+  ], rows: [
+    ['Confluence / Notion', 'Wiki pages with per-space ACLs'],
+    ['Google Drive / SharePoint', 'File-level permissions'],
+    ['Slack / Teams', 'Channel-based; long conversations'],
+    ['Engineering wikis / GitHub', 'Repo permissions'],
+    ['HR / policy systems', 'Often role-based access']
+  ]});
+});
+</script>
 <p>Typical enterprise corpus:</p>
 <ul>
   <li>Wiki (Confluence, Notion)</li>

@@ -231,6 +231,23 @@
 </ul>
 
 <h2>Isolation patterns</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Three tenant-isolation patterns');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Pattern', w: 240},
+    {title: 'Tradeoff', w: 560}
+  ], rows: [
+    ['Shared index + tenant filter', 'Cheap + fast; one bug leaks all tenants'],
+    ['Per-tenant namespace', 'Better isolation; more indexes to manage'],
+    ['Per-tenant full deployment', 'Maximum isolation; expensive']
+  ]});
+});
+</script>
 
 <h3>Pattern 1: Shared index, tenant_id filter</h3>
 <p>All tenants' vectors in one index. Every query filters by tenant_id.</p>

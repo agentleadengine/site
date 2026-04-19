@@ -222,6 +222,25 @@
 <p class="lede">Legal and compliance RAG are the strictest RAG use cases. Hallucinations aren't just embarrassing, they're legal exposure. Citations aren't optional, they're required by procedure. The bar for quality is higher, and the acceptable failure modes are narrower.</p>
 
 <h2>What makes it different</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Legal RAG: what has to be bulletproof');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Requirement', w: 240},
+    {title: 'Why', w: 560}
+  ], rows: [
+    ['Exact citations', 'Missing a citation = malpractice'],
+    ['No hallucination tolerance', 'Wrong quote = real legal harm'],
+    ['Structure preservation', 'Section numbers, clauses matter'],
+    ['Audit trail', 'Regulators ask what was retrieved'],
+    ['Human-in-loop by default', 'Liability stays with lawyers']
+  ]});
+});
+</script>
 <ul>
   <li>Accuracy is regulatory, not just aesthetic</li>
   <li>Citations are required and must be verifiable</li>

@@ -222,6 +222,22 @@
 <p class="lede">Customer support is the most common production RAG use case. The problem is well-defined (answer user questions from a knowledge base), the ROI is measurable (deflected tickets, faster resolution), and the content is usually available (help docs, past tickets, product manuals). It's also the application where the failure modes are most visible to users.</p>
 
 <h2>The architecture</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Support RAG: end-to-end');
+  sketch.numberedSteps(svg, rc, {direction: 'h', x: 30, y: 80, w: 840, items: [
+    {title: 'Ticket in', sub: 'email or chat'},
+    {title: 'Classify', sub: 'category + intent'},
+    {title: 'Retrieve', sub: 'KB + prior tickets'},
+    {title: 'Draft answer', sub: 'with citations'},
+    {title: 'Human review', sub: 'draft-first'}
+  ]});
+});
+</script>
 <pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:12px;">
 user query
    |
