@@ -219,27 +219,88 @@
 <a href="../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../what-is-autonomous-ai.html">What is autonomous AI</a></li><li><a href="../the-autonomy-spectrum.html">The autonomy spectrum</a></li><li><a href="../glossary.html">Glossary</a></li></ul><h4>Claude</h4><ul><li><a href="../claude/overview.html">Overview</a></li><li><a href="../claude/prompting-for-agents.html">Prompting for agents</a></li><li><a href="../claude/extended-thinking.html">Extended thinking</a></li><li><a href="../claude/tool-use.html">Tool use</a></li></ul><h4>MCP</h4><ul><li><a href="../mcp/index.html">Overview</a></li><li><a href="../mcp/what-is-mcp.html">What is MCP</a></li><li><a href="../mcp/anatomy.html">Anatomy</a></li><li><a href="../mcp/transports.html">Transports</a></li><li><a href="../mcp/servers.html">Servers</a></li><li><a href="../mcp/clients.html" class="active">Clients</a></li><li><a href="../mcp/security.html">Security</a></li><li><a href="../mcp/directory.html">Directory</a></li></ul><h4>Plugins</h4><ul><li><a href="../plugins/index.html">Overview</a></li><li><a href="../plugins/vs-mcp.html">Plugins vs MCP</a></li><li><a href="../plugins/marketplace.html">Marketplace</a></li></ul><h4>Claude Code</h4><ul><li><a href="../claude-code/index.html">Overview</a></li><li><a href="../claude-code/settings.html">Settings</a></li><li><a href="../claude-code/permissions.html">Permissions</a></li><li><a href="../claude-code/hooks.html">Hooks</a></li><li><a href="../claude-code/skills.html">Skills</a></li><li><a href="../claude-code/memory.html">Memory</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/index.html">Overview</a></li><li><a href="../patterns/react-loop.html">ReAct loop</a></li><li><a href="../patterns/plan-execute.html">Plan-execute</a></li><li><a href="../patterns/multi-agent.html">Multi-agent</a></li><li><a href="../patterns/evaluation.html">Evaluation</a></li><li><a href="../patterns/prompt-caching.html">Prompt caching</a></li></ul><h4>Autonomous</h4><ul><li><a href="../autonomous/index.html">Overview</a></li><li><a href="../autonomous/headless.html">Headless</a></li><li><a href="../autonomous/scheduling.html">Scheduling</a></li><li><a href="../autonomous/self-monitoring.html">Self-monitoring</a></li><li><a href="../autonomous/safety.html">Safety</a></li></ul><h4>Build Guides</h4><ul><li><a href="../build/index.html">Overview</a></li><li><a href="../build/first-agent.html">First agent (60 min)</a></li><li><a href="../build/voice-agent.html">Voice agent</a></li><li><a href="../build/research-agent.html">Research agent</a></li></ul><h4>Tools</h4><ul><li><a href="../tools/browser-automation.html">Browser automation</a></li><li><a href="../tools/desktop-control.html">Desktop control</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Framework</a><span class="sep">›</span><a href="../mcp/index.html">MCP</a><span class="sep">›</span><span>MCP clients</span></div><h1 class="title" style="font-size:clamp(32px,4.5vw,42px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">MCP clients</h1><div class="article-meta"><span>📖 3 min read</span><span>Updated 2026-04-18</span></div>
-<p class="lede">MCP clients are the programs that speak the protocol from the consuming side. As of 2026, the ecosystem is Anthropic-led but broadening.</p>
+<p class="lede">The client is the side of an MCP connection that's doing the <em>using</em>. Your AI app. Claude Code, Claude.ai, Cursor, your custom agent, they're all clients. This page covers what clients actually do, which ones exist in 2026, and what separates a good one from a mediocre one. The quiet truth: the client you pick shapes your AI experience more than the model does.</p>
 
-<h2>Claude Code</h2>
-<p>Anthropic's CLI agent. MCP support is first-class, you add servers to <code>~/.claude/config.json</code> (or project-level) and they appear as tools the agent can use. Supports stdio and remote transports. See <a href="../claude-code/index.html">Claude Code overview</a>.</p>
+<h2>What a client's actually responsible for.</h2>
+<p>When I said earlier "the client is the middleman," that undersells it. A good MCP client has a surprisingly long list of jobs.</p>
 
-<h2>Claude.ai (web + desktop apps)</h2>
-<p>The Claude web and desktop apps support remote MCP servers as "connectors." A growing list of first-party connectors (Gmail, Calendar, Notion, Slack, GitHub, Linear, etc.) and third-party ones. Good for end-users who don't want to run servers locally.</p>
+<div class="sketch" data-viewbox="0 0 900 430" id="dg-client-jobs">
+  <svg></svg>
+  <div class="sketch-caption">~ what the client actually does ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-client-jobs');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.numberedSteps(svg, rc, {
+    direction: 'v',
+    x: 110, y: 40,
+    items: [
+      { title: 'Start the servers',     sub: 'spawn processes / open network connections' },
+      { title: 'Ask each server what it offers', sub: 'discover tools, resources, prompts' },
+      { title: 'Hand the list to the model',     sub: 'as tool definitions in the system prompt' },
+      { title: 'Route tool calls to the right server', sub: 'the model picks a tool, client dispatches' },
+      { title: 'Enforce permissions',            sub: 'allow / deny / ask the user' },
+      { title: 'Package results for the model',  sub: 'format so it can read and react' }
+    ]
+  });
+});
+</script>
 
-<h2>IDE extensions</h2>
-<ul>
-  <li><strong>Cursor</strong>, full MCP support via JSON config</li>
-  <li><strong>Zed</strong>, early MCP support, extensions evolving</li>
-  <li><strong>VS Code (Claude extension)</strong>, supports a subset</li>
-  <li><strong>JetBrains</strong>, community plugins available</li>
-</ul>
+<p>That last two bullets, permissions and results, are where clients earn their keep. You can build a "technically MCP-compliant" client in a weekend. Building one that's safe and pleasant to use takes years of polish.</p>
 
-<h2>Custom agent frameworks</h2>
-<p>If you're building your own agent, the MCP SDKs ship a <em>client</em> side too. You can connect your agent to any MCP server and pipe the tools directly into your LLM calls. Community projects like LangGraph and CrewAI have MCP adapters.</p>
+<h2>The clients that exist today.</h2>
+<p>The ecosystem in 2026 is still Anthropic-led, but broadening fast. Here's the landscape at a glance.</p>
 
-<h2>Configuring a client</h2>
-<p>Most clients use a JSON config that lists servers with transport + command. Example (Claude Code style):</p>
+<div class="sketch" data-viewbox="0 0 900 310" id="dg-client-landscape">
+  <svg></svg>
+  <div class="sketch-caption">~ MCP client ecosystem, 2026 ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-client-landscape');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.table(svg, rc, {
+    x: 30, y: 30,
+    cols: [
+      { title: 'Client', w: 220 },
+      { title: 'Who uses it', w: 230 },
+      { title: 'MCP support', w: 180 },
+      { title: 'Strength', w: 210 }
+    ],
+    rows: [
+      ['Claude Code (CLI)',       'developers, power users',  'first-class',      'full agent workflows'],
+      ['Claude.ai (web/desktop)', 'end users',                'first-class',      'connectors ecosystem'],
+      ['Cursor',                  'developers',               'full via JSON',    'in-editor context'],
+      ['Zed',                     'developers',               'growing',          'performance'],
+      ['VS Code',                 'developers',               'partial',          'ubiquity'],
+      ['Custom agents (SDK)',     'builders',                 'depends on you',   'total control']
+    ]
+  });
+});
+</script>
+
+<h3>Claude Code</h3>
+<p>Anthropic's CLI agent. If you're building agents, this is where you spend most of your time. MCP is first-class, servers go in <code>~/.claude/config.json</code> or a project file, and they just show up as tools. Supports every transport. See <a href="../claude-code/index.html">Claude Code overview</a>.</p>
+
+<h3>Claude.ai (web + desktop)</h3>
+<p>For non-developer users. MCP servers are presented as "connectors" (Gmail, Calendar, Notion, Slack, GitHub, Linear, and growing). You install a connector, authenticate once, and every conversation has access. No JSON files to edit. The best on-ramp for someone who doesn't want to touch config.</p>
+
+<h3>IDEs and editors</h3>
+<p>Cursor has the most mature IDE-side MCP support in 2026. Zed is catching up. VS Code supports a subset through the Claude extension. JetBrains has community plugins. Each lets you pipe your code context into the agent along with the MCP tools you configure, which is powerful for working inside a codebase.</p>
+
+<h3>Custom agent frameworks</h3>
+<p>If you're rolling your own agent, the MCP SDKs ship client-side libraries too. You connect your agent to any MCP server and pipe tools directly into your LLM calls. LangGraph, CrewAI, Autogen, and others have MCP adapters in 2026. This is the path if you need behavior no existing client gives you.</p>
+
+<h2>What a client config actually looks like.</h2>
+<p>Most clients use a JSON config. Here's the Claude Code style (other clients are similar):</p>
+
 <pre><code>{
   "mcpServers": {
     "notion": {
@@ -254,11 +315,34 @@
   }
 }</code></pre>
 
-<h2>Permissions layer</h2>
-<p>A good MCP client sits between the model and the server and enforces permissions. Claude Code has allow/deny lists by tool name pattern (<code>mcp__notion__*</code>, <code>mcp__github__delete_*</code>). Before running any MCP tool, the client checks the permission list. See <a href="../claude-code/permissions.html">Permissions</a>.</p>
+<p>Two servers here, one local (stdio, spawned from an npm package) and one remote (HTTP endpoint). The client reads this on startup and manages both connections transparently. Adding a new server is just adding another entry. No code changes, no restart of the AI model.</p>
 
-<h2>Multi-client considerations</h2>
-<p>Servers don't know which client is calling. That's usually fine, but if you're building a server that depends on specific client behaviors (resources, prompts, progress notifications), test against multiple clients, support varies.</p>
+<h2>The permission chokepoint.</h2>
+<p>This is the single most important thing a client does, and the thing that separates good clients from dangerous ones.</p>
+
+<p>Every MCP tool call goes through the client before it reaches the server. That means the client is the only place in the stack where you can say "allow this" or "block this" or "ask the user first." A client without a permission system is a loaded gun: the model can call any tool whenever it wants, including things that cost money or delete data.</p>
+
+<p>Claude Code does this with allow/deny lists using glob patterns:</p>
+
+<ul>
+  <li><code>mcp__notion__*</code>, allow any tool from the Notion server</li>
+  <li><code>mcp__github__delete_*</code>, always ask before any delete operation on GitHub</li>
+  <li><code>Bash(rm -rf *)</code>, flatly deny (never even ask)</li>
+</ul>
+
+<p>Before running any tool call, the client matches it against this list. See <a href="../claude-code/permissions.html">Permissions</a> for the deep dive on designing a good one.</p>
+
+<h2>Things clients quietly differ on.</h2>
+<p>On paper, all MCP clients implement the same protocol. In practice, they diverge on a few details you'll run into:</p>
+
+<ul>
+  <li><strong>Resources support.</strong> Not every client exposes resources to the user. Some only do tools. If your workflow depends on the user pinning a resource, test on the exact client your user has.</li>
+  <li><strong>Prompts UI.</strong> Clients decide how to show server-provided prompts. Some as slash-commands, some as menus, some not at all.</li>
+  <li><strong>Progress notifications.</strong> Long-running tools can stream progress updates in MCP. Some clients show them, some ignore them.</li>
+  <li><strong>Remote auth flows.</strong> Remote HTTP servers typically need OAuth. Each client handles this slightly differently; what's seamless in one might require manual config in another.</li>
+</ul>
+
+<p>Rule of thumb: <strong>servers don't know which client is calling</strong>. If you're building a server that depends on specific client features, test on every major client before shipping.</p>
 <div class="prev-next"><a href="servers.html" class="prev"><div class="label">← Previous</div><div class="title">Building MCP servers</div></a><a href="security.html" class="next"><div class="label">Next →</div><div class="title">MCP security</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../framework/index.html">Framework</a></p>
 </div></footer><script>
