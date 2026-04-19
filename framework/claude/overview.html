@@ -219,45 +219,127 @@
 <a href="../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../what-is-autonomous-ai.html">What is autonomous AI</a></li><li><a href="../the-autonomy-spectrum.html">The autonomy spectrum</a></li><li><a href="../glossary.html">Glossary</a></li></ul><h4>Claude</h4><ul><li><a href="../claude/overview.html" class="active">Overview</a></li><li><a href="../claude/prompting-for-agents.html">Prompting for agents</a></li><li><a href="../claude/extended-thinking.html">Extended thinking</a></li><li><a href="../claude/tool-use.html">Tool use</a></li></ul><h4>MCP</h4><ul><li><a href="../mcp/index.html">Overview</a></li><li><a href="../mcp/what-is-mcp.html">What is MCP</a></li><li><a href="../mcp/anatomy.html">Anatomy</a></li><li><a href="../mcp/transports.html">Transports</a></li><li><a href="../mcp/servers.html">Servers</a></li><li><a href="../mcp/clients.html">Clients</a></li><li><a href="../mcp/security.html">Security</a></li><li><a href="../mcp/directory.html">Directory</a></li></ul><h4>Plugins</h4><ul><li><a href="../plugins/index.html">Overview</a></li><li><a href="../plugins/vs-mcp.html">Plugins vs MCP</a></li><li><a href="../plugins/marketplace.html">Marketplace</a></li></ul><h4>Claude Code</h4><ul><li><a href="../claude-code/index.html">Overview</a></li><li><a href="../claude-code/settings.html">Settings</a></li><li><a href="../claude-code/permissions.html">Permissions</a></li><li><a href="../claude-code/hooks.html">Hooks</a></li><li><a href="../claude-code/skills.html">Skills</a></li><li><a href="../claude-code/memory.html">Memory</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/index.html">Overview</a></li><li><a href="../patterns/react-loop.html">ReAct loop</a></li><li><a href="../patterns/plan-execute.html">Plan-execute</a></li><li><a href="../patterns/multi-agent.html">Multi-agent</a></li><li><a href="../patterns/evaluation.html">Evaluation</a></li><li><a href="../patterns/prompt-caching.html">Prompt caching</a></li></ul><h4>Autonomous</h4><ul><li><a href="../autonomous/index.html">Overview</a></li><li><a href="../autonomous/headless.html">Headless</a></li><li><a href="../autonomous/scheduling.html">Scheduling</a></li><li><a href="../autonomous/self-monitoring.html">Self-monitoring</a></li><li><a href="../autonomous/safety.html">Safety</a></li></ul><h4>Build Guides</h4><ul><li><a href="../build/index.html">Overview</a></li><li><a href="../build/first-agent.html">First agent (60 min)</a></li><li><a href="../build/voice-agent.html">Voice agent</a></li><li><a href="../build/research-agent.html">Research agent</a></li></ul><h4>Tools</h4><ul><li><a href="../tools/browser-automation.html">Browser automation</a></li><li><a href="../tools/desktop-control.html">Desktop control</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Framework</a><span class="sep">›</span><span>Claude</span><span class="sep">›</span><span>Claude, overview</span></div><h1 class="title" style="font-size:clamp(32px,4.5vw,42px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">Claude, overview</h1><div class="article-meta"><span>📖 4 min read</span><span>Updated 2026-04-18</span></div>
-<p class="lede">Claude is Anthropic's family of large language models. For autonomous AI, Claude matters because it was designed with agents in mind, strong tool use, long context, and built-in safety tuning.</p>
+<p class="lede">Claude is the model at the center of everything else on this site. Before you read about MCP or Claude Code or agent patterns, it helps to understand what Claude actually is, what makes it a good choice for agent work, and how to pick between the different Claude variants. This page is the short answer, with enough detail to make the rest of the framework make sense.</p>
 
-<h2>The families</h2>
-<p>Claude comes in three tiers at any given generation:</p>
+<h2>What Claude is.</h2>
+<p>Claude is a family of large language models made by Anthropic. "Large language model" is a long phrase for what it is: software that, given a prompt, continues the text in a way that looks like what a smart human would write. That's the whole mechanism. Everything clever Claude does, answering questions, writing code, calling tools, reasoning through problems, is built on top of "predict the next likely piece of text."</p>
+
+<p>What makes Claude specifically useful for autonomous AI is that Anthropic built it with agents in mind. Other LLMs were mostly designed for chat and bolted on tool use later. Claude has tool use, long context, and careful reasoning as first-class design goals from the start.</p>
+
+<h2>The Claude family: Opus, Sonnet, Haiku.</h2>
+<p>At any given generation, Claude ships as three tiers. They're the same model family with different sizes and speeds. Think of them like Large / Medium / Small.</p>
+
+<div class="sketch" data-viewbox="0 0 900 290" id="dg-claude-family">
+  <svg></svg>
+  <div class="sketch-caption">~ the Claude family ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-claude-family');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.table(svg, rc, {
+    x: 20, y: 30,
+    cols: [
+      { title: 'Variant',  w: 140 },
+      { title: 'Vibe',      w: 230 },
+      { title: 'Best for',  w: 330 },
+      { title: 'Relative cost', w: 180 }
+    ],
+    rows: [
+      ['Opus',   'the smart one',       'complex reasoning, hard research, planning',      'highest'],
+      ['Sonnet', 'the balanced one',    'most agent work; the default choice',             'medium'],
+      ['Haiku',  'the fast + cheap one','high-volume tasks, sub-agents, simple workflows', 'lowest']
+    ]
+  });
+});
+</script>
+
+<p>The practical rule: <strong>default to Sonnet</strong>. It's a great general-purpose model for agent work. Reach for Opus when you're hitting the ceiling on hard reasoning. Drop to Haiku when you need to run many calls in parallel for worker tasks and the complexity is low.</p>
+
+<p>A common pattern in multi-agent setups is "Opus plans, Haiku executes." The smart model makes a plan, then spawns Haiku sub-agents to carry out the easy steps in parallel. You get the quality of Opus and the speed/cost of Haiku.</p>
+
+<h2>What makes Claude good for agents specifically.</h2>
+
+<div class="sketch" data-viewbox="0 0 900 310" id="dg-claude-strengths">
+  <svg></svg>
+  <div class="sketch-caption">~ Claude's agent-specific strengths ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-claude-strengths');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.bars(svg, rc, {
+    x: 30, y: 30, w: 840, barH: 34, gap: 16, labelW: 220,
+    items: [
+      { label: 'Tool use stability',    value: 95, note: 'fewer dropped calls in long sessions' },
+      { label: 'System-prompt following', value: 92, note: 'complex rules actually stick' },
+      { label: 'Long context (1M tokens)', value: 90, note: 'whole codebases, long sessions' },
+      { label: 'Extended thinking',     value: 85, note: 'reasoning budget for hard tasks' },
+      { label: 'Prompt caching (90% off)', value: 88, note: 'economics of long-running agents' },
+      { label: 'Safety tuning',         value: 82, note: 'refuses clearly harmful calls' }
+    ]
+  });
+});
+</script>
+
+<p><strong>Tool use</strong> is the big one. Agents live or die by how reliably they can call a sequence of tools across many turns. Claude is consistently the most stable in long agent loops; fewer dropped calls, fewer weird tool-argument mistakes.</p>
+
+<p><strong>System-prompt following</strong> matters because autonomous agents depend on you being able to put rules in the prompt and have them actually persist. Claude is noticeably better at keeping a complex set of rules in mind across a long conversation.</p>
+
+<p><strong>Long context</strong> means the window can hold a lot at once. At 1M tokens, you can fit an entire medium-sized codebase, a long session's worth of tool results, or a big document set. This changes what's practical.</p>
+
+<p><strong>Extended thinking</strong> lets the model reason privately before it answers. You give it a budget ("think for up to 10k tokens before responding") and it uses the space to work through the problem. See <a href="extended-thinking.html">Extended thinking</a> for when to use it.</p>
+
+<p><strong>Prompt caching</strong> makes long-running agents economically viable. When your system prompt is big (lots of tool descriptions, rules, context), each request normally pays for all of that. With caching, you pay once and get ~90% off for subsequent requests that share the prefix. See <a href="../patterns/prompt-caching.html">Prompt caching</a>.</p>
+
+<p><strong>Safety tuning</strong> means Claude is trained to refuse clearly harmful tool calls even when the user asks for them, to flag prompt-injection attempts in tool output, and to be careful with irreversible actions. It's not bulletproof, but it's one more layer.</p>
+
+<h2>How Claude compares to the other big models.</h2>
+<p>Honest take, without the vendor pitch:</p>
+
 <ul>
-  <li><strong>Opus</strong>, the most capable. Highest reasoning, best on complex tasks. Most expensive.</li>
-  <li><strong>Sonnet</strong>, the balanced choice. Strong across most tasks, reasonable price.</li>
-  <li><strong>Haiku</strong>, fast and cheap. Good for high-volume, simpler work, or as a "worker" model in multi-agent setups.</li>
+  <li><strong>Pure language tasks</strong> (writing, translation, summary), GPT-4, Claude, and Gemini are all comparable in 2026. Pick on price and latency.</li>
+  <li><strong>Agent work</strong>, Claude has a consistent edge on multi-turn tool-use stability and complex system-prompt adherence. Not huge, but noticeable when you're shipping.</li>
+  <li><strong>Code</strong>, Claude and GPT-4 trade blows. For agentic coding (inside Claude Code, Cursor, etc.), Claude is usually the better pick.</li>
+  <li><strong>Image reasoning</strong>, Gemini is often ahead; Claude and GPT-4 are comparable.</li>
+  <li><strong>Cost</strong>, varies by variant. Haiku is cost-competitive with small OpenAI and Gemini models.</li>
 </ul>
-<p>Pick based on task complexity and cost tolerance. Most agents work well on Sonnet. Spin up Opus for hard reasoning, drop to Haiku for parallel, cheap worker tasks.</p>
 
-<h2>Why Claude for agents</h2>
+<p>Vendor lock-in is a real thing, though. If you're building for the long term, prefer abstractions (OpenRouter, LiteLLM, or your own thin wrapper) that let you swap providers without rewriting your agent. You gain resilience and negotiation leverage without giving up the ability to use the best model per task.</p>
+
+<h2>Three ways you actually use Claude.</h2>
+<p>You'll encounter Claude through three different surfaces, and it's worth knowing when to use which:</p>
+
+<ol>
+  <li><strong>The Claude API</strong>, direct programmatic access. This is what you use when you're building your own custom agent from scratch. Most flexible, most work.</li>
+  <li><strong>Claude.ai</strong>, the web/desktop chat interface with MCP connectors. Good for exploration, non-technical users, and personal productivity. Not the right choice for production agents.</li>
+  <li><strong>Claude Code</strong>, the CLI agent harness. Anthropic's opinionated wrapper around the API that ships permissions, hooks, skills, MCP support, and memory. For most agent builders this is the right starting point. See <a href="../claude-code/index.html">Claude Code overview</a>.</li>
+</ol>
+
+<h2>Pricing, at a glance.</h2>
+<p>Claude is priced per token, input and output counted separately. A few things to know:</p>
+
 <ul>
-  <li><strong>Tool use is first-class.</strong> Structured tool-calling with retries, JSON schemas, and parallel calls baked into the API.</li>
-  <li><strong>Long context window.</strong> Up to 1M tokens on some models, enough for large codebases or multi-document RAG.</li>
-  <li><strong>Extended thinking.</strong> The model can reason internally before answering. Useful for hard planning tasks. See <a href="extended-thinking.html">Extended thinking</a>.</li>
-  <li><strong>Prompt caching.</strong> Materially cheaper for repeated-context workflows like agents.</li>
-  <li><strong>Safety tuning.</strong> Trained to refuse obviously bad requests and to be careful with dangerous actions.</li>
+  <li><strong>Output costs ~5× input.</strong> The model pays more for what it generates than for what you send it.</li>
+  <li><strong>Extended thinking counts as output.</strong> A reasoning budget of 10k tokens costs what 10k output tokens cost. Worth it on hard problems; wasted on easy ones.</li>
+  <li><strong>Prompt caching gets you ~90% off cached portions.</strong> Huge for agents with stable system prompts.</li>
+  <li><strong>Opus &gt; Sonnet &gt; Haiku on price, roughly 5× per tier.</strong> Opus is expensive; Haiku is cheap enough to run in parallel.</li>
 </ul>
 
-<h2>How it compares</h2>
-<p>Honest take: GPT-4 and Gemini are also strong. For pure language tasks they're comparable. For agent work, Claude has a real edge on:</p>
+<p>For a well-designed agent with caching + the right model per task, the economics usually work out much better than you'd expect. The raw per-token prices look high; once you account for caching and tier selection, a typical daily-running agent costs single-digit dollars a month.</p>
+
+<h2>Where to go from here.</h2>
 <ul>
-  <li>Multi-turn tool-use stability (fewer dropped calls)</li>
-  <li>Following complex system prompts</li>
-  <li>Refusing obviously bad tool calls when given the right framing</li>
+  <li><a href="prompting-for-agents.html">Prompting for agents</a>, how prompting changes when the model's running in a loop with tools</li>
+  <li><a href="extended-thinking.html">Extended thinking</a>, when to turn on the reasoning budget and when not to</li>
+  <li><a href="tool-use.html">Tool use</a>, the mechanics of how tool calls actually work</li>
 </ul>
-<p>For image reasoning or code, the race is closer. Vendor lock-in is a real risk, prefer abstractions that let you swap models.</p>
-
-<h2>API vs. Claude.ai vs. Claude Code</h2>
-<p>Three surfaces matter:</p>
-<ul>
-  <li><strong>Claude API.</strong> Direct programmatic access. Use for building your own agents.</li>
-  <li><strong>Claude.ai.</strong> The chat interface. Good for exploration, not for production agents.</li>
-  <li><strong>Claude Code.</strong> The CLI agent harness. Anthropic's opinionated wrapper around the API with permissions, hooks, skills, and MCP support. See <a href="../claude-code/index.html">Claude Code overview</a>.</li>
-</ul>
-
-<h2>Pricing model (directional)</h2>
-<p>Priced per-token, input and output separately. Output tokens cost 5× input. Prompt caching reduces input cost by ~90% on cached portions. For agent workflows with stable system prompts, caching matters a lot. See <a href="../patterns/prompt-caching.html">Prompt caching</a>.</p>
 <div class="prev-next"><a href="../glossary.html" class="prev"><div class="label">← Previous</div><div class="title">Glossary</div></a><a href="prompting-for-agents.html" class="next"><div class="label">Next →</div><div class="title">Prompting for agents</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../framework/index.html">Framework</a></p>
 </div></footer><script>
