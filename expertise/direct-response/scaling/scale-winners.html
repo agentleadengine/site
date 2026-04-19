@@ -234,6 +234,24 @@
 <p>If any of these is uncertain, hold scale. Investing into a false winner burns real money.</p>
 
 <h2>The four scaling dimensions</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Four ways to scale a winning funnel');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Dimension', w: 220},
+    {title: 'Move', w: 580}
+  ], rows: [
+    ['More budget', 'Keep ROAS steady, spend more'],
+    ['More channels', 'Expand from one platform to many'],
+    ['More offers', 'Add products to the ladder'],
+    ['More geos / markets', 'Duplicate offer in new segment']
+  ]});
+});
+</script>
 
 <h3>1. Spend scale (within same channel, same creative)</h3>
 <p>Increase budget on the winning creative/campaign. Rules:</p>

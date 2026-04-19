@@ -222,6 +222,22 @@
 <p class="lede">The value ladder is the structured progression offers that takes a cold prospect and walks them, step by step, to your highest-value product. Classical direct marketers taught this as the info-marketing hierarchy; modern copywriting thinking systematized it as the "value ladder"; every profitable direct-response business runs one, explicitly or by accident.</p>
 
 <h2>The shape</h2>
+<div class="sketch" data-viewbox="0 0 900 340"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 340);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Value ladder: cheap → expensive');
+  sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 50, layers: [
+    {label: 'Free / lead magnet', sub: 'earn the email'},
+    {label: 'Tripwire ($7-27)', sub: 'break-even, filter buyers'},
+    {label: 'Core offer ($100-500)', sub: 'profit center'},
+    {label: 'Premium ($1k-5k)', sub: 'transformation'},
+    {label: 'High-ticket ($10k+)', sub: 'the few who pay everything'}
+  ]});
+});
+</script>
 <p>Four or five tiers, ascending in both price and value:</p>
 <ol>
  <li><strong>Free, lead magnet.</strong> Entry point; delivers concrete value; qualifies the prospect.</li>

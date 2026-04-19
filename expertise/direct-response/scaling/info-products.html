@@ -232,6 +232,25 @@
 </ul>
 
 <h2>The info product spectrum</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Info product ladder');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Format', w: 220},
+    {title: 'Typical price / fit', w: 580}
+  ], rows: [
+    ['Ebook / PDF', '$7–47; tripwire'],
+    ['Video course', '$97–997; core offer'],
+    ['Membership / SaaS', '$29–299/mo; recurring'],
+    ['Group coaching', '$1k–5k; higher touch'],
+    ['1-on-1 / mastermind', '$10k+; premium']
+  ]});
+});
+</script>
 
 <h3>$7, 47. Tripwires / short courses</h3>
 <p>1, 5 hours of content solving a specific narrow problem. Built fast, sold in volume. Purpose: customer acquisition more than revenue. See <a href="value-ladder.html">value ladder</a>.</p>
