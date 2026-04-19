@@ -219,64 +219,173 @@
 <a href="../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../what-is-autonomous-ai.html">What is autonomous AI</a></li><li><a href="../the-autonomy-spectrum.html">The autonomy spectrum</a></li><li><a href="../glossary.html">Glossary</a></li></ul><h4>Claude</h4><ul><li><a href="../claude/overview.html">Overview</a></li><li><a href="../claude/prompting-for-agents.html">Prompting for agents</a></li><li><a href="../claude/extended-thinking.html">Extended thinking</a></li><li><a href="../claude/tool-use.html">Tool use</a></li></ul><h4>MCP</h4><ul><li><a href="../mcp/index.html">Overview</a></li><li><a href="../mcp/what-is-mcp.html">What is MCP</a></li><li><a href="../mcp/anatomy.html">Anatomy</a></li><li><a href="../mcp/transports.html">Transports</a></li><li><a href="../mcp/servers.html">Servers</a></li><li><a href="../mcp/clients.html">Clients</a></li><li><a href="../mcp/security.html">Security</a></li><li><a href="../mcp/directory.html">Directory</a></li></ul><h4>Plugins</h4><ul><li><a href="../plugins/index.html">Overview</a></li><li><a href="../plugins/vs-mcp.html">Plugins vs MCP</a></li><li><a href="../plugins/marketplace.html">Marketplace</a></li></ul><h4>Claude Code</h4><ul><li><a href="../claude-code/index.html">Overview</a></li><li><a href="../claude-code/settings.html">Settings</a></li><li><a href="../claude-code/permissions.html">Permissions</a></li><li><a href="../claude-code/hooks.html">Hooks</a></li><li><a href="../claude-code/skills.html">Skills</a></li><li><a href="../claude-code/memory.html">Memory</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/index.html">Overview</a></li><li><a href="../patterns/react-loop.html">ReAct loop</a></li><li><a href="../patterns/plan-execute.html">Plan-execute</a></li><li><a href="../patterns/multi-agent.html">Multi-agent</a></li><li><a href="../patterns/evaluation.html">Evaluation</a></li><li><a href="../patterns/prompt-caching.html">Prompt caching</a></li></ul><h4>Autonomous</h4><ul><li><a href="../autonomous/index.html">Overview</a></li><li><a href="../autonomous/headless.html">Headless</a></li><li><a href="../autonomous/scheduling.html" class="active">Scheduling</a></li><li><a href="../autonomous/self-monitoring.html">Self-monitoring</a></li><li><a href="../autonomous/safety.html">Safety</a></li></ul><h4>Build Guides</h4><ul><li><a href="../build/index.html">Overview</a></li><li><a href="../build/first-agent.html">First agent (60 min)</a></li><li><a href="../build/voice-agent.html">Voice agent</a></li><li><a href="../build/research-agent.html">Research agent</a></li></ul><h4>Tools</h4><ul><li><a href="../tools/browser-automation.html">Browser automation</a></li><li><a href="../tools/desktop-control.html">Desktop control</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Framework</a><span class="sep">›</span><a href="../autonomous/index.html">Autonomous</a><span class="sep">›</span><span>Scheduling</span></div><h1 class="title" style="font-size:clamp(32px,4.5vw,42px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">Scheduling</h1><div class="article-meta"><span>📖 5 min read</span><span>Updated 2026-04-18</span></div>
-<p class="lede">A headless agent needs to be started by something. That something is a scheduler (time-based) or a trigger (event-based). Picking the right one is architecture.</p>
+<p class="lede">A headless agent can't start itself. Something has to fire it. That something is either a <strong>scheduler</strong> (fires at a time) or a <strong>trigger</strong> (fires on an event). This page is about picking the right one for your task, and the operational details that separate an agent that runs forever from one that silently breaks on a Tuesday.</p>
 
-<h2>Time-based scheduling</h2>
+<h2>Schedulers vs. triggers. The shape of the choice.</h2>
+<p>Every scheduled agent is one of two architectures:</p>
 
-<h3>Cron (traditional)</h3>
-<p>Old reliable. A crontab entry on a server that runs your agent script at specified intervals.</p>
-<pre><code># Every weekday at 9am: generate daily report
+<div class="sketch" data-viewbox="0 0 900 240" id="dg-sched-vs-trig">
+  <svg></svg>
+  <div class="sketch-caption">~ scheduler or trigger — pick one ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-sched-vs-trig');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.compare(svg, rc, {
+    x: 30, y: 30, w: 840, h: 190,
+    left: {
+      title: 'Time-based (scheduler)',
+      items: [
+        'Fires on a clock (every hour, 9am weekdays)',
+        'Good for recurring batch work',
+        'Examples: daily report, hourly monitor',
+        'Tools: cron, Cloud Scheduler, /loop'
+      ]
+    },
+    right: {
+      title: 'Event-based (trigger)',
+      items: [
+        'Fires on an event (webhook, queue message)',
+        'Good for reactive work',
+        'Examples: new issue filed, form submitted',
+        'Tools: webhooks, queues, event buses'
+      ]
+    }
+  });
+});
+</script>
+
+<p>When in doubt: if the work happens at a known time, scheduler. If the work happens in response to something else, trigger. A few workflows benefit from both (scheduled cleanup plus event-based urgent runs), but start with one.</p>
+
+<h2>Time-based scheduling options.</h2>
+
+<h3>Cron. The old reliable.</h3>
+<p>A crontab entry on a server that runs your agent script at fixed times:</p>
+
+<pre><code># Every weekday at 9am, generate the daily report
 0 9 * * 1-5 /usr/local/bin/claude-daily-report.sh</code></pre>
-<p>Pros: simple, free, everywhere. Cons: single-node; no retry on failure; hard to monitor.</p>
 
-<h3>Claude Code's /loop and /schedule</h3>
-<p>Built-in skills for recurring work. <code>/loop 5m /my-skill</code> runs a skill every 5 minutes; <code>/schedule</code> sets up remote triggers.</p>
+<p><strong>Pros:</strong> simple, free, works everywhere there's Unix. <strong>Cons:</strong> single-node (cron dies, agent dies). No retry on failure by default. Monitoring is your problem. Good for personal use or small setups; not great for business-critical.</p>
 
-<h3>Cloud scheduler</h3>
-<p>Google Cloud Scheduler, AWS EventBridge, Cloudflare Cron. Managed. Better monitoring and retry than cron.</p>
+<h3>Claude Code's <code>/loop</code> and <code>/schedule</code>.</h3>
+<p>Claude Code has built-in recurring-run skills. <code>/loop 5m /my-skill</code> runs a skill every 5 minutes while Claude Code is open. <code>/schedule</code> can set up server-side triggers. Convenient for development; not a replacement for a real production scheduler.</p>
 
-<h2>Event-based triggers</h2>
+<h3>Managed cloud schedulers.</h3>
+<p>Google Cloud Scheduler, AWS EventBridge, Cloudflare Cron Triggers. All managed services that trigger HTTP endpoints on a schedule. You pay a few cents a month; you get retry, monitoring, and HA out of the box. This is the right choice for anything you actually depend on.</p>
 
-<h3>Webhooks</h3>
-<p>Service X emits an event (new email, new issue, new customer); your endpoint catches it and triggers an agent.</p>
+<h2>Event-based trigger options.</h2>
 
-<h3>Polling-to-event</h3>
-<p>If the service doesn't emit webhooks, poll it on a schedule, detect changes, fire the agent only on new data.</p>
+<h3>Webhooks.</h3>
+<p>Another service emits an event (new email, new GitHub issue, new Stripe charge); your endpoint catches it and fires the agent. The cleanest model when the source system supports it.</p>
 
-<h3>Message queues</h3>
-<p>For high-volume or multi-tenant agent work: Redis streams, SQS, RabbitMQ. Agent workers consume from the queue.</p>
+<h3>Polling-to-event.</h3>
+<p>If the source doesn't do webhooks, you poll it on a schedule, diff against last-seen state, and fire the agent only on changes. More work than webhooks but more general.</p>
 
-<h2>Choosing the right cadence</h2>
+<h3>Message queues.</h3>
+<p>Redis streams, SQS, RabbitMQ, etc. Multiple agent workers consume from the queue, one per message. This is the pattern for high-volume or multi-tenant agent work where you need to process many events concurrently without overloading any single agent.</p>
+
+<h2>The right cadence for the task.</h2>
+
+<div class="sketch" data-viewbox="0 0 900 290" id="dg-cadence">
+  <svg></svg>
+  <div class="sketch-caption">~ cadence → architecture ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-cadence');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.table(svg, rc, {
+    x: 20, y: 30,
+    cols: [
+      { title: 'Cadence',            w: 180 },
+      { title: 'Right architecture', w: 310 },
+      { title: 'Why',                w: 390 }
+    ],
+    rows: [
+      ['Seconds',          'event triggers, never polling',      'polling this fast is wasteful + expensive'],
+      ['Minutes',          'webhooks if source supports them',   'polling OK only if the source is cheap'],
+      ['Hourly / daily',   'cron or managed cloud scheduler',    'classic fit; use managed for anything real'],
+      ['Weekly / monthly', 'cloud scheduler, keep it simple',    'one-off scripts usually not worth it']
+    ]
+  });
+});
+</script>
+
+<h2>What a scheduled run needs to get right.</h2>
+<p>Four properties separate agents that survive from agents that cause incidents:</p>
+
+<div class="sketch" data-viewbox="0 0 900 270" id="dg-sched-design">
+  <svg></svg>
+  <div class="sketch-caption">~ four design rules for scheduled runs ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-sched-design');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.table(svg, rc, {
+    x: 20, y: 30,
+    cols: [
+      { title: 'Rule',                w: 210 },
+      { title: 'Why it matters',      w: 360 },
+      { title: 'How to implement',    w: 310 }
+    ],
+    rows: [
+      ['Idempotency',         'runs will execute twice sometimes',   'use a "last-run" marker; agent skips done work'],
+      ['Bounded time',        'jobs without deadlines eat budgets',  '--max-turns + shell timeout'],
+      ['Graceful degradation','dependency outages shouldn\'t page you','on error: log + skip, not crash'],
+      ['Status reporting',    'silent success ≠ success',            'every run reports to log/Slack/dashboard']
+    ]
+  });
+});
+</script>
+
+<h2>What happens when runs overlap.</h2>
+<p>At some point, run N hasn't finished when run N+1 is scheduled. You need to decide what happens:</p>
+
 <ul>
-  <li><strong>Seconds</strong>, use event triggers, not polling. Polling this fast is expensive.</li>
-  <li><strong>Minutes</strong>, polling OK if the source is cheap; webhooks better.</li>
-  <li><strong>Hourly / daily</strong>, cron or cloud scheduler. Straightforward.</li>
-  <li><strong>Weekly / monthly</strong>, scheduled, probably overkill to script unless the task is large.</li>
+  <li><strong>Skip.</strong> If N is still running, don't start N+1. Safest default. You might miss a data point, but nothing collides. Good for recurring reports.</li>
+  <li><strong>Queue.</strong> Start N+1 after N finishes. Good for queue-based work where every run must eventually happen.</li>
+  <li><strong>Parallel.</strong> Start N+1 regardless. Only works if the runs are truly independent (don't touch shared state). Rare in practice.</li>
 </ul>
 
-<h2>Designing for scheduled runs</h2>
+<p>Pick the behavior explicitly. Default "skip" until you have a reason to change.</p>
+
+<h2>Observability. The difference between "runs fine" and "broken for three weeks."</h2>
+<p>Scheduled agents are invisible. You don't sit and watch them. If something goes wrong, you don't find out until a human notices the report didn't arrive. That's weeks of silent failure sometimes.</p>
+
+<p>Fix this with three instruments:</p>
+
 <ul>
-  <li><strong>Idempotency.</strong> If the job runs twice (it will), it shouldn't cause problems. Use a "last-run" marker so the agent skips work it's already done.</li>
-  <li><strong>Bounded time.</strong> Every run should have a deadline. Set <code>--max-turns</code>; set a wall-clock timeout at the shell level.</li>
-  <li><strong>Graceful degradation.</strong> If a dependency is down (API outage), the agent should log and skip, not fail loudly and require manual intervention.</li>
-  <li><strong>Status reporting.</strong> Every run reports success/failure somewhere, a log file, a Slack channel, a dashboard.</li>
+  <li><strong>Dead-man's-switch heartbeats.</strong> Every successful run pings a service like Healthchecks.io or BetterUptime. If the ping doesn't arrive at the expected time, THEY alert you. You don't have to watch; you have to set it up once.</li>
+  <li><strong>Cost tracking.</strong> Tag every API call with the agent's name. Set a monthly budget alert. A broken agent that fires ten thousand times can spend thousands of dollars before anyone looks. Alerts save you.</li>
+  <li><strong>Output auditing.</strong> Save every run's final output somewhere you can search. Later, when something goes sideways, you can actually see what the agent produced on a given day. Without this, debugging is guessing.</li>
 </ul>
 
-<h2>Overlap handling</h2>
-<p>What if run N is still going when run N+1 is scheduled? Three options:</p>
-<ul>
-  <li><strong>Skip.</strong> Don't start N+1 if N is still running. Safest default.</li>
-  <li><strong>Queue.</strong> Wait for N, then start N+1. Good for queue-based work.</li>
-  <li><strong>Parallel.</strong> Start N+1 regardless. Only if the tasks are truly independent.</li>
-</ul>
+<h2>The implementation checklist.</h2>
+<ol>
+  <li>Pick scheduler-type (time or event) based on the task shape.</li>
+  <li>Pick cadence; use the table above.</li>
+  <li>Make the run idempotent (last-run markers, deduping).</li>
+  <li>Set <code>--max-turns</code> and a wall-clock timeout.</li>
+  <li>Decide overlap policy (skip / queue / parallel).</li>
+  <li>Wire up a heartbeat service.</li>
+  <li>Turn on cost alerting, tagged by agent.</li>
+  <li>Save outputs somewhere queryable.</li>
+  <li>Run manually once. Fix what breaks. THEN schedule it.</li>
+  <li>Review the logs weekly for the first month. Pattern-match for drift.</li>
+</ol>
 
-<h2>Observability</h2>
-<p>Scheduled agents are background agents. You don't see them. You need instruments.</p>
-<ul>
-  <li><strong>Heartbeats.</strong> Every successful run pings a dead-man's-switch (Healthchecks.io, BetterUptime). If the ping doesn't arrive, you get alerted.</li>
-  <li><strong>Cost tracking.</strong> Tag every API call with the agent name; bill alerts.</li>
-  <li><strong>Output auditing.</strong> Save every run's output somewhere queryable.</li>
-</ul>
+<p>Every item is cheap. Skipping any of them is how scheduled agents cause real problems.</p>
 <div class="prev-next"><a href="headless.html" class="prev"><div class="label">← Previous</div><div class="title">Headless mode</div></a><a href="self-monitoring.html" class="next"><div class="label">Next →</div><div class="title">Self-monitoring</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../framework/index.html">Framework</a></p>
 </div></footer><script>
