@@ -232,6 +232,25 @@
 </ul>
 
 <h2>The five decision dimensions</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'How to pick an embedding model');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Dimension', w: 200},
+    {title: 'Question to answer', w: 600}
+  ], rows: [
+    ['Quality (MTEB)', 'Does it lead on tasks similar to yours?'],
+    ['Dimensions', '384 / 768 / 1536 / 3072? MRL-capable?'],
+    ['Context window', 'Will your chunks fit?'],
+    ['Closed vs open', 'API convenience vs self-host control'],
+    ['Cost at your scale', '$ per million tokens × reindex cadence']
+  ]});
+});
+</script>
 
 <h3>1. Quality</h3>
 <p>Proxy: MTEB score, or better, your own eval set. Test 2-3 candidate models against a held-out set of real queries.</p>

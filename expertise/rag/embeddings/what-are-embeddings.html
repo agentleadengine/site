@@ -222,6 +222,22 @@
 <p class="lede">An embedding is a vector of numbers that represents a piece of text. Two pieces of text with similar meaning produce vectors that point in similar directions. That's the entire idea. The rest is engineering: which model produces those vectors, how many dimensions, at what cost, for what content.</p>
 
 <h2>The geometry</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Similar text → nearby points');
+  sketch.circle(svg, rc, {cx: 250, cy: 150, r: 50, title: '"dog"', sub: ''});
+  sketch.circle(svg, rc, {cx: 340, cy: 170, r: 45, title: '"puppy"', sub: ''});
+  sketch.circle(svg, rc, {cx: 640, cy: 150, r: 50, title: '"spaceship"', sub: ''});
+  sketch.circle(svg, rc, {cx: 720, cy: 180, r: 45, title: '"rocket"', sub: ''});
+  sketch.note(svg, 290, 240, 'close = related meaning', {size: 13});
+  sketch.note(svg, 680, 240, 'close = related meaning', {size: 13});
+  sketch.note(svg, 460, 90, 'far apart = unrelated', {size: 13});
+});
+</script>
 <p>Embedding models map text into a high-dimensional space (typically 768, 1024, 1536, or 3072 dimensions). In this space:</p>
 <ul>
   <li>"Reset my password" and "I forgot my login" are close (similar meaning)</li>
