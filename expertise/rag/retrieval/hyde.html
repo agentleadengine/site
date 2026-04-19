@@ -227,6 +227,21 @@
 <p>The LLM's factual accuracy doesn't matter for retrieval, only its structural and vocabulary similarity to real documents.</p>
 
 <h2>The flow</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'HyDE: answer first, then search');
+  sketch.numberedSteps(svg, rc, {direction: 'h', x: 30, y: 80, w: 840, items: [
+    {title: 'Query', sub: 'user question'},
+    {title: 'LLM drafts answer', sub: 'hypothetical doc'},
+    {title: 'Embed the draft', sub: 'not the query'},
+    {title: 'Search index', sub: 'returns real docs'}
+  ]});
+});
+</script>
 <pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
 1. User query: "How do I set up OAuth with Google?"
 2. LLM prompt: "Write a short passage that would answer this question"

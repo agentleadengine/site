@@ -222,6 +222,20 @@
 <p class="lede">Vector similarity search is the baseline retrieval operation in RAG: embed the query, find the nearest neighbors in your index, return the top-k. It's deceptively simple. The nuances are in top-k choice, similarity metrics, and what you do with the results.</p>
 
 <h2>The basic flow</h2>
+<div class="sketch" data-viewbox="0 0 900 240"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 240);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Vector search in three moves');
+  sketch.numberedSteps(svg, rc, {direction: 'h', x: 30, y: 80, w: 840, items: [
+    {title: 'Embed query', sub: 'one vector'},
+    {title: 'Search index', sub: 'find nearest-k'},
+    {title: 'Return chunks', sub: 'with scores'}
+  ]});
+});
+</script>
 <ol>
   <li>User submits query</li>
   <li>Embed query with the same model used for the corpus</li>

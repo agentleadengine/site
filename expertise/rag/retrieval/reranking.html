@@ -227,6 +227,20 @@
 <p>The pattern: retrieve cheaply, rerank precisely.</p>
 
 <h2>The flow</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Rerank = retrieve wide, then narrow');
+  sketch.numberedSteps(svg, rc, {direction: 'h', x: 30, y: 80, w: 840, items: [
+    {title: 'Retrieve top-50', sub: 'fast bi-encoder'},
+    {title: 'Score each', sub: 'cross-encoder reads query+doc together'},
+    {title: 'Keep top-5', sub: 'pass to LLM'}
+  ]});
+});
+</script>
 <pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
 1. Initial retrieval returns top-50 or top-100 candidates
 2. Reranker scores each (query, candidate) pair

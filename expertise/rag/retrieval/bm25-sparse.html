@@ -232,6 +232,29 @@
 <p>The score rewards documents that have the query's rare terms at reasonable frequency, normalized by length.</p>
 
 <h2>When BM25 wins over dense</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'BM25 vs dense embeddings');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'BM25 wins', items: [
+      'Exact identifiers (SKU, error code)',
+      'Rare acronyms / company terms',
+      'Negation phrases',
+      'Very short queries'
+    ]},
+    right: {title: 'Dense wins', items: [
+      'Semantic paraphrases',
+      'Synonyms not in corpus',
+      'Multi-concept queries',
+      'Cross-lingual retrieval'
+    ]}
+  });
+});
+</script>
 <ul>
   <li>Exact identifier matches (SKU-12345, error code E-47, UUID)</li>
   <li>Proper nouns not well-represented in embedding training data (company-specific terms, acronyms)</li>

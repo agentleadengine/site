@@ -222,6 +222,26 @@
 <p class="lede">A single query embedding represents one angle on what the user wants. Multi-query retrieval generates several variations, retrieves for each, and fuses the results. It's a robust way to improve recall on tricky queries at the cost of more compute.</p>
 
 <h2>The pattern</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Multi-query: one question → N searches');
+  sketch.box(svg, rc, {x: 60, y: 90, w: 180, h: 70, title: 'Original query'});
+  sketch.box(svg, rc, {x: 290, y: 30, w: 180, h: 50, title: 'Variant 1'});
+  sketch.box(svg, rc, {x: 290, y: 100, w: 180, h: 50, title: 'Variant 2'});
+  sketch.box(svg, rc, {x: 290, y: 170, w: 180, h: 50, title: 'Variant 3'});
+  sketch.box(svg, rc, {x: 560, y: 90, w: 180, h: 70, title: 'Fuse results'});
+  sketch.arrow(svg, rc, {x1: 240, x2: 290, y1: 120, y2: 55, bidirectional: false});
+  sketch.arrow(svg, rc, {x1: 240, x2: 290, y: 125, bidirectional: false});
+  sketch.arrow(svg, rc, {x1: 240, x2: 290, y1: 130, y2: 195, bidirectional: false});
+  sketch.arrow(svg, rc, {x1: 470, x2: 560, y1: 55, y2: 110, bidirectional: false});
+  sketch.arrow(svg, rc, {x1: 470, x2: 560, y: 125, bidirectional: false});
+  sketch.arrow(svg, rc, {x1: 470, x2: 560, y1: 195, y2: 140, bidirectional: false});
+});
+</script>
 <ol>
   <li>Take the user's original query</li>
   <li>Use an LLM to generate N variations (paraphrases, sub-questions, step-back questions, HyDE passages)</li>

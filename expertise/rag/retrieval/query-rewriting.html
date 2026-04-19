@@ -240,6 +240,25 @@
 <p>User says "login not working"; docs say "authentication failures." Rewriting to include synonyms bridges the gap.</p>
 
 <h2>The rewriting patterns</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Common query-rewrite moves');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Pattern', w: 220},
+    {title: 'What it does', w: 580}
+  ], rows: [
+    ['Expand', 'Add synonyms, related terms'],
+    ['Decompose', 'Break a multi-part question into sub-queries'],
+    ['Disambiguate', 'Resolve pronouns using conversation history'],
+    ['Specify', 'Add domain context the user left implicit'],
+    ['Normalize', 'Rephrase colloquial to formal']
+  ]});
+});
+</script>
 
 <h3>1. Contextualization</h3>
 <p>Rewrite the query to resolve pronouns and implicit context from conversation history.</p>

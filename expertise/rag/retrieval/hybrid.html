@@ -222,6 +222,25 @@
 <p class="lede">Hybrid retrieval runs dense (vector) and sparse (BM25) searches and combines their results. It's the production default for any serious RAG system. This page covers the specific mechanics of how fusion works and where the tuning knobs are.</p>
 
 <h2>The architecture</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Hybrid retrieval pipeline');
+  sketch.box(svg, rc, {x: 60, y: 90, w: 160, h: 70, title: 'Query'});
+  sketch.box(svg, rc, {x: 300, y: 40, w: 160, h: 70, title: 'Dense top-k'});
+  sketch.box(svg, rc, {x: 300, y: 170, w: 160, h: 70, title: 'BM25 top-k'});
+  sketch.box(svg, rc, {x: 540, y: 105, w: 160, h: 70, title: 'Fuse (RRF)'});
+  sketch.box(svg, rc, {x: 770, y: 105, w: 100, h: 70, title: 'Rerank'});
+  sketch.arrow(svg, rc, {x1: 220, x2: 300, y1: 120, y2: 75, bidirectional: false});
+  sketch.arrow(svg, rc, {x1: 220, x2: 300, y1: 130, y2: 205, bidirectional: false});
+  sketch.arrow(svg, rc, {x1: 460, x2: 540, y1: 75, y2: 130, bidirectional: false});
+  sketch.arrow(svg, rc, {x1: 460, x2: 540, y1: 205, y2: 145, bidirectional: false});
+  sketch.arrow(svg, rc, {x1: 700, x2: 770, y: 140, bidirectional: false});
+});
+</script>
 <pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
               query
               /    \
