@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diagram style picker | Samuel Ochoa</title>
+<meta name="description" content="Hand-drawn diagram style: all.">
+<meta name="author" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@500;700&family=Kalam:wght@400;700&family=Permanent+Marker&family=Architects+Daughter&family=Patrick+Hand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<link rel="icon" type="image/png" href="../logo.png">
+
+<style>
+  .picker-hero { max-width: 1100px; margin: 0 auto; padding: 48px 24px 16px; }
+  .picker-hero h1 { font-size: clamp(32px, 4.5vw, 48px); font-weight: 800; letter-spacing: -0.03em; margin: 0 0 10px; }
+  .picker-hero p.lede { font-size: 18px; line-height: 1.6; color: #525258; max-width: 760px; }
+  .picker-grid { max-width: 1100px; margin: 24px auto 80px; padding: 0 24px; display: grid; grid-template-columns: 1fr; gap: 32px; }
+  .style-card { background: #ffffff; border: 1px solid #e5e5ea; border-radius: 16px; padding: 24px 24px 32px; box-shadow: 0 2px 8px rgba(0,0,0,0.03); transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease; }
+  .style-card:hover { border-color: #c7b9ff; box-shadow: 0 10px 28px -8px rgba(74,0,224,0.15); transform: translateY(-2px); }
+  .style-header { display:flex; align-items:baseline; gap: 14px; margin-bottom: 6px; flex-wrap: wrap; }
+  .style-num { display:inline-flex; align-items:center; justify-content:center; width: 36px; height: 36px; border-radius: 50%; background: #4a00e0; color: #fff; font-family: 'Kalam', cursive; font-weight: 700; font-size: 18px; flex-shrink: 0; }
+  .style-name { font-size: 22px; font-weight: 800; letter-spacing: -0.01em; color: #1d1d23; margin: 0; }
+  .style-open { margin-left:auto; background: #4a00e0; color:#fff; padding: 6px 14px; border-radius: 999px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; text-decoration: none; }
+  .style-open:hover { background: #7c3aed; }
+  .style-desc { font-size: 15px; color: #525258; line-height: 1.55; margin: 6px 0 18px 50px; }
+  .style-stage { margin-top: 8px; border-radius: 12px; overflow: hidden; padding: 20px 12px; }
+  .style-stage svg { display: block; width: 100%; height: auto; max-width: 860px; margin: 0 auto; }
+  .style-stage svg text { font-family: 'Kalam', 'Caveat', cursive; }
+  .style-meta { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8b8b93; margin: 12px 0 0 50px; }
+  .back-link { display: inline-block; padding: 8px 16px; background: #f1ecff; color: #4a00e0; border-radius: 8px; text-decoration: none; font-weight: 600; margin-bottom: 20px; }
+</style>
+</head>
+<body>
+<nav class="topbar"><div class="topbar-inner">
+<a href="../index.html" class="logo"><img class="brand-logo" src="../logo.png" alt="Samuel Ochoa"></a>
+<div class="nav-links"><a href="../index.html">Home</a></div>
+</div></nav>
+
+<div class="picker-hero">
+  <a href="../index.html" class="back-link">← Back home</a>
+  <h1>Diagram style picker.</h1>
+  <p class="lede">Ten different hand-drawn looks, each rendering the same tiny reference diagram (Model ↔ Client ↔ Server) so you can compare cleanly. Click "Open full-size" on any card to see that style on its own page.</p>
+</div>
+
+<div class="picker-grid">
+
+  <div class="style-card">
+    <div class="style-header">
+      <span class="style-num">1</span>
+      <h2 class="style-name">Pencil Sketch</h2>
+      <a href="01-pencil-sketch.html" class="style-open">Open full-size</a>
+    </div>
+    <p class="style-desc">Graphite on white. Outline-only, no fills. Quietly confident. Feels like a thought scribbled onto a napkin during a good conversation.</p>
+    <div class="style-meta">rough: 2.8 · stroke: #2a2a30 · font: Kalam</div>
+    <div class="style-stage" style="background:#ffffff;"><svg id="s1" viewBox="0 0 860 280"></svg></div>
+  </div>
+
+  <div class="style-card">
+    <div class="style-header">
+      <span class="style-num">2</span>
+      <h2 class="style-name">Purple Marker on Cream</h2>
+      <a href="02-purple-marker.html" class="style-open">Open full-size</a>
+    </div>
+    <p class="style-desc">Bold purple strokes on a warm cream background, with soft lavender fills. Matches the site's brand palette most directly. Feels like a sharpie sketch on a designer's notepad.</p>
+    <div class="style-meta">rough: 1.8 · stroke: #4a00e0 · fill: #f1ecff · font: Kalam Bold</div>
+    <div class="style-stage" style="background:#faf7f2;"><svg id="s2" viewBox="0 0 860 280"></svg></div>
+  </div>
+
+  <div class="style-card">
+    <div class="style-header">
+      <span class="style-num">3</span>
+      <h2 class="style-name">Architect Blueprint</h2>
+      <a href="03-blueprint.html" class="style-open">Open full-size</a>
+    </div>
+    <p class="style-desc">White lines on deep blueprint blue, with a faint grid. Reads as technical and precise even when sketchy. Great for architecture and flow diagrams where the system feels engineered.</p>
+    <div class="style-meta">rough: 1.6 · stroke: #e0e7ff · bg: #0c2d6b · grid</div>
+    <div class="style-stage" style="background:#0c2d6b; background-image: linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px); background-size: 24px 24px;"><svg id="s3" viewBox="0 0 860 280"></svg></div>
+  </div>
+
+  <div class="style-card">
+    <div class="style-header">
+      <span class="style-num">4</span>
+      <h2 class="style-name">Notebook Blue Ink</h2>
+      <a href="04-notebook-blue-ink.html" class="style-open">Open full-size</a>
+    </div>
+    <p class="style-desc">Blue ballpoint on lined paper. Slightly crooked, like you actually wrote it in a moleskine. Warm, personal, like a first draft somebody later built a company on.</p>
+    <div class="style-meta">rough: 2.2 · stroke: #1e40af · bg: lined paper · font: Caveat</div>
+    <div class="style-stage" style="background:#fefef5; background-image: repeating-linear-gradient(transparent 0 30px, rgba(100,150,200,0.15) 30px 31px);"><svg id="s4" viewBox="0 0 860 280"></svg></div>
+  </div>
+
+  <div class="style-card">
+    <div class="style-header">
+      <span class="style-num">5</span>
+      <h2 class="style-name">Chalkboard</h2>
+      <a href="05-chalkboard.html" class="style-open">Open full-size</a>
+    </div>
+    <p class="style-desc">Classroom at midnight. White chalk, dark slate, a gold accent. Dramatic for hero diagrams, heavy for inline ones. Makes everything feel like a lesson being taught live.</p>
+    <div class="style-meta">rough: 2.5 · stroke: #f5f5f5 · bg: #1a1a2e · accent: #ffd700</div>
+    <div class="style-stage" style="background:#1a1a2e;"><svg id="s5" viewBox="0 0 860 280"></svg></div>
+  </div>
+
+  <div class="style-card">
+    <div class="style-header">
+      <span class="style-num">6</span>
+      <h2 class="style-name">Highlighter Multicolor</h2>
+      <a href="06-highlighter.html" class="style-open">Open full-size</a>
+    </div>
+    <p class="style-desc">Dark pencil outlines, each box filled with a different highlighter pastel. Playful without being childish. Great when a diagram has distinct entities you want to differentiate at a glance.</p>
+    <div class="style-meta">rough: 1.8 · stroke: #1d1d23 · fills: purple/mint/peach · font: Kalam</div>
+    <div class="style-stage" style="background:#fafafa;"><svg id="s6" viewBox="0 0 860 280"></svg></div>
+  </div>
+
+  <div class="style-card">
+    <div class="style-header">
+      <span class="style-num">7</span>
+      <h2 class="style-name">Engraving / Crosshatch</h2>
+      <a href="07-engraving.html" class="style-open">Open full-size</a>
+    </div>
+    <p class="style-desc">Classical etched textbook feel. Crosshatched shadows, aged paper, serif handwriting. Heavy but literary. Fits if you want the site to feel more like a printed manual and less like a web page.</p>
+    <div class="style-meta">rough: 2.2 · stroke: #1a1a1a · fill: cross-hatch · bg: #fdfbf5</div>
+    <div class="style-stage" style="background:#fdfbf5;"><svg id="s7" viewBox="0 0 860 280"></svg></div>
+  </div>
+
+  <div class="style-card">
+    <div class="style-header">
+      <span class="style-num">8</span>
+      <h2 class="style-name">Neon Ink (Dark)</h2>
+      <a href="08-neon-ink.html" class="style-open">Open full-size</a>
+    </div>
+    <p class="style-desc">Hot magenta strokes on near-black, with soft glow. Feels modern and tech-forward. Pairs with a dark-mode site or dark sections within a light one.</p>
+    <div class="style-meta">rough: 1.6 · stroke: #c026d3 · bg: #0a0a1a · glow filter</div>
+    <div class="style-stage" style="background:#0a0a1a;"><svg id="s8" viewBox="0 0 860 280"></svg></div>
+  </div>
+
+  <div class="style-card">
+    <div class="style-header">
+      <span class="style-num">9</span>
+      <h2 class="style-name">Technical Dots</h2>
+      <a href="09-technical-dots.html" class="style-open">Open full-size</a>
+    </div>
+    <p class="style-desc">Subtle purple outlines with dotted fills. The most "designed" of the ten. Clean enough to ship on a landing page, hand-drawn enough to feel personal. Strong candidate for inline diagrams in deep pages.</p>
+    <div class="style-meta">rough: 1.2 · stroke: #4a00e0 · fillStyle: dots · minimal</div>
+    <div class="style-stage" style="background:#ffffff; background-image: radial-gradient(#4a00e020 1px, transparent 1px); background-size: 18px 18px;"><svg id="s9" viewBox="0 0 860 280"></svg></div>
+  </div>
+
+  <div class="style-card">
+    <div class="style-header">
+      <span class="style-num">10</span>
+      <h2 class="style-name">iPad Procreate Sketch</h2>
+      <a href="10-ipad-procreate.html" class="style-open">Open full-size</a>
+    </div>
+    <p class="style-desc">My best attempt at "you drew this on your iPad while thinking out loud." Bold dark strokes, soft purple zigzag fills, hand-written labels with a bit of attitude. Most expressive of the ten.</p>
+    <div class="style-meta">rough: 2 · stroke: #1d1d23 · fill: zigzag purple · font: Kalam Bold</div>
+    <div class="style-stage" style="background:#faf8ff;"><svg id="s10" viewBox="0 0 860 280"></svg></div>
+  </div>
+
+</div>
+
+<footer><div class="container" style="max-width:1100px; padding:20px 24px 40px;">
+<p>&copy; 2026 Samuel Ochoa. <a href="../index.html">Home</a> . <a href="../framework/index.html">Framework</a></p>
+</div></footer>
+
+
+<script src="https://unpkg.com/roughjs@4.6.6/bundled/rough.js"></script>
+<script>
+(function(){
+  if (!window.rough) return;
+  const NS = 'http://www.w3.org/2000/svg';
+  const LAYOUT = [
+    { x: 40,  y: 90, w: 240, h: 140, title: 'Model',  sub: '(Claude)' },
+    { x: 340, y: 90, w: 240, h: 140, title: 'Client', sub: '(Claude Code)' },
+    { x: 640, y: 90, w: 240, h: 140, title: 'Server', sub: '(Gmail MCP)' }
+  ];
+  const ARROWS = [
+    { x1: 280, x2: 340, y: 160 },
+    { x1: 580, x2: 640, y: 160 }
+  ];
+  function addText(svg, x, y, s, opts) {
+    const t = document.createElementNS(NS, 'text');
+    t.setAttribute('x', x); t.setAttribute('y', y);
+    t.setAttribute('text-anchor', opts.anchor || 'middle');
+    t.setAttribute('fill', opts.color || '#1d1d23');
+    t.setAttribute('font-size', opts.size || '20');
+    t.setAttribute('font-weight', opts.weight || '400');
+    if (opts.font) t.setAttribute('font-family', opts.font);
+    t.textContent = s;
+    svg.appendChild(t);
+  }
+  function drawArrows(rc, svg, o) {
+    ARROWS.forEach(a => {
+      svg.appendChild(rc.line(a.x1, a.y, a.x2, a.y, {
+        roughness: o.roughness, stroke: o.stroke, strokeWidth: o.strokeWidth
+      }));
+      svg.appendChild(rc.polygon(
+        [[a.x2 - 14, a.y - 8], [a.x2, a.y], [a.x2 - 14, a.y + 8]],
+        { roughness: 1.4, stroke: o.stroke, strokeWidth: o.strokeWidth, fill: o.stroke, fillStyle: 'solid' }
+      ));
+      svg.appendChild(rc.polygon(
+        [[a.x1 + 14, a.y - 8], [a.x1, a.y], [a.x1 + 14, a.y + 8]],
+        { roughness: 1.4, stroke: o.stroke, strokeWidth: o.strokeWidth, fill: o.stroke, fillStyle: 'solid' }
+      ));
+    });
+  }
+  function drawBoxes(rc, svg, s) {
+    LAYOUT.forEach((b, i) => {
+      const fillOpt = typeof s.fillFn === 'function' ? s.fillFn(i) : {};
+      svg.appendChild(rc.rectangle(b.x, b.y, b.w, b.h, Object.assign({
+        roughness: s.roughness, stroke: s.stroke, strokeWidth: s.strokeWidth, bowing: s.bowing || 1
+      }, fillOpt)));
+      addText(svg, b.x + b.w / 2, b.y + 68, b.title, { font: s.font, size: 30, weight: 700, color: s.textColor || s.stroke });
+      addText(svg, b.x + b.w / 2, b.y + 106, b.sub, { font: s.font, size: 20, weight: 400, color: s.subColor || s.textColor || s.stroke });
+    });
+  }
+  window.__renderDiagram = function(svgId, style) {
+    const svg = document.getElementById(svgId);
+    if (!svg) return;
+    if (style.glow) {
+      const defs = document.createElementNS(NS, 'defs');
+      defs.innerHTML = '<filter id="glow-' + svgId + '" x="-50%" y="-50%" width="200%" height="200%">' +
+        '<feGaussianBlur stdDeviation="3" result="blur"/>' +
+        '<feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>' +
+        '</filter>';
+      svg.appendChild(defs);
+      const g = document.createElementNS(NS, 'g');
+      g.setAttribute('filter', 'url(#glow-' + svgId + ')');
+      svg.appendChild(g);
+      const rc = rough.svg(g);
+      drawBoxes(rc, g, style); drawArrows(rc, g, style);
+      return;
+    }
+    const rc = rough.svg(svg);
+    drawBoxes(rc, svg, style); drawArrows(rc, svg, style);
+  };
+})();
+</script>
+
+<script>
+window.__renderDiagram && window.__renderDiagram("s1", {
+    stroke: "#2a2a30",
+    strokeWidth: 1.5,
+    roughness: 2.8,
+    bowing: 2,
+    font: "'Kalam', cursive",
+    textColor: "#1d1d23",
+    subColor: "#525258",
+    fillFn: () => ({})
+});
+window.__renderDiagram && window.__renderDiagram("s2", {
+    stroke: "#4a00e0",
+    strokeWidth: 3,
+    roughness: 1.8,
+    bowing: 1,
+    font: "'Kalam', cursive",
+    textColor: "#4a00e0",
+    subColor: "#6b21a8",
+    fillFn: () => ({ fill: '#f1ecff', fillStyle: 'solid' })
+});
+window.__renderDiagram && window.__renderDiagram("s3", {
+    stroke: "#e0e7ff",
+    strokeWidth: 2,
+    roughness: 1.6,
+    font: "'Architects Daughter', 'Kalam', cursive",
+    textColor: "#ffffff",
+    subColor: "#c7d2fe",
+    fillFn: () => ({ fill: 'rgba(255,255,255,0.05)', fillStyle: 'hachure', hachureGap: 8, hachureAngle: -41 })
+});
+window.__renderDiagram && window.__renderDiagram("s4", {
+    stroke: "#1e40af",
+    strokeWidth: 2,
+    roughness: 2.2,
+    bowing: 2,
+    font: "'Caveat', cursive",
+    textColor: "#1e3a8a",
+    subColor: "#4338ca",
+    fillFn: () => ({})
+});
+window.__renderDiagram && window.__renderDiagram("s5", {
+    stroke: "#f5f5f5",
+    strokeWidth: 2.5,
+    roughness: 2.5,
+    font: "'Kalam', cursive",
+    textColor: "#ffffff",
+    subColor: "#ffd700",
+    fillFn: (i) => ({ fill: 'rgba(255,255,255,0.08)', fillStyle: 'hachure', hachureGap: 10, hachureAngle: i * 30 + 20 })
+});
+window.__renderDiagram && window.__renderDiagram("s6", {
+    stroke: "#1d1d23",
+    strokeWidth: 2,
+    roughness: 1.8,
+    font: "'Kalam', cursive",
+    textColor: "#1d1d23",
+    subColor: "#525258",
+    fillFn: (i) => { const palette = [{ fill: '#e9d5ff', fillStyle: 'solid' },{ fill: '#a7f3d0', fillStyle: 'solid' },{ fill: '#fed7aa', fillStyle: 'solid' }]; return palette[i]; }
+});
+window.__renderDiagram && window.__renderDiagram("s7", {
+    stroke: "#1a1a1a",
+    strokeWidth: 1.8,
+    roughness: 2.2,
+    font: "'Permanent Marker', 'Kalam', cursive",
+    textColor: "#1a1a1a",
+    subColor: "#525258",
+    fillFn: () => ({ fill: '#1a1a1a', fillStyle: 'cross-hatch', fillWeight: 0.8, hachureGap: 7 })
+});
+window.__renderDiagram && window.__renderDiagram("s8", {
+    stroke: "#c026d3",
+    strokeWidth: 2.5,
+    roughness: 1.6,
+    font: "'Caveat', cursive",
+    textColor: "#f0abfc",
+    subColor: "#c084fc",
+    glow: true,
+    fillFn: () => ({ fill: 'rgba(192,38,211,0.12)', fillStyle: 'solid' })
+});
+window.__renderDiagram && window.__renderDiagram("s9", {
+    stroke: "#4a00e0",
+    strokeWidth: 1.5,
+    roughness: 1.2,
+    bowing: 0.6,
+    font: "'Patrick Hand', 'Kalam', cursive",
+    textColor: "#4a00e0",
+    subColor: "#6b21a8",
+    fillFn: () => ({ fill: '#4a00e0', fillStyle: 'dots', fillWeight: 0.7, hachureGap: 5 })
+});
+window.__renderDiagram && window.__renderDiagram("s10", {
+    stroke: "#1d1d23",
+    strokeWidth: 2.5,
+    roughness: 2,
+    bowing: 1.5,
+    font: "'Kalam', cursive",
+    textColor: "#1d1d23",
+    subColor: "#4a00e0",
+    fillFn: () => ({ fill: '#8b5cf6', fillStyle: 'zigzag', fillWeight: 1.4, hachureGap: 10, hachureAngle: 45 })
+});
+</script>
+
+</body>
+</html>
