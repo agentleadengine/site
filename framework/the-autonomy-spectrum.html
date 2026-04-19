@@ -224,6 +224,38 @@
 <h2>The five levels.</h2>
 <p>There are five useful rungs on the ladder. Each one adds something the one below it doesn't have.</p>
 
+<div class="sketch" data-viewbox="0 0 920 380" id="dg-ladder">
+  <svg></svg>
+  <div class="sketch-caption">~ the autonomy ladder ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-ladder');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  // Five stacked rungs, each one further right and higher
+  var rungs = [
+    { n: 1, label: 'Chatbot',         sub: 'answers only' },
+    { n: 2, label: 'Assistant',       sub: '+ memory + tool' },
+    { n: 3, label: 'HITL Agent',      sub: '+ chains, asks first' },
+    { n: 4, label: 'Auto Agent',      sub: '+ pre-approved scope' },
+    { n: 5, label: 'Fully Autonomous', sub: 'runs on its own' }
+  ];
+  rungs.forEach(function(r, i) {
+    var x = 40 + i * 165;
+    var y = 310 - i * 55;
+    sketch.box(svg, rc, { x: x, y: y, w: 180, h: 70, title: r.label, sub: r.sub, titleY: 32, subY: 56, titleSize: 20, subSize: 14 });
+    // Big level number in the corner
+    sketch.note(svg, x + 15, y + 18, 'L' + r.n, { size: 16, color: '#8b5cf6' });
+  });
+  // Diagonal "trend" arrow rising
+  sketch.arrow(svg, rc, { x1: 30, x2: 860, y1: 340, y2: 5, bidirectional: false, color: '#8b5cf6' });
+  sketch.note(svg, 780, 330, 'more autonomy →', { size: 16, color: '#8b5cf6' });
+});
+</script>
+
 <h3>Level 1. Chatbot.</h3>
 <p><strong>What it is:</strong> You type, it types back. That's it. No memory of past conversations. No tools. No actions in the real world. A very fast, very well-read writing partner.</p>
 <p><strong>What it CAN do:</strong> Draft an email. Answer a question. Explain a concept. Write a poem.</p>

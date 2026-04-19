@@ -265,7 +265,33 @@
 <h2>The loop. How the four parts actually work together.</h2>
 <p>Here's the magic, plain and clear:</p>
 
-<pre style="background:#f7f5ff; border-left:3px solid #4a00e0; padding:18px 22px; border-radius:6px;"><code>Goal → [Think] → [Act] → [See result] → [Think] → [Act] → ... → Done</code></pre>
+<div class="sketch" data-viewbox="0 0 920 340" id="dg-agent-loop">
+  <svg></svg>
+  <div class="sketch-caption">~ the agent loop ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-agent-loop');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  // Four stages in a loop
+  sketch.box(svg, rc, { x: 60,  y: 60,  w: 200, h: 110, title: 'Think',   sub: 'what to do next' });
+  sketch.box(svg, rc, { x: 320, y: 60,  w: 200, h: 110, title: 'Act',     sub: 'use a tool' });
+  sketch.box(svg, rc, { x: 580, y: 60,  w: 200, h: 110, title: 'See',     sub: 'tool result' });
+  sketch.box(svg, rc, { x: 320, y: 220, w: 200, h: 90,  title: 'Done?',   sub: 'yes → stop · no → loop', subSize: 15 });
+  // Linear arrows between stages
+  sketch.arrow(svg, rc, { x1: 260, x2: 320, y: 115, label: '→', bidirectional: false });
+  sketch.arrow(svg, rc, { x1: 520, x2: 580, y: 115, label: '→', bidirectional: false });
+  // Down arrow from See to Done?
+  sketch.arrow(svg, rc, { x1: 680, x2: 520, y1: 170, y2: 265, bidirectional: false });
+  // Left arrow from Done? back to Think (loop)
+  sketch.arrow(svg, rc, { x1: 320, x2: 160, y1: 265, y2: 170, label: 'loop', bidirectional: false, color: '#8b5cf6' });
+  sketch.note(svg, 160, 40, 'GOAL', { size: 20, color: '#4a00e0' });
+  sketch.arrow(svg, rc, { x1: 160, x2: 160, y1: 48, y2: 60, bidirectional: false });
+});
+</script>
 
 <p>That's it. The model thinks (decides what to do next). The harness executes the action through one of the tools. The tool returns a result. The result goes back to the model as new information. The model thinks again, now with new information, and decides the next action. Over and over until the goal is met.</p>
 
