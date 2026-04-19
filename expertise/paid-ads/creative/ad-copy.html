@@ -222,6 +222,21 @@
 <p class="lede">Paid ad copy is short, specific, and action-oriented. It's direct response compressed into 50-150 words. Each element, hook, body, CTA, does a specific job.</p>
 
 <h2>The structure</h2>
+<div class="sketch" data-viewbox="0 0 900 240"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 240);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Ad copy structure');
+  sketch.numberedSteps(svg, rc, {direction: 'h', x: 30, y: 80, w: 840, items: [
+    {title: 'Hook', sub: 'stop the scroll'},
+    {title: 'Problem', sub: 'feel the pain'},
+    {title: 'Solution', sub: 'what you offer'},
+    {title: 'Proof + CTA', sub: 'believe + act'}
+  ]});
+});
+</script>
 <ol>
 <li><strong>Hook</strong>: first line, stops the scroll</li>
 <li><strong>Body</strong>: 1-3 sentences developing the promise</li>

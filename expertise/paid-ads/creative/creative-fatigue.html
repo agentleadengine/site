@@ -222,6 +222,24 @@
 <p class="lede">Creative fatigue is inevitable. The same ad, shown to the same audience, stops working over time. The question isn't whether, it's when and how fast. Managing fatigue is the difference between a winning account and a plateauing one.</p>
 
 <h2>Symptoms of fatigue</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Signs your creative is tired');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Metric', w: 200},
+    {title: 'Fatigue signal', w: 600}
+  ], rows: [
+    ['CTR', 'Dropping over 2 weeks on the same audience'],
+    ['CPM', 'Rising — platform penalizes stale creatives'],
+    ['Frequency', '> 3 on a cold audience'],
+    ['CAC', 'Climbing steadily while creative unchanged']
+  ]});
+});
+</script>
 <ul>
 <li>CTR declining over days/weeks</li>
 <li>Frequency rising (same users seeing ad repeatedly)</li>

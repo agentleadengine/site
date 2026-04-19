@@ -230,6 +230,21 @@
 </ul>
 
 <h2>Volume targets by channel</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'How many new creatives per month');
+  sketch.bars(svg, rc, {x: 40, y: 60, w: 820, labelW: 220, items: [
+    {label: 'TikTok', value: 95, note: '40–100 new/mo'},
+    {label: 'Meta', value: 70, note: '20–40 new/mo'},
+    {label: 'YouTube', value: 40, note: '8–15 new/mo'},
+    {label: 'LinkedIn', value: 25, note: '4–10 new/mo'}
+  ]});
+});
+</script>
 <ul>
 <li><strong>TikTok</strong>: 10-30 new creatives per week</li>
 <li><strong>Meta</strong>: 5-15 new creatives per week</li>

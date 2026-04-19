@@ -222,6 +222,30 @@
 <p class="lede">On Meta, TikTok, YouTube, everywhere, the first 3 seconds decide whether anyone watches the rest. Hook patterns are the proven openings that earn the next 27 seconds.</p>
 
 <h2>The 10 hook patterns</h2>
+<div class="sketch" data-viewbox="0 0 900 360"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 360);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Ten proven ad hooks');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Hook', w: 220},
+    {title: 'Example', w: 580}
+  ], rows: [
+    ['Bold claim', '"I made $10K last month working 2 hours a day"'],
+    ['Counterintuitive', '"I fired my agency and grew 3x"'],
+    ['Warning', '"Never do X on LinkedIn..."'],
+    ['Question', '"Why do most X never work?"'],
+    ['Pattern interrupt', '*dramatic action* then talk'],
+    ['Problem + emotion', '"I felt like giving up until..."'],
+    ['Specific result', '"From 10 to 1000 leads in 60 days"'],
+    ['Authority callout', '"I\'ve spent $2M on ads..."'],
+    ['Behind the scenes', '"Here\'s what actually happened when..."'],
+    ['Story open', '"This one weird meeting changed everything"']
+  ]});
+});
+</script>
 
 <h3>1. Contrarian claim</h3>
 <p>"Everyone tells you to do X. They're wrong."</p>

@@ -239,6 +239,24 @@
 <p>Under 3 seconds. Ideally under 2. Every second of delay = 10%+ drop in conversion.</p>
 
 <h2>The structure</h2>
+<div class="sketch" data-viewbox="0 0 900 340"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 340);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Ad-to-landing-page structure');
+  sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 36, layers: [
+    {label: 'Matching headline', sub: 'echoes the ad'},
+    {label: 'Hero image / video', sub: 'product or demo'},
+    {label: 'Benefits (3–5)', sub: 'what they get'},
+    {label: 'Proof (testimonials / logos)', sub: 'credibility'},
+    {label: 'Objection handlers', sub: '"but what if..."'},
+    {label: 'Offer + CTA', sub: 'the ask'},
+    {label: 'Guarantee', sub: 'kill risk'}
+  ]});
+});
+</script>
 <ol>
 <li><strong>Above the fold</strong>: headline, subhead, primary CTA, hero image/video</li>
 <li><strong>Benefits (not features)</strong>: 3-5 key benefits as you scroll</li>
