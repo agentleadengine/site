@@ -222,6 +222,26 @@
 <p class="lede">RAG has a cost structure that surprises most teams. At 100 queries per day it's invisible. At 100,000 queries per day, it's a meaningful monthly bill. Planning for this from the start saves expensive rework when the system actually scales.</p>
 
 <h2>The cost components</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'RAG cost breakdown by component');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Component', w: 220},
+    {title: 'Cost driver', w: 580}
+  ], rows: [
+    ['Embeddings (index)', 'One-time + reindex when model or chunks change'],
+    ['Embeddings (query)', 'Per query'],
+    ['Vector DB', 'Storage + QPS'],
+    ['Reranker', 'Per query (only if used)'],
+    ['LLM input tokens', 'Grows with retrieved context size'],
+    ['LLM output tokens', 'Grows with response length']
+  ]});
+});
+</script>
 
 <h3>1. LLM generation</h3>
 <p>Usually the biggest line item. Priced per input token and output token, with output tokens typically 3-5x more expensive.</p>

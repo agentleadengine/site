@@ -222,6 +222,21 @@
 <p class="lede">Caching is the highest-impact performance optimization for most production RAG systems. The savings compound: embedding cache hits save time and money, retrieval cache hits save more, response cache hits save the most. Here are the layers that actually hit in practice.</p>
 
 <h2>The cache hierarchy</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Four caching layers in RAG');
+  sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 44, layers: [
+    {label: 'Final answer cache', sub: 'same query → same answer'},
+    {label: 'Retrieved chunks cache', sub: 'same query → same top-k'},
+    {label: 'Query embedding cache', sub: 'repeat queries skip embedding'},
+    {label: 'Prompt cache (LLM)', sub: 'system prompt cached by provider'}
+  ]});
+});
+</script>
 
 <h3>Layer 1: Query embedding cache</h3>
 <p>Cache the embedding of each query. Keyed by exact query text + embedding model version.</p>

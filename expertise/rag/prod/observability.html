@@ -222,6 +222,27 @@
 <p class="lede">RAG pipelines have many stages, each of which can fail independently or in subtle ways. Without observability, you find out quality is bad because users complain, and you can't tell which stage is responsible. Observability is what turns RAG from a black box into a debuggable system.</p>
 
 <h2>What to log per query</h2>
+<div class="sketch" data-viewbox="0 0 900 300"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 300);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Minimum RAG trace schema');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Field', w: 220},
+    {title: 'Why', w: 580}
+  ], rows: [
+    ['User + session ID', 'Tie traces to user journeys'],
+    ['Original query + rewrites', 'Debug query transformation'],
+    ['Retrieved chunks + scores', 'Audit what was in context'],
+    ['LLM input + output', 'Debug generation quality'],
+    ['Per-stage latency', 'Find the slow step'],
+    ['Per-stage tokens / cost', 'Attribution'],
+    ['User feedback (if any)', 'Build eval over time']
+  ]});
+});
+</script>
 
 <h3>Inputs</h3>
 <ul>
