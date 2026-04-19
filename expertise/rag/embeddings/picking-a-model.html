@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Picking an embedding model | Samuel Ochoa</title>
+<meta name="description" content="There are hundreds of embedding models. The right choice depends on domain, volume, latency, cost, and language. Here's the decision framework.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Picking an embedding model | Samuel Ochoa">
+<meta property="og:description" content="There are hundreds of embedding models. The right choice depends on domain, volume, latency, cost, and language. Here's the decision framework.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../about.html">About</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>RAGS to Riches (56 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-rag.html">What is RAG?</a></li><li><a href="foundations/why-rag.html">Why RAG over fine-tuning</a></li><li><a href="foundations/the-architecture.html">The RAG architecture map</a></li><li><a href="foundations/when-not-to-use.html">When not to use RAG</a></li></ul><h4>Documents + Ingestion</h4><ul><li><a href="docs/ingestion-pipeline.html">The ingestion pipeline</a></li><li><a href="docs/parsing-pdfs.html">Parsing PDFs</a></li><li><a href="docs/parsing-html.html">Parsing HTML + web pages</a></li><li><a href="docs/tables-figures.html">Tables and figures</a></li><li><a href="docs/ocr.html">OCR for scanned documents</a></li><li><a href="docs/metadata.html">Metadata extraction</a></li></ul><h4>Chunking</h4><ul><li><a href="chunking/why-chunking.html">Why chunking matters</a></li><li><a href="chunking/fixed-size.html">Fixed-size chunking</a></li><li><a href="chunking/semantic.html">Semantic chunking</a></li><li><a href="chunking/recursive.html">Recursive chunking</a></li><li><a href="chunking/structure-aware.html">Structure-aware chunking</a></li><li><a href="chunking/chunking-code.html">Chunking code</a></li></ul><h4>Embeddings</h4><ul><li><a href="embeddings/what-are-embeddings.html">What embeddings are</a></li><li><a href="embeddings/picking-a-model.html" class="active">Picking an embedding model</a></li><li><a href="embeddings/closed-vs-open.html">Closed vs open models</a></li><li><a href="embeddings/dimensions-cost.html">Dimensions, cost, and MRL</a></li><li><a href="embeddings/fine-tuning.html">Fine-tuning embeddings</a></li></ul><h4>Vector Stores</h4><ul><li><a href="vectors/overview.html">Vector database overview</a></li><li><a href="vectors/indexing-strategies.html">HNSW, IVF, PQ</a></li><li><a href="vectors/hybrid-search.html">Hybrid search</a></li><li><a href="vectors/metadata-filtering.html">Metadata filtering</a></li><li><a href="vectors/cost-optimization.html">Cost optimization</a></li><li><a href="vectors/choosing-a-db.html">Choosing a vector DB</a></li></ul><h4>Retrieval Strategies</h4><ul><li><a href="retrieval/vector-search.html">Vector similarity search</a></li><li><a href="retrieval/bm25-sparse.html">BM25 and sparse retrieval</a></li><li><a href="retrieval/hybrid.html">Hybrid retrieval</a></li><li><a href="retrieval/reranking.html">Reranking</a></li><li><a href="retrieval/query-rewriting.html">Query rewriting</a></li><li><a href="retrieval/hyde.html">HyDE</a></li><li><a href="retrieval/multi-query.html">Multi-query + fusion</a></li></ul><h4>Advanced Patterns</h4><ul><li><a href="advanced/agentic-rag.html">Agentic RAG</a></li><li><a href="advanced/graph-rag.html">GraphRAG</a></li><li><a href="advanced/adaptive-rag.html">Adaptive RAG</a></li><li><a href="advanced/corrective-rag.html">Corrective RAG (CRAG)</a></li><li><a href="advanced/self-rag.html">Self-RAG</a></li><li><a href="advanced/multi-hop.html">Multi-hop RAG</a></li></ul><h4>Evaluation</h4><ul><li><a href="eval/why-eval.html">Why evaluation is critical</a></li><li><a href="eval/retrieval-metrics.html">Retrieval metrics</a></li><li><a href="eval/generation-metrics.html">Generation metrics</a></li><li><a href="eval/ragas-and-frameworks.html">RAGAS, TruLens, ARES</a></li><li><a href="eval/building-eval-datasets.html">Building eval datasets</a></li></ul><h4>Production</h4><ul><li><a href="prod/latency.html">Latency optimization</a></li><li><a href="prod/caching.html">Caching strategies</a></li><li><a href="prod/observability.html">Observability and tracing</a></li><li><a href="prod/cost.html">Cost management</a></li><li><a href="prod/security.html">Security and prompt injection</a></li></ul><h4>Use Cases</h4><ul><li><a href="cases/customer-support.html">Customer support RAG</a></li><li><a href="cases/internal-kb.html">Internal knowledge RAG</a></li><li><a href="cases/code-rag.html">Code search + generation</a></li><li><a href="cases/legal-compliance.html">Legal and compliance</a></li><li><a href="cases/multi-tenant.html">Multi-tenant RAG</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">RAGS to Riches</a><span class="sep">›</span><span>Picking an embedding model</span></div><h1 class="title">Picking an embedding model</h1><div class="article-meta"><span>📖 6 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">Embedding model choice has a larger impact on retrieval quality than almost any other decision in the RAG stack. The right model for a general-knowledge corpus may be wrong for legal documents, code, or Japanese-language content. Here's how I pick.</p>
+
+<h2>The MTEB leaderboard is the starting point</h2>
+<p>MTEB (Massive Text Embedding Benchmark) ranks embedding models on standardized tasks. Look up current leaderboards on Hugging Face. Not gospel, but a reasonable starting short-list.</p>
+
+<p>Caveats:</p>
+<ul>
+  <li>MTEB measures average performance across tasks. Your domain may not match any task.</li>
+  <li>Top models on MTEB are often very large and expensive to run.</li>
+  <li>Leaderboards don't capture latency, cost, or context length well.</li>
+</ul>
+
+<h2>The five decision dimensions</h2>
+
+<h3>1. Quality</h3>
+<p>Proxy: MTEB score, or better, your own eval set. Test 2-3 candidate models against a held-out set of real queries.</p>
+
+<h3>2. Cost</h3>
+<ul>
+  <li>OpenAI text-embedding-3-small: $0.02 / 1M tokens</li>
+  <li>OpenAI text-embedding-3-large: $0.13 / 1M tokens</li>
+  <li>Cohere embed-v3: ~$0.10 / 1M tokens</li>
+  <li>Voyage-3-large: ~$0.18 / 1M tokens</li>
+  <li>Self-hosted open-source: GPU-hours only (often significantly cheaper at scale)</li>
+</ul>
+<p>Embedding cost compounds: every reindex pays the cost again. For large corpora, this matters.</p>
+
+<h3>3. Latency</h3>
+<p>Embedding time per query affects user-facing latency. API calls: 50-200ms. Self-hosted small models: 5-20ms. Self-hosted large models: 30-100ms. For real-time systems, this is load-bearing.</p>
+
+<h3>4. Context length</h3>
+<p>Match to your chunk size. If your chunks are 1000 tokens, a model with 512-token context silently truncates your chunks. Check the spec.</p>
+
+<h3>5. Domain fit</h3>
+<p>General-purpose models work for general content. For code, law, medicine, or finance, domain-specific or domain-aware models (or fine-tuned ones) beat general models significantly.</p>
+
+<h2>My current default picks</h2>
+
+<h3>For general prose, production</h3>
+<ul>
+  <li><strong>OpenAI text-embedding-3-small</strong>: cheap, fast, solid. Good baseline.</li>
+  <li><strong>OpenAI text-embedding-3-large</strong>: when quality matters and cost is secondary.</li>
+  <li><strong>Cohere embed-v3 (multilingual)</strong>: best-in-class multilingual retrieval.</li>
+  <li><strong>Voyage-3-large</strong>: often tops benchmarks, especially for finance/legal.</li>
+</ul>
+
+<h3>For general prose, self-hosted</h3>
+<ul>
+  <li><strong>BGE-M3</strong>: strong multilingual, unified dense/sparse/colbert, Apache-2.0 license</li>
+  <li><strong>E5-mistral-7b-instruct</strong>: top open-source quality, heavier inference</li>
+  <li><strong>nomic-embed-text-v1.5</strong>: efficient, strong, 8K context, Apache-2.0</li>
+  <li><strong>gte-large</strong>: efficient, decent quality, 512 context</li>
+</ul>
+
+<h3>For code</h3>
+<ul>
+  <li><strong>Voyage-code-2 or Voyage-code-3</strong>: code-specific</li>
+  <li><strong>jina-embeddings-v2-base-code</strong>: open-source code embeddings</li>
+</ul>
+
+<h3>For legal/financial/medical</h3>
+<p>Evaluate domain-specific options first:</p>
+<ul>
+  <li>Voyage-law-2 for legal</li>
+  <li>Voyage-finance-2 for finance</li>
+  <li>BioBERT / Clinical BERT for medical</li>
+</ul>
+<p>If none fit, fine-tune a general model on domain data (see <a href="fine-tuning.html">fine-tuning embeddings</a>).</p>
+
+<h3>For multilingual</h3>
+<ul>
+  <li>Cohere embed-v3 multilingual (excellent quality)</li>
+  <li>BGE-M3 (open-source, competitive)</li>
+  <li>multilingual-e5-large</li>
+</ul>
+
+<h2>Closed vs open</h2>
+<p>See the dedicated page: <a href="closed-vs-open.html">closed vs open embedding models</a>.</p>
+
+<h2>The testing protocol</h2>
+<ol>
+  <li>Build a small eval set: 30-100 queries with known-good answer chunks</li>
+  <li>Index your corpus with candidate models</li>
+  <li>Measure hit-rate@k, MRR, NDCG for each</li>
+  <li>Compare alongside cost and latency</li>
+  <li>Pick the one on the best quality/cost frontier for your use case</li>
+</ol>
+
+<p>This is a one-afternoon exercise that saves months of subtle retrieval issues.</p>
+
+<h2>The lock-in question</h2>
+<p>Switching embedding models means reindexing your entire corpus. For large corpora, this is expensive and slow. Factors to consider:</p>
+<ul>
+  <li>How often will you want to change models?</li>
+  <li>Can you afford a migration window?</li>
+  <li>Does your infra support running two embedding models in parallel during migration?</li>
+</ul>
+
+<p>Build the infrastructure to switch embedding models without rebuilding everything else. Treat embedding_model_version as first-class metadata.</p>
+
+<p style="margin-top:40px;">Next: <a href="closed-vs-open.html">Closed vs open embedding models</a>.</p>
+<div class="prev-next"><a href="what-are-embeddings.html" class="prev"><div class="label">← Previous</div><div class="title">What embeddings are</div></a><a href="closed-vs-open.html" class="next"><div class="label">Next →</div><div class="title">Closed vs open models</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a></p>
+</div></footer></body></html>

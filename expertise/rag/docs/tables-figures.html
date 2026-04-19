@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tables and figures | Samuel Ochoa</title>
+<meta name="description" content="Tables and figures carry a disproportionate share of information in technical documents. Naive RAG drops most of it. Here's how to handle them.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tables and figures | Samuel Ochoa">
+<meta property="og:description" content="Tables and figures carry a disproportionate share of information in technical documents. Naive RAG drops most of it. Here's how to handle them.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../about.html">About</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>RAGS to Riches (56 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-rag.html">What is RAG?</a></li><li><a href="foundations/why-rag.html">Why RAG over fine-tuning</a></li><li><a href="foundations/the-architecture.html">The RAG architecture map</a></li><li><a href="foundations/when-not-to-use.html">When not to use RAG</a></li></ul><h4>Documents + Ingestion</h4><ul><li><a href="docs/ingestion-pipeline.html">The ingestion pipeline</a></li><li><a href="docs/parsing-pdfs.html">Parsing PDFs</a></li><li><a href="docs/parsing-html.html">Parsing HTML + web pages</a></li><li><a href="docs/tables-figures.html" class="active">Tables and figures</a></li><li><a href="docs/ocr.html">OCR for scanned documents</a></li><li><a href="docs/metadata.html">Metadata extraction</a></li></ul><h4>Chunking</h4><ul><li><a href="chunking/why-chunking.html">Why chunking matters</a></li><li><a href="chunking/fixed-size.html">Fixed-size chunking</a></li><li><a href="chunking/semantic.html">Semantic chunking</a></li><li><a href="chunking/recursive.html">Recursive chunking</a></li><li><a href="chunking/structure-aware.html">Structure-aware chunking</a></li><li><a href="chunking/chunking-code.html">Chunking code</a></li></ul><h4>Embeddings</h4><ul><li><a href="embeddings/what-are-embeddings.html">What embeddings are</a></li><li><a href="embeddings/picking-a-model.html">Picking an embedding model</a></li><li><a href="embeddings/closed-vs-open.html">Closed vs open models</a></li><li><a href="embeddings/dimensions-cost.html">Dimensions, cost, and MRL</a></li><li><a href="embeddings/fine-tuning.html">Fine-tuning embeddings</a></li></ul><h4>Vector Stores</h4><ul><li><a href="vectors/overview.html">Vector database overview</a></li><li><a href="vectors/indexing-strategies.html">HNSW, IVF, PQ</a></li><li><a href="vectors/hybrid-search.html">Hybrid search</a></li><li><a href="vectors/metadata-filtering.html">Metadata filtering</a></li><li><a href="vectors/cost-optimization.html">Cost optimization</a></li><li><a href="vectors/choosing-a-db.html">Choosing a vector DB</a></li></ul><h4>Retrieval Strategies</h4><ul><li><a href="retrieval/vector-search.html">Vector similarity search</a></li><li><a href="retrieval/bm25-sparse.html">BM25 and sparse retrieval</a></li><li><a href="retrieval/hybrid.html">Hybrid retrieval</a></li><li><a href="retrieval/reranking.html">Reranking</a></li><li><a href="retrieval/query-rewriting.html">Query rewriting</a></li><li><a href="retrieval/hyde.html">HyDE</a></li><li><a href="retrieval/multi-query.html">Multi-query + fusion</a></li></ul><h4>Advanced Patterns</h4><ul><li><a href="advanced/agentic-rag.html">Agentic RAG</a></li><li><a href="advanced/graph-rag.html">GraphRAG</a></li><li><a href="advanced/adaptive-rag.html">Adaptive RAG</a></li><li><a href="advanced/corrective-rag.html">Corrective RAG (CRAG)</a></li><li><a href="advanced/self-rag.html">Self-RAG</a></li><li><a href="advanced/multi-hop.html">Multi-hop RAG</a></li></ul><h4>Evaluation</h4><ul><li><a href="eval/why-eval.html">Why evaluation is critical</a></li><li><a href="eval/retrieval-metrics.html">Retrieval metrics</a></li><li><a href="eval/generation-metrics.html">Generation metrics</a></li><li><a href="eval/ragas-and-frameworks.html">RAGAS, TruLens, ARES</a></li><li><a href="eval/building-eval-datasets.html">Building eval datasets</a></li></ul><h4>Production</h4><ul><li><a href="prod/latency.html">Latency optimization</a></li><li><a href="prod/caching.html">Caching strategies</a></li><li><a href="prod/observability.html">Observability and tracing</a></li><li><a href="prod/cost.html">Cost management</a></li><li><a href="prod/security.html">Security and prompt injection</a></li></ul><h4>Use Cases</h4><ul><li><a href="cases/customer-support.html">Customer support RAG</a></li><li><a href="cases/internal-kb.html">Internal knowledge RAG</a></li><li><a href="cases/code-rag.html">Code search + generation</a></li><li><a href="cases/legal-compliance.html">Legal and compliance</a></li><li><a href="cases/multi-tenant.html">Multi-tenant RAG</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">RAGS to Riches</a><span class="sep">›</span><span>Tables and figures</span></div><h1 class="title">Tables and figures</h1><div class="article-meta"><span>📖 5 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">Tables and figures are where most RAG systems silently lose information. Naive text extraction strips them entirely or converts them to unreadable streams. For technical, financial, scientific, or compliance documents, this means 30-50% of the actual information never reaches the index.</p>
+
+<h2>Why tables are hard</h2>
+<p>A table is a two-dimensional data structure. Prose is one-dimensional. When a parser flattens a table into prose, it loses:</p>
+<ul>
+  <li>The column-row relationship (which value goes with which row and column)</li>
+  <li>Header hierarchy (multi-level headers)</li>
+  <li>Merged cells</li>
+  <li>Units and formatting</li>
+  <li>Footnotes and caveats attached to specific cells</li>
+</ul>
+
+<h2>Four strategies for tables</h2>
+
+<h3>1. Serialize as readable prose</h3>
+<p>Convert each row into a sentence: "In 2023, Revenue was $4.2M, COGS was $1.8M, Gross Margin was 57%." Preserves semantics in a format embeddings handle well. Loses compactness but gains retrievability.</p>
+
+<p>Works for: small to medium tables where the row-level facts are the important thing.</p>
+
+<h3>2. Serialize as Markdown</h3>
+<p>Keep the table as Markdown syntax. Preserves structure. Embeddings still handle it reasonably well for retrieval, and the LLM can reason over the original structure during generation.</p>
+
+<p>Works for: tables with clear headers and moderate size (&lt;50 rows).</p>
+
+<h3>3. Chunk per row</h3>
+<p>Each row becomes its own chunk, with the table's column headers prepended or added as metadata. Fine-grained retrieval but you lose the row-to-row comparisons.</p>
+
+<p>Works for: large reference tables (product catalogs, drug databases, parts lists).</p>
+
+<h3>4. Keep the table as structured data, retrieve by key</h3>
+<p>Store the table in a database. Have the LLM emit a structured query when it needs table data. Not strictly RAG, but a common hybrid for systems that need to reason over tabular data.</p>
+
+<p>Works for: large financial statements, time series, anything with a lot of numeric comparison.</p>
+
+<h2>Picking a strategy</h2>
+<p>Look at what questions users actually ask:</p>
+<ul>
+  <li>"What was revenue in 2022?" → row-level retrieval works</li>
+  <li>"How did margin change from 2020 to 2023?" → need multi-row context, so serialize whole small tables or use structured queries</li>
+  <li>"Find products with power rating between X and Y" → structured query is the only sane option</li>
+</ul>
+
+<h2>Table extraction tools</h2>
+<ul>
+  <li><strong>Camelot / Tabula</strong>, classic Python table extractors. Good on bordered tables in simple PDFs.</li>
+  <li><strong>pdfplumber</strong>, built-in table detection, solid for clean tables.</li>
+  <li><strong>Docling</strong>, strong table detection including nested and multi-header tables.</li>
+  <li><strong>Azure Document Intelligence, AWS Textract</strong>, commercial OCR with excellent table support.</li>
+  <li><strong>LLM vision models</strong> (GPT-4V, Claude, Gemini), highest quality on complex or messy tables. Expensive.</li>
+</ul>
+
+<h2>Figures and images</h2>
+
+<h3>The captions-only baseline</h3>
+<p>Extract and embed just the figure caption. Fast, cheap, catches most user questions that reference figures by number or topic.</p>
+
+<h3>The description-generated approach</h3>
+<p>Pass the figure image through a vision model to generate a text description. Embed the description. Expensive at scale but captures visual content. Use for technical diagrams, charts, and anything where the image carries real information.</p>
+
+<h3>The retrieve-adjacent-text approach</h3>
+<p>When a figure is retrieved, also pull the paragraphs immediately before and after it. Figures rarely stand alone, the surrounding text usually explains what the figure shows.</p>
+
+<h3>The multimodal retrieval approach</h3>
+<p>Use a multimodal embedding model (CLIP, Jina Multimodal, Voyage-Multimodal) to embed both images and text into a shared vector space. Retrieval can return images when queries match visual content. Emerging pattern. Works well for product catalogs, image-heavy documentation, medical imaging.</p>
+
+<h2>Putting it together</h2>
+<p>For a document with mixed content, my typical pipeline:</p>
+<ol>
+  <li>Parse into typed elements (text, heading, list, table, figure)</li>
+  <li>Chunk text elements with structure-aware chunking</li>
+  <li>For each table: generate both a Markdown serialization and a prose description. Embed both.</li>
+  <li>For each figure: extract caption. If the figure matters for the use case, generate a vision-model description. Embed caption and description.</li>
+  <li>Keep a document-level link between elements so retrieved chunks can pull their table/figure context.</li>
+</ol>
+
+<p>This is significantly more work than "dump text into a vector DB" but it's the difference between a RAG system that handles technical docs and one that handles "some docs."</p>
+
+<p style="margin-top:40px;">Next: <a href="ocr.html">OCR for scanned documents</a>.</p>
+<div class="prev-next"><a href="parsing-html.html" class="prev"><div class="label">← Previous</div><div class="title">Parsing HTML + web pages</div></a><a href="ocr.html" class="next"><div class="label">Next →</div><div class="title">OCR for scanned documents</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a></p>
+</div></footer></body></html>

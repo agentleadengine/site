@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent vs workflow | Samuel Ochoa</title>
+<meta name="description" content="Not every AI system needs agentic behavior. Here's how to choose between a deterministic workflow and an agent.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Agent vs workflow | Samuel Ochoa">
+<meta property="og:description" content="Not every AI system needs agentic behavior. Here's how to choose between a deterministic workflow and an agent.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="foundations/agent-vs-workflow.html" class="active">Agent vs workflow</a></li><li><a href="foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="loops/react.html">ReAct</a></li><li><a href="loops/tool-use.html">Tool use</a></li><li><a href="loops/planning.html">Planning loops</a></li><li><a href="loops/reflection.html">Reflection</a></li><li><a href="loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="tools/tool-design.html">Tool design</a></li><li><a href="tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="tools/error-handling.html">Tool error handling</a></li><li><a href="tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="memory/short-term.html">Short-term memory</a></li><li><a href="memory/long-term.html">Long-term memory</a></li><li><a href="memory/episodic.html">Episodic memory</a></li><li><a href="memory/procedural.html">Procedural memory</a></li><li><a href="memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="multi/peer-agents.html">Peer agents</a></li><li><a href="multi/debate.html">Debate + consensus</a></li><li><a href="multi/handoffs.html">Agent handoffs</a></li><li><a href="multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="eval/why-eval-agents.html">Why eval agents</a></li><li><a href="eval/task-completion.html">Task completion</a></li><li><a href="eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="prod/observability.html">Observability + tracing</a></li><li><a href="prod/cost-control.html">Cost control</a></li><li><a href="prod/latency.html">Latency optimization</a></li><li><a href="prod/safety.html">Safety + guardrails</a></li><li><a href="prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="patterns/research-agent.html">Research agent</a></li><li><a href="patterns/coding-agent.html">Coding agent</a></li><li><a href="patterns/customer-support.html">Customer support agent</a></li><li><a href="patterns/data-analyst.html">Data analyst agent</a></li><li><a href="patterns/browser-agent.html">Browser agent</a></li><li><a href="patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="frameworks/langgraph.html">LangGraph</a></li><li><a href="frameworks/crewai.html">CrewAI</a></li><li><a href="frameworks/autogen.html">AutoGen</a></li><li><a href="frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>Agent vs workflow</span></div><h1 class="title">Agent vs workflow</h1><div class="article-meta"><span>📖 4 min read</span><span>Updated 2026-04-19</span></div>
+<p class="lede">Many projects that use "agents" don't need them. A deterministic workflow, a fixed sequence of LLM calls and function calls, is simpler, more reliable, and usually cheaper. The question isn't "should I use AI" but "should this be agentic."</p>
+
+<h2>When a workflow is enough</h2>
+<p>A workflow is a known sequence of steps. "Extract entities, then summarize, then categorize, then send notification." The steps don't change based on results. An LLM runs each step, but flow is hardcoded.</p>
+
+<p>Workflows win when:</p>
+<ul>
+<li>The task steps are predictable</li>
+<li>You can hand-author the flow once</li>
+<li>Latency and cost matter</li>
+<li>Reliability matters more than flexibility</li>
+</ul>
+
+<h2>When an agent is needed</h2>
+<p>Agents win when the flow depends on what the agent discovers. Research, exploratory debugging, customer support that can branch into many directions, tasks where the "right next step" depends on what you just learned.</p>
+
+<p>Agents win when:</p>
+<ul>
+<li>Steps are unknown in advance</li>
+<li>The right sequence depends on intermediate results</li>
+<li>The task requires exploration or decision-making</li>
+<li>Tool selection matters</li>
+</ul>
+
+<h2>The pragmatic middle</h2>
+<p>Most production systems are workflows with agent steps embedded. A workflow orchestrates the pipeline; at specific junctures, an agent handles bounded exploration.</p>
+<p>Example: a deterministic email ingestion pipeline calls an agent to classify and act on "complex" emails that don't match known categories. Workflow + agent hybrid.</p>
+
+<h2>Anti-pattern: everything as agent</h2>
+<p>Wrapping deterministic logic in an agent adds cost, latency, and failure modes without benefit. If your agent's "reasoning" is always "call tool X, then call tool Y, then respond", you have a workflow, just an expensive one.</p>
+
+<h2>Test: can you draw the flowchart?</h2>
+<p>If the steps and their order are fixed and you can draw the flowchart in advance: workflow. If the flowchart has decision points the LLM must make at runtime based on information it doesn't have yet: agent.</p>
+<div class="prev-next"><a href="what-is-an-agent.html" class="prev"><div class="label">← Previous</div><div class="title">What is an AI agent?</div></a><a href="when-not-to-use.html" class="next"><div class="label">Next →</div><div class="title">When not to use agents</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
+</div></footer></body></html>

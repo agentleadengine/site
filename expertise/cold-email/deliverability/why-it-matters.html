@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why deliverability is everything | Samuel Ochoa</title>
+<meta name="description" content="You can have the best list, best copy, and best offer. If your emails land in spam, none of it matters. Deliverability is the first and most important lever.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Why deliverability is everything | Samuel Ochoa">
+<meta property="og:description" content="You can have the best list, best copy, and best offer. If your emails land in spam, none of it matters. Deliverability is the first and most important lever.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../about.html">About</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Cold Email (45 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-cold-email.html">What is cold email?</a></li><li><a href="foundations/spam-vs-cold.html">Cold email vs spam</a></li><li><a href="foundations/legal.html">Legal landscape</a></li><li><a href="foundations/when-it-works.html">When cold email works</a></li></ul><h4>Deliverability</h4><ul><li><a href="deliverability/why-it-matters.html" class="active">Why deliverability is everything</a></li><li><a href="deliverability/dns.html">SPF, DKIM, DMARC</a></li><li><a href="deliverability/sending-domains.html">Sending domain strategy</a></li><li><a href="deliverability/warming.html">Inbox warming</a></li><li><a href="deliverability/ip-reputation.html">IP reputation</a></li><li><a href="deliverability/spam-triggers.html">Content that triggers spam filters</a></li><li><a href="deliverability/monitoring.html">Monitoring inbox placement</a></li></ul><h4>Infrastructure</h4><ul><li><a href="infra/sending-tools.html">Sending tools</a></li><li><a href="infra/multi-inbox.html">Multi-inbox rotation</a></li><li><a href="infra/warming-tools.html">Warming tools</a></li><li><a href="infra/crm-integration.html">CRM and data integration</a></li><li><a href="infra/reply-management.html">Reply management</a></li></ul><h4>Lists + Targeting</h4><ul><li><a href="lists/icp.html">Defining the ICP</a></li><li><a href="lists/databases.html">Lead databases</a></li><li><a href="lists/clay.html">Clay and enrichment</a></li><li><a href="lists/verification.html">Verification + hygiene</a></li><li><a href="lists/intent-signals.html">Intent signals</a></li><li><a href="lists/segmentation.html">Segmentation strategy</a></li></ul><h4>Copy</h4><ul><li><a href="copy/anatomy.html">Cold email anatomy</a></li><li><a href="copy/subject-lines.html">Subject lines</a></li><li><a href="copy/first-lines.html">First lines</a></li><li><a href="copy/the-pitch.html">The pitch</a></li><li><a href="copy/ctas.html">CTAs for cold</a></li><li><a href="copy/signatures.html">Signatures</a></li><li><a href="copy/personalization.html">Personalization at scale</a></li></ul><h4>Sequences</h4><ul><li><a href="sequences/multi-touch.html">Multi-touch sequences</a></li><li><a href="sequences/cadence.html">Cadence and timing</a></li><li><a href="sequences/breakup.html">The breakup email</a></li><li><a href="sequences/multi-channel.html">Multi-channel orchestration</a></li><li><a href="sequences/length.html">Sequence length</a></li></ul><h4>Testing</h4><ul><li><a href="testing/methodology.html">Testing methodology</a></li><li><a href="testing/what-to-test.html">What to test</a></li><li><a href="testing/reply-metrics.html">Reply rate vs positive reply</a></li><li><a href="testing/iteration.html">The iteration loop</a></li></ul><h4>Playbooks</h4><ul><li><a href="plays/b2b-saas.html">B2B SaaS outbound</a></li><li><a href="plays/agency.html">Agency + services outbound</a></li><li><a href="plays/founder-led.html">Founder-led outbound</a></li><li><a href="plays/sdr-led.html">SDR-led outbound</a></li><li><a href="plays/link-building.html">Cold email for SEO</a></li><li><a href="plays/recruiting.html">Recruiting outreach</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">Cold Email</a><span class="sep">›</span><span>Why deliverability is everything</span></div><h1 class="title">Why deliverability is everything</h1><div class="article-meta"><span>📖 5 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">Most teams running cold email don't know their actual inbox placement rate. They measure opens and replies and assume the rest is fine. It usually isn't. You can have the best copy in the world, but if 60% of your emails land in spam, you're working at 40% capacity with no way to tell.</p>
+
+<h2>The scale of the problem</h2>
+<p>Typical outcomes across teams:</p>
+<ul>
+  <li>Well-configured campaigns: 80-95% inbox placement</li>
+  <li>Average campaigns: 50-70% inbox placement</li>
+  <li>Naive campaigns with no deliverability work: 20-40% inbox placement</li>
+  <li>Damaged domains: under 10%</li>
+</ul>
+
+<p>A naive team thinks their campaign produces 2% reply rate. In reality it's 2% reply rate on the 30% that actually reached the inbox. The underlying offer may produce 6% on the full audience.</p>
+
+<h2>The four layers of deliverability</h2>
+
+<h3>1. Technical setup</h3>
+<p>DNS records (SPF, DKIM, DMARC). Sending domains separated from your primary domain. Proper MX and reverse DNS.</p>
+
+<p>See <a href="dns.html">SPF, DKIM, DMARC</a> and <a href="sending-domains.html">sending domain strategy</a>.</p>
+
+<h3>2. Sender reputation</h3>
+<p>IP reputation, domain age, sending history, recipient engagement. Built over weeks of gradual volume and good behavior.</p>
+
+<p>See <a href="ip-reputation.html">IP reputation</a> and <a href="warming.html">inbox warming</a>.</p>
+
+<h3>3. Content</h3>
+<p>Email content itself triggers filters. Too many links, spam-trigger phrases, image-only emails, overly HTML-heavy messages.</p>
+
+<p>See <a href="spam-triggers.html">content that triggers spam filters</a>.</p>
+
+<h3>4. Behavior signals</h3>
+<p>Recipients who mark as spam, delete without reading, never open. These hurt reputation. Replies, forwards, and reads help.</p>
+
+<h2>Why provider filtering is aggressive</h2>
+<p>Gmail, Outlook, and other providers process trillions of emails daily. They use machine learning to classify. The models look for:</p>
+<ul>
+  <li>Sender reputation signals</li>
+  <li>Content patterns matching known spam</li>
+  <li>Volume anomalies</li>
+  <li>Authentication failures</li>
+  <li>Recipient signals (complaints, delete rates, engagement)</li>
+</ul>
+
+<p>The filters are not your friend, but they're not malicious. They're optimizing for their users' satisfaction. Your job is to look like a legitimate sender, consistently.</p>
+
+<h2>The gmail primary vs promotions vs spam split</h2>
+<p>Gmail has three outcomes for your email:</p>
+<ol>
+  <li><strong>Primary inbox</strong>: ideal. User sees it immediately.</li>
+  <li><strong>Promotions tab</strong>: less ideal. User may check it but with lower intent.</li>
+  <li><strong>Spam folder</strong>: invisible. User almost never checks.</li>
+</ol>
+
+<p>Cold email wants Primary placement. Promotions placement for a sales email is nearly as bad as spam for reply rate. Don't use promotional language, avoid excessive HTML/styling, and write like a real person writing to one recipient.</p>
+
+<h2>What bad deliverability actually costs</h2>
+<p>Consider a campaign with:</p>
+<ul>
+  <li>10,000 emails sent</li>
+  <li>3% reply rate (targeted)</li>
+  <li>20% positive reply rate among replies</li>
+</ul>
+
+<p>At 90% inbox placement: 300 replies, 60 positive responses.</p>
+<p>At 40% inbox placement: 120 replies, 24 positive responses.</p>
+
+<p>Same offer, same copy, same list. 60% of results lost to deliverability.</p>
+
+<p>Over a year at scale, this is a life-or-death difference for a B2B company.</p>
+
+<h2>The damaging feedback loop</h2>
+<p>Bad deliverability creates a downward spiral:</p>
+<ol>
+  <li>Your emails land in spam</li>
+  <li>Recipients don't see them, so nobody opens or replies</li>
+  <li>Low engagement = worse reputation</li>
+  <li>Worse reputation = more spam placement</li>
+  <li>Eventually your sending domain is effectively dead</li>
+</ol>
+
+<p>This is why you can't "blast first, fix later." Once you've damaged a domain, recovery is painful, often cheaper to start over with new domains.</p>
+
+<h2>The build-it-right-the-first-time approach</h2>
+<p>The sequence that works:</p>
+<ol>
+  <li>Buy and configure dedicated sending domains</li>
+  <li>Set up SPF, DKIM, DMARC properly</li>
+  <li>Create mailboxes (usually 2-5 per domain)</li>
+  <li>Warm each mailbox for 2-4 weeks before real sending</li>
+  <li>Verify every email address before sending to it</li>
+  <li>Start at low volume (20-30/day per mailbox) and scale gradually</li>
+  <li>Monitor inbox placement continuously</li>
+  <li>Rest and rotate mailboxes to prevent fatigue</li>
+</ol>
+
+<p>This section covers all of it. Skipping any step is how campaigns break.</p>
+
+<h2>The one-minute deliverability check</h2>
+<p>Right now, for any domain you're sending from:</p>
+<ol>
+  <li>Check MXToolbox or dmarcian for your SPF record (should pass)</li>
+  <li>Check that DKIM is configured and passing</li>
+  <li>Check your DMARC policy (should be at least p=none with reporting)</li>
+  <li>Send a test email to mail-tester.com and check the score (aim for 10/10)</li>
+  <li>Send a test to a Gmail address and check placement (Primary? Promotions? Spam?)</li>
+</ol>
+
+<p>If any of these fail, you have a deliverability problem. Stop sending cold email until you fix it.</p>
+
+<p style="margin-top:40px;">Next: <a href="dns.html">SPF, DKIM, DMARC</a>.</p>
+<div class="prev-next"><a href="../foundations/when-it-works.html" class="prev"><div class="label">← Previous</div><div class="title">When cold email works</div></a><a href="dns.html" class="next"><div class="label">Next →</div><div class="title">SPF, DKIM, DMARC</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
+</div></footer></body></html>

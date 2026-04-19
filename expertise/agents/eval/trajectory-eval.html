@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trajectory evaluation | Samuel Ochoa</title>
+<meta name="description" content="Beyond whether the agent got the right answer, did it get there the right way?">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Trajectory evaluation | Samuel Ochoa">
+<meta property="og:description" content="Beyond whether the agent got the right answer, did it get there the right way?">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="loops/react.html">ReAct</a></li><li><a href="loops/tool-use.html">Tool use</a></li><li><a href="loops/planning.html">Planning loops</a></li><li><a href="loops/reflection.html">Reflection</a></li><li><a href="loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="tools/tool-design.html">Tool design</a></li><li><a href="tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="tools/error-handling.html">Tool error handling</a></li><li><a href="tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="memory/short-term.html">Short-term memory</a></li><li><a href="memory/long-term.html">Long-term memory</a></li><li><a href="memory/episodic.html">Episodic memory</a></li><li><a href="memory/procedural.html">Procedural memory</a></li><li><a href="memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="multi/peer-agents.html">Peer agents</a></li><li><a href="multi/debate.html">Debate + consensus</a></li><li><a href="multi/handoffs.html">Agent handoffs</a></li><li><a href="multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="eval/why-eval-agents.html">Why eval agents</a></li><li><a href="eval/task-completion.html">Task completion</a></li><li><a href="eval/trajectory-eval.html" class="active">Trajectory evaluation</a></li><li><a href="eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="prod/observability.html">Observability + tracing</a></li><li><a href="prod/cost-control.html">Cost control</a></li><li><a href="prod/latency.html">Latency optimization</a></li><li><a href="prod/safety.html">Safety + guardrails</a></li><li><a href="prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="patterns/research-agent.html">Research agent</a></li><li><a href="patterns/coding-agent.html">Coding agent</a></li><li><a href="patterns/customer-support.html">Customer support agent</a></li><li><a href="patterns/data-analyst.html">Data analyst agent</a></li><li><a href="patterns/browser-agent.html">Browser agent</a></li><li><a href="patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="frameworks/langgraph.html">LangGraph</a></li><li><a href="frameworks/crewai.html">CrewAI</a></li><li><a href="frameworks/autogen.html">AutoGen</a></li><li><a href="frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>Trajectory evaluation</span></div><h1 class="title">Trajectory evaluation</h1><div class="article-meta"><span>📖 3 min read</span><span>Updated 2026-04-19</span></div>
+<p class="lede">Trajectory evaluation looks at how the agent got to its answer, not just whether it got there. Two agents with the same final answer can differ by 10x in cost, or produce the answer via completely different reasoning paths.</p>
+
+<h2>What to measure in trajectories</h2>
+
+<h3>Efficiency</h3>
+<ul>
+<li>Number of tool calls</li>
+<li>Number of reasoning steps</li>
+<li>Total tokens used</li>
+<li>Time elapsed</li>
+</ul>
+
+<h3>Tool selection</h3>
+<ul>
+<li>Did it use the right tools?</li>
+<li>Did it use tools it shouldn't have (safety)?</li>
+<li>Did it use tools redundantly?</li>
+</ul>
+
+<h3>Reasoning quality</h3>
+<ul>
+<li>Did the reasoning follow logically from observations?</li>
+<li>Were any steps circular or contradictory?</li>
+<li>Did the agent reason about its own uncertainty?</li>
+</ul>
+
+<h3>Error recovery</h3>
+<ul>
+<li>When tools failed, did the agent respond sensibly?</li>
+<li>Did it try alternatives?</li>
+<li>Did it loop forever?</li>
+</ul>
+
+<h2>Automated checks</h2>
+<p>Some trajectory properties can be checked automatically:</p>
+<ul>
+<li>Step count (should be below threshold)</li>
+<li>No forbidden tools called</li>
+<li>No tool called more than N times with same args (loop detection)</li>
+<li>Final answer in expected shape</li>
+</ul>
+
+<h2>LLM-as-judge on trajectories</h2>
+<p>Give a judge LLM the full trajectory + expected answer. Ask:</p>
+<ul>
+<li>Did the agent take a reasonable path?</li>
+<li>Were there obvious inefficiencies?</li>
+<li>Any warning signs in reasoning?</li>
+</ul>
+
+<h2>Comparative trajectory eval</h2>
+<p>Compare trajectories across model versions or prompt changes. Even if task-completion rate is the same, shorter/cheaper trajectories indicate improvement.</p>
+<div class="prev-next"><a href="task-completion.html" class="prev"><div class="label">← Previous</div><div class="title">Task completion</div></a><a href="regression.html" class="next"><div class="label">Next →</div><div class="title">Regression testing</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
+</div></footer></body></html>

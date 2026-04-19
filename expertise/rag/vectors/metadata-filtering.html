@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Metadata filtering | Samuel Ochoa</title>
+<meta name="description" content="Metadata filtering is what lets you do multi-tenant RAG, access control, freshness, and narrow-scope queries. The performance model matters.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Metadata filtering | Samuel Ochoa">
+<meta property="og:description" content="Metadata filtering is what lets you do multi-tenant RAG, access control, freshness, and narrow-scope queries. The performance model matters.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../about.html">About</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>RAGS to Riches (56 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-rag.html">What is RAG?</a></li><li><a href="foundations/why-rag.html">Why RAG over fine-tuning</a></li><li><a href="foundations/the-architecture.html">The RAG architecture map</a></li><li><a href="foundations/when-not-to-use.html">When not to use RAG</a></li></ul><h4>Documents + Ingestion</h4><ul><li><a href="docs/ingestion-pipeline.html">The ingestion pipeline</a></li><li><a href="docs/parsing-pdfs.html">Parsing PDFs</a></li><li><a href="docs/parsing-html.html">Parsing HTML + web pages</a></li><li><a href="docs/tables-figures.html">Tables and figures</a></li><li><a href="docs/ocr.html">OCR for scanned documents</a></li><li><a href="docs/metadata.html">Metadata extraction</a></li></ul><h4>Chunking</h4><ul><li><a href="chunking/why-chunking.html">Why chunking matters</a></li><li><a href="chunking/fixed-size.html">Fixed-size chunking</a></li><li><a href="chunking/semantic.html">Semantic chunking</a></li><li><a href="chunking/recursive.html">Recursive chunking</a></li><li><a href="chunking/structure-aware.html">Structure-aware chunking</a></li><li><a href="chunking/chunking-code.html">Chunking code</a></li></ul><h4>Embeddings</h4><ul><li><a href="embeddings/what-are-embeddings.html">What embeddings are</a></li><li><a href="embeddings/picking-a-model.html">Picking an embedding model</a></li><li><a href="embeddings/closed-vs-open.html">Closed vs open models</a></li><li><a href="embeddings/dimensions-cost.html">Dimensions, cost, and MRL</a></li><li><a href="embeddings/fine-tuning.html">Fine-tuning embeddings</a></li></ul><h4>Vector Stores</h4><ul><li><a href="vectors/overview.html">Vector database overview</a></li><li><a href="vectors/indexing-strategies.html">HNSW, IVF, PQ</a></li><li><a href="vectors/hybrid-search.html">Hybrid search</a></li><li><a href="vectors/metadata-filtering.html" class="active">Metadata filtering</a></li><li><a href="vectors/cost-optimization.html">Cost optimization</a></li><li><a href="vectors/choosing-a-db.html">Choosing a vector DB</a></li></ul><h4>Retrieval Strategies</h4><ul><li><a href="retrieval/vector-search.html">Vector similarity search</a></li><li><a href="retrieval/bm25-sparse.html">BM25 and sparse retrieval</a></li><li><a href="retrieval/hybrid.html">Hybrid retrieval</a></li><li><a href="retrieval/reranking.html">Reranking</a></li><li><a href="retrieval/query-rewriting.html">Query rewriting</a></li><li><a href="retrieval/hyde.html">HyDE</a></li><li><a href="retrieval/multi-query.html">Multi-query + fusion</a></li></ul><h4>Advanced Patterns</h4><ul><li><a href="advanced/agentic-rag.html">Agentic RAG</a></li><li><a href="advanced/graph-rag.html">GraphRAG</a></li><li><a href="advanced/adaptive-rag.html">Adaptive RAG</a></li><li><a href="advanced/corrective-rag.html">Corrective RAG (CRAG)</a></li><li><a href="advanced/self-rag.html">Self-RAG</a></li><li><a href="advanced/multi-hop.html">Multi-hop RAG</a></li></ul><h4>Evaluation</h4><ul><li><a href="eval/why-eval.html">Why evaluation is critical</a></li><li><a href="eval/retrieval-metrics.html">Retrieval metrics</a></li><li><a href="eval/generation-metrics.html">Generation metrics</a></li><li><a href="eval/ragas-and-frameworks.html">RAGAS, TruLens, ARES</a></li><li><a href="eval/building-eval-datasets.html">Building eval datasets</a></li></ul><h4>Production</h4><ul><li><a href="prod/latency.html">Latency optimization</a></li><li><a href="prod/caching.html">Caching strategies</a></li><li><a href="prod/observability.html">Observability and tracing</a></li><li><a href="prod/cost.html">Cost management</a></li><li><a href="prod/security.html">Security and prompt injection</a></li></ul><h4>Use Cases</h4><ul><li><a href="cases/customer-support.html">Customer support RAG</a></li><li><a href="cases/internal-kb.html">Internal knowledge RAG</a></li><li><a href="cases/code-rag.html">Code search + generation</a></li><li><a href="cases/legal-compliance.html">Legal and compliance</a></li><li><a href="cases/multi-tenant.html">Multi-tenant RAG</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">RAGS to Riches</a><span class="sep">›</span><span>Metadata filtering</span></div><h1 class="title">Metadata filtering</h1><div class="article-meta"><span>📖 4 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">Metadata filtering combines vector similarity with structured predicates: "find chunks similar to this query, but only from documents owned by tenant X, published after date Y, with visibility = public." Every production RAG system needs this. The performance characteristics differ dramatically between vector databases.</p>
+
+<h2>The query shape</h2>
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
+query: vector(embedding of user question)
+filter: {
+  tenant_id: "acme",
+  visibility: {$in: ["public", "internal"]},
+  updated_at: {$gte: "2024-01-01"},
+  document_type: "policy"
+}
+top_k: 10
+</pre>
+
+<p>The database's job: find the 10 nearest neighbors that also satisfy all filter conditions. Sounds simple, isn't.</p>
+
+<h2>Three strategies</h2>
+
+<h3>Pre-filter</h3>
+<p>Narrow the candidate set to matching metadata first, then search only those. Exact: returns only filter-matching documents.</p>
+<ul>
+  <li>Fast when filter is selective (narrows to small subset)</li>
+  <li>Slow when filter matches most documents (still scans everything)</li>
+  <li>Requires metadata indexes</li>
+</ul>
+
+<h3>Post-filter</h3>
+<p>Do vector search first over all documents, then filter. Fast search, but may return fewer-than-k if filter is selective.</p>
+<ul>
+  <li>Fast when filter is non-selective</li>
+  <li>Broken when filter is very selective, your top-10 vector results might all be filtered out, leaving empty results</li>
+</ul>
+
+<h3>Dynamic / hybrid</h3>
+<p>The database decides based on estimated filter selectivity. Modern vector DBs (Pinecone, Qdrant, Weaviate) do this automatically.</p>
+
+<h2>The performance failure mode</h2>
+<p>A query with a highly selective filter on a post-filter-only database:</p>
+<ul>
+  <li>Vector search returns top-100 candidates</li>
+  <li>Filter matches 2 of them</li>
+  <li>You wanted top-10, got 2</li>
+</ul>
+
+<p>You can increase the search k to compensate (over-fetch), but this is wasteful and still unreliable when filters are very selective.</p>
+
+<p>The right answer: a vector DB that supports pre-filtering or dynamic filtering. Or query the metadata first to get document IDs, then run a restricted vector search.</p>
+
+<h2>Vector DB comparison on filtering</h2>
+<ul>
+  <li><strong>Qdrant</strong>: excellent. Payload indexes, pre-filter and dynamic filtering, fast on complex queries.</li>
+  <li><strong>Weaviate</strong>: very good. Native filtering during HNSW traversal.</li>
+  <li><strong>Pinecone</strong>: adequate. Filters applied during search, performance varies by selectivity.</li>
+  <li><strong>Milvus</strong>: good. Supports partition-based filtering and field-level filters.</li>
+  <li><strong>pgvector</strong>: strong for filters Postgres can index well. Combine vector and SQL.</li>
+  <li><strong>Chroma</strong>: basic. Works but not optimized for high-selectivity filters at scale.</li>
+</ul>
+
+<h2>Index the metadata fields you'll filter on</h2>
+<p>Every vector DB lets you index specific metadata fields for fast filtering. Index every field that appears in common queries. Un-indexed fields force a full scan per query.</p>
+
+<p>Typical fields to index:</p>
+<ul>
+  <li><code>tenant_id</code></li>
+  <li><code>source_system</code></li>
+  <li><code>document_type</code></li>
+  <li><code>visibility</code> or <code>permissions</code></li>
+  <li>Date fields used for freshness filters</li>
+  <li>Numeric fields used for range queries</li>
+</ul>
+
+<h2>The multi-tenant special case</h2>
+<p>In multi-tenant RAG, tenant_id filter runs on every query. Options:</p>
+
+<h3>Single index, filter on tenant_id</h3>
+<p>One physical index, logical separation via filter. Simple. Performance depends on tenant distribution.</p>
+
+<h3>Namespace per tenant (Pinecone pattern)</h3>
+<p>Each tenant has its own namespace. Physical separation. No risk of cross-tenant leaks. Better performance for tenant-scoped queries.</p>
+
+<h3>Collection per tenant</h3>
+<p>One collection per tenant. Extreme isolation. Expensive in overhead if you have many small tenants.</p>
+
+<p>See <a href="../cases/multi-tenant.html">multi-tenant RAG</a> for more detail.</p>
+
+<h2>Common filter patterns</h2>
+
+<h3>Access control</h3>
+<pre style="background:#f5f5f7; padding:12px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
+permissions: {$in: [user.roles]}
+</pre>
+
+<h3>Freshness boost</h3>
+<p>Filters to published_after: (today - 2 years). Older documents are still searchable if you remove the filter for broad queries.</p>
+
+<h3>Document type scoping</h3>
+<p>User asks "what's our refund policy", filter to document_type = "policy".</p>
+
+<h3>Tenant + source</h3>
+<pre style="background:#f5f5f7; padding:12px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
+tenant_id: "acme" AND source_system: {$in: ["confluence", "drive"]}
+</pre>
+
+<h2>Filter-aware reranking</h2>
+<p>After retrieval, you can apply soft filters (boosts rather than hard filters) via the reranker:</p>
+<ul>
+  <li>Boost recent documents</li>
+  <li>Boost canonical sources over derived</li>
+  <li>Boost documents user has previously engaged with</li>
+</ul>
+
+<p>See <a href="../retrieval/reranking.html">reranking</a>.</p>
+
+<p style="margin-top:40px;">Next: <a href="cost-optimization.html">Cost optimization</a>.</p>
+<div class="prev-next"><a href="hybrid-search.html" class="prev"><div class="label">← Previous</div><div class="title">Hybrid search</div></a><a href="cost-optimization.html" class="next"><div class="label">Next →</div><div class="title">Cost optimization</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a></p>
+</div></footer></body></html>

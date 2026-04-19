@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adaptive RAG | Samuel Ochoa</title>
+<meta name="description" content="Adaptive RAG routes different query types to different retrieval strategies. Here's the taxonomy of strategies and how to classify queries.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Adaptive RAG | Samuel Ochoa">
+<meta property="og:description" content="Adaptive RAG routes different query types to different retrieval strategies. Here's the taxonomy of strategies and how to classify queries.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../about.html">About</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>RAGS to Riches (56 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-rag.html">What is RAG?</a></li><li><a href="foundations/why-rag.html">Why RAG over fine-tuning</a></li><li><a href="foundations/the-architecture.html">The RAG architecture map</a></li><li><a href="foundations/when-not-to-use.html">When not to use RAG</a></li></ul><h4>Documents + Ingestion</h4><ul><li><a href="docs/ingestion-pipeline.html">The ingestion pipeline</a></li><li><a href="docs/parsing-pdfs.html">Parsing PDFs</a></li><li><a href="docs/parsing-html.html">Parsing HTML + web pages</a></li><li><a href="docs/tables-figures.html">Tables and figures</a></li><li><a href="docs/ocr.html">OCR for scanned documents</a></li><li><a href="docs/metadata.html">Metadata extraction</a></li></ul><h4>Chunking</h4><ul><li><a href="chunking/why-chunking.html">Why chunking matters</a></li><li><a href="chunking/fixed-size.html">Fixed-size chunking</a></li><li><a href="chunking/semantic.html">Semantic chunking</a></li><li><a href="chunking/recursive.html">Recursive chunking</a></li><li><a href="chunking/structure-aware.html">Structure-aware chunking</a></li><li><a href="chunking/chunking-code.html">Chunking code</a></li></ul><h4>Embeddings</h4><ul><li><a href="embeddings/what-are-embeddings.html">What embeddings are</a></li><li><a href="embeddings/picking-a-model.html">Picking an embedding model</a></li><li><a href="embeddings/closed-vs-open.html">Closed vs open models</a></li><li><a href="embeddings/dimensions-cost.html">Dimensions, cost, and MRL</a></li><li><a href="embeddings/fine-tuning.html">Fine-tuning embeddings</a></li></ul><h4>Vector Stores</h4><ul><li><a href="vectors/overview.html">Vector database overview</a></li><li><a href="vectors/indexing-strategies.html">HNSW, IVF, PQ</a></li><li><a href="vectors/hybrid-search.html">Hybrid search</a></li><li><a href="vectors/metadata-filtering.html">Metadata filtering</a></li><li><a href="vectors/cost-optimization.html">Cost optimization</a></li><li><a href="vectors/choosing-a-db.html">Choosing a vector DB</a></li></ul><h4>Retrieval Strategies</h4><ul><li><a href="retrieval/vector-search.html">Vector similarity search</a></li><li><a href="retrieval/bm25-sparse.html">BM25 and sparse retrieval</a></li><li><a href="retrieval/hybrid.html">Hybrid retrieval</a></li><li><a href="retrieval/reranking.html">Reranking</a></li><li><a href="retrieval/query-rewriting.html">Query rewriting</a></li><li><a href="retrieval/hyde.html">HyDE</a></li><li><a href="retrieval/multi-query.html">Multi-query + fusion</a></li></ul><h4>Advanced Patterns</h4><ul><li><a href="advanced/agentic-rag.html">Agentic RAG</a></li><li><a href="advanced/graph-rag.html">GraphRAG</a></li><li><a href="advanced/adaptive-rag.html" class="active">Adaptive RAG</a></li><li><a href="advanced/corrective-rag.html">Corrective RAG (CRAG)</a></li><li><a href="advanced/self-rag.html">Self-RAG</a></li><li><a href="advanced/multi-hop.html">Multi-hop RAG</a></li></ul><h4>Evaluation</h4><ul><li><a href="eval/why-eval.html">Why evaluation is critical</a></li><li><a href="eval/retrieval-metrics.html">Retrieval metrics</a></li><li><a href="eval/generation-metrics.html">Generation metrics</a></li><li><a href="eval/ragas-and-frameworks.html">RAGAS, TruLens, ARES</a></li><li><a href="eval/building-eval-datasets.html">Building eval datasets</a></li></ul><h4>Production</h4><ul><li><a href="prod/latency.html">Latency optimization</a></li><li><a href="prod/caching.html">Caching strategies</a></li><li><a href="prod/observability.html">Observability and tracing</a></li><li><a href="prod/cost.html">Cost management</a></li><li><a href="prod/security.html">Security and prompt injection</a></li></ul><h4>Use Cases</h4><ul><li><a href="cases/customer-support.html">Customer support RAG</a></li><li><a href="cases/internal-kb.html">Internal knowledge RAG</a></li><li><a href="cases/code-rag.html">Code search + generation</a></li><li><a href="cases/legal-compliance.html">Legal and compliance</a></li><li><a href="cases/multi-tenant.html">Multi-tenant RAG</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">RAGS to Riches</a><span class="sep">›</span><span>Adaptive RAG</span></div><h1 class="title">Adaptive RAG</h1><div class="article-meta"><span>📖 4 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">Not every query needs the same retrieval strategy. Adaptive RAG classifies incoming queries and routes them to the most suitable approach, simple retrieval, hybrid, multi-query, agentic, or no retrieval at all. It's how production systems balance cost, latency, and quality.</p>
+
+<h2>The core idea</h2>
+<p>A classifier sits between the user and the retrieval pipeline. It looks at the query and decides:</p>
+<ul>
+  <li>Does this even need retrieval? (many queries don't)</li>
+  <li>Is this simple or complex?</li>
+  <li>Single-hop or multi-hop?</li>
+  <li>Fact-based or synthesis?</li>
+  <li>Which data source(s) are relevant?</li>
+</ul>
+
+<p>Based on the classification, it picks a retrieval strategy.</p>
+
+<h2>Query types and their strategies</h2>
+
+<h3>Trivial / greeting</h3>
+<p>"Hi", "thanks", "can you help me?", no retrieval, respond directly.</p>
+
+<h3>Common knowledge</h3>
+<p>"What's the capital of France?", no retrieval, LLM answers from pretraining.</p>
+
+<h3>Simple factual</h3>
+<p>"What's the refund window?", single-hop dense retrieval or hybrid.</p>
+
+<h3>Multi-entity</h3>
+<p>"Compare products A and B", multi-query with one retrieval per entity.</p>
+
+<h3>Multi-hop reasoning</h3>
+<p>"Who manages the team that shipped X?", agentic RAG with iterative retrieval.</p>
+
+<h3>Corpus-wide synthesis</h3>
+<p>"What are the main themes in our 2023 customer feedback?", GraphRAG or summarization over retrieved sets.</p>
+
+<h3>Structured query</h3>
+<p>"How many customers signed up last month?", text-to-SQL, not vector retrieval.</p>
+
+<h3>Out-of-scope</h3>
+<p>Query unrelated to your domain, decline or deflect.</p>
+
+<h2>Classifier options</h2>
+
+<h3>LLM-based</h3>
+<p>Prompt a small fast model to classify the query. Simple, flexible, costs a call per query. Most common in production.</p>
+
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:12px;">
+SYSTEM: Classify the following query into one of:
+- SIMPLE: single-fact question answerable from one document
+- MULTI_HOP: requires combining info from multiple sources
+- SYNTHESIS: requires summarizing across many documents
+- STRUCTURED: requires querying structured data
+- NO_RETRIEVAL: can be answered without documents
+
+USER: [query]
+OUTPUT: [classification] + reasoning
+</pre>
+
+<h3>Fine-tuned classifier</h3>
+<p>Train a small model on labeled examples. Faster and cheaper per query. Requires labeled data.</p>
+
+<h3>Heuristic</h3>
+<p>Rule-based: short queries are often simple; queries with "compare", "vs", "difference" are multi-entity; queries with "summary", "overview", "themes" are synthesis. Fast, limited.</p>
+
+<h3>Embedding-based</h3>
+<p>Embed the query and nearest-neighbor search against a labeled query corpus. Medium-fast, medium-quality.</p>
+
+<h2>The routing tree</h2>
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:12px;">
+                 query
+                   |
+              classify
+                   |
+     +----+---+---+----+---+---+----+
+     |    |   |   |    |   |   |    |
+  greet simple multi multi syn  SQL no-ret
+        |      hop   ent
+        |       |     |    |    |
+     hybrid   agent  multi graph LLM-only
+     +rerank  ic     query  RAG
+              RAG
+</pre>
+
+<h2>Cost savings</h2>
+<p>In a typical customer-facing RAG system, 20-40% of queries don't need retrieval at all. Routing them to no-retrieval saves:</p>
+<ul>
+  <li>Embedding cost per query</li>
+  <li>Vector DB query cost</li>
+  <li>Latency (no retrieval overhead)</li>
+  <li>Cost of unnecessary context tokens in generation</li>
+</ul>
+
+<p>For high-volume systems this is meaningful.</p>
+
+<h2>Implementation</h2>
+
+<h3>Route before retrieval</h3>
+<p>Classifier runs first. Only calls retrieval if needed. Cleanest and cheapest.</p>
+
+<h3>Route during retrieval</h3>
+<p>Do quick retrieval; if confidence is low or results are thin, escalate to more complex strategies. Adapts dynamically but pays the cheap-retrieval cost upfront.</p>
+
+<h3>Corrective routing</h3>
+<p>Always run simple retrieval. If generator indicates insufficient context, trigger multi-hop or agentic retrieval. See <a href="corrective-rag.html">Corrective RAG</a>.</p>
+
+<h2>Measurement</h2>
+<ul>
+  <li>Classifier accuracy vs human-labeled test set</li>
+  <li>Cost per query by route (no-retrieval is nearly free; agentic is expensive)</li>
+  <li>Quality per route (does each path produce good answers for its query type?)</li>
+  <li>Routing distribution (what % of queries go to each path)</li>
+</ul>
+
+<h2>The evolution path</h2>
+<p>Teams typically start with one strategy (simple retrieval), then add adaptive routing as they see failure modes:</p>
+<ol>
+  <li>v1: vanilla hybrid retrieval</li>
+  <li>v2: add no-retrieval path for trivial queries (easy win)</li>
+  <li>v3: add multi-query for ambiguous queries</li>
+  <li>v4: add agentic path for multi-hop</li>
+  <li>v5: add structured-query path for data-heavy queries</li>
+</ol>
+
+<p>Each step: build the route, measure the quality and cost impact, keep what helps.</p>
+
+<p style="margin-top:40px;">Next: <a href="corrective-rag.html">Corrective RAG (CRAG)</a>.</p>
+<div class="prev-next"><a href="graph-rag.html" class="prev"><div class="label">← Previous</div><div class="title">GraphRAG</div></a><a href="corrective-rag.html" class="next"><div class="label">Next →</div><div class="title">Corrective RAG (CRAG)</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a></p>
+</div></footer></body></html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verification + hygiene | Samuel Ochoa</title>
+<meta name="description" content="Sending to unverified addresses destroys domain reputation fast. Here's how to verify, when, and how strict to be.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Verification + hygiene | Samuel Ochoa">
+<meta property="og:description" content="Sending to unverified addresses destroys domain reputation fast. Here's how to verify, when, and how strict to be.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../about.html">About</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Cold Email (45 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-cold-email.html">What is cold email?</a></li><li><a href="foundations/spam-vs-cold.html">Cold email vs spam</a></li><li><a href="foundations/legal.html">Legal landscape</a></li><li><a href="foundations/when-it-works.html">When cold email works</a></li></ul><h4>Deliverability</h4><ul><li><a href="deliverability/why-it-matters.html">Why deliverability is everything</a></li><li><a href="deliverability/dns.html">SPF, DKIM, DMARC</a></li><li><a href="deliverability/sending-domains.html">Sending domain strategy</a></li><li><a href="deliverability/warming.html">Inbox warming</a></li><li><a href="deliverability/ip-reputation.html">IP reputation</a></li><li><a href="deliverability/spam-triggers.html">Content that triggers spam filters</a></li><li><a href="deliverability/monitoring.html">Monitoring inbox placement</a></li></ul><h4>Infrastructure</h4><ul><li><a href="infra/sending-tools.html">Sending tools</a></li><li><a href="infra/multi-inbox.html">Multi-inbox rotation</a></li><li><a href="infra/warming-tools.html">Warming tools</a></li><li><a href="infra/crm-integration.html">CRM and data integration</a></li><li><a href="infra/reply-management.html">Reply management</a></li></ul><h4>Lists + Targeting</h4><ul><li><a href="lists/icp.html">Defining the ICP</a></li><li><a href="lists/databases.html">Lead databases</a></li><li><a href="lists/clay.html">Clay and enrichment</a></li><li><a href="lists/verification.html" class="active">Verification + hygiene</a></li><li><a href="lists/intent-signals.html">Intent signals</a></li><li><a href="lists/segmentation.html">Segmentation strategy</a></li></ul><h4>Copy</h4><ul><li><a href="copy/anatomy.html">Cold email anatomy</a></li><li><a href="copy/subject-lines.html">Subject lines</a></li><li><a href="copy/first-lines.html">First lines</a></li><li><a href="copy/the-pitch.html">The pitch</a></li><li><a href="copy/ctas.html">CTAs for cold</a></li><li><a href="copy/signatures.html">Signatures</a></li><li><a href="copy/personalization.html">Personalization at scale</a></li></ul><h4>Sequences</h4><ul><li><a href="sequences/multi-touch.html">Multi-touch sequences</a></li><li><a href="sequences/cadence.html">Cadence and timing</a></li><li><a href="sequences/breakup.html">The breakup email</a></li><li><a href="sequences/multi-channel.html">Multi-channel orchestration</a></li><li><a href="sequences/length.html">Sequence length</a></li></ul><h4>Testing</h4><ul><li><a href="testing/methodology.html">Testing methodology</a></li><li><a href="testing/what-to-test.html">What to test</a></li><li><a href="testing/reply-metrics.html">Reply rate vs positive reply</a></li><li><a href="testing/iteration.html">The iteration loop</a></li></ul><h4>Playbooks</h4><ul><li><a href="plays/b2b-saas.html">B2B SaaS outbound</a></li><li><a href="plays/agency.html">Agency + services outbound</a></li><li><a href="plays/founder-led.html">Founder-led outbound</a></li><li><a href="plays/sdr-led.html">SDR-led outbound</a></li><li><a href="plays/link-building.html">Cold email for SEO</a></li><li><a href="plays/recruiting.html">Recruiting outreach</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">Cold Email</a><span class="sep">›</span><span>Verification + hygiene</span></div><h1 class="title">Verification + hygiene</h1><div class="article-meta"><span>📖 4 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">Every email you send to a non-existent or invalid address is a hard bounce. Bounces are the #1 reputation destroyer in cold email. Email verification is the prerequisite to every send, and the step most teams skip when they're in a rush.</p>
+
+<h2>What email verification does</h2>
+<p>Checks whether an email address actually exists and will accept mail before you try to send. Methods:</p>
+<ol>
+  <li>Check syntax (is it formatted correctly?)</li>
+  <li>Check domain MX records (does the domain accept email at all?)</li>
+  <li>SMTP handshake (connect to the receiving server and check if the address exists, without actually sending)</li>
+  <li>Additional checks: is the domain disposable, is it a catch-all, is the address role-based</li>
+</ol>
+
+<p>Output per address:</p>
+<ul>
+  <li>Valid, deliverable</li>
+  <li>Invalid, will bounce</li>
+  <li>Catch-all, domain accepts anything, uncertain</li>
+  <li>Risky, syntactically okay but flagged</li>
+  <li>Unknown, couldn't verify</li>
+</ul>
+
+<h2>Why verification matters</h2>
+<p>Hard bounce rates damage sender reputation badly. Rule of thumb:</p>
+<ul>
+  <li>Under 2% bounce rate: safe</li>
+  <li>2-3%: caution, clean the list</li>
+  <li>Over 3%: actively damaging reputation</li>
+  <li>Over 5%: Gmail/Outlook will start filtering you aggressively</li>
+</ul>
+
+<p>A single unverified list can push you from 1% to 6% bounce rate overnight. One campaign can damage infrastructure for weeks.</p>
+
+<h2>Verification tools</h2>
+
+<h3>Standalone verifiers</h3>
+<ul>
+  <li><strong>ZeroBounce</strong>: accurate, handles catch-alls well</li>
+  <li><strong>NeverBounce</strong>: reliable, integrates with many tools</li>
+  <li><strong>Million Verifier</strong>: cheap per-email at scale</li>
+  <li><strong>Bouncer</strong>: strong enterprise option</li>
+  <li><strong>MailTester / Emailable / Kickbox</strong>: alternatives with similar quality</li>
+</ul>
+
+<h3>Built into data providers</h3>
+<p>Apollo, Clay, and some email finders include verification. Usually less rigorous than standalone verifiers. Good as first pass, but double-check with standalone for important campaigns.</p>
+
+<h3>Built into cold email tools</h3>
+<p>Instantly, Smartlead have built-in verification. Convenient, quality varies.</p>
+
+<h2>The verification workflow</h2>
+<ol>
+  <li>Extract emails from your data source</li>
+  <li>Run through a dedicated verifier (ZeroBounce or similar)</li>
+  <li>Keep only "valid" results</li>
+  <li>Optionally include "catch-all" if you're okay with higher bounce risk</li>
+  <li>Drop "invalid," "unknown," "risky"</li>
+  <li>Upload to cold email tool</li>
+</ol>
+
+<h2>The catch-all problem</h2>
+<p>Some domains accept all email regardless of whether the specific address exists. Verifiers can't tell which specific addresses at catch-alls are real.</p>
+
+<p>Options:</p>
+<ul>
+  <li>Include catch-alls, accept slightly higher bounce rate</li>
+  <li>Exclude all catch-alls (safer but you lose coverage)</li>
+  <li>Use advanced verifiers that score catch-all likelihood</li>
+</ul>
+
+<p>Pragmatic: include catch-alls for large corporate domains (likely real if pattern matches company convention), exclude for unknown small-domain catch-alls.</p>
+
+<h2>Cost structure</h2>
+<ul>
+  <li>ZeroBounce: $16 per 10K addresses</li>
+  <li>NeverBounce: $8 per 10K</li>
+  <li>Million Verifier: $6 per 10K</li>
+  <li>Bouncer: $7 per 10K</li>
+</ul>
+
+<p>At scale (100K+ addresses/month), sub-$100/month easily. Cheap insurance against reputation damage.</p>
+
+<h2>List hygiene beyond verification</h2>
+
+<h3>Dedupe</h3>
+<p>Same person may appear multiple times across exports. Dedupe by email.</p>
+
+<h3>Remove existing contacts</h3>
+<p>Current customers, existing relationships, past positive replies should not be in cold lists.</p>
+
+<h3>Remove unsubscribes</h3>
+<p>Global DNC list applied before every campaign send.</p>
+
+<h3>Remove bounced addresses from prior campaigns</h3>
+<p>Don't re-bounce. If an address bounced once, it stays invalid until you have reason to think it changed.</p>
+
+<h3>Remove role-based addresses if strict</h3>
+<p>info@, sales@, contact@, these get more spam complaints than personal addresses. Include only if specifically targeting that role.</p>
+
+<h3>Remove irrelevant titles</h3>
+<p>If the title doesn't match your ICP, remove. Sending to "intern" or "analyst" when your ICP is "VP" wastes volume.</p>
+
+<h2>Staleness</h2>
+<p>Addresses verified 6 months ago may now be invalid. People change jobs. Domains close. Re-verify high-value lists quarterly or before major campaigns.</p>
+
+<h2>The verification-first discipline</h2>
+<p>Never upload a list to a sending tool without running verification first. Even lists from Apollo or ZoomInfo. Even "verified" lists from Clay. Fresh verification before every campaign is cheap and protects the infrastructure.</p>
+
+<h2>Monitoring bounce rate</h2>
+<p>Watch bounce rate per campaign in the sending tool. Rules:</p>
+<ul>
+  <li>Over 3%: pause campaign, re-verify remaining list</li>
+  <li>Over 5%: immediately stop, investigate, all future campaigns paused until resolved</li>
+</ul>
+
+<p>Don't continue campaigns with high bounce rates hoping it improves. It won't, and the damage compounds.</p>
+
+<h2>The data source quality check</h2>
+<p>If a data source consistently produces high bounce rates even after verification, that source is unreliable. Switch or stop using it.</p>
+
+<p>Over time you build intuition: "Apollo accuracy for X segment is poor," "Clay+LinkedIn for Y segment is excellent." Use the right source for each segment.</p>
+
+<p style="margin-top:40px;">Next: <a href="intent-signals.html">Intent signals</a>.</p>
+<div class="prev-next"><a href="clay.html" class="prev"><div class="label">← Previous</div><div class="title">Clay and enrichment</div></a><a href="intent-signals.html" class="next"><div class="label">Next →</div><div class="title">Intent signals</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
+</div></footer></body></html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Self-monitoring | Samuel Ochoa</title>
+<meta name="description" content="Agents that watch themselves. Health checks, self-reported metrics, anomaly detection, auto-restart.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Self-monitoring | Samuel Ochoa">
+<meta property="og:description" content="Agents that watch themselves. Health checks, self-reported metrics, anomaly detection, auto-restart.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../index.html">Home</a>
+<a href="../../framework/index.html" class="active">Framework</a>
+<a href="../expertise/index.html">Expertise</a>
+<a href="../playbooks/index.html">Playbooks</a>
+<a href="../writing.html">Writing</a>
+<a href="../../about.html">About</a>
+<a href="../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="what-is-autonomous-ai.html">What is autonomous AI</a></li><li><a href="the-autonomy-spectrum.html">The autonomy spectrum</a></li><li><a href="glossary.html">Glossary</a></li></ul><h4>Claude</h4><ul><li><a href="claude/overview.html">Overview</a></li><li><a href="claude/prompting-for-agents.html">Prompting for agents</a></li><li><a href="claude/extended-thinking.html">Extended thinking</a></li><li><a href="claude/tool-use.html">Tool use</a></li></ul><h4>MCP</h4><ul><li><a href="mcp/index.html">Overview</a></li><li><a href="mcp/what-is-mcp.html">What is MCP</a></li><li><a href="mcp/anatomy.html">Anatomy</a></li><li><a href="mcp/transports.html">Transports</a></li><li><a href="mcp/servers.html">Servers</a></li><li><a href="mcp/clients.html">Clients</a></li><li><a href="mcp/security.html">Security</a></li><li><a href="mcp/directory.html">Directory</a></li></ul><h4>Plugins</h4><ul><li><a href="plugins/index.html">Overview</a></li><li><a href="plugins/vs-mcp.html">Plugins vs MCP</a></li><li><a href="plugins/marketplace.html">Marketplace</a></li></ul><h4>Claude Code</h4><ul><li><a href="claude-code/index.html">Overview</a></li><li><a href="claude-code/settings.html">Settings</a></li><li><a href="claude-code/permissions.html">Permissions</a></li><li><a href="claude-code/hooks.html">Hooks</a></li><li><a href="claude-code/skills.html">Skills</a></li><li><a href="claude-code/memory.html">Memory</a></li></ul><h4>Patterns</h4><ul><li><a href="patterns/index.html">Overview</a></li><li><a href="patterns/react-loop.html">ReAct loop</a></li><li><a href="patterns/plan-execute.html">Plan-execute</a></li><li><a href="patterns/multi-agent.html">Multi-agent</a></li><li><a href="patterns/evaluation.html">Evaluation</a></li><li><a href="patterns/prompt-caching.html">Prompt caching</a></li></ul><h4>Autonomous</h4><ul><li><a href="autonomous/index.html">Overview</a></li><li><a href="autonomous/headless.html">Headless</a></li><li><a href="autonomous/scheduling.html">Scheduling</a></li><li><a href="autonomous/self-monitoring.html" class="active">Self-monitoring</a></li><li><a href="autonomous/safety.html">Safety</a></li></ul><h4>Build Guides</h4><ul><li><a href="build/index.html">Overview</a></li><li><a href="build/first-agent.html">First agent (60 min)</a></li><li><a href="build/voice-agent.html">Voice agent</a></li><li><a href="build/research-agent.html">Research agent</a></li></ul><h4>Tools</h4><ul><li><a href="tools/browser-automation.html">Browser automation</a></li><li><a href="tools/desktop-control.html">Desktop control</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Framework</a><span class="sep">›</span><a href="../autonomous/index.html">Autonomous</a><span class="sep">›</span><span>Self-monitoring</span></div><h1 class="title" style="font-size:clamp(32px,4.5vw,42px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">Self-monitoring</h1><div class="article-meta"><span>📖 5 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">An autonomous agent is running without you. How do you know it's still working? The answer: the agent tells you. Self-monitoring is what separates "running" from "reliable."</p>
+
+<h2>What to monitor</h2>
+<ul>
+  <li><strong>Is it running?</strong> Heartbeat pings from each run</li>
+  <li><strong>Is it finishing?</strong> Duration per run, if it drifts, something's wrong</li>
+  <li><strong>Is it succeeding?</strong> Per-run success/failure flag</li>
+  <li><strong>Is it doing quality work?</strong> Output quality score (eval every Nth run)</li>
+  <li><strong>Is it spending too much?</strong> Tokens + $ per run</li>
+  <li><strong>Is it safe?</strong> Tool calls vs deny list; any flagged outputs</li>
+</ul>
+
+<h2>Three layers of monitoring</h2>
+
+<h3>1. Liveness</h3>
+<p>Does the agent run at all? Use a dead-man's switch, every run pings a service. If pings stop, you get alerted.</p>
+<pre><code># At end of successful run
+curl https://hc-ping.com/your-check-uuid</code></pre>
+<p>Services: Healthchecks.io, BetterUptime, Dead Man's Snitch.</p>
+
+<h3>2. Correctness</h3>
+<p>Did the agent do what it was supposed to? Define a correctness check. For a reporting agent: "Report was generated and posted to #reports channel." Run the check after each run. Log result.</p>
+
+<h3>3. Quality</h3>
+<p>Is the output actually good, or is the agent producing garbage? This is harder. Run a lightweight eval on a sample of outputs (every 10th run, or random sampling). Use LLM-as-judge with a rubric.</p>
+
+<h2>Self-reporting patterns</h2>
+
+<h3>Daily digest</h3>
+<p>End of each day, the agent summarizes what it did, flagged issues, and notable outputs. Sent to you via email or Slack.</p>
+
+<h3>Anomaly flagging</h3>
+<p>If something is far from baseline (3× longer run time, 5× more tool calls, output size way off), the agent stops and notifies you.</p>
+
+<h3>Confidence scores</h3>
+<p>Agent rates its own confidence per task. Low-confidence outputs get flagged for human review instead of shipping.</p>
+
+<h2>When to auto-restart</h2>
+<ul>
+  <li><strong>Transient failures</strong> (network, rate limits), yes, with exponential backoff, max 3 retries</li>
+  <li><strong>Tool errors</strong>, depends. Retry once with different args; then escalate.</li>
+  <li><strong>Model errors (overload, 500s)</strong>, retry with backoff; fall back to cheaper model if needed</li>
+  <li><strong>Policy violations (denied tool)</strong>, don't retry. Log and escalate.</li>
+</ul>
+
+<h2>Escalation ladder</h2>
+<p>When the agent can't proceed, what happens?</p>
+<ol>
+  <li><strong>Retry</strong>, same task, slight variation</li>
+  <li><strong>Fallback</strong>, simpler version of the task</li>
+  <li><strong>Pause</strong>, stop this run, wait for next cycle</li>
+  <li><strong>Notify</strong>, send a message to human; include context</li>
+  <li><strong>Disable</strong>, turn off future runs until human resets</li>
+</ol>
+
+<h2>Useful signals to track per-run</h2>
+<ul>
+  <li>Start time + duration</li>
+  <li>Turn count</li>
+  <li>Tokens in / out / cached</li>
+  <li>Cost in $</li>
+  <li>Tool call count (per tool)</li>
+  <li>Errors encountered</li>
+  <li>Output size</li>
+  <li>Exit reason: completed / max-turns / error / escalated</li>
+</ul>
+<p>Stored as JSON lines in a log file, you can grep for patterns after the fact.</p>
+
+<div class="callout insight">
+  <strong>The agent is a system.</strong> Treat its observability like you would a production service. Latency. Error rate. Cost. Quality. You need all four.
+</div>
+<div class="prev-next"><a href="scheduling.html" class="prev"><div class="label">← Previous</div><div class="title">Scheduling</div></a><a href="safety.html" class="next"><div class="label">Next →</div><div class="title">Safety boundaries</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../framework/index.html">Framework</a></p>
+</div></footer></body></html>

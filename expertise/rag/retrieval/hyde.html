@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HyDE (Hypothetical Document Embeddings) | Samuel Ochoa</title>
+<meta name="description" content="HyDE has the LLM hallucinate an answer first, then retrieves documents similar to that hallucination. Counterintuitive and often effective.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HyDE (Hypothetical Document Embeddings) | Samuel Ochoa">
+<meta property="og:description" content="HyDE has the LLM hallucinate an answer first, then retrieves documents similar to that hallucination. Counterintuitive and often effective.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../about.html">About</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>RAGS to Riches (56 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-rag.html">What is RAG?</a></li><li><a href="foundations/why-rag.html">Why RAG over fine-tuning</a></li><li><a href="foundations/the-architecture.html">The RAG architecture map</a></li><li><a href="foundations/when-not-to-use.html">When not to use RAG</a></li></ul><h4>Documents + Ingestion</h4><ul><li><a href="docs/ingestion-pipeline.html">The ingestion pipeline</a></li><li><a href="docs/parsing-pdfs.html">Parsing PDFs</a></li><li><a href="docs/parsing-html.html">Parsing HTML + web pages</a></li><li><a href="docs/tables-figures.html">Tables and figures</a></li><li><a href="docs/ocr.html">OCR for scanned documents</a></li><li><a href="docs/metadata.html">Metadata extraction</a></li></ul><h4>Chunking</h4><ul><li><a href="chunking/why-chunking.html">Why chunking matters</a></li><li><a href="chunking/fixed-size.html">Fixed-size chunking</a></li><li><a href="chunking/semantic.html">Semantic chunking</a></li><li><a href="chunking/recursive.html">Recursive chunking</a></li><li><a href="chunking/structure-aware.html">Structure-aware chunking</a></li><li><a href="chunking/chunking-code.html">Chunking code</a></li></ul><h4>Embeddings</h4><ul><li><a href="embeddings/what-are-embeddings.html">What embeddings are</a></li><li><a href="embeddings/picking-a-model.html">Picking an embedding model</a></li><li><a href="embeddings/closed-vs-open.html">Closed vs open models</a></li><li><a href="embeddings/dimensions-cost.html">Dimensions, cost, and MRL</a></li><li><a href="embeddings/fine-tuning.html">Fine-tuning embeddings</a></li></ul><h4>Vector Stores</h4><ul><li><a href="vectors/overview.html">Vector database overview</a></li><li><a href="vectors/indexing-strategies.html">HNSW, IVF, PQ</a></li><li><a href="vectors/hybrid-search.html">Hybrid search</a></li><li><a href="vectors/metadata-filtering.html">Metadata filtering</a></li><li><a href="vectors/cost-optimization.html">Cost optimization</a></li><li><a href="vectors/choosing-a-db.html">Choosing a vector DB</a></li></ul><h4>Retrieval Strategies</h4><ul><li><a href="retrieval/vector-search.html">Vector similarity search</a></li><li><a href="retrieval/bm25-sparse.html">BM25 and sparse retrieval</a></li><li><a href="retrieval/hybrid.html">Hybrid retrieval</a></li><li><a href="retrieval/reranking.html">Reranking</a></li><li><a href="retrieval/query-rewriting.html">Query rewriting</a></li><li><a href="retrieval/hyde.html" class="active">HyDE</a></li><li><a href="retrieval/multi-query.html">Multi-query + fusion</a></li></ul><h4>Advanced Patterns</h4><ul><li><a href="advanced/agentic-rag.html">Agentic RAG</a></li><li><a href="advanced/graph-rag.html">GraphRAG</a></li><li><a href="advanced/adaptive-rag.html">Adaptive RAG</a></li><li><a href="advanced/corrective-rag.html">Corrective RAG (CRAG)</a></li><li><a href="advanced/self-rag.html">Self-RAG</a></li><li><a href="advanced/multi-hop.html">Multi-hop RAG</a></li></ul><h4>Evaluation</h4><ul><li><a href="eval/why-eval.html">Why evaluation is critical</a></li><li><a href="eval/retrieval-metrics.html">Retrieval metrics</a></li><li><a href="eval/generation-metrics.html">Generation metrics</a></li><li><a href="eval/ragas-and-frameworks.html">RAGAS, TruLens, ARES</a></li><li><a href="eval/building-eval-datasets.html">Building eval datasets</a></li></ul><h4>Production</h4><ul><li><a href="prod/latency.html">Latency optimization</a></li><li><a href="prod/caching.html">Caching strategies</a></li><li><a href="prod/observability.html">Observability and tracing</a></li><li><a href="prod/cost.html">Cost management</a></li><li><a href="prod/security.html">Security and prompt injection</a></li></ul><h4>Use Cases</h4><ul><li><a href="cases/customer-support.html">Customer support RAG</a></li><li><a href="cases/internal-kb.html">Internal knowledge RAG</a></li><li><a href="cases/code-rag.html">Code search + generation</a></li><li><a href="cases/legal-compliance.html">Legal and compliance</a></li><li><a href="cases/multi-tenant.html">Multi-tenant RAG</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">RAGS to Riches</a><span class="sep">›</span><span>HyDE (Hypothetical Document Embeddings)</span></div><h1 class="title">HyDE (Hypothetical Document Embeddings)</h1><div class="article-meta"><span>📖 4 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">HyDE (Hypothetical Document Embeddings) is a retrieval technique with a counterintuitive core idea: generate a fake answer to the user's query with an LLM, embed that fake answer, and retrieve real documents similar to it. The LLM's hallucination serves as a better query representation than the original question. It works surprisingly well.</p>
+
+<h2>Why it works</h2>
+<p>Dense retrieval matches query embeddings to document embeddings. A short query is a weak representation, it matches <em>questions</em> better than <em>answers</em>. But your documents are answers. A hallucinated "answer-shaped" text is a stronger representation of what you're looking for, so it matches better.</p>
+
+<p>The LLM's factual accuracy doesn't matter for retrieval, only its structural and vocabulary similarity to real documents.</p>
+
+<h2>The flow</h2>
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
+1. User query: "How do I set up OAuth with Google?"
+2. LLM prompt: "Write a short passage that would answer this question"
+3. LLM output: "To set up OAuth with Google, first create a project in
+   the Google Cloud Console. Then enable the Google+ API, configure
+   OAuth consent, and generate client credentials. Use these credentials
+   in your application's OAuth flow..."
+4. Embed the LLM output (not the query)
+5. Retrieve documents similar to the hypothetical passage
+6. Pass real retrieved docs to final generation
+</pre>
+
+<h2>When HyDE wins</h2>
+<ul>
+  <li>Queries are short and retrieval quality is noisy</li>
+  <li>The corpus is answer-shaped (documentation, encyclopedias, manuals)</li>
+  <li>Vocabulary mismatch between queries and documents</li>
+  <li>No labeled query-doc pairs are available to fine-tune an embedding model</li>
+</ul>
+
+<h2>When HyDE doesn't help</h2>
+<ul>
+  <li>Queries are already detailed and verbose</li>
+  <li>Corpus has strong BM25-friendly keyword overlap with queries</li>
+  <li>Latency budget is tight (HyDE adds an LLM call)</li>
+  <li>The corpus domain is unfamiliar to the LLM (it can't hallucinate plausibly)</li>
+</ul>
+
+<h2>Cost and latency</h2>
+<p>HyDE adds one LLM call before retrieval. With a small fast model, this is 100-500ms. For real-time RAG, weigh the latency cost against quality gain.</p>
+
+<p>Mitigation: use the cheapest fast model (Haiku, GPT-4o-mini, Flash) for the hypothetical generation. Accuracy of the hallucination isn't critical, structural similarity is.</p>
+
+<h2>Variants</h2>
+
+<h3>Query + HyDE combined</h3>
+<p>Retrieve using both the original query embedding and the HyDE embedding. Fuse results with RRF. Often better than either alone.</p>
+
+<h3>Multiple hypothetical documents</h3>
+<p>Generate 3-5 hypothetical passages, embed each, retrieve with each, union. More coverage but more cost.</p>
+
+<h3>HyDE with reasoning</h3>
+<p>Prompt the LLM to first reason about what kinds of documents would answer the question, then write one. Produces higher-quality hypothetical passages for complex queries.</p>
+
+<h2>The hallucination risk</h2>
+<p>HyDE generates fake content. The concern: what if the fake passage anchors the user's understanding or biases downstream generation?</p>
+
+<p>The safeguard: the fake passage is only used for retrieval, never shown to the user and never passed to the final generation step. Final generation uses the real retrieved documents. HyDE is invisible to everything after retrieval.</p>
+
+<h2>Implementation</h2>
+
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:12px;">
+SYSTEM: Given a user question, write a 3-5 sentence passage that would
+be a plausible excerpt from a document that answers the question. Use
+the vocabulary, structure, and level of detail typical of technical
+documentation. Don't worry about factual accuracy; focus on writing
+text that matches the style of real documentation.
+
+USER: [user question]
+
+ASSISTANT: [hypothetical passage]
+</pre>
+
+<p>Then: <code>retrieval_query = embed(hypothetical_passage)</code></p>
+
+<h2>Measured gains</h2>
+<p>On benchmarks, HyDE typically improves retrieval metrics by 5-15% over standard dense retrieval for short queries. The gain shrinks as query length grows (long queries are already answer-shaped).</p>
+
+<h2>The mental model</h2>
+<p>Dense retrieval matches "the shape of what you're asking for" to "the shape of documents in the corpus." A short query is a poor shape-match. An answer passage is a great shape-match. HyDE manufactures the latter from the former. That's it.</p>
+
+<p style="margin-top:40px;">Next: <a href="multi-query.html">Multi-query + fusion</a>.</p>
+<div class="prev-next"><a href="query-rewriting.html" class="prev"><div class="label">← Previous</div><div class="title">Query rewriting</div></a><a href="multi-query.html" class="next"><div class="label">Next →</div><div class="title">Multi-query + fusion</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a></p>
+</div></footer></body></html>

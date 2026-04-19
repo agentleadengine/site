@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Memory system design | Samuel Ochoa</title>
+<meta name="description" content="How to architect memory for a production agent. What goes where, what retrieval looks like, what to delete.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Memory system design | Samuel Ochoa">
+<meta property="og:description" content="How to architect memory for a production agent. What goes where, what retrieval looks like, what to delete.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="loops/react.html">ReAct</a></li><li><a href="loops/tool-use.html">Tool use</a></li><li><a href="loops/planning.html">Planning loops</a></li><li><a href="loops/reflection.html">Reflection</a></li><li><a href="loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="tools/tool-design.html">Tool design</a></li><li><a href="tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="tools/error-handling.html">Tool error handling</a></li><li><a href="tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="memory/short-term.html">Short-term memory</a></li><li><a href="memory/long-term.html">Long-term memory</a></li><li><a href="memory/episodic.html">Episodic memory</a></li><li><a href="memory/procedural.html">Procedural memory</a></li><li><a href="memory/memory-systems.html" class="active">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="multi/peer-agents.html">Peer agents</a></li><li><a href="multi/debate.html">Debate + consensus</a></li><li><a href="multi/handoffs.html">Agent handoffs</a></li><li><a href="multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="eval/why-eval-agents.html">Why eval agents</a></li><li><a href="eval/task-completion.html">Task completion</a></li><li><a href="eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="prod/observability.html">Observability + tracing</a></li><li><a href="prod/cost-control.html">Cost control</a></li><li><a href="prod/latency.html">Latency optimization</a></li><li><a href="prod/safety.html">Safety + guardrails</a></li><li><a href="prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="patterns/research-agent.html">Research agent</a></li><li><a href="patterns/coding-agent.html">Coding agent</a></li><li><a href="patterns/customer-support.html">Customer support agent</a></li><li><a href="patterns/data-analyst.html">Data analyst agent</a></li><li><a href="patterns/browser-agent.html">Browser agent</a></li><li><a href="patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="frameworks/langgraph.html">LangGraph</a></li><li><a href="frameworks/crewai.html">CrewAI</a></li><li><a href="frameworks/autogen.html">AutoGen</a></li><li><a href="frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>Memory system design</span></div><h1 class="title">Memory system design</h1><div class="article-meta"><span>📖 3 min read</span><span>Updated 2026-04-19</span></div>
+<p class="lede">A real agent memory system combines short-term, long-term, episodic, and procedural memory into one architecture. Here's how to design it so the agent has the right context at the right time without drowning in data.</p>
+
+<h2>The layered architecture</h2>
+
+<h3>Layer 1: Session context (short-term)</h3>
+<p>In-memory, per-session. Current conversation and recent tool results. Cleaned up at session end.</p>
+
+<h3>Layer 2: User profile (long-term, structured)</h3>
+<p>Key-value store. Preferences, settings, stable facts. Loaded at session start.</p>
+
+<h3>Layer 3: Semantic memory (long-term, unstructured)</h3>
+<p>Vector store of past conversations, notes, artifacts. Retrieved on demand by similarity.</p>
+
+<h3>Layer 4: Episodic log (history)</h3>
+<p>Chronological record of past sessions with summaries. Queryable by time or topic.</p>
+
+<h3>Layer 5: Procedure library</h3>
+<p>Named how-to recipes the agent can invoke.</p>
+
+<h2>The retrieval stack</h2>
+<p>At each agent step, the orchestrator decides what memory to pull:</p>
+<ol>
+<li>Always: user profile (short, cheap, always relevant)</li>
+<li>On session start: relevant recent episodes</li>
+<li>On demand: agent calls <code>recall(topic)</code> tool to fetch specific memories</li>
+<li>Automatic: vector search for semantically related memories when the task matches</li>
+</ol>
+
+<h2>Writes are as important as reads</h2>
+<p>Writing to long-term memory should be deliberate, not automatic:</p>
+<ul>
+<li><strong>Always write</strong>: explicit user-requested facts ("I'm allergic to peanuts")</li>
+<li><strong>Sometimes write</strong>: preferences inferred from repeated behavior</li>
+<li><strong>Rarely write</strong>: transient conversation details</li>
+<li><strong>Never write</strong>: PII the user hasn't consented to persist</li>
+</ul>
+
+<h2>Expiry and updates</h2>
+<p>Memory that never decays or updates becomes wrong. Build explicit:</p>
+<ul>
+<li>TTL on volatile facts</li>
+<li>Update semantics (overwrite, append, supersede)</li>
+<li>User-facing memory management (view, edit, delete)</li>
+</ul>
+
+<h2>Tools for memory</h2>
+<p>Expose memory operations as tools the LLM can call:</p>
+<ul>
+<li><code>remember(fact)</code>, write to long-term</li>
+<li><code>recall(topic)</code>, semantic retrieval</li>
+<li><code>forget(fact_id)</code>, delete</li>
+<li><code>list_procedures()</code>, browse procedure library</li>
+</ul>
+
+<p>The LLM uses these as first-class citizens alongside its other tools.</p>
+<div class="prev-next"><a href="procedural.html" class="prev"><div class="label">← Previous</div><div class="title">Procedural memory</div></a><a href="../multi/orchestrator-worker.html" class="next"><div class="label">Next →</div><div class="title">Orchestrator-worker</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
+</div></footer></body></html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multi-query + fusion | Samuel Ochoa</title>
+<meta name="description" content="One query produces one retrieval. Multiple query variations produce many retrievals that can be fused for better coverage.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Multi-query + fusion | Samuel Ochoa">
+<meta property="og:description" content="One query produces one retrieval. Multiple query variations produce many retrievals that can be fused for better coverage.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../about.html">About</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>RAGS to Riches (56 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-rag.html">What is RAG?</a></li><li><a href="foundations/why-rag.html">Why RAG over fine-tuning</a></li><li><a href="foundations/the-architecture.html">The RAG architecture map</a></li><li><a href="foundations/when-not-to-use.html">When not to use RAG</a></li></ul><h4>Documents + Ingestion</h4><ul><li><a href="docs/ingestion-pipeline.html">The ingestion pipeline</a></li><li><a href="docs/parsing-pdfs.html">Parsing PDFs</a></li><li><a href="docs/parsing-html.html">Parsing HTML + web pages</a></li><li><a href="docs/tables-figures.html">Tables and figures</a></li><li><a href="docs/ocr.html">OCR for scanned documents</a></li><li><a href="docs/metadata.html">Metadata extraction</a></li></ul><h4>Chunking</h4><ul><li><a href="chunking/why-chunking.html">Why chunking matters</a></li><li><a href="chunking/fixed-size.html">Fixed-size chunking</a></li><li><a href="chunking/semantic.html">Semantic chunking</a></li><li><a href="chunking/recursive.html">Recursive chunking</a></li><li><a href="chunking/structure-aware.html">Structure-aware chunking</a></li><li><a href="chunking/chunking-code.html">Chunking code</a></li></ul><h4>Embeddings</h4><ul><li><a href="embeddings/what-are-embeddings.html">What embeddings are</a></li><li><a href="embeddings/picking-a-model.html">Picking an embedding model</a></li><li><a href="embeddings/closed-vs-open.html">Closed vs open models</a></li><li><a href="embeddings/dimensions-cost.html">Dimensions, cost, and MRL</a></li><li><a href="embeddings/fine-tuning.html">Fine-tuning embeddings</a></li></ul><h4>Vector Stores</h4><ul><li><a href="vectors/overview.html">Vector database overview</a></li><li><a href="vectors/indexing-strategies.html">HNSW, IVF, PQ</a></li><li><a href="vectors/hybrid-search.html">Hybrid search</a></li><li><a href="vectors/metadata-filtering.html">Metadata filtering</a></li><li><a href="vectors/cost-optimization.html">Cost optimization</a></li><li><a href="vectors/choosing-a-db.html">Choosing a vector DB</a></li></ul><h4>Retrieval Strategies</h4><ul><li><a href="retrieval/vector-search.html">Vector similarity search</a></li><li><a href="retrieval/bm25-sparse.html">BM25 and sparse retrieval</a></li><li><a href="retrieval/hybrid.html">Hybrid retrieval</a></li><li><a href="retrieval/reranking.html">Reranking</a></li><li><a href="retrieval/query-rewriting.html">Query rewriting</a></li><li><a href="retrieval/hyde.html">HyDE</a></li><li><a href="retrieval/multi-query.html" class="active">Multi-query + fusion</a></li></ul><h4>Advanced Patterns</h4><ul><li><a href="advanced/agentic-rag.html">Agentic RAG</a></li><li><a href="advanced/graph-rag.html">GraphRAG</a></li><li><a href="advanced/adaptive-rag.html">Adaptive RAG</a></li><li><a href="advanced/corrective-rag.html">Corrective RAG (CRAG)</a></li><li><a href="advanced/self-rag.html">Self-RAG</a></li><li><a href="advanced/multi-hop.html">Multi-hop RAG</a></li></ul><h4>Evaluation</h4><ul><li><a href="eval/why-eval.html">Why evaluation is critical</a></li><li><a href="eval/retrieval-metrics.html">Retrieval metrics</a></li><li><a href="eval/generation-metrics.html">Generation metrics</a></li><li><a href="eval/ragas-and-frameworks.html">RAGAS, TruLens, ARES</a></li><li><a href="eval/building-eval-datasets.html">Building eval datasets</a></li></ul><h4>Production</h4><ul><li><a href="prod/latency.html">Latency optimization</a></li><li><a href="prod/caching.html">Caching strategies</a></li><li><a href="prod/observability.html">Observability and tracing</a></li><li><a href="prod/cost.html">Cost management</a></li><li><a href="prod/security.html">Security and prompt injection</a></li></ul><h4>Use Cases</h4><ul><li><a href="cases/customer-support.html">Customer support RAG</a></li><li><a href="cases/internal-kb.html">Internal knowledge RAG</a></li><li><a href="cases/code-rag.html">Code search + generation</a></li><li><a href="cases/legal-compliance.html">Legal and compliance</a></li><li><a href="cases/multi-tenant.html">Multi-tenant RAG</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">RAGS to Riches</a><span class="sep">›</span><span>Multi-query + fusion</span></div><h1 class="title">Multi-query + fusion</h1><div class="article-meta"><span>📖 4 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">A single query embedding represents one angle on what the user wants. Multi-query retrieval generates several variations, retrieves for each, and fuses the results. It's a robust way to improve recall on tricky queries at the cost of more compute.</p>
+
+<h2>The pattern</h2>
+<ol>
+  <li>Take the user's original query</li>
+  <li>Use an LLM to generate N variations (paraphrases, sub-questions, step-back questions, HyDE passages)</li>
+  <li>Run retrieval for each variation independently</li>
+  <li>Fuse the result lists (RRF or similar)</li>
+  <li>Take the top-K merged results</li>
+  <li>Optionally rerank</li>
+</ol>
+
+<h2>Kinds of variations</h2>
+
+<h3>Paraphrases</h3>
+<p>Same meaning, different words.</p>
+<ul>
+  <li>"How do I reset my password?"</li>
+  <li>"What's the process for changing login credentials?"</li>
+  <li>"Steps to recover account access when locked out"</li>
+</ul>
+
+<h3>Sub-questions</h3>
+<p>Decompose into parts.</p>
+<ul>
+  <li>"Why is our API slow?" → "What's the current API latency?" + "What are common causes of API latency?" + "How do we measure API performance?"</li>
+</ul>
+
+<h3>Step-back</h3>
+<p>More general framing.</p>
+<ul>
+  <li>"Why did OAuth token expire?" → "How does OAuth token expiration work?"</li>
+</ul>
+
+<h3>Step-forward</h3>
+<p>More specific framing.</p>
+<ul>
+  <li>"How do I integrate your API?" → "How do I integrate your API in Node.js?" + "How do I integrate your API in Python?"</li>
+</ul>
+
+<h3>HyDE-style answers</h3>
+<p>Hypothetical answer passages. See <a href="hyde.html">HyDE</a>.</p>
+
+<h2>Fusion</h2>
+<p>Same as hybrid retrieval fusion, RRF is the default.</p>
+
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
+For each document d:
+  rrf_score(d) = sum over all queries q: 1 / (k + rank_q(d))
+
+Sort documents by rrf_score. Take top-K.
+</pre>
+
+<p>Documents that appear in multiple query variations' results get boosted. Documents that only appear in one get retained at lower ranks.</p>
+
+<h2>The RAG-Fusion technique</h2>
+<p>A specific multi-query pattern popularized around 2023:</p>
+<ol>
+  <li>Generate 4-5 paraphrases of the original query</li>
+  <li>Retrieve top-k for each paraphrase</li>
+  <li>RRF fusion</li>
+</ol>
+
+<p>Robust improvement over single-query retrieval on queries with vocabulary mismatch.</p>
+
+<h2>Parallel vs sequential retrieval</h2>
+<p>All query variations can run in parallel. With async retrieval, total latency is (LLM variation generation) + (longest single retrieval), not the sum.</p>
+
+<p>With 4 variations and ~100ms each retrieval, parallel retrieval adds roughly 100ms total latency, not 400ms.</p>
+
+<h2>Cost tradeoffs</h2>
+<ul>
+  <li>N variations = N retrieval calls. At high QPS this adds up.</li>
+  <li>LLM call to generate variations: 100-400ms, modest cost with cheap models.</li>
+  <li>Reranking cost increases too (more candidates to rerank).</li>
+</ul>
+
+<p>In return: typically 5-15% recall improvement, higher for short or ambiguous queries.</p>
+
+<h2>When multi-query is overkill</h2>
+<ul>
+  <li>Queries that are already specific and verbose</li>
+  <li>When hybrid retrieval already covers the recall gap</li>
+  <li>Cost-sensitive applications where extra LLM calls aren't justified</li>
+  <li>Latency-sensitive applications where the extra 100ms matters</li>
+</ul>
+
+<h2>The pragmatic recipe</h2>
+<p>For a production RAG system that wants best-in-class retrieval:</p>
+<ol>
+  <li>Generate 3 paraphrases of the original query (using a fast model)</li>
+  <li>For each of the 4 queries (original + 3 paraphrases), run hybrid retrieval for top-50</li>
+  <li>RRF-fuse across all 4 result lists</li>
+  <li>Rerank top-50 merged → top-10</li>
+  <li>Pass to generator</li>
+</ol>
+
+<p>This adds about 150-300ms of latency and roughly 4x retrieval cost. For queries that benefited from it, quality is noticeably better. For queries that didn't, you've paid the cost without improvement.</p>
+
+<h2>Routing: when to use multi-query</h2>
+<p>Not every query benefits. A lightweight classifier or prompt can decide:</p>
+<ul>
+  <li>Short queries (&lt; 5 words): use multi-query</li>
+  <li>Long detailed queries: single-query is sufficient</li>
+  <li>Vague queries with ambiguous intent: use multi-query</li>
+  <li>Queries with specific terminology and clear intent: single-query</li>
+</ul>
+
+<p>Skip multi-query when it doesn't help. Use it when it does. Measurement tells you which is which.</p>
+
+<p style="margin-top:40px;">Next: <a href="../advanced/agentic-rag.html">Agentic RAG</a>.</p>
+<div class="prev-next"><a href="hyde.html" class="prev"><div class="label">← Previous</div><div class="title">HyDE</div></a><a href="../advanced/agentic-rag.html" class="next"><div class="label">Next →</div><div class="title">Agentic RAG</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a></p>
+</div></footer></body></html>

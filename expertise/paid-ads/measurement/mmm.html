@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marketing mix modeling (MMM) | Samuel Ochoa</title>
+<meta name="description" content="MMM is statistical modeling that infers channel contribution without user-level tracking. Here's when it's worth it.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Marketing mix modeling (MMM) | Samuel Ochoa">
+<meta property="og:description" content="MMM is statistical modeling that infers channel contribution without user-level tracking. Here's when it's worth it.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Paid Advertising (50 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/how-paid-works.html">How paid ads actually work</a></li><li><a href="foundations/unit-economics.html">Unit economics</a></li><li><a href="foundations/channel-fit.html">Channel-market fit</a></li><li><a href="foundations/when-to-run-paid.html">When to run paid</a></li></ul><h4>Meta (Facebook + Instagram)</h4><ul><li><a href="meta/overview.html">Meta Ads overview</a></li><li><a href="meta/account-structure.html">Account structure</a></li><li><a href="meta/campaign-types.html">Campaign types</a></li><li><a href="meta/audiences.html">Audiences and targeting</a></li><li><a href="meta/creative-testing.html">Creative testing</a></li><li><a href="meta/ios14-reality.html">iOS 14+ reality</a></li><li><a href="meta/scaling.html">Scaling campaigns</a></li><li><a href="meta/retargeting.html">Retargeting</a></li></ul><h4>Google Ads</h4><ul><li><a href="google/overview.html">Google Ads overview</a></li><li><a href="google/search-vs-display.html">Search vs Display vs Pmax</a></li><li><a href="google/keyword-research.html">Keyword research</a></li><li><a href="google/match-types.html">Match types</a></li><li><a href="google/quality-score.html">Quality Score</a></li><li><a href="google/rsa-copy.html">Responsive Search Ad copy</a></li><li><a href="google/bidding.html">Bidding strategies</a></li><li><a href="google/pmax.html">Performance Max</a></li></ul><h4>TikTok Ads</h4><ul><li><a href="tiktok/overview.html">TikTok Ads overview</a></li><li><a href="tiktok/creative-first.html">Creative-first approach</a></li><li><a href="tiktok/spark-ads.html">Spark Ads</a></li><li><a href="tiktok/ugc-production.html">UGC production</a></li><li><a href="tiktok/when-tiktok-works.html">When TikTok works</a></li></ul><h4>LinkedIn Ads</h4><ul><li><a href="linkedin/overview.html">LinkedIn Ads overview</a></li><li><a href="linkedin/b2b-targeting.html">B2B targeting</a></li><li><a href="linkedin/ad-formats.html">Ad formats</a></li><li><a href="linkedin/cost-reality.html">Cost reality</a></li><li><a href="linkedin/lead-gen-forms.html">Lead gen forms</a></li></ul><h4>YouTube Ads</h4><ul><li><a href="youtube/overview.html">YouTube Ads overview</a></li><li><a href="youtube/formats.html">YouTube ad formats</a></li><li><a href="youtube/creative-patterns.html">Creative patterns</a></li><li><a href="youtube/targeting.html">Targeting options</a></li><li><a href="youtube/vs-meta.html">YouTube vs Meta</a></li></ul><h4>Creative + Copy</h4><ul><li><a href="creative/hook-patterns.html">Hook patterns</a></li><li><a href="creative/ugc-vs-produced.html">UGC vs produced</a></li><li><a href="creative/creative-volume.html">Creative volume</a></li><li><a href="creative/ad-copy.html">Ad copy</a></li><li><a href="creative/landing-pages.html">Landing pages</a></li><li><a href="creative/creative-fatigue.html">Creative fatigue</a></li><li><a href="creative/hiring-creators.html">Hiring creators</a></li></ul><h4>Attribution + Measurement</h4><ul><li><a href="measurement/why-attribution-broke.html">Why attribution broke</a></li><li><a href="measurement/platform-attribution.html">Platform attribution</a></li><li><a href="measurement/mer-blended.html">MER and blended metrics</a></li><li><a href="measurement/incrementality.html">Incrementality testing</a></li><li><a href="measurement/mmm.html" class="active">Marketing mix modeling</a></li><li><a href="measurement/ltv-cac.html">LTV:CAC</a></li><li><a href="measurement/dashboards.html">Dashboards that matter</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">Paid Advertising</a><span class="sep">›</span><span>Marketing mix modeling (MMM)</span></div><h1 class="title">Marketing mix modeling (MMM)</h1><div class="article-meta"><span>📖 3 min read</span><span>Updated 2026-04-19</span></div>
+<p class="lede">Marketing Mix Modeling uses historical data (spend and revenue by channel over time) to statistically estimate each channel's contribution. Privacy-safe (no user-level data), but requires scale and sophistication to set up.</p>
+
+<h2>How MMM works</h2>
+<ol>
+<li>Collect historical data: spend by channel, total revenue, external factors (seasonality, competitors, weather)</li>
+<li>Statistical model fits the relationship: revenue = f(spend by channel, factors)</li>
+<li>Output: estimated marginal contribution per dollar of each channel</li>
+<li>Used to allocate future budget</li>
+</ol>
+
+<h2>What MMM is good at</h2>
+<ul>
+<li>Privacy-safe (no user tracking)</li>
+<li>Accounts for all channels (including TV, podcast, OOH)</li>
+<li>Captures diminishing returns (channels saturate)</li>
+<li>Long-term view (not just last-click)</li>
+</ul>
+
+<h2>What MMM struggles with</h2>
+<ul>
+<li>Requires 2+ years of data ideally</li>
+<li>Need scale (small data = noisy models)</li>
+<li>Can't detect sudden changes (creative launches, platform shifts)</li>
+<li>Expensive to build and maintain</li>
+</ul>
+
+<h2>Who should use MMM</h2>
+<ul>
+<li>Brands spending $5M+/year on paid media</li>
+<li>Multi-channel (4+ channels with meaningful spend)</li>
+<li>Has data infrastructure to support it</li>
+<li>Businesses seeing attribution chaos across channels</li>
+</ul>
+
+<h2>Who shouldn't yet</h2>
+<ul>
+<li>Sub-scale advertisers</li>
+<li>Brands with few channels (just Meta + Google)</li>
+<li>Pre-product-market-fit (need to iterate faster than MMM responds)</li>
+</ul>
+
+<h2>Tools</h2>
+<ul>
+<li><strong>Open-source</strong>: Meta Robyn, Google Meridian, LightweightMMM</li>
+<li><strong>Commercial</strong>: Analytic Partners, Neustar, Ekimetrics</li>
+<li><strong>New</strong>: Recast, ProfitMetrics, automated MMM platforms</li>
+</ul>
+
+<h2>MMM vs incrementality testing</h2>
+<p>Complementary:</p>
+<ul>
+<li>MMM for ongoing strategic allocation (quarterly, annual)</li>
+<li>Incrementality tests for validating specific channels (ad hoc)</li>
+<li>Platform attribution for tactical optimization (weekly, daily)</li>
+</ul>
+<p>Mature measurement uses all three.</p>
+<div class="prev-next"><a href="incrementality.html" class="prev"><div class="label">← Previous</div><div class="title">Incrementality testing</div></a><a href="ltv-cac.html" class="next"><div class="label">Next →</div><div class="title">LTV:CAC</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
+</div></footer></body></html>

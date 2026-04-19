@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog posts + SEO | Insurance Agent Playbook</title>
+<meta name="description" content="Blog content that ranks locally, answers what prospects actually search, and compounds into a traffic source that pays for years.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Blog posts + SEO | Insurance Agent Playbook">
+<meta property="og:description" content="Blog content that ranks locally, answers what prospects actually search, and compounds into a traffic source that pays for years.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+
+<style>
+/* Playbook-specific styles */
+.playbook-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 0;
+    min-height: calc(100vh - 80px);
+    max-width: 1400px;
+    margin: 0 auto;
+    background: #fff;
+}
+.playbook-sidebar {
+    background: #fafafa;
+    border-right: 1px solid #e5e5ea;
+    padding: 32px 24px;
+    position: sticky;
+    top: 80px;
+    height: calc(100vh - 80px);
+    overflow-y: auto;
+}
+.playbook-sidebar h4 {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--gray-500, #8e8e93);
+    margin: 0 0 12px 0;
+}
+.playbook-progress {
+    background: #fff;
+    border: 1px solid #e5e5ea;
+    border-radius: 6px;
+    padding: 14px;
+    margin-bottom: 24px;
+}
+.playbook-progress-bar {
+    height: 6px;
+    background: #f0f0f5;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: 8px;
+}
+.playbook-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4a00e0, #7c3aed);
+    transition: width 0.3s;
+}
+.playbook-progress-text {
+    font-size: 12px;
+    color: var(--gray-500, #666);
+    display: flex;
+    justify-content: space-between;
+}
+.playbook-progress-text strong {
+    color: #4a00e0;
+}
+.playbook-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px 0;
+}
+.playbook-sidebar li {
+    margin: 2px 0;
+}
+.playbook-sidebar a {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    font-size: 14px;
+    color: #333;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.15s;
+    position: relative;
+}
+.playbook-sidebar a:hover {
+    background: #fff;
+    color: #4a00e0;
+}
+.playbook-sidebar a.active {
+    background: #4a00e0;
+    color: #fff;
+    font-weight: 500;
+}
+.playbook-sidebar a.completed::before {
+    content: "✓";
+    margin-right: 8px;
+    color: #10b981;
+    font-weight: 700;
+}
+.playbook-sidebar a.active.completed::before {
+    color: #fff;
+}
+.playbook-content {
+    padding: 48px 56px;
+    max-width: 820px;
+}
+.playbook-header {
+    margin-bottom: 48px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #e5e5ea;
+}
+.playbook-module-label {
+    display: inline-block;
+    background: #f3f0ff;
+    color: #4a00e0;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    margin-bottom: 12px;
+}
+.playbook-content h1.title {
+    font-size: 36px;
+    line-height: 1.2;
+    margin: 0 0 8px 0;
+}
+.playbook-subtitle {
+    font-size: 18px;
+    color: var(--gray-500, #666);
+    margin: 0;
+}
+.playbook-content h2 {
+    font-size: 24px;
+    margin: 40px 0 16px 0;
+    padding-top: 8px;
+}
+.playbook-content h3 {
+    font-size: 18px;
+    margin: 28px 0 12px 0;
+}
+.playbook-content p, .playbook-content li {
+    font-size: 16px;
+    line-height: 1.7;
+}
+.playbook-content ul, .playbook-content ol {
+    padding-left: 24px;
+}
+.playbook-content li {
+    margin: 6px 0;
+}
+
+/* Prompt template blocks */
+.prompt-box {
+    background: #1a1a2e;
+    color: #e4e4e7;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 20px 0;
+    position: relative;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13.5px;
+    line-height: 1.6;
+    overflow: hidden;
+}
+.prompt-box pre {
+    margin: 0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+.prompt-box-label {
+    display: inline-block;
+    background: #4a00e0;
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    margin-bottom: 12px;
+    font-family: 'Inter', sans-serif;
+}
+.copy-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    transition: all 0.15s;
+}
+.copy-btn:hover {
+    background: rgba(255,255,255,0.2);
+    border-color: rgba(255,255,255,0.35);
+}
+.copy-btn.copied {
+    background: #10b981;
+    border-color: #10b981;
+}
+
+/* Callout boxes */
+.callout {
+    background: #f3f0ff;
+    border-left: 4px solid #4a00e0;
+    padding: 16px 20px;
+    margin: 20px 0;
+    border-radius: 0 8px 8px 0;
+}
+.callout.warning {
+    background: #fff7ed;
+    border-left-color: #f97316;
+}
+.callout.success {
+    background: #f0fdf4;
+    border-left-color: #10b981;
+}
+.callout-title {
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+    color: #4a00e0;
+}
+.callout.warning .callout-title {
+    color: #ea580c;
+}
+.callout.success .callout-title {
+    color: #059669;
+}
+.callout p {
+    margin: 0 0 8px 0;
+}
+.callout p:last-child {
+    margin-bottom: 0;
+}
+
+/* Insurance-type tabs */
+.tabs {
+    display: flex;
+    gap: 4px;
+    margin: 24px 0 16px;
+    border-bottom: 2px solid #e5e5ea;
+    padding-bottom: 0;
+    overflow-x: auto;
+}
+.tab-btn {
+    background: none;
+    border: none;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #666;
+    cursor: pointer;
+    position: relative;
+    font-family: inherit;
+    white-space: nowrap;
+}
+.tab-btn:hover { color: #4a00e0; }
+.tab-btn.active {
+    color: #4a00e0;
+    font-weight: 600;
+}
+.tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #4a00e0;
+}
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* Expandable sections */
+.expandable {
+    border: 1px solid #e5e5ea;
+    border-radius: 8px;
+    margin: 12px 0;
+    overflow: hidden;
+}
+.expandable-toggle {
+    width: 100%;
+    background: #fafafa;
+    border: none;
+    padding: 14px 18px;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: left;
+    cursor: pointer;
+    font-family: inherit;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.expandable-toggle:hover { background: #f0f0f5; }
+.expandable-toggle::after {
+    content: '+';
+    font-size: 22px;
+    font-weight: 400;
+    color: #4a00e0;
+    transition: transform 0.2s;
+}
+.expandable.open .expandable-toggle::after {
+    transform: rotate(45deg);
+}
+.expandable-body {
+    display: none;
+    padding: 16px 18px;
+}
+.expandable.open .expandable-body { display: block; }
+
+/* Checklist with persistence */
+.checklist {
+    background: #fafafa;
+    border: 1px solid #e5e5ea;
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 24px 0;
+}
+.checklist-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 6px 0;
+    cursor: pointer;
+}
+.checklist-item input[type=checkbox] {
+    margin-top: 4px;
+    width: 18px;
+    height: 18px;
+    accent-color: #4a00e0;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+.checklist-item label {
+    cursor: pointer;
+    font-size: 15px;
+    line-height: 1.6;
+    user-select: none;
+}
+.checklist-item input[type=checkbox]:checked + label {
+    color: #8e8e93;
+    text-decoration: line-through;
+}
+
+/* Module complete button */
+.module-complete {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid #e5e5ea;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+.btn-complete {
+    background: #4a00e0;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.15s;
+}
+.btn-complete:hover { background: #3b0a8a; }
+.btn-complete.done {
+    background: #10b981;
+    cursor: default;
+}
+.module-nav {
+    display: flex;
+    gap: 12px;
+}
+.module-nav a {
+    padding: 10px 16px;
+    border: 1px solid #e5e5ea;
+    border-radius: 8px;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+.module-nav a:hover {
+    border-color: #4a00e0;
+    color: #4a00e0;
+}
+
+/* Search + filter for prompt library */
+.library-search {
+    display: flex;
+    gap: 12px;
+    margin: 24px 0;
+    flex-wrap: wrap;
+}
+.library-search input {
+    flex: 1;
+    min-width: 240px;
+    padding: 12px 16px;
+    border: 1px solid #e5e5ea;
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: inherit;
+}
+.library-filter {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin: 16px 0 24px;
+}
+.filter-chip {
+    background: #fff;
+    border: 1px solid #e5e5ea;
+    color: #333;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 500;
+}
+.filter-chip:hover { border-color: #4a00e0; color: #4a00e0; }
+.filter-chip.active {
+    background: #4a00e0;
+    color: #fff;
+    border-color: #4a00e0;
+}
+.library-prompt {
+    border: 1px solid #e5e5ea;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 16px 0;
+    background: #fff;
+}
+.library-prompt.hidden { display: none; }
+.library-prompt-title {
+    font-size: 17px;
+    font-weight: 600;
+    margin: 0 0 4px 0;
+}
+.library-prompt-meta {
+    display: flex;
+    gap: 8px;
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+.library-tag {
+    background: #f3f0ff;
+    color: #4a00e0;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.library-count {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 16px;
+}
+
+/* Hero / landing */
+.playbook-hero {
+    background: linear-gradient(135deg, #4a00e0 0%, #7c3aed 100%);
+    color: #fff;
+    padding: 64px 56px;
+    margin: -48px -56px 48px -56px;
+    border-radius: 0;
+}
+.playbook-hero h1 {
+    font-size: 42px;
+    margin: 0 0 12px 0;
+    color: #fff;
+    line-height: 1.15;
+}
+.playbook-hero-subtitle {
+    font-size: 20px;
+    opacity: 0.95;
+    max-width: 600px;
+}
+.playbook-hero-stats {
+    display: flex;
+    gap: 32px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+}
+.playbook-stat strong {
+    display: block;
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1;
+}
+.playbook-stat span {
+    font-size: 13px;
+    opacity: 0.85;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 900px) {
+    .playbook-layout { grid-template-columns: 1fr; }
+    .playbook-sidebar {
+        position: static;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid #e5e5ea;
+    }
+    .playbook-content { padding: 32px 24px; }
+    .playbook-hero { padding: 40px 24px; margin: -32px -24px 32px -24px; }
+    .playbook-hero h1 { font-size: 30px; }
+}
+</style>
+
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../index.html">Home</a>
+<a href="../../framework/index.html">Framework</a>
+<a href="../../expertise/index.html">Expertise</a>
+<a href="../../playbooks/insurance/index.html" class="active">Playbooks</a>
+<a href="../../writing.html">Writing</a>
+<a href="../../contact.html">Contact</a>
+</div>
+</div></nav><div class="playbook-layout"><aside class="playbook-sidebar">
+<div class="playbook-progress">
+    <h4>Your progress</h4>
+    <div class="playbook-progress-text"><span>Modules done</span><strong>0 / 15</strong></div>
+    <div class="playbook-progress-bar"><div class="playbook-progress-fill" style="width:0%"></div></div>
+</div>
+<h4>Modules</h4><ul><li><a href="index.html" class="" data-module="index">Start here</a></li><li><a href="module-01.html" class="" data-module="module-01">Why Claude for insurance marketing</a></li><li><a href="module-02.html" class="" data-module="module-02">Setting up Claude</a></li><li><a href="module-03.html" class="" data-module="module-03">The 10 prompt patterns</a></li><li><a href="module-04.html" class="" data-module="module-04">Prospecting emails</a></li><li><a href="module-05.html" class="" data-module="module-05">Social media content</a></li><li><a href="module-06.html" class="active" data-module="module-06">Blog posts + SEO</a></li><li><a href="module-07.html" class="" data-module="module-07">Video scripts</a></li><li><a href="module-08.html" class="" data-module="module-08">Direct mail</a></li><li><a href="module-09.html" class="" data-module="module-09">Referral requests</a></li><li><a href="module-10.html" class="" data-module="module-10">Review responses</a></li><li><a href="module-11.html" class="" data-module="module-11">Newsletter content</a></li><li><a href="module-12.html" class="" data-module="module-12">Facebook + Google ads</a></li><li><a href="module-13.html" class="" data-module="module-13">Client education material</a></li><li><a href="module-14.html" class="" data-module="module-14">The weekly marketing system</a></li><li><a href="module-15.html" class="" data-module="module-15">Compliance checklist</a></li></ul><h4>Resources</h4><ul><li><a href="prompt-library.html" class="" data-module="prompt-library">📚 Prompt library</a></li></ul></aside><div class="playbook-content"><div class="playbook-header">
+<span class="playbook-module-label">Module 6</span>
+<h1 class="title">Blog posts + SEO</h1>
+<p class="playbook-subtitle">Blog content that ranks locally, answers what prospects actually search, and compounds into a traffic source that pays for years.</p>
+</div>
+<p>A blog is the longest-lasting marketing asset you can build. Unlike a social post that dies in 48 hours or an email that's read once, a blog post that ranks for the right search drives leads for years. This module: how to use Claude to generate blog content that actually ranks, brings in local search traffic, and converts visitors into calls.</p>
+
+<h2>What kind of blog posts to write</h2>
+<p>Not "5 Tips for Insurance Savings." Those posts already exist, rank well, and are written by companies with more SEO authority than you. Pick topics where you can win:</p>
+
+<ul>
+<li><strong>Local intent:</strong> "Medicare Advantage plans in [your city]" / "best home insurance in [state] for older homes"</li>
+<li><strong>Specific scenarios:</strong> "Life insurance for diabetics" / "How much coverage does a small restaurant really need?"</li>
+<li><strong>Decision-stage questions:</strong> "Should I stay on Medicare Advantage or switch to Original Medicare?" / "Final expense vs. whole life for a 68-year-old"</li>
+<li><strong>Compare-and-contrast:</strong> "HDHP vs. PPO for a family of four" / "Term vs. permanent life for a 40-year-old homeowner"</li>
+<li><strong>Your actual expertise:</strong> If you specialize (teachers, contractors, real estate agents, diabetics, high-net-worth), write for that niche specifically</li>
+</ul>
+
+<h2>Step 1: Find the actual queries people search</h2>
+
+<div class="prompt-box">
+<div class="prompt-box-label">Keyword + question generator</div>
+<button class="copy-btn">Copy</button>
+<pre>I sell [insurance line] to [audience] in [geography].
+
+Generate 30 specific search queries a potential client might type into Google when they're researching this topic. Include:
+
+- 10 "question" queries ("how much life insurance should I have at 45?")
+- 10 local-intent queries ("Medicare advisor in [city]" style)
+- 5 "comparison" queries ("whole life vs term for a parent")
+- 5 "problem" queries ("can I get life insurance with type 2 diabetes?")
+
+Then group them by search intent: informational, commercial investigation, transactional.
+
+For each group, suggest 3 blog post titles that could serve that intent cluster.</pre>
+</div>
+
+<p>Take the titles Claude generates, verify a few in Google to see what already ranks, and pick 3-5 to write.</p>
+
+<h2>Step 2: The blog post outline</h2>
+
+<div class="prompt-box">
+<div class="prompt-box-label">Blog post outline</div>
+<button class="copy-btn">Copy</button>
+<pre>Write an outline for a blog post titled "[your title]".
+
+Audience: [specific, "40-60 year old parents in [state] who have term life coming up for renewal"]
+Search intent: [informational / comparison / transactional]
+Primary keyword: [the main phrase from keyword research]
+Secondary keywords: [3-5 related phrases]
+
+Outline structure:
+- H1 (title, keyword naturally included)
+- Intro (2 paragraphs, set up the reader's actual question)
+- 4-6 H2 sections covering the reader's real questions in order
+- Each H2 gets 2-3 H3s
+- Conclusion: summary + CTA (book call / get quote / learn more)
+
+Notes on angle:
+- Where a specific number, local detail, or personal experience would strengthen a section, flag it with "[INSERT: ...]" so I can add it
+- Anticipate the 3 objections or follow-up questions a reader would have and make sure the outline covers them
+- Think about what a competitor article is missing, that's where we win
+
+Just the outline, not the full post yet.</pre>
+</div>
+
+<h2>Step 3: Write the post from the outline</h2>
+
+<div class="prompt-box">
+<div class="prompt-box-label">Blog post writer</div>
+<button class="copy-btn">Copy</button>
+<pre>Using the outline above, write the full blog post.
+
+Length: 1200-1800 words (whatever the topic actually needs, don't pad)
+Voice: [see voice samples; plainspoken, no fluff]
+Formatting:
+- Short paragraphs (2-4 sentences)
+- Use H2 and H3 for structure (readability and SEO)
+- Bullet lists where comparison matters
+- Bold the single most important sentence in each section
+- Include at least one concrete example or anonymized scenario
+- End with a clear CTA
+
+Don't:
+- Say "in today's fast-paced world" or similar padding
+- Use "when it comes to" as a transition
+- Start paragraphs with "However," "Furthermore," "Moreover"
+- Make claims I can't back (keep claims conservative and specific)
+
+At the end, flag:
+- Places I need to add local data or my own example
+- Any statistics you used that I should verify before publishing
+- Compliance issues to review (use the compliance pre-check pattern)</pre>
+</div>
+
+<h2>The on-page SEO checklist</h2>
+<p>Claude can help, but the publishing step matters. When you publish:</p>
+
+<div class="checklist">
+<div class="checklist-item">
+<input type="checkbox" id="m6-seo-1" data-key="m6-seo-1">
+<label for="m6-seo-1">Title tag ≤ 60 characters, keyword near the front</label>
+</div>
+<div class="checklist-item">
+<input type="checkbox" id="m6-seo-2" data-key="m6-seo-2">
+<label for="m6-seo-2">Meta description 140-160 characters, keyword included, written to drive clicks</label>
+</div>
+<div class="checklist-item">
+<input type="checkbox" id="m6-seo-3" data-key="m6-seo-3">
+<label for="m6-seo-3">URL slug is short and keyword-rich (not /post-123)</label>
+</div>
+<div class="checklist-item">
+<input type="checkbox" id="m6-seo-4" data-key="m6-seo-4">
+<label for="m6-seo-4">Primary keyword in H1, first 100 words, at least one H2</label>
+</div>
+<div class="checklist-item">
+<input type="checkbox" id="m6-seo-5" data-key="m6-seo-5">
+<label for="m6-seo-5">Internal links to 2-3 other pages on your site</label>
+</div>
+<div class="checklist-item">
+<input type="checkbox" id="m6-seo-6" data-key="m6-seo-6">
+<label for="m6-seo-6">One external link to an authoritative source (CMS, NAIC, state DOI, carrier, not a competitor)</label>
+</div>
+<div class="checklist-item">
+<input type="checkbox" id="m6-seo-7" data-key="m6-seo-7">
+<label for="m6-seo-7">Author bio at the top or bottom with your name, title, state(s) licensed</label>
+</div>
+<div class="checklist-item">
+<input type="checkbox" id="m6-seo-8" data-key="m6-seo-8">
+<label for="m6-seo-8">Schema markup (use Yoast, Rank Math, or equivalent, "Article" or "LocalBusiness" schema)</label>
+</div>
+</div>
+
+<p>Get the meta title and description from Claude:</p>
+
+<div class="prompt-box">
+<div class="prompt-box-label">Meta title + description</div>
+<button class="copy-btn">Copy</button>
+<pre>For the blog post below, write:
+
+1. A title tag: 55-60 characters, primary keyword near the front, compelling enough to click
+2. A meta description: 140-160 characters, includes primary keyword, promises value, has implicit or explicit CTA
+3. 5 potential URL slugs (short, keyword-rich, lowercase-with-hyphens)
+
+Give me 3 options for title and 3 for description so I can choose.
+
+[Paste the full post]</pre>
+</div>
+
+<h2>Local SEO: the thing insurance agents win at</h2>
+<p>Unlike big insurance companies with national authority, you have one advantage: local intent. Write for your city, your county, your state. Every blog post should mention your location specifically, in the title when relevant, in the body, in the CTA, in the author bio.</p>
+
+<div class="prompt-box">
+<div class="prompt-box-label">Local content angle finder</div>
+<button class="copy-btn">Copy</button>
+<pre>I serve clients in [specific geography]. My base topic is [topic].
+
+Give me 10 blog post ideas that tie the base topic to my specific location. Ideas that would rank for "[topic] + [location]" searches.
+
+Examples of local angles:
+- Specific regulatory quirks in my state
+- Demographic trends in my city/county
+- Local employers with particular benefits situations
+- Climate/geography-specific issues (hurricane, flood, wildfire)
+- Local community events/demographics
+
+Each idea should include:
+- Proposed post title
+- Primary local keyword phrase
+- Why this post would win locally (what's missing in current results)</pre>
+</div>
+
+<h2>The "content cluster" strategy</h2>
+<p>Single posts are fine. Clusters rank better. A cluster = one "pillar" post (broad) + 5-10 "supporting" posts (specific), all linking to each other.</p>
+
+<div class="prompt-box">
+<div class="prompt-box-label">Cluster builder</div>
+<button class="copy-btn">Copy</button>
+<pre>Build a content cluster for my site around the topic "[broad topic]".
+
+Output:
+- 1 pillar post title + brief description (the broad, authoritative post)
+- 8 supporting post titles, each covering a specific narrow sub-topic
+- For each supporting post, note which sections it would link TO in the pillar
+
+Structure should look like a hub-and-spoke. The pillar links out to all supporting posts; each supporting post links back to the pillar and 1-2 other related supporting posts.
+
+Topic: [your topic]
+Audience: [your audience]
+Geography: [if applicable]</pre>
+</div>
+
+<p>Write the pillar first. Then write 1-2 supporting posts per month. After 6 months, you have a content cluster that collectively outranks any single-post competitor.</p>
+
+<h2>This week's task</h2>
+<div class="checklist">
+<div class="checklist-item">
+<input type="checkbox" id="m6-1" data-key="m6-1">
+<label for="m6-1">Run the keyword generator for your primary insurance line + location. Pick 1 blog post topic.</label>
+</div>
+<div class="checklist-item">
+<input type="checkbox" id="m6-2" data-key="m6-2">
+<label for="m6-2">Generate the outline. Review, add your specific angles and local details.</label>
+</div>
+<div class="checklist-item">
+<input type="checkbox" id="m6-3" data-key="m6-3">
+<label for="m6-3">Generate the full post. Edit. Add your own examples. Publish.</label>
+</div>
+<div class="checklist-item">
+<input type="checkbox" id="m6-4" data-key="m6-4">
+<label for="m6-4">Build the on-page SEO (title, meta, schema). Request Google indexing via Search Console.</label>
+</div>
+<div class="checklist-item">
+<input type="checkbox" id="m6-5" data-key="m6-5">
+<label for="m6-5">Commit to 1 blog post per week for 12 weeks. See what happens to organic traffic.</label>
+</div>
+</div>
+<div class="module-complete"><button class="btn-complete" data-module="module-06">Mark module complete</button><div class="module-nav"><a href="module-05.html">← Social media content</a><a href="module-07.html">Video scripts →</a></div></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a></p>
+</div></footer>
+
+<script>
+(function(){
+    const STORAGE_KEY = 'insurance_playbook_progress_v1';
+    const CHECKBOX_KEY = 'insurance_playbook_checks_v1';
+
+    function getProgress() {
+        try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); }
+        catch { return {}; }
+    }
+    function setProgress(p) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(p));
+    }
+    function getChecks() {
+        try { return JSON.parse(localStorage.getItem(CHECKBOX_KEY) || '{}'); }
+        catch { return {}; }
+    }
+    function setChecks(c) {
+        localStorage.setItem(CHECKBOX_KEY, JSON.stringify(c));
+    }
+
+    // Update sidebar indicators on load
+    function updateSidebar() {
+        const progress = getProgress();
+        document.querySelectorAll('.playbook-sidebar a[data-module]').forEach(a => {
+            const mod = a.dataset.module;
+            if (progress[mod]) a.classList.add('completed');
+            else a.classList.remove('completed');
+        });
+        // Progress bar
+        const total = document.querySelectorAll('.playbook-sidebar a[data-module]').length - 2; // minus index + library
+        const done = Object.keys(progress).filter(k => k.startsWith('module-')).length;
+        const fill = document.querySelector('.playbook-progress-fill');
+        const text = document.querySelector('.playbook-progress-text strong');
+        if (fill && total > 0) {
+            const pct = Math.min(100, Math.round((done / total) * 100));
+            fill.style.width = pct + '%';
+        }
+        if (text) text.textContent = done + ' / ' + total;
+    }
+
+    // Copy to clipboard
+    function setupCopy() {
+        document.querySelectorAll('.copy-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const box = btn.closest('.prompt-box');
+                const text = box.querySelector('pre').innerText;
+                navigator.clipboard.writeText(text).then(() => {
+                    const old = btn.textContent;
+                    btn.textContent = '✓ Copied';
+                    btn.classList.add('copied');
+                    setTimeout(() => {
+                        btn.textContent = old;
+                        btn.classList.remove('copied');
+                    }, 1800);
+                });
+            });
+        });
+    }
+
+    // Tabs
+    function setupTabs() {
+        document.querySelectorAll('.tabs').forEach(group => {
+            const buttons = group.querySelectorAll('.tab-btn');
+            const containerSelector = group.dataset.target || '.tab-group-' + group.dataset.group;
+            buttons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const target = btn.dataset.tab;
+                    buttons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const parent = document.querySelector(containerSelector) || group.parentElement;
+                    parent.querySelectorAll('.tab-content').forEach(c => {
+                        c.classList.toggle('active', c.dataset.tab === target);
+                    });
+                });
+            });
+        });
+    }
+
+    // Expandable sections
+    function setupExpandables() {
+        document.querySelectorAll('.expandable-toggle').forEach(t => {
+            t.addEventListener('click', function() {
+                t.closest('.expandable').classList.toggle('open');
+            });
+        });
+    }
+
+    // Checklist persistence
+    function setupChecklists() {
+        const checks = getChecks();
+        document.querySelectorAll('.checklist-item input[type=checkbox]').forEach(cb => {
+            const key = cb.dataset.key;
+            if (key && checks[key]) cb.checked = true;
+            cb.addEventListener('change', function() {
+                const c = getChecks();
+                if (cb.checked) c[key] = true; else delete c[key];
+                setChecks(c);
+            });
+        });
+    }
+
+    // Module complete button
+    function setupCompleteButton() {
+        const btn = document.querySelector('.btn-complete');
+        if (!btn) return;
+        const mod = btn.dataset.module;
+        const progress = getProgress();
+        if (progress[mod]) {
+            btn.textContent = '✓ Completed';
+            btn.classList.add('done');
+        }
+        btn.addEventListener('click', function() {
+            const p = getProgress();
+            if (!p[mod]) {
+                p[mod] = Date.now();
+                setProgress(p);
+                btn.textContent = '✓ Completed';
+                btn.classList.add('done');
+                updateSidebar();
+            }
+        });
+    }
+
+    // Library search + filter
+    function setupLibrary() {
+        const search = document.getElementById('library-search-input');
+        const chips = document.querySelectorAll('.filter-chip');
+        const prompts = document.querySelectorAll('.library-prompt');
+        const count = document.querySelector('.library-count');
+        let activeTag = 'all';
+
+        function apply() {
+            const q = (search?.value || '').toLowerCase().trim();
+            let shown = 0;
+            prompts.forEach(p => {
+                const tags = (p.dataset.tags || '').toLowerCase();
+                const text = p.textContent.toLowerCase();
+                const matchTag = activeTag === 'all' || tags.includes(activeTag);
+                const matchSearch = !q || text.includes(q);
+                const visible = matchTag && matchSearch;
+                p.classList.toggle('hidden', !visible);
+                if (visible) shown++;
+            });
+            if (count) count.textContent = shown + ' prompt' + (shown === 1 ? '' : 's');
+        }
+
+        if (search) search.addEventListener('input', apply);
+        chips.forEach(c => {
+            c.addEventListener('click', function() {
+                chips.forEach(x => x.classList.remove('active'));
+                c.classList.add('active');
+                activeTag = c.dataset.tag;
+                apply();
+            });
+        });
+        apply();
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        updateSidebar();
+        setupCopy();
+        setupTabs();
+        setupExpandables();
+        setupChecklists();
+        setupCompleteButton();
+        setupLibrary();
+    });
+})();
+</script>
+
+</body></html>

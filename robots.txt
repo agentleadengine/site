@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://samuelochoa.com/sitemap.xml

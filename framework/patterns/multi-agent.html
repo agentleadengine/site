@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multi-agent orchestration | Samuel Ochoa</title>
+<meta name="description" content="Sub-agents, delegation, orchestrator-worker patterns. When multi-agent beats a single agent and when it backfires.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Multi-agent orchestration | Samuel Ochoa">
+<meta property="og:description" content="Sub-agents, delegation, orchestrator-worker patterns. When multi-agent beats a single agent and when it backfires.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../index.html">Home</a>
+<a href="../../framework/index.html" class="active">Framework</a>
+<a href="../expertise/index.html">Expertise</a>
+<a href="../playbooks/index.html">Playbooks</a>
+<a href="../writing.html">Writing</a>
+<a href="../../about.html">About</a>
+<a href="../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="what-is-autonomous-ai.html">What is autonomous AI</a></li><li><a href="the-autonomy-spectrum.html">The autonomy spectrum</a></li><li><a href="glossary.html">Glossary</a></li></ul><h4>Claude</h4><ul><li><a href="claude/overview.html">Overview</a></li><li><a href="claude/prompting-for-agents.html">Prompting for agents</a></li><li><a href="claude/extended-thinking.html">Extended thinking</a></li><li><a href="claude/tool-use.html">Tool use</a></li></ul><h4>MCP</h4><ul><li><a href="mcp/index.html">Overview</a></li><li><a href="mcp/what-is-mcp.html">What is MCP</a></li><li><a href="mcp/anatomy.html">Anatomy</a></li><li><a href="mcp/transports.html">Transports</a></li><li><a href="mcp/servers.html">Servers</a></li><li><a href="mcp/clients.html">Clients</a></li><li><a href="mcp/security.html">Security</a></li><li><a href="mcp/directory.html">Directory</a></li></ul><h4>Plugins</h4><ul><li><a href="plugins/index.html">Overview</a></li><li><a href="plugins/vs-mcp.html">Plugins vs MCP</a></li><li><a href="plugins/marketplace.html">Marketplace</a></li></ul><h4>Claude Code</h4><ul><li><a href="claude-code/index.html">Overview</a></li><li><a href="claude-code/settings.html">Settings</a></li><li><a href="claude-code/permissions.html">Permissions</a></li><li><a href="claude-code/hooks.html">Hooks</a></li><li><a href="claude-code/skills.html">Skills</a></li><li><a href="claude-code/memory.html">Memory</a></li></ul><h4>Patterns</h4><ul><li><a href="patterns/index.html">Overview</a></li><li><a href="patterns/react-loop.html">ReAct loop</a></li><li><a href="patterns/plan-execute.html">Plan-execute</a></li><li><a href="patterns/multi-agent.html" class="active">Multi-agent</a></li><li><a href="patterns/evaluation.html">Evaluation</a></li><li><a href="patterns/prompt-caching.html">Prompt caching</a></li></ul><h4>Autonomous</h4><ul><li><a href="autonomous/index.html">Overview</a></li><li><a href="autonomous/headless.html">Headless</a></li><li><a href="autonomous/scheduling.html">Scheduling</a></li><li><a href="autonomous/self-monitoring.html">Self-monitoring</a></li><li><a href="autonomous/safety.html">Safety</a></li></ul><h4>Build Guides</h4><ul><li><a href="build/index.html">Overview</a></li><li><a href="build/first-agent.html">First agent (60 min)</a></li><li><a href="build/voice-agent.html">Voice agent</a></li><li><a href="build/research-agent.html">Research agent</a></li></ul><h4>Tools</h4><ul><li><a href="tools/browser-automation.html">Browser automation</a></li><li><a href="tools/desktop-control.html">Desktop control</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Framework</a><span class="sep">›</span><a href="../patterns/index.html">Patterns</a><span class="sep">›</span><span>Multi-agent orchestration</span></div><h1 class="title" style="font-size:clamp(32px,4.5vw,42px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">Multi-agent orchestration</h1><div class="article-meta"><span>📖 5 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">Sometimes one agent isn't the right unit. Splitting work across multiple agents, with isolated context and specialized roles, can outperform a monolith. It can also be over-engineering. Know which is which.</p>
+
+<h2>The basic pattern: orchestrator-worker</h2>
+<p>One "orchestrator" agent decomposes a task into sub-tasks. Each sub-task is handed off to a "worker" agent with its own fresh context. Workers return results; the orchestrator synthesizes the final answer.</p>
+
+<pre><code>User goal → Orchestrator plans → spawn Worker 1, Worker 2, Worker 3
+        ↓
+Orchestrator collects results → synthesizes → returns</code></pre>
+
+<h2>Why it helps</h2>
+<ul>
+  <li><strong>Context isolation.</strong> Each worker starts clean, the orchestrator doesn't fill up with every worker's scratch work.</li>
+  <li><strong>Parallelism.</strong> Independent workers run concurrently. A 10-minute task becomes 3 minutes.</li>
+  <li><strong>Specialization.</strong> Different workers can use different models or different tool sets.</li>
+  <li><strong>Reusability.</strong> Workers become reusable functions.</li>
+</ul>
+
+<h2>Where it backfires</h2>
+<ul>
+  <li><strong>Latency explosion.</strong> Each spawned agent is a model call. If workers need to be serial, you've multiplied latency, not reduced it.</li>
+  <li><strong>Coordination cost.</strong> Orchestrator now has to describe the task, parse the result, handle errors. Sometimes this overhead exceeds the task itself.</li>
+  <li><strong>Lost context.</strong> Worker doesn't know what the orchestrator learned in previous steps unless you pass it explicitly.</li>
+  <li><strong>Error propagation.</strong> One worker fails, how does the orchestrator know? What does it do?</li>
+</ul>
+
+<h2>When to use it</h2>
+<p>Good fits:</p>
+<ul>
+  <li>Independent research subtasks (search A, search B, search C → synthesize)</li>
+  <li>Parallel file processing (agent per file)</li>
+  <li>Role-based workflows (one agent writes code, another reviews)</li>
+  <li>Context-heavy sub-tasks you don't want polluting the main context</li>
+</ul>
+<p>Bad fits:</p>
+<ul>
+  <li>Linear, dependent steps (step 2 needs step 1's result)</li>
+  <li>Short tasks (overhead &gt; benefit)</li>
+  <li>Tasks where the orchestrator could have just done it</li>
+</ul>
+
+<h2>Delegation discipline</h2>
+<p>If you're spawning a sub-agent, the parent must:</p>
+<ol>
+  <li><strong>Write a complete task description.</strong> The worker has no memory of the parent's thinking.</li>
+  <li><strong>Specify the return format.</strong> Unstructured worker output is a pain to consume.</li>
+  <li><strong>Set a time/turn budget.</strong> Workers can spin forever.</li>
+  <li><strong>Handle worker failure.</strong> Assume it will fail; decide what happens.</li>
+</ol>
+
+<h2>Claude Code sub-agents</h2>
+<p>Claude Code has built-in support for sub-agents. You can invoke specialized agents (Explore, Plan, general-purpose) that run with isolated context and return a single message back to the parent. For research-heavy or branching work, sub-agents are a major productivity unlock.</p>
+
+<h2>Peer-to-peer (usually avoid)</h2>
+<p>Two agents that chat directly, no orchestrator. Popular in demos. Rarely worth it in production, most "P2P agent" setups are better modeled as orchestrator-worker with one role delegating.</p>
+
+<div class="callout warning">
+  <strong>Watch out:</strong> multi-agent architectures are <em>fashionable</em>. That doesn't make them <em>right</em>. The single-agent ReAct baseline is often faster, cheaper, and more debuggable.
+</div>
+<div class="prev-next"><a href="plan-execute.html" class="prev"><div class="label">← Previous</div><div class="title">Plan-execute</div></a><a href="evaluation.html" class="next"><div class="label">Next →</div><div class="title">Evaluation</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../framework/index.html">Framework</a></p>
+</div></footer></body></html>

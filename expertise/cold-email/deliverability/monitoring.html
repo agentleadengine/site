@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monitoring inbox placement | Samuel Ochoa</title>
+<meta name="description" content="If you can't see where your emails land, you can't improve. Here's the monitoring stack that tells you what's actually happening.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Monitoring inbox placement | Samuel Ochoa">
+<meta property="og:description" content="If you can't see where your emails land, you can't improve. Here's the monitoring stack that tells you what's actually happening.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../about.html">About</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Cold Email (45 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-cold-email.html">What is cold email?</a></li><li><a href="foundations/spam-vs-cold.html">Cold email vs spam</a></li><li><a href="foundations/legal.html">Legal landscape</a></li><li><a href="foundations/when-it-works.html">When cold email works</a></li></ul><h4>Deliverability</h4><ul><li><a href="deliverability/why-it-matters.html">Why deliverability is everything</a></li><li><a href="deliverability/dns.html">SPF, DKIM, DMARC</a></li><li><a href="deliverability/sending-domains.html">Sending domain strategy</a></li><li><a href="deliverability/warming.html">Inbox warming</a></li><li><a href="deliverability/ip-reputation.html">IP reputation</a></li><li><a href="deliverability/spam-triggers.html">Content that triggers spam filters</a></li><li><a href="deliverability/monitoring.html" class="active">Monitoring inbox placement</a></li></ul><h4>Infrastructure</h4><ul><li><a href="infra/sending-tools.html">Sending tools</a></li><li><a href="infra/multi-inbox.html">Multi-inbox rotation</a></li><li><a href="infra/warming-tools.html">Warming tools</a></li><li><a href="infra/crm-integration.html">CRM and data integration</a></li><li><a href="infra/reply-management.html">Reply management</a></li></ul><h4>Lists + Targeting</h4><ul><li><a href="lists/icp.html">Defining the ICP</a></li><li><a href="lists/databases.html">Lead databases</a></li><li><a href="lists/clay.html">Clay and enrichment</a></li><li><a href="lists/verification.html">Verification + hygiene</a></li><li><a href="lists/intent-signals.html">Intent signals</a></li><li><a href="lists/segmentation.html">Segmentation strategy</a></li></ul><h4>Copy</h4><ul><li><a href="copy/anatomy.html">Cold email anatomy</a></li><li><a href="copy/subject-lines.html">Subject lines</a></li><li><a href="copy/first-lines.html">First lines</a></li><li><a href="copy/the-pitch.html">The pitch</a></li><li><a href="copy/ctas.html">CTAs for cold</a></li><li><a href="copy/signatures.html">Signatures</a></li><li><a href="copy/personalization.html">Personalization at scale</a></li></ul><h4>Sequences</h4><ul><li><a href="sequences/multi-touch.html">Multi-touch sequences</a></li><li><a href="sequences/cadence.html">Cadence and timing</a></li><li><a href="sequences/breakup.html">The breakup email</a></li><li><a href="sequences/multi-channel.html">Multi-channel orchestration</a></li><li><a href="sequences/length.html">Sequence length</a></li></ul><h4>Testing</h4><ul><li><a href="testing/methodology.html">Testing methodology</a></li><li><a href="testing/what-to-test.html">What to test</a></li><li><a href="testing/reply-metrics.html">Reply rate vs positive reply</a></li><li><a href="testing/iteration.html">The iteration loop</a></li></ul><h4>Playbooks</h4><ul><li><a href="plays/b2b-saas.html">B2B SaaS outbound</a></li><li><a href="plays/agency.html">Agency + services outbound</a></li><li><a href="plays/founder-led.html">Founder-led outbound</a></li><li><a href="plays/sdr-led.html">SDR-led outbound</a></li><li><a href="plays/link-building.html">Cold email for SEO</a></li><li><a href="plays/recruiting.html">Recruiting outreach</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">Cold Email</a><span class="sep">›</span><span>Monitoring inbox placement</span></div><h1 class="title">Monitoring inbox placement</h1><div class="article-meta"><span>📖 4 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">Open rates are a lie. They're based on pixel tracking that's been heavily obscured by iOS 15+ and Apple Mail Privacy. Reply rates are more honest but still reflect what happens after emails reach the inbox. To know what's actually happening upstream, you need dedicated inbox placement monitoring.</p>
+
+<h2>Why open rates mislead</h2>
+<p>Since iOS 15 (2021), Apple privately prefetches email content on behalf of users, which triggers tracking pixels even if the user never opens the email. This inflates open rates artificially.</p>
+
+<p>Typical impact: reported open rates 50-80% when real human opens are 15-25%. You can't tell from opens whether emails are reaching the inbox or just being prefetched in the spam folder.</p>
+
+<p>Reply rate is more honest. But reply rate can't distinguish between "nobody wanted what I offered" and "half my emails never reached a human."</p>
+
+<h2>The monitoring stack</h2>
+
+<h3>1. Google Postmaster Tools</h3>
+<p>Free. Register your sending domain. Provides:</p>
+<ul>
+  <li>Spam rate (% marked as spam by Gmail users)</li>
+  <li>IP reputation</li>
+  <li>Domain reputation</li>
+  <li>Authentication pass rates (SPF, DKIM, DMARC)</li>
+  <li>Delivery errors</li>
+  <li>Encryption usage</li>
+</ul>
+
+<p>Only shows Gmail data. But Gmail is usually 40-60% of your B2B send volume, so it's representative.</p>
+
+<p>Check weekly. Reputation dropping = warning signal.</p>
+
+<h3>2. Microsoft SNDS</h3>
+<p>Free. Microsoft's equivalent for Outlook/Hotmail/Office 365. Shows IP reputation and complaint rates. Less intuitive UI but important data for B2B (where Outlook is heavily represented).</p>
+
+<h3>3. Seed address testing</h3>
+<p>Create inboxes at major providers: Gmail, Outlook, Yahoo, iCloud, major corporate providers. Include these addresses in your normal sends. Manually check where each email lands.</p>
+
+<p>DIY version: 5-10 seed addresses you check manually weekly.</p>
+
+<p>Automated version: services like GlockApps, MailReach, Gmass Inbox Inspector route test emails through real inboxes and report placement.</p>
+
+<h3>4. Blacklist monitoring</h3>
+<p>Tools like MXToolbox monitoring or Barracuda Reputation Checker alert you if your domain or sending IPs get listed. Respond immediately, delisting is slow.</p>
+
+<h3>5. Reply-rate monitoring per campaign</h3>
+<p>Your cold email tool (Instantly, Smartlead, Lemlist) tracks reply rates per campaign. Sudden drops signal deliverability problems, not copy problems.</p>
+
+<h3>6. Bounce rate</h3>
+<p>Track hard bounce rate per campaign. Above 3% = list quality problem. Above 5% = actively damaging your reputation. Stop and fix.</p>
+
+<h2>Key metrics and thresholds</h2>
+
+<h3>Spam rate (Gmail Postmaster)</h3>
+<ul>
+  <li>Under 0.1%: excellent</li>
+  <li>0.1-0.3%: normal</li>
+  <li>0.3-0.5%: warning</li>
+  <li>Over 0.5%: critical, reputation damage likely</li>
+</ul>
+
+<h3>Bounce rate</h3>
+<ul>
+  <li>Under 2%: fine</li>
+  <li>2-3%: caution, clean the list</li>
+  <li>Over 3%: stop and fix immediately</li>
+</ul>
+
+<h3>Domain reputation (Postmaster)</h3>
+<ul>
+  <li>High: ideal</li>
+  <li>Medium: acceptable</li>
+  <li>Low: warning, reduce volume</li>
+  <li>Bad: critical, probably need to retire the domain</li>
+</ul>
+
+<h3>Reply rate</h3>
+<p>Varies by campaign, but watch for trends within a single campaign:</p>
+<ul>
+  <li>Week 1-2 reply rate as baseline</li>
+  <li>Sudden drops without copy change = deliverability issue</li>
+  <li>Gradual decline over months = reputation drift or list fatigue</li>
+</ul>
+
+<h2>Setting up the dashboard</h2>
+<p>Create a weekly review routine:</p>
+<ol>
+  <li>Check Gmail Postmaster for each sending domain (spam rate, reputation)</li>
+  <li>Check SNDS for key sending IPs</li>
+  <li>Review reply rate per campaign and per mailbox</li>
+  <li>Check bounce rate per campaign</li>
+  <li>Run a seed address test on active campaigns</li>
+  <li>Check any blacklist alerts</li>
+</ol>
+
+<p>15-30 minutes per week. Catches issues early.</p>
+
+<h2>What to do when metrics degrade</h2>
+
+<h3>Spam rate climbing</h3>
+<ul>
+  <li>Reduce daily volume by 50%</li>
+  <li>Review recent copy for spam triggers</li>
+  <li>Verify list quality (bounces, unverified addresses)</li>
+  <li>Check content patterns (too many links, spammy phrases)</li>
+  <li>Run warming at higher intensity</li>
+</ul>
+
+<h3>Reply rate dropping</h3>
+<ul>
+  <li>First rule out deliverability (seed test placement)</li>
+  <li>If inbox placement is fine, it's copy, list, or market fatigue</li>
+  <li>A/B test new angles</li>
+  <li>Refresh list (new segments)</li>
+</ul>
+
+<h3>Bounce rate spike</h3>
+<ul>
+  <li>Stop sending immediately</li>
+  <li>Re-verify list</li>
+  <li>Resume at lower volume with verified addresses only</li>
+</ul>
+
+<h3>Blacklist listing</h3>
+<ul>
+  <li>Stop sending from affected IP/domain</li>
+  <li>Diagnose cause (what changed?)</li>
+  <li>Follow blacklist's delisting process</li>
+  <li>In parallel, provision new infrastructure as backup</li>
+</ul>
+
+<h2>The feedback loop</h2>
+<p>Monitoring feeds into decisions:</p>
+<ul>
+  <li>Which mailboxes are healthy? Send more from them.</li>
+  <li>Which domains are degrading? Reduce volume, warm more.</li>
+  <li>Which lists have high bounce? Re-verify or retire.</li>
+  <li>Which copy has high spam rate? Rewrite.</li>
+</ul>
+
+<p>Without the feedback loop, you're flying blind. With it, cold email becomes an engineering discipline.</p>
+
+<h2>The simplest monitoring that works</h2>
+<p>If the full stack feels like overhead:</p>
+<ol>
+  <li>Sign up for Postmaster Tools once. Check it weekly.</li>
+  <li>Have 3-5 seed addresses. Glance at them weekly.</li>
+  <li>Watch reply rate per campaign in your sending tool.</li>
+</ol>
+
+<p>Even this minimum catches the majority of deliverability emergencies before they become disasters.</p>
+
+<p style="margin-top:40px;">Next: <a href="../infra/sending-tools.html">Sending tools</a>.</p>
+<div class="prev-next"><a href="spam-triggers.html" class="prev"><div class="label">← Previous</div><div class="title">Content that triggers spam filters</div></a><a href="../infra/sending-tools.html" class="next"><div class="label">Next →</div><div class="title">Sending tools</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
+</div></footer></body></html>

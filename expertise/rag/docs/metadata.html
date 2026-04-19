@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Metadata extraction | Samuel Ochoa</title>
+<meta name="description" content="Metadata is the quiet multiplier in RAG. Good metadata enables filtering, boosting, access control, and citations. Most teams ship without it and regret it.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Metadata extraction | Samuel Ochoa">
+<meta property="og:description" content="Metadata is the quiet multiplier in RAG. Good metadata enables filtering, boosting, access control, and citations. Most teams ship without it and regret it.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../about.html">About</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>RAGS to Riches (56 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-rag.html">What is RAG?</a></li><li><a href="foundations/why-rag.html">Why RAG over fine-tuning</a></li><li><a href="foundations/the-architecture.html">The RAG architecture map</a></li><li><a href="foundations/when-not-to-use.html">When not to use RAG</a></li></ul><h4>Documents + Ingestion</h4><ul><li><a href="docs/ingestion-pipeline.html">The ingestion pipeline</a></li><li><a href="docs/parsing-pdfs.html">Parsing PDFs</a></li><li><a href="docs/parsing-html.html">Parsing HTML + web pages</a></li><li><a href="docs/tables-figures.html">Tables and figures</a></li><li><a href="docs/ocr.html">OCR for scanned documents</a></li><li><a href="docs/metadata.html" class="active">Metadata extraction</a></li></ul><h4>Chunking</h4><ul><li><a href="chunking/why-chunking.html">Why chunking matters</a></li><li><a href="chunking/fixed-size.html">Fixed-size chunking</a></li><li><a href="chunking/semantic.html">Semantic chunking</a></li><li><a href="chunking/recursive.html">Recursive chunking</a></li><li><a href="chunking/structure-aware.html">Structure-aware chunking</a></li><li><a href="chunking/chunking-code.html">Chunking code</a></li></ul><h4>Embeddings</h4><ul><li><a href="embeddings/what-are-embeddings.html">What embeddings are</a></li><li><a href="embeddings/picking-a-model.html">Picking an embedding model</a></li><li><a href="embeddings/closed-vs-open.html">Closed vs open models</a></li><li><a href="embeddings/dimensions-cost.html">Dimensions, cost, and MRL</a></li><li><a href="embeddings/fine-tuning.html">Fine-tuning embeddings</a></li></ul><h4>Vector Stores</h4><ul><li><a href="vectors/overview.html">Vector database overview</a></li><li><a href="vectors/indexing-strategies.html">HNSW, IVF, PQ</a></li><li><a href="vectors/hybrid-search.html">Hybrid search</a></li><li><a href="vectors/metadata-filtering.html">Metadata filtering</a></li><li><a href="vectors/cost-optimization.html">Cost optimization</a></li><li><a href="vectors/choosing-a-db.html">Choosing a vector DB</a></li></ul><h4>Retrieval Strategies</h4><ul><li><a href="retrieval/vector-search.html">Vector similarity search</a></li><li><a href="retrieval/bm25-sparse.html">BM25 and sparse retrieval</a></li><li><a href="retrieval/hybrid.html">Hybrid retrieval</a></li><li><a href="retrieval/reranking.html">Reranking</a></li><li><a href="retrieval/query-rewriting.html">Query rewriting</a></li><li><a href="retrieval/hyde.html">HyDE</a></li><li><a href="retrieval/multi-query.html">Multi-query + fusion</a></li></ul><h4>Advanced Patterns</h4><ul><li><a href="advanced/agentic-rag.html">Agentic RAG</a></li><li><a href="advanced/graph-rag.html">GraphRAG</a></li><li><a href="advanced/adaptive-rag.html">Adaptive RAG</a></li><li><a href="advanced/corrective-rag.html">Corrective RAG (CRAG)</a></li><li><a href="advanced/self-rag.html">Self-RAG</a></li><li><a href="advanced/multi-hop.html">Multi-hop RAG</a></li></ul><h4>Evaluation</h4><ul><li><a href="eval/why-eval.html">Why evaluation is critical</a></li><li><a href="eval/retrieval-metrics.html">Retrieval metrics</a></li><li><a href="eval/generation-metrics.html">Generation metrics</a></li><li><a href="eval/ragas-and-frameworks.html">RAGAS, TruLens, ARES</a></li><li><a href="eval/building-eval-datasets.html">Building eval datasets</a></li></ul><h4>Production</h4><ul><li><a href="prod/latency.html">Latency optimization</a></li><li><a href="prod/caching.html">Caching strategies</a></li><li><a href="prod/observability.html">Observability and tracing</a></li><li><a href="prod/cost.html">Cost management</a></li><li><a href="prod/security.html">Security and prompt injection</a></li></ul><h4>Use Cases</h4><ul><li><a href="cases/customer-support.html">Customer support RAG</a></li><li><a href="cases/internal-kb.html">Internal knowledge RAG</a></li><li><a href="cases/code-rag.html">Code search + generation</a></li><li><a href="cases/legal-compliance.html">Legal and compliance</a></li><li><a href="cases/multi-tenant.html">Multi-tenant RAG</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">RAGS to Riches</a><span class="sep">›</span><span>Metadata extraction</span></div><h1 class="title">Metadata extraction</h1><div class="article-meta"><span>📖 5 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">Metadata is what turns a flat blob of vectors into a queryable knowledge graph. Good metadata makes retrieval 3-10x better and unlocks features that pure vector search can't do. Most RAG systems ship without it, then spend months bolting it on retroactively.</p>
+
+<h2>What metadata is for</h2>
+<ol>
+  <li><strong>Filtering.</strong> Only retrieve chunks where product = "Enterprise" and user has access.</li>
+  <li><strong>Boosting.</strong> Prefer recent docs, canonical sources, high-authority authors.</li>
+  <li><strong>Grouping.</strong> Return top-k diverse sources instead of five chunks from the same doc.</li>
+  <li><strong>Citation.</strong> Tell the user "I learned this from [document], section 3.2, published 2024-01-15."</li>
+  <li><strong>Access control.</strong> Enforce permissions at retrieval time.</li>
+  <li><strong>Debugging.</strong> Trace bad answers back to specific chunks and source documents.</li>
+</ol>
+
+<h2>The metadata I always include</h2>
+
+<h3>Provenance</h3>
+<ul>
+  <li><code>source_system</code> (e.g., "confluence", "google_drive", "s3")</li>
+  <li><code>source_id</code> (ID in that system)</li>
+  <li><code>source_url</code> (canonical URL)</li>
+  <li><code>title</code></li>
+  <li><code>author</code></li>
+  <li><code>created_at</code>, <code>updated_at</code></li>
+  <li><code>ingested_at</code>, <code>embedding_model_version</code></li>
+</ul>
+
+<h3>Content structure</h3>
+<ul>
+  <li><code>document_type</code> (e.g., "blog", "manual", "policy")</li>
+  <li><code>section_path</code> (e.g., "Setup &gt; Authentication &gt; OAuth")</li>
+  <li><code>chunk_position</code> (index within document)</li>
+  <li><code>chunk_total</code> (so you can reconstruct)</li>
+  <li><code>element_type</code> (e.g., "paragraph", "table", "heading", "list_item")</li>
+</ul>
+
+<h3>Access + governance</h3>
+<ul>
+  <li><code>tenant_id</code></li>
+  <li><code>visibility</code> (public, internal, restricted)</li>
+  <li><code>permissions</code> (list of roles or groups with access)</li>
+  <li><code>data_classification</code> (public, confidential, PII, etc.)</li>
+</ul>
+
+<h3>Domain-specific</h3>
+<ul>
+  <li><code>product</code>, <code>version</code>, <code>language</code></li>
+  <li><code>topics</code>, <code>tags</code> (extracted or human-assigned)</li>
+  <li><code>entities</code> (named entities extracted from the text)</li>
+</ul>
+
+<h2>Where metadata comes from</h2>
+
+<h3>From the source system</h3>
+<p>Confluence gives you author, labels, space, creation date. Drive gives you owner, sharing settings, MIME type. APIs usually return more metadata than you think, capture it all, decide what to use later.</p>
+
+<h3>From the document itself</h3>
+<p>Title from the first heading. Author from a byline. Date from a publication header. Section hierarchy from structure-aware parsing. Take metadata from inside the document wherever possible, it's often more accurate than the source system's metadata.</p>
+
+<h3>Inferred via LLM or NER</h3>
+<p>Run an LLM or a named-entity recognizer over each chunk to extract:</p>
+<ul>
+  <li>Named entities (people, organizations, locations, products)</li>
+  <li>Topics / categories</li>
+  <li>Sentiment</li>
+  <li>Document type (if not provided)</li>
+  <li>Language</li>
+  <li>Summary (useful for reranking and LLM-based routing)</li>
+</ul>
+
+<p>LLM enrichment costs money per chunk but often pays back in retrieval quality. A small model (Haiku, GPT-4o-mini) works fine for structured extraction.</p>
+
+<h2>Metadata filtering in retrieval</h2>
+<p>Most production vector DBs support filtered search: "find nearest neighbors where tenant_id = 'acme' AND visibility != 'restricted' AND updated_at &gt; '2024-01-01'."</p>
+
+<p>The pattern:</p>
+<ol>
+  <li>User sends query + their user context (tenant, role, etc.)</li>
+  <li>Build filter from user context + query-derived constraints</li>
+  <li>Run vector search with filter applied</li>
+  <li>Rerank or boost based on remaining metadata (recency, authority)</li>
+</ol>
+
+<h2>Pre-filter vs post-filter</h2>
+<p>Vector DBs handle metadata filtering in one of two ways:</p>
+
+<h3>Pre-filter</h3>
+<p>Narrow the candidate set to matching metadata first, then search. Exact, returns only documents matching the filter. Slow when filters are selective.</p>
+
+<h3>Post-filter</h3>
+<p>Do vector search first, then filter results. Fast but may return fewer-than-k results if matches are rare.</p>
+
+<h3>Hybrid (dynamic)</h3>
+<p>The DB decides based on filter selectivity. Pinecone, Qdrant, and Weaviate do this well.</p>
+
+<p>For narrow filters (e.g., "tenant_id = X"), pre-filter is usually right. For broad filters (e.g., "language = en"), post-filter is fine.</p>
+
+<h2>The access control pattern</h2>
+<p>Every chunk carries a list of roles or groups allowed to see it. At query time, compute the user's allowed roles. Filter retrieval to chunks where <code>permissions</code> intersects with the user's roles. This is how you run multi-tenant RAG without leaks.</p>
+
+<p>See also <a href="../cases/multi-tenant.html">multi-tenant RAG</a> and <a href="../prod/security.html">security</a>.</p>
+
+<h2>The common mistakes</h2>
+<ul>
+  <li><strong>Missing timestamps.</strong> Users get outdated answers and there's no way to boost recency.</li>
+  <li><strong>No source_url.</strong> Citations are broken or fake.</li>
+  <li><strong>Permissions as a string instead of a list.</strong> Makes multi-role access impossible to query.</li>
+  <li><strong>Mutable metadata stored immutably.</strong> When a document's permissions change, the index is out of sync until you reindex.</li>
+  <li><strong>No embedding_model_version.</strong> When you upgrade embedding models, you can't tell which chunks need reprocessing.</li>
+</ul>
+
+<p style="margin-top:40px;">Next: <a href="../chunking/why-chunking.html">Why chunking matters</a>.</p>
+<div class="prev-next"><a href="ocr.html" class="prev"><div class="label">← Previous</div><div class="title">OCR for scanned documents</div></a><a href="../chunking/why-chunking.html" class="next"><div class="label">Next →</div><div class="title">Why chunking matters</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a></p>
+</div></footer></body></html>

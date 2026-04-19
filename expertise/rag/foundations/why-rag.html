@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why RAG over fine-tuning | Samuel Ochoa</title>
+<meta name="description" content="Fine-tuning teaches a model new behaviors. RAG gives a model new facts. Most of what teams think they want from fine-tuning is actually a RAG problem.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Why RAG over fine-tuning | Samuel Ochoa">
+<meta property="og:description" content="Fine-tuning teaches a model new behaviors. RAG gives a model new facts. Most of what teams think they want from fine-tuning is actually a RAG problem.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../about.html">About</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>RAGS to Riches (56 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-rag.html">What is RAG?</a></li><li><a href="foundations/why-rag.html" class="active">Why RAG over fine-tuning</a></li><li><a href="foundations/the-architecture.html">The RAG architecture map</a></li><li><a href="foundations/when-not-to-use.html">When not to use RAG</a></li></ul><h4>Documents + Ingestion</h4><ul><li><a href="docs/ingestion-pipeline.html">The ingestion pipeline</a></li><li><a href="docs/parsing-pdfs.html">Parsing PDFs</a></li><li><a href="docs/parsing-html.html">Parsing HTML + web pages</a></li><li><a href="docs/tables-figures.html">Tables and figures</a></li><li><a href="docs/ocr.html">OCR for scanned documents</a></li><li><a href="docs/metadata.html">Metadata extraction</a></li></ul><h4>Chunking</h4><ul><li><a href="chunking/why-chunking.html">Why chunking matters</a></li><li><a href="chunking/fixed-size.html">Fixed-size chunking</a></li><li><a href="chunking/semantic.html">Semantic chunking</a></li><li><a href="chunking/recursive.html">Recursive chunking</a></li><li><a href="chunking/structure-aware.html">Structure-aware chunking</a></li><li><a href="chunking/chunking-code.html">Chunking code</a></li></ul><h4>Embeddings</h4><ul><li><a href="embeddings/what-are-embeddings.html">What embeddings are</a></li><li><a href="embeddings/picking-a-model.html">Picking an embedding model</a></li><li><a href="embeddings/closed-vs-open.html">Closed vs open models</a></li><li><a href="embeddings/dimensions-cost.html">Dimensions, cost, and MRL</a></li><li><a href="embeddings/fine-tuning.html">Fine-tuning embeddings</a></li></ul><h4>Vector Stores</h4><ul><li><a href="vectors/overview.html">Vector database overview</a></li><li><a href="vectors/indexing-strategies.html">HNSW, IVF, PQ</a></li><li><a href="vectors/hybrid-search.html">Hybrid search</a></li><li><a href="vectors/metadata-filtering.html">Metadata filtering</a></li><li><a href="vectors/cost-optimization.html">Cost optimization</a></li><li><a href="vectors/choosing-a-db.html">Choosing a vector DB</a></li></ul><h4>Retrieval Strategies</h4><ul><li><a href="retrieval/vector-search.html">Vector similarity search</a></li><li><a href="retrieval/bm25-sparse.html">BM25 and sparse retrieval</a></li><li><a href="retrieval/hybrid.html">Hybrid retrieval</a></li><li><a href="retrieval/reranking.html">Reranking</a></li><li><a href="retrieval/query-rewriting.html">Query rewriting</a></li><li><a href="retrieval/hyde.html">HyDE</a></li><li><a href="retrieval/multi-query.html">Multi-query + fusion</a></li></ul><h4>Advanced Patterns</h4><ul><li><a href="advanced/agentic-rag.html">Agentic RAG</a></li><li><a href="advanced/graph-rag.html">GraphRAG</a></li><li><a href="advanced/adaptive-rag.html">Adaptive RAG</a></li><li><a href="advanced/corrective-rag.html">Corrective RAG (CRAG)</a></li><li><a href="advanced/self-rag.html">Self-RAG</a></li><li><a href="advanced/multi-hop.html">Multi-hop RAG</a></li></ul><h4>Evaluation</h4><ul><li><a href="eval/why-eval.html">Why evaluation is critical</a></li><li><a href="eval/retrieval-metrics.html">Retrieval metrics</a></li><li><a href="eval/generation-metrics.html">Generation metrics</a></li><li><a href="eval/ragas-and-frameworks.html">RAGAS, TruLens, ARES</a></li><li><a href="eval/building-eval-datasets.html">Building eval datasets</a></li></ul><h4>Production</h4><ul><li><a href="prod/latency.html">Latency optimization</a></li><li><a href="prod/caching.html">Caching strategies</a></li><li><a href="prod/observability.html">Observability and tracing</a></li><li><a href="prod/cost.html">Cost management</a></li><li><a href="prod/security.html">Security and prompt injection</a></li></ul><h4>Use Cases</h4><ul><li><a href="cases/customer-support.html">Customer support RAG</a></li><li><a href="cases/internal-kb.html">Internal knowledge RAG</a></li><li><a href="cases/code-rag.html">Code search + generation</a></li><li><a href="cases/legal-compliance.html">Legal and compliance</a></li><li><a href="cases/multi-tenant.html">Multi-tenant RAG</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">RAGS to Riches</a><span class="sep">›</span><span>Why RAG over fine-tuning</span></div><h1 class="title">Why RAG over fine-tuning</h1><div class="article-meta"><span>📖 5 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">Every time a team says "we want to fine-tune a model on our company docs," I ask one question: do you want to change how the model behaves, or do you want to make facts available to it? If it's the second one, and it almost always is, you want RAG, not fine-tuning. This is the most common architectural mistake I see in AI projects.</p>
+
+<h2>The clean split</h2>
+
+<h3>Use RAG when you need</h3>
+<ul>
+  <li>Factual grounding in your own data</li>
+  <li>Citations and auditability</li>
+  <li>Frequently changing information</li>
+  <li>Access control per user/tenant</li>
+  <li>Large knowledge bases (more than fits in a context window)</li>
+  <li>Quick iteration without retraining</li>
+</ul>
+
+<h3>Use fine-tuning when you need</h3>
+<ul>
+  <li>Specific output structure (JSON schemas, code style)</li>
+  <li>Stable voice or tone across all outputs</li>
+  <li>Latency reduction on a well-defined task</li>
+  <li>Cost reduction for a high-volume narrow task</li>
+  <li>Behavior that prompting alone can't reliably produce</li>
+</ul>
+
+<h3>Use both when you need</h3>
+<ul>
+  <li>Grounded answers in a specific voice</li>
+  <li>A small specialized model that still reasons over your data</li>
+  <li>Domain-specific embeddings plus retrieval on top</li>
+</ul>
+
+<h2>The economics are not close</h2>
+<p>Fine-tuning a serious model costs anywhere from a few hundred to tens of thousands of dollars per run. Updating a RAG index costs pennies. When your knowledge base changes, which it does constantly, the RAG system is updated in seconds. The fine-tuned model is a stale artifact until the next training run.</p>
+
+<p>For any system where facts update more than once a quarter, RAG wins on cost alone.</p>
+
+<h2>The failure mode nobody warns you about</h2>
+<p>Fine-tuning on factual data teaches the model to produce <em>tokens that look like your data</em>. Not to reason about it. The model will confidently invent answers that sound like your docs but contradict them. This is especially bad with small datasets, where the model memorizes surface patterns without generalizing.</p>
+
+<p>I've seen teams fine-tune on internal wikis and get a model that hallucinates internal wiki content, which is worse than useless. RAG, done well, doesn't have this failure mode because the actual source text is in the prompt at generation time.</p>
+
+<h2>The hybrid pattern, when it pays</h2>
+<p>The right hybrid: fine-tune a smaller/cheaper model on the <em>shape</em> of responses you want (format, style, common patterns), then use RAG to inject the specific facts at inference time. You get the efficiency of a smaller model, the consistency of fine-tuning, and the factuality of RAG.</p>
+
+<p>This is the architecture most serious production systems converge on. Not "RAG or fine-tuning" but "fine-tuning for behavior, RAG for facts."</p>
+
+<h2>A quick test</h2>
+<p>Ask yourself: if a new fact is added to our knowledge base tomorrow, do we need the system to answer about it?</p>
+<ul>
+  <li>Yes → RAG (or hybrid)</li>
+  <li>No, and the behavior is stable → fine-tuning might be enough</li>
+  <li>The answer changes daily → pure RAG, and probably with real-time indexing</li>
+</ul>
+
+<h2>Long context isn't a replacement</h2>
+<p>Some teams now argue that with 1M+ token context windows, you can just stuff everything in. In practice: you can't afford to, your latency triples, and retrieval quality (what the model pays attention to) degrades in the middle of massive contexts. The "lost in the middle" phenomenon is real. Long context is a tool in the RAG toolbox, not a replacement for retrieval.</p>
+
+<p>The right mental model: use a long context window to pass more <em>retrieved</em> chunks, not to skip retrieval.</p>
+
+<p style="margin-top:40px;">Next: <a href="the-architecture.html">The RAG architecture map</a>.</p>
+<div class="prev-next"><a href="what-is-rag.html" class="prev"><div class="label">← Previous</div><div class="title">What is RAG?</div></a><a href="the-architecture.html" class="next"><div class="label">Next →</div><div class="title">The RAG architecture map</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a></p>
+</div></footer></body></html>

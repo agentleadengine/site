@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MCP transports | Samuel Ochoa</title>
+<meta name="description" content="stdio, SSE, HTTP, the three ways MCP clients and servers communicate, and when to use each.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="website">
+<meta property="og:title" content="MCP transports | Samuel Ochoa">
+<meta property="og:description" content="stdio, SSE, HTTP, the three ways MCP clients and servers communicate, and when to use each.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../index.html">Home</a>
+<a href="../../framework/index.html" class="active">Framework</a>
+<a href="../expertise/index.html">Expertise</a>
+<a href="../playbooks/index.html">Playbooks</a>
+<a href="../writing.html">Writing</a>
+<a href="../../about.html">About</a>
+<a href="../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="what-is-autonomous-ai.html">What is autonomous AI</a></li><li><a href="the-autonomy-spectrum.html">The autonomy spectrum</a></li><li><a href="glossary.html">Glossary</a></li></ul><h4>Claude</h4><ul><li><a href="claude/overview.html">Overview</a></li><li><a href="claude/prompting-for-agents.html">Prompting for agents</a></li><li><a href="claude/extended-thinking.html">Extended thinking</a></li><li><a href="claude/tool-use.html">Tool use</a></li></ul><h4>MCP</h4><ul><li><a href="mcp/index.html">Overview</a></li><li><a href="mcp/what-is-mcp.html">What is MCP</a></li><li><a href="mcp/anatomy.html">Anatomy</a></li><li><a href="mcp/transports.html" class="active">Transports</a></li><li><a href="mcp/servers.html">Servers</a></li><li><a href="mcp/clients.html">Clients</a></li><li><a href="mcp/security.html">Security</a></li><li><a href="mcp/directory.html">Directory</a></li></ul><h4>Plugins</h4><ul><li><a href="plugins/index.html">Overview</a></li><li><a href="plugins/vs-mcp.html">Plugins vs MCP</a></li><li><a href="plugins/marketplace.html">Marketplace</a></li></ul><h4>Claude Code</h4><ul><li><a href="claude-code/index.html">Overview</a></li><li><a href="claude-code/settings.html">Settings</a></li><li><a href="claude-code/permissions.html">Permissions</a></li><li><a href="claude-code/hooks.html">Hooks</a></li><li><a href="claude-code/skills.html">Skills</a></li><li><a href="claude-code/memory.html">Memory</a></li></ul><h4>Patterns</h4><ul><li><a href="patterns/index.html">Overview</a></li><li><a href="patterns/react-loop.html">ReAct loop</a></li><li><a href="patterns/plan-execute.html">Plan-execute</a></li><li><a href="patterns/multi-agent.html">Multi-agent</a></li><li><a href="patterns/evaluation.html">Evaluation</a></li><li><a href="patterns/prompt-caching.html">Prompt caching</a></li></ul><h4>Autonomous</h4><ul><li><a href="autonomous/index.html">Overview</a></li><li><a href="autonomous/headless.html">Headless</a></li><li><a href="autonomous/scheduling.html">Scheduling</a></li><li><a href="autonomous/self-monitoring.html">Self-monitoring</a></li><li><a href="autonomous/safety.html">Safety</a></li></ul><h4>Build Guides</h4><ul><li><a href="build/index.html">Overview</a></li><li><a href="build/first-agent.html">First agent (60 min)</a></li><li><a href="build/voice-agent.html">Voice agent</a></li><li><a href="build/research-agent.html">Research agent</a></li></ul><h4>Tools</h4><ul><li><a href="tools/browser-automation.html">Browser automation</a></li><li><a href="tools/desktop-control.html">Desktop control</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Framework</a><span class="sep">›</span><a href="../mcp/index.html">MCP</a><span class="sep">›</span><span>MCP transports</span></div><h1 class="title" style="font-size:clamp(32px,4.5vw,42px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">MCP transports</h1><div class="article-meta"><span>📖 4 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">MCP is transport-agnostic. The protocol works the same whether you're talking to a local subprocess over stdin or to a remote HTTPS endpoint. Picking the right transport matters for performance and security.</p>
+
+<h2>stdio, local subprocess</h2>
+<p>The client spawns the server as a child process and talks to it over stdin/stdout. Messages are newline-delimited JSON.</p>
+<p><strong>When to use:</strong></p>
+<ul>
+  <li>Local tools that need file system access</li>
+  <li>Dev tools (git, build systems, linters)</li>
+  <li>Anything where a network transport adds unnecessary overhead</li>
+</ul>
+<p><strong>Pros:</strong></p>
+<ul>
+  <li>No network configuration</li>
+  <li>Process isolation (kill the server = kill access)</li>
+  <li>Very fast (no HTTP overhead)</li>
+  <li>Native to Claude Code and many IDE clients</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+  <li>Client must be on the same machine</li>
+  <li>No multi-user support</li>
+  <li>Harder to update (restart required)</li>
+</ul>
+
+<h2>SSE. Server-Sent Events</h2>
+<p>The client opens an HTTP connection to the server; the server streams events back. Good for remote servers that want long-lived bidirectional-ish communication.</p>
+<p><strong>When to use:</strong></p>
+<ul>
+  <li>Hosted MCP servers (someone else runs them)</li>
+  <li>Multi-user environments (Claude.ai connectors, team deployments)</li>
+  <li>Tools that benefit from streaming responses</li>
+</ul>
+<p><strong>Pros:</strong></p>
+<ul>
+  <li>Works across machines</li>
+  <li>Plays nicely with HTTP infra (load balancers, TLS, auth)</li>
+  <li>One server can serve many clients</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+  <li>More operational overhead (hosting, scaling, TLS)</li>
+  <li>Latency (network round-trips)</li>
+  <li>Requires auth handling you don't need locally</li>
+</ul>
+
+<h2>HTTP, request/response</h2>
+<p>Plain stateless HTTP. The client sends a JSON-RPC request, the server responds. No streaming.</p>
+<p><strong>When to use:</strong></p>
+<ul>
+  <li>Simple remote servers</li>
+  <li>When streaming isn't needed</li>
+  <li>Serverless deployments (Lambda, Workers) where long-lived connections are expensive</li>
+</ul>
+<p><strong>Pros:</strong></p>
+<ul>
+  <li>Simplest to build, simplest to host</li>
+  <li>Works behind any HTTP infra</li>
+  <li>Stateless, trivially scalable</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+  <li>No streaming, so slower on long tool calls</li>
+  <li>More round-trips for multi-step interactions</li>
+</ul>
+
+<h2>Decision matrix</h2>
+<table style="width:100%; border-collapse:collapse; margin: 16px 0;">
+  <thead>
+    <tr style="background: var(--accent-bg);">
+      <th style="text-align:left; padding: 8px;">If the server is…</th>
+      <th style="text-align:left; padding: 8px;">Use transport</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px;">On your machine, for your use only</td><td style="padding: 8px;"><strong>stdio</strong></td></tr>
+    <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px;">Hosted, serving one user (you)</td><td style="padding: 8px;"><strong>SSE</strong> or <strong>HTTP</strong></td></tr>
+    <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px;">Hosted, serving a team</td><td style="padding: 8px;"><strong>SSE</strong> (for streaming) or <strong>HTTP</strong> (simpler)</td></tr>
+    <tr><td style="padding: 8px;">Serverless (Lambda, Cloudflare Workers)</td><td style="padding: 8px;"><strong>HTTP</strong></td></tr>
+  </tbody>
+</table>
+
+<h2>Mixing transports</h2>
+<p>Clients can connect to many servers, each over a different transport. Claude Code happily talks to local stdio servers (git, filesystem) and remote HTTP/SSE servers (Notion, Gmail) at the same time.</p>
+<div class="prev-next"><a href="anatomy.html" class="prev"><div class="label">← Previous</div><div class="title">Anatomy of an MCP</div></a><a href="servers.html" class="next"><div class="label">Next →</div><div class="title">Building MCP servers</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../framework/index.html">Framework</a></p>
+</div></footer></body></html>

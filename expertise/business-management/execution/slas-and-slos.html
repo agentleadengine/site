@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SLAs + SLOs | Samuel Ochoa</title>
+<meta name="description" content="Every service, internal or external, is either explicitly measured or implicitly evaluated on vibes. SLAs and SLOs are how you move from vibes to measured.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SLAs + SLOs | Samuel Ochoa">
+<meta property="og:description" content="Every service, internal or external, is either explicitly measured or implicitly evaluated on vibes. SLAs and SLOs are how you move from vibes to measured.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../about.html">About</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Business Management (38 pages)</h4><h4>Operating Systems</h4><ul><li><a href="index.html">Overview</a></li><li><a href="operating-systems/designing-the-os.html">Designing the OS</a></li><li><a href="operating-systems/weekly-business-review.html">Weekly business review</a></li><li><a href="operating-systems/meetings.html">Meetings that don't waste time</a></li><li><a href="operating-systems/sops.html">SOPs that get used</a></li><li><a href="operating-systems/decision-logs.html">Decision logs</a></li></ul><h4>People + Hiring</h4><ul><li><a href="people/hiring-signal-vs-noise.html">Hiring, signal vs noise</a></li><li><a href="people/role-scorecard.html">The role scorecard</a></li><li><a href="people/onboarding.html">Onboarding that compounds</a></li><li><a href="people/one-on-ones.html">One-on-ones</a></li><li><a href="people/performance-reviews.html">Performance reviews</a></li><li><a href="people/firing-well.html">Firing well</a></li></ul><h4>Finance + Economics</h4><ul><li><a href="finance/three-numbers.html">The three numbers</a></li><li><a href="finance/pnl-literacy.html">P&L literacy</a></li><li><a href="finance/unit-economics.html">Unit economics</a></li><li><a href="finance/pricing.html">Pricing frameworks</a></li><li><a href="finance/cash-flow.html">Cash flow forecasting</a></li></ul><h4>Strategy + Planning</h4><ul><li><a href="strategy/okrs.html">OKRs without the cult</a></li><li><a href="strategy/planning-cadence.html">Annual + quarterly planning</a></li><li><a href="strategy/what-to-kill.html">What to kill</a></li><li><a href="strategy/pre-mortems.html">Pre-mortems</a></li><li><a href="strategy/decision-frameworks.html">Decision frameworks</a></li></ul><h4>Sales + GTM</h4><ul><li><a href="sales/funnel-math.html">Funnel math that matters</a></li><li><a href="sales/pipeline-design.html">Pipeline design</a></li><li><a href="sales/negotiation.html">Pricing + negotiation</a></li><li><a href="sales/churn-diagnostics.html">Churn diagnostics</a></li><li><a href="sales/customer-success-ops.html">Customer success ops</a></li></ul><h4>Execution + Delivery</h4><ul><li><a href="execution/process-mapping.html">Process mapping</a></li><li><a href="execution/automate-vs-hire.html">Automate vs hire</a></li><li><a href="execution/vendor-management.html">Vendor management</a></li><li><a href="execution/slas-and-slos.html" class="active">SLAs + SLOs</a></li></ul><h4>Leadership + Culture</h4><ul><li><a href="leadership/memo-culture.html">Memo culture</a></li><li><a href="leadership/radical-candor.html">Radical candor</a></li><li><a href="leadership/accountability.html">Accountability without micromanagement</a></li><li><a href="leadership/compensation.html">Compensation design</a></li></ul><h4>Risk + Compliance</h4><ul><li><a href="risk/risk-management.html">Risk management basics</a></li><li><a href="risk/data-and-ip.html">Data + IP protection</a></li><li><a href="risk/insurance.html">Business insurance</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">Business Management</a><span class="sep">›</span><span>SLAs + SLOs</span></div><h1 class="title">SLAs + SLOs</h1><div class="article-meta"><span>📖 6 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">Every service, customer-facing, internal, vendor-provided, is either explicitly measured or implicitly evaluated on vibes. SLAs and SLOs are how you move from vibes to measured. Good ones align expectations; bad ones become legal liabilities; missing ones leave everyone disappointed for different reasons.</p>
+
+<h2>The vocabulary</h2>
+<ul>
+  <li><strong>SLI</strong> (Service Level Indicator), the actual metric. "Request latency p95." "Uptime %." "First-response time."</li>
+  <li><strong>SLO</strong> (Service Level Objective), your internal target. "p95 latency &lt; 300ms." "Uptime ≥ 99.9%." "First-response &lt; 1 business hour."</li>
+  <li><strong>SLA</strong> (Service Level Agreement), your external, contractual commitment. Usually looser than the SLO. "99.5% uptime, with service credits if missed."</li>
+</ul>
+<p>SLO is the target you manage to. SLA is the number you're willing to be sued over. Never commit your SLO target as your SLA.</p>
+
+<h2>Why the gap matters</h2>
+<blockquote style="border-left:3px solid var(--purple); padding-left:16px; margin:20px 0; color:var(--text-muted);">
+SLO: 99.95% uptime internal target.<br>
+SLA: 99.5% uptime contractual commitment.<br>
+<br>
+99.95% ≈ 21 minutes downtime/month.<br>
+99.5% ≈ 3.6 hours downtime/month.<br>
+<br>
+Gap: ~3 hours of cushion per month. That's your error budget.
+</blockquote>
+
+<h2>Choosing SLIs</h2>
+<p>Good SLIs measure the thing customers experience, not the thing easy to measure. For an API:</p>
+<ul>
+  <li><strong>Availability</strong>. % of requests that returned a valid response (not an HTTP error)</li>
+  <li><strong>Latency</strong>. % of requests served below threshold</li>
+  <li><strong>Correctness</strong>. % of responses matching expected output</li>
+</ul>
+<p>Don't measure CPU utilization or database connections as an SLI, those are system metrics, not customer-experience metrics.</p>
+
+<h2>For support teams</h2>
+<p>SLIs that matter:</p>
+<ul>
+  <li><strong>First response time</strong>, initial reply from human or automation</li>
+  <li><strong>Resolution time</strong>, by severity (P1 &lt; 4 hours, P2 &lt; 1 business day, P3 &lt; 5 business days)</li>
+  <li><strong>Customer satisfaction on resolution</strong> (CSAT)</li>
+  <li><strong>Escalation rate</strong>. % of tickets escalated beyond first-line</li>
+</ul>
+
+<h2>For internal services</h2>
+<p>Internal SLAs (sometimes called "XLAs", internal service commitments) matter too:</p>
+<ul>
+  <li>Finance closes the books by day 10 of each month</li>
+  <li>Recruiting presents first-pass candidates within 5 business days of job opening</li>
+  <li>IT resolves laptop issues within 4 business hours</li>
+  <li>Legal reviews standard NDA within 2 business days</li>
+</ul>
+<p>Internal teams without SLAs will always be the bottleneck. Internal SLAs force throughput expectations into the open.</p>
+
+<h2>The error budget</h2>
+<p>If your SLO is 99.9%, you have 0.1% of error budget, about 43 minutes of "downtime" per month. That budget is a resource:</p>
+<ul>
+  <li>Spend it on planned maintenance</li>
+  <li>Spend it on deployments (riskier deploys that move the product forward)</li>
+  <li>Spend it on experimentation (A/B tests that affect performance)</li>
+</ul>
+<p>When the budget is exhausted, stop. Freeze non-critical deploys. Focus on reliability until the budget recovers. This is the discipline that keeps engineering from shipping endlessly at the cost of stability.</p>
+
+<h2>The review cadence</h2>
+<ul>
+  <li><strong>Weekly</strong>, engineering reviews SLI performance, reviews incidents, adjusts next week's priorities</li>
+  <li><strong>Monthly</strong>. SLA performance reviewed with account teams; any customer-facing misses escalate</li>
+  <li><strong>Quarterly</strong>. SLO targets reviewed; are they still right for the business stage?</li>
+</ul>
+
+<h2>The common mistakes</h2>
+<ul>
+  <li><strong>SLO = SLA.</strong> No cushion. First miss becomes a contractual breach.</li>
+  <li><strong>Too aggressive.</strong> "100% uptime" is not a target; it's a fantasy.</li>
+  <li><strong>Measuring averages.</strong> Use percentiles (p95, p99). Averages hide the worst customer experiences.</li>
+  <li><strong>No consequences for missing.</strong> SLOs with no operational consequence are reports, not commitments.</li>
+  <li><strong>Service credits that never get issued.</strong> If you miss the SLA and the customer has to fight to get their credit, you've lost them anyway.</li>
+</ul>
+
+<h2>What good looks like</h2>
+<ul>
+  <li>Customer-facing services have documented SLAs and internal SLOs</li>
+  <li>Internal teams have committed response/resolution times for their consumers</li>
+  <li>Error budgets are tracked and exhausted budgets trigger freeze</li>
+  <li>SLI measurement is automated and visible on a live dashboard</li>
+  <li>Missed SLAs trigger service credits automatically without customer intervention</li>
+</ul>
+
+<p style="margin-top:40px;">Related: <a href="vendor-management.html">Vendor management</a> · <a href="../risk/risk-management.html">Risk management</a> · <a href="../sales/customer-success-ops.html">Customer success ops</a></p>
+<div class="prev-next"><a href="vendor-management.html" class="prev"><div class="label">← Previous</div><div class="title">Vendor management</div></a><a href="../leadership/memo-culture.html" class="next"><div class="label">Next →</div><div class="title">Memo culture</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a></p>
+</div></footer></body></html>

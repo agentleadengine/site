@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tool design | Samuel Ochoa</title>
+<meta name="description" content="Well-designed tools are the difference between an agent that works and one that flails. Here's what actually matters.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tool design | Samuel Ochoa">
+<meta property="og:description" content="Well-designed tools are the difference between an agent that works and one that flails. Here's what actually matters.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="loops/react.html">ReAct</a></li><li><a href="loops/tool-use.html">Tool use</a></li><li><a href="loops/planning.html">Planning loops</a></li><li><a href="loops/reflection.html">Reflection</a></li><li><a href="loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="tools/tool-design.html" class="active">Tool design</a></li><li><a href="tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="tools/error-handling.html">Tool error handling</a></li><li><a href="tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="memory/short-term.html">Short-term memory</a></li><li><a href="memory/long-term.html">Long-term memory</a></li><li><a href="memory/episodic.html">Episodic memory</a></li><li><a href="memory/procedural.html">Procedural memory</a></li><li><a href="memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="multi/peer-agents.html">Peer agents</a></li><li><a href="multi/debate.html">Debate + consensus</a></li><li><a href="multi/handoffs.html">Agent handoffs</a></li><li><a href="multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="eval/why-eval-agents.html">Why eval agents</a></li><li><a href="eval/task-completion.html">Task completion</a></li><li><a href="eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="prod/observability.html">Observability + tracing</a></li><li><a href="prod/cost-control.html">Cost control</a></li><li><a href="prod/latency.html">Latency optimization</a></li><li><a href="prod/safety.html">Safety + guardrails</a></li><li><a href="prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="patterns/research-agent.html">Research agent</a></li><li><a href="patterns/coding-agent.html">Coding agent</a></li><li><a href="patterns/customer-support.html">Customer support agent</a></li><li><a href="patterns/data-analyst.html">Data analyst agent</a></li><li><a href="patterns/browser-agent.html">Browser agent</a></li><li><a href="patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="frameworks/langgraph.html">LangGraph</a></li><li><a href="frameworks/crewai.html">CrewAI</a></li><li><a href="frameworks/autogen.html">AutoGen</a></li><li><a href="frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>Tool design</span></div><h1 class="title">Tool design</h1><div class="article-meta"><span>📖 4 min read</span><span>Updated 2026-04-19</span></div>
+<p class="lede">Tools are where agents interact with the real world. A well-designed tool is easy for the LLM to use correctly, hard to misuse, and returns results the LLM can reason about. Bad tool design is the most common reason agents underperform.</p>
+
+<h2>The principles</h2>
+
+<h3>One tool, one job</h3>
+<p>Don't build a do-everything tool with 15 optional parameters. Split it into focused tools. An LLM chooses better from specific options than generic ones.</p>
+
+<h3>Name tools like a beginner would</h3>
+<p>Tool names should be obviously-related to their function. <code>search_internal_docs</code> is better than <code>query_kb_v2</code>.</p>
+
+<h3>Descriptions are prompts</h3>
+<p>The tool description is what the LLM reads to decide whether to call it. Write descriptions like you're briefing a new hire on when to use each tool. See <a href="tool-descriptions.html">tool descriptions matter</a>.</p>
+
+<h3>Keep parameter count low</h3>
+<p>2-4 parameters per tool is the sweet spot. 6+ parameters means the LLM will sometimes miss required ones or hallucinate values. Split or default.</p>
+
+<h3>Sensible defaults</h3>
+<p>Every optional parameter should have a sensible default. Makes it easier for the LLM to call the tool correctly on first try.</p>
+
+<h3>Types matter</h3>
+<p>Constrained types (enums for fixed choices, integers for counts) reduce hallucination. Free-form strings invite mistakes.</p>
+
+<h2>Tool granularity</h2>
+<p>Too coarse: <code>do_everything_with_database(action, params)</code></p>
+<p>Too fine: separate tools for <code>start_transaction</code>, <code>insert_row</code>, <code>commit</code></p>
+<p>Right: high-level intents like <code>save_customer</code>, <code>find_orders_for_customer</code></p>
+
+<h2>Response shape</h2>
+<p>Tool responses should be:</p>
+<ul>
+<li>Text or simple structured data (JSON)</li>
+<li>Meaningful to the LLM (context, not just raw data)</li>
+<li>Bounded in size (truncate long results)</li>
+<li>Error-rich (specific errors so the LLM can recover)</li>
+</ul>
+
+<h2>Common mistakes</h2>
+<ul>
+<li>Tool name that tells you nothing ("run_function")</li>
+<li>Description that doesn't specify when to use the tool</li>
+<li>Optional params without defaults</li>
+<li>Tools that return huge unstructured blobs</li>
+<li>Tools that succeed silently when they actually failed</li>
+<li>Too many overlapping tools ("which one do I use?")</li>
+</ul>
+<div class="prev-next"><a href="../loops/self-correction.html" class="prev"><div class="label">← Previous</div><div class="title">Self-correction</div></a><a href="tool-descriptions.html" class="next"><div class="label">Next →</div><div class="title">Tool descriptions matter</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
+</div></footer></body></html>

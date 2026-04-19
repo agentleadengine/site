@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Latency optimization | Samuel Ochoa</title>
+<meta name="description" content="Production RAG has strict latency budgets. Here's where time goes and how to cut it without killing quality.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Latency optimization | Samuel Ochoa">
+<meta property="og:description" content="Production RAG has strict latency budgets. Here's where time goes and how to cut it without killing quality.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../about.html">About</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>RAGS to Riches (56 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-rag.html">What is RAG?</a></li><li><a href="foundations/why-rag.html">Why RAG over fine-tuning</a></li><li><a href="foundations/the-architecture.html">The RAG architecture map</a></li><li><a href="foundations/when-not-to-use.html">When not to use RAG</a></li></ul><h4>Documents + Ingestion</h4><ul><li><a href="docs/ingestion-pipeline.html">The ingestion pipeline</a></li><li><a href="docs/parsing-pdfs.html">Parsing PDFs</a></li><li><a href="docs/parsing-html.html">Parsing HTML + web pages</a></li><li><a href="docs/tables-figures.html">Tables and figures</a></li><li><a href="docs/ocr.html">OCR for scanned documents</a></li><li><a href="docs/metadata.html">Metadata extraction</a></li></ul><h4>Chunking</h4><ul><li><a href="chunking/why-chunking.html">Why chunking matters</a></li><li><a href="chunking/fixed-size.html">Fixed-size chunking</a></li><li><a href="chunking/semantic.html">Semantic chunking</a></li><li><a href="chunking/recursive.html">Recursive chunking</a></li><li><a href="chunking/structure-aware.html">Structure-aware chunking</a></li><li><a href="chunking/chunking-code.html">Chunking code</a></li></ul><h4>Embeddings</h4><ul><li><a href="embeddings/what-are-embeddings.html">What embeddings are</a></li><li><a href="embeddings/picking-a-model.html">Picking an embedding model</a></li><li><a href="embeddings/closed-vs-open.html">Closed vs open models</a></li><li><a href="embeddings/dimensions-cost.html">Dimensions, cost, and MRL</a></li><li><a href="embeddings/fine-tuning.html">Fine-tuning embeddings</a></li></ul><h4>Vector Stores</h4><ul><li><a href="vectors/overview.html">Vector database overview</a></li><li><a href="vectors/indexing-strategies.html">HNSW, IVF, PQ</a></li><li><a href="vectors/hybrid-search.html">Hybrid search</a></li><li><a href="vectors/metadata-filtering.html">Metadata filtering</a></li><li><a href="vectors/cost-optimization.html">Cost optimization</a></li><li><a href="vectors/choosing-a-db.html">Choosing a vector DB</a></li></ul><h4>Retrieval Strategies</h4><ul><li><a href="retrieval/vector-search.html">Vector similarity search</a></li><li><a href="retrieval/bm25-sparse.html">BM25 and sparse retrieval</a></li><li><a href="retrieval/hybrid.html">Hybrid retrieval</a></li><li><a href="retrieval/reranking.html">Reranking</a></li><li><a href="retrieval/query-rewriting.html">Query rewriting</a></li><li><a href="retrieval/hyde.html">HyDE</a></li><li><a href="retrieval/multi-query.html">Multi-query + fusion</a></li></ul><h4>Advanced Patterns</h4><ul><li><a href="advanced/agentic-rag.html">Agentic RAG</a></li><li><a href="advanced/graph-rag.html">GraphRAG</a></li><li><a href="advanced/adaptive-rag.html">Adaptive RAG</a></li><li><a href="advanced/corrective-rag.html">Corrective RAG (CRAG)</a></li><li><a href="advanced/self-rag.html">Self-RAG</a></li><li><a href="advanced/multi-hop.html">Multi-hop RAG</a></li></ul><h4>Evaluation</h4><ul><li><a href="eval/why-eval.html">Why evaluation is critical</a></li><li><a href="eval/retrieval-metrics.html">Retrieval metrics</a></li><li><a href="eval/generation-metrics.html">Generation metrics</a></li><li><a href="eval/ragas-and-frameworks.html">RAGAS, TruLens, ARES</a></li><li><a href="eval/building-eval-datasets.html">Building eval datasets</a></li></ul><h4>Production</h4><ul><li><a href="prod/latency.html" class="active">Latency optimization</a></li><li><a href="prod/caching.html">Caching strategies</a></li><li><a href="prod/observability.html">Observability and tracing</a></li><li><a href="prod/cost.html">Cost management</a></li><li><a href="prod/security.html">Security and prompt injection</a></li></ul><h4>Use Cases</h4><ul><li><a href="cases/customer-support.html">Customer support RAG</a></li><li><a href="cases/internal-kb.html">Internal knowledge RAG</a></li><li><a href="cases/code-rag.html">Code search + generation</a></li><li><a href="cases/legal-compliance.html">Legal and compliance</a></li><li><a href="cases/multi-tenant.html">Multi-tenant RAG</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">RAGS to Riches</a><span class="sep">›</span><span>Latency optimization</span></div><h1 class="title">Latency optimization</h1><div class="article-meta"><span>📖 5 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">A notebook RAG can take 10 seconds per query. A production RAG has a budget: 500ms, 2 seconds, maybe 5. Here's where latency goes in a typical system and the levers I pull to cut it.</p>
+
+<h2>The typical latency breakdown</h2>
+<p>For a standard RAG pipeline (hybrid retrieval + reranking + generation):</p>
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
+Query embedding:          30-150ms
+Vector search:            20-100ms
+BM25 search:              10-50ms
+Fusion:                   &lt;5ms
+Rerank (cross-encoder):   100-400ms
+LLM generation (first token): 300-1500ms
+LLM generation (total):   1000-5000ms
+--------
+Total to first token:     500-2000ms
+Total end-to-end:         1500-5500ms
+</pre>
+
+<p>Generation dominates. Everything else combined is usually less than the LLM call.</p>
+
+<h2>Optimization priorities</h2>
+
+<h3>1. Generation (biggest lever)</h3>
+<ul>
+  <li>Use a faster model (Haiku over Sonnet, 4o-mini over 4o) when quality permits</li>
+  <li>Stream the response so user sees output within 500ms of first token</li>
+  <li>Reduce context size (less reranked top-k, tighter prompts)</li>
+  <li>Use provider's low-latency modes where available</li>
+  <li>Prompt caching for common system prompts (Claude, Gemini support this)</li>
+</ul>
+
+<h3>2. Embedding</h3>
+<ul>
+  <li>Cache query embeddings (same query → same embedding, TTL by how often the model updates)</li>
+  <li>Self-host for lower latency than API calls (save 50-150ms)</li>
+  <li>Smaller models (text-embedding-3-small over large)</li>
+  <li>Batch when possible (doesn't help per-query latency, helps throughput)</li>
+</ul>
+
+<h3>3. Retrieval</h3>
+<ul>
+  <li>Co-locate vector DB with application (network latency)</li>
+  <li>Tune HNSW ef_search lower for faster queries</li>
+  <li>Pre-warm hot content in memory</li>
+  <li>Cache top-k results for popular queries</li>
+</ul>
+
+<h3>4. Reranking</h3>
+<ul>
+  <li>Fewer candidates to rerank (top-20 vs top-100)</li>
+  <li>Smaller reranker model (MiniLM-L-6 vs electra-base)</li>
+  <li>Skip reranking for high-confidence retrievals</li>
+  <li>Run reranker on GPU for batch efficiency</li>
+</ul>
+
+<h2>Streaming is essential</h2>
+<p>A 3-second total response time feels fast if the first token arrives in 500ms. Same total feels slow if nothing appears until 3 seconds.</p>
+
+<p>Stream the LLM output. Perceived latency drops dramatically. Users tolerate 3-5 second total response if they see progress from 500ms in.</p>
+
+<h2>Parallelize retrieval and embedding</h2>
+<p>Embedding the query doesn't require the retrieval infrastructure. Start both in parallel:</p>
+<ol>
+  <li>Kick off query embedding</li>
+  <li>While embedding, do any non-vector-dependent work (logging, auth, query parsing)</li>
+  <li>When embedding is done, start vector search</li>
+</ol>
+
+<p>Saves 50-150ms if done right.</p>
+
+<h2>Parallelize retrieval sources</h2>
+<p>If using hybrid (dense + sparse) or multi-query, run all retrievals in parallel. Total latency is max of all, not sum.</p>
+
+<h2>Async by default</h2>
+<p>Build the pipeline with async/await from day one. Retrofitting async is painful. Every I/O call (embedding API, vector DB, LLM) should be awaitable.</p>
+
+<h2>The "first meaningful response" metric</h2>
+<p>Track this specifically:</p>
+<ul>
+  <li>Time to first token (from user request to first LLM token arriving)</li>
+  <li>Time to complete response</li>
+  <li>Time to critical information (when the actual answer appears, not just preamble)</li>
+</ul>
+
+<p>First-token latency is the UX-critical number. Total latency matters for backend cost and throughput.</p>
+
+<h2>Caching layers</h2>
+
+<h3>Query embedding cache</h3>
+<p>Hash the query, cache the embedding for 24 hours. Hit rate can be 20-40% on common query patterns. See <a href="caching.html">caching</a>.</p>
+
+<h3>Retrieval cache</h3>
+<p>Cache full top-k results per query. Invalidate on index updates. Hit rate depends on query repetition.</p>
+
+<h3>Full response cache</h3>
+<p>For exact-match queries, cache the full generated response. Rarely applicable to RAG (queries vary too much) but useful for FAQ-style systems.</p>
+
+<h3>Prompt caching</h3>
+<p>If using Claude or Gemini, cache the system prompt (which contains retrieved context) so it doesn't re-tokenize on identical prompts within a session. Saves 30-50% of generation time for multi-turn conversations.</p>
+
+<h2>Model routing</h2>
+<p>Simple queries to fast models, complex queries to slow models:</p>
+<ol>
+  <li>Classify query complexity</li>
+  <li>Easy → gpt-4o-mini / haiku / flash</li>
+  <li>Hard → gpt-4o / sonnet / gemini pro</li>
+</ol>
+
+<p>70% of queries can often use the fast model with no quality loss. Average latency drops significantly.</p>
+
+<h2>Content-level optimization</h2>
+<ul>
+  <li>Shorter chunks → faster embedding, less context per query</li>
+  <li>Pre-summarized content in metadata → generator can use summaries for first-pass reasoning</li>
+  <li>Fewer retrieved chunks passed to generator (top-5 vs top-20)</li>
+</ul>
+
+<h2>The tail latency problem</h2>
+<p>p50 latency might be 1.5s but p99 is 15s. Tail latency kills UX:</p>
+<ul>
+  <li>Slow embedding API calls (timeout and fall back to self-hosted)</li>
+  <li>Slow LLM calls (provider-side slow responses)</li>
+  <li>Vector DB slow queries (ef_search too high, huge candidate sets)</li>
+  <li>Cold indexes being loaded</li>
+</ul>
+
+<p>Set timeouts at every layer. Fall back gracefully (smaller model, cached response, error message). The goal: p99 within 2-3x p50, not 10x.</p>
+
+<h2>Measurement</h2>
+<p>Instrument every stage. You can't optimize what you can't see.</p>
+
+<ul>
+  <li>Histogram of latency per pipeline stage</li>
+  <li>p50, p95, p99 per stage</li>
+  <li>Per-query traces for debugging</li>
+  <li>Alerts on p99 regression</li>
+</ul>
+
+<p>See <a href="observability.html">observability</a>.</p>
+
+<h2>The rule of thumb</h2>
+<p>For a chat-style RAG system, target:</p>
+<ul>
+  <li>First token: under 1 second</li>
+  <li>Total response: 2-4 seconds</li>
+  <li>p99 total: under 8 seconds</li>
+</ul>
+
+<p>Much faster, users won't notice. Much slower, users will leave.</p>
+
+<p style="margin-top:40px;">Next: <a href="caching.html">Caching strategies</a>.</p>
+<div class="prev-next"><a href="../eval/building-eval-datasets.html" class="prev"><div class="label">← Previous</div><div class="title">Building eval datasets</div></a><a href="caching.html" class="next"><div class="label">Next →</div><div class="title">Caching strategies</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a></p>
+</div></footer></body></html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retrieval metrics | Samuel Ochoa</title>
+<meta name="description" content="Hit rate, MRR, recall, NDCG. Which metrics actually tell you something about retrieval quality, and how to interpret them.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Retrieval metrics | Samuel Ochoa">
+<meta property="og:description" content="Hit rate, MRR, recall, NDCG. Which metrics actually tell you something about retrieval quality, and how to interpret them.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../about.html">About</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>RAGS to Riches (56 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-rag.html">What is RAG?</a></li><li><a href="foundations/why-rag.html">Why RAG over fine-tuning</a></li><li><a href="foundations/the-architecture.html">The RAG architecture map</a></li><li><a href="foundations/when-not-to-use.html">When not to use RAG</a></li></ul><h4>Documents + Ingestion</h4><ul><li><a href="docs/ingestion-pipeline.html">The ingestion pipeline</a></li><li><a href="docs/parsing-pdfs.html">Parsing PDFs</a></li><li><a href="docs/parsing-html.html">Parsing HTML + web pages</a></li><li><a href="docs/tables-figures.html">Tables and figures</a></li><li><a href="docs/ocr.html">OCR for scanned documents</a></li><li><a href="docs/metadata.html">Metadata extraction</a></li></ul><h4>Chunking</h4><ul><li><a href="chunking/why-chunking.html">Why chunking matters</a></li><li><a href="chunking/fixed-size.html">Fixed-size chunking</a></li><li><a href="chunking/semantic.html">Semantic chunking</a></li><li><a href="chunking/recursive.html">Recursive chunking</a></li><li><a href="chunking/structure-aware.html">Structure-aware chunking</a></li><li><a href="chunking/chunking-code.html">Chunking code</a></li></ul><h4>Embeddings</h4><ul><li><a href="embeddings/what-are-embeddings.html">What embeddings are</a></li><li><a href="embeddings/picking-a-model.html">Picking an embedding model</a></li><li><a href="embeddings/closed-vs-open.html">Closed vs open models</a></li><li><a href="embeddings/dimensions-cost.html">Dimensions, cost, and MRL</a></li><li><a href="embeddings/fine-tuning.html">Fine-tuning embeddings</a></li></ul><h4>Vector Stores</h4><ul><li><a href="vectors/overview.html">Vector database overview</a></li><li><a href="vectors/indexing-strategies.html">HNSW, IVF, PQ</a></li><li><a href="vectors/hybrid-search.html">Hybrid search</a></li><li><a href="vectors/metadata-filtering.html">Metadata filtering</a></li><li><a href="vectors/cost-optimization.html">Cost optimization</a></li><li><a href="vectors/choosing-a-db.html">Choosing a vector DB</a></li></ul><h4>Retrieval Strategies</h4><ul><li><a href="retrieval/vector-search.html">Vector similarity search</a></li><li><a href="retrieval/bm25-sparse.html">BM25 and sparse retrieval</a></li><li><a href="retrieval/hybrid.html">Hybrid retrieval</a></li><li><a href="retrieval/reranking.html">Reranking</a></li><li><a href="retrieval/query-rewriting.html">Query rewriting</a></li><li><a href="retrieval/hyde.html">HyDE</a></li><li><a href="retrieval/multi-query.html">Multi-query + fusion</a></li></ul><h4>Advanced Patterns</h4><ul><li><a href="advanced/agentic-rag.html">Agentic RAG</a></li><li><a href="advanced/graph-rag.html">GraphRAG</a></li><li><a href="advanced/adaptive-rag.html">Adaptive RAG</a></li><li><a href="advanced/corrective-rag.html">Corrective RAG (CRAG)</a></li><li><a href="advanced/self-rag.html">Self-RAG</a></li><li><a href="advanced/multi-hop.html">Multi-hop RAG</a></li></ul><h4>Evaluation</h4><ul><li><a href="eval/why-eval.html">Why evaluation is critical</a></li><li><a href="eval/retrieval-metrics.html" class="active">Retrieval metrics</a></li><li><a href="eval/generation-metrics.html">Generation metrics</a></li><li><a href="eval/ragas-and-frameworks.html">RAGAS, TruLens, ARES</a></li><li><a href="eval/building-eval-datasets.html">Building eval datasets</a></li></ul><h4>Production</h4><ul><li><a href="prod/latency.html">Latency optimization</a></li><li><a href="prod/caching.html">Caching strategies</a></li><li><a href="prod/observability.html">Observability and tracing</a></li><li><a href="prod/cost.html">Cost management</a></li><li><a href="prod/security.html">Security and prompt injection</a></li></ul><h4>Use Cases</h4><ul><li><a href="cases/customer-support.html">Customer support RAG</a></li><li><a href="cases/internal-kb.html">Internal knowledge RAG</a></li><li><a href="cases/code-rag.html">Code search + generation</a></li><li><a href="cases/legal-compliance.html">Legal and compliance</a></li><li><a href="cases/multi-tenant.html">Multi-tenant RAG</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">RAGS to Riches</a><span class="sep">›</span><span>Retrieval metrics</span></div><h1 class="title">Retrieval metrics</h1><div class="article-meta"><span>📖 4 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">Retrieval metrics measure whether your system found the right chunks. They don't tell you if the generator used them well, that's a separate measurement, but they tell you the upstream quality gate. If retrieval metrics are bad, nothing downstream can save you.</p>
+
+<h2>Hit rate @ k</h2>
+<p>Simplest metric: did the relevant chunk appear anywhere in the top-k results?</p>
+
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
+hit_rate@k = (queries where relevant chunk in top-k) / (total queries)
+</pre>
+
+<p>Usually measured at k = 5, 10, 50.</p>
+
+<p>Good for: quick overall health check. If hit_rate@10 is 60%, 40% of your queries can't possibly be answered correctly.</p>
+
+<p>Bad at: distinguishing "found at rank 1" from "found at rank 10." They count the same.</p>
+
+<h2>Mean Reciprocal Rank (MRR)</h2>
+<p>Average reciprocal of the rank of the first relevant chunk.</p>
+
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
+MRR = mean(1 / rank_of_first_relevant_chunk)
+
+If relevant is at rank 1: contributes 1.0
+If at rank 2: contributes 0.5
+If at rank 5: contributes 0.2
+If not found: contributes 0
+</pre>
+
+<p>Good for: rewarding getting the right answer at high ranks. Sensitive to position.</p>
+
+<p>When to use: when you only pass top-5 or top-10 to the generator, and high ranks matter.</p>
+
+<h2>Recall @ k</h2>
+<p>What fraction of all relevant chunks made it into top-k?</p>
+
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
+recall@k = (relevant chunks in top-k) / (total relevant chunks)
+</pre>
+
+<p>Requires labeling all relevant chunks for each query, not just one.</p>
+
+<p>Good for: multi-chunk questions where you want to find several relevant pieces. For single-chunk questions, hit rate@k is equivalent.</p>
+
+<h2>Precision @ k</h2>
+<p>What fraction of top-k results are relevant?</p>
+
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
+precision@k = (relevant chunks in top-k) / k
+</pre>
+
+<p>High precision = clean context for the generator. High recall = broad coverage but noisier context. Trade-off.</p>
+
+<h2>NDCG (Normalized Discounted Cumulative Gain)</h2>
+<p>Accounts for graded relevance (some chunks are more relevant than others) and rank position. More complex, more informative.</p>
+
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
+DCG@k = sum over top-k: relevance_score_i / log2(rank_i + 1)
+NDCG@k = DCG@k / ideal_DCG@k
+</pre>
+
+<p>Ranges 0-1. Rewards both high relevance and high rank. Standard for information retrieval research.</p>
+
+<p>When to use: when relevance is graded (not binary) and you care about ranking quality.</p>
+
+<h2>What metrics to start with</h2>
+<p>For most RAG projects:</p>
+<ul>
+  <li>Hit rate @ 10: overall retrieval health</li>
+  <li>MRR: rank quality, especially when top-5 matters</li>
+  <li>Precision @ 5 and @ 10: how clean is the context the generator sees?</li>
+</ul>
+
+<p>NDCG, recall, etc. are useful additions but overkill for most early-stage projects.</p>
+
+<h2>Ground truth labeling</h2>
+<p>All of these metrics require knowing what's relevant for each query. You need labels.</p>
+
+<p>Sources:</p>
+<ul>
+  <li>Manual labeling: a human goes through queries and flags relevant chunks. Expensive, high quality.</li>
+  <li>Synthetic labeling: generate synthetic queries from chunks (the chunk itself is then the known-relevant)</li>
+  <li>Click/feedback data: user interactions imply relevance. Noisy, abundant.</li>
+</ul>
+
+<p>For an initial eval set, 50-200 human-labeled queries is usually enough to see meaningful signal.</p>
+
+<h2>The query-chunk pairing problem</h2>
+<p>What counts as "the relevant chunk"? Two types of queries:</p>
+
+<h3>Single-answer queries</h3>
+<p>One chunk has the answer. Label that chunk as relevant. Use hit rate, MRR.</p>
+
+<h3>Multi-answer queries</h3>
+<p>Multiple chunks contribute. Label several as relevant. Use recall, NDCG.</p>
+
+<h3>Ambiguous queries</h3>
+<p>Multiple legitimate answers exist. Label each chunk's relevance on a scale (0-3). Use NDCG.</p>
+
+<p>Know which type your queries are before deciding which metrics to use.</p>
+
+<h2>Common interpretation pitfalls</h2>
+
+<h3>Hit rate @ 50 = 95% is not great</h3>
+<p>If you're passing top-5 to the generator, hit rate @ 5 matters more than @ 50. Always measure at the k your production pipeline uses.</p>
+
+<h3>Small improvements aren't always real</h3>
+<p>On 100-query eval sets, a 2% change in hit rate is ~2 queries. Could be noise. Use larger eval sets or statistical tests to confirm real improvements.</p>
+
+<h3>Average masks variance</h3>
+<p>Average hit rate of 70% could be "every query has 70% chance" or "70% of queries always succeed, 30% always fail." The latter is worse, you have systematic blind spots. Look at the distribution, not just the mean.</p>
+
+<h2>Per-segment metrics</h2>
+<p>Aggregate metrics hide problems. Split by:</p>
+<ul>
+  <li>Query type (factual, multi-hop, synthesis)</li>
+  <li>Query length</li>
+  <li>Document type being queried (docs, code, tables)</li>
+  <li>Source system</li>
+  <li>Language</li>
+  <li>Time period (is recent content retrievable?)</li>
+</ul>
+
+<p>Segmented metrics surface specific problems that aggregate hides.</p>
+
+<p style="margin-top:40px;">Next: <a href="generation-metrics.html">Generation metrics</a>.</p>
+<div class="prev-next"><a href="why-eval.html" class="prev"><div class="label">← Previous</div><div class="title">Why evaluation is critical</div></a><a href="generation-metrics.html" class="next"><div class="label">Next →</div><div class="title">Generation metrics</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a></p>
+</div></footer></body></html>

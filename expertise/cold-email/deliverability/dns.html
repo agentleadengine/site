@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SPF, DKIM, DMARC | Samuel Ochoa</title>
+<meta name="description" content="The three DNS records that tell receiving servers your email is legitimate. Here's exactly how to configure each and what breaks when you don't.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SPF, DKIM, DMARC | Samuel Ochoa">
+<meta property="og:description" content="The three DNS records that tell receiving servers your email is legitimate. Here's exactly how to configure each and what breaks when you don't.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../about.html">About</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Cold Email (45 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-cold-email.html">What is cold email?</a></li><li><a href="foundations/spam-vs-cold.html">Cold email vs spam</a></li><li><a href="foundations/legal.html">Legal landscape</a></li><li><a href="foundations/when-it-works.html">When cold email works</a></li></ul><h4>Deliverability</h4><ul><li><a href="deliverability/why-it-matters.html">Why deliverability is everything</a></li><li><a href="deliverability/dns.html" class="active">SPF, DKIM, DMARC</a></li><li><a href="deliverability/sending-domains.html">Sending domain strategy</a></li><li><a href="deliverability/warming.html">Inbox warming</a></li><li><a href="deliverability/ip-reputation.html">IP reputation</a></li><li><a href="deliverability/spam-triggers.html">Content that triggers spam filters</a></li><li><a href="deliverability/monitoring.html">Monitoring inbox placement</a></li></ul><h4>Infrastructure</h4><ul><li><a href="infra/sending-tools.html">Sending tools</a></li><li><a href="infra/multi-inbox.html">Multi-inbox rotation</a></li><li><a href="infra/warming-tools.html">Warming tools</a></li><li><a href="infra/crm-integration.html">CRM and data integration</a></li><li><a href="infra/reply-management.html">Reply management</a></li></ul><h4>Lists + Targeting</h4><ul><li><a href="lists/icp.html">Defining the ICP</a></li><li><a href="lists/databases.html">Lead databases</a></li><li><a href="lists/clay.html">Clay and enrichment</a></li><li><a href="lists/verification.html">Verification + hygiene</a></li><li><a href="lists/intent-signals.html">Intent signals</a></li><li><a href="lists/segmentation.html">Segmentation strategy</a></li></ul><h4>Copy</h4><ul><li><a href="copy/anatomy.html">Cold email anatomy</a></li><li><a href="copy/subject-lines.html">Subject lines</a></li><li><a href="copy/first-lines.html">First lines</a></li><li><a href="copy/the-pitch.html">The pitch</a></li><li><a href="copy/ctas.html">CTAs for cold</a></li><li><a href="copy/signatures.html">Signatures</a></li><li><a href="copy/personalization.html">Personalization at scale</a></li></ul><h4>Sequences</h4><ul><li><a href="sequences/multi-touch.html">Multi-touch sequences</a></li><li><a href="sequences/cadence.html">Cadence and timing</a></li><li><a href="sequences/breakup.html">The breakup email</a></li><li><a href="sequences/multi-channel.html">Multi-channel orchestration</a></li><li><a href="sequences/length.html">Sequence length</a></li></ul><h4>Testing</h4><ul><li><a href="testing/methodology.html">Testing methodology</a></li><li><a href="testing/what-to-test.html">What to test</a></li><li><a href="testing/reply-metrics.html">Reply rate vs positive reply</a></li><li><a href="testing/iteration.html">The iteration loop</a></li></ul><h4>Playbooks</h4><ul><li><a href="plays/b2b-saas.html">B2B SaaS outbound</a></li><li><a href="plays/agency.html">Agency + services outbound</a></li><li><a href="plays/founder-led.html">Founder-led outbound</a></li><li><a href="plays/sdr-led.html">SDR-led outbound</a></li><li><a href="plays/link-building.html">Cold email for SEO</a></li><li><a href="plays/recruiting.html">Recruiting outreach</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">Cold Email</a><span class="sep">›</span><span>SPF, DKIM, DMARC</span></div><h1 class="title">SPF, DKIM, DMARC</h1><div class="article-meta"><span>📖 5 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">SPF, DKIM, and DMARC are DNS records that prove your email is actually from your domain. Without them, modern email providers treat your messages as suspicious. Proper configuration is a 20-minute task that most teams do wrong or not at all.</p>
+
+<h2>SPF (Sender Policy Framework)</h2>
+
+<h3>What it does</h3>
+<p>Lists the servers authorized to send email on behalf of your domain. A TXT record on your domain that says "email from these IPs or hosts is legitimate."</p>
+
+<h3>What it looks like</h3>
+<pre style="background:#f5f5f7; padding:12px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
+v=spf1 include:_spf.google.com include:sendgrid.net ~all
+</pre>
+
+<p>This says: Google Workspace's servers and SendGrid's servers can send from this domain. Everything else is "soft-fail" (flag but don't reject).</p>
+
+<h3>Common misconfigurations</h3>
+<ul>
+  <li>Missing SPF entirely</li>
+  <li>Multiple SPF records on same domain (must be one)</li>
+  <li>SPF permerror from too many DNS lookups (over 10 = broken)</li>
+  <li>Missing include for your sending tool</li>
+  <li>Using -all (hard fail) without all senders included, causing legitimate mail to bounce</li>
+</ul>
+
+<h3>Setup</h3>
+<p>Your sending tool (Instantly, Smartlead, whatever) will tell you what to include. Your email host (Google Workspace, Microsoft 365) will give you their include. Combine them in one record.</p>
+
+<h2>DKIM (DomainKeys Identified Mail)</h2>
+
+<h3>What it does</h3>
+<p>Cryptographically signs every outgoing email with a key only your domain controls. Receiving servers verify the signature using a public key published in your DNS.</p>
+
+<p>Provides two things: proof that the email really came from your domain, and proof it wasn't tampered with in transit.</p>
+
+<h3>What it looks like</h3>
+<p>A TXT record at a specific subdomain (typically <code>selector._domainkey.yourdomain.com</code>) containing the public key:</p>
+
+<pre style="background:#f5f5f7; padding:12px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:12px;">
+v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEB...[long key]...
+</pre>
+
+<h3>Setup</h3>
+<p>Your sending tool generates the key and gives you the DNS record. You publish it. Most tools support this automatically for their sending domains.</p>
+
+<h3>Common misconfigurations</h3>
+<ul>
+  <li>Missing DKIM</li>
+  <li>Key not published or published on wrong subdomain</li>
+  <li>Key rotated but old key still in DNS</li>
+  <li>Multiple DKIM selectors for different tools (this is fine, but easy to mess up)</li>
+</ul>
+
+<h2>DMARC (Domain-based Message Authentication, Reporting, and Conformance)</h2>
+
+<h3>What it does</h3>
+<p>Tells receiving servers what to do with emails that fail SPF or DKIM checks. Also provides reporting so you can see who's sending as your domain.</p>
+
+<h3>What it looks like</h3>
+<pre style="background:#f5f5f7; padding:12px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
+v=DMARC1; p=none; rua=mailto:dmarc-reports@yourdomain.com; pct=100
+</pre>
+
+<h3>The three policy levels</h3>
+<ul>
+  <li><strong>p=none</strong>: monitor only, don't reject. Start here.</li>
+  <li><strong>p=quarantine</strong>: send failing mail to spam. Move here after you've validated all legitimate senders.</li>
+  <li><strong>p=reject</strong>: reject failing mail outright. Strictest. Major brands use this to prevent spoofing.</li>
+</ul>
+
+<h3>Setup progression</h3>
+<p>Month 1: publish DMARC with p=none and rua reporting. Watch who's sending as you.</p>
+<p>Month 2-3: identify any legitimate senders failing SPF/DKIM. Fix.</p>
+<p>Month 4+: move to p=quarantine, then p=reject once you're confident.</p>
+
+<p>Many domains stay at p=none forever. For cold email sending domains, p=none is sufficient; the key benefit is authentication passing, not the policy enforcement.</p>
+
+<h2>The full setup checklist</h2>
+<ol>
+  <li>Own the domain you're sending from</li>
+  <li>SPF record published, includes all sending tools</li>
+  <li>DKIM configured for each sending tool, public key published in DNS</li>
+  <li>DMARC record with at least p=none and rua reporting</li>
+  <li>Verify all three pass by sending a test to mail-tester.com</li>
+  <li>Verify at Google Postmaster Tools (for Gmail delivery signals)</li>
+  <li>Check at MXToolbox or dmarcian for any configuration issues</li>
+</ol>
+
+<h2>Common pitfalls by email provider</h2>
+
+<h3>Google Workspace</h3>
+<p>Default DKIM is disabled. You must enable it explicitly in admin console. Most workspaces don't.</p>
+
+<h3>Microsoft 365</h3>
+<p>SPF is configured automatically but DKIM requires explicit enablement per domain.</p>
+
+<h3>External sending tools (SendGrid, Mailgun, SES, Postmark)</h3>
+<p>Each requires its own DNS setup. Your SPF includes them; they each publish DKIM on your domain via CNAME or TXT records.</p>
+
+<h3>Cold email tools (Instantly, Smartlead)</h3>
+<p>These tools usually connect to mailboxes you own (via Google Workspace or Outlook). The DKIM and SPF you set up for the mailbox provider is what matters. The cold email tool just sends through your existing mailbox.</p>
+
+<h2>BIMI (bonus, not required)</h2>
+<p>Brand Indicators for Message Identification: displays your logo next to emails in supporting clients. Requires DMARC at p=quarantine or stricter plus a verified mark certificate. Nice-to-have, not relevant for most cold email.</p>
+
+<h2>The real-time check</h2>
+<p>Before sending anything, send a test email from the domain to mail-tester.com. Score should be 9+/10. If under, your configuration has problems. Fix before sending to real prospects.</p>
+
+<p>Also check at Google Postmaster Tools (postmaster.google.com) after you've sent some volume. Provides spam rate, domain reputation, IP reputation, and authentication pass rates for Gmail specifically.</p>
+
+<p style="margin-top:40px;">Next: <a href="sending-domains.html">Sending domain strategy</a>.</p>
+<div class="prev-next"><a href="why-it-matters.html" class="prev"><div class="label">← Previous</div><div class="title">Why deliverability is everything</div></a><a href="sending-domains.html" class="next"><div class="label">Next →</div><div class="title">Sending domain strategy</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
+</div></footer></body></html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Building MCP servers | Samuel Ochoa</title>
+<meta name="description" content="How to build your own MCP server. Lifecycle, patterns, and examples.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Building MCP servers | Samuel Ochoa">
+<meta property="og:description" content="How to build your own MCP server. Lifecycle, patterns, and examples.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../index.html">Home</a>
+<a href="../../framework/index.html" class="active">Framework</a>
+<a href="../expertise/index.html">Expertise</a>
+<a href="../playbooks/index.html">Playbooks</a>
+<a href="../writing.html">Writing</a>
+<a href="../../about.html">About</a>
+<a href="../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="what-is-autonomous-ai.html">What is autonomous AI</a></li><li><a href="the-autonomy-spectrum.html">The autonomy spectrum</a></li><li><a href="glossary.html">Glossary</a></li></ul><h4>Claude</h4><ul><li><a href="claude/overview.html">Overview</a></li><li><a href="claude/prompting-for-agents.html">Prompting for agents</a></li><li><a href="claude/extended-thinking.html">Extended thinking</a></li><li><a href="claude/tool-use.html">Tool use</a></li></ul><h4>MCP</h4><ul><li><a href="mcp/index.html">Overview</a></li><li><a href="mcp/what-is-mcp.html">What is MCP</a></li><li><a href="mcp/anatomy.html">Anatomy</a></li><li><a href="mcp/transports.html">Transports</a></li><li><a href="mcp/servers.html" class="active">Servers</a></li><li><a href="mcp/clients.html">Clients</a></li><li><a href="mcp/security.html">Security</a></li><li><a href="mcp/directory.html">Directory</a></li></ul><h4>Plugins</h4><ul><li><a href="plugins/index.html">Overview</a></li><li><a href="plugins/vs-mcp.html">Plugins vs MCP</a></li><li><a href="plugins/marketplace.html">Marketplace</a></li></ul><h4>Claude Code</h4><ul><li><a href="claude-code/index.html">Overview</a></li><li><a href="claude-code/settings.html">Settings</a></li><li><a href="claude-code/permissions.html">Permissions</a></li><li><a href="claude-code/hooks.html">Hooks</a></li><li><a href="claude-code/skills.html">Skills</a></li><li><a href="claude-code/memory.html">Memory</a></li></ul><h4>Patterns</h4><ul><li><a href="patterns/index.html">Overview</a></li><li><a href="patterns/react-loop.html">ReAct loop</a></li><li><a href="patterns/plan-execute.html">Plan-execute</a></li><li><a href="patterns/multi-agent.html">Multi-agent</a></li><li><a href="patterns/evaluation.html">Evaluation</a></li><li><a href="patterns/prompt-caching.html">Prompt caching</a></li></ul><h4>Autonomous</h4><ul><li><a href="autonomous/index.html">Overview</a></li><li><a href="autonomous/headless.html">Headless</a></li><li><a href="autonomous/scheduling.html">Scheduling</a></li><li><a href="autonomous/self-monitoring.html">Self-monitoring</a></li><li><a href="autonomous/safety.html">Safety</a></li></ul><h4>Build Guides</h4><ul><li><a href="build/index.html">Overview</a></li><li><a href="build/first-agent.html">First agent (60 min)</a></li><li><a href="build/voice-agent.html">Voice agent</a></li><li><a href="build/research-agent.html">Research agent</a></li></ul><h4>Tools</h4><ul><li><a href="tools/browser-automation.html">Browser automation</a></li><li><a href="tools/desktop-control.html">Desktop control</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Framework</a><span class="sep">›</span><a href="../mcp/index.html">MCP</a><span class="sep">›</span><span>Building MCP servers</span></div><h1 class="title" style="font-size:clamp(32px,4.5vw,42px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">Building MCP servers</h1><div class="article-meta"><span>📖 5 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">An MCP server is a small program that exposes tools, resources, or prompts. You can write one in under 100 lines of TypeScript or Python. Most of the work is thinking about what to expose and how.</p>
+
+<h2>The SDKs</h2>
+<p>Anthropic maintains official MCP SDKs in:</p>
+<ul>
+  <li><strong>TypeScript / Node / Bun</strong>. <code>@modelcontextprotocol/sdk</code></li>
+  <li><strong>Python</strong>. <code>mcp</code></li>
+</ul>
+<p>Community SDKs exist for Go, Rust, Java, and more. The protocol is simple enough to implement from scratch if needed.</p>
+
+<h2>Server lifecycle</h2>
+<p>Every MCP server handles six message types:</p>
+<ol>
+  <li><code>initialize</code>, client says hi, negotiates protocol version and capabilities</li>
+  <li><code>list_tools</code> / <code>list_resources</code> / <code>list_prompts</code>, client asks what's available</li>
+  <li><code>call_tool</code>, client executes a tool</li>
+  <li><code>read_resource</code>, client reads a resource</li>
+  <li><code>get_prompt</code>, client fetches a filled prompt</li>
+  <li><code>shutdown</code>, client is disconnecting</li>
+</ol>
+
+<h2>Minimal TypeScript example</h2>
+<pre><code>import { Server } from "@modelcontextprotocol/sdk/server/index.js";
+import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+
+const server = new Server(
+  { name: "hello-mcp", version: "0.1.0" },
+  { capabilities: { tools: {} } }
+);
+
+server.setRequestHandler("tools/list", async () =&gt; ({
+  tools: [{
+    name: "say_hello",
+    description: "Returns a greeting",
+    inputSchema: {
+      type: "object",
+      properties: { name: { type: "string" } },
+      required: ["name"]
+    }
+  }]
+}));
+
+server.setRequestHandler("tools/call", async (req) =&gt; {
+  const { name, arguments: args } = req.params;
+  if (name === "say_hello") {
+    return {
+      content: [{ type: "text", text: `Hello, ${args.name}!` }]
+    };
+  }
+  throw new Error("Unknown tool");
+});
+
+await server.connect(new StdioServerTransport());</code></pre>
+
+<h2>Design patterns</h2>
+
+<h3>Thin wrapping of an existing API</h3>
+<p>Most MCP servers just wrap an HTTP API (GitHub, Notion, Stripe). Each tool corresponds to one API endpoint. Thin wrappers are the most common and usually best, they're easy to maintain and update.</p>
+
+<h3>Aggregate over multiple systems</h3>
+<p>Sometimes a single tool should hit multiple systems, e.g, a "find person" tool that searches LinkedIn, your CRM, and your email. Useful but harder to maintain.</p>
+
+<h3>Resource-first</h3>
+<p>For data-heavy servers (document stores, databases), resources are the right primitive. Model the data as addressable URIs, let the client pin specific items into context.</p>
+
+<h2>What to NOT do</h2>
+<ul>
+  <li><strong>Don't expose 50 tools.</strong> More tools = more confusion = worse tool-selection accuracy. Group related actions into fewer, smarter tools.</li>
+  <li><strong>Don't leak secrets.</strong> API keys go in environment variables or OS keychains, never in tool outputs.</li>
+  <li><strong>Don't trust tool output.</strong> If your server fetches external content, assume the content could contain prompt-injection attempts. See <a href="security.html">Security</a>.</li>
+  <li><strong>Don't skip descriptions.</strong> Good tool descriptions ARE the user experience. Spend time on them.</li>
+</ul>
+
+<h2>Testing your server</h2>
+<p>The official SDKs ship with an inspector tool (<code>@modelcontextprotocol/inspector</code>). It connects to your server, lists tools, lets you call them manually, and shows raw protocol traffic. Use it before connecting your server to a real agent.</p>
+
+<h2>Publishing</h2>
+<p>If your MCP is generally useful, publish it to npm (TypeScript) or PyPI (Python). Add an entry to your README showing how to install and configure. See the <a href="directory.html">Directory</a> for inspiration.</p>
+<div class="prev-next"><a href="transports.html" class="prev"><div class="label">← Previous</div><div class="title">Transports</div></a><a href="clients.html" class="next"><div class="label">Next →</div><div class="title">MCP clients</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../framework/index.html">Framework</a></p>
+</div></footer></body></html>

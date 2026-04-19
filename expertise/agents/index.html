@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Agents | Samuel Ochoa</title>
+<meta name="description" content="A 45-page reference on building production AI agents: loops, tools, memory, multi-agent systems, evaluation, and patterns.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI Agents | Samuel Ochoa">
+<meta property="og:description" content="A 45-page reference on building production AI agents: loops, tools, memory, multi-agent systems, evaluation, and patterns.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../index.html">Home</a>
+<a href="../../framework/index.html">Framework</a>
+<a href="../../expertise/index.html" class="active">Expertise</a>
+<a href="../../playbooks/index.html">Playbooks</a>
+<a href="../../writing.html">Writing</a>
+<a href="../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html" class="active">Overview</a></li><li><a href="foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="loops/react.html">ReAct</a></li><li><a href="loops/tool-use.html">Tool use</a></li><li><a href="loops/planning.html">Planning loops</a></li><li><a href="loops/reflection.html">Reflection</a></li><li><a href="loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="tools/tool-design.html">Tool design</a></li><li><a href="tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="tools/error-handling.html">Tool error handling</a></li><li><a href="tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="memory/short-term.html">Short-term memory</a></li><li><a href="memory/long-term.html">Long-term memory</a></li><li><a href="memory/episodic.html">Episodic memory</a></li><li><a href="memory/procedural.html">Procedural memory</a></li><li><a href="memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="multi/peer-agents.html">Peer agents</a></li><li><a href="multi/debate.html">Debate + consensus</a></li><li><a href="multi/handoffs.html">Agent handoffs</a></li><li><a href="multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="eval/why-eval-agents.html">Why eval agents</a></li><li><a href="eval/task-completion.html">Task completion</a></li><li><a href="eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="prod/observability.html">Observability + tracing</a></li><li><a href="prod/cost-control.html">Cost control</a></li><li><a href="prod/latency.html">Latency optimization</a></li><li><a href="prod/safety.html">Safety + guardrails</a></li><li><a href="prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="patterns/research-agent.html">Research agent</a></li><li><a href="patterns/coding-agent.html">Coding agent</a></li><li><a href="patterns/customer-support.html">Customer support agent</a></li><li><a href="patterns/data-analyst.html">Data analyst agent</a></li><li><a href="patterns/browser-agent.html">Browser agent</a></li><li><a href="patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="frameworks/langgraph.html">LangGraph</a></li><li><a href="frameworks/crewai.html">CrewAI</a></li><li><a href="frameworks/autogen.html">AutoGen</a></li><li><a href="frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><span>AI Agents</span></div><h1 class="title">AI Agents</h1><div class="article-meta"><span>📖 3 min read</span><span>Updated 2026-04-19</span></div>
+<p class="lede">An AI agent is an LLM in a loop with tools. That's the simple definition. The complex part is everything that makes it work in production: reasoning patterns, tool design, memory systems, evaluation, safety, and the dozen subtle decisions that separate a demo from a system that holds up under real traffic.</p>
+
+<p>This section is 45 pages on building agents that work. From ReAct loops to multi-agent orchestration, from tool design to production observability. The goal: give you the mental models and specific patterns you need to build something real.</p>
+
+<h2>The nine sections</h2>
+
+<div class="cards" style="margin-top:32px;">
+<a href="foundations/what-is-an-agent.html" class="card"><h3>Foundations</h3><p>What agents are, when to use them, the architecture map.</p></a>
+<a href="loops/react.html" class="card"><h3>Loops + Reasoning</h3><p>ReAct, planning, reflection, self-correction.</p></a>
+<a href="tools/tool-design.html" class="card"><h3>Tools + Actions</h3><p>Tool design, descriptions, error handling, budgets.</p></a>
+<a href="memory/short-term.html" class="card"><h3>Memory</h3><p>Short-term, long-term, episodic, procedural.</p></a>
+<a href="multi/orchestrator-worker.html" class="card"><h3>Multi-agent</h3><p>Orchestration patterns, handoffs, debate.</p></a>
+<a href="eval/why-eval-agents.html" class="card"><h3>Evaluation</h3><p>Task completion, trajectory eval, regression testing.</p></a>
+<a href="prod/observability.html" class="card"><h3>Production</h3><p>Observability, cost, latency, safety, human-in-loop.</p></a>
+<a href="patterns/research-agent.html" class="card"><h3>Patterns</h3><p>Research, coding, support, data, browser, email agents.</p></a>
+<a href="frameworks/claude-agent-sdk.html" class="card"><h3>Frameworks</h3><p>Claude Agent SDK, LangGraph, CrewAI, AutoGen.</p></a>
+</div>
+
+<h2 style="margin-top:40px;">How to read this</h2>
+<p>Start at <a href="foundations/what-is-an-agent.html">Foundations</a>. If you already know what agents are, jump to <a href="loops/react.html">Loops</a> then <a href="tools/tool-design.html">Tools</a>. <a href="eval/why-eval-agents.html">Evaluation</a> and <a href="prod/observability.html">Production</a> are where naive agents fall apart at scale.</p>
+<div class="prev-next"><a href="foundations/what-is-an-agent.html" class="next"><div class="label">Next →</div><div class="title">What is an AI agent?</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../expertise/index.html">Expertise</a></p>
+</div></footer></body></html>

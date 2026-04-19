@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glossary | Samuel Ochoa</title>
+<meta name="description" content="Every term in the autonomous AI framework, explained in plain English.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Glossary | Samuel Ochoa">
+<meta property="og:description" content="Every term in the autonomous AI framework, explained in plain English.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../index.html">Home</a>
+<a href="../framework/index.html" class="active">Framework</a>
+<a href="../expertise/index.html">Expertise</a>
+<a href="../playbooks/index.html">Playbooks</a>
+<a href="../writing.html">Writing</a>
+<a href="../about.html">About</a>
+<a href="../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="what-is-autonomous-ai.html">What is autonomous AI</a></li><li><a href="the-autonomy-spectrum.html">The autonomy spectrum</a></li><li><a href="glossary.html" class="active">Glossary</a></li></ul><h4>Claude</h4><ul><li><a href="claude/overview.html">Overview</a></li><li><a href="claude/prompting-for-agents.html">Prompting for agents</a></li><li><a href="claude/extended-thinking.html">Extended thinking</a></li><li><a href="claude/tool-use.html">Tool use</a></li></ul><h4>MCP</h4><ul><li><a href="mcp/index.html">Overview</a></li><li><a href="mcp/what-is-mcp.html">What is MCP</a></li><li><a href="mcp/anatomy.html">Anatomy</a></li><li><a href="mcp/transports.html">Transports</a></li><li><a href="mcp/servers.html">Servers</a></li><li><a href="mcp/clients.html">Clients</a></li><li><a href="mcp/security.html">Security</a></li><li><a href="mcp/directory.html">Directory</a></li></ul><h4>Plugins</h4><ul><li><a href="plugins/index.html">Overview</a></li><li><a href="plugins/vs-mcp.html">Plugins vs MCP</a></li><li><a href="plugins/marketplace.html">Marketplace</a></li></ul><h4>Claude Code</h4><ul><li><a href="claude-code/index.html">Overview</a></li><li><a href="claude-code/settings.html">Settings</a></li><li><a href="claude-code/permissions.html">Permissions</a></li><li><a href="claude-code/hooks.html">Hooks</a></li><li><a href="claude-code/skills.html">Skills</a></li><li><a href="claude-code/memory.html">Memory</a></li></ul><h4>Patterns</h4><ul><li><a href="patterns/index.html">Overview</a></li><li><a href="patterns/react-loop.html">ReAct loop</a></li><li><a href="patterns/plan-execute.html">Plan-execute</a></li><li><a href="patterns/multi-agent.html">Multi-agent</a></li><li><a href="patterns/evaluation.html">Evaluation</a></li><li><a href="patterns/prompt-caching.html">Prompt caching</a></li></ul><h4>Autonomous</h4><ul><li><a href="autonomous/index.html">Overview</a></li><li><a href="autonomous/headless.html">Headless</a></li><li><a href="autonomous/scheduling.html">Scheduling</a></li><li><a href="autonomous/self-monitoring.html">Self-monitoring</a></li><li><a href="autonomous/safety.html">Safety</a></li></ul><h4>Build Guides</h4><ul><li><a href="build/index.html">Overview</a></li><li><a href="build/first-agent.html">First agent (60 min)</a></li><li><a href="build/voice-agent.html">Voice agent</a></li><li><a href="build/research-agent.html">Research agent</a></li></ul><h4>Tools</h4><ul><li><a href="tools/browser-automation.html">Browser automation</a></li><li><a href="tools/desktop-control.html">Desktop control</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../index.html">Home</a><span class="sep">›</span><a href="index.html">Framework</a><span class="sep">›</span><span>Glossary</span></div><h1 class="title" style="font-size:clamp(32px,4.5vw,42px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">Glossary</h1><div class="article-meta"><span>📖 7 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">Terms you'll see throughout this framework. In plain English.</p>
+
+<h2>A</h2>
+<p><strong>Agent.</strong> An AI system that can plan, use tools, act, and observe results, not just generate text. See <a href="what-is-autonomous-ai.html">What is autonomous AI</a>.</p>
+<p><strong>Auto mode.</strong> A setting (in Claude Code and similar harnesses) that pre-authorizes the agent to run a broad set of actions without asking. Opposite of step-by-step approval. See <a href="claude-code/permissions.html">Permissions</a>.</p>
+
+<h2>C</h2>
+<p><strong>Claude.</strong> Anthropic's family of foundation models. See <a href="claude/overview.html">Claude overview</a>.</p>
+<p><strong>Claude Code.</strong> Anthropic's official CLI tool for running Claude as an agent in your terminal. See <a href="claude-code/index.html">Claude Code overview</a>.</p>
+<p><strong>Context window.</strong> The amount of text a model can consider at once. Modern frontier models have context windows of 200k–1M tokens.</p>
+<p><strong>CoT (chain-of-thought).</strong> Technique where the model reasons in text before answering. Improves performance on hard tasks. Related: <a href="claude/extended-thinking.html">extended thinking</a>.</p>
+
+<h2>E</h2>
+<p><strong>Embedding.</strong> A vector representation of text. Used in retrieval (RAG) to find semantically similar content.</p>
+<p><strong>Evaluation (eval).</strong> Testing an agent against a labeled dataset. See <a href="patterns/evaluation.html">Evaluation</a>.</p>
+<p><strong>Extended thinking.</strong> Claude feature where the model reasons invisibly before producing its answer. See <a href="claude/extended-thinking.html">Extended thinking</a>.</p>
+
+<h2>F</h2>
+<p><strong>Foundation model.</strong> A large, general-purpose model trained on broad data. Claude, GPT, Gemini. The "raw" model before any wrapping.</p>
+
+<h2>H</h2>
+<p><strong>Harness.</strong> The runtime wrapping the model, parsing tool calls, executing them, feeding results back. Claude Code is a harness. See <a href="claude-code/index.html">Claude Code</a>.</p>
+<p><strong>Headless.</strong> Running an agent without an interactive terminal or user. Scripts, cron jobs, CI/CD. See <a href="autonomous/headless.html">Headless</a>.</p>
+<p><strong>Hook.</strong> A bit of code that runs on an event, tool call pre/post, session start, etc. See <a href="claude-code/hooks.html">Hooks</a>.</p>
+
+<h2>L</h2>
+<p><strong>LLM.</strong> Large Language Model. A model trained to predict the next token.</p>
+
+<h2>M</h2>
+<p><strong>MCP (Model Context Protocol).</strong> An open standard for connecting tools/data to AI models. See <a href="mcp/what-is-mcp.html">What is MCP</a>.</p>
+<p><strong>Memory.</strong> Persistent state across sessions. See <a href="claude-code/memory.html">Memory</a>.</p>
+
+<h2>P</h2>
+<p><strong>Plugin.</strong> A packaged extension that adds features (commands, skills, MCPs) to a harness. See <a href="plugins/index.html">Plugins</a>.</p>
+<p><strong>Prompt caching.</strong> Reusing portions of a prompt across calls to save cost and latency. See <a href="patterns/prompt-caching.html">Prompt caching</a>.</p>
+<p><strong>Prompt injection.</strong> An attack where hostile text in a tool result (web page, email, etc.) tricks the model into following unintended instructions. See <a href="mcp/security.html">MCP security</a>.</p>
+
+<h2>R</h2>
+<p><strong>RAG (Retrieval-Augmented Generation).</strong> Pattern where the model fetches relevant documents before answering, instead of relying on training data alone.</p>
+<p><strong>ReAct.</strong> Reason + Act. A common agent pattern: model reasons, then takes an action, observes the result, reasons again. See <a href="patterns/react-loop.html">ReAct loop</a>.</p>
+<p><strong>Reasoning budget.</strong> How many "thinking" tokens the model is allowed before answering (extended thinking).</p>
+
+<h2>S</h2>
+<p><strong>SDK.</strong> Software Development Kit, library for calling a model's API.</p>
+<p><strong>Skill.</strong> A named, slash-command-invokable bundle of instructions for an agent. See <a href="claude-code/skills.html">Skills</a>.</p>
+<p><strong>SSE (Server-Sent Events).</strong> A way to stream data from a server to a client over HTTP. Used for MCP remote servers. See <a href="mcp/transports.html">Transports</a>.</p>
+<p><strong>stdio.</strong> Standard input/output. Used for local MCP servers (the client spawns the server as a subprocess). See <a href="mcp/transports.html">Transports</a>.</p>
+<p><strong>System prompt.</strong> Instructions given to the model about its role, rules, and goals, separate from the user's message.</p>
+
+<h2>T</h2>
+<p><strong>Token.</strong> The unit a model sees. Roughly 4 characters in English. Prices and context windows are counted in tokens.</p>
+<p><strong>Tool use.</strong> Letting the model call functions (tools) that return data. The foundation of agent behavior. See <a href="claude/tool-use.html">Tool use</a>.</p>
+<p><strong>Transport.</strong> The communication channel between an MCP client and server, stdio, SSE, or HTTP.</p>
+<div class="prev-next"><a href="the-autonomy-spectrum.html" class="prev"><div class="label">← Previous</div><div class="title">The autonomy spectrum</div></a><a href="claude/overview.html" class="next"><div class="label">Next →</div><div class="title">Claude overview</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../framework/index.html">Framework</a></p>
+</div></footer></body></html>

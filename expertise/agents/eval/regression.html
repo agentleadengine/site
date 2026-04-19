@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Regression testing | Samuel Ochoa</title>
+<meta name="description" content="Every agent change can quietly break something. Regression tests catch regressions before production.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Regression testing | Samuel Ochoa">
+<meta property="og:description" content="Every agent change can quietly break something. Regression tests catch regressions before production.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="loops/react.html">ReAct</a></li><li><a href="loops/tool-use.html">Tool use</a></li><li><a href="loops/planning.html">Planning loops</a></li><li><a href="loops/reflection.html">Reflection</a></li><li><a href="loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="tools/tool-design.html">Tool design</a></li><li><a href="tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="tools/error-handling.html">Tool error handling</a></li><li><a href="tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="memory/short-term.html">Short-term memory</a></li><li><a href="memory/long-term.html">Long-term memory</a></li><li><a href="memory/episodic.html">Episodic memory</a></li><li><a href="memory/procedural.html">Procedural memory</a></li><li><a href="memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="multi/peer-agents.html">Peer agents</a></li><li><a href="multi/debate.html">Debate + consensus</a></li><li><a href="multi/handoffs.html">Agent handoffs</a></li><li><a href="multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="eval/why-eval-agents.html">Why eval agents</a></li><li><a href="eval/task-completion.html">Task completion</a></li><li><a href="eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="eval/regression.html" class="active">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="prod/observability.html">Observability + tracing</a></li><li><a href="prod/cost-control.html">Cost control</a></li><li><a href="prod/latency.html">Latency optimization</a></li><li><a href="prod/safety.html">Safety + guardrails</a></li><li><a href="prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="patterns/research-agent.html">Research agent</a></li><li><a href="patterns/coding-agent.html">Coding agent</a></li><li><a href="patterns/customer-support.html">Customer support agent</a></li><li><a href="patterns/data-analyst.html">Data analyst agent</a></li><li><a href="patterns/browser-agent.html">Browser agent</a></li><li><a href="patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="frameworks/langgraph.html">LangGraph</a></li><li><a href="frameworks/crewai.html">CrewAI</a></li><li><a href="frameworks/autogen.html">AutoGen</a></li><li><a href="frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>Regression testing</span></div><h1 class="title">Regression testing</h1><div class="article-meta"><span>📖 2 min read</span><span>Updated 2026-04-19</span></div>
+<p class="lede">Every tweak to a system prompt, every model upgrade, every tool change can break something that used to work. Regression testing catches these breaks before they hit production.</p>
+
+<h2>The eval set as regression suite</h2>
+<p>Your eval set doubles as your regression tests. Run it before shipping any agent change. If pass rate drops, investigate.</p>
+
+<h2>What to include</h2>
+<ul>
+<li>All known-good behaviors (the "this used to work" cases)</li>
+<li>Past bugs (so they don't come back)</li>
+<li>Adversarial inputs (prompt injection, edge cases)</li>
+<li>Safety-critical cases (never-do-this boundaries)</li>
+</ul>
+
+<h2>Running regression</h2>
+<p>Set up as CI-like pipeline:</p>
+<ol>
+<li>Developer proposes change (prompt edit, new tool, model upgrade)</li>
+<li>Run full regression suite against the new config</li>
+<li>Compare pass rate to baseline</li>
+<li>Ship only if no meaningful regression</li>
+</ol>
+
+<h2>The flaky-test problem</h2>
+<p>Agents are non-deterministic. A test might pass 4/5 runs and fail 1/5. Classify:</p>
+<ul>
+<li>Consistent pass → fine</li>
+<li>Consistent fail → definite regression</li>
+<li>Flaky → run more times, calculate real pass rate, may need to accept statistical noise</li>
+</ul>
+
+<h2>Cost of regression runs</h2>
+<p>Running a 100-case eval suite on every change can add up. Strategies:</p>
+<ul>
+<li>Tiered: fast subset on every change, full suite before release</li>
+<li>Smart selection: run tests most likely to be affected by the change</li>
+<li>Monthly full runs with smaller per-change runs</li>
+</ul>
+
+<h2>Eval set maintenance</h2>
+<ul>
+<li>Add cases for every production bug</li>
+<li>Remove cases that no longer reflect reality</li>
+<li>Quarterly audit to make sure it still represents real use</li>
+</ul>
+<div class="prev-next"><a href="trajectory-eval.html" class="prev"><div class="label">← Previous</div><div class="title">Trajectory evaluation</div></a><a href="../prod/observability.html" class="next"><div class="label">Next →</div><div class="title">Observability + tracing</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
+</div></footer></body></html>

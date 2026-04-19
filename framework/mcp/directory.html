@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MCP directory | Samuel Ochoa</title>
+<meta name="description" content="Curated list of MCPs worth trying, organized by category.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="website">
+<meta property="og:title" content="MCP directory | Samuel Ochoa">
+<meta property="og:description" content="Curated list of MCPs worth trying, organized by category.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../index.html">Home</a>
+<a href="../../framework/index.html" class="active">Framework</a>
+<a href="../expertise/index.html">Expertise</a>
+<a href="../playbooks/index.html">Playbooks</a>
+<a href="../writing.html">Writing</a>
+<a href="../../about.html">About</a>
+<a href="../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="what-is-autonomous-ai.html">What is autonomous AI</a></li><li><a href="the-autonomy-spectrum.html">The autonomy spectrum</a></li><li><a href="glossary.html">Glossary</a></li></ul><h4>Claude</h4><ul><li><a href="claude/overview.html">Overview</a></li><li><a href="claude/prompting-for-agents.html">Prompting for agents</a></li><li><a href="claude/extended-thinking.html">Extended thinking</a></li><li><a href="claude/tool-use.html">Tool use</a></li></ul><h4>MCP</h4><ul><li><a href="mcp/index.html">Overview</a></li><li><a href="mcp/what-is-mcp.html">What is MCP</a></li><li><a href="mcp/anatomy.html">Anatomy</a></li><li><a href="mcp/transports.html">Transports</a></li><li><a href="mcp/servers.html">Servers</a></li><li><a href="mcp/clients.html">Clients</a></li><li><a href="mcp/security.html">Security</a></li><li><a href="mcp/directory.html" class="active">Directory</a></li></ul><h4>Plugins</h4><ul><li><a href="plugins/index.html">Overview</a></li><li><a href="plugins/vs-mcp.html">Plugins vs MCP</a></li><li><a href="plugins/marketplace.html">Marketplace</a></li></ul><h4>Claude Code</h4><ul><li><a href="claude-code/index.html">Overview</a></li><li><a href="claude-code/settings.html">Settings</a></li><li><a href="claude-code/permissions.html">Permissions</a></li><li><a href="claude-code/hooks.html">Hooks</a></li><li><a href="claude-code/skills.html">Skills</a></li><li><a href="claude-code/memory.html">Memory</a></li></ul><h4>Patterns</h4><ul><li><a href="patterns/index.html">Overview</a></li><li><a href="patterns/react-loop.html">ReAct loop</a></li><li><a href="patterns/plan-execute.html">Plan-execute</a></li><li><a href="patterns/multi-agent.html">Multi-agent</a></li><li><a href="patterns/evaluation.html">Evaluation</a></li><li><a href="patterns/prompt-caching.html">Prompt caching</a></li></ul><h4>Autonomous</h4><ul><li><a href="autonomous/index.html">Overview</a></li><li><a href="autonomous/headless.html">Headless</a></li><li><a href="autonomous/scheduling.html">Scheduling</a></li><li><a href="autonomous/self-monitoring.html">Self-monitoring</a></li><li><a href="autonomous/safety.html">Safety</a></li></ul><h4>Build Guides</h4><ul><li><a href="build/index.html">Overview</a></li><li><a href="build/first-agent.html">First agent (60 min)</a></li><li><a href="build/voice-agent.html">Voice agent</a></li><li><a href="build/research-agent.html">Research agent</a></li></ul><h4>Tools</h4><ul><li><a href="tools/browser-automation.html">Browser automation</a></li><li><a href="tools/desktop-control.html">Desktop control</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Framework</a><span class="sep">›</span><a href="../mcp/index.html">MCP</a><span class="sep">›</span><span>MCP directory</span></div><h1 class="title" style="font-size:clamp(32px,4.5vw,42px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">MCP directory</h1><div class="article-meta"><span>📖 5 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">MCPs you'll likely want, organized by what they do. This list is opinionated and incomplete, the ecosystem grows weekly.</p>
+
+<h2>Productivity</h2>
+<ul>
+  <li><strong>Gmail</strong>, read, search, label, draft. Official Google connector via Claude.ai.</li>
+  <li><strong>Google Calendar</strong>, list events, create events, find open times.</li>
+  <li><strong>Google Drive</strong>, read/search Drive files.</li>
+  <li><strong>Notion</strong>, search, read, create pages and databases. Official.</li>
+  <li><strong>Slack</strong>, read channels, send messages, search. Official.</li>
+  <li><strong>Linear / Jira</strong>, issue tracking (community MCPs for each).</li>
+</ul>
+
+<h2>Developer tools</h2>
+<ul>
+  <li><strong>GitHub</strong>, issues, PRs, code search, repo management. First-party GitHub MCP available.</li>
+  <li><strong>Git (local)</strong>, local repository operations. Included with many IDEs.</li>
+  <li><strong>Filesystem</strong>, read/write local files. Reference implementation from Anthropic.</li>
+  <li><strong>Shell</strong>, run shell commands (use with care + strict deny lists).</li>
+  <li><strong>Postgres / SQLite</strong>, query databases. Community servers widely available.</li>
+</ul>
+
+<h2>Design</h2>
+<ul>
+  <li><strong>Figma</strong>, read designs, extract design tokens, generate code. Official.</li>
+  <li><strong>Canva</strong>, create and edit designs programmatically. Official.</li>
+  <li><strong>Miro</strong>, whiteboards, diagrams. Official.</li>
+</ul>
+
+<h2>Browser + desktop automation</h2>
+<ul>
+  <li><strong>Claude-in-Chrome</strong>, official Chrome extension letting the agent drive the browser.</li>
+  <li><strong>Computer Use</strong>, screenshot + click + type at the OS level. For native apps.</li>
+  <li><strong>Playwright MCP</strong>, headless browser automation for research and scraping.</li>
+</ul>
+
+<h2>CRM + sales</h2>
+<ul>
+  <li><strong>HubSpot</strong>, community MCPs available for contacts and deals.</li>
+  <li><strong>Salesforce</strong>, community MCPs (check permissions carefully).</li>
+  <li><strong>GoHighLevel</strong>, custom MCP required; community examples on GitHub.</li>
+  <li><strong>Apollo.io</strong>, prospecting data. Official.</li>
+</ul>
+
+<h2>Communications</h2>
+<ul>
+  <li><strong>Twilio</strong>. SMS and voice. Community MCPs.</li>
+  <li><strong>Telegram bot</strong>, chat with your agent from anywhere. Good for headless notifications.</li>
+</ul>
+
+<h2>Data + research</h2>
+<ul>
+  <li><strong>Context7</strong>, up-to-date library documentation. Very useful for coding agents.</li>
+  <li><strong>Web search</strong>. Brave Search, Tavily, Exa (all have MCP wrappers).</li>
+  <li><strong>Wikipedia / academic databases</strong>, community MCPs for research.</li>
+</ul>
+
+<h2>Cloud + deployment</h2>
+<ul>
+  <li><strong>Vercel</strong>, deploy, check logs, manage projects. Official.</li>
+  <li><strong>Netlify</strong>, similar. Official.</li>
+  <li><strong>AWS / GCP</strong>, community MCPs (use sparingly, blast radius is huge).</li>
+</ul>
+
+<h2>Where to find more</h2>
+<ul>
+  <li><strong>modelcontextprotocol.io</strong>, official site with server catalog</li>
+  <li><strong>GitHub topic: "mcp-server"</strong>, hundreds of community servers</li>
+  <li><strong>mcp.so</strong>, community directory with ratings and categories</li>
+  <li><strong>Your own org's internal tools</strong>, anything with an API can become an MCP in a few hours</li>
+</ul>
+
+<div class="callout note">
+  <strong>Rule of thumb:</strong> install what you'll use this week. An idle MCP is still an attack surface.
+</div>
+<div class="prev-next"><a href="security.html" class="prev"><div class="label">← Previous</div><div class="title">MCP security</div></a><a href="../plugins/index.html" class="next"><div class="label">Next →</div><div class="title">Plugins overview</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../framework/index.html">Framework</a></p>
+</div></footer></body></html>

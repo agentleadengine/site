@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skills, named invokable prompts | Samuel Ochoa</title>
+<meta name="description" content="What skills are, how to write one, and when to use them instead of just prompting in-session.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Skills, named invokable prompts | Samuel Ochoa">
+<meta property="og:description" content="What skills are, how to write one, and when to use them instead of just prompting in-session.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../index.html">Home</a>
+<a href="../../framework/index.html" class="active">Framework</a>
+<a href="../expertise/index.html">Expertise</a>
+<a href="../playbooks/index.html">Playbooks</a>
+<a href="../writing.html">Writing</a>
+<a href="../../about.html">About</a>
+<a href="../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="what-is-autonomous-ai.html">What is autonomous AI</a></li><li><a href="the-autonomy-spectrum.html">The autonomy spectrum</a></li><li><a href="glossary.html">Glossary</a></li></ul><h4>Claude</h4><ul><li><a href="claude/overview.html">Overview</a></li><li><a href="claude/prompting-for-agents.html">Prompting for agents</a></li><li><a href="claude/extended-thinking.html">Extended thinking</a></li><li><a href="claude/tool-use.html">Tool use</a></li></ul><h4>MCP</h4><ul><li><a href="mcp/index.html">Overview</a></li><li><a href="mcp/what-is-mcp.html">What is MCP</a></li><li><a href="mcp/anatomy.html">Anatomy</a></li><li><a href="mcp/transports.html">Transports</a></li><li><a href="mcp/servers.html">Servers</a></li><li><a href="mcp/clients.html">Clients</a></li><li><a href="mcp/security.html">Security</a></li><li><a href="mcp/directory.html">Directory</a></li></ul><h4>Plugins</h4><ul><li><a href="plugins/index.html">Overview</a></li><li><a href="plugins/vs-mcp.html">Plugins vs MCP</a></li><li><a href="plugins/marketplace.html">Marketplace</a></li></ul><h4>Claude Code</h4><ul><li><a href="claude-code/index.html">Overview</a></li><li><a href="claude-code/settings.html">Settings</a></li><li><a href="claude-code/permissions.html">Permissions</a></li><li><a href="claude-code/hooks.html">Hooks</a></li><li><a href="claude-code/skills.html" class="active">Skills</a></li><li><a href="claude-code/memory.html">Memory</a></li></ul><h4>Patterns</h4><ul><li><a href="patterns/index.html">Overview</a></li><li><a href="patterns/react-loop.html">ReAct loop</a></li><li><a href="patterns/plan-execute.html">Plan-execute</a></li><li><a href="patterns/multi-agent.html">Multi-agent</a></li><li><a href="patterns/evaluation.html">Evaluation</a></li><li><a href="patterns/prompt-caching.html">Prompt caching</a></li></ul><h4>Autonomous</h4><ul><li><a href="autonomous/index.html">Overview</a></li><li><a href="autonomous/headless.html">Headless</a></li><li><a href="autonomous/scheduling.html">Scheduling</a></li><li><a href="autonomous/self-monitoring.html">Self-monitoring</a></li><li><a href="autonomous/safety.html">Safety</a></li></ul><h4>Build Guides</h4><ul><li><a href="build/index.html">Overview</a></li><li><a href="build/first-agent.html">First agent (60 min)</a></li><li><a href="build/voice-agent.html">Voice agent</a></li><li><a href="build/research-agent.html">Research agent</a></li></ul><h4>Tools</h4><ul><li><a href="tools/browser-automation.html">Browser automation</a></li><li><a href="tools/desktop-control.html">Desktop control</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Framework</a><span class="sep">›</span><a href="../claude-code/index.html">Claude Code</a><span class="sep">›</span><span>Skills, named invokable prompts</span></div><h1 class="title" style="font-size:clamp(32px,4.5vw,42px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">Skills, named invokable prompts</h1><div class="article-meta"><span>📖 4 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">A skill is a named bundle of instructions the user (or the agent) can invoke with a slash command. It's a way to capture repeated workflows as first-class features.</p>
+
+<h2>Why skills exist</h2>
+<p>Any workflow you find yourself pasting the same prompt for is a candidate to become a skill. Named. Discoverable. Reusable. Versionable.</p>
+
+<h2>Anatomy</h2>
+<p>A skill is a directory with:</p>
+<ul>
+  <li><strong>A manifest</strong>, name, description, triggers, required permissions</li>
+  <li><strong>A prompt file</strong>, the instructions the model receives when the skill is invoked</li>
+  <li><strong>(Optional) scripts or assets</strong>, things the prompt references</li>
+</ul>
+
+<h2>Example skill: /summarize-thread</h2>
+<p>Goal: pull a specific Slack thread and produce a 3-bullet summary.</p>
+<p>Manifest describes: name (<code>summarize-thread</code>), description (when to use), required permissions (<code>mcp__slack__*</code>), arguments (thread URL).</p>
+<p>The prompt file says: "Fetch the thread via Slack MCP. Summarize in exactly 3 bullets. Include speakers and decisions made."</p>
+<p>When the user types <code>/summarize-thread</code>, Claude Code loads the prompt, passes arguments, runs.</p>
+
+<h2>Built-in skills (examples)</h2>
+<ul>
+  <li><strong><code>/review</code></strong>, review a pending pull request</li>
+  <li><strong><code>/security-review</code></strong>, security audit of pending changes</li>
+  <li><strong><code>/simplify</code></strong>, review recent code for over-engineering</li>
+  <li><strong><code>/init</code></strong>, generate a CLAUDE.md for a codebase</li>
+  <li><strong><code>/loop</code></strong>, re-run a prompt on an interval</li>
+  <li><strong><code>/fewer-permission-prompts</code></strong>, analyze session history, suggest allow-list additions</li>
+</ul>
+
+<h2>When to reach for a skill vs, a hook vs, an MCP</h2>
+<ul>
+  <li><strong>Skill</strong>, a specific workflow the <em>user</em> (or model) explicitly invokes</li>
+  <li><strong>Hook</strong>, runs automatically on an event (tool call, session start, etc.)</li>
+  <li><strong>MCP</strong>, exposes raw tools for the model to use flexibly</li>
+</ul>
+
+<h2>Writing a good skill</h2>
+<ol>
+  <li><strong>Narrow scope.</strong> One job, done well. "Summarize a Slack thread." Not "Slack assistant."</li>
+  <li><strong>Clear description.</strong> When should the user invoke this? When should they NOT?</li>
+  <li><strong>Deterministic output.</strong> Structure, format, length, be specific.</li>
+  <li><strong>Declare permissions.</strong> What MCPs does it need? What tools? Make it explicit.</li>
+  <li><strong>Include examples.</strong> In the prompt, show one or two examples of perfect output.</li>
+</ol>
+
+<h2>Distribution</h2>
+<p>Skills can live in:</p>
+<ul>
+  <li><strong>Your personal skills directory</strong>. <code>~/.claude/skills/</code></li>
+  <li><strong>A project</strong>. <code>.claude/skills/</code> in a repo</li>
+  <li><strong>A plugin</strong>, bundled with MCPs and hooks</li>
+</ul>
+
+<h2>Skills as the "commands" of your agent</h2>
+<p>Think of skills as the command palette of your agent. Over time, a power user of Claude Code will have 20+ skills covering their most common workflows. Their cognitive load drops, they don't remember the perfect prompt, they remember the slash-command name.</p>
+<div class="prev-next"><a href="hooks.html" class="prev"><div class="label">← Previous</div><div class="title">Hooks</div></a><a href="memory.html" class="next"><div class="label">Next →</div><div class="title">Memory</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../framework/index.html">Framework</a></p>
+</div></footer></body></html>

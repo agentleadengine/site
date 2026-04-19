@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GraphRAG | Samuel Ochoa</title>
+<meta name="description" content="GraphRAG extracts entities and relationships from documents, builds a knowledge graph, and retrieves by graph traversal. Strong for corpus-wide, relationship-heavy queries.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GraphRAG | Samuel Ochoa">
+<meta property="og:description" content="GraphRAG extracts entities and relationships from documents, builds a knowledge graph, and retrieves by graph traversal. Strong for corpus-wide, relationship-heavy queries.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../about.html">About</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>RAGS to Riches (56 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-rag.html">What is RAG?</a></li><li><a href="foundations/why-rag.html">Why RAG over fine-tuning</a></li><li><a href="foundations/the-architecture.html">The RAG architecture map</a></li><li><a href="foundations/when-not-to-use.html">When not to use RAG</a></li></ul><h4>Documents + Ingestion</h4><ul><li><a href="docs/ingestion-pipeline.html">The ingestion pipeline</a></li><li><a href="docs/parsing-pdfs.html">Parsing PDFs</a></li><li><a href="docs/parsing-html.html">Parsing HTML + web pages</a></li><li><a href="docs/tables-figures.html">Tables and figures</a></li><li><a href="docs/ocr.html">OCR for scanned documents</a></li><li><a href="docs/metadata.html">Metadata extraction</a></li></ul><h4>Chunking</h4><ul><li><a href="chunking/why-chunking.html">Why chunking matters</a></li><li><a href="chunking/fixed-size.html">Fixed-size chunking</a></li><li><a href="chunking/semantic.html">Semantic chunking</a></li><li><a href="chunking/recursive.html">Recursive chunking</a></li><li><a href="chunking/structure-aware.html">Structure-aware chunking</a></li><li><a href="chunking/chunking-code.html">Chunking code</a></li></ul><h4>Embeddings</h4><ul><li><a href="embeddings/what-are-embeddings.html">What embeddings are</a></li><li><a href="embeddings/picking-a-model.html">Picking an embedding model</a></li><li><a href="embeddings/closed-vs-open.html">Closed vs open models</a></li><li><a href="embeddings/dimensions-cost.html">Dimensions, cost, and MRL</a></li><li><a href="embeddings/fine-tuning.html">Fine-tuning embeddings</a></li></ul><h4>Vector Stores</h4><ul><li><a href="vectors/overview.html">Vector database overview</a></li><li><a href="vectors/indexing-strategies.html">HNSW, IVF, PQ</a></li><li><a href="vectors/hybrid-search.html">Hybrid search</a></li><li><a href="vectors/metadata-filtering.html">Metadata filtering</a></li><li><a href="vectors/cost-optimization.html">Cost optimization</a></li><li><a href="vectors/choosing-a-db.html">Choosing a vector DB</a></li></ul><h4>Retrieval Strategies</h4><ul><li><a href="retrieval/vector-search.html">Vector similarity search</a></li><li><a href="retrieval/bm25-sparse.html">BM25 and sparse retrieval</a></li><li><a href="retrieval/hybrid.html">Hybrid retrieval</a></li><li><a href="retrieval/reranking.html">Reranking</a></li><li><a href="retrieval/query-rewriting.html">Query rewriting</a></li><li><a href="retrieval/hyde.html">HyDE</a></li><li><a href="retrieval/multi-query.html">Multi-query + fusion</a></li></ul><h4>Advanced Patterns</h4><ul><li><a href="advanced/agentic-rag.html">Agentic RAG</a></li><li><a href="advanced/graph-rag.html" class="active">GraphRAG</a></li><li><a href="advanced/adaptive-rag.html">Adaptive RAG</a></li><li><a href="advanced/corrective-rag.html">Corrective RAG (CRAG)</a></li><li><a href="advanced/self-rag.html">Self-RAG</a></li><li><a href="advanced/multi-hop.html">Multi-hop RAG</a></li></ul><h4>Evaluation</h4><ul><li><a href="eval/why-eval.html">Why evaluation is critical</a></li><li><a href="eval/retrieval-metrics.html">Retrieval metrics</a></li><li><a href="eval/generation-metrics.html">Generation metrics</a></li><li><a href="eval/ragas-and-frameworks.html">RAGAS, TruLens, ARES</a></li><li><a href="eval/building-eval-datasets.html">Building eval datasets</a></li></ul><h4>Production</h4><ul><li><a href="prod/latency.html">Latency optimization</a></li><li><a href="prod/caching.html">Caching strategies</a></li><li><a href="prod/observability.html">Observability and tracing</a></li><li><a href="prod/cost.html">Cost management</a></li><li><a href="prod/security.html">Security and prompt injection</a></li></ul><h4>Use Cases</h4><ul><li><a href="cases/customer-support.html">Customer support RAG</a></li><li><a href="cases/internal-kb.html">Internal knowledge RAG</a></li><li><a href="cases/code-rag.html">Code search + generation</a></li><li><a href="cases/legal-compliance.html">Legal and compliance</a></li><li><a href="cases/multi-tenant.html">Multi-tenant RAG</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">RAGS to Riches</a><span class="sep">›</span><span>GraphRAG</span></div><h1 class="title">GraphRAG</h1><div class="article-meta"><span>📖 5 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">GraphRAG, popularized by Microsoft Research, extracts entities and relationships from a corpus and builds a knowledge graph. Retrieval becomes graph traversal plus vector search over entity descriptions and community summaries. It's the best answer for corpus-wide queries that vector search handles poorly.</p>
+
+<h2>The problem it solves</h2>
+<p>Vanilla RAG works well for "find the chunk that answers this." It works poorly for:</p>
+<ul>
+  <li>"What are the main themes in this corpus?"</li>
+  <li>"How is X related to Y across all documents?"</li>
+  <li>"Give me a summary of everything about Acme Corp."</li>
+  <li>"What's the history of decisions about topic Z?"</li>
+</ul>
+
+<p>These require aggregating information across many documents, not finding one chunk. Pure vector retrieval either misses most of the relevant material or returns too much noise.</p>
+
+<h2>The GraphRAG pipeline</h2>
+
+<h3>Indexing phase</h3>
+<ol>
+  <li><strong>Chunk</strong> documents as usual</li>
+  <li><strong>Extract entities</strong> from each chunk using an LLM (people, organizations, concepts, events)</li>
+  <li><strong>Extract relationships</strong> between entities from each chunk</li>
+  <li><strong>Build a graph</strong>: nodes are entities, edges are relationships</li>
+  <li><strong>Community detection</strong>: cluster the graph into hierarchical communities (using Leiden or similar)</li>
+  <li><strong>Generate community summaries</strong>: LLM-summarize each community into a description of its core content</li>
+  <li>Embed entities, relationships, community summaries for retrieval</li>
+</ol>
+
+<h3>Query phase</h3>
+<p>Two query modes in Microsoft's GraphRAG:</p>
+
+<h4>Local search</h4>
+<p>For specific entity-focused questions. Embed the query, find related entities in the graph, gather their connections and source chunks, synthesize. Best for "tell me about X" queries.</p>
+
+<h4>Global search</h4>
+<p>For corpus-wide questions. The LLM processes each community summary, generates partial answers, then aggregates them into a final response. Best for "themes," "patterns," "summarize across."</p>
+
+<h2>Strengths</h2>
+<ul>
+  <li>Handles corpus-wide synthesis better than any vector-only approach</li>
+  <li>Explicit entity and relationship modeling enables traversal queries</li>
+  <li>Community summaries provide abstract-level content retrieval</li>
+  <li>Output tends to be more coherent on complex queries</li>
+</ul>
+
+<h2>Weaknesses</h2>
+<ul>
+  <li>Indexing is expensive: LLM calls for every chunk (entity + relationship extraction)</li>
+  <li>Graph maintenance is complex when documents update</li>
+  <li>Over-engineered for simple Q&amp;A</li>
+  <li>Community summaries can drift from actual document content</li>
+  <li>Most teams don't need it, vanilla RAG is sufficient</li>
+</ul>
+
+<h2>Cost structure</h2>
+<p>GraphRAG indexing can cost 10-100x more than standard RAG indexing. For 1M chunks:</p>
+<ul>
+  <li>Standard RAG: $20-100 in embedding costs</li>
+  <li>GraphRAG: $2000-10000 in LLM extraction costs</li>
+</ul>
+
+<p>At enterprise scale, this is significant. Use smaller/cheaper models for extraction if corpus is large.</p>
+
+<h2>Implementations</h2>
+<ul>
+  <li><strong>Microsoft GraphRAG</strong>: the reference implementation. Open-source Python.</li>
+  <li><strong>LightRAG</strong>: lighter-weight alternative with similar ideas</li>
+  <li><strong>LlamaIndex PropertyGraphIndex</strong>: LlamaIndex's graph-based RAG</li>
+  <li><strong>Neo4j + custom pipeline</strong>: build your own on top of Neo4j or similar graph DB</li>
+</ul>
+
+<h2>Hybrid: GraphRAG + vector RAG</h2>
+<p>Serious systems combine both:</p>
+<ul>
+  <li>Vector RAG for specific fact retrieval</li>
+  <li>GraphRAG for thematic/relational queries</li>
+  <li>Query classifier routes to the right approach</li>
+</ul>
+
+<p>Or: use GraphRAG's community summaries as additional retrieval candidates alongside document chunks. At retrieval time, the system can return either granular chunks or high-level summaries depending on query type.</p>
+
+<h2>When GraphRAG is worth it</h2>
+<ul>
+  <li>Entity-heavy corpora (legal, research, historical records, news)</li>
+  <li>Users ask cross-document thematic questions</li>
+  <li>Relationships between entities are core to the value</li>
+  <li>You have budget for significant indexing cost</li>
+  <li>Corpus is relatively stable (frequent updates = painful graph maintenance)</li>
+</ul>
+
+<h2>When it isn't</h2>
+<ul>
+  <li>Simple Q&amp;A corpora (product docs, FAQs)</li>
+  <li>Constantly-changing corpora</li>
+  <li>Low-volume applications where index cost dominates</li>
+  <li>Teams without the ML engineering capacity to maintain it</li>
+</ul>
+
+<p>GraphRAG is impressive and genuinely useful for the right use case. It's also often over-adopted by teams who would do better with well-tuned vanilla RAG.</p>
+
+<p style="margin-top:40px;">Next: <a href="adaptive-rag.html">Adaptive RAG</a>.</p>
+<div class="prev-next"><a href="agentic-rag.html" class="prev"><div class="label">← Previous</div><div class="title">Agentic RAG</div></a><a href="adaptive-rag.html" class="next"><div class="label">Next →</div><div class="title">Adaptive RAG</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a></p>
+</div></footer></body></html>

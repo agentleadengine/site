@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plugins | Samuel Ochoa</title>
+<meta name="description" content="Plugins in the AI-agent context, packaged extensions that add features to a harness.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Plugins | Samuel Ochoa">
+<meta property="og:description" content="Plugins in the AI-agent context, packaged extensions that add features to a harness.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../index.html">Home</a>
+<a href="../../framework/index.html" class="active">Framework</a>
+<a href="../expertise/index.html">Expertise</a>
+<a href="../playbooks/index.html">Playbooks</a>
+<a href="../writing.html">Writing</a>
+<a href="../../about.html">About</a>
+<a href="../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="what-is-autonomous-ai.html">What is autonomous AI</a></li><li><a href="the-autonomy-spectrum.html">The autonomy spectrum</a></li><li><a href="glossary.html">Glossary</a></li></ul><h4>Claude</h4><ul><li><a href="claude/overview.html">Overview</a></li><li><a href="claude/prompting-for-agents.html">Prompting for agents</a></li><li><a href="claude/extended-thinking.html">Extended thinking</a></li><li><a href="claude/tool-use.html">Tool use</a></li></ul><h4>MCP</h4><ul><li><a href="mcp/index.html">Overview</a></li><li><a href="mcp/what-is-mcp.html">What is MCP</a></li><li><a href="mcp/anatomy.html">Anatomy</a></li><li><a href="mcp/transports.html">Transports</a></li><li><a href="mcp/servers.html">Servers</a></li><li><a href="mcp/clients.html">Clients</a></li><li><a href="mcp/security.html">Security</a></li><li><a href="mcp/directory.html">Directory</a></li></ul><h4>Plugins</h4><ul><li><a href="plugins/index.html" class="active">Overview</a></li><li><a href="plugins/vs-mcp.html">Plugins vs MCP</a></li><li><a href="plugins/marketplace.html">Marketplace</a></li></ul><h4>Claude Code</h4><ul><li><a href="claude-code/index.html">Overview</a></li><li><a href="claude-code/settings.html">Settings</a></li><li><a href="claude-code/permissions.html">Permissions</a></li><li><a href="claude-code/hooks.html">Hooks</a></li><li><a href="claude-code/skills.html">Skills</a></li><li><a href="claude-code/memory.html">Memory</a></li></ul><h4>Patterns</h4><ul><li><a href="patterns/index.html">Overview</a></li><li><a href="patterns/react-loop.html">ReAct loop</a></li><li><a href="patterns/plan-execute.html">Plan-execute</a></li><li><a href="patterns/multi-agent.html">Multi-agent</a></li><li><a href="patterns/evaluation.html">Evaluation</a></li><li><a href="patterns/prompt-caching.html">Prompt caching</a></li></ul><h4>Autonomous</h4><ul><li><a href="autonomous/index.html">Overview</a></li><li><a href="autonomous/headless.html">Headless</a></li><li><a href="autonomous/scheduling.html">Scheduling</a></li><li><a href="autonomous/self-monitoring.html">Self-monitoring</a></li><li><a href="autonomous/safety.html">Safety</a></li></ul><h4>Build Guides</h4><ul><li><a href="build/index.html">Overview</a></li><li><a href="build/first-agent.html">First agent (60 min)</a></li><li><a href="build/voice-agent.html">Voice agent</a></li><li><a href="build/research-agent.html">Research agent</a></li></ul><h4>Tools</h4><ul><li><a href="tools/browser-automation.html">Browser automation</a></li><li><a href="tools/desktop-control.html">Desktop control</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Framework</a><span class="sep">›</span><a href="../plugins/index.html">Plugins</a><span class="sep">›</span><span>Plugins</span></div><h1 class="title" style="font-size:clamp(32px,4.5vw,42px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">Plugins</h1><div class="article-meta"><span>📖 3 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">"Plugin" is overloaded. In the AI-agent world, a plugin is a packaged bundle that adds features, commands, skills, MCP servers, hooks, to a harness like Claude Code.</p>
+
+<h2>What a plugin contains</h2>
+<p>A plugin (in the Claude Code sense) is a directory with metadata declaring what it adds. A single plugin can bundle:</p>
+<ul>
+  <li>One or more <strong>MCP servers</strong> (tools the agent can use)</li>
+  <li>One or more <strong>skills</strong> (named slash-commands with instructions)</li>
+  <li>One or more <strong>hooks</strong> (code that runs on events)</li>
+  <li>Shared config or assets</li>
+</ul>
+
+<h2>Why plugins exist</h2>
+<p>Individually, MCPs and skills are great. But connecting them is glue. A plugin bundles the pieces into a one-click install. Example: a "Telegram channel" plugin might ship an MCP server (for reading/writing messages), a skill (for configuring the bot), and a hook (to notify on certain events).</p>
+
+<h2>Plugin vs MCP vs Skill</h2>
+<p>Short answer:</p>
+<ul>
+  <li><strong>MCP</strong>, adds tools/data the agent can use</li>
+  <li><strong>Skill</strong>, adds a named prompt/instruction the agent can invoke</li>
+  <li><strong>Plugin</strong>, a package that bundles any combination of the above</li>
+</ul>
+<p>See <a href="vs-mcp.html">Plugins vs MCP</a> for the deeper comparison.</p>
+
+<h2>How plugins are distributed</h2>
+<p>Most plugins today are distributed through marketplaces. Anthropic maintains an official marketplace of first-party plugins. There's a growing ecosystem of community plugins on GitHub. See <a href="marketplace.html">Marketplace</a>.</p>
+
+<h2>Installing a plugin</h2>
+<p>In Claude Code:</p>
+<pre><code>/plugin install telegram@claude-plugins-official</code></pre>
+<p>The plugin is downloaded, any MCP servers are registered, any skills become invokable, any hooks are wired up. Removing is one command.</p>
+
+<h2>When to reach for a plugin vs, just an MCP</h2>
+<ul>
+  <li><strong>Just an MCP:</strong> you want tools. Nothing more.</li>
+  <li><strong>Plugin:</strong> you want tools + specific workflows + event handling + config, all as one unit.</li>
+</ul>
+<p>For most users, the split is: MCPs are the <em>primitives</em>; plugins are the <em>products</em>.</p>
+<div class="prev-next"><a href="../mcp/directory.html" class="prev"><div class="label">← Previous</div><div class="title">MCP directory</div></a><a href="vs-mcp.html" class="next"><div class="label">Next →</div><div class="title">Plugins vs MCP</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../framework/index.html">Framework</a></p>
+</div></footer></body></html>

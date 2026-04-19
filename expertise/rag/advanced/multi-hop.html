@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multi-hop RAG | Samuel Ochoa</title>
+<meta name="description" content="Multi-hop questions require chaining multiple retrievals. Here's the pattern for answering questions that need information from multiple steps.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Multi-hop RAG | Samuel Ochoa">
+<meta property="og:description" content="Multi-hop questions require chaining multiple retrievals. Here's the pattern for answering questions that need information from multiple steps.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../about.html">About</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>RAGS to Riches (56 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-rag.html">What is RAG?</a></li><li><a href="foundations/why-rag.html">Why RAG over fine-tuning</a></li><li><a href="foundations/the-architecture.html">The RAG architecture map</a></li><li><a href="foundations/when-not-to-use.html">When not to use RAG</a></li></ul><h4>Documents + Ingestion</h4><ul><li><a href="docs/ingestion-pipeline.html">The ingestion pipeline</a></li><li><a href="docs/parsing-pdfs.html">Parsing PDFs</a></li><li><a href="docs/parsing-html.html">Parsing HTML + web pages</a></li><li><a href="docs/tables-figures.html">Tables and figures</a></li><li><a href="docs/ocr.html">OCR for scanned documents</a></li><li><a href="docs/metadata.html">Metadata extraction</a></li></ul><h4>Chunking</h4><ul><li><a href="chunking/why-chunking.html">Why chunking matters</a></li><li><a href="chunking/fixed-size.html">Fixed-size chunking</a></li><li><a href="chunking/semantic.html">Semantic chunking</a></li><li><a href="chunking/recursive.html">Recursive chunking</a></li><li><a href="chunking/structure-aware.html">Structure-aware chunking</a></li><li><a href="chunking/chunking-code.html">Chunking code</a></li></ul><h4>Embeddings</h4><ul><li><a href="embeddings/what-are-embeddings.html">What embeddings are</a></li><li><a href="embeddings/picking-a-model.html">Picking an embedding model</a></li><li><a href="embeddings/closed-vs-open.html">Closed vs open models</a></li><li><a href="embeddings/dimensions-cost.html">Dimensions, cost, and MRL</a></li><li><a href="embeddings/fine-tuning.html">Fine-tuning embeddings</a></li></ul><h4>Vector Stores</h4><ul><li><a href="vectors/overview.html">Vector database overview</a></li><li><a href="vectors/indexing-strategies.html">HNSW, IVF, PQ</a></li><li><a href="vectors/hybrid-search.html">Hybrid search</a></li><li><a href="vectors/metadata-filtering.html">Metadata filtering</a></li><li><a href="vectors/cost-optimization.html">Cost optimization</a></li><li><a href="vectors/choosing-a-db.html">Choosing a vector DB</a></li></ul><h4>Retrieval Strategies</h4><ul><li><a href="retrieval/vector-search.html">Vector similarity search</a></li><li><a href="retrieval/bm25-sparse.html">BM25 and sparse retrieval</a></li><li><a href="retrieval/hybrid.html">Hybrid retrieval</a></li><li><a href="retrieval/reranking.html">Reranking</a></li><li><a href="retrieval/query-rewriting.html">Query rewriting</a></li><li><a href="retrieval/hyde.html">HyDE</a></li><li><a href="retrieval/multi-query.html">Multi-query + fusion</a></li></ul><h4>Advanced Patterns</h4><ul><li><a href="advanced/agentic-rag.html">Agentic RAG</a></li><li><a href="advanced/graph-rag.html">GraphRAG</a></li><li><a href="advanced/adaptive-rag.html">Adaptive RAG</a></li><li><a href="advanced/corrective-rag.html">Corrective RAG (CRAG)</a></li><li><a href="advanced/self-rag.html">Self-RAG</a></li><li><a href="advanced/multi-hop.html" class="active">Multi-hop RAG</a></li></ul><h4>Evaluation</h4><ul><li><a href="eval/why-eval.html">Why evaluation is critical</a></li><li><a href="eval/retrieval-metrics.html">Retrieval metrics</a></li><li><a href="eval/generation-metrics.html">Generation metrics</a></li><li><a href="eval/ragas-and-frameworks.html">RAGAS, TruLens, ARES</a></li><li><a href="eval/building-eval-datasets.html">Building eval datasets</a></li></ul><h4>Production</h4><ul><li><a href="prod/latency.html">Latency optimization</a></li><li><a href="prod/caching.html">Caching strategies</a></li><li><a href="prod/observability.html">Observability and tracing</a></li><li><a href="prod/cost.html">Cost management</a></li><li><a href="prod/security.html">Security and prompt injection</a></li></ul><h4>Use Cases</h4><ul><li><a href="cases/customer-support.html">Customer support RAG</a></li><li><a href="cases/internal-kb.html">Internal knowledge RAG</a></li><li><a href="cases/code-rag.html">Code search + generation</a></li><li><a href="cases/legal-compliance.html">Legal and compliance</a></li><li><a href="cases/multi-tenant.html">Multi-tenant RAG</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">RAGS to Riches</a><span class="sep">›</span><span>Multi-hop RAG</span></div><h1 class="title">Multi-hop RAG</h1><div class="article-meta"><span>📖 4 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">Multi-hop questions require answers that combine information from multiple independent documents. "Who manages the team that ships the feature the CEO mentioned last quarter?" needs three retrievals, not one. Vanilla RAG handles single-hop. Multi-hop needs orchestration.</p>
+
+<h2>What multi-hop looks like</h2>
+<p>Single-hop: "What's our refund policy?" → retrieve the refund policy doc → answer.</p>
+<p>Multi-hop: "What's the refund policy for the product Alice launched last quarter?"</p>
+<p>Needs:</p>
+<ol>
+  <li>What product did Alice launch last quarter?</li>
+  <li>What's the refund policy for that product?</li>
+</ol>
+
+<p>One-shot retrieval on the original query retrieves either Alice-related docs or refund-related docs, not the specific intersection.</p>
+
+<h2>The two approaches</h2>
+
+<h3>Decomposition</h3>
+<p>Break the query into sub-questions, retrieve for each, combine.</p>
+<ol>
+  <li>LLM decomposes the query</li>
+  <li>Retrieve for each sub-question</li>
+  <li>Gather all retrieved docs</li>
+  <li>Generate final answer from combined context</li>
+</ol>
+
+<h3>Iterative (agentic)</h3>
+<p>Start with partial info, retrieve more based on what you found, repeat.</p>
+<ol>
+  <li>Initial retrieval on the query</li>
+  <li>Model decides: do I have enough? If not, what else do I need?</li>
+  <li>Retrieve again for the follow-up need</li>
+  <li>Repeat until sufficient</li>
+  <li>Generate</li>
+</ol>
+
+<h2>Decomposition prompt</h2>
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:12px;">
+SYSTEM: Break the following question into simpler sub-questions that
+can each be answered with a single document lookup. List each
+sub-question on a new line.
+
+USER: [multi-hop question]
+
+A:
+1. [sub-question 1]
+2. [sub-question 2]
+3. [sub-question 3]
+</pre>
+
+<h2>Iterative prompt pattern</h2>
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:12px;">
+[Retrieval round 1 results shown]
+
+SYSTEM: Based on the retrieved documents, do you have enough
+information to answer the user's question? If yes, answer. If no,
+what additional information do you need? Output either a final
+answer or a follow-up search query.
+
+USER: [original question]
+
+Retrieved: [docs from round 1]
+</pre>
+
+<h2>When decomposition beats iterative</h2>
+<ul>
+  <li>The sub-questions are independent of each other</li>
+  <li>You want parallelism (all retrievals can run concurrently)</li>
+  <li>The decomposition is predictable for the query type</li>
+</ul>
+
+<h2>When iterative beats decomposition</h2>
+<ul>
+  <li>Later retrievals depend on earlier ones (sequential)</li>
+  <li>You don't know what you'll need until you see partial results</li>
+  <li>The query is exploratory</li>
+</ul>
+
+<h2>Chain-of-thought retrieval</h2>
+<p>A middle-ground pattern: ask the LLM to plan retrievals before executing them.</p>
+<ol>
+  <li>LLM generates a retrieval plan: "First I'll look up X, then based on that I'll look up Y, finally I'll combine..."</li>
+  <li>Execute the plan step by step</li>
+  <li>At each step, the LLM can adjust based on actual retrieval results</li>
+</ol>
+
+<p>Plans are easier to debug than free-form iterative loops and cheaper than full agent-based orchestration.</p>
+
+<h2>The common failure modes</h2>
+
+<h3>Bad decomposition</h3>
+<p>LLM produces sub-questions that don't actually decompose the problem. Retrievals don't answer what's needed.</p>
+
+<p>Mitigation: few-shot examples of good decompositions in the prompt. Validate decompositions for obvious problems (e.g., more than 5 sub-questions is suspicious).</p>
+
+<h3>Lost context between hops</h3>
+<p>Round 2 retrieval doesn't use what round 1 learned. The follow-up query is too general.</p>
+
+<p>Mitigation: explicitly include round 1 findings in the round 2 query construction. "Given that Alice launched Product X, retrieve the refund policy for Product X."</p>
+
+<h3>Runaway iteration</h3>
+<p>Agent keeps retrieving without converging. Often because the information truly isn't in the corpus.</p>
+
+<p>Mitigation: max iterations (3-5), timeout, cost budget per query.</p>
+
+<h2>Benchmarks for multi-hop</h2>
+<p>Academic benchmarks specifically for multi-hop RAG:</p>
+<ul>
+  <li><strong>HotpotQA</strong>: classic multi-hop QA</li>
+  <li><strong>2WikiMultiHopQA</strong>: Wikipedia-based multi-hop</li>
+  <li><strong>MuSiQue</strong>: deliberately complex multi-hop questions</li>
+</ul>
+
+<p>These are useful for comparing strategies but don't necessarily reflect your production query distribution. Build a domain-specific eval set if multi-hop is important.</p>
+
+<h2>Cost reality</h2>
+<p>Multi-hop RAG is expensive:</p>
+<ul>
+  <li>Decomposition: 1 LLM call</li>
+  <li>Retrievals: N calls to vector DB (N = number of sub-questions)</li>
+  <li>Generation: 1-2 LLM calls for final synthesis</li>
+</ul>
+
+<p>Total: 3-10x single-shot RAG cost. Only use it when the question actually needs it.</p>
+
+<p>The adaptive pattern (classify first, route to multi-hop only when needed) keeps cost reasonable across a mixed query distribution.</p>
+
+<p style="margin-top:40px;">Next: <a href="../eval/why-eval.html">Why evaluation is critical</a>.</p>
+<div class="prev-next"><a href="self-rag.html" class="prev"><div class="label">← Previous</div><div class="title">Self-RAG</div></a><a href="../eval/why-eval.html" class="next"><div class="label">Next →</div><div class="title">Why evaluation is critical</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a></p>
+</div></footer></body></html>

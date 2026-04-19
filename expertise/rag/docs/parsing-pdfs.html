@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parsing PDFs | Samuel Ochoa</title>
+<meta name="description" content="PDFs are where RAG projects go to die. Here's what works, what doesn't, and the specific libraries I reach for in each situation.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Parsing PDFs | Samuel Ochoa">
+<meta property="og:description" content="PDFs are where RAG projects go to die. Here's what works, what doesn't, and the specific libraries I reach for in each situation.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../about.html">About</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>RAGS to Riches (56 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-rag.html">What is RAG?</a></li><li><a href="foundations/why-rag.html">Why RAG over fine-tuning</a></li><li><a href="foundations/the-architecture.html">The RAG architecture map</a></li><li><a href="foundations/when-not-to-use.html">When not to use RAG</a></li></ul><h4>Documents + Ingestion</h4><ul><li><a href="docs/ingestion-pipeline.html">The ingestion pipeline</a></li><li><a href="docs/parsing-pdfs.html" class="active">Parsing PDFs</a></li><li><a href="docs/parsing-html.html">Parsing HTML + web pages</a></li><li><a href="docs/tables-figures.html">Tables and figures</a></li><li><a href="docs/ocr.html">OCR for scanned documents</a></li><li><a href="docs/metadata.html">Metadata extraction</a></li></ul><h4>Chunking</h4><ul><li><a href="chunking/why-chunking.html">Why chunking matters</a></li><li><a href="chunking/fixed-size.html">Fixed-size chunking</a></li><li><a href="chunking/semantic.html">Semantic chunking</a></li><li><a href="chunking/recursive.html">Recursive chunking</a></li><li><a href="chunking/structure-aware.html">Structure-aware chunking</a></li><li><a href="chunking/chunking-code.html">Chunking code</a></li></ul><h4>Embeddings</h4><ul><li><a href="embeddings/what-are-embeddings.html">What embeddings are</a></li><li><a href="embeddings/picking-a-model.html">Picking an embedding model</a></li><li><a href="embeddings/closed-vs-open.html">Closed vs open models</a></li><li><a href="embeddings/dimensions-cost.html">Dimensions, cost, and MRL</a></li><li><a href="embeddings/fine-tuning.html">Fine-tuning embeddings</a></li></ul><h4>Vector Stores</h4><ul><li><a href="vectors/overview.html">Vector database overview</a></li><li><a href="vectors/indexing-strategies.html">HNSW, IVF, PQ</a></li><li><a href="vectors/hybrid-search.html">Hybrid search</a></li><li><a href="vectors/metadata-filtering.html">Metadata filtering</a></li><li><a href="vectors/cost-optimization.html">Cost optimization</a></li><li><a href="vectors/choosing-a-db.html">Choosing a vector DB</a></li></ul><h4>Retrieval Strategies</h4><ul><li><a href="retrieval/vector-search.html">Vector similarity search</a></li><li><a href="retrieval/bm25-sparse.html">BM25 and sparse retrieval</a></li><li><a href="retrieval/hybrid.html">Hybrid retrieval</a></li><li><a href="retrieval/reranking.html">Reranking</a></li><li><a href="retrieval/query-rewriting.html">Query rewriting</a></li><li><a href="retrieval/hyde.html">HyDE</a></li><li><a href="retrieval/multi-query.html">Multi-query + fusion</a></li></ul><h4>Advanced Patterns</h4><ul><li><a href="advanced/agentic-rag.html">Agentic RAG</a></li><li><a href="advanced/graph-rag.html">GraphRAG</a></li><li><a href="advanced/adaptive-rag.html">Adaptive RAG</a></li><li><a href="advanced/corrective-rag.html">Corrective RAG (CRAG)</a></li><li><a href="advanced/self-rag.html">Self-RAG</a></li><li><a href="advanced/multi-hop.html">Multi-hop RAG</a></li></ul><h4>Evaluation</h4><ul><li><a href="eval/why-eval.html">Why evaluation is critical</a></li><li><a href="eval/retrieval-metrics.html">Retrieval metrics</a></li><li><a href="eval/generation-metrics.html">Generation metrics</a></li><li><a href="eval/ragas-and-frameworks.html">RAGAS, TruLens, ARES</a></li><li><a href="eval/building-eval-datasets.html">Building eval datasets</a></li></ul><h4>Production</h4><ul><li><a href="prod/latency.html">Latency optimization</a></li><li><a href="prod/caching.html">Caching strategies</a></li><li><a href="prod/observability.html">Observability and tracing</a></li><li><a href="prod/cost.html">Cost management</a></li><li><a href="prod/security.html">Security and prompt injection</a></li></ul><h4>Use Cases</h4><ul><li><a href="cases/customer-support.html">Customer support RAG</a></li><li><a href="cases/internal-kb.html">Internal knowledge RAG</a></li><li><a href="cases/code-rag.html">Code search + generation</a></li><li><a href="cases/legal-compliance.html">Legal and compliance</a></li><li><a href="cases/multi-tenant.html">Multi-tenant RAG</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">RAGS to Riches</a><span class="sep">›</span><span>Parsing PDFs</span></div><h1 class="title">Parsing PDFs</h1><div class="article-meta"><span>📖 6 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">PDFs are where the "we'll just parse the docs" plan meets reality. PDF is not a document format, it's a visual layout format that happens to contain text. Every serious RAG project eventually has a PDF problem. Here's how I think about it.</p>
+
+<h2>The three kinds of PDFs</h2>
+
+<h3>1. Born-digital with clean text layer</h3>
+<p>Generated from Word, LaTeX, or pandoc. Text is extractable with basic tools. Usually has a coherent reading order. Still may have headers/footers/page numbers that pollute text.</p>
+
+<h3>2. Born-digital with messy text layer</h3>
+<p>Text is there but reading order is scrambled. Multi-column layouts, text boxes, sidebars, footnotes. Basic extraction yields jumbled output. This is the most common production case.</p>
+
+<h3>3. Scanned images</h3>
+<p>No text layer. Just pixels. Requires OCR. See <a href="ocr.html">OCR</a>.</p>
+
+<h2>The library landscape</h2>
+
+<h3>PyPDF / pdfplumber</h3>
+<p>Good for clean, simple PDFs. Fast and free. Fails on multi-column layouts, tables, and scanned content. My baseline for quick prototyping.</p>
+
+<h3>PyMuPDF (fitz)</h3>
+<p>More robust. Handles complex layouts better. Better table detection. Slightly tricky licensing for commercial use (AGPL, requires license for closed-source).</p>
+
+<h3>Unstructured.io</h3>
+<p>Opinionated parser that preserves structure: headings, lists, tables. Returns elements with types, which is valuable for structure-aware chunking. Slower than raw text extraction but usually worth the tradeoff.</p>
+
+<h3>Docling (IBM)</h3>
+<p>Open-source, strong on complex document layouts. Produces structured output with headings, tables, and lists preserved. Under active development and my current default for complex PDFs.</p>
+
+<h3>LLM-based parsers (GPT-4 Vision, Claude, Gemini)</h3>
+<p>Highest quality on difficult documents. Handles layouts, tables, figures, and scanned content. Expensive (dollars per document for complex PDFs). Right tool when accuracy matters more than cost.</p>
+
+<h3>Commercial (Mathpix, Azure Document Intelligence, AWS Textract, Llamaparse)</h3>
+<p>Mathpix for math-heavy PDFs. Llamaparse for general high-quality parsing. Azure and AWS are decent general-purpose. All charge per page.</p>
+
+<h2>The parsing decision tree</h2>
+<ol>
+  <li>Is the PDF text-selectable in Preview/Acrobat? If no → OCR pipeline.</li>
+  <li>Is it a single-column, simple layout? pdfplumber or PyMuPDF.</li>
+  <li>Does it have tables or complex structure? Docling, Unstructured, or Llamaparse.</li>
+  <li>Does it have math, diagrams, or highly specialized content? Mathpix or LLM-based parser.</li>
+  <li>Is accuracy more important than per-document cost? LLM-based parser.</li>
+</ol>
+
+<h2>The gotchas that cost days</h2>
+
+<h3>Reading order</h3>
+<p>PDFs don't store reading order, they store visual positions. A two-column PDF parsed naively produces "column 1 line 1, column 2 line 1, column 1 line 2, column 2 line 2..." which is nonsense. Always check that your parser reorders text correctly on multi-column layouts.</p>
+
+<h3>Headers and footers</h3>
+<p>Page numbers, running headers, and footer boilerplate get concatenated into your content unless you strip them. Most retrieval failures traced to "why does it think the answer is on page 47" come from headers polluting chunks.</p>
+
+<h3>Tables</h3>
+<p>A table parsed as raw text is a string of numbers with no structure. Either use a parser that preserves tables as structured data (then serialize them into readable form), or detect tables and send them to a dedicated extractor. See <a href="tables-figures.html">tables and figures</a>.</p>
+
+<h3>Figures and charts</h3>
+<p>Text extraction drops them entirely. For technical documents, figures often contain 30% of the information. Strategies:</p>
+<ul>
+  <li>Extract figure captions and embed those</li>
+  <li>Send figures through a vision model to generate descriptions, embed the descriptions</li>
+  <li>In the index, store figure references alongside text chunks so retrieved chunks can pull in their surrounding visuals</li>
+</ul>
+
+<h3>Hyphenation and line breaks</h3>
+<p>PDF text often has hyphens at line breaks that become mid-word hyphens after extraction ("im-\nportant" becomes "im-portant"). Always post-process to rejoin these.</p>
+
+<h3>Ligatures and special characters</h3>
+<p>"ﬁ" and "ﬂ" ligatures, Greek letters in math, non-breaking spaces, all of these break tokenization and retrieval if not normalized.</p>
+
+<h2>The ground-truth test</h2>
+<p>For any significant PDF corpus, take 10 random documents and spot-check the parsed output against the original. Look specifically for:</p>
+<ul>
+  <li>Is reading order correct?</li>
+  <li>Are tables intelligible?</li>
+  <li>Are headings preserved as headings (not mixed into body)?</li>
+  <li>Is boilerplate removed?</li>
+  <li>Are figures at least referenced?</li>
+</ul>
+<p>If fewer than 8 of 10 pass, your parser is wrong for this corpus. Don't embed bad text, garbage-in compounds through the rest of the pipeline.</p>
+
+<h2>The commercial reality</h2>
+<p>For any serious business-critical RAG system, I recommend budgeting for LLM-based parsing or a commercial service on difficult documents. Over a full corpus, paying $0.05-0.20/page for quality parsing is often cheaper than debugging retrieval failures caused by bad text extraction.</p>
+
+<p style="margin-top:40px;">Next: <a href="parsing-html.html">Parsing HTML + web pages</a>.</p>
+<div class="prev-next"><a href="ingestion-pipeline.html" class="prev"><div class="label">← Previous</div><div class="title">The ingestion pipeline</div></a><a href="parsing-html.html" class="next"><div class="label">Next →</div><div class="title">Parsing HTML + web pages</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a></p>
+</div></footer></body></html>

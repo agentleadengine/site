@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build a research agent | Samuel Ochoa</title>
+<meta name="description" content="Search → extract → synthesize → report. Multi-step web research with Claude.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Build a research agent | Samuel Ochoa">
+<meta property="og:description" content="Search → extract → synthesize → report. Multi-step web research with Claude.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../index.html">Home</a>
+<a href="../../framework/index.html" class="active">Framework</a>
+<a href="../expertise/index.html">Expertise</a>
+<a href="../playbooks/index.html">Playbooks</a>
+<a href="../writing.html">Writing</a>
+<a href="../../about.html">About</a>
+<a href="../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="what-is-autonomous-ai.html">What is autonomous AI</a></li><li><a href="the-autonomy-spectrum.html">The autonomy spectrum</a></li><li><a href="glossary.html">Glossary</a></li></ul><h4>Claude</h4><ul><li><a href="claude/overview.html">Overview</a></li><li><a href="claude/prompting-for-agents.html">Prompting for agents</a></li><li><a href="claude/extended-thinking.html">Extended thinking</a></li><li><a href="claude/tool-use.html">Tool use</a></li></ul><h4>MCP</h4><ul><li><a href="mcp/index.html">Overview</a></li><li><a href="mcp/what-is-mcp.html">What is MCP</a></li><li><a href="mcp/anatomy.html">Anatomy</a></li><li><a href="mcp/transports.html">Transports</a></li><li><a href="mcp/servers.html">Servers</a></li><li><a href="mcp/clients.html">Clients</a></li><li><a href="mcp/security.html">Security</a></li><li><a href="mcp/directory.html">Directory</a></li></ul><h4>Plugins</h4><ul><li><a href="plugins/index.html">Overview</a></li><li><a href="plugins/vs-mcp.html">Plugins vs MCP</a></li><li><a href="plugins/marketplace.html">Marketplace</a></li></ul><h4>Claude Code</h4><ul><li><a href="claude-code/index.html">Overview</a></li><li><a href="claude-code/settings.html">Settings</a></li><li><a href="claude-code/permissions.html">Permissions</a></li><li><a href="claude-code/hooks.html">Hooks</a></li><li><a href="claude-code/skills.html">Skills</a></li><li><a href="claude-code/memory.html">Memory</a></li></ul><h4>Patterns</h4><ul><li><a href="patterns/index.html">Overview</a></li><li><a href="patterns/react-loop.html">ReAct loop</a></li><li><a href="patterns/plan-execute.html">Plan-execute</a></li><li><a href="patterns/multi-agent.html">Multi-agent</a></li><li><a href="patterns/evaluation.html">Evaluation</a></li><li><a href="patterns/prompt-caching.html">Prompt caching</a></li></ul><h4>Autonomous</h4><ul><li><a href="autonomous/index.html">Overview</a></li><li><a href="autonomous/headless.html">Headless</a></li><li><a href="autonomous/scheduling.html">Scheduling</a></li><li><a href="autonomous/self-monitoring.html">Self-monitoring</a></li><li><a href="autonomous/safety.html">Safety</a></li></ul><h4>Build Guides</h4><ul><li><a href="build/index.html">Overview</a></li><li><a href="build/first-agent.html">First agent (60 min)</a></li><li><a href="build/voice-agent.html">Voice agent</a></li><li><a href="build/research-agent.html" class="active">Research agent</a></li></ul><h4>Tools</h4><ul><li><a href="tools/browser-automation.html">Browser automation</a></li><li><a href="tools/desktop-control.html">Desktop control</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Framework</a><span class="sep">›</span><a href="../build/index.html">Build</a><span class="sep">›</span><span>Build a research agent</span></div><h1 class="title" style="font-size:clamp(32px,4.5vw,42px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">Build a research agent</h1><div class="article-meta"><span>📖 7 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">A research agent answers questions by searching the web, reading pages, and synthesizing a sourced summary. It's one of the most useful agent archetypes, and one of the easiest to build badly.</p>
+
+<h2>Goal</h2>
+<p>An agent that, given a research question, produces a 200–500 word summary with sources cited.</p>
+
+<h2>Architecture</h2>
+<pre><code>Question
+  ↓
+Plan search queries (model)
+  ↓
+Run searches in parallel (search tool)
+  ↓
+Rank + fetch top pages (fetch tool)
+  ↓
+Extract key claims (model)
+  ↓
+Synthesize summary (model)
+  ↓
+Output with citations</code></pre>
+
+<h2>Tools you'll need</h2>
+<ul>
+  <li><strong>Web search.</strong> Brave Search, Tavily, or Exa via MCP. Tavily is tuned for AI; Brave is cheap.</li>
+  <li><strong>Fetch URL.</strong> Pulls page content. Plain <code>curl</code> works; better: a service that handles rendering (Firecrawl, Jina Reader).</li>
+  <li><strong>Optional: academic search.</strong> If your domain needs papers (Semantic Scholar MCP, arXiv).</li>
+</ul>
+
+<h2>The prompt structure</h2>
+<pre><code>You are a research assistant.
+
+Goal: produce a sourced, accurate summary of the user's question.
+
+Process:
+1. Decompose the question into 2–4 search queries (different angles)
+2. Run the searches (parallel)
+3. From results, pick the 3–5 most authoritative-looking sources
+4. Fetch and read those pages
+5. Extract key claims with source URLs
+6. Write a 200–500 word summary that:
+   - States what's known clearly
+   - Surfaces disagreements between sources
+   - Cites every claim with [1], [2], etc.
+   - Lists full source URLs at the end
+
+Rules:
+- Never state a claim without a source
+- If sources conflict, surface the conflict, don't hide it
+- If you can't answer confidently, say so and explain what's missing
+
+Stop after 5 search rounds even if you want more data.</code></pre>
+
+<h2>Why the prompt is structured this way</h2>
+<ul>
+  <li><strong>Decompose first.</strong> Parallel searches with diverse queries beats one big search.</li>
+  <li><strong>Authoritative filter.</strong> Without this instruction, the model reads whatever ranks first. Prefer .edu, .gov, reputable publications.</li>
+  <li><strong>Explicit stop.</strong> Without it, research agents keep searching. "More data = better answer" is wrong past a point.</li>
+  <li><strong>Conflict surfacing.</strong> The biggest failure mode of research agents is averaging contradictory sources into a flat-sounding consensus that didn't exist.</li>
+</ul>
+
+<h2>Tool-use patterns</h2>
+<p>Parallel searches save latency. Emit multiple tool calls in one turn:</p>
+<pre><code>[tool_use: search("MCP security model")]
+[tool_use: search("MCP vs OAuth scopes")]
+[tool_use: search("prompt injection tool output")]</code></pre>
+<p>Harness executes concurrently; all three results returned in the next turn.</p>
+
+<h2>Quality controls</h2>
+
+<h3>Source diversity</h3>
+<p>Instruct: "Your sources must come from at least 3 different domains."</p>
+
+<h3>Recency check</h3>
+<p>If topic is time-sensitive: "Prefer sources from the last 12 months. If using older, flag it."</p>
+
+<h3>Hallucination guard</h3>
+<p>The biggest failure mode: the model produces a citation-looking output but the citations don't support the claim. Add a validation step:</p>
+<pre><code>After writing the summary:
+- For each claim, quote the sentence from the source that supports it
+- If you can't find a direct quote, remove the claim</code></pre>
+
+<h2>Evaluation</h2>
+<p>Build an eval set: 20 questions with known good answers. For each:</p>
+<ul>
+  <li>Does the summary cover the key points?</li>
+  <li>Are citations real (not hallucinated URLs)?</li>
+  <li>Do citations actually support the claims?</li>
+  <li>Is any major viewpoint missing?</li>
+</ul>
+<p>Use LLM-as-judge with a clear rubric. Score over time.</p>
+
+<h2>Scaling up</h2>
+<p>For serious research tasks:</p>
+<ul>
+  <li>Add a <strong>planner</strong> that breaks big topics into sub-research tasks, each a sub-agent</li>
+  <li>Cache source content, repeat research on similar topics shouldn't re-fetch</li>
+  <li>Keep a "visited" list per session to avoid re-reading the same URL</li>
+  <li>For domains you research often (e.g., competitors), build a knowledge base you refresh weekly</li>
+</ul>
+
+<h2>What not to do</h2>
+<ul>
+  <li><strong>Don't let the model pick any sources.</strong> Without filtering, it will cite blog spam.</li>
+  <li><strong>Don't skip citations.</strong> A summary without sources is worthless for anything consequential.</li>
+  <li><strong>Don't assume the fetch succeeded.</strong> Pages return 404s, paywalls, cloudflare blocks. Handle gracefully.</li>
+</ul>
+<div class="prev-next"><a href="voice-agent.html" class="prev"><div class="label">← Previous</div><div class="title">Voice agent</div></a><a href="../tools/browser-automation.html" class="next"><div class="label">Next →</div><div class="title">Browser automation</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../framework/index.html">Framework</a></p>
+</div></footer></body></html>

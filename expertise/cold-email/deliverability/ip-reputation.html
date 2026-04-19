@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IP reputation | Samuel Ochoa</title>
+<meta name="description" content="Every IP has a reputation score with every email provider. Here's what affects it and how shared vs dedicated IPs change your strategy.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IP reputation | Samuel Ochoa">
+<meta property="og:description" content="Every IP has a reputation score with every email provider. Here's what affects it and how shared vs dedicated IPs change your strategy.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../about.html">About</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Cold Email (45 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-cold-email.html">What is cold email?</a></li><li><a href="foundations/spam-vs-cold.html">Cold email vs spam</a></li><li><a href="foundations/legal.html">Legal landscape</a></li><li><a href="foundations/when-it-works.html">When cold email works</a></li></ul><h4>Deliverability</h4><ul><li><a href="deliverability/why-it-matters.html">Why deliverability is everything</a></li><li><a href="deliverability/dns.html">SPF, DKIM, DMARC</a></li><li><a href="deliverability/sending-domains.html">Sending domain strategy</a></li><li><a href="deliverability/warming.html">Inbox warming</a></li><li><a href="deliverability/ip-reputation.html" class="active">IP reputation</a></li><li><a href="deliverability/spam-triggers.html">Content that triggers spam filters</a></li><li><a href="deliverability/monitoring.html">Monitoring inbox placement</a></li></ul><h4>Infrastructure</h4><ul><li><a href="infra/sending-tools.html">Sending tools</a></li><li><a href="infra/multi-inbox.html">Multi-inbox rotation</a></li><li><a href="infra/warming-tools.html">Warming tools</a></li><li><a href="infra/crm-integration.html">CRM and data integration</a></li><li><a href="infra/reply-management.html">Reply management</a></li></ul><h4>Lists + Targeting</h4><ul><li><a href="lists/icp.html">Defining the ICP</a></li><li><a href="lists/databases.html">Lead databases</a></li><li><a href="lists/clay.html">Clay and enrichment</a></li><li><a href="lists/verification.html">Verification + hygiene</a></li><li><a href="lists/intent-signals.html">Intent signals</a></li><li><a href="lists/segmentation.html">Segmentation strategy</a></li></ul><h4>Copy</h4><ul><li><a href="copy/anatomy.html">Cold email anatomy</a></li><li><a href="copy/subject-lines.html">Subject lines</a></li><li><a href="copy/first-lines.html">First lines</a></li><li><a href="copy/the-pitch.html">The pitch</a></li><li><a href="copy/ctas.html">CTAs for cold</a></li><li><a href="copy/signatures.html">Signatures</a></li><li><a href="copy/personalization.html">Personalization at scale</a></li></ul><h4>Sequences</h4><ul><li><a href="sequences/multi-touch.html">Multi-touch sequences</a></li><li><a href="sequences/cadence.html">Cadence and timing</a></li><li><a href="sequences/breakup.html">The breakup email</a></li><li><a href="sequences/multi-channel.html">Multi-channel orchestration</a></li><li><a href="sequences/length.html">Sequence length</a></li></ul><h4>Testing</h4><ul><li><a href="testing/methodology.html">Testing methodology</a></li><li><a href="testing/what-to-test.html">What to test</a></li><li><a href="testing/reply-metrics.html">Reply rate vs positive reply</a></li><li><a href="testing/iteration.html">The iteration loop</a></li></ul><h4>Playbooks</h4><ul><li><a href="plays/b2b-saas.html">B2B SaaS outbound</a></li><li><a href="plays/agency.html">Agency + services outbound</a></li><li><a href="plays/founder-led.html">Founder-led outbound</a></li><li><a href="plays/sdr-led.html">SDR-led outbound</a></li><li><a href="plays/link-building.html">Cold email for SEO</a></li><li><a href="plays/recruiting.html">Recruiting outreach</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">Cold Email</a><span class="sep">›</span><span>IP reputation</span></div><h1 class="title">IP reputation</h1><div class="article-meta"><span>📖 4 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">IP reputation is a per-IP score that email providers maintain. It influences whether messages from that IP get inbox placement, promotions placement, or spam folder. Understanding shared vs dedicated IPs and how reputation builds changes how you architect sending.</p>
+
+<h2>How IP reputation is built</h2>
+<p>Gmail, Outlook, and others track every sending IP's:</p>
+<ul>
+  <li>Volume over time (sudden spikes look spammy)</li>
+  <li>Bounce rate (high bounces = bad list)</li>
+  <li>Complaint rate (high complaints = spam)</li>
+  <li>Engagement (opens, replies, forwards)</li>
+  <li>Unsubscribe rate</li>
+  <li>Content patterns</li>
+  <li>Authentication pass rate</li>
+</ul>
+
+<p>The score is invisible to you. What you see: inbox placement dropping, spam rate rising, Postmaster Tools showing reputation at "Low" or "Bad."</p>
+
+<h2>Shared vs dedicated IPs</h2>
+
+<h3>Shared IP (default for most cold email)</h3>
+<p>When you use Google Workspace, Microsoft 365, or most cold email tools, your outbound traffic goes through IPs shared with other senders. The provider manages the pool.</p>
+
+<p>Pros:</p>
+<ul>
+  <li>No setup</li>
+  <li>Reputation is established (assuming the pool is well-managed)</li>
+  <li>Lower volume per sender = less likely to hit rate limits</li>
+</ul>
+
+<p>Cons:</p>
+<ul>
+  <li>Your reputation is partly tied to other senders in the pool</li>
+  <li>If a major spammer uses the same pool, you suffer</li>
+  <li>You have no direct control</li>
+</ul>
+
+<p>For Google Workspace mailboxes sending cold email, you're on shared IPs and generally that's fine. Google's pool management is strong.</p>
+
+<h3>Dedicated IP (SMTP providers, high volume)</h3>
+<p>Paid SMTP providers (SendGrid, Mailgun, SES with dedicated IP) give you an IP used only by you. Your reputation is entirely your own.</p>
+
+<p>Pros:</p>
+<ul>
+  <li>Your reputation is purely a function of your behavior</li>
+  <li>No contamination from other senders</li>
+  <li>Higher volume ceilings</li>
+</ul>
+
+<p>Cons:</p>
+<ul>
+  <li>Starts with zero reputation, must warm like a new mailbox</li>
+  <li>Requires sustained volume to maintain reputation (low volume = slow degradation)</li>
+  <li>Higher cost</li>
+  <li>More operational complexity</li>
+</ul>
+
+<p>Dedicated IPs make sense when you're sending 50K+ emails/day from one system. For typical cold email operations (1000-5000/day across 10 mailboxes), shared IPs are usually fine.</p>
+
+<h2>The cold email reality in 2026</h2>
+<p>Most successful cold email operations use:</p>
+<ul>
+  <li>Google Workspace or Microsoft 365 (shared IP, managed by provider)</li>
+  <li>Multiple mailboxes across multiple domains</li>
+  <li>Volume capped at ~30-50/day per mailbox</li>
+  <li>Warming running continuously</li>
+</ul>
+
+<p>This approach doesn't need dedicated IPs. The complexity would outweigh the benefit.</p>
+
+<h2>IP reputation vs domain reputation</h2>
+<p>Both exist. They're related but distinct:</p>
+<ul>
+  <li>IP reputation: about the sending server</li>
+  <li>Domain reputation: about your from-domain</li>
+</ul>
+
+<p>Gmail weights domain reputation heavily. Outlook/Microsoft weights IP reputation heavily. Both matter. Bad behavior damages both.</p>
+
+<h2>How to check IP reputation</h2>
+<ul>
+  <li><strong>Google Postmaster Tools</strong>: shows IP and domain reputation for Gmail</li>
+  <li><strong>Microsoft SNDS (Smart Network Data Services)</strong>: shows IP reputation for Outlook/Hotmail</li>
+  <li><strong>Talos Intelligence</strong>: Cisco's database, shows IP reputation</li>
+  <li><strong>MXToolbox blacklist check</strong>: shows if the IP is listed on spam blacklists</li>
+  <li><strong>Spamhaus</strong>: the most-respected spam blacklist database</li>
+</ul>
+
+<h2>Blacklists</h2>
+<p>Being on a blacklist means some providers will reject or filter emails from that IP or domain. Major blacklists:</p>
+<ul>
+  <li>Spamhaus (SBL, XBL, PBL, CSS)</li>
+  <li>Barracuda</li>
+  <li>SpamCop</li>
+  <li>Invaluement</li>
+  <li>SORBS</li>
+</ul>
+
+<p>If you end up on a blacklist, follow the de-listing process for that service. It's usually free but slow (days to weeks). Prevention is much cheaper than recovery: maintain low bounce rates, low complaint rates, and clean lists.</p>
+
+<h2>How to protect IP reputation</h2>
+<p>The list is short:</p>
+<ul>
+  <li>Verify every email address before sending</li>
+  <li>Keep bounce rate under 2%</li>
+  <li>Keep complaint rate under 0.1%</li>
+  <li>Remove unengaged recipients after ~3-6 months of no interaction</li>
+  <li>Honor unsubscribes immediately</li>
+  <li>Don't buy lists of unknown quality</li>
+  <li>Don't send to role-based addresses (info@, sales@) that often get complained about</li>
+  <li>Don't send from new IPs/domains without warming</li>
+  <li>Maintain consistent volume (don't spike)</li>
+</ul>
+
+<h2>When IP reputation damages you</h2>
+<p>Signs your IP reputation is suffering:</p>
+<ul>
+  <li>Open rates dropping week over week with no copy change</li>
+  <li>Reply rates dropping</li>
+  <li>Postmaster Tools showing "Low" or "Bad" reputation</li>
+  <li>Bounces climbing even though list quality is same</li>
+  <li>Spam folder placement rising (check mail-tester or seed addresses)</li>
+</ul>
+
+<p>Actions:</p>
+<ol>
+  <li>Pause cold sending for 1-2 weeks</li>
+  <li>Continue warming to rebuild reputation</li>
+  <li>Resume at 30-50% of previous volume</li>
+  <li>If no recovery in 4-6 weeks, switch to new sending domains and mailboxes</li>
+</ol>
+
+<h2>The alternative: retire bad infrastructure</h2>
+<p>If a domain or IP has been badly damaged, the fastest path forward is usually not to fix it, it's to switch to new infrastructure. Register a new domain, provision new mailboxes, warm them, resume.</p>
+
+<p>This is why experienced operators always have a second set of domains ready. Infrastructure is disposable. Your offer, list, and copy are the durable assets.</p>
+
+<p style="margin-top:40px;">Next: <a href="spam-triggers.html">Content that triggers spam filters</a>.</p>
+<div class="prev-next"><a href="warming.html" class="prev"><div class="label">← Previous</div><div class="title">Inbox warming</div></a><a href="spam-triggers.html" class="next"><div class="label">Next →</div><div class="title">Content that triggers spam filters</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
+</div></footer></body></html>

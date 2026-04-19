@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Going autonomous | Samuel Ochoa</title>
+<meta name="description" content="What 'fully autonomous' means, the stack it takes, and when autonomy is worth the trouble.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Going autonomous | Samuel Ochoa">
+<meta property="og:description" content="What 'fully autonomous' means, the stack it takes, and when autonomy is worth the trouble.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../index.html">Home</a>
+<a href="../../framework/index.html" class="active">Framework</a>
+<a href="../expertise/index.html">Expertise</a>
+<a href="../playbooks/index.html">Playbooks</a>
+<a href="../writing.html">Writing</a>
+<a href="../../about.html">About</a>
+<a href="../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="what-is-autonomous-ai.html">What is autonomous AI</a></li><li><a href="the-autonomy-spectrum.html">The autonomy spectrum</a></li><li><a href="glossary.html">Glossary</a></li></ul><h4>Claude</h4><ul><li><a href="claude/overview.html">Overview</a></li><li><a href="claude/prompting-for-agents.html">Prompting for agents</a></li><li><a href="claude/extended-thinking.html">Extended thinking</a></li><li><a href="claude/tool-use.html">Tool use</a></li></ul><h4>MCP</h4><ul><li><a href="mcp/index.html">Overview</a></li><li><a href="mcp/what-is-mcp.html">What is MCP</a></li><li><a href="mcp/anatomy.html">Anatomy</a></li><li><a href="mcp/transports.html">Transports</a></li><li><a href="mcp/servers.html">Servers</a></li><li><a href="mcp/clients.html">Clients</a></li><li><a href="mcp/security.html">Security</a></li><li><a href="mcp/directory.html">Directory</a></li></ul><h4>Plugins</h4><ul><li><a href="plugins/index.html">Overview</a></li><li><a href="plugins/vs-mcp.html">Plugins vs MCP</a></li><li><a href="plugins/marketplace.html">Marketplace</a></li></ul><h4>Claude Code</h4><ul><li><a href="claude-code/index.html">Overview</a></li><li><a href="claude-code/settings.html">Settings</a></li><li><a href="claude-code/permissions.html">Permissions</a></li><li><a href="claude-code/hooks.html">Hooks</a></li><li><a href="claude-code/skills.html">Skills</a></li><li><a href="claude-code/memory.html">Memory</a></li></ul><h4>Patterns</h4><ul><li><a href="patterns/index.html">Overview</a></li><li><a href="patterns/react-loop.html">ReAct loop</a></li><li><a href="patterns/plan-execute.html">Plan-execute</a></li><li><a href="patterns/multi-agent.html">Multi-agent</a></li><li><a href="patterns/evaluation.html">Evaluation</a></li><li><a href="patterns/prompt-caching.html">Prompt caching</a></li></ul><h4>Autonomous</h4><ul><li><a href="autonomous/index.html" class="active">Overview</a></li><li><a href="autonomous/headless.html">Headless</a></li><li><a href="autonomous/scheduling.html">Scheduling</a></li><li><a href="autonomous/self-monitoring.html">Self-monitoring</a></li><li><a href="autonomous/safety.html">Safety</a></li></ul><h4>Build Guides</h4><ul><li><a href="build/index.html">Overview</a></li><li><a href="build/first-agent.html">First agent (60 min)</a></li><li><a href="build/voice-agent.html">Voice agent</a></li><li><a href="build/research-agent.html">Research agent</a></li></ul><h4>Tools</h4><ul><li><a href="tools/browser-automation.html">Browser automation</a></li><li><a href="tools/desktop-control.html">Desktop control</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Framework</a><span class="sep">›</span><a href="../autonomous/index.html">Autonomous</a><span class="sep">›</span><span>Going autonomous</span></div><h1 class="title" style="font-size:clamp(32px,4.5vw,42px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">Going autonomous</h1><div class="article-meta"><span>📖 3 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">Fully autonomous means the agent runs without you. Not just "auto mode", actually unattended: on a schedule, in the background, handling its own errors, escalating only when it genuinely can't continue.</p>
+
+<h2>The autonomy stack</h2>
+<p>To reach full autonomy, you need five layers working together:</p>
+<ol>
+  <li><strong>Model</strong>. Claude or equivalent, good enough to complete the task reliably</li>
+  <li><strong>Tools + MCPs</strong>, everything the agent needs to reach to do the work</li>
+  <li><strong>Harness</strong>. Claude Code or equivalent, running the loop</li>
+  <li><strong>Permissions</strong>, a carefully designed allow/deny list</li>
+  <li><strong>Scheduler / trigger</strong>, what starts the agent when a human isn't there</li>
+  <li><strong>Self-monitoring + safety</strong>, how the agent knows when to stop or escalate</li>
+</ol>
+
+<h2>The section</h2>
+<ul class="hub-list">
+  <li><a href="headless.html"><span><span class="hub-title">Headless mode</span><span class="hub-desc">Running Claude Code without a terminal</span></span><span class="hub-arrow">→</span></a></li>
+  <li><a href="scheduling.html"><span><span class="hub-title">Scheduling</span><span class="hub-desc">Crons, triggers, event-driven agents</span></span><span class="hub-arrow">→</span></a></li>
+  <li><a href="self-monitoring.html"><span><span class="hub-title">Self-monitoring</span><span class="hub-desc">Agents watching themselves</span></span><span class="hub-arrow">→</span></a></li>
+  <li><a href="safety.html"><span><span class="hub-title">Safety boundaries</span><span class="hub-desc">Guardrails, kill switches, approvals</span></span><span class="hub-arrow">→</span></a></li>
+</ul>
+
+<h2>Is autonomy worth it?</h2>
+<p>Not always. Autonomy is worth it when:</p>
+<ul>
+  <li>The task recurs frequently (daily/hourly), the cost of each human start-up adds up</li>
+  <li>The task happens outside business hours (after-hours monitoring, timezone coverage)</li>
+  <li>The task is well-defined and the failure modes are bounded</li>
+  <li>You trust the output enough that a post-hoc review is acceptable</li>
+</ul>
+<p>Autonomy is not worth it when:</p>
+<ul>
+  <li>The task runs once a quarter, just do it manually with a Level 3 agent</li>
+  <li>The failure modes include "sent the wrong thing to all customers"</li>
+  <li>Every output needs human judgment to be useful</li>
+  <li>You haven't yet run the task reliably in Level 3 (human-in-the-loop) mode. Get Level 3 right before graduating.</li>
+</ul>
+<div class="prev-next"><a href="../patterns/prompt-caching.html" class="prev"><div class="label">← Previous</div><div class="title">Prompt caching</div></a><a href="headless.html" class="next"><div class="label">Next →</div><div class="title">Headless mode</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../framework/index.html">Framework</a></p>
+</div></footer></body></html>

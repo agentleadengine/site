@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tool budgets + limits | Samuel Ochoa</title>
+<meta name="description" content="Without budgets, an agent can run away: thousands of tool calls, exhausted APIs, massive bills. Here's how to stop that.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tool budgets + limits | Samuel Ochoa">
+<meta property="og:description" content="Without budgets, an agent can run away: thousands of tool calls, exhausted APIs, massive bills. Here's how to stop that.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="loops/react.html">ReAct</a></li><li><a href="loops/tool-use.html">Tool use</a></li><li><a href="loops/planning.html">Planning loops</a></li><li><a href="loops/reflection.html">Reflection</a></li><li><a href="loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="tools/tool-design.html">Tool design</a></li><li><a href="tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="tools/error-handling.html">Tool error handling</a></li><li><a href="tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="tools/tool-budgets.html" class="active">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="memory/short-term.html">Short-term memory</a></li><li><a href="memory/long-term.html">Long-term memory</a></li><li><a href="memory/episodic.html">Episodic memory</a></li><li><a href="memory/procedural.html">Procedural memory</a></li><li><a href="memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="multi/peer-agents.html">Peer agents</a></li><li><a href="multi/debate.html">Debate + consensus</a></li><li><a href="multi/handoffs.html">Agent handoffs</a></li><li><a href="multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="eval/why-eval-agents.html">Why eval agents</a></li><li><a href="eval/task-completion.html">Task completion</a></li><li><a href="eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="prod/observability.html">Observability + tracing</a></li><li><a href="prod/cost-control.html">Cost control</a></li><li><a href="prod/latency.html">Latency optimization</a></li><li><a href="prod/safety.html">Safety + guardrails</a></li><li><a href="prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="patterns/research-agent.html">Research agent</a></li><li><a href="patterns/coding-agent.html">Coding agent</a></li><li><a href="patterns/customer-support.html">Customer support agent</a></li><li><a href="patterns/data-analyst.html">Data analyst agent</a></li><li><a href="patterns/browser-agent.html">Browser agent</a></li><li><a href="patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="frameworks/langgraph.html">LangGraph</a></li><li><a href="frameworks/crewai.html">CrewAI</a></li><li><a href="frameworks/autogen.html">AutoGen</a></li><li><a href="frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>Tool budgets + limits</span></div><h1 class="title">Tool budgets + limits</h1><div class="article-meta"><span>📖 3 min read</span><span>Updated 2026-04-19</span></div>
+<p class="lede">A runaway agent can make hundreds of tool calls in minutes. Without budgets, this means exhausted API quotas, massive bills, and sometimes infinite loops. Budget enforcement is a non-negotiable production practice.</p>
+
+<h2>The layers of budget</h2>
+
+<h3>Per-session</h3>
+<p>Max tool calls, max LLM tokens, max total time, max dollar cost per agent session. If any limit hits, the agent is stopped.</p>
+
+<h3>Per-tool</h3>
+<p>Rate limits per tool. "This tool can be called 10 times per session max." Prevents overuse of specific expensive operations.</p>
+
+<h3>Per-user</h3>
+<p>Cost limit per user per day. Prevents one user's runaway session from consuming the whole budget.</p>
+
+<h3>Global</h3>
+<p>Hard cap on total concurrent agent sessions or total spend per hour. Last line of defense.</p>
+
+<h2>Hard stops</h2>
+<ul>
+<li>Max iterations reached (e.g., 30 steps)</li>
+<li>Max cost reached (e.g., $2 per session)</li>
+<li>Max time elapsed (e.g., 5 minutes)</li>
+<li>Infinite loop detected (same tool + args called N times)</li>
+</ul>
+
+<h2>Loop detection</h2>
+<p>Track a hash of (tool_name, args) per session. If the same hash appears 3 times in a row, the agent is probably stuck. Break and return what you have.</p>
+
+<h2>Graceful termination</h2>
+<p>When budget is reached, don't just stop. Give the LLM one final turn: "Your budget is reached. Summarize what you've found and give the best answer you can with current info."</p>
+
+<h2>Surface budget status to the LLM</h2>
+<p>Include remaining budget in the agent's context. "You have 5 tool calls and $0.20 remaining." The agent can self-ration.</p>
+
+<h2>Per-tool rate limiting</h2>
+<p>Some tools are expensive (GPU inference, third-party API with per-call fees). Rate-limit them specifically:</p>
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
+tool_limits = {
+    "expensive_ml_model": 3,  # max 3 calls per session
+    "search_web": 10,
+    "read_file": 50,
+}
+</pre>
+
+<h2>Observability of budget usage</h2>
+<p>Log every session's final budget consumption. Alert on sessions that hit budget ceilings frequently, signal of bad prompts, buggy tools, or adversarial users.</p>
+<div class="prev-next"><a href="parallel-tools.html" class="prev"><div class="label">← Previous</div><div class="title">Parallel tool calls</div></a><a href="../memory/short-term.html" class="next"><div class="label">Next →</div><div class="title">Short-term memory</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
+</div></footer></body></html>

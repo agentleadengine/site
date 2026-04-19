@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generation metrics | Samuel Ochoa</title>
+<meta name="description" content="Faithfulness, answer relevance, correctness. How to measure whether the LLM is using retrieved context well.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Generation metrics | Samuel Ochoa">
+<meta property="og:description" content="Faithfulness, answer relevance, correctness. How to measure whether the LLM is using retrieved context well.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../about.html">About</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>RAGS to Riches (56 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-rag.html">What is RAG?</a></li><li><a href="foundations/why-rag.html">Why RAG over fine-tuning</a></li><li><a href="foundations/the-architecture.html">The RAG architecture map</a></li><li><a href="foundations/when-not-to-use.html">When not to use RAG</a></li></ul><h4>Documents + Ingestion</h4><ul><li><a href="docs/ingestion-pipeline.html">The ingestion pipeline</a></li><li><a href="docs/parsing-pdfs.html">Parsing PDFs</a></li><li><a href="docs/parsing-html.html">Parsing HTML + web pages</a></li><li><a href="docs/tables-figures.html">Tables and figures</a></li><li><a href="docs/ocr.html">OCR for scanned documents</a></li><li><a href="docs/metadata.html">Metadata extraction</a></li></ul><h4>Chunking</h4><ul><li><a href="chunking/why-chunking.html">Why chunking matters</a></li><li><a href="chunking/fixed-size.html">Fixed-size chunking</a></li><li><a href="chunking/semantic.html">Semantic chunking</a></li><li><a href="chunking/recursive.html">Recursive chunking</a></li><li><a href="chunking/structure-aware.html">Structure-aware chunking</a></li><li><a href="chunking/chunking-code.html">Chunking code</a></li></ul><h4>Embeddings</h4><ul><li><a href="embeddings/what-are-embeddings.html">What embeddings are</a></li><li><a href="embeddings/picking-a-model.html">Picking an embedding model</a></li><li><a href="embeddings/closed-vs-open.html">Closed vs open models</a></li><li><a href="embeddings/dimensions-cost.html">Dimensions, cost, and MRL</a></li><li><a href="embeddings/fine-tuning.html">Fine-tuning embeddings</a></li></ul><h4>Vector Stores</h4><ul><li><a href="vectors/overview.html">Vector database overview</a></li><li><a href="vectors/indexing-strategies.html">HNSW, IVF, PQ</a></li><li><a href="vectors/hybrid-search.html">Hybrid search</a></li><li><a href="vectors/metadata-filtering.html">Metadata filtering</a></li><li><a href="vectors/cost-optimization.html">Cost optimization</a></li><li><a href="vectors/choosing-a-db.html">Choosing a vector DB</a></li></ul><h4>Retrieval Strategies</h4><ul><li><a href="retrieval/vector-search.html">Vector similarity search</a></li><li><a href="retrieval/bm25-sparse.html">BM25 and sparse retrieval</a></li><li><a href="retrieval/hybrid.html">Hybrid retrieval</a></li><li><a href="retrieval/reranking.html">Reranking</a></li><li><a href="retrieval/query-rewriting.html">Query rewriting</a></li><li><a href="retrieval/hyde.html">HyDE</a></li><li><a href="retrieval/multi-query.html">Multi-query + fusion</a></li></ul><h4>Advanced Patterns</h4><ul><li><a href="advanced/agentic-rag.html">Agentic RAG</a></li><li><a href="advanced/graph-rag.html">GraphRAG</a></li><li><a href="advanced/adaptive-rag.html">Adaptive RAG</a></li><li><a href="advanced/corrective-rag.html">Corrective RAG (CRAG)</a></li><li><a href="advanced/self-rag.html">Self-RAG</a></li><li><a href="advanced/multi-hop.html">Multi-hop RAG</a></li></ul><h4>Evaluation</h4><ul><li><a href="eval/why-eval.html">Why evaluation is critical</a></li><li><a href="eval/retrieval-metrics.html">Retrieval metrics</a></li><li><a href="eval/generation-metrics.html" class="active">Generation metrics</a></li><li><a href="eval/ragas-and-frameworks.html">RAGAS, TruLens, ARES</a></li><li><a href="eval/building-eval-datasets.html">Building eval datasets</a></li></ul><h4>Production</h4><ul><li><a href="prod/latency.html">Latency optimization</a></li><li><a href="prod/caching.html">Caching strategies</a></li><li><a href="prod/observability.html">Observability and tracing</a></li><li><a href="prod/cost.html">Cost management</a></li><li><a href="prod/security.html">Security and prompt injection</a></li></ul><h4>Use Cases</h4><ul><li><a href="cases/customer-support.html">Customer support RAG</a></li><li><a href="cases/internal-kb.html">Internal knowledge RAG</a></li><li><a href="cases/code-rag.html">Code search + generation</a></li><li><a href="cases/legal-compliance.html">Legal and compliance</a></li><li><a href="cases/multi-tenant.html">Multi-tenant RAG</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">RAGS to Riches</a><span class="sep">›</span><span>Generation metrics</span></div><h1 class="title">Generation metrics</h1><div class="article-meta"><span>📖 4 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">Retrieval metrics tell you if the right chunks were found. Generation metrics tell you if the LLM used them to produce a good answer. Both matter. A system with great retrieval and bad generation is still bad. A system with bad retrieval and great generation hallucinates confidently.</p>
+
+<h2>The three metrics</h2>
+
+<h3>Faithfulness</h3>
+<p>Does the answer only say things supported by the retrieved context? Or does it hallucinate?</p>
+
+<p>Measurement:</p>
+<ol>
+  <li>Break the answer into individual claims</li>
+  <li>For each claim, check if the retrieved context supports it</li>
+  <li>Faithfulness score = supported claims / total claims</li>
+</ol>
+
+<p>Low faithfulness = hallucinations. The single most important metric for trustworthy RAG.</p>
+
+<h3>Answer relevance</h3>
+<p>Does the answer address what the user asked, regardless of correctness?</p>
+
+<p>Measurement: LLM-as-judge scores the answer for relevance to the question on a 1-5 scale, or the answer is embedded and compared to the question.</p>
+
+<p>Low answer relevance = the model is answering a different question or dodging.</p>
+
+<h3>Correctness</h3>
+<p>Is the answer factually right? Requires ground-truth answers.</p>
+
+<p>Measurement: compare answer to reference answer via LLM judge or exact match or semantic similarity.</p>
+
+<p>This is harder to scale but the ultimate test of quality.</p>
+
+<h2>LLM-as-judge</h2>
+<p>Most generation evaluation uses an LLM to judge outputs:</p>
+
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:12px;">
+SYSTEM: You are evaluating the faithfulness of an AI-generated answer.
+Given a question, retrieved context, and an answer, judge whether
+every claim in the answer is supported by the context.
+
+Score:
+- 1: completely faithful
+- 0.5: mostly faithful, minor unsupported claims
+- 0: many unsupported claims or fabrications
+
+USER:
+Question: [q]
+Context: [retrieved chunks]
+Answer: [generated answer]
+
+Your score and reasoning:
+</pre>
+
+<p>Caveats:</p>
+<ul>
+  <li>Use a strong judge model (GPT-4, Claude Opus-level)</li>
+  <li>Avoid using the same model that generated the answer (bias)</li>
+  <li>Run each eval 3-5 times and average (stability)</li>
+  <li>Calibrate against human judgment regularly</li>
+</ul>
+
+<h2>Claim-level faithfulness</h2>
+<p>Rather than rating the whole answer, break it into claims and check each:</p>
+
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:12px;">
+Answer: "Our refund policy allows 30 days from purchase, with free
+returns on orders over $50, and no returns on final-sale items."
+
+Claims:
+1. Refund policy allows 30 days from purchase. → Supported? Yes/No
+2. Free returns on orders over $50. → Supported? Yes/No
+3. No returns on final-sale items. → Supported? Yes/No
+
+Faithfulness = fraction supported
+</pre>
+
+<p>More granular, more reliable than whole-answer scoring.</p>
+
+<h2>Retrieval-aware faithfulness</h2>
+<p>A related metric: context relevance. Of the retrieved chunks, which ones actually contributed to the answer?</p>
+
+<p>High context relevance = generator used context well.</p>
+<p>Low context relevance = generator ignored context (relying on pretraining) or retrieval was noisy.</p>
+
+<h2>Exact vs approximate correctness</h2>
+
+<h3>Exact match</h3>
+<p>The answer string matches the reference exactly. Only works for short factual answers.</p>
+
+<h3>Semantic similarity</h3>
+<p>Embed both answers, compare cosine similarity. Handles paraphrasing.</p>
+
+<h3>LLM-as-judge correctness</h3>
+<p>Ask a judge model whether the answer is consistent with the reference. Most flexible.</p>
+
+<h3>Structured output match</h3>
+<p>For answers with structured parts (lists, JSON), compare per-field.</p>
+
+<h2>Combining metrics</h2>
+<p>A composite RAG score:</p>
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
+composite = α × faithfulness + β × relevance + γ × correctness
+</pre>
+
+<p>With typical weights α=0.5, β=0.25, γ=0.25 (faithfulness matters most because hallucinations are the biggest risk).</p>
+
+<p>Composite scores are useful for tracking a single "overall quality" number. For debugging, look at individual metrics.</p>
+
+<h2>Common failure patterns</h2>
+
+<h3>High faithfulness, low relevance</h3>
+<p>The model is citing retrieved context accurately but answering the wrong question. Usually means the retrieved context didn't contain what was needed, and the generator faithfully summarized it.</p>
+
+<h3>High relevance, low faithfulness</h3>
+<p>The model is answering the question well but making up facts. Classic hallucination. The generator is relying on pretraining over retrieved context.</p>
+
+<h3>Low faithfulness and low relevance</h3>
+<p>Both parts of the pipeline are broken. Debug retrieval first (is it returning usable chunks?), then generation.</p>
+
+<h3>High on both, low correctness</h3>
+<p>The answer is faithful to retrieved context and relevant to the question, but still wrong. Probably means the retrieved context itself is wrong, you have bad data in your corpus.</p>
+
+<h2>Measuring during production</h2>
+<p>Offline eval sets are limited. In production, sample a percentage of real queries for offline evaluation:</p>
+<ol>
+  <li>Sample 1-5% of production queries</li>
+  <li>Run the generation eval pipeline on them</li>
+  <li>Track metrics over time</li>
+  <li>Investigate queries that score poorly</li>
+</ol>
+
+<p>This catches distribution drift that your static eval set misses.</p>
+
+<h2>User feedback as a metric</h2>
+<p>The best generation metric: did the user find the answer helpful?</p>
+<ul>
+  <li>Thumbs up / down</li>
+  <li>"Was this helpful?" prompts</li>
+  <li>Follow-up rates (did they ask clarifying questions? that's a bad sign)</li>
+  <li>Task completion (did they stop asking, meaning they got what they needed?)</li>
+</ul>
+
+<p>User feedback is noisy per query but powerful in aggregate. Build it into your product.</p>
+
+<p style="margin-top:40px;">Next: <a href="ragas-and-frameworks.html">RAGAS, TruLens, ARES</a>.</p>
+<div class="prev-next"><a href="retrieval-metrics.html" class="prev"><div class="label">← Previous</div><div class="title">Retrieval metrics</div></a><a href="ragas-and-frameworks.html" class="next"><div class="label">Next →</div><div class="title">RAGAS, TruLens, ARES</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a></p>
+</div></footer></body></html>

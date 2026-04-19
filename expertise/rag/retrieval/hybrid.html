@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hybrid retrieval | Samuel Ochoa</title>
+<meta name="description" content="Hybrid retrieval combines dense and sparse methods, fused into one ranked list. It's the production default for a reason.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hybrid retrieval | Samuel Ochoa">
+<meta property="og:description" content="Hybrid retrieval combines dense and sparse methods, fused into one ranked list. It's the production default for a reason.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../about.html">About</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>RAGS to Riches (56 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-rag.html">What is RAG?</a></li><li><a href="foundations/why-rag.html">Why RAG over fine-tuning</a></li><li><a href="foundations/the-architecture.html">The RAG architecture map</a></li><li><a href="foundations/when-not-to-use.html">When not to use RAG</a></li></ul><h4>Documents + Ingestion</h4><ul><li><a href="docs/ingestion-pipeline.html">The ingestion pipeline</a></li><li><a href="docs/parsing-pdfs.html">Parsing PDFs</a></li><li><a href="docs/parsing-html.html">Parsing HTML + web pages</a></li><li><a href="docs/tables-figures.html">Tables and figures</a></li><li><a href="docs/ocr.html">OCR for scanned documents</a></li><li><a href="docs/metadata.html">Metadata extraction</a></li></ul><h4>Chunking</h4><ul><li><a href="chunking/why-chunking.html">Why chunking matters</a></li><li><a href="chunking/fixed-size.html">Fixed-size chunking</a></li><li><a href="chunking/semantic.html">Semantic chunking</a></li><li><a href="chunking/recursive.html">Recursive chunking</a></li><li><a href="chunking/structure-aware.html">Structure-aware chunking</a></li><li><a href="chunking/chunking-code.html">Chunking code</a></li></ul><h4>Embeddings</h4><ul><li><a href="embeddings/what-are-embeddings.html">What embeddings are</a></li><li><a href="embeddings/picking-a-model.html">Picking an embedding model</a></li><li><a href="embeddings/closed-vs-open.html">Closed vs open models</a></li><li><a href="embeddings/dimensions-cost.html">Dimensions, cost, and MRL</a></li><li><a href="embeddings/fine-tuning.html">Fine-tuning embeddings</a></li></ul><h4>Vector Stores</h4><ul><li><a href="vectors/overview.html">Vector database overview</a></li><li><a href="vectors/indexing-strategies.html">HNSW, IVF, PQ</a></li><li><a href="vectors/hybrid-search.html">Hybrid search</a></li><li><a href="vectors/metadata-filtering.html">Metadata filtering</a></li><li><a href="vectors/cost-optimization.html">Cost optimization</a></li><li><a href="vectors/choosing-a-db.html">Choosing a vector DB</a></li></ul><h4>Retrieval Strategies</h4><ul><li><a href="retrieval/vector-search.html">Vector similarity search</a></li><li><a href="retrieval/bm25-sparse.html">BM25 and sparse retrieval</a></li><li><a href="retrieval/hybrid.html" class="active">Hybrid retrieval</a></li><li><a href="retrieval/reranking.html">Reranking</a></li><li><a href="retrieval/query-rewriting.html">Query rewriting</a></li><li><a href="retrieval/hyde.html">HyDE</a></li><li><a href="retrieval/multi-query.html">Multi-query + fusion</a></li></ul><h4>Advanced Patterns</h4><ul><li><a href="advanced/agentic-rag.html">Agentic RAG</a></li><li><a href="advanced/graph-rag.html">GraphRAG</a></li><li><a href="advanced/adaptive-rag.html">Adaptive RAG</a></li><li><a href="advanced/corrective-rag.html">Corrective RAG (CRAG)</a></li><li><a href="advanced/self-rag.html">Self-RAG</a></li><li><a href="advanced/multi-hop.html">Multi-hop RAG</a></li></ul><h4>Evaluation</h4><ul><li><a href="eval/why-eval.html">Why evaluation is critical</a></li><li><a href="eval/retrieval-metrics.html">Retrieval metrics</a></li><li><a href="eval/generation-metrics.html">Generation metrics</a></li><li><a href="eval/ragas-and-frameworks.html">RAGAS, TruLens, ARES</a></li><li><a href="eval/building-eval-datasets.html">Building eval datasets</a></li></ul><h4>Production</h4><ul><li><a href="prod/latency.html">Latency optimization</a></li><li><a href="prod/caching.html">Caching strategies</a></li><li><a href="prod/observability.html">Observability and tracing</a></li><li><a href="prod/cost.html">Cost management</a></li><li><a href="prod/security.html">Security and prompt injection</a></li></ul><h4>Use Cases</h4><ul><li><a href="cases/customer-support.html">Customer support RAG</a></li><li><a href="cases/internal-kb.html">Internal knowledge RAG</a></li><li><a href="cases/code-rag.html">Code search + generation</a></li><li><a href="cases/legal-compliance.html">Legal and compliance</a></li><li><a href="cases/multi-tenant.html">Multi-tenant RAG</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">RAGS to Riches</a><span class="sep">›</span><span>Hybrid retrieval</span></div><h1 class="title">Hybrid retrieval</h1><div class="article-meta"><span>📖 5 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">Hybrid retrieval runs dense (vector) and sparse (BM25) searches and combines their results. It's the production default for any serious RAG system. This page covers the specific mechanics of how fusion works and where the tuning knobs are.</p>
+
+<h2>The architecture</h2>
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
+              query
+              /    \
+             /      \
+        embed       tokenize
+          |            |
+     vector search  BM25 search
+          |            |
+       top-50       top-50
+          \           /
+           \         /
+          fusion (RRF)
+               |
+          top-50 merged
+               |
+           reranker
+               |
+           top-10
+               |
+         generation
+</pre>
+
+<h2>The two retrievers</h2>
+<ul>
+  <li><strong>Dense retriever</strong>: vector similarity search over embeddings. See <a href="vector-search.html">vector search</a>.</li>
+  <li><strong>Sparse retriever</strong>: BM25 or similar keyword-based scoring. See <a href="bm25-sparse.html">BM25 and sparse retrieval</a>.</li>
+</ul>
+
+<p>They run in parallel, each returning their own ranked list.</p>
+
+<h2>Fusion with Reciprocal Rank Fusion (RRF)</h2>
+<p>The standard combination method. Each document's final score is the sum of reciprocal ranks across retrievers:</p>
+
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
+final_rrf(d) = sum(1 / (k + rank_i(d))) for each retriever i
+</pre>
+
+<p>Where k is a small constant (default 60). Documents in both lists get scored from both; documents in only one get scored from that one only.</p>
+
+<p>Why RRF works well:</p>
+<ul>
+  <li>Score-scale-independent: dense scores (0-1) and BM25 scores (0-30+) don't need normalization</li>
+  <li>Simple, deterministic, no tuning</li>
+  <li>Robust across different retriever combinations</li>
+</ul>
+
+<h2>Alternative fusion methods</h2>
+
+<h3>Normalized weighted sum</h3>
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
+final = α × norm(dense_score) + (1-α) × norm(sparse_score)
+</pre>
+<p>Requires choosing α. Can tune on eval set. Typical α: 0.5 to 0.7 (slight dense bias).</p>
+
+<h3>CombSUM, CombMAX, CombMNZ</h3>
+<p>Variants on score combination. Rarely materially better than RRF in practice.</p>
+
+<h3>Learned fusion (LTR)</h3>
+<p>Train a learning-to-rank model on labeled query-document pairs. Most complex, potentially highest quality. Worth it at serious scale with labeled data.</p>
+
+<h2>Native hybrid in vector DBs</h2>
+
+<h3>Weaviate</h3>
+<p>Native hybrid search with an alpha parameter (0 = pure sparse, 1 = pure dense). Simplest ergonomics.</p>
+
+<h3>Qdrant</h3>
+<p>Sparse vector support plus dense in one query. RRF or custom fusion.</p>
+
+<h3>Pinecone</h3>
+<p>Sparse-dense hybrid with rerank-on-top pattern.</p>
+
+<h3>Elasticsearch / OpenSearch</h3>
+<p>Excellent BM25 plus vector support. Rank fusion via RRF available.</p>
+
+<h3>Vespa</h3>
+<p>Strong hybrid with custom ranking expressions.</p>
+
+<h2>The right top-k per retriever</h2>
+<p>For RRF, retrieve deeper than your final desired count:</p>
+<ul>
+  <li>Want 10 final results? Retrieve top-50 from each retriever, fuse, take top-50 merged, rerank.</li>
+  <li>Want 50 final results? Retrieve top-100+ from each retriever.</li>
+</ul>
+
+<p>The deeper retrieval gives RRF more signal. Diminishing returns beyond top-100 per retriever for most applications.</p>
+
+<h2>Where hybrid falls short</h2>
+
+<h3>Queries with no good sparse signal</h3>
+<p>Purely semantic queries ("what's the meaning of X") don't get much help from BM25 if the query terms are different from any document terms.</p>
+
+<h3>Corpora with non-text content</h3>
+<p>BM25 doesn't help when documents are primarily tables, numbers, or images.</p>
+
+<h3>Extremely noisy text</h3>
+<p>OCR'd text with errors can match BM25 on typos; dense embeddings are more robust to this.</p>
+
+<p>Hybrid is a reliable default, not a universal solution.</p>
+
+<h2>The diagnostic workflow</h2>
+<p>When a query is failing:</p>
+<ol>
+  <li>Run dense-only: did it return the right answer?</li>
+  <li>Run sparse-only: did it return the right answer?</li>
+  <li>Run hybrid: did fusion hurt or help?</li>
+</ol>
+
+<p>If dense has it and hybrid doesn't, fusion is buffering the right answer with weaker sparse results. Tune fusion weight.</p>
+<p>If sparse has it and hybrid doesn't, the same in reverse.</p>
+<p>If neither has it, it's a chunking or embedding problem upstream.</p>
+
+<h2>Metrics</h2>
+<p>Measure each retriever separately and the hybrid result. Hit rate@10 and MRR for each. Over time you'll build intuition for which query types need which retriever.</p>
+
+<p>Some queries do best on dense only. Some do best on sparse only. Hybrid averages them, which is usually, but not always, a win. Diagnostic data helps you decide when to override hybrid with a routing strategy.</p>
+
+<p style="margin-top:40px;">Next: <a href="reranking.html">Reranking</a>.</p>
+<div class="prev-next"><a href="bm25-sparse.html" class="prev"><div class="label">← Previous</div><div class="title">BM25 and sparse retrieval</div></a><a href="reranking.html" class="next"><div class="label">Next →</div><div class="title">Reranking</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a></p>
+</div></footer></body></html>

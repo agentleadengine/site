@@ -1,0 +1,2358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prompt library | Insurance Agent Playbook</title>
+<meta name="description" content="All 67 prompts from the playbook, searchable and filterable by type and insurance line.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Prompt library | Insurance Agent Playbook">
+<meta property="og:description" content="All 67 prompts from the playbook, searchable and filterable by type and insurance line.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+
+<style>
+/* Playbook-specific styles */
+.playbook-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 0;
+    min-height: calc(100vh - 80px);
+    max-width: 1400px;
+    margin: 0 auto;
+    background: #fff;
+}
+.playbook-sidebar {
+    background: #fafafa;
+    border-right: 1px solid #e5e5ea;
+    padding: 32px 24px;
+    position: sticky;
+    top: 80px;
+    height: calc(100vh - 80px);
+    overflow-y: auto;
+}
+.playbook-sidebar h4 {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--gray-500, #8e8e93);
+    margin: 0 0 12px 0;
+}
+.playbook-progress {
+    background: #fff;
+    border: 1px solid #e5e5ea;
+    border-radius: 6px;
+    padding: 14px;
+    margin-bottom: 24px;
+}
+.playbook-progress-bar {
+    height: 6px;
+    background: #f0f0f5;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: 8px;
+}
+.playbook-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4a00e0, #7c3aed);
+    transition: width 0.3s;
+}
+.playbook-progress-text {
+    font-size: 12px;
+    color: var(--gray-500, #666);
+    display: flex;
+    justify-content: space-between;
+}
+.playbook-progress-text strong {
+    color: #4a00e0;
+}
+.playbook-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px 0;
+}
+.playbook-sidebar li {
+    margin: 2px 0;
+}
+.playbook-sidebar a {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    font-size: 14px;
+    color: #333;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.15s;
+    position: relative;
+}
+.playbook-sidebar a:hover {
+    background: #fff;
+    color: #4a00e0;
+}
+.playbook-sidebar a.active {
+    background: #4a00e0;
+    color: #fff;
+    font-weight: 500;
+}
+.playbook-sidebar a.completed::before {
+    content: "✓";
+    margin-right: 8px;
+    color: #10b981;
+    font-weight: 700;
+}
+.playbook-sidebar a.active.completed::before {
+    color: #fff;
+}
+.playbook-content {
+    padding: 48px 56px;
+    max-width: 820px;
+}
+.playbook-header {
+    margin-bottom: 48px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #e5e5ea;
+}
+.playbook-module-label {
+    display: inline-block;
+    background: #f3f0ff;
+    color: #4a00e0;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    margin-bottom: 12px;
+}
+.playbook-content h1.title {
+    font-size: 36px;
+    line-height: 1.2;
+    margin: 0 0 8px 0;
+}
+.playbook-subtitle {
+    font-size: 18px;
+    color: var(--gray-500, #666);
+    margin: 0;
+}
+.playbook-content h2 {
+    font-size: 24px;
+    margin: 40px 0 16px 0;
+    padding-top: 8px;
+}
+.playbook-content h3 {
+    font-size: 18px;
+    margin: 28px 0 12px 0;
+}
+.playbook-content p, .playbook-content li {
+    font-size: 16px;
+    line-height: 1.7;
+}
+.playbook-content ul, .playbook-content ol {
+    padding-left: 24px;
+}
+.playbook-content li {
+    margin: 6px 0;
+}
+
+/* Prompt template blocks */
+.prompt-box {
+    background: #1a1a2e;
+    color: #e4e4e7;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 20px 0;
+    position: relative;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13.5px;
+    line-height: 1.6;
+    overflow: hidden;
+}
+.prompt-box pre {
+    margin: 0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+.prompt-box-label {
+    display: inline-block;
+    background: #4a00e0;
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    margin-bottom: 12px;
+    font-family: 'Inter', sans-serif;
+}
+.copy-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    transition: all 0.15s;
+}
+.copy-btn:hover {
+    background: rgba(255,255,255,0.2);
+    border-color: rgba(255,255,255,0.35);
+}
+.copy-btn.copied {
+    background: #10b981;
+    border-color: #10b981;
+}
+
+/* Callout boxes */
+.callout {
+    background: #f3f0ff;
+    border-left: 4px solid #4a00e0;
+    padding: 16px 20px;
+    margin: 20px 0;
+    border-radius: 0 8px 8px 0;
+}
+.callout.warning {
+    background: #fff7ed;
+    border-left-color: #f97316;
+}
+.callout.success {
+    background: #f0fdf4;
+    border-left-color: #10b981;
+}
+.callout-title {
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+    color: #4a00e0;
+}
+.callout.warning .callout-title {
+    color: #ea580c;
+}
+.callout.success .callout-title {
+    color: #059669;
+}
+.callout p {
+    margin: 0 0 8px 0;
+}
+.callout p:last-child {
+    margin-bottom: 0;
+}
+
+/* Insurance-type tabs */
+.tabs {
+    display: flex;
+    gap: 4px;
+    margin: 24px 0 16px;
+    border-bottom: 2px solid #e5e5ea;
+    padding-bottom: 0;
+    overflow-x: auto;
+}
+.tab-btn {
+    background: none;
+    border: none;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #666;
+    cursor: pointer;
+    position: relative;
+    font-family: inherit;
+    white-space: nowrap;
+}
+.tab-btn:hover { color: #4a00e0; }
+.tab-btn.active {
+    color: #4a00e0;
+    font-weight: 600;
+}
+.tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #4a00e0;
+}
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* Expandable sections */
+.expandable {
+    border: 1px solid #e5e5ea;
+    border-radius: 8px;
+    margin: 12px 0;
+    overflow: hidden;
+}
+.expandable-toggle {
+    width: 100%;
+    background: #fafafa;
+    border: none;
+    padding: 14px 18px;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: left;
+    cursor: pointer;
+    font-family: inherit;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.expandable-toggle:hover { background: #f0f0f5; }
+.expandable-toggle::after {
+    content: '+';
+    font-size: 22px;
+    font-weight: 400;
+    color: #4a00e0;
+    transition: transform 0.2s;
+}
+.expandable.open .expandable-toggle::after {
+    transform: rotate(45deg);
+}
+.expandable-body {
+    display: none;
+    padding: 16px 18px;
+}
+.expandable.open .expandable-body { display: block; }
+
+/* Checklist with persistence */
+.checklist {
+    background: #fafafa;
+    border: 1px solid #e5e5ea;
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 24px 0;
+}
+.checklist-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 6px 0;
+    cursor: pointer;
+}
+.checklist-item input[type=checkbox] {
+    margin-top: 4px;
+    width: 18px;
+    height: 18px;
+    accent-color: #4a00e0;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+.checklist-item label {
+    cursor: pointer;
+    font-size: 15px;
+    line-height: 1.6;
+    user-select: none;
+}
+.checklist-item input[type=checkbox]:checked + label {
+    color: #8e8e93;
+    text-decoration: line-through;
+}
+
+/* Module complete button */
+.module-complete {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid #e5e5ea;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+.btn-complete {
+    background: #4a00e0;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.15s;
+}
+.btn-complete:hover { background: #3b0a8a; }
+.btn-complete.done {
+    background: #10b981;
+    cursor: default;
+}
+.module-nav {
+    display: flex;
+    gap: 12px;
+}
+.module-nav a {
+    padding: 10px 16px;
+    border: 1px solid #e5e5ea;
+    border-radius: 8px;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+.module-nav a:hover {
+    border-color: #4a00e0;
+    color: #4a00e0;
+}
+
+/* Search + filter for prompt library */
+.library-search {
+    display: flex;
+    gap: 12px;
+    margin: 24px 0;
+    flex-wrap: wrap;
+}
+.library-search input {
+    flex: 1;
+    min-width: 240px;
+    padding: 12px 16px;
+    border: 1px solid #e5e5ea;
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: inherit;
+}
+.library-filter {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin: 16px 0 24px;
+}
+.filter-chip {
+    background: #fff;
+    border: 1px solid #e5e5ea;
+    color: #333;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 500;
+}
+.filter-chip:hover { border-color: #4a00e0; color: #4a00e0; }
+.filter-chip.active {
+    background: #4a00e0;
+    color: #fff;
+    border-color: #4a00e0;
+}
+.library-prompt {
+    border: 1px solid #e5e5ea;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 16px 0;
+    background: #fff;
+}
+.library-prompt.hidden { display: none; }
+.library-prompt-title {
+    font-size: 17px;
+    font-weight: 600;
+    margin: 0 0 4px 0;
+}
+.library-prompt-meta {
+    display: flex;
+    gap: 8px;
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+.library-tag {
+    background: #f3f0ff;
+    color: #4a00e0;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.library-count {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 16px;
+}
+
+/* Hero / landing */
+.playbook-hero {
+    background: linear-gradient(135deg, #4a00e0 0%, #7c3aed 100%);
+    color: #fff;
+    padding: 64px 56px;
+    margin: -48px -56px 48px -56px;
+    border-radius: 0;
+}
+.playbook-hero h1 {
+    font-size: 42px;
+    margin: 0 0 12px 0;
+    color: #fff;
+    line-height: 1.15;
+}
+.playbook-hero-subtitle {
+    font-size: 20px;
+    opacity: 0.95;
+    max-width: 600px;
+}
+.playbook-hero-stats {
+    display: flex;
+    gap: 32px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+}
+.playbook-stat strong {
+    display: block;
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1;
+}
+.playbook-stat span {
+    font-size: 13px;
+    opacity: 0.85;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 900px) {
+    .playbook-layout { grid-template-columns: 1fr; }
+    .playbook-sidebar {
+        position: static;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid #e5e5ea;
+    }
+    .playbook-content { padding: 32px 24px; }
+    .playbook-hero { padding: 40px 24px; margin: -32px -24px 32px -24px; }
+    .playbook-hero h1 { font-size: 30px; }
+}
+</style>
+
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../index.html">Home</a>
+<a href="../../framework/index.html">Framework</a>
+<a href="../../expertise/index.html">Expertise</a>
+<a href="../../playbooks/insurance/index.html" class="active">Playbooks</a>
+<a href="../../writing.html">Writing</a>
+<a href="../../contact.html">Contact</a>
+</div>
+</div></nav><div class="playbook-layout"><aside class="playbook-sidebar">
+<div class="playbook-progress">
+    <h4>Your progress</h4>
+    <div class="playbook-progress-text"><span>Modules done</span><strong>0 / 15</strong></div>
+    <div class="playbook-progress-bar"><div class="playbook-progress-fill" style="width:0%"></div></div>
+</div>
+<h4>Modules</h4><ul><li><a href="index.html" class="" data-module="index">Start here</a></li><li><a href="module-01.html" class="" data-module="module-01">Why Claude for insurance marketing</a></li><li><a href="module-02.html" class="" data-module="module-02">Setting up Claude</a></li><li><a href="module-03.html" class="" data-module="module-03">The 10 prompt patterns</a></li><li><a href="module-04.html" class="" data-module="module-04">Prospecting emails</a></li><li><a href="module-05.html" class="" data-module="module-05">Social media content</a></li><li><a href="module-06.html" class="" data-module="module-06">Blog posts + SEO</a></li><li><a href="module-07.html" class="" data-module="module-07">Video scripts</a></li><li><a href="module-08.html" class="" data-module="module-08">Direct mail</a></li><li><a href="module-09.html" class="" data-module="module-09">Referral requests</a></li><li><a href="module-10.html" class="" data-module="module-10">Review responses</a></li><li><a href="module-11.html" class="" data-module="module-11">Newsletter content</a></li><li><a href="module-12.html" class="" data-module="module-12">Facebook + Google ads</a></li><li><a href="module-13.html" class="" data-module="module-13">Client education material</a></li><li><a href="module-14.html" class="" data-module="module-14">The weekly marketing system</a></li><li><a href="module-15.html" class="" data-module="module-15">Compliance checklist</a></li></ul><h4>Resources</h4><ul><li><a href="prompt-library.html" class="active" data-module="prompt-library">📚 Prompt library</a></li></ul></aside><div class="playbook-content"><div class="playbook-header">
+<span class="playbook-module-label">Resource</span>
+<h1 class="title">Prompt library</h1>
+<p class="playbook-subtitle">All 67 prompts from the playbook, searchable and filterable by type and insurance line.</p>
+</div>
+<p>Every prompt from all 15 modules in one searchable index. Use the filters to narrow by topic, or search the box to find a specific asset type. Click any prompt's Copy button to grab it. Fill in the bracketed placeholders with your specifics and run.</p>
+
+<div class="library-search">
+<input type="text" id="library-search-input" placeholder="Search prompts..." />
+</div>
+
+<div class="library-filter"><button class="filter-chip active" data-tag="all">All (67)</button><button class="filter-chip" data-tag="all-lines">all-lines (56)</button><button class="filter-chip" data-tag="email">email (14)</button><button class="filter-chip" data-tag="patterns">patterns (10)</button><button class="filter-chip" data-tag="prospecting">prospecting (8)</button><button class="filter-chip" data-tag="blog">blog (6)</button><button class="filter-chip" data-tag="review">review (6)</button><button class="filter-chip" data-tag="seo">seo (6)</button><button class="filter-chip" data-tag="video">video (6)</button><button class="filter-chip" data-tag="ads">ads (5)</button><button class="filter-chip" data-tag="client-ed">client-ed (5)</button><button class="filter-chip" data-tag="referral">referral (5)</button><button class="filter-chip" data-tag="social">social (5)</button><button class="filter-chip" data-tag="direct-mail">direct-mail (4)</button><button class="filter-chip" data-tag="newsletter">newsletter (4)</button><button class="filter-chip" data-tag="editing">editing (3)</button><button class="filter-chip" data-tag="facebook">facebook (3)</button><button class="filter-chip" data-tag="life">life (3)</button><button class="filter-chip" data-tag="medicare">medicare (3)</button><button class="filter-chip" data-tag="planning">planning (3)</button><button class="filter-chip" data-tag="commercial">commercial (2)</button><button class="filter-chip" data-tag="compliance">compliance (2)</button><button class="filter-chip" data-tag="content">content (2)</button><button class="filter-chip" data-tag="ideation">ideation (2)</button><button class="filter-chip" data-tag="linkedin">linkedin (2)</button><button class="filter-chip" data-tag="pnc">pnc (2)</button><button class="filter-chip" data-tag="repurposing">repurposing (2)</button><button class="filter-chip" data-tag="setup">setup (2)</button><button class="filter-chip" data-tag="system">system (2)</button><button class="filter-chip" data-tag="annuity">annuity (1)</button><button class="filter-chip" data-tag="branding">branding (1)</button><button class="filter-chip" data-tag="case-study">case-study (1)</button><button class="filter-chip" data-tag="google">google (1)</button><button class="filter-chip" data-tag="health">health (1)</button><button class="filter-chip" data-tag="landing-page">landing-page (1)</button><button class="filter-chip" data-tag="local">local (1)</button><button class="filter-chip" data-tag="partner">partner (1)</button><button class="filter-chip" data-tag="personalization">personalization (1)</button><button class="filter-chip" data-tag="research">research (1)</button><button class="filter-chip" data-tag="sequence">sequence (1)</button><button class="filter-chip" data-tag="shorts">shorts (1)</button><button class="filter-chip" data-tag="voice">voice (1)</button></div>
+
+<p class="library-count">67 prompts</p>
+
+
+<div class="library-prompt" data-tags="setup all-lines">
+<h3 class="library-prompt-title">Agent context template</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 2</span>
+<span class="library-tag">setup</span> <span class="library-tag">all-lines</span>
+</div>
+<p>The one-page context you paste at the start of every Claude conversation. Foundational.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P1</div>
+<button class="copy-btn">Copy</button>
+<pre>You are my marketing associate. Before you write anything, here's the context.
+
+ABOUT ME:
+- Name: [Your name]
+- Agency: [Your agency name]
+- State(s) licensed: [State abbreviations]
+- Lines I sell: [e.g., Life, Medicare Supplement, Medicare Advantage, Final Expense, Indexed Universal Life]
+
+MY IDEAL CLIENT:
+- Age range: [e.g., 55-70]
+- Life stage: [e.g., pre-retirement]
+- Key concerns: [what keeps them up at night]
+
+MY VOICE:
+- Tone: [warm but direct, no jargon]
+- Phrases I use: [list 3-5]
+- Phrases I avoid: [list]
+
+COMPLIANCE:
+- Do NOT: mention specific premiums, guarantee returns, use superlatives.
+
+Ready?</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="setup voice all-lines">
+<h3 class="library-prompt-title">Voice sample primer</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 2</span>
+<span class="library-tag">setup</span> <span class="library-tag">voice</span> <span class="library-tag">all-lines</span>
+</div>
+<p>Paste this before any 'write for me' prompt to match your actual voice.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P2</div>
+<button class="copy-btn">Copy</button>
+<pre>Before you write anything for me, here are three examples of how I actually talk.
+
+SAMPLE 1 (email):
+[Paste 200-400 words]
+
+SAMPLE 2 (social post):
+[Paste post]
+
+SAMPLE 3 (voicemail):
+[Paste]
+
+When you write, sound like this. Don't smooth it out. Match me.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="patterns all-lines">
+<h3 class="library-prompt-title">The Briefed Writer</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 3</span>
+<span class="library-tag">patterns</span> <span class="library-tag">all-lines</span>
+</div>
+<p>The foundation prompt for any writing task.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P3</div>
+<button class="copy-btn">Copy</button>
+<pre>Write [asset type] for [audience] about [topic].
+
+Goal: [what you want the reader to do]
+Tone: [from voice samples]
+Length: [word count]
+Must include: [specific points]
+Must NOT include: [forbidden claims]
+
+Output just the copy.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="patterns ideation all-lines">
+<h3 class="library-prompt-title">Angle Generator (10 angles)</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 3</span>
+<span class="library-tag">patterns</span> <span class="library-tag">ideation</span> <span class="library-tag">all-lines</span>
+</div>
+<p>Before writing anything, generate 10 distinct angles and pick one.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P4</div>
+<button class="copy-btn">Copy</button>
+<pre>I'm writing [asset type] about [topic] for [audience].
+
+Give me 10 different angles. Each should be:
+- A one-sentence hook
+- A specific promise
+- Distinct from the others
+
+I'll pick one and we'll write from there.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="patterns editing all-lines">
+<h3 class="library-prompt-title">The Rewrite</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 3</span>
+<span class="library-tag">patterns</span> <span class="library-tag">editing</span> <span class="library-tag">all-lines</span>
+</div>
+<p>Turn rough drafts, voicemails, or carrier material into polished copy in your voice.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P5</div>
+<button class="copy-btn">Copy</button>
+<pre>Rewrite the text below so it's:
+- Clearer to a [audience]
+- Shorter by [%]
+- In my voice
+- Jargon-free
+
+Preserve substance. Don't add claims I didn't make.
+
+[Paste source]</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="patterns repurposing all-lines">
+<h3 class="library-prompt-title">The Multi-Version</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 3</span>
+<span class="library-tag">patterns</span> <span class="library-tag">repurposing</span> <span class="library-tag">all-lines</span>
+</div>
+<p>One idea, multiple channels. Fastest way to get a week of content from one insight.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P6</div>
+<button class="copy-btn">Copy</button>
+<pre>Take this core idea: [idea]
+
+Give me versions for:
+1. 150-word Facebook post
+2. 250-word LinkedIn post
+3. 60-second video script
+4. 50-word SMS
+5. Blog post intro
+6. 3-line voicemail script
+
+Match each channel's conventions.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="patterns editing all-lines">
+<h3 class="library-prompt-title">The Counter-Draft</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 3</span>
+<span class="library-tag">patterns</span> <span class="library-tag">editing</span> <span class="library-tag">all-lines</span>
+</div>
+<p>Take a bland first draft and push it with three alternative takes.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P7</div>
+<button class="copy-btn">Copy</button>
+<pre>Here's the draft: [paste]
+
+Write 3 alternative versions:
+
+Version A: More specific. Replace abstract claims with numbers/scenes.
+Version B: Opens with a story. First 50 words = a scene.
+Version C: Contrarian. Challenges a common belief in my space.
+
+Don't soften. I want choices.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="patterns review all-lines">
+<h3 class="library-prompt-title">The Critic</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 3</span>
+<span class="library-tag">patterns</span> <span class="library-tag">review</span> <span class="library-tag">all-lines</span>
+</div>
+<p>Have Claude review copy as three skeptical personas before you publish.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P8</div>
+<button class="copy-btn">Copy</button>
+<pre>Read the copy as:
+1. A skeptical 65-year-old prospect
+2. A compliance officer
+3. A cynical marketer
+
+For each, list 3 things that would make them stop, push back, or flag. Be blunt.
+
+[Paste copy]</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="patterns research all-lines">
+<h3 class="library-prompt-title">The Persona Interview</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 3</span>
+<span class="library-tag">patterns</span> <span class="library-tag">research</span> <span class="library-tag">all-lines</span>
+</div>
+<p>Roleplay your ideal client and surface their real worries in their own words.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P9</div>
+<button class="copy-btn">Copy</button>
+<pre>Roleplay as [ideal client persona].
+
+Details:
+- [Age, family, income, location]
+- [What they're thinking this week]
+- [Prior experience with agents]
+
+I'll interview you about [topic]. Answer in first person with specific worries. Be specific.
+
+First question: [your question]</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="patterns editing all-lines">
+<h3 class="library-prompt-title">The Specific Translator</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 3</span>
+<span class="library-tag">patterns</span> <span class="library-tag">editing</span> <span class="library-tag">all-lines</span>
+</div>
+<p>Force every vague claim in a piece to become specific and defensible.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P10</div>
+<button class="copy-btn">Copy</button>
+<pre>Every vague claim in the copy below, replace with a specific number, name, time, or example.
+
+If I can't back a specific claim, flag it and suggest a safer specific.
+
+[Paste copy]</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="patterns ideation all-lines">
+<h3 class="library-prompt-title">The Hook Farm</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 3</span>
+<span class="library-tag">patterns</span> <span class="library-tag">ideation</span> <span class="library-tag">all-lines</span>
+</div>
+<p>Generate 10 hooks for any piece, pick the best.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P11</div>
+<button class="copy-btn">Copy</button>
+<pre>Topic: [idea]
+Audience: [who]
+Format: [FB post / blog intro / email subject]
+
+Give me 10 hooks. Just first 15 words. Different patterns:
+- Contrarian
+- Specific number
+- Question
+- Confession
+- News hook
+- Warning
+- Specific character
+- Unusual observation
+- Reframe
+- Direct pain address
+
+No explanations.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="patterns compliance all-lines">
+<h3 class="library-prompt-title">The Compliance Pre-Check</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 3</span>
+<span class="library-tag">patterns</span> <span class="library-tag">compliance</span> <span class="library-tag">all-lines</span>
+</div>
+<p>Scan any piece for common insurance compliance red flags before you publish.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P12</div>
+<button class="copy-btn">Copy</button>
+<pre>Review for compliance issues for [insurance line].
+
+Flag:
+- Superlatives ("best," "cheapest")
+- Guaranteed returns in life/annuity
+- Medicare: CMS-prohibited terms
+- Claims about competitors
+- Rate specifics
+- Fear-based language
+- Missing disclosures
+
+List flags with fixes. Then give revised version.
+
+[Paste copy]</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="email life prospecting">
+<h3 class="library-prompt-title">Life prospecting email (homeowner parent)</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 4</span>
+<span class="library-tag">email</span> <span class="library-tag">life</span> <span class="library-tag">prospecting</span>
+</div>
+<p>Cold prospecting email to homeowners 45-60 with a trigger event.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P13</div>
+<button class="copy-btn">Copy</button>
+<pre>Write a cold prospecting email to a homeowner, age 45-60, in [state]. Trigger: [had a kid / turned 50 / bought a home].
+
+Goal: book a 15-min discovery call.
+- Under 90 words
+- Subject: 4-6 words, lowercase
+- Reference trigger specifically
+- Offer one specific angle
+- Defensible proof point
+- Specific CTA time
+- Signature: name, state, phone
+
+No "I hope this finds you well" / "I wanted to reach out."
+
+Write 3 versions.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="email medicare prospecting">
+<h3 class="library-prompt-title">Medicare T-65 prospecting email</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 4</span>
+<span class="library-tag">email</span> <span class="library-tag">medicare</span> <span class="library-tag">prospecting</span>
+</div>
+<p>Cold email to someone turning 65 in 90 days, CMS-compliant.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P14</div>
+<button class="copy-btn">Copy</button>
+<pre>Write a prospecting email to someone turning 65 in 90 days in [state].
+
+Goal: book 20-min Medicare call.
+- Subject: 3-5 words, personal
+- Acknowledge they've been getting Medicare mail
+- Promise: you don't push one carrier, explain tradeoffs
+- Include local market detail
+- Propose 2 specific times
+- Under 100 words
+
+CMS compliance:
+- No specific plan names
+- Include "We do not offer every plan available in your area..."
+- "Not affiliated with Medicare or any government agency"
+
+3 variants.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="email health prospecting commercial">
+<h3 class="library-prompt-title">Small-group health email</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 4</span>
+<span class="library-tag">email</span> <span class="library-tag">health</span> <span class="library-tag">prospecting</span> <span class="library-tag">commercial</span>
+</div>
+<p>Cold email to a small business owner about rising health premiums at renewal.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P15</div>
+<button class="copy-btn">Copy</button>
+<pre>Write a prospecting email to a small business owner (10-50 employees) in [state].
+
+Pain: rising health premium at renewal.
+Goal: book 20-min review call.
+
+- Subject: 5-7 words about renewal/rising costs
+- Open with [state] small-group premium trend
+- Three levers (plan design, carrier shop, ICHRA/QSEHRA)
+- Propose no-pressure 20-min review
+- Under 100 words
+
+3 versions: casual, data-driven, story-led.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="email pnc prospecting">
+<h3 class="library-prompt-title">P&C homeowner email</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 4</span>
+<span class="library-tag">email</span> <span class="library-tag">pnc</span> <span class="library-tag">prospecting</span>
+</div>
+<p>Cold email to a new homeowner for home + auto bundle review.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P16</div>
+<button class="copy-btn">Copy</button>
+<pre>Write a prospecting email to a new homeowner (bought in last 6 months) in [state].
+
+Goal: quote home+auto bundle.
+- Subject: 4-5 words about new home
+- Acknowledge move (not creepy)
+- One [state] coverage gap most policies miss
+- Offer 10-min quote with their dec page
+- Under 80 words
+
+3 variants.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="email commercial prospecting">
+<h3 class="library-prompt-title">Commercial vertical email</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 4</span>
+<span class="library-tag">email</span> <span class="library-tag">commercial</span> <span class="library-tag">prospecting</span>
+</div>
+<p>Cold email to a commercial vertical (restaurant, contractor, medical) before renewal.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P17</div>
+<button class="copy-btn">Copy</button>
+<pre>Write a prospecting email to a [restaurant/contractor/medical practice/trucking] owner in [state]. Renewal in [month].
+
+Goal: book 15-min call 60-90 days pre-renewal.
+
+- Subject: vertical-specific, 5-7 words
+- First line: vertical-common coverage gap
+- Position as specialist
+- Acknowledge current broker may be fine
+- Specific CTA week
+- Under 120 words
+
+Professional tone. No disparagement.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="email sequence prospecting all-lines">
+<h3 class="library-prompt-title">5-touch follow-up sequence</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 4</span>
+<span class="library-tag">email</span> <span class="library-tag">sequence</span> <span class="library-tag">prospecting</span> <span class="library-tag">all-lines</span>
+</div>
+<p>Generate the full 5-email sequence from your first prospecting email.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P18</div>
+<button class="copy-btn">Copy</button>
+<pre>Given this first email [paste], write a 5-touch sequence:
+
+- Email 2 (day 3): short nudge, new angle, under 50 words
+- Email 3 (day 7): soft reframe, lower-friction ask
+- Email 4 (day 12): case study, anonymized, under 100 words
+- Email 5 (day 20): breakup, closing loop, under 40 words
+
+Same tone. Vary openings.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="email personalization prospecting">
+<h3 class="library-prompt-title">Personalized first line generator</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 4</span>
+<span class="library-tag">email</span> <span class="library-tag">personalization</span> <span class="library-tag">prospecting</span>
+</div>
+<p>Generate custom first lines for 20+ prospects at once.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P19</div>
+<button class="copy-btn">Copy</button>
+<pre>For each prospect, write ONE first line of a cold email (12-20 words) that references something specific and doesn't sound templated.
+
+Avoid:
+- "Hope you're well"
+- "I came across your profile"
+- Generic congrats
+
+PROSPECTS:
+1. [Name, situation, trigger]
+2. [Name, situation, trigger]
+...</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="social content all-lines">
+<h3 class="library-prompt-title">Weekly social content generator</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 5</span>
+<span class="library-tag">social</span> <span class="library-tag">content</span> <span class="library-tag">all-lines</span>
+</div>
+<p>Generate 7 social posts with the right educational-to-pitch mix.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P20</div>
+<button class="copy-btn">Copy</button>
+<pre>Generate 7 posts for this week:
+- 4 educational
+- 1 personal
+- 1 social proof
+- 1 direct ask
+
+Platform: [FB/LinkedIn]
+Audience: [from context]
+Theme: [one theme]
+
+Each 80-180 words. Hook in first line. Plain language. End with question or CTA. Vary openings.
+
+Number with day-of-week.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="social content all-lines">
+<h3 class="library-prompt-title">Common mistake post</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 5</span>
+<span class="library-tag">social</span> <span class="library-tag">content</span> <span class="library-tag">all-lines</span>
+</div>
+<p>"Most people think X. It's actually Y.", one of the highest-engagement post patterns.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P21</div>
+<button class="copy-btn">Copy</button>
+<pre>Write a "common mistake" FB post about [topic].
+
+- Line 1: hook stating the mistake
+- Lines 2-4: why most people believe it
+- Lines 5-8: the actual truth
+- Last line: what to do instead
+
+130 words max. End with "Reply or DM with questions.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="social linkedin all-lines">
+<h3 class="library-prompt-title">Specific scenario post (LinkedIn)</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 5</span>
+<span class="library-tag">social</span> <span class="library-tag">linkedin</span> <span class="library-tag">all-lines</span>
+</div>
+<p>Anonymized client scenario that shows expertise and makes readers see themselves.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P22</div>
+<button class="copy-btn">Copy</button>
+<pre>Write a LinkedIn post about an anonymized client scenario in [line].
+
+- Line 1: "Had a call this week with [generic description]..."
+- 3-4 sentences: situation and hidden problem
+- 2-3 sentences: what we figured out
+- Last line: broader lesson
+
+180 words max. First person.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="social linkedin all-lines">
+<h3 class="library-prompt-title">LinkedIn insight post (long form)</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 5</span>
+<span class="library-tag">social</span> <span class="library-tag">linkedin</span> <span class="library-tag">all-lines</span>
+</div>
+<p>300-500 word thoughtful LinkedIn post when you have a real insight.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P23</div>
+<button class="copy-btn">Copy</button>
+<pre>Write a LinkedIn post (300-500 words) about [topic].
+
+- Hook line
+- Context (2-3 sentences)
+- Insight (3-5 short paragraphs)
+- Named concrete example
+- What it means for reader
+- Question or CTA
+
+Short paragraphs. Practitioner tone, not thought-leadership.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="social repurposing all-lines">
+<h3 class="library-prompt-title">One-to-many repurposer</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 5</span>
+<span class="library-tag">social</span> <span class="library-tag">repurposing</span> <span class="library-tag">all-lines</span>
+</div>
+<p>Take one insight and turn it into 7 different pieces of content across channels.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P24</div>
+<button class="copy-btn">Copy</button>
+<pre>Core insight: [insight]
+
+Turn into:
+1. FB post (120w, warm)
+2. LinkedIn post (300w, pro)
+3. Newsletter section (200w)
+4. 60s video script
+5. 40s reel/TikTok script
+6. Tweet (240 chars)
+7. Text to prospect (60w)
+
+Adapt structure to each channel.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="blog seo all-lines">
+<h3 class="library-prompt-title">Keyword + question generator</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 6</span>
+<span class="library-tag">blog</span> <span class="library-tag">seo</span> <span class="library-tag">all-lines</span>
+</div>
+<p>30 search queries real prospects type before they call. Your blog topic bank.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P25</div>
+<button class="copy-btn">Copy</button>
+<pre>I sell [line] to [audience] in [geo].
+
+Generate 30 search queries:
+- 10 question queries
+- 10 local-intent
+- 5 comparison
+- 5 problem
+
+Group by intent. For each group, suggest 3 blog titles.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="blog seo all-lines">
+<h3 class="library-prompt-title">Blog post outline</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 6</span>
+<span class="library-tag">blog</span> <span class="library-tag">seo</span> <span class="library-tag">all-lines</span>
+</div>
+<p>Detailed outline with H2/H3s before you write the full post.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P26</div>
+<button class="copy-btn">Copy</button>
+<pre>Outline for blog post titled "[title]".
+
+Audience: [specific]
+Intent: [info/comparison/transactional]
+Primary keyword: [phrase]
+Secondary keywords: [3-5]
+
+- H1
+- Intro (2 paragraphs)
+- 4-6 H2s, each with 2-3 H3s
+- Conclusion with CTA
+
+Flag places to add local data or personal examples. Anticipate 3 objections.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="blog seo all-lines">
+<h3 class="library-prompt-title">Blog post writer (from outline)</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 6</span>
+<span class="library-tag">blog</span> <span class="library-tag">seo</span> <span class="library-tag">all-lines</span>
+</div>
+<p>Write the full 1200-1800 word post from your approved outline.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P27</div>
+<button class="copy-btn">Copy</button>
+<pre>Using the outline above, write the full post.
+
+Length: 1200-1800 words
+Voice: [from samples]
+- Short paragraphs
+- H2/H3 structure
+- Bullet lists for comparisons
+- Bold 1 sentence per section
+- 1+ concrete example
+- Clear CTA
+
+Avoid "in today's fast-paced world," "however/furthermore/moreover" paragraph starts.
+
+Flag places I need to add local data or examples, and any stats to verify.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="blog seo all-lines">
+<h3 class="library-prompt-title">Meta title + description</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 6</span>
+<span class="library-tag">blog</span> <span class="library-tag">seo</span> <span class="library-tag">all-lines</span>
+</div>
+<p>Three title and description options for SEO.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P28</div>
+<button class="copy-btn">Copy</button>
+<pre>For the post below:
+1. Title tag (55-60 chars, keyword near front)
+2. Meta description (140-160 chars)
+3. 5 URL slug options
+
+Give 3 options for each.
+
+[Paste post]</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="blog seo local all-lines">
+<h3 class="library-prompt-title">Local content angle finder</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 6</span>
+<span class="library-tag">blog</span> <span class="library-tag">seo</span> <span class="library-tag">local</span> <span class="library-tag">all-lines</span>
+</div>
+<p>10 blog ideas that tie your topic to your specific city/state.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P29</div>
+<button class="copy-btn">Copy</button>
+<pre>I serve [geography]. Base topic: [topic].
+
+10 blog ideas that would rank for "[topic] + [location]".
+
+Each:
+- Title
+- Primary local keyword
+- Why it wins locally</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="blog seo all-lines">
+<h3 class="library-prompt-title">Content cluster builder</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 6</span>
+<span class="library-tag">blog</span> <span class="library-tag">seo</span> <span class="library-tag">all-lines</span>
+</div>
+<p>Pillar + 8 supporting posts with an internal link plan.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P30</div>
+<button class="copy-btn">Copy</button>
+<pre>Build a cluster around "[broad topic]".
+
+- 1 pillar post + description
+- 8 supporting posts
+- For each, which pillar sections it links TO
+
+Topic: [topic]
+Audience: [audience]</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="video all-lines">
+<h3 class="library-prompt-title">Explainer video script (60-90s)</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 7</span>
+<span class="library-tag">video</span> <span class="library-tag">all-lines</span>
+</div>
+<p>One-concept video script with timestamps and B-roll cues.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P31</div>
+<button class="copy-btn">Copy</button>
+<pre>Write a 60-90s video script for me (licensed [line] in [state]).
+
+Topic: [topic]
+
+Timestamps:
+[0-5s] Hook
+[5-15s] Problem
+[15-50s] 2-3 key points
+[50-75s] What it means for viewer
+[75-90s] Soft CTA
+
+First person, short sentences, no jargon. Include B-roll suggestions and on-screen text.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="video shorts all-lines">
+<h3 class="library-prompt-title">FAQ shorts (10 scripts)</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 7</span>
+<span class="library-tag">video</span> <span class="library-tag">shorts</span> <span class="library-tag">all-lines</span>
+</div>
+<p>10 ready-to-shoot short video scripts for Reels/TikTok/Shorts.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P32</div>
+<button class="copy-btn">Copy</button>
+<pre>Give me 10 FAQ-style short video scripts.
+
+Each 30-60s (70-140 words). Hook in first 3 seconds. Plain-language answer. One concrete example. Close with "Follow for more / DM if this applies."
+
+Topic pool: [line]
+Styles: "Can I get coverage if..." "What's the difference between..." "How much do I really need..."
+
+Number 1-10. Shootable as-is.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="video branding all-lines">
+<h3 class="library-prompt-title">Personal intro video (90s)</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 7</span>
+<span class="library-tag">video</span> <span class="library-tag">branding</span> <span class="library-tag">all-lines</span>
+</div>
+<p>Your "about" video for website, email signature, LinkedIn.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P33</div>
+<button class="copy-btn">Copy</button>
+<pre>Write a 90s personal intro video script.
+
+[0-10s] Who I am / what I do
+[10-25s] Specific type of client
+[25-50s] Why I do this (specific moment)
+[50-75s] How I work differently
+[75-90s] How to connect
+
+Warm, not corny. Contractions. Short sentences. No "committed to providing excellent...".</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="video case-study all-lines">
+<h3 class="library-prompt-title">Case study video (2-3min)</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 7</span>
+<span class="library-tag">video</span> <span class="library-tag">case-study</span> <span class="library-tag">all-lines</span>
+</div>
+<p>Anonymized client story in video form.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P34</div>
+<button class="copy-btn">Copy</button>
+<pre>Write a 2-3 min anonymized client story video.
+
+Situation: [describe]
+
+[0-15s] Problem in one sentence
+[15-45s] Who they were
+[45-90s] What they'd tried
+[90-150s] What we figured out
+[150-180s] Realistic outcome
+
+No identifying details. Add disclaimer at end.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="video prospecting all-lines">
+<h3 class="library-prompt-title">Personalized prospect Loom</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 7</span>
+<span class="library-tag">video</span> <span class="library-tag">prospecting</span> <span class="library-tag">all-lines</span>
+</div>
+<p>90-second personalized video for one specific prospect. High reply rates.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P35</div>
+<button class="copy-btn">Copy</button>
+<pre>5-bullet structure for a 90s Loom to a prospect.
+
+Prospect: [name, role, situation, trigger]
+
+1. Name + specific detail (5s)
+2. What made me reach out (15s)
+3. The thing they might not have considered (30s)
+4. Offer to be useful (not pitch, 20s)
+5. Specific next step (15s)
+
+Also: 6-line email with video embedded.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="video all-lines">
+<h3 class="library-prompt-title">Caption generator</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 7</span>
+<span class="library-tag">video</span> <span class="library-tag">all-lines</span>
+</div>
+<p>Convert a script into frame-by-frame captions for social video.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P36</div>
+<button class="copy-btn">Copy</button>
+<pre>Format the script as captions.
+
+- Each chunk: 3-6 words, one per frame
+- Punctuation sparingly
+- Match speaking rhythm
+- Separate with "|"
+
+[Paste script]</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="direct-mail medicare">
+<h3 class="library-prompt-title">Medicare T-65 postcard copy</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 8</span>
+<span class="library-tag">direct-mail</span> <span class="library-tag">medicare</span>
+</div>
+<p>6x11 postcard for Medicare T-65 with CMS-required disclaimers.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P37</div>
+<button class="copy-btn">Copy</button>
+<pre>Write copy for 6x11 postcard to Medicare T-65 prospects in [state/county].
+
+Front: 1 headline + supporting line. Under 15 words.
+
+Back:
+1. Acknowledge tons of Medicare mail
+2. Problem with most of it
+3. What's different about me
+4. Local detail
+5. Offer: 20-min no-pressure call
+6. CTA: tracked phone + URL
+
+CMS compliance:
+- "We do not offer every plan available in your area..."
+- "Not affiliated with Medicare or any government agency."
+
+Mail-from-a-person tone.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="direct-mail all-lines">
+<h3 class="library-prompt-title">1-page sales letter</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 8</span>
+<span class="library-tag">direct-mail</span> <span class="library-tag">all-lines</span>
+</div>
+<p>Classical direct-response sales letter format for any line.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P38</div>
+<button class="copy-btn">Copy</button>
+<pre>Write 1-page sales letter for [line] to [audience].
+
+- Date + "Dear [Name]"
+- Opening: specific observation
+- Story: anonymized similar person
+- Offer: what I want to do
+- Proof: 2-3 defensible facts
+- Urgency: real reason for now
+- CTA
+- P.S.: restate offer + reason to act
+
+250-400 words. Neighbor letter tone.
+
+Include [line]-appropriate disclaimers.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="direct-mail all-lines">
+<h3 class="library-prompt-title">Envelope teaser copy</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 8</span>
+<span class="library-tag">direct-mail</span> <span class="library-tag">all-lines</span>
+</div>
+<p>5 envelope teasers that survive the first-pass mail sort.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P39</div>
+<button class="copy-btn">Copy</button>
+<pre>5 teasers for front of #10 envelope for [audience] about [topic].
+
+Each:
+- Under 10 words
+- Looks like personal mail, not ad
+- Curiosity without clickbait
+- Defensible
+
+Examples I like:
+- "A note about your Medicare options"
+- "Regarding your October renewal"
+
+5 distinct angles.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="direct-mail all-lines">
+<h3 class="library-prompt-title">Trackable CTA variants</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 8</span>
+<span class="library-tag">direct-mail</span> <span class="library-tag">all-lines</span>
+</div>
+<p>Five different trackable CTAs for direct mail.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P40</div>
+<button class="copy-btn">Copy</button>
+<pre>5 CTAs for direct mail, different framings:
+
+1. Call now (urgency)
+2. Request the [resource] (lead magnet)
+3. Get your personalized [thing] (benefit)
+4. Reply card (BRE)
+5. Visit [URL], answer 3 questions
+
+Each: phone placeholder + URL placeholder. Neighborly tone.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="referral all-lines">
+<h3 class="library-prompt-title">Verbal referral ask</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 9</span>
+<span class="library-tag">referral</span> <span class="library-tag">all-lines</span>
+</div>
+<p>4-5 sentence referral ask to use verbally after a positive interaction.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P41</div>
+<button class="copy-btn">Copy</button>
+<pre>Write a 4-5 sentence verbal referral ask for after [positive client moment].
+
+I help [specific niche].
+
+Ask:
+- Gratitude for current moment (specific)
+- Name exactly type of person I help
+- Specific person/situation to think of
+- Make handoff easy (I reach out, not them)
+- Natural, not scripted
+
+2 versions.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="referral email all-lines">
+<h3 class="library-prompt-title">Warm intro email to client</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 9</span>
+<span class="library-tag">referral</span> <span class="library-tag">email</span> <span class="library-tag">all-lines</span>
+</div>
+<p>After a client gives you a name, this is the forward-able intro.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P42</div>
+<button class="copy-btn">Copy</button>
+<pre>My client [Client] said I could reach out to [Prospect], their [relationship].
+
+Write email to [Client]:
+
+Section 1 (to client):
+- Thank again
+- I'll reach out in 1-2 days
+- Offer forward-able intro
+
+Section 2 (for them to forward):
+- From them to friend
+- Why they thought of them
+- Intro me in 1 sentence
+- Suggest 15-min chat
+
+Under 200 words.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="referral email all-lines">
+<h3 class="library-prompt-title">Warm intro to referred prospect</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 9</span>
+<span class="library-tag">referral</span> <span class="library-tag">email</span> <span class="library-tag">all-lines</span>
+</div>
+<p>The email to the person who was referred to you.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P43</div>
+<button class="copy-btn">Copy</button>
+<pre>Email to [Prospect] referred by [Referring Client] about [topic].
+
+- Subject: mention referrer's name
+- First line: referrer + specific reason
+- 2-3 sentences: what I do
+- 1-2 sentences: no pressure, just hi
+- Soft CTA: 15-min call, 2 specific times
+
+80-120 words. Warm, casual.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="referral all-lines">
+<h3 class="library-prompt-title">Handwritten thank-you to referrer</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 9</span>
+<span class="library-tag">referral</span> <span class="library-tag">all-lines</span>
+</div>
+<p>Short thank-you note to send on actual paper to a client who referred.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P44</div>
+<button class="copy-btn">Copy</button>
+<pre>6-10 sentence handwritten-style thank you.
+
+- Specific thank for referral
+- One line about connection
+- Reference specific about client
+- Note meeting with [Prospect] went well
+- No incentives
+- Warm close
+
+Personal, not corporate.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="referral email partner all-lines">
+<h3 class="library-prompt-title">Referral partner outreach</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 9</span>
+<span class="library-tag">referral</span> <span class="library-tag">email</span> <span class="library-tag">partner</span> <span class="library-tag">all-lines</span>
+</div>
+<p>Peer-to-peer email to CPA, estate attorney, realtor, etc.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P45</div>
+<button class="copy-btn">Copy</button>
+<pre>Email to [CPA/attorney/realtor/HR consultant] in my market. Goal: referral relationship.
+
+- Subject: about them, not me
+- Open: specific detail about their work
+- Bridge: our client bases overlap
+- Offer: 20-min coffee/call
+- What I bring (specific)
+- Propose 2 times
+
+Under 150 words. Peer-to-peer, not pitch.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="review all-lines">
+<h3 class="library-prompt-title">5-star review response</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 10</span>
+<span class="library-tag">review</span> <span class="library-tag">all-lines</span>
+</div>
+<p>3-5 sentence thank-you response that strengthens the public record.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P46</div>
+<button class="copy-btn">Copy</button>
+<pre>Write 3-5 sentence response to 5-star review.
+
+Context: I [specific interaction].
+
+- Thank by first name
+- Reference specific from review
+- Reinforce what I do
+- End warmly, not saccharine
+
+Avoid "it was our pleasure" / "strive to provide excellent service."
+
+REVIEW: [paste]</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="review all-lines">
+<h3 class="library-prompt-title">4-star neutral review response</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 10</span>
+<span class="library-tag">review</span> <span class="library-tag">all-lines</span>
+</div>
+<p>Response to mixed feedback that doesn't get defensive.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P47</div>
+<button class="copy-btn">Copy</button>
+<pre>Response to 3-4 star review with constructive feedback.
+
+- Thank for honest feedback
+- Acknowledge specific flag, no defensiveness
+- What's changed or I'd do differently
+- Invite to reach out directly
+- 4-6 sentences
+
+Not defensive, not over-apologizing.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="review all-lines">
+<h3 class="library-prompt-title">Negative review response (HIPAA-safe)</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 10</span>
+<span class="library-tag">review</span> <span class="library-tag">all-lines</span>
+</div>
+<p>Calm, professional response to 1-2 star reviews that future prospects will read.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P48</div>
+<button class="copy-btn">Copy</button>
+<pre>Response to 1-2 star review.
+
+- Acknowledge frustration, no arguing facts
+- Do NOT reveal PHI / client-specific details
+- What I'd try to resolve (if applicable)
+- Invite contact at [phone/email] privately
+- No superlatives, defensiveness, apology-spirals
+- 4-6 sentences
+
+Future prospects watch how I handle pressure.
+
+REVIEW: [paste]</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="review all-lines">
+<h3 class="library-prompt-title">Suspected fake review response</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 10</span>
+<span class="library-tag">review</span> <span class="library-tag">all-lines</span>
+</div>
+<p>Short professional response when the review is clearly not from a real client.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P49</div>
+<button class="copy-btn">Copy</button>
+<pre>Response to review that seems fake or from non-client.
+
+- Politely note I don't recognize this interaction
+- Invite them to contact directly if mistake
+- Don't accuse
+- Don't engage false claims
+- 2-3 sentences
+
+Puzzled, not defensive.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="review email all-lines">
+<h3 class="library-prompt-title">Review request email</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 10</span>
+<span class="library-tag">review</span> <span class="library-tag">email</span> <span class="library-tag">all-lines</span>
+</div>
+<p>Ask a happy client for a Google review without gating.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P50</div>
+<button class="copy-btn">Copy</button>
+<pre>80-120 word email asking client for Google review.
+
+Context: [what we did]
+
+- Open with specific recent interaction
+- Ask: share experience on Google
+- Direct link placeholder
+- 60 seconds
+- Offer to answer questions
+
+Do NOT: offer incentive, specify 5 stars, pressure.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="newsletter email all-lines">
+<h3 class="library-prompt-title">Newsletter: one-big-thing</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 11</span>
+<span class="library-tag">newsletter</span> <span class="library-tag">email</span> <span class="library-tag">all-lines</span>
+</div>
+<p>Monthly newsletter in the one-big-thing-plus-quick-hits format.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P51</div>
+<button class="copy-btn">Copy</button>
+<pre>Monthly newsletter for [line] clients.
+
+Topic: [pick one]
+
+- Subject: 5-7 words, personal note
+- Open: like writing to a friend
+- Main (250-400w): one big thing
+- Quick hits (3-5 bullets, 1-2 sentences each)
+- Close: 1-2 sentences, warm, personal
+- P.S. with specific small thing
+
+Letter from knowledgeable friend tone.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="newsletter planning all-lines">
+<h3 class="library-prompt-title">12-month newsletter calendar</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 11</span>
+<span class="library-tag">newsletter</span> <span class="library-tag">planning</span> <span class="library-tag">all-lines</span>
+</div>
+<p>Full year of newsletter topics tied to real triggers.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P52</div>
+<button class="copy-btn">Copy</button>
+<pre>12-month newsletter calendar for [lines] serving [audience].
+
+Format per month:
+Month - Primary topic - Why this month - One angle
+
+Tied to: seasons, deadlines, life-stage triggers, common questions. No generic awareness months.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="newsletter email all-lines">
+<h3 class="library-prompt-title">Welcome email sequence</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 11</span>
+<span class="library-tag">newsletter</span> <span class="library-tag">email</span> <span class="library-tag">all-lines</span>
+</div>
+<p>4-email welcome sequence for new newsletter subscribers.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P53</div>
+<button class="copy-btn">Copy</button>
+<pre>4-email welcome sequence after signup.
+
+Email 1 (immediate): Welcome, who I am, what to expect. Under 150w.
+Email 2 (day 2): One actionable thing. Under 200w.
+Email 3 (day 5): Anonymized client story. Under 250w.
+Email 4 (day 10): Soft direct ask. Under 150w.
+
+From me personally. Hand-written feel.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="newsletter email all-lines">
+<h3 class="library-prompt-title">Newsletter subject line tester</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 11</span>
+<span class="library-tag">newsletter</span> <span class="library-tag">email</span> <span class="library-tag">all-lines</span>
+</div>
+<p>10 subject line options in different patterns.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P54</div>
+<button class="copy-btn">Copy</button>
+<pre>10 subject lines for newsletter about [topic].
+
+- 4-7 words
+- Lowercase
+- Mix: question, observation, detail, news, promise, personal
+
+Avoid: "[Month] Newsletter," "[Agency] Update," generic teasers.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="ads medicare facebook">
+<h3 class="library-prompt-title">Facebook ad, Medicare</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 12</span>
+<span class="library-tag">ads</span> <span class="library-tag">medicare</span> <span class="library-tag">facebook</span>
+</div>
+<p>Five FB ad variants with CMS compliance for Medicare campaigns.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P55</div>
+<button class="copy-btn">Copy</button>
+<pre>5 FB ad variants for Medicare in [state], 63-68.
+
+Offer: 20-min no-pressure call.
+
+Each:
+- Primary text (90-150w)
+- Headline (25-40 char)
+- Description (30-45 char)
+
+Angles: question, contrarian, local detail, story, direct value.
+
+CMS compliance in each:
+- "Not affiliated with any government agency"
+- Plan disclaimer
+- No specific plan names / benefits
+- No "free" without actual no-cost
+
+No fear tactics, fake urgency, over-emoji.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="ads life facebook">
+<h3 class="library-prompt-title">Facebook ad, Life / Final Expense</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 12</span>
+<span class="library-tag">ads</span> <span class="library-tag">life</span> <span class="library-tag">facebook</span>
+</div>
+<p>Five FB ad variants for final expense with appropriate disclaimers.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P56</div>
+<button class="copy-btn">Copy</button>
+<pre>5 FB ad variants for final expense, 55-75 in [state].
+
+Offer: 10-min rate check, no exam.
+
+Angles: specific pain, protection framing, misconception, simple process, direct offer.
+
+No specific premium quotes. Include "Subject to underwriting." Respectful tone, not fear-mongering.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="ads pnc facebook">
+<h3 class="library-prompt-title">Facebook ad, P&C bundle</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 12</span>
+<span class="library-tag">ads</span> <span class="library-tag">pnc</span> <span class="library-tag">facebook</span>
+</div>
+<p>Home + auto bundle ad variants with coverage-gap angles.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P57</div>
+<button class="copy-btn">Copy</button>
+<pre>5 FB ad variants for home + auto bundle, 30-55 homeowners in [state/city].
+
+Offer: 10-min policy review, send dec page.
+
+Angles: rate-increase, coverage gap, time convenience, local, trust.
+
+No "lowest rates," no disparaging competitors. Include trust signal.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="ads google all-lines">
+<h3 class="library-prompt-title">Google Search ad copy</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 12</span>
+<span class="library-tag">ads</span> <span class="library-tag">google</span> <span class="library-tag">all-lines</span>
+</div>
+<p>Responsive Search Ad headlines, descriptions, sitelinks for your keywords.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P58</div>
+<button class="copy-btn">Copy</button>
+<pre>Google Search ads for [line] in [city/state].
+
+Keywords: [list]
+
+For each keyword:
+- 3 RSA headlines (30 char)
+- 2 descriptions (90 char)
+- Display path
+- 3 sitelinks
+
+Avoid superlatives, specific rates, unauthorized carrier claims.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="ads landing-page all-lines">
+<h3 class="library-prompt-title">Landing page copy</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 12</span>
+<span class="library-tag">ads</span> <span class="library-tag">landing-page</span> <span class="library-tag">all-lines</span>
+</div>
+<p>Campaign landing page with the structure that converts paid traffic.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P59</div>
+<button class="copy-btn">Copy</button>
+<pre>Landing page copy for [campaign].
+
+Goal: [book call / get quote / download].
+
+- Headline (7-12w, matches ad)
+- Sub-headline
+- 3-4 "what you get" bullets
+- Proof section
+- Form: name, phone, email, one qualifier
+- Second CTA below fold
+- 4-5 FAQ
+- Trust signals
+- "What happens next" section
+
+Matches ad tone.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="client-ed all-lines">
+<h3 class="library-prompt-title">Plain-language glossary</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 13</span>
+<span class="library-tag">client-ed</span> <span class="library-tag">all-lines</span>
+</div>
+<p>One-page glossary for clients with 12-15 terms in their language.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P60</div>
+<button class="copy-btn">Copy</button>
+<pre>1-page glossary for [line] clients. 12-15 terms.
+
+Each:
+- Term (as on paperwork)
+- 1-2 sentence plain-language def
+- 1 sentence why it matters
+
+For a 65-year-old non-professional. Format for Canva/Word.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="client-ed all-lines">
+<h3 class="library-prompt-title">Policy summary one-pager</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 13</span>
+<span class="library-tag">client-ed</span> <span class="library-tag">all-lines</span>
+</div>
+<p>"What you actually bought" summary clients can keep.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P61</div>
+<button class="copy-btn">Copy</button>
+<pre>1-page policy summary.
+
+Structure:
+1. One-sentence "what this is"
+2. What it does (3-4 bullets)
+3. What it does NOT cover (3-4 bullets)
+4. What to do with it (storage, who to tell)
+5. When to call me (life event triggers)
+6. Space for: policy#, carrier, date, contact
+
+No specific $ figures (fill per client).</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="client-ed all-lines">
+<h3 class="library-prompt-title">Claim filing guide</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 13</span>
+<span class="library-tag">client-ed</span> <span class="library-tag">all-lines</span>
+</div>
+<p>One-page guide for clients on how to file a claim.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P62</div>
+<button class="copy-btn">Copy</button>
+<pre>1-page claim guide for [line].
+
+- "Take a breath" opener
+- Step 1: immediate action
+- Step 2: docs/info needed
+- Step 3: carrier contact
+- Step 4: how to contact me
+- What NOT to do
+- Typical timeline
+- If delayed/denied
+
+Human tone. Assume stressed reader.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="client-ed all-lines">
+<h3 class="library-prompt-title">Annual review checklist</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 13</span>
+<span class="library-tag">client-ed</span> <span class="library-tag">all-lines</span>
+</div>
+<p>8-12 yes/no questions clients use to self-audit coverage.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P63</div>
+<button class="copy-btn">Copy</button>
+<pre>1-page annual review checklist for [line]. 8-12 yes/no questions.
+
+Each: life situation triggering coverage change. Client language.
+
+Examples:
+- "Has anyone been added to your household?"
+- "Did income change by 15%+?"
+
+Top: "If yes to any, let's schedule a review"
+Bottom: contact + scheduling link placeholder.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="client-ed life annuity">
+<h3 class="library-prompt-title">Family handoff one-pager</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 13</span>
+<span class="library-tag">client-ed</span> <span class="library-tag">life</span> <span class="library-tag">annuity</span>
+</div>
+<p>Document the client gives family for what to do if they pass away.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P64</div>
+<button class="copy-btn">Copy</button>
+<pre>1-page doc client's family uses if client passes/becomes incapacitated.
+
+- What to do first
+- Where docs are (placeholder)
+- Who to call (me + carrier)
+- What to bring
+- What NOT to do
+- What happens next / timeline
+- My contact
+
+Calm, respectful, plainspoken. Audience is in grief/panic.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="system planning all-lines">
+<h3 class="library-prompt-title">Monday marketing review</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 14</span>
+<span class="library-tag">system</span> <span class="library-tag">planning</span> <span class="library-tag">all-lines</span>
+</div>
+<p>Weekly review prompt to plan your 2-hour marketing block.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P65</div>
+<button class="copy-btn">Copy</button>
+<pre>Weekly marketing planning. Last week:
+
+- Social engagement: [describe]
+- Email replies: [number, notable]
+- Ads: [spend, leads, CPL]
+- Meetings booked: [number, source]
+- Pipeline: [notes]
+
+Based on this:
+1. What to double down on?
+2. What to stop?
+3. 3 experiments to run
+4. Highest-leverage marketing task for 2 hours?
+
+Practical.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="system planning all-lines">
+<h3 class="library-prompt-title">30-day content calendar</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 14</span>
+<span class="library-tag">system</span> <span class="library-tag">planning</span> <span class="library-tag">all-lines</span>
+</div>
+<p>Full 30-day calendar of newsletter, blogs, socials, videos, prospecting angles.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P66</div>
+<button class="copy-btn">Copy</button>
+<pre>30-day content calendar.
+
+Line: [from context]
+Audience: [from context]
+Theme: [one]
+
+- 4 newsletter big ideas (one per week)
+- 4 blog post titles
+- 16 social posts (4/week)
+- 4 video scripts (1/week)
+- 2 prospecting angles
+
+Table: Date | Channel | Title | Status.
+
+Include time-sensitive topics for this month.</pre>
+</div>
+</div>
+
+<div class="library-prompt" data-tags="compliance all-lines">
+<h3 class="library-prompt-title">Red phrase scanner (compliance)</h3>
+<div class="library-prompt-meta">
+<span style="color:#4a00e0; font-weight:600;">Module 15</span>
+<span class="library-tag">compliance</span> <span class="library-tag">all-lines</span>
+</div>
+<p>Scan any piece for compliance red flags across lines.</p>
+<div class="prompt-box">
+<div class="prompt-box-label">P67</div>
+<button class="copy-btn">Copy</button>
+<pre>Scan for compliance red flags for [line].
+
+Flag:
+- Superlatives
+- Specific numeric claims
+- Competitor comparisons
+- Urgency claims (real?)
+- Missing disclaimers
+- Implied endorsements
+- Product-varying claims
+- Fear-based language
+
+For each: suggest compliant rewrite. Then give cleaned version.
+
+Line: [specify]
+Jurisdiction: [state(s)]
+
+[Paste]</pre>
+</div>
+</div>
+
+</div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a></p>
+</div></footer>
+
+<script>
+(function(){
+    const STORAGE_KEY = 'insurance_playbook_progress_v1';
+    const CHECKBOX_KEY = 'insurance_playbook_checks_v1';
+
+    function getProgress() {
+        try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); }
+        catch { return {}; }
+    }
+    function setProgress(p) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(p));
+    }
+    function getChecks() {
+        try { return JSON.parse(localStorage.getItem(CHECKBOX_KEY) || '{}'); }
+        catch { return {}; }
+    }
+    function setChecks(c) {
+        localStorage.setItem(CHECKBOX_KEY, JSON.stringify(c));
+    }
+
+    // Update sidebar indicators on load
+    function updateSidebar() {
+        const progress = getProgress();
+        document.querySelectorAll('.playbook-sidebar a[data-module]').forEach(a => {
+            const mod = a.dataset.module;
+            if (progress[mod]) a.classList.add('completed');
+            else a.classList.remove('completed');
+        });
+        // Progress bar
+        const total = document.querySelectorAll('.playbook-sidebar a[data-module]').length - 2; // minus index + library
+        const done = Object.keys(progress).filter(k => k.startsWith('module-')).length;
+        const fill = document.querySelector('.playbook-progress-fill');
+        const text = document.querySelector('.playbook-progress-text strong');
+        if (fill && total > 0) {
+            const pct = Math.min(100, Math.round((done / total) * 100));
+            fill.style.width = pct + '%';
+        }
+        if (text) text.textContent = done + ' / ' + total;
+    }
+
+    // Copy to clipboard
+    function setupCopy() {
+        document.querySelectorAll('.copy-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const box = btn.closest('.prompt-box');
+                const text = box.querySelector('pre').innerText;
+                navigator.clipboard.writeText(text).then(() => {
+                    const old = btn.textContent;
+                    btn.textContent = '✓ Copied';
+                    btn.classList.add('copied');
+                    setTimeout(() => {
+                        btn.textContent = old;
+                        btn.classList.remove('copied');
+                    }, 1800);
+                });
+            });
+        });
+    }
+
+    // Tabs
+    function setupTabs() {
+        document.querySelectorAll('.tabs').forEach(group => {
+            const buttons = group.querySelectorAll('.tab-btn');
+            const containerSelector = group.dataset.target || '.tab-group-' + group.dataset.group;
+            buttons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const target = btn.dataset.tab;
+                    buttons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const parent = document.querySelector(containerSelector) || group.parentElement;
+                    parent.querySelectorAll('.tab-content').forEach(c => {
+                        c.classList.toggle('active', c.dataset.tab === target);
+                    });
+                });
+            });
+        });
+    }
+
+    // Expandable sections
+    function setupExpandables() {
+        document.querySelectorAll('.expandable-toggle').forEach(t => {
+            t.addEventListener('click', function() {
+                t.closest('.expandable').classList.toggle('open');
+            });
+        });
+    }
+
+    // Checklist persistence
+    function setupChecklists() {
+        const checks = getChecks();
+        document.querySelectorAll('.checklist-item input[type=checkbox]').forEach(cb => {
+            const key = cb.dataset.key;
+            if (key && checks[key]) cb.checked = true;
+            cb.addEventListener('change', function() {
+                const c = getChecks();
+                if (cb.checked) c[key] = true; else delete c[key];
+                setChecks(c);
+            });
+        });
+    }
+
+    // Module complete button
+    function setupCompleteButton() {
+        const btn = document.querySelector('.btn-complete');
+        if (!btn) return;
+        const mod = btn.dataset.module;
+        const progress = getProgress();
+        if (progress[mod]) {
+            btn.textContent = '✓ Completed';
+            btn.classList.add('done');
+        }
+        btn.addEventListener('click', function() {
+            const p = getProgress();
+            if (!p[mod]) {
+                p[mod] = Date.now();
+                setProgress(p);
+                btn.textContent = '✓ Completed';
+                btn.classList.add('done');
+                updateSidebar();
+            }
+        });
+    }
+
+    // Library search + filter
+    function setupLibrary() {
+        const search = document.getElementById('library-search-input');
+        const chips = document.querySelectorAll('.filter-chip');
+        const prompts = document.querySelectorAll('.library-prompt');
+        const count = document.querySelector('.library-count');
+        let activeTag = 'all';
+
+        function apply() {
+            const q = (search?.value || '').toLowerCase().trim();
+            let shown = 0;
+            prompts.forEach(p => {
+                const tags = (p.dataset.tags || '').toLowerCase();
+                const text = p.textContent.toLowerCase();
+                const matchTag = activeTag === 'all' || tags.includes(activeTag);
+                const matchSearch = !q || text.includes(q);
+                const visible = matchTag && matchSearch;
+                p.classList.toggle('hidden', !visible);
+                if (visible) shown++;
+            });
+            if (count) count.textContent = shown + ' prompt' + (shown === 1 ? '' : 's');
+        }
+
+        if (search) search.addEventListener('input', apply);
+        chips.forEach(c => {
+            c.addEventListener('click', function() {
+                chips.forEach(x => x.classList.remove('active'));
+                c.classList.add('active');
+                activeTag = c.dataset.tag;
+                apply();
+            });
+        });
+        apply();
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        updateSidebar();
+        setupCopy();
+        setupTabs();
+        setupExpandables();
+        setupChecklists();
+        setupCompleteButton();
+        setupLibrary();
+    });
+})();
+</script>
+
+</body></html>

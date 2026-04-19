@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Internal knowledge RAG | Samuel Ochoa</title>
+<meta name="description" content="Internal knowledge bases (Confluence, Notion, Google Drive) are the most common enterprise RAG use case. Here's what's different.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Internal knowledge RAG | Samuel Ochoa">
+<meta property="og:description" content="Internal knowledge bases (Confluence, Notion, Google Drive) are the most common enterprise RAG use case. Here's what's different.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../about.html">About</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>RAGS to Riches (56 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-rag.html">What is RAG?</a></li><li><a href="foundations/why-rag.html">Why RAG over fine-tuning</a></li><li><a href="foundations/the-architecture.html">The RAG architecture map</a></li><li><a href="foundations/when-not-to-use.html">When not to use RAG</a></li></ul><h4>Documents + Ingestion</h4><ul><li><a href="docs/ingestion-pipeline.html">The ingestion pipeline</a></li><li><a href="docs/parsing-pdfs.html">Parsing PDFs</a></li><li><a href="docs/parsing-html.html">Parsing HTML + web pages</a></li><li><a href="docs/tables-figures.html">Tables and figures</a></li><li><a href="docs/ocr.html">OCR for scanned documents</a></li><li><a href="docs/metadata.html">Metadata extraction</a></li></ul><h4>Chunking</h4><ul><li><a href="chunking/why-chunking.html">Why chunking matters</a></li><li><a href="chunking/fixed-size.html">Fixed-size chunking</a></li><li><a href="chunking/semantic.html">Semantic chunking</a></li><li><a href="chunking/recursive.html">Recursive chunking</a></li><li><a href="chunking/structure-aware.html">Structure-aware chunking</a></li><li><a href="chunking/chunking-code.html">Chunking code</a></li></ul><h4>Embeddings</h4><ul><li><a href="embeddings/what-are-embeddings.html">What embeddings are</a></li><li><a href="embeddings/picking-a-model.html">Picking an embedding model</a></li><li><a href="embeddings/closed-vs-open.html">Closed vs open models</a></li><li><a href="embeddings/dimensions-cost.html">Dimensions, cost, and MRL</a></li><li><a href="embeddings/fine-tuning.html">Fine-tuning embeddings</a></li></ul><h4>Vector Stores</h4><ul><li><a href="vectors/overview.html">Vector database overview</a></li><li><a href="vectors/indexing-strategies.html">HNSW, IVF, PQ</a></li><li><a href="vectors/hybrid-search.html">Hybrid search</a></li><li><a href="vectors/metadata-filtering.html">Metadata filtering</a></li><li><a href="vectors/cost-optimization.html">Cost optimization</a></li><li><a href="vectors/choosing-a-db.html">Choosing a vector DB</a></li></ul><h4>Retrieval Strategies</h4><ul><li><a href="retrieval/vector-search.html">Vector similarity search</a></li><li><a href="retrieval/bm25-sparse.html">BM25 and sparse retrieval</a></li><li><a href="retrieval/hybrid.html">Hybrid retrieval</a></li><li><a href="retrieval/reranking.html">Reranking</a></li><li><a href="retrieval/query-rewriting.html">Query rewriting</a></li><li><a href="retrieval/hyde.html">HyDE</a></li><li><a href="retrieval/multi-query.html">Multi-query + fusion</a></li></ul><h4>Advanced Patterns</h4><ul><li><a href="advanced/agentic-rag.html">Agentic RAG</a></li><li><a href="advanced/graph-rag.html">GraphRAG</a></li><li><a href="advanced/adaptive-rag.html">Adaptive RAG</a></li><li><a href="advanced/corrective-rag.html">Corrective RAG (CRAG)</a></li><li><a href="advanced/self-rag.html">Self-RAG</a></li><li><a href="advanced/multi-hop.html">Multi-hop RAG</a></li></ul><h4>Evaluation</h4><ul><li><a href="eval/why-eval.html">Why evaluation is critical</a></li><li><a href="eval/retrieval-metrics.html">Retrieval metrics</a></li><li><a href="eval/generation-metrics.html">Generation metrics</a></li><li><a href="eval/ragas-and-frameworks.html">RAGAS, TruLens, ARES</a></li><li><a href="eval/building-eval-datasets.html">Building eval datasets</a></li></ul><h4>Production</h4><ul><li><a href="prod/latency.html">Latency optimization</a></li><li><a href="prod/caching.html">Caching strategies</a></li><li><a href="prod/observability.html">Observability and tracing</a></li><li><a href="prod/cost.html">Cost management</a></li><li><a href="prod/security.html">Security and prompt injection</a></li></ul><h4>Use Cases</h4><ul><li><a href="cases/customer-support.html">Customer support RAG</a></li><li><a href="cases/internal-kb.html" class="active">Internal knowledge RAG</a></li><li><a href="cases/code-rag.html">Code search + generation</a></li><li><a href="cases/legal-compliance.html">Legal and compliance</a></li><li><a href="cases/multi-tenant.html">Multi-tenant RAG</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">RAGS to Riches</a><span class="sep">›</span><span>Internal knowledge RAG</span></div><h1 class="title">Internal knowledge RAG</h1><div class="article-meta"><span>📖 5 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">Internal knowledge RAG gives employees a natural-language interface to company docs, wiki, Drive, Confluence, Notion, Slack. It's the most common enterprise RAG use case and one of the hardest to get right because of access control, data freshness, and content heterogeneity.</p>
+
+<h2>The content sources</h2>
+<p>Typical enterprise corpus:</p>
+<ul>
+  <li>Wiki (Confluence, Notion)</li>
+  <li>Document stores (Google Drive, SharePoint)</li>
+  <li>Code repos</li>
+  <li>Slack / Teams channels</li>
+  <li>Ticketing systems</li>
+  <li>Email archives (rarely, usually too noisy)</li>
+  <li>HR systems</li>
+  <li>Internal CRM / operational tools</li>
+</ul>
+
+<p>Each source has different structure, update frequency, and access control model. The ingestion complexity is a significant share of the total engineering.</p>
+
+<h2>The defining challenge: access control</h2>
+<p>Internal KBs have complex permissions:</p>
+<ul>
+  <li>Team-based access (engineering docs, finance docs)</li>
+  <li>Project-based access (Project X team can see Project X docs)</li>
+  <li>Role-based access (managers see manager docs)</li>
+  <li>Individual document sharing (specific people added to specific docs)</li>
+</ul>
+
+<p>The RAG system MUST propagate these permissions. Leaking a single confidential doc via search can be a career-limiting event.</p>
+
+<h2>Permission propagation patterns</h2>
+
+<h3>Static at ingest</h3>
+<p>Capture permissions when ingesting each document. Store in chunk metadata. Filter at query time.</p>
+
+<p>Pros: fast queries. Cons: stale when permissions change.</p>
+
+<h3>Dynamic at query</h3>
+<p>Query source system for current permissions before retrieval.</p>
+
+<p>Pros: always accurate. Cons: slower, requires source system availability.</p>
+
+<h3>Hybrid</h3>
+<p>Static at ingest with periodic re-sync. Dynamic verification for sensitive content.</p>
+
+<p>This is the common compromise. Re-sync permissions daily for most content, more frequently for regulated documents.</p>
+
+<h2>Freshness requirements</h2>
+<p>Internal knowledge changes constantly:</p>
+<ul>
+  <li>New docs added daily</li>
+  <li>Existing docs updated frequently</li>
+  <li>Policies revised</li>
+  <li>Org changes affect permissions</li>
+</ul>
+
+<p>Ingestion pipeline needs event-driven updates (webhook from Confluence/Drive) or near-real-time polling. Users expect their recent docs to be findable.</p>
+
+<h2>Content quality issues</h2>
+<p>Internal docs are messy:</p>
+<ul>
+  <li>Duplicate drafts</li>
+  <li>Outdated policies still live</li>
+  <li>Conflicting statements across docs</li>
+  <li>Personal notes mixed with team docs</li>
+  <li>Untitled "Document1" files</li>
+  <li>Brainstorm docs that contain tentative ideas</li>
+</ul>
+
+<p>Mitigations:</p>
+<ul>
+  <li>Boost canonical sources (official policies, published docs)</li>
+  <li>Down-weight personal spaces, drafts, brainstorm areas</li>
+  <li>Filter by author roles (HR docs from HR team, not from random users)</li>
+  <li>Detect and deprioritize duplicates</li>
+</ul>
+
+<h2>The "where did you hear that" problem</h2>
+<p>If the RAG returns info from an outdated doc and the user acts on it, who's responsible? Citations are essential:</p>
+<ul>
+  <li>Every answer cites sources with links</li>
+  <li>Users verify from source</li>
+  <li>Outdated sources have visible last-updated dates</li>
+</ul>
+
+<h2>Query patterns</h2>
+<p>Internal KB queries are different from customer support:</p>
+<ul>
+  <li>More exploratory ("what's our policy on...", "how do we handle...")</li>
+  <li>Multi-hop more common ("who owns the service that handles X?")</li>
+  <li>More sensitive to freshness</li>
+  <li>More varied in specificity</li>
+</ul>
+
+<p>Adaptive RAG helps here: different query types need different strategies.</p>
+
+<h2>Personalization</h2>
+<p>Use what you know about the user:</p>
+<ul>
+  <li>Department (bias toward relevant docs)</li>
+  <li>Role (managers vs ICs need different answers)</li>
+  <li>Recent projects (boost project-specific content)</li>
+  <li>Team</li>
+</ul>
+
+<h2>The "Slack is a knowledge base" debate</h2>
+<p>Slack / Teams messages contain lots of tribal knowledge. Including them in the corpus:</p>
+<ul>
+  <li>Covers questions that aren't in formal docs</li>
+  <li>Surfaces decisions made in discussions</li>
+  <li>But introduces noise, context-dependent claims, outdated info</li>
+  <li>Privacy concerns: DMs must be filtered out</li>
+</ul>
+
+<p>Pragmatic approach: include public channel messages from relevant channels only. Filter DMs, private channels, and casual chatter. Treat as lower-trust source than formal docs.</p>
+
+<h2>The governance pattern</h2>
+<p>Good internal RAG forces content governance to improve:</p>
+<ul>
+  <li>Outdated docs surfaced by bad answers get updated</li>
+  <li>Missing docs identified by "I don't know" responses get created</li>
+  <li>Duplicate/conflicting docs get reconciled</li>
+</ul>
+
+<p>This is a feature. A working internal RAG system creates pressure to clean up the knowledge base.</p>
+
+<h2>User experience</h2>
+
+<h3>Chat interface</h3>
+<p>Standard: slack bot, web app, IDE integration. Users ask questions, get answers + citations.</p>
+
+<h3>Semantic search interface</h3>
+<p>Alternative: just return the best docs, let the user read. Less generation, more retrieval. Faster, cheaper, less hallucination risk.</p>
+
+<h3>Hybrid</h3>
+<p>Best of both: answer with citations, plus links to the most relevant full docs so the user can read deeper.</p>
+
+<h2>Audit logging</h2>
+<p>For compliance:</p>
+<ul>
+  <li>Every query with user identity</li>
+  <li>Every document retrieved</li>
+  <li>Every answer generated</li>
+</ul>
+
+<p>Required for security investigations and regulatory compliance.</p>
+
+<h2>Rollout pattern</h2>
+<p>Internal RAG rollout is usually:</p>
+<ol>
+  <li>Pilot with one team (e.g., engineering)</li>
+  <li>Expand to adjacent teams</li>
+  <li>General availability</li>
+</ol>
+
+<p>At each stage, gather feedback, add missing content, tune for the expanding user base.</p>
+
+<h2>Common mistakes</h2>
+<ul>
+  <li>Ignoring access control, then discovering leaks</li>
+  <li>Not handling document updates (stale answers)</li>
+  <li>Not filtering personal/draft content (surfaces brainstorms as facts)</li>
+  <li>Not capturing real user queries (no feedback loop)</li>
+  <li>Trying to index everything before shipping (ingestion becomes a multi-month project)</li>
+</ul>
+
+<p>Ship with a narrow corpus first. Expand based on what users ask for.</p>
+
+<p style="margin-top:40px;">Next: <a href="code-rag.html">Code search and generation RAG</a>.</p>
+<div class="prev-next"><a href="customer-support.html" class="prev"><div class="label">← Previous</div><div class="title">Customer support RAG</div></a><a href="code-rag.html" class="next"><div class="label">Next →</div><div class="title">Code search + generation</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a></p>
+</div></footer></body></html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What is an AI agent? | Samuel Ochoa</title>
+<meta name="description" content="An AI agent is an LLM in a loop with tools. Here's what that actually means and why it's different from an LLM call.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="What is an AI agent? | Samuel Ochoa">
+<meta property="og:description" content="An AI agent is an LLM in a loop with tools. Here's what that actually means and why it's different from an LLM call.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-an-agent.html" class="active">What is an AI agent?</a></li><li><a href="foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="loops/react.html">ReAct</a></li><li><a href="loops/tool-use.html">Tool use</a></li><li><a href="loops/planning.html">Planning loops</a></li><li><a href="loops/reflection.html">Reflection</a></li><li><a href="loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="tools/tool-design.html">Tool design</a></li><li><a href="tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="tools/error-handling.html">Tool error handling</a></li><li><a href="tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="memory/short-term.html">Short-term memory</a></li><li><a href="memory/long-term.html">Long-term memory</a></li><li><a href="memory/episodic.html">Episodic memory</a></li><li><a href="memory/procedural.html">Procedural memory</a></li><li><a href="memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="multi/peer-agents.html">Peer agents</a></li><li><a href="multi/debate.html">Debate + consensus</a></li><li><a href="multi/handoffs.html">Agent handoffs</a></li><li><a href="multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="eval/why-eval-agents.html">Why eval agents</a></li><li><a href="eval/task-completion.html">Task completion</a></li><li><a href="eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="prod/observability.html">Observability + tracing</a></li><li><a href="prod/cost-control.html">Cost control</a></li><li><a href="prod/latency.html">Latency optimization</a></li><li><a href="prod/safety.html">Safety + guardrails</a></li><li><a href="prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="patterns/research-agent.html">Research agent</a></li><li><a href="patterns/coding-agent.html">Coding agent</a></li><li><a href="patterns/customer-support.html">Customer support agent</a></li><li><a href="patterns/data-analyst.html">Data analyst agent</a></li><li><a href="patterns/browser-agent.html">Browser agent</a></li><li><a href="patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="frameworks/langgraph.html">LangGraph</a></li><li><a href="frameworks/crewai.html">CrewAI</a></li><li><a href="frameworks/autogen.html">AutoGen</a></li><li><a href="frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>What is an AI agent?</span></div><h1 class="title">What is an AI agent?</h1><div class="article-meta"><span>📖 4 min read</span><span>Updated 2026-04-19</span></div>
+<p class="lede">The simplest definition: an AI agent is an LLM in a loop with tools. It gets a goal. It thinks. It picks a tool. It uses the tool. It thinks again based on what the tool returned. It repeats until the goal is done. That's it.</p>
+
+<h2>The three components</h2>
+<ol>
+<li><strong>The LLM</strong>, the reasoning engine. Takes context, decides what to do next.</li>
+<li><strong>Tools</strong>, functions the LLM can call. Search the web, query a database, send an email, run code.</li>
+<li><strong>The loop</strong>, orchestration that runs until the task is complete or a stop condition fires.</li>
+</ol>
+
+<h2>Why this is different from a normal LLM call</h2>
+<p>A normal LLM call: prompt in, answer out. One shot. The LLM does what it can with the context it has.</p>
+<p>An agent: prompt in, but the LLM can reach out for information, take actions, and incorporate results before responding. It can decide "I don't know this, let me search," execute the search, read the results, and respond. The agent can take many reasoning and action steps, not just one.</p>
+
+<h2>The spectrum of autonomy</h2>
+<ul>
+<li><strong>Prompt + single tool</strong>, minimal agent behavior, one tool call per request</li>
+<li><strong>ReAct-style loops</strong>, multi-step reasoning and tool use until answer is reached</li>
+<li><strong>Planning agents</strong>, form a plan first, then execute steps</li>
+<li><strong>Multi-agent systems</strong>, multiple specialized agents coordinating</li>
+<li><strong>Fully autonomous</strong>, agents with long-running tasks, self-correction, persistent memory</li>
+</ul>
+
+<p>Most production agents sit in the middle: structured loops with bounded autonomy.</p>
+
+<h2>What agents enable</h2>
+<ul>
+<li>Tasks that require information the model doesn't have (RAG, search, tool use)</li>
+<li>Multi-step workflows where each step depends on prior results</li>
+<li>Tasks requiring real-world actions (sending emails, writing files, booking meetings)</li>
+<li>Longer-running work that needs planning and checkpoints</li>
+</ul>
+
+<h2>What agents don't magically fix</h2>
+<ul>
+<li>Bad prompts, agents amplify prompt quality, they don't replace it</li>
+<li>Bad tools, agents can only do what tools allow</li>
+<li>Bad reasoning, if the base model reasons poorly, loops don't help</li>
+<li>Bad data, garbage inputs produce garbage agent traces</li>
+</ul>
+<div class="prev-next"><a href="../index.html" class="prev"><div class="label">← Previous</div><div class="title">Overview</div></a><a href="agent-vs-workflow.html" class="next"><div class="label">Next →</div><div class="title">Agent vs workflow</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
+</div></footer></body></html>

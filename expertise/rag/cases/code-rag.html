@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Code search + generation RAG | Samuel Ochoa</title>
+<meta name="description" content="RAG over codebases enables semantic code search, generation with context, and documentation. Here's what's specific to code.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Code search + generation RAG | Samuel Ochoa">
+<meta property="og:description" content="RAG over codebases enables semantic code search, generation with context, and documentation. Here's what's specific to code.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../about.html">About</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>RAGS to Riches (56 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-rag.html">What is RAG?</a></li><li><a href="foundations/why-rag.html">Why RAG over fine-tuning</a></li><li><a href="foundations/the-architecture.html">The RAG architecture map</a></li><li><a href="foundations/when-not-to-use.html">When not to use RAG</a></li></ul><h4>Documents + Ingestion</h4><ul><li><a href="docs/ingestion-pipeline.html">The ingestion pipeline</a></li><li><a href="docs/parsing-pdfs.html">Parsing PDFs</a></li><li><a href="docs/parsing-html.html">Parsing HTML + web pages</a></li><li><a href="docs/tables-figures.html">Tables and figures</a></li><li><a href="docs/ocr.html">OCR for scanned documents</a></li><li><a href="docs/metadata.html">Metadata extraction</a></li></ul><h4>Chunking</h4><ul><li><a href="chunking/why-chunking.html">Why chunking matters</a></li><li><a href="chunking/fixed-size.html">Fixed-size chunking</a></li><li><a href="chunking/semantic.html">Semantic chunking</a></li><li><a href="chunking/recursive.html">Recursive chunking</a></li><li><a href="chunking/structure-aware.html">Structure-aware chunking</a></li><li><a href="chunking/chunking-code.html">Chunking code</a></li></ul><h4>Embeddings</h4><ul><li><a href="embeddings/what-are-embeddings.html">What embeddings are</a></li><li><a href="embeddings/picking-a-model.html">Picking an embedding model</a></li><li><a href="embeddings/closed-vs-open.html">Closed vs open models</a></li><li><a href="embeddings/dimensions-cost.html">Dimensions, cost, and MRL</a></li><li><a href="embeddings/fine-tuning.html">Fine-tuning embeddings</a></li></ul><h4>Vector Stores</h4><ul><li><a href="vectors/overview.html">Vector database overview</a></li><li><a href="vectors/indexing-strategies.html">HNSW, IVF, PQ</a></li><li><a href="vectors/hybrid-search.html">Hybrid search</a></li><li><a href="vectors/metadata-filtering.html">Metadata filtering</a></li><li><a href="vectors/cost-optimization.html">Cost optimization</a></li><li><a href="vectors/choosing-a-db.html">Choosing a vector DB</a></li></ul><h4>Retrieval Strategies</h4><ul><li><a href="retrieval/vector-search.html">Vector similarity search</a></li><li><a href="retrieval/bm25-sparse.html">BM25 and sparse retrieval</a></li><li><a href="retrieval/hybrid.html">Hybrid retrieval</a></li><li><a href="retrieval/reranking.html">Reranking</a></li><li><a href="retrieval/query-rewriting.html">Query rewriting</a></li><li><a href="retrieval/hyde.html">HyDE</a></li><li><a href="retrieval/multi-query.html">Multi-query + fusion</a></li></ul><h4>Advanced Patterns</h4><ul><li><a href="advanced/agentic-rag.html">Agentic RAG</a></li><li><a href="advanced/graph-rag.html">GraphRAG</a></li><li><a href="advanced/adaptive-rag.html">Adaptive RAG</a></li><li><a href="advanced/corrective-rag.html">Corrective RAG (CRAG)</a></li><li><a href="advanced/self-rag.html">Self-RAG</a></li><li><a href="advanced/multi-hop.html">Multi-hop RAG</a></li></ul><h4>Evaluation</h4><ul><li><a href="eval/why-eval.html">Why evaluation is critical</a></li><li><a href="eval/retrieval-metrics.html">Retrieval metrics</a></li><li><a href="eval/generation-metrics.html">Generation metrics</a></li><li><a href="eval/ragas-and-frameworks.html">RAGAS, TruLens, ARES</a></li><li><a href="eval/building-eval-datasets.html">Building eval datasets</a></li></ul><h4>Production</h4><ul><li><a href="prod/latency.html">Latency optimization</a></li><li><a href="prod/caching.html">Caching strategies</a></li><li><a href="prod/observability.html">Observability and tracing</a></li><li><a href="prod/cost.html">Cost management</a></li><li><a href="prod/security.html">Security and prompt injection</a></li></ul><h4>Use Cases</h4><ul><li><a href="cases/customer-support.html">Customer support RAG</a></li><li><a href="cases/internal-kb.html">Internal knowledge RAG</a></li><li><a href="cases/code-rag.html" class="active">Code search + generation</a></li><li><a href="cases/legal-compliance.html">Legal and compliance</a></li><li><a href="cases/multi-tenant.html">Multi-tenant RAG</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">RAGS to Riches</a><span class="sep">›</span><span>Code search + generation RAG</span></div><h1 class="title">Code search + generation RAG</h1><div class="article-meta"><span>📖 4 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">RAG over codebases powers modern coding assistants, internal code search, and automated code generation. Code has different structure, different retrieval patterns, and different quality metrics than prose. Here's what's specific.</p>
+
+<h2>What code RAG does</h2>
+<ul>
+  <li><strong>Semantic code search</strong>: "find the function that handles refunds"</li>
+  <li><strong>Code generation with context</strong>: "write a function like this one but for products"</li>
+  <li><strong>Documentation generation</strong>: generate API docs from code + comments</li>
+  <li><strong>Debugging assistance</strong>: "why is this failing" with relevant code pulled in</li>
+  <li><strong>Refactoring helpers</strong>: find all usages, suggest migration paths</li>
+</ul>
+
+<h2>The content</h2>
+<p>A code RAG corpus typically includes:</p>
+<ul>
+  <li>Source code (primary)</li>
+  <li>Docstrings and inline comments</li>
+  <li>README and architecture docs</li>
+  <li>Commit messages</li>
+  <li>Test files (show how code is used)</li>
+  <li>Issue tracker content</li>
+  <li>PR descriptions</li>
+</ul>
+
+<h2>Chunking code</h2>
+<p>Function/class/file-level boundaries, not size-based. See <a href="../chunking/chunking-code.html">chunking code</a>.</p>
+
+<h2>Embeddings for code</h2>
+<p>General text embeddings work but code-specific embeddings work better:</p>
+<ul>
+  <li>Voyage Code 3</li>
+  <li>jina-embeddings-v2-base-code</li>
+  <li>nomic-embed-code</li>
+</ul>
+
+<p>These models are trained on code and understand syntax, function patterns, and common abstractions better.</p>
+
+<h2>Metadata for code</h2>
+<p>Rich metadata helps code retrieval:</p>
+<ul>
+  <li>File path (often encodes module/component)</li>
+  <li>Language</li>
+  <li>Function signature</li>
+  <li>Imports used</li>
+  <li>Class (if method)</li>
+  <li>Last modified timestamp</li>
+  <li>Recent authors</li>
+  <li>Test coverage (if available)</li>
+</ul>
+
+<h2>Retrieval patterns</h2>
+
+<h3>Query-then-expand</h3>
+<p>Initial query retrieves a function. Expand by pulling in:</p>
+<ul>
+  <li>Functions it calls</li>
+  <li>Functions that call it</li>
+  <li>Its tests</li>
+  <li>Related docs</li>
+</ul>
+
+<p>Provides rich context for the generator without requiring the user to spell it all out.</p>
+
+<h3>Repository-aware retrieval</h3>
+<p>For large multi-repo environments, filter by repo. User working on service-A usually wants service-A code first.</p>
+
+<h3>Recency bias</h3>
+<p>Recent code is more likely to be correct, relevant, and well-understood. Boost recently modified code.</p>
+
+<h2>Hybrid retrieval essential</h2>
+<p>BM25 is critical for code:</p>
+<ul>
+  <li>Function names are specific identifiers that BM25 matches exactly</li>
+  <li>Error messages are often copy-pasted verbatim</li>
+  <li>API names, config keys, specific strings</li>
+</ul>
+
+<p>Dense vectors handle semantic queries ("function that validates email addresses"). BM25 handles specific identifier queries ("validateEmail").</p>
+
+<h2>Generation patterns</h2>
+
+<h3>Code completion with context</h3>
+<p>User is in a file; assistant needs context from related files. Retrieve related code and pass as context. This is roughly how GitHub Copilot's broader workspace context works.</p>
+
+<h3>Answer technical questions with citations</h3>
+<p>User asks "how does our auth flow work?" Retrieve relevant code + docs, generate explanation, cite specific functions and files.</p>
+
+<h3>Generate code using examples</h3>
+<p>User wants a new feature similar to existing ones. Retrieve similar existing code as examples, generate new code in the same style.</p>
+
+<h2>Evaluation for code RAG</h2>
+<p>Code RAG quality is more concrete than prose RAG:</p>
+<ul>
+  <li>Does retrieved code actually compile/run?</li>
+  <li>Do retrieved tests pass on retrieved code?</li>
+  <li>Do generated changes pass existing tests?</li>
+  <li>Is the generated code style-consistent with the codebase?</li>
+</ul>
+
+<p>Ground-truth evaluation is easier because correctness is more objective.</p>
+
+<h2>IDE integration</h2>
+<p>Code RAG lives in IDEs:</p>
+<ul>
+  <li>VS Code extensions</li>
+  <li>JetBrains plugins</li>
+  <li>Terminal tools</li>
+  <li>Git hooks</li>
+</ul>
+
+<p>Latency is tight: sub-500ms ideal for inline completions, 2-3 seconds acceptable for chat interactions.</p>
+
+<h2>The "outdated code" problem</h2>
+<p>Codebases change rapidly. Stale indexes serve stale code. Patterns:</p>
+<ul>
+  <li>Event-driven ingestion (webhooks from git)</li>
+  <li>Periodic full re-index</li>
+  <li>Branch-aware indexing (different branch, different index)</li>
+</ul>
+
+<h2>Security considerations</h2>
+<ul>
+  <li>Don't expose secrets (API keys, credentials in code, filter at ingestion)</li>
+  <li>Access control per repo (not everyone should see all code)</li>
+  <li>Don't send proprietary code to external LLM APIs without the right agreement</li>
+</ul>
+
+<h2>Self-hosted is common</h2>
+<p>Code is often the most sensitive data a company has. Many organizations run code RAG entirely on-prem or in VPC:</p>
+<ul>
+  <li>Self-hosted embedding model</li>
+  <li>Self-hosted vector DB</li>
+  <li>Self-hosted or VPC-deployed LLM</li>
+</ul>
+
+<p>The compliance story is simpler with full isolation.</p>
+
+<h2>The compound quality benefit</h2>
+<p>Code RAG with good retrieval enables downstream agents:</p>
+<ul>
+  <li>Automated refactoring</li>
+  <li>Dependency updates</li>
+  <li>Bug fixes with PR generation</li>
+  <li>Code review automation</li>
+</ul>
+
+<p>These higher-order tasks compound the value of the underlying retrieval system. Good retrieval is the foundation; capabilities stack on top.</p>
+
+<p style="margin-top:40px;">Next: <a href="legal-compliance.html">Legal and compliance RAG</a>.</p>
+<div class="prev-next"><a href="internal-kb.html" class="prev"><div class="label">← Previous</div><div class="title">Internal knowledge RAG</div></a><a href="legal-compliance.html" class="next"><div class="label">Next →</div><div class="title">Legal and compliance</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a></p>
+</div></footer></body></html>

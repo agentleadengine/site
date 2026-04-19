@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Episodic memory | Samuel Ochoa</title>
+<meta name="description" content="Episodic memory stores specific past events or interactions the agent can recall. Like a memory of 'what happened last Tuesday.'">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Episodic memory | Samuel Ochoa">
+<meta property="og:description" content="Episodic memory stores specific past events or interactions the agent can recall. Like a memory of 'what happened last Tuesday.'">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="loops/react.html">ReAct</a></li><li><a href="loops/tool-use.html">Tool use</a></li><li><a href="loops/planning.html">Planning loops</a></li><li><a href="loops/reflection.html">Reflection</a></li><li><a href="loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="tools/tool-design.html">Tool design</a></li><li><a href="tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="tools/error-handling.html">Tool error handling</a></li><li><a href="tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="memory/short-term.html">Short-term memory</a></li><li><a href="memory/long-term.html">Long-term memory</a></li><li><a href="memory/episodic.html" class="active">Episodic memory</a></li><li><a href="memory/procedural.html">Procedural memory</a></li><li><a href="memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="multi/peer-agents.html">Peer agents</a></li><li><a href="multi/debate.html">Debate + consensus</a></li><li><a href="multi/handoffs.html">Agent handoffs</a></li><li><a href="multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="eval/why-eval-agents.html">Why eval agents</a></li><li><a href="eval/task-completion.html">Task completion</a></li><li><a href="eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="prod/observability.html">Observability + tracing</a></li><li><a href="prod/cost-control.html">Cost control</a></li><li><a href="prod/latency.html">Latency optimization</a></li><li><a href="prod/safety.html">Safety + guardrails</a></li><li><a href="prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="patterns/research-agent.html">Research agent</a></li><li><a href="patterns/coding-agent.html">Coding agent</a></li><li><a href="patterns/customer-support.html">Customer support agent</a></li><li><a href="patterns/data-analyst.html">Data analyst agent</a></li><li><a href="patterns/browser-agent.html">Browser agent</a></li><li><a href="patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="frameworks/langgraph.html">LangGraph</a></li><li><a href="frameworks/crewai.html">CrewAI</a></li><li><a href="frameworks/autogen.html">AutoGen</a></li><li><a href="frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>Episodic memory</span></div><h1 class="title">Episodic memory</h1><div class="article-meta"><span>📖 2 min read</span><span>Updated 2026-04-19</span></div>
+<p class="lede">Episodic memory is the agent's record of specific past events. Unlike structured facts ("user likes Python") or general knowledge, episodic memory captures whole interactions or trajectories the agent can reference.</p>
+
+<h2>What it enables</h2>
+<ul>
+<li>"Last week when I helped you debug this issue..."</li>
+<li>"In our last session, we decided X"</li>
+<li>"That approach we tried in project Y didn't work"</li>
+</ul>
+<p>Reference to specific prior episodes makes the agent feel less amnesic and more like a long-term collaborator.</p>
+
+<h2>Implementation</h2>
+<p>Store full session transcripts (or distilled summaries) keyed by timestamp and topic. At the start of a new session, retrieve episodes relevant to the current task.</p>
+
+<p>Typical structure:</p>
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
+{
+  "episode_id": "session_2026_04_19_abc",
+  "timestamp": "2026-04-19T14:30:00Z",
+  "user": "user_123",
+  "topic_tags": ["debugging", "python", "database"],
+  "summary": "User had a database timeout issue. We traced it to missing index, added one.",
+  "artifacts": [...],  // code changes, docs created
+  "outcome": "resolved"
+}
+</pre>
+
+<h2>Retrieval</h2>
+<p>At session start, query episodic memory:</p>
+<ul>
+<li>By user</li>
+<li>By recent time window</li>
+<li>By topic similarity to current request</li>
+</ul>
+
+<h2>The summarization step</h2>
+<p>Raw session transcripts are too long. Distill each session into a brief episode record at session end. Agent can expand into the full transcript only if needed.</p>
+
+<h2>Privacy considerations</h2>
+<p>Episodes contain sensitive information. Respect retention limits, access controls, and user deletion rights.</p>
+<div class="prev-next"><a href="long-term.html" class="prev"><div class="label">← Previous</div><div class="title">Long-term memory</div></a><a href="procedural.html" class="next"><div class="label">Next →</div><div class="title">Procedural memory</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
+</div></footer></body></html>

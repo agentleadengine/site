@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Desktop control | Samuel Ochoa</title>
+<meta name="description" content="Controlling the OS and native apps. Computer Use, screen reasoning, click-and-type patterns, permission tiers.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Desktop control | Samuel Ochoa">
+<meta property="og:description" content="Controlling the OS and native apps. Computer Use, screen reasoning, click-and-type patterns, permission tiers.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../index.html">Home</a>
+<a href="../../framework/index.html" class="active">Framework</a>
+<a href="../expertise/index.html">Expertise</a>
+<a href="../playbooks/index.html">Playbooks</a>
+<a href="../writing.html">Writing</a>
+<a href="../../about.html">About</a>
+<a href="../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="what-is-autonomous-ai.html">What is autonomous AI</a></li><li><a href="the-autonomy-spectrum.html">The autonomy spectrum</a></li><li><a href="glossary.html">Glossary</a></li></ul><h4>Claude</h4><ul><li><a href="claude/overview.html">Overview</a></li><li><a href="claude/prompting-for-agents.html">Prompting for agents</a></li><li><a href="claude/extended-thinking.html">Extended thinking</a></li><li><a href="claude/tool-use.html">Tool use</a></li></ul><h4>MCP</h4><ul><li><a href="mcp/index.html">Overview</a></li><li><a href="mcp/what-is-mcp.html">What is MCP</a></li><li><a href="mcp/anatomy.html">Anatomy</a></li><li><a href="mcp/transports.html">Transports</a></li><li><a href="mcp/servers.html">Servers</a></li><li><a href="mcp/clients.html">Clients</a></li><li><a href="mcp/security.html">Security</a></li><li><a href="mcp/directory.html">Directory</a></li></ul><h4>Plugins</h4><ul><li><a href="plugins/index.html">Overview</a></li><li><a href="plugins/vs-mcp.html">Plugins vs MCP</a></li><li><a href="plugins/marketplace.html">Marketplace</a></li></ul><h4>Claude Code</h4><ul><li><a href="claude-code/index.html">Overview</a></li><li><a href="claude-code/settings.html">Settings</a></li><li><a href="claude-code/permissions.html">Permissions</a></li><li><a href="claude-code/hooks.html">Hooks</a></li><li><a href="claude-code/skills.html">Skills</a></li><li><a href="claude-code/memory.html">Memory</a></li></ul><h4>Patterns</h4><ul><li><a href="patterns/index.html">Overview</a></li><li><a href="patterns/react-loop.html">ReAct loop</a></li><li><a href="patterns/plan-execute.html">Plan-execute</a></li><li><a href="patterns/multi-agent.html">Multi-agent</a></li><li><a href="patterns/evaluation.html">Evaluation</a></li><li><a href="patterns/prompt-caching.html">Prompt caching</a></li></ul><h4>Autonomous</h4><ul><li><a href="autonomous/index.html">Overview</a></li><li><a href="autonomous/headless.html">Headless</a></li><li><a href="autonomous/scheduling.html">Scheduling</a></li><li><a href="autonomous/self-monitoring.html">Self-monitoring</a></li><li><a href="autonomous/safety.html">Safety</a></li></ul><h4>Build Guides</h4><ul><li><a href="build/index.html">Overview</a></li><li><a href="build/first-agent.html">First agent (60 min)</a></li><li><a href="build/voice-agent.html">Voice agent</a></li><li><a href="build/research-agent.html">Research agent</a></li></ul><h4>Tools</h4><ul><li><a href="tools/browser-automation.html">Browser automation</a></li><li><a href="tools/desktop-control.html" class="active">Desktop control</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Framework</a><span class="sep">›</span><span>Tools</span><span class="sep">›</span><span>Desktop control</span></div><h1 class="title" style="font-size:clamp(32px,4.5vw,42px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">Desktop control</h1><div class="article-meta"><span>📖 6 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">Desktop control lets an agent drive native apps. Finder, Photos, System Settings, third-party apps with no APIs. It's powerful and the least mature layer of agent tooling. Use carefully.</p>
+
+<h2>How it works</h2>
+<p>The agent takes a screenshot, reasons about what's on screen, and emits actions: click at (x, y), type text, press keys, scroll. It's pixel-based vision, not DOM-aware.</p>
+
+<h2>When to reach for it</h2>
+<ul>
+  <li>Native desktop apps with no API (many older pro apps)</li>
+  <li>Cross-app workflows (Finder → Photos → Mail)</li>
+  <li>System Settings, Preferences</li>
+  <li>Apps you paid for and trust (your own workstation)</li>
+</ul>
+
+<h2>When NOT to use it</h2>
+<ul>
+  <li><strong>If an API or MCP exists.</strong> API is faster, more reliable.</li>
+  <li><strong>If the web version works.</strong> Browser automation beats desktop on reliability.</li>
+  <li><strong>For anything with irreversible consequences on shared systems.</strong> Desktop control is "fast and blunt."</li>
+</ul>
+
+<h2>Permission tiers</h2>
+<p>Anthropic's Computer Use (and similar systems) have tiered permissions:</p>
+<ul>
+  <li><strong>read</strong>, can screenshot only (observe, don't interact)</li>
+  <li><strong>click</strong>, can click, but not type or use keyboard shortcuts</li>
+  <li><strong>full</strong>, can click, type, use modifier keys, drag, etc.</li>
+</ul>
+<p>Default: browsers are tier "read" (observe, but use Chrome extension for actual control). Terminals/IDEs are tier "click" (can click buttons, can't type into the editor). Everything else is tier "full."</p>
+<p>This prevents common mistakes like: agent reads an email, sees a malicious link, and clicks it via desktop control (instead of opening it in Chrome where link safety rules apply).</p>
+
+<h2>The loop</h2>
+<pre><code>1. Take screenshot
+2. Reason: what is on screen? What's the next step toward the goal?
+3. Emit action (click, type, key)
+4. Wait briefly for UI to update
+5. Take screenshot again
+6. Repeat</code></pre>
+
+<h2>Batch actions</h2>
+<p>Each screenshot + reason cycle is slow. If you know the next 5 actions, batch them. Computer Use supports a <code>computer_batch</code> tool that executes a sequence without screenshotting between each.</p>
+<p>Example: open Spotlight, type "Maps," press Enter, wait. That's 4 actions as one batch.</p>
+
+<h2>Reliability patterns</h2>
+
+<h3>Visual anchors over coordinates</h3>
+<p>Don't click (450, 230). Click "the search icon near the top-right." The model re-locates it each time, robust to window movement.</p>
+
+<h3>State verification</h3>
+<p>After each action, screenshot and verify. "Did the dialog close? Did the text appear? Did the state change?" If no, retry or replan.</p>
+
+<h3>Timeouts</h3>
+<p>Apps can hang. Set a max-turns budget for any desktop task. If the goal isn't reached, stop.</p>
+
+<h2>Safety</h2>
+<ul>
+  <li><strong>Never drive through login screens.</strong> You type the password, not the agent.</li>
+  <li><strong>Never enter payment information.</strong> Ever.</li>
+  <li><strong>Avoid destructive dialogs.</strong> "Are you sure you want to delete?" is the agent's fault if it clicks Yes. Design prompts that say "if a destructive confirmation appears, stop and ask."</li>
+  <li><strong>Scope the agent's app access.</strong> Don't give it access to apps it doesn't need. Request access explicitly for each.</li>
+</ul>
+
+<h2>Cost</h2>
+<p>Screenshots are images. Images are expensive (both in tokens and in inference time). A 50-step desktop task can cost 10× a comparable DOM-based task.</p>
+<p>Mitigations:</p>
+<ul>
+  <li>Batch actions wherever possible</li>
+  <li>Use compressed screenshots when high fidelity isn't needed</li>
+  <li>Cache previous screenshots if you can reason "nothing changed since last shot"</li>
+</ul>
+
+<h2>The last-resort principle</h2>
+<p>Desktop control is the agent tool of last resort. Exhaust the alternatives:</p>
+<ol>
+  <li>Can an API or MCP do this? Use that.</li>
+  <li>Can a browser (via Chrome extension) do this? Use that.</li>
+  <li>Can a shell command do this? Use that.</li>
+  <li>Only then, desktop control.</li>
+</ol>
+<p>The reason: every tier above is faster, cheaper, and more reliable. Desktop is the "can do anything" option, which is also the "can break anything" option.</p>
+<div class="prev-next"><a href="browser-automation.html" class="prev"><div class="label">← Previous</div><div class="title">Browser automation</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../framework/index.html">Framework</a></p>
+</div></footer></body></html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What is autonomous AI? | Samuel Ochoa</title>
+<meta name="description" content="A definition of autonomous AI and the four layers that make it possible: model, tools, harness, permissions.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="website">
+<meta property="og:title" content="What is autonomous AI? | Samuel Ochoa">
+<meta property="og:description" content="A definition of autonomous AI and the four layers that make it possible: model, tools, harness, permissions.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../index.html">Home</a>
+<a href="../framework/index.html" class="active">Framework</a>
+<a href="../expertise/index.html">Expertise</a>
+<a href="../playbooks/index.html">Playbooks</a>
+<a href="../writing.html">Writing</a>
+<a href="../about.html">About</a>
+<a href="../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="what-is-autonomous-ai.html" class="active">What is autonomous AI</a></li><li><a href="the-autonomy-spectrum.html">The autonomy spectrum</a></li><li><a href="glossary.html">Glossary</a></li></ul><h4>Claude</h4><ul><li><a href="claude/overview.html">Overview</a></li><li><a href="claude/prompting-for-agents.html">Prompting for agents</a></li><li><a href="claude/extended-thinking.html">Extended thinking</a></li><li><a href="claude/tool-use.html">Tool use</a></li></ul><h4>MCP</h4><ul><li><a href="mcp/index.html">Overview</a></li><li><a href="mcp/what-is-mcp.html">What is MCP</a></li><li><a href="mcp/anatomy.html">Anatomy</a></li><li><a href="mcp/transports.html">Transports</a></li><li><a href="mcp/servers.html">Servers</a></li><li><a href="mcp/clients.html">Clients</a></li><li><a href="mcp/security.html">Security</a></li><li><a href="mcp/directory.html">Directory</a></li></ul><h4>Plugins</h4><ul><li><a href="plugins/index.html">Overview</a></li><li><a href="plugins/vs-mcp.html">Plugins vs MCP</a></li><li><a href="plugins/marketplace.html">Marketplace</a></li></ul><h4>Claude Code</h4><ul><li><a href="claude-code/index.html">Overview</a></li><li><a href="claude-code/settings.html">Settings</a></li><li><a href="claude-code/permissions.html">Permissions</a></li><li><a href="claude-code/hooks.html">Hooks</a></li><li><a href="claude-code/skills.html">Skills</a></li><li><a href="claude-code/memory.html">Memory</a></li></ul><h4>Patterns</h4><ul><li><a href="patterns/index.html">Overview</a></li><li><a href="patterns/react-loop.html">ReAct loop</a></li><li><a href="patterns/plan-execute.html">Plan-execute</a></li><li><a href="patterns/multi-agent.html">Multi-agent</a></li><li><a href="patterns/evaluation.html">Evaluation</a></li><li><a href="patterns/prompt-caching.html">Prompt caching</a></li></ul><h4>Autonomous</h4><ul><li><a href="autonomous/index.html">Overview</a></li><li><a href="autonomous/headless.html">Headless</a></li><li><a href="autonomous/scheduling.html">Scheduling</a></li><li><a href="autonomous/self-monitoring.html">Self-monitoring</a></li><li><a href="autonomous/safety.html">Safety</a></li></ul><h4>Build Guides</h4><ul><li><a href="build/index.html">Overview</a></li><li><a href="build/first-agent.html">First agent (60 min)</a></li><li><a href="build/voice-agent.html">Voice agent</a></li><li><a href="build/research-agent.html">Research agent</a></li></ul><h4>Tools</h4><ul><li><a href="tools/browser-automation.html">Browser automation</a></li><li><a href="tools/desktop-control.html">Desktop control</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../index.html">Home</a><span class="sep">›</span><a href="index.html">Framework</a><span class="sep">›</span><span>What is autonomous AI?</span></div><h1 class="title" style="font-size:clamp(32px,4.5vw,42px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">What is autonomous AI?</h1><div class="article-meta"><span>📖 4 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede"><strong>Autonomous AI</strong> is not a single technology. It's an <em>assembly</em> of four layers, model, tools, harness, permissions, working together in a loop.</p>
+
+<h2>The short definition</h2>
+<p>An AI is "autonomous" when it can take a goal, decompose it, use tools to act, observe the results, and iterate, without a human reviewing every step.</p>
+
+<div class="callout insight">
+  <strong>Insight:</strong> The interesting property isn't the model. It's the <em>loop</em>. A loop that includes reasoning, action, observation, and adjustment.
+</div>
+
+<h2>The four layers</h2>
+
+<h3>1. Model</h3>
+<p>A large language model. Claude, GPT, Gemini, that generates reasoning and decisions. The model is the "brain," but it alone cannot do anything. It produces text. That text has to be interpreted and acted on.</p>
+
+<h3>2. Tools</h3>
+<p>Functions the model can call. Search the web. Read a file. Send an email. Query a database. Tools turn text-generation into real-world action. A model without tools is a chatbot. A model with tools is an agent.</p>
+
+<h3>3. Harness</h3>
+<p>The runtime that connects the model to the tools. It parses the model's tool-call requests, executes them, and feeds results back. <a href="claude-code/index.html">Claude Code</a> is one harness. There are many others. A good harness makes the loop reliable.</p>
+
+<h3>4. Permissions</h3>
+<p>The rules that govern what the harness will let the agent do without checking. Read-only by default? Allowed to write files? Allowed to make network calls? Allowed to spend money? Permission design is what makes autonomy <em>safe</em>.</p>
+
+<h2>The loop</h2>
+<pre><code>Goal → Reason → Act (call tool) → Observe (tool result) → Reason → ...</code></pre>
+<p>This is the canonical agent loop. The model reasons about what to do, the harness runs the tool, the result becomes new input, the model reasons again. Repeat until the goal is met or a termination condition fires.</p>
+
+<h2>What makes it "autonomous"?</h2>
+<p>Autonomy is a <a href="the-autonomy-spectrum.html">spectrum</a>, not a binary. A system is <em>more</em> autonomous as:</p>
+<ul>
+  <li>The number of steps it can take without human approval grows</li>
+  <li>The diversity of tools available to it grows</li>
+  <li>The durability over time (survives restarts, crashes, partial failures) grows</li>
+  <li>Its ability to self-monitor and self-correct grows</li>
+</ul>
+
+<h2>What autonomous AI is not</h2>
+<ul>
+  <li><strong>Not AGI.</strong> Today's autonomous systems are narrow. They do one kind of work well.</li>
+  <li><strong>Not "lights out."</strong> You still monitor them, review logs, set guardrails. Autonomy means "fewer interruptions," not "zero oversight."</li>
+  <li><strong>Not a chatbot with extra steps.</strong> A chatbot answers. An agent <em>acts</em>.</li>
+</ul>
+
+<h2>Why it matters</h2>
+<p>Once you have the loop working, the next step is putting the loop in the background. Running it on a schedule. Running it headless. Running it without you. That's the path from "cool demo" to "operating infrastructure." The rest of this framework is about walking that path.</p>
+<div class="prev-next"><a href="index.html" class="prev"><div class="label">← Previous</div><div class="title">Framework overview</div></a><a href="the-autonomy-spectrum.html" class="next"><div class="label">Next →</div><div class="title">The autonomy spectrum</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../framework/index.html">Framework</a></p>
+</div></footer></body></html>

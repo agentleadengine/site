@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HNSW, IVF, PQ | Samuel Ochoa</title>
+<meta name="description" content="Approximate nearest neighbor algorithms trade exact results for speed. Here's how HNSW, IVF, and PQ work, and when to use which.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HNSW, IVF, PQ | Samuel Ochoa">
+<meta property="og:description" content="Approximate nearest neighbor algorithms trade exact results for speed. Here's how HNSW, IVF, and PQ work, and when to use which.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../about.html">About</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>RAGS to Riches (56 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-rag.html">What is RAG?</a></li><li><a href="foundations/why-rag.html">Why RAG over fine-tuning</a></li><li><a href="foundations/the-architecture.html">The RAG architecture map</a></li><li><a href="foundations/when-not-to-use.html">When not to use RAG</a></li></ul><h4>Documents + Ingestion</h4><ul><li><a href="docs/ingestion-pipeline.html">The ingestion pipeline</a></li><li><a href="docs/parsing-pdfs.html">Parsing PDFs</a></li><li><a href="docs/parsing-html.html">Parsing HTML + web pages</a></li><li><a href="docs/tables-figures.html">Tables and figures</a></li><li><a href="docs/ocr.html">OCR for scanned documents</a></li><li><a href="docs/metadata.html">Metadata extraction</a></li></ul><h4>Chunking</h4><ul><li><a href="chunking/why-chunking.html">Why chunking matters</a></li><li><a href="chunking/fixed-size.html">Fixed-size chunking</a></li><li><a href="chunking/semantic.html">Semantic chunking</a></li><li><a href="chunking/recursive.html">Recursive chunking</a></li><li><a href="chunking/structure-aware.html">Structure-aware chunking</a></li><li><a href="chunking/chunking-code.html">Chunking code</a></li></ul><h4>Embeddings</h4><ul><li><a href="embeddings/what-are-embeddings.html">What embeddings are</a></li><li><a href="embeddings/picking-a-model.html">Picking an embedding model</a></li><li><a href="embeddings/closed-vs-open.html">Closed vs open models</a></li><li><a href="embeddings/dimensions-cost.html">Dimensions, cost, and MRL</a></li><li><a href="embeddings/fine-tuning.html">Fine-tuning embeddings</a></li></ul><h4>Vector Stores</h4><ul><li><a href="vectors/overview.html">Vector database overview</a></li><li><a href="vectors/indexing-strategies.html" class="active">HNSW, IVF, PQ</a></li><li><a href="vectors/hybrid-search.html">Hybrid search</a></li><li><a href="vectors/metadata-filtering.html">Metadata filtering</a></li><li><a href="vectors/cost-optimization.html">Cost optimization</a></li><li><a href="vectors/choosing-a-db.html">Choosing a vector DB</a></li></ul><h4>Retrieval Strategies</h4><ul><li><a href="retrieval/vector-search.html">Vector similarity search</a></li><li><a href="retrieval/bm25-sparse.html">BM25 and sparse retrieval</a></li><li><a href="retrieval/hybrid.html">Hybrid retrieval</a></li><li><a href="retrieval/reranking.html">Reranking</a></li><li><a href="retrieval/query-rewriting.html">Query rewriting</a></li><li><a href="retrieval/hyde.html">HyDE</a></li><li><a href="retrieval/multi-query.html">Multi-query + fusion</a></li></ul><h4>Advanced Patterns</h4><ul><li><a href="advanced/agentic-rag.html">Agentic RAG</a></li><li><a href="advanced/graph-rag.html">GraphRAG</a></li><li><a href="advanced/adaptive-rag.html">Adaptive RAG</a></li><li><a href="advanced/corrective-rag.html">Corrective RAG (CRAG)</a></li><li><a href="advanced/self-rag.html">Self-RAG</a></li><li><a href="advanced/multi-hop.html">Multi-hop RAG</a></li></ul><h4>Evaluation</h4><ul><li><a href="eval/why-eval.html">Why evaluation is critical</a></li><li><a href="eval/retrieval-metrics.html">Retrieval metrics</a></li><li><a href="eval/generation-metrics.html">Generation metrics</a></li><li><a href="eval/ragas-and-frameworks.html">RAGAS, TruLens, ARES</a></li><li><a href="eval/building-eval-datasets.html">Building eval datasets</a></li></ul><h4>Production</h4><ul><li><a href="prod/latency.html">Latency optimization</a></li><li><a href="prod/caching.html">Caching strategies</a></li><li><a href="prod/observability.html">Observability and tracing</a></li><li><a href="prod/cost.html">Cost management</a></li><li><a href="prod/security.html">Security and prompt injection</a></li></ul><h4>Use Cases</h4><ul><li><a href="cases/customer-support.html">Customer support RAG</a></li><li><a href="cases/internal-kb.html">Internal knowledge RAG</a></li><li><a href="cases/code-rag.html">Code search + generation</a></li><li><a href="cases/legal-compliance.html">Legal and compliance</a></li><li><a href="cases/multi-tenant.html">Multi-tenant RAG</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">RAGS to Riches</a><span class="sep">›</span><span>HNSW, IVF, PQ</span></div><h1 class="title">HNSW, IVF, PQ</h1><div class="article-meta"><span>📖 6 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">Exact nearest-neighbor search over millions of vectors is too slow for real-time use. Vector databases use approximate algorithms (ANN) that trade a few percent of recall for 10-100x speedups. The three dominant algorithms are HNSW, IVF, and PQ. You don't need to implement them, but you need to understand the tradeoffs.</p>
+
+<h2>HNSW (Hierarchical Navigable Small World)</h2>
+<p>The dominant algorithm for most production vector databases.</p>
+
+<h3>How it works</h3>
+<p>HNSW builds a multi-layer graph where each vector is a node connected to its neighbors. The top layer has few nodes with long-range connections; lower layers have more nodes with shorter connections. Search starts at the top, greedily follows edges toward the query, and descends layer by layer.</p>
+
+<h3>Strengths</h3>
+<ul>
+  <li>Very high recall at low latency</li>
+  <li>Supports streaming inserts well</li>
+  <li>Well-tuned across many vector DBs</li>
+</ul>
+
+<h3>Weaknesses</h3>
+<ul>
+  <li>Memory-heavy: the graph structure significantly exceeds raw vector storage</li>
+  <li>Index construction is slow and CPU-intensive</li>
+  <li>Deletion is awkward, usually lazy (mark as deleted, filter out at query)</li>
+</ul>
+
+<h3>Key tuning parameters</h3>
+<ul>
+  <li><code>M</code>: max connections per node. Higher = better recall, more memory. Typical 16-32.</li>
+  <li><code>ef_construction</code>: how many candidates to explore during index build. Higher = slower build, better index. Typical 100-200.</li>
+  <li><code>ef_search</code>: how many candidates to explore during query. Higher = better recall, slower queries. Typical 50-200.</li>
+</ul>
+
+<h2>IVF (Inverted File)</h2>
+<p>Older algorithm, still useful especially at enormous scale or memory-constrained.</p>
+
+<h3>How it works</h3>
+<p>Cluster all vectors into K centroids (via k-means). For each query, find the nearest centroid(s), then exhaustively search only the vectors assigned to those clusters.</p>
+
+<h3>Strengths</h3>
+<ul>
+  <li>Low memory (just store cluster assignments)</li>
+  <li>Fast queries when you probe few clusters</li>
+  <li>Easier to distribute across shards</li>
+</ul>
+
+<h3>Weaknesses</h3>
+<ul>
+  <li>Lower recall than HNSW at equivalent speed</li>
+  <li>Quality degrades if cluster choice is wrong</li>
+  <li>Rebuilding required when distribution shifts</li>
+</ul>
+
+<h3>Key parameters</h3>
+<ul>
+  <li><code>nlist</code>: number of clusters. Rule of thumb: sqrt(N) for N vectors.</li>
+  <li><code>nprobe</code>: how many clusters to search per query. Higher = better recall, slower.</li>
+</ul>
+
+<h2>PQ (Product Quantization)</h2>
+<p>A compression technique, usually combined with IVF or HNSW.</p>
+
+<h3>How it works</h3>
+<p>Split each vector into M sub-vectors. Train a separate codebook per sub-vector position (typically 256 codes per position). Store each sub-vector as a single byte index into its codebook. A 768-dim float vector (3072 bytes) becomes ~48 bytes. Storage reduction: ~60x.</p>
+
+<h3>Strengths</h3>
+<ul>
+  <li>Dramatic storage reduction</li>
+  <li>Fast distance computation via table lookups</li>
+  <li>Works well combined with IVF or HNSW for hybrid indexes</li>
+</ul>
+
+<h3>Weaknesses</h3>
+<ul>
+  <li>Lossy, introduces quantization error</li>
+  <li>Codebook training is one-time cost, doesn't adapt to new data well</li>
+  <li>Recall gap from exact search</li>
+</ul>
+
+<h2>The common combinations</h2>
+
+<h3>HNSW alone</h3>
+<p>Default for most production systems up to ~10M vectors. Highest quality.</p>
+
+<h3>IVF-PQ</h3>
+<p>Cluster + compress. Scales to billions. Lower recall than HNSW but much cheaper storage. Used at Meta, Google scale.</p>
+
+<h3>HNSW + PQ</h3>
+<p>Graph structure for navigation, PQ-compressed vectors for distance calculation. Good balance. Qdrant's default at scale.</p>
+
+<h3>Scalar / binary quantization</h3>
+<p>Simpler than PQ. Each float reduced to int8 or a single bit. Combined with HNSW in many modern DBs. Qdrant and Milvus both support binary quantization natively.</p>
+
+<h2>The recall-speed-memory triangle</h2>
+<p>You get to pick two of three: recall, speed, memory. Tuning parameters move you along the frontier:</p>
+<ul>
+  <li>High recall + fast: HNSW with large ef, lots of memory</li>
+  <li>Fast + low memory: IVF-PQ with aggressive compression, sacrifice recall</li>
+  <li>High recall + low memory: not really achievable at scale; you pay with query time</li>
+</ul>
+
+<h2>The pragmatic approach</h2>
+<p>For systems below ~10M vectors, accept the defaults of your vector DB and move on. Index strategy rarely bottlenecks RAG quality at this scale.</p>
+
+<p>Above 10M vectors, budget time to tune. Run your eval set at different parameter settings. Look at recall@10 vs query latency. Find the parameter sweet spot for your workload.</p>
+
+<p>Above 100M vectors, index strategy is a serious engineering effort. Expect to iterate on quantization and sharding over months.</p>
+
+<h2>When to rebuild</h2>
+<p>Indexes don't update forever gracefully:</p>
+<ul>
+  <li>HNSW: degrades slowly with high churn. Rebuild quarterly or annually at scale.</li>
+  <li>IVF: degrades if distribution shifts. Rebuild when recall drops or when you re-embed.</li>
+  <li>PQ: codebook stale if new data differs from training. Retrain codebook as data evolves.</li>
+</ul>
+
+<p style="margin-top:40px;">Next: <a href="hybrid-search.html">Hybrid search</a>.</p>
+<div class="prev-next"><a href="overview.html" class="prev"><div class="label">← Previous</div><div class="title">Vector database overview</div></a><a href="hybrid-search.html" class="next"><div class="label">Next →</div><div class="title">Hybrid search</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a></p>
+</div></footer></body></html>

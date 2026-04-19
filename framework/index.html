@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Autonomous AI Framework | Samuel Ochoa</title>
+<meta name="description" content="A handbook on how to build AI that runs on its own. Claude, MCP, plugins, Claude Code, agent patterns, safety, and more.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Autonomous AI Framework | Samuel Ochoa">
+<meta property="og:description" content="A handbook on how to build AI that runs on its own. Claude, MCP, plugins, Claude Code, agent patterns, safety, and more.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../index.html">Home</a>
+<a href="../framework/index.html" class="active">Framework</a>
+<a href="../expertise/index.html">Expertise</a>
+<a href="../playbooks/index.html">Playbooks</a>
+<a href="../writing.html">Writing</a>
+<a href="../about.html">About</a>
+<a href="../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Foundations</h4><ul><li><a href="index.html" class="active">Overview</a></li><li><a href="what-is-autonomous-ai.html">What is autonomous AI</a></li><li><a href="the-autonomy-spectrum.html">The autonomy spectrum</a></li><li><a href="glossary.html">Glossary</a></li></ul><h4>Claude</h4><ul><li><a href="claude/overview.html">Overview</a></li><li><a href="claude/prompting-for-agents.html">Prompting for agents</a></li><li><a href="claude/extended-thinking.html">Extended thinking</a></li><li><a href="claude/tool-use.html">Tool use</a></li></ul><h4>MCP</h4><ul><li><a href="mcp/index.html">Overview</a></li><li><a href="mcp/what-is-mcp.html">What is MCP</a></li><li><a href="mcp/anatomy.html">Anatomy</a></li><li><a href="mcp/transports.html">Transports</a></li><li><a href="mcp/servers.html">Servers</a></li><li><a href="mcp/clients.html">Clients</a></li><li><a href="mcp/security.html">Security</a></li><li><a href="mcp/directory.html">Directory</a></li></ul><h4>Plugins</h4><ul><li><a href="plugins/index.html">Overview</a></li><li><a href="plugins/vs-mcp.html">Plugins vs MCP</a></li><li><a href="plugins/marketplace.html">Marketplace</a></li></ul><h4>Claude Code</h4><ul><li><a href="claude-code/index.html">Overview</a></li><li><a href="claude-code/settings.html">Settings</a></li><li><a href="claude-code/permissions.html">Permissions</a></li><li><a href="claude-code/hooks.html">Hooks</a></li><li><a href="claude-code/skills.html">Skills</a></li><li><a href="claude-code/memory.html">Memory</a></li></ul><h4>Patterns</h4><ul><li><a href="patterns/index.html">Overview</a></li><li><a href="patterns/react-loop.html">ReAct loop</a></li><li><a href="patterns/plan-execute.html">Plan-execute</a></li><li><a href="patterns/multi-agent.html">Multi-agent</a></li><li><a href="patterns/evaluation.html">Evaluation</a></li><li><a href="patterns/prompt-caching.html">Prompt caching</a></li></ul><h4>Autonomous</h4><ul><li><a href="autonomous/index.html">Overview</a></li><li><a href="autonomous/headless.html">Headless</a></li><li><a href="autonomous/scheduling.html">Scheduling</a></li><li><a href="autonomous/self-monitoring.html">Self-monitoring</a></li><li><a href="autonomous/safety.html">Safety</a></li></ul><h4>Build Guides</h4><ul><li><a href="build/index.html">Overview</a></li><li><a href="build/first-agent.html">First agent (60 min)</a></li><li><a href="build/voice-agent.html">Voice agent</a></li><li><a href="build/research-agent.html">Research agent</a></li></ul><h4>Tools</h4><ul><li><a href="tools/browser-automation.html">Browser automation</a></li><li><a href="tools/desktop-control.html">Desktop control</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../index.html">Home</a><span class="sep">›</span><span>Framework</span></div><h1 class="title" style="font-size:clamp(32px,4.5vw,42px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">The Autonomous AI Framework</h1><div class="article-meta"><span>📖 3 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">This is a working handbook on <strong>autonomous AI</strong>. How to build agents that run on their own. How to wire tools to models through the Model Context Protocol. How to design safety boundaries. How to actually ship.</p>
+
+<p>Forty-two pages, organized by topic. Start anywhere. If you're brand new, start with <a href="what-is-autonomous-ai.html">"What is autonomous AI"</a>.</p>
+
+<h2>Foundations</h2>
+<ul class="hub-list">
+  <li><a href="what-is-autonomous-ai.html"><span><span class="hub-title">What is autonomous AI</span><span class="hub-desc">The four layers that make autonomy possible</span></span><span class="hub-arrow">→</span></a></li>
+  <li><a href="the-autonomy-spectrum.html"><span><span class="hub-title">The autonomy spectrum</span><span class="hub-desc">Chatbot → assistant → agent → autonomous</span></span><span class="hub-arrow">→</span></a></li>
+  <li><a href="glossary.html"><span><span class="hub-title">Glossary</span><span class="hub-desc">Every term, explained plainly</span></span><span class="hub-arrow">→</span></a></li>
+</ul>
+
+<h2>Claude (the model layer)</h2>
+<ul class="hub-list">
+  <li><a href="claude/overview.html"><span><span class="hub-title">Claude overview</span><span class="hub-desc">What Claude is, model families, why it matters for agents</span></span><span class="hub-arrow">→</span></a></li>
+  <li><a href="claude/prompting-for-agents.html"><span><span class="hub-title">Prompting for agents</span><span class="hub-desc">Patterns for agentic work, not chatbots</span></span><span class="hub-arrow">→</span></a></li>
+  <li><a href="claude/extended-thinking.html"><span><span class="hub-title">Extended thinking</span><span class="hub-desc">Reasoning budgets, when they help, when they don't</span></span><span class="hub-arrow">→</span></a></li>
+  <li><a href="claude/tool-use.html"><span><span class="hub-title">Tool use</span><span class="hub-desc">JSON schemas, errors, multi-turn loops</span></span><span class="hub-arrow">→</span></a></li>
+</ul>
+
+<h2>MCP. Model Context Protocol</h2>
+<ul class="hub-list">
+  <li><a href="mcp/what-is-mcp.html"><span><span class="hub-title">What is MCP</span><span class="hub-desc">The USB-C port of AI, the standard for connecting tools to models</span></span><span class="hub-arrow">→</span></a></li>
+  <li><a href="mcp/anatomy.html"><span><span class="hub-title">Anatomy of an MCP</span><span class="hub-desc">Tools, resources, prompts, servers, clients</span></span><span class="hub-arrow">→</span></a></li>
+  <li><a href="mcp/transports.html"><span><span class="hub-title">Transports</span><span class="hub-desc">stdio, SSE, HTTP, when to use each</span></span><span class="hub-arrow">→</span></a></li>
+  <li><a href="mcp/servers.html"><span><span class="hub-title">Building MCP servers</span><span class="hub-desc">Server lifecycle, patterns, examples</span></span><span class="hub-arrow">→</span></a></li>
+  <li><a href="mcp/clients.html"><span><span class="hub-title">MCP clients</span><span class="hub-desc">Who speaks MCP. Claude Code, IDEs, custom agents</span></span><span class="hub-arrow">→</span></a></li>
+  <li><a href="mcp/security.html"><span><span class="hub-title">MCP security</span><span class="hub-desc">Permissions, sandboxing, prompt injection defense</span></span><span class="hub-arrow">→</span></a></li>
+  <li><a href="mcp/directory.html"><span><span class="hub-title">MCP directory</span><span class="hub-desc">MCPs worth trying, organized by category</span></span><span class="hub-arrow">→</span></a></li>
+</ul>
+
+<h2>Plugins</h2>
+<ul class="hub-list">
+  <li><a href="plugins/index.html"><span><span class="hub-title">Plugins overview</span><span class="hub-desc">What plugins are, when to use them</span></span><span class="hub-arrow">→</span></a></li>
+  <li><a href="plugins/vs-mcp.html"><span><span class="hub-title">Plugins vs MCP</span><span class="hub-desc">The difference, with a decision tree</span></span><span class="hub-arrow">→</span></a></li>
+  <li><a href="plugins/marketplace.html"><span><span class="hub-title">Marketplaces</span><span class="hub-desc">Where plugins come from, how to vet them</span></span><span class="hub-arrow">→</span></a></li>
+</ul>
+
+<h2>Claude Code, the harness</h2>
+<ul class="hub-list">
+  <li><a href="claude-code/index.html"><span><span class="hub-title">Claude Code overview</span><span class="hub-desc">Why it's the canonical agent harness</span></span><span class="hub-arrow">→</span></a></li>
+  <li><a href="claude-code/settings.html"><span><span class="hub-title">Settings</span><span class="hub-desc">settings.json, the whole config model</span></span><span class="hub-arrow">→</span></a></li>
+  <li><a href="claude-code/permissions.html"><span><span class="hub-title">Permissions</span><span class="hub-desc">Allow/deny lists, auto mode, scope design</span></span><span class="hub-arrow">→</span></a></li>
+  <li><a href="claude-code/hooks.html"><span><span class="hub-title">Hooks</span><span class="hub-desc">Event-driven automation inside the agent</span></span><span class="hub-arrow">→</span></a></li>
+  <li><a href="claude-code/skills.html"><span><span class="hub-title">Skills</span><span class="hub-desc">Named, invokable bundles of instructions</span></span><span class="hub-arrow">→</span></a></li>
+  <li><a href="claude-code/memory.html"><span><span class="hub-title">Memory</span><span class="hub-desc">Persistent memory across sessions</span></span><span class="hub-arrow">→</span></a></li>
+</ul>
+
+<h2>Agent patterns</h2>
+<ul class="hub-list">
+  <li><a href="patterns/index.html"><span><span class="hub-title">Patterns overview</span><span class="hub-desc">5 patterns every agent builder should know</span></span><span class="hub-arrow">→</span></a></li>
+  <li><a href="patterns/react-loop.html"><span><span class="hub-title">ReAct loop</span><span class="hub-desc">Reason → act → observe, the default</span></span><span class="hub-arrow">→</span></a></li>
+  <li><a href="patterns/plan-execute.html"><span><span class="hub-title">Plan-execute</span><span class="hub-desc">Plan first, then run</span></span><span class="hub-arrow">→</span></a></li>
+  <li><a href="patterns/multi-agent.html"><span><span class="hub-title">Multi-agent orchestration</span><span class="hub-desc">Sub-agents, delegation, when it backfires</span></span><span class="hub-arrow">→</span></a></li>
+  <li><a href="patterns/evaluation.html"><span><span class="hub-title">Evaluation</span><span class="hub-desc">How to actually test an agent</span></span><span class="hub-arrow">→</span></a></li>
+  <li><a href="patterns/prompt-caching.html"><span><span class="hub-title">Prompt caching</span><span class="hub-desc">Cost and latency wins</span></span><span class="hub-arrow">→</span></a></li>
+</ul>
+
+<h2>Going autonomous</h2>
+<ul class="hub-list">
+  <li><a href="autonomous/index.html"><span><span class="hub-title">What "fully autonomous" means</span><span class="hub-desc">The autonomy stack</span></span><span class="hub-arrow">→</span></a></li>
+  <li><a href="autonomous/headless.html"><span><span class="hub-title">Headless mode</span><span class="hub-desc">Agents without a human terminal</span></span><span class="hub-arrow">→</span></a></li>
+  <li><a href="autonomous/scheduling.html"><span><span class="hub-title">Scheduling</span><span class="hub-desc">Crons, triggers, event-driven</span></span><span class="hub-arrow">→</span></a></li>
+  <li><a href="autonomous/self-monitoring.html"><span><span class="hub-title">Self-monitoring</span><span class="hub-desc">Agents watching themselves</span></span><span class="hub-arrow">→</span></a></li>
+  <li><a href="autonomous/safety.html"><span><span class="hub-title">Safety boundaries</span><span class="hub-desc">Guardrails, kill switches, approvals</span></span><span class="hub-arrow">→</span></a></li>
+</ul>
+
+<h2>Build guides</h2>
+<ul class="hub-list">
+  <li><a href="build/first-agent.html"><span><span class="hub-title">Your first agent in 60 minutes</span><span class="hub-desc">Hands-on walkthrough</span></span><span class="hub-arrow">→</span></a></li>
+  <li><a href="build/voice-agent.html"><span><span class="hub-title">Voice agent</span><span class="hub-desc">STT → LLM → TTS pipeline</span></span><span class="hub-arrow">→</span></a></li>
+  <li><a href="build/research-agent.html"><span><span class="hub-title">Research agent</span><span class="hub-desc">Search → extract → synthesize → report</span></span><span class="hub-arrow">→</span></a></li>
+</ul>
+
+<h2>Tools</h2>
+<ul class="hub-list">
+  <li><a href="tools/browser-automation.html"><span><span class="hub-title">Browser automation</span><span class="hub-desc">DOM-aware vs pixel-based</span></span><span class="hub-arrow">→</span></a></li>
+  <li><a href="tools/desktop-control.html"><span><span class="hub-title">Desktop control</span><span class="hub-desc">OS-level agents</span></span><span class="hub-arrow">→</span></a></li>
+</ul>
+<div class="prev-next"><a href="what-is-autonomous-ai.html" class="next"><div class="label">Next →</div><div class="title">What is autonomous AI</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../framework/index.html">Framework</a></p>
+</div></footer></body></html>

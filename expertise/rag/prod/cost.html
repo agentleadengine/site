@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cost management | Samuel Ochoa</title>
+<meta name="description" content="RAG costs can balloon fast. Here are the costs that matter and the levers for controlling them at scale.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cost management | Samuel Ochoa">
+<meta property="og:description" content="RAG costs can balloon fast. Here are the costs that matter and the levers for controlling them at scale.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../about.html">About</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>RAGS to Riches (56 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-rag.html">What is RAG?</a></li><li><a href="foundations/why-rag.html">Why RAG over fine-tuning</a></li><li><a href="foundations/the-architecture.html">The RAG architecture map</a></li><li><a href="foundations/when-not-to-use.html">When not to use RAG</a></li></ul><h4>Documents + Ingestion</h4><ul><li><a href="docs/ingestion-pipeline.html">The ingestion pipeline</a></li><li><a href="docs/parsing-pdfs.html">Parsing PDFs</a></li><li><a href="docs/parsing-html.html">Parsing HTML + web pages</a></li><li><a href="docs/tables-figures.html">Tables and figures</a></li><li><a href="docs/ocr.html">OCR for scanned documents</a></li><li><a href="docs/metadata.html">Metadata extraction</a></li></ul><h4>Chunking</h4><ul><li><a href="chunking/why-chunking.html">Why chunking matters</a></li><li><a href="chunking/fixed-size.html">Fixed-size chunking</a></li><li><a href="chunking/semantic.html">Semantic chunking</a></li><li><a href="chunking/recursive.html">Recursive chunking</a></li><li><a href="chunking/structure-aware.html">Structure-aware chunking</a></li><li><a href="chunking/chunking-code.html">Chunking code</a></li></ul><h4>Embeddings</h4><ul><li><a href="embeddings/what-are-embeddings.html">What embeddings are</a></li><li><a href="embeddings/picking-a-model.html">Picking an embedding model</a></li><li><a href="embeddings/closed-vs-open.html">Closed vs open models</a></li><li><a href="embeddings/dimensions-cost.html">Dimensions, cost, and MRL</a></li><li><a href="embeddings/fine-tuning.html">Fine-tuning embeddings</a></li></ul><h4>Vector Stores</h4><ul><li><a href="vectors/overview.html">Vector database overview</a></li><li><a href="vectors/indexing-strategies.html">HNSW, IVF, PQ</a></li><li><a href="vectors/hybrid-search.html">Hybrid search</a></li><li><a href="vectors/metadata-filtering.html">Metadata filtering</a></li><li><a href="vectors/cost-optimization.html">Cost optimization</a></li><li><a href="vectors/choosing-a-db.html">Choosing a vector DB</a></li></ul><h4>Retrieval Strategies</h4><ul><li><a href="retrieval/vector-search.html">Vector similarity search</a></li><li><a href="retrieval/bm25-sparse.html">BM25 and sparse retrieval</a></li><li><a href="retrieval/hybrid.html">Hybrid retrieval</a></li><li><a href="retrieval/reranking.html">Reranking</a></li><li><a href="retrieval/query-rewriting.html">Query rewriting</a></li><li><a href="retrieval/hyde.html">HyDE</a></li><li><a href="retrieval/multi-query.html">Multi-query + fusion</a></li></ul><h4>Advanced Patterns</h4><ul><li><a href="advanced/agentic-rag.html">Agentic RAG</a></li><li><a href="advanced/graph-rag.html">GraphRAG</a></li><li><a href="advanced/adaptive-rag.html">Adaptive RAG</a></li><li><a href="advanced/corrective-rag.html">Corrective RAG (CRAG)</a></li><li><a href="advanced/self-rag.html">Self-RAG</a></li><li><a href="advanced/multi-hop.html">Multi-hop RAG</a></li></ul><h4>Evaluation</h4><ul><li><a href="eval/why-eval.html">Why evaluation is critical</a></li><li><a href="eval/retrieval-metrics.html">Retrieval metrics</a></li><li><a href="eval/generation-metrics.html">Generation metrics</a></li><li><a href="eval/ragas-and-frameworks.html">RAGAS, TruLens, ARES</a></li><li><a href="eval/building-eval-datasets.html">Building eval datasets</a></li></ul><h4>Production</h4><ul><li><a href="prod/latency.html">Latency optimization</a></li><li><a href="prod/caching.html">Caching strategies</a></li><li><a href="prod/observability.html">Observability and tracing</a></li><li><a href="prod/cost.html" class="active">Cost management</a></li><li><a href="prod/security.html">Security and prompt injection</a></li></ul><h4>Use Cases</h4><ul><li><a href="cases/customer-support.html">Customer support RAG</a></li><li><a href="cases/internal-kb.html">Internal knowledge RAG</a></li><li><a href="cases/code-rag.html">Code search + generation</a></li><li><a href="cases/legal-compliance.html">Legal and compliance</a></li><li><a href="cases/multi-tenant.html">Multi-tenant RAG</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">RAGS to Riches</a><span class="sep">›</span><span>Cost management</span></div><h1 class="title">Cost management</h1><div class="article-meta"><span>📖 5 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">RAG has a cost structure that surprises most teams. At 100 queries per day it's invisible. At 100,000 queries per day, it's a meaningful monthly bill. Planning for this from the start saves expensive rework when the system actually scales.</p>
+
+<h2>The cost components</h2>
+
+<h3>1. LLM generation</h3>
+<p>Usually the biggest line item. Priced per input token and output token, with output tokens typically 3-5x more expensive.</p>
+
+<p>Rough costs (per million tokens, 2026 pricing):</p>
+<ul>
+  <li>GPT-4o: ~$5 in / $15 out</li>
+  <li>GPT-4o-mini: ~$0.15 in / $0.60 out</li>
+  <li>Claude Sonnet: ~$3 in / $15 out</li>
+  <li>Claude Haiku: ~$0.25 in / $1.25 out</li>
+  <li>Gemini Pro: ~$3.50 in / $10.50 out</li>
+  <li>Open-source self-hosted: compute only</li>
+</ul>
+
+<h3>2. Embedding generation</h3>
+<p>Priced per input token. Compounds with reindexes.</p>
+<ul>
+  <li>OpenAI text-embedding-3-small: $0.02/M tokens</li>
+  <li>OpenAI text-embedding-3-large: $0.13/M tokens</li>
+  <li>Cohere embed-v3: ~$0.10/M tokens</li>
+  <li>Open-source self-hosted: compute only</li>
+</ul>
+
+<h3>3. Vector database</h3>
+<ul>
+  <li>Managed (Pinecone): $0.05-0.50 per million queries + storage per vector</li>
+  <li>Self-hosted: cloud infrastructure costs</li>
+  <li>Scales with vector count and query volume</li>
+</ul>
+
+<h3>4. Reranker</h3>
+<ul>
+  <li>Cohere Rerank: ~$1 per 1000 searches (significant at volume)</li>
+  <li>Self-hosted: GPU inference cost</li>
+</ul>
+
+<h3>5. Infrastructure</h3>
+<p>Application servers, ingestion workers, monitoring, logging. Usually 5-15% of total cost.</p>
+
+<h2>Per-query cost example</h2>
+<p>A typical production query, no optimization:</p>
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
+Query embedding:      512 tokens × $0.02/M    = $0.00001
+Vector search:        (included in DB cost)
+Reranker (Cohere):    50 candidates           = $0.00005
+Generation (GPT-4o):
+  input: 2000 tokens × $5/M                   = $0.01
+  output: 300 tokens × $15/M                  = $0.0045
+Total:                                          ~$0.015 per query
+</pre>
+
+<p>At 100K queries/day: $1,500/day = ~$45,000/month.</p>
+
+<h2>The optimization frontier</h2>
+
+<h3>Model routing</h3>
+<p>Use cheap models where possible. Classify queries, 70% can use gpt-4o-mini or haiku. Saves 80-90% on those queries.</p>
+
+<h3>Context trimming</h3>
+<p>Every 100 input tokens saved is money. Trim retrieved chunks before sending. Reduce top-k. Use shorter prompts.</p>
+
+<h3>Caching</h3>
+<p>Every cache hit is money. See <a href="caching.html">caching</a>.</p>
+
+<h3>Prompt caching (provider feature)</h3>
+<p>Cache the system prompt on Claude or Gemini. 30-90% savings on input tokens for common prompts.</p>
+
+<h3>Batching</h3>
+<p>For async workloads (document enrichment, bulk processing), batch API calls. Most providers give 50% discount on batch APIs.</p>
+
+<h3>Self-hosted inference</h3>
+<p>At scale (millions of queries/month), self-hosting becomes cheaper. The crossover is often 10-50M tokens/day.</p>
+
+<h3>Smaller embeddings</h3>
+<p>Use MRL to reduce vector dimensions. 3x savings on vector DB storage.</p>
+
+<h2>Cost allocation</h2>
+<p>Track cost per:</p>
+<ul>
+  <li>Tenant (multi-tenant systems)</li>
+  <li>User</li>
+  <li>Feature / use case</li>
+  <li>Query type</li>
+</ul>
+
+<p>This surfaces cost anomalies (one tenant is 10x expensive; one query type is dominating) and informs pricing decisions.</p>
+
+<h2>Budget guardrails</h2>
+<p>Protect against runaway costs:</p>
+<ul>
+  <li>Per-user rate limits</li>
+  <li>Per-tenant cost caps</li>
+  <li>Global alerts on daily spend</li>
+  <li>Max tokens per query</li>
+  <li>Max retries on agentic flows</li>
+  <li>Timeouts at every stage</li>
+</ul>
+
+<h2>Cost-quality tradeoffs</h2>
+<p>Every optimization has a quality cost. Track both:</p>
+<ul>
+  <li>Cost per query (average, p95)</li>
+  <li>Quality metrics (retrieval, generation, user feedback)</li>
+</ul>
+
+<p>Ship optimizations only when quality impact is acceptable. Measure against your eval set.</p>
+
+<h2>The hidden costs</h2>
+
+<h3>Ingestion</h3>
+<p>Embedding 10M new documents: ~$1000-2000 on commercial APIs. Self-hosted: compute only but takes days.</p>
+
+<h3>Reindexing</h3>
+<p>Changing embedding models means re-embedding everything. Budget accordingly.</p>
+
+<h3>Experimentation</h3>
+<p>Running evals, A/B tests, debugging production issues, each involves LLM calls. Can be 10-20% of operational spend.</p>
+
+<h3>Development</h3>
+<p>Your engineers testing changes. Often more expensive than production if not monitored.</p>
+
+<h2>Cost monitoring dashboard</h2>
+<p>Essential metrics:</p>
+<ul>
+  <li>Daily spend by provider</li>
+  <li>Daily spend by service (embedding, generation, rerank, vector DB)</li>
+  <li>Cost per query (mean, p95)</li>
+  <li>Token volume (input, output)</li>
+  <li>Cache hit rate savings</li>
+  <li>Cost trend (day over day, week over week)</li>
+</ul>
+
+<h2>When to optimize vs when to ship</h2>
+<p>Premature cost optimization kills RAG projects:</p>
+<ul>
+  <li>At &lt; $500/month total spend: don't optimize. Ship.</li>
+  <li>At $500-5000/month: monitor, plan optimizations</li>
+  <li>At $5000-50000/month: implement caching, model routing, prompt caching</li>
+  <li>Above $50000/month: serious optimization effort worth dedicated engineering</li>
+</ul>
+
+<h2>The ROI check</h2>
+<p>Before adding a feature that increases cost (agentic RAG, GraphRAG, multi-query), ask: what's the quality gain, and what's the cost delta? If quality improves 5% and cost doubles, that's probably the wrong tradeoff. If quality improves 30% and cost increases 50%, it may be worth it.</p>
+
+<p>Measurement first. Cost decisions second.</p>
+
+<p style="margin-top:40px;">Next: <a href="security.html">Security and prompt injection</a>.</p>
+<div class="prev-next"><a href="observability.html" class="prev"><div class="label">← Previous</div><div class="title">Observability and tracing</div></a><a href="security.html" class="next"><div class="label">Next →</div><div class="title">Security and prompt injection</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a></p>
+</div></footer></body></html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caching strategies | Samuel Ochoa</title>
+<meta name="description" content="Caching is the highest-impact performance optimization for production RAG. Here are the layers and what actually hits.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Caching strategies | Samuel Ochoa">
+<meta property="og:description" content="Caching is the highest-impact performance optimization for production RAG. Here are the layers and what actually hits.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../about.html">About</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>RAGS to Riches (56 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-rag.html">What is RAG?</a></li><li><a href="foundations/why-rag.html">Why RAG over fine-tuning</a></li><li><a href="foundations/the-architecture.html">The RAG architecture map</a></li><li><a href="foundations/when-not-to-use.html">When not to use RAG</a></li></ul><h4>Documents + Ingestion</h4><ul><li><a href="docs/ingestion-pipeline.html">The ingestion pipeline</a></li><li><a href="docs/parsing-pdfs.html">Parsing PDFs</a></li><li><a href="docs/parsing-html.html">Parsing HTML + web pages</a></li><li><a href="docs/tables-figures.html">Tables and figures</a></li><li><a href="docs/ocr.html">OCR for scanned documents</a></li><li><a href="docs/metadata.html">Metadata extraction</a></li></ul><h4>Chunking</h4><ul><li><a href="chunking/why-chunking.html">Why chunking matters</a></li><li><a href="chunking/fixed-size.html">Fixed-size chunking</a></li><li><a href="chunking/semantic.html">Semantic chunking</a></li><li><a href="chunking/recursive.html">Recursive chunking</a></li><li><a href="chunking/structure-aware.html">Structure-aware chunking</a></li><li><a href="chunking/chunking-code.html">Chunking code</a></li></ul><h4>Embeddings</h4><ul><li><a href="embeddings/what-are-embeddings.html">What embeddings are</a></li><li><a href="embeddings/picking-a-model.html">Picking an embedding model</a></li><li><a href="embeddings/closed-vs-open.html">Closed vs open models</a></li><li><a href="embeddings/dimensions-cost.html">Dimensions, cost, and MRL</a></li><li><a href="embeddings/fine-tuning.html">Fine-tuning embeddings</a></li></ul><h4>Vector Stores</h4><ul><li><a href="vectors/overview.html">Vector database overview</a></li><li><a href="vectors/indexing-strategies.html">HNSW, IVF, PQ</a></li><li><a href="vectors/hybrid-search.html">Hybrid search</a></li><li><a href="vectors/metadata-filtering.html">Metadata filtering</a></li><li><a href="vectors/cost-optimization.html">Cost optimization</a></li><li><a href="vectors/choosing-a-db.html">Choosing a vector DB</a></li></ul><h4>Retrieval Strategies</h4><ul><li><a href="retrieval/vector-search.html">Vector similarity search</a></li><li><a href="retrieval/bm25-sparse.html">BM25 and sparse retrieval</a></li><li><a href="retrieval/hybrid.html">Hybrid retrieval</a></li><li><a href="retrieval/reranking.html">Reranking</a></li><li><a href="retrieval/query-rewriting.html">Query rewriting</a></li><li><a href="retrieval/hyde.html">HyDE</a></li><li><a href="retrieval/multi-query.html">Multi-query + fusion</a></li></ul><h4>Advanced Patterns</h4><ul><li><a href="advanced/agentic-rag.html">Agentic RAG</a></li><li><a href="advanced/graph-rag.html">GraphRAG</a></li><li><a href="advanced/adaptive-rag.html">Adaptive RAG</a></li><li><a href="advanced/corrective-rag.html">Corrective RAG (CRAG)</a></li><li><a href="advanced/self-rag.html">Self-RAG</a></li><li><a href="advanced/multi-hop.html">Multi-hop RAG</a></li></ul><h4>Evaluation</h4><ul><li><a href="eval/why-eval.html">Why evaluation is critical</a></li><li><a href="eval/retrieval-metrics.html">Retrieval metrics</a></li><li><a href="eval/generation-metrics.html">Generation metrics</a></li><li><a href="eval/ragas-and-frameworks.html">RAGAS, TruLens, ARES</a></li><li><a href="eval/building-eval-datasets.html">Building eval datasets</a></li></ul><h4>Production</h4><ul><li><a href="prod/latency.html">Latency optimization</a></li><li><a href="prod/caching.html" class="active">Caching strategies</a></li><li><a href="prod/observability.html">Observability and tracing</a></li><li><a href="prod/cost.html">Cost management</a></li><li><a href="prod/security.html">Security and prompt injection</a></li></ul><h4>Use Cases</h4><ul><li><a href="cases/customer-support.html">Customer support RAG</a></li><li><a href="cases/internal-kb.html">Internal knowledge RAG</a></li><li><a href="cases/code-rag.html">Code search + generation</a></li><li><a href="cases/legal-compliance.html">Legal and compliance</a></li><li><a href="cases/multi-tenant.html">Multi-tenant RAG</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">RAGS to Riches</a><span class="sep">›</span><span>Caching strategies</span></div><h1 class="title">Caching strategies</h1><div class="article-meta"><span>📖 5 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">Caching is the highest-impact performance optimization for most production RAG systems. The savings compound: embedding cache hits save time and money, retrieval cache hits save more, response cache hits save the most. Here are the layers that actually hit in practice.</p>
+
+<h2>The cache hierarchy</h2>
+
+<h3>Layer 1: Query embedding cache</h3>
+<p>Cache the embedding of each query. Keyed by exact query text + embedding model version.</p>
+<ul>
+  <li>Hit rate: 20-40% for conversational interfaces, higher for FAQ-style</li>
+  <li>Savings: 30-150ms + embedding API cost per hit</li>
+  <li>TTL: long (7-30 days), invalidate on model version change</li>
+  <li>Storage: small, 4-12 KB per cached embedding</li>
+</ul>
+
+<h3>Layer 2: Retrieval result cache</h3>
+<p>Cache the top-k chunks returned for each query.</p>
+<ul>
+  <li>Hit rate: 10-30%</li>
+  <li>Savings: embedding time + vector DB query time</li>
+  <li>TTL: shorter, invalidate when index updates</li>
+  <li>Storage: moderate, top-k chunk IDs per query</li>
+</ul>
+
+<h3>Layer 3: Reranked result cache</h3>
+<p>Cache the reranked ordering.</p>
+<ul>
+  <li>Hit rate: similar to retrieval cache</li>
+  <li>Savings: reranker inference cost (often 100-400ms)</li>
+  <li>TTL: same as retrieval cache</li>
+</ul>
+
+<h3>Layer 4: Full response cache</h3>
+<p>Cache the complete generated answer for exact-match queries.</p>
+<ul>
+  <li>Hit rate: 5-20% (varies hugely by use case)</li>
+  <li>Savings: entire LLM generation cost (the biggest single cost)</li>
+  <li>TTL: hours to days, depends on content freshness requirements</li>
+  <li>Storage: moderate, full answer text per query</li>
+</ul>
+
+<h3>Layer 5: Prompt cache (LLM provider feature)</h3>
+<p>Claude, Gemini, and OpenAI (in limited beta) support caching parts of the prompt on the provider side. Cache the system prompt with retrieved context. Next call with the same prompt prefix reuses the cached tokens.</p>
+<ul>
+  <li>Hit rate: high in multi-turn conversations</li>
+  <li>Savings: 50-90% of input token cost, significant latency reduction</li>
+  <li>Prompts must be structured to maximize cacheable prefix</li>
+</ul>
+
+<h2>Cache key design</h2>
+
+<h3>For query embedding</h3>
+<p>Hash of: normalized_query_text + embedding_model_version</p>
+
+<h3>For retrieval results</h3>
+<p>Hash of: normalized_query_text + index_version + filter_signature</p>
+<p>Filter signature captures any metadata filters (tenant, permissions, etc.).</p>
+
+<h3>For responses</h3>
+<p>Hash of: normalized_query_text + context_signature + model_version + user_context</p>
+
+<p>User context matters: a response that references user-specific data shouldn't be cached across users.</p>
+
+<h2>Normalization</h2>
+<p>Cache hit rates depend on normalization. Apply consistently:</p>
+<ul>
+  <li>Lowercase</li>
+  <li>Trim whitespace</li>
+  <li>Remove trailing punctuation</li>
+  <li>Standardize quote characters</li>
+  <li>Strip question mark</li>
+</ul>
+
+<p>"What's our refund policy?" and "what's our refund policy" should hit the same cache entry.</p>
+
+<h2>Cache invalidation</h2>
+
+<h3>Time-based</h3>
+<p>TTL on every entry. Simple, acceptable for many use cases.</p>
+
+<h3>Event-based</h3>
+<p>Invalidate when underlying data changes:</p>
+<ul>
+  <li>Document updated → invalidate affected retrieval caches</li>
+  <li>Index reindexed → invalidate all retrieval and response caches</li>
+  <li>Model version changed → invalidate all embedding and response caches</li>
+</ul>
+
+<p>Event-based invalidation keeps cache fresh but adds complexity. Often implemented as cache versioning: bump a version number, treat old cache entries as invalid.</p>
+
+<h3>Lazy invalidation</h3>
+<p>Check the cached entry's validity only when it's requested. If stale, regenerate.</p>
+
+<p>Simplest implementation: cache entries store the index version they were generated against. On read, compare to current version; if mismatch, regenerate.</p>
+
+<h2>Cache stores</h2>
+
+<h3>Redis</h3>
+<p>Standard choice. Fast, simple, supports TTL and eviction policies. Good for query embedding cache and retrieval cache.</p>
+
+<h3>Memcached</h3>
+<p>Similar to Redis, slightly less features but very high performance.</p>
+
+<h3>In-process (LRU)</h3>
+<p>For small-scale or single-instance deployments. No network hop. Doesn't survive restarts.</p>
+
+<h3>CDN (for response cache)</h3>
+<p>If responses can be cached publicly (rare for RAG), CDN edge caching gives global low-latency serving.</p>
+
+<h2>User-scoped caching</h2>
+<p>Most RAG systems have per-user context (permissions, preferences, history). Cache keys must include user context:</p>
+<ul>
+  <li>Per-user retrieval cache: same query, different users, different results (due to access controls)</li>
+  <li>Per-user response cache: personalized answers shouldn't cross users</li>
+</ul>
+
+<p>Tradeoff: higher hit rate with user-agnostic caching, better correctness with user-scoped.</p>
+
+<h2>Multi-tenant caching</h2>
+<p>Same principle applies across tenants:</p>
+<ul>
+  <li>Tenant-scoped cache keys (include tenant_id in the key)</li>
+  <li>Separate cache instances per very large tenant (optional, for isolation)</li>
+</ul>
+
+<h2>What NOT to cache</h2>
+
+<h3>Generation for user-specific contexts</h3>
+<p>If the answer depends on user history or profile, caching produces wrong answers for different users.</p>
+
+<h3>Real-time data queries</h3>
+<p>"How many orders have we processed today?" should never hit a stale cache.</p>
+
+<h3>Dynamic results</h3>
+<p>Queries that intentionally have non-deterministic output (creative generation, summarization styles).</p>
+
+<h2>Measuring cache effectiveness</h2>
+<ul>
+  <li>Hit rate per cache layer</li>
+  <li>Latency savings per hit</li>
+  <li>Memory/storage used</li>
+  <li>Stale cache returned (measure correctness impact)</li>
+</ul>
+
+<p>Dashboard these. A cache layer with &lt;5% hit rate is probably not worth the complexity.</p>
+
+<h2>The compound effect</h2>
+<p>Each cache layer's savings compound:</p>
+<ul>
+  <li>30% embedding cache hit → 30% of queries skip embedding</li>
+  <li>Of the remaining, 20% hit retrieval cache → further savings</li>
+  <li>Of remaining, 10% hit response cache → biggest win</li>
+</ul>
+
+<p>At scale, effective caching can reduce total cost and latency by 40-70%.</p>
+
+<p style="margin-top:40px;">Next: <a href="observability.html">Observability and tracing</a>.</p>
+<div class="prev-next"><a href="latency.html" class="prev"><div class="label">← Previous</div><div class="title">Latency optimization</div></a><a href="observability.html" class="next"><div class="label">Next →</div><div class="title">Observability and tracing</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a></p>
+</div></footer></body></html>

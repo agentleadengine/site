@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRM and data integration | Samuel Ochoa</title>
+<meta name="description" content="Cold email doesn't live in a silo. Leads flow from the tool into CRM, replies sync back, analytics roll up. Here's how to wire it.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CRM and data integration | Samuel Ochoa">
+<meta property="og:description" content="Cold email doesn't live in a silo. Leads flow from the tool into CRM, replies sync back, analytics roll up. Here's how to wire it.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../about.html">About</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Cold Email (45 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-cold-email.html">What is cold email?</a></li><li><a href="foundations/spam-vs-cold.html">Cold email vs spam</a></li><li><a href="foundations/legal.html">Legal landscape</a></li><li><a href="foundations/when-it-works.html">When cold email works</a></li></ul><h4>Deliverability</h4><ul><li><a href="deliverability/why-it-matters.html">Why deliverability is everything</a></li><li><a href="deliverability/dns.html">SPF, DKIM, DMARC</a></li><li><a href="deliverability/sending-domains.html">Sending domain strategy</a></li><li><a href="deliverability/warming.html">Inbox warming</a></li><li><a href="deliverability/ip-reputation.html">IP reputation</a></li><li><a href="deliverability/spam-triggers.html">Content that triggers spam filters</a></li><li><a href="deliverability/monitoring.html">Monitoring inbox placement</a></li></ul><h4>Infrastructure</h4><ul><li><a href="infra/sending-tools.html">Sending tools</a></li><li><a href="infra/multi-inbox.html">Multi-inbox rotation</a></li><li><a href="infra/warming-tools.html">Warming tools</a></li><li><a href="infra/crm-integration.html" class="active">CRM and data integration</a></li><li><a href="infra/reply-management.html">Reply management</a></li></ul><h4>Lists + Targeting</h4><ul><li><a href="lists/icp.html">Defining the ICP</a></li><li><a href="lists/databases.html">Lead databases</a></li><li><a href="lists/clay.html">Clay and enrichment</a></li><li><a href="lists/verification.html">Verification + hygiene</a></li><li><a href="lists/intent-signals.html">Intent signals</a></li><li><a href="lists/segmentation.html">Segmentation strategy</a></li></ul><h4>Copy</h4><ul><li><a href="copy/anatomy.html">Cold email anatomy</a></li><li><a href="copy/subject-lines.html">Subject lines</a></li><li><a href="copy/first-lines.html">First lines</a></li><li><a href="copy/the-pitch.html">The pitch</a></li><li><a href="copy/ctas.html">CTAs for cold</a></li><li><a href="copy/signatures.html">Signatures</a></li><li><a href="copy/personalization.html">Personalization at scale</a></li></ul><h4>Sequences</h4><ul><li><a href="sequences/multi-touch.html">Multi-touch sequences</a></li><li><a href="sequences/cadence.html">Cadence and timing</a></li><li><a href="sequences/breakup.html">The breakup email</a></li><li><a href="sequences/multi-channel.html">Multi-channel orchestration</a></li><li><a href="sequences/length.html">Sequence length</a></li></ul><h4>Testing</h4><ul><li><a href="testing/methodology.html">Testing methodology</a></li><li><a href="testing/what-to-test.html">What to test</a></li><li><a href="testing/reply-metrics.html">Reply rate vs positive reply</a></li><li><a href="testing/iteration.html">The iteration loop</a></li></ul><h4>Playbooks</h4><ul><li><a href="plays/b2b-saas.html">B2B SaaS outbound</a></li><li><a href="plays/agency.html">Agency + services outbound</a></li><li><a href="plays/founder-led.html">Founder-led outbound</a></li><li><a href="plays/sdr-led.html">SDR-led outbound</a></li><li><a href="plays/link-building.html">Cold email for SEO</a></li><li><a href="plays/recruiting.html">Recruiting outreach</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">Cold Email</a><span class="sep">›</span><span>CRM and data integration</span></div><h1 class="title">CRM and data integration</h1><div class="article-meta"><span>📖 4 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">A cold email campaign that doesn't integrate with your CRM is a campaign that drops leads on the floor. Positive replies need to become opportunities. Bounces need to update lead records. Unsubscribes need to propagate globally. Here's the integration architecture that keeps outbound and CRM in sync.</p>
+
+<h2>What needs to flow between systems</h2>
+
+<h3>Outbound to CRM</h3>
+<ul>
+  <li>New leads created in outbound tool → CRM contact records</li>
+  <li>Email sends/opens/replies → CRM activity log</li>
+  <li>Positive replies → CRM opportunities</li>
+  <li>Meeting booked → CRM next step</li>
+  <li>Unsubscribes → CRM do-not-contact flag</li>
+  <li>Bounces → CRM email validity flag</li>
+</ul>
+
+<h3>CRM to outbound</h3>
+<ul>
+  <li>New leads meeting ICP criteria → added to outbound campaigns</li>
+  <li>Existing customers excluded from prospecting lists</li>
+  <li>Unsubscribes from CRM propagate back to outbound</li>
+  <li>Lifecycle stage changes suppress or re-enroll prospects</li>
+</ul>
+
+<h2>The common integrations</h2>
+
+<h3>Salesforce</h3>
+<p>Standard for enterprise B2B. Most cold email tools integrate natively (Instantly, Smartlead, Outreach, Salesloft, Apollo).</p>
+
+<h3>HubSpot</h3>
+<p>Popular mid-market. Good native integrations with major tools.</p>
+
+<h3>Pipedrive</h3>
+<p>Common for smaller teams. Integrated with most cold email tools.</p>
+
+<h3>Close</h3>
+<p>Built-in cold email capabilities. Sometimes the whole stack is Close.</p>
+
+<h3>Attio, Folk, others</h3>
+<p>Newer CRMs. Integrations via Zapier, Make, or native depending on the tool.</p>
+
+<h2>Integration patterns</h2>
+
+<h3>Native (best)</h3>
+<p>Direct API integration built into the outbound tool. Two-way sync, minimal configuration. Use when available.</p>
+
+<h3>Zapier/Make middleware</h3>
+<p>When native doesn't exist. Set up workflows:</p>
+<ul>
+  <li>New positive reply in Instantly → Create deal in HubSpot</li>
+  <li>Meeting booked → Assign to AE in CRM</li>
+  <li>Unsubscribe in Instantly → Mark do-not-contact in CRM</li>
+</ul>
+
+<p>Adds latency and cost but flexible.</p>
+
+<h3>Direct API</h3>
+<p>Custom code. Most control, most maintenance. Reserved for advanced operations with specific needs.</p>
+
+<h2>The do-not-contact list</h2>
+<p>Critical and often neglected. A unified do-not-contact list (DNC) must propagate across:</p>
+<ul>
+  <li>All cold email tools</li>
+  <li>CRM</li>
+  <li>Marketing automation</li>
+  <li>Any manual outreach</li>
+</ul>
+
+<p>When a prospect unsubscribes from campaign A, they shouldn't appear in campaign B from a different mailbox. When a customer signs, they shouldn't get prospecting emails.</p>
+
+<p>Most cold email tools have a global suppression list. The job is to keep it synced with CRM.</p>
+
+<h2>Data hygiene</h2>
+<p>The integration works only as well as the underlying data:</p>
+<ul>
+  <li>Standardize company names (inconsistent spellings hide duplicate outreach)</li>
+  <li>Unique email per record</li>
+  <li>Email validity tracking (last bounce date)</li>
+  <li>Last contacted date on every record</li>
+  <li>Source tracking (know where each lead came from)</li>
+</ul>
+
+<h2>Lead routing</h2>
+<p>When a positive reply comes in, who handles it? Typical patterns:</p>
+
+<h3>Round-robin</h3>
+<p>Replies distributed evenly across AEs.</p>
+
+<h3>Territory-based</h3>
+<p>Replies routed by region or industry.</p>
+
+<h3>Size-based</h3>
+<p>Large accounts → senior reps; smaller → junior.</p>
+
+<h3>Source-based</h3>
+<p>Cold outreach replies → dedicated handler; inbound → different handler.</p>
+
+<p>Route automatically via CRM workflows when possible. Manual routing doesn't scale.</p>
+
+<h2>Reporting across systems</h2>
+<p>Unified reporting requires data consistency:</p>
+<ul>
+  <li>Cold email → meeting booked: tracked in outbound tool</li>
+  <li>Meeting → opportunity: tracked in CRM</li>
+  <li>Opportunity → closed won: tracked in CRM</li>
+</ul>
+
+<p>The full funnel view requires consistent IDs and timestamps across systems. UTM-style parameters (or custom IDs) on every lead help trace origin through the entire funnel.</p>
+
+<h2>The common integration failures</h2>
+
+<h3>Missing reply detection</h3>
+<p>Cold email tool says "no reply" but reply came to a different mailbox or thread. Use unified inbox.</p>
+
+<h3>Stale DNC</h3>
+<p>Unsubscribes in old campaigns not reflected in new ones. Global suppression list across all tools.</p>
+
+<h3>Duplicate outreach</h3>
+<p>Same prospect gets emailed from two mailboxes on different domains (same operation) because the CRM has two records for them. Deduplicate by email.</p>
+
+<h3>CRM cluttered with leads</h3>
+<p>Every cold touch creates a CRM record. 90% never reply. CRM fills with inactive leads.</p>
+
+<p>Fix: only create CRM records on reply (or qualified reply). Keep outbound "universe" in the outbound tool. Promote to CRM only when there's real engagement.</p>
+
+<h2>The minimum viable integration</h2>
+<p>If you do nothing else:</p>
+<ol>
+  <li>Global suppression list across all outbound tools</li>
+  <li>Existing customers and past replies excluded from cold lists</li>
+  <li>Positive replies automatically create CRM deals</li>
+  <li>Meeting booking tool (Calendly) logs to CRM</li>
+</ol>
+
+<p>These four integrations catch most of the operational pain.</p>
+
+<p style="margin-top:40px;">Next: <a href="reply-management.html">Reply management</a>.</p>
+<div class="prev-next"><a href="warming-tools.html" class="prev"><div class="label">← Previous</div><div class="title">Warming tools</div></a><a href="reply-management.html" class="next"><div class="label">Next →</div><div class="title">Reply management</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
+</div></footer></body></html>

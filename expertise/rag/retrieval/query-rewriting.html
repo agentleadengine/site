@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Query rewriting | Samuel Ochoa</title>
+<meta name="description" content="Users ask poorly-phrased questions. An LLM can rewrite them into forms that retrieve better. Here's how and when to do this.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Query rewriting | Samuel Ochoa">
+<meta property="og:description" content="Users ask poorly-phrased questions. An LLM can rewrite them into forms that retrieve better. Here's how and when to do this.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../about.html">About</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>RAGS to Riches (56 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-rag.html">What is RAG?</a></li><li><a href="foundations/why-rag.html">Why RAG over fine-tuning</a></li><li><a href="foundations/the-architecture.html">The RAG architecture map</a></li><li><a href="foundations/when-not-to-use.html">When not to use RAG</a></li></ul><h4>Documents + Ingestion</h4><ul><li><a href="docs/ingestion-pipeline.html">The ingestion pipeline</a></li><li><a href="docs/parsing-pdfs.html">Parsing PDFs</a></li><li><a href="docs/parsing-html.html">Parsing HTML + web pages</a></li><li><a href="docs/tables-figures.html">Tables and figures</a></li><li><a href="docs/ocr.html">OCR for scanned documents</a></li><li><a href="docs/metadata.html">Metadata extraction</a></li></ul><h4>Chunking</h4><ul><li><a href="chunking/why-chunking.html">Why chunking matters</a></li><li><a href="chunking/fixed-size.html">Fixed-size chunking</a></li><li><a href="chunking/semantic.html">Semantic chunking</a></li><li><a href="chunking/recursive.html">Recursive chunking</a></li><li><a href="chunking/structure-aware.html">Structure-aware chunking</a></li><li><a href="chunking/chunking-code.html">Chunking code</a></li></ul><h4>Embeddings</h4><ul><li><a href="embeddings/what-are-embeddings.html">What embeddings are</a></li><li><a href="embeddings/picking-a-model.html">Picking an embedding model</a></li><li><a href="embeddings/closed-vs-open.html">Closed vs open models</a></li><li><a href="embeddings/dimensions-cost.html">Dimensions, cost, and MRL</a></li><li><a href="embeddings/fine-tuning.html">Fine-tuning embeddings</a></li></ul><h4>Vector Stores</h4><ul><li><a href="vectors/overview.html">Vector database overview</a></li><li><a href="vectors/indexing-strategies.html">HNSW, IVF, PQ</a></li><li><a href="vectors/hybrid-search.html">Hybrid search</a></li><li><a href="vectors/metadata-filtering.html">Metadata filtering</a></li><li><a href="vectors/cost-optimization.html">Cost optimization</a></li><li><a href="vectors/choosing-a-db.html">Choosing a vector DB</a></li></ul><h4>Retrieval Strategies</h4><ul><li><a href="retrieval/vector-search.html">Vector similarity search</a></li><li><a href="retrieval/bm25-sparse.html">BM25 and sparse retrieval</a></li><li><a href="retrieval/hybrid.html">Hybrid retrieval</a></li><li><a href="retrieval/reranking.html">Reranking</a></li><li><a href="retrieval/query-rewriting.html" class="active">Query rewriting</a></li><li><a href="retrieval/hyde.html">HyDE</a></li><li><a href="retrieval/multi-query.html">Multi-query + fusion</a></li></ul><h4>Advanced Patterns</h4><ul><li><a href="advanced/agentic-rag.html">Agentic RAG</a></li><li><a href="advanced/graph-rag.html">GraphRAG</a></li><li><a href="advanced/adaptive-rag.html">Adaptive RAG</a></li><li><a href="advanced/corrective-rag.html">Corrective RAG (CRAG)</a></li><li><a href="advanced/self-rag.html">Self-RAG</a></li><li><a href="advanced/multi-hop.html">Multi-hop RAG</a></li></ul><h4>Evaluation</h4><ul><li><a href="eval/why-eval.html">Why evaluation is critical</a></li><li><a href="eval/retrieval-metrics.html">Retrieval metrics</a></li><li><a href="eval/generation-metrics.html">Generation metrics</a></li><li><a href="eval/ragas-and-frameworks.html">RAGAS, TruLens, ARES</a></li><li><a href="eval/building-eval-datasets.html">Building eval datasets</a></li></ul><h4>Production</h4><ul><li><a href="prod/latency.html">Latency optimization</a></li><li><a href="prod/caching.html">Caching strategies</a></li><li><a href="prod/observability.html">Observability and tracing</a></li><li><a href="prod/cost.html">Cost management</a></li><li><a href="prod/security.html">Security and prompt injection</a></li></ul><h4>Use Cases</h4><ul><li><a href="cases/customer-support.html">Customer support RAG</a></li><li><a href="cases/internal-kb.html">Internal knowledge RAG</a></li><li><a href="cases/code-rag.html">Code search + generation</a></li><li><a href="cases/legal-compliance.html">Legal and compliance</a></li><li><a href="cases/multi-tenant.html">Multi-tenant RAG</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">RAGS to Riches</a><span class="sep">›</span><span>Query rewriting</span></div><h1 class="title">Query rewriting</h1><div class="article-meta"><span>📖 4 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">Users don't phrase queries the way documents do. They use pronouns, they're brief, they ask follow-ups that depend on context. Query rewriting uses an LLM to rewrite the user's query into a form better suited for retrieval. It's one of the lowest-effort quality wins in modern RAG.</p>
+
+<h2>The problem query rewriting solves</h2>
+
+<h3>Ambiguous pronouns</h3>
+<p>User: "how does it handle rate limiting?"</p>
+<p>The embedding of "how does it handle rate limiting" doesn't know what "it" is. Retrieved chunks may be about rate limiting in general, missing the specific product the user meant.</p>
+
+<h3>Conversational follow-ups</h3>
+<p>Turn 1: "Tell me about Pinecone's pricing."</p>
+<p>Turn 2: "What about performance?"</p>
+<p>Turn 2 alone embeds as a generic performance question. With rewriting: "How does Pinecone perform?"</p>
+
+<h3>Short queries</h3>
+<p>"refund policy" vs "what is our customer refund policy including eligibility, timeframe, and process"</p>
+<p>The expanded version retrieves better because it provides more signal to match against.</p>
+
+<h3>Mismatched vocabulary</h3>
+<p>User says "login not working"; docs say "authentication failures." Rewriting to include synonyms bridges the gap.</p>
+
+<h2>The rewriting patterns</h2>
+
+<h3>1. Contextualization</h3>
+<p>Rewrite the query to resolve pronouns and implicit context from conversation history.</p>
+
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
+Given the conversation history:
+- User: Tell me about Pinecone pricing
+- Assistant: [response about Pinecone]
+- User: What about performance?
+
+Rewrite the last user query as a standalone search query.
+
+→ "How does Pinecone perform?"
+</pre>
+
+<h3>2. Query expansion</h3>
+<p>Add synonyms, related terms, or rephrasings to improve lexical matching.</p>
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
+"login issues" → "login authentication sign-in access issues problems failures"
+</pre>
+
+<h3>3. Query decomposition</h3>
+<p>Break a compound query into sub-queries. Retrieve for each separately.</p>
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
+"What's our refund policy and how do I escalate a billing dispute?"
+→ ["What is the refund policy?", "How to escalate a billing dispute?"]
+</pre>
+
+<h3>4. Step-back questions</h3>
+<p>Generate a more general version of the query to retrieve broader context.</p>
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
+"Why did my OAuth token expire after 2 hours?"
+→ step-back: "How does OAuth token expiration work?"
+</pre>
+
+<h3>5. Hypothetical Document Embeddings (HyDE)</h3>
+<p>Generate a fake answer, embed that, retrieve based on its embedding. See <a href="hyde.html">HyDE</a>.</p>
+
+<h2>Prompt patterns for rewriting</h2>
+
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
+SYSTEM: You are a search query optimizer. Given a user query, rewrite
+it as a clear, self-contained search query that would retrieve the
+most relevant documents. Expand abbreviations, resolve pronouns, and
+include relevant synonyms. Return only the rewritten query.
+
+USER: [raw query]
+</pre>
+
+<h2>Using a small model</h2>
+<p>Query rewriting doesn't need your best reasoning model. A fast, cheap model (GPT-4o-mini, Claude Haiku, Gemini Flash) does this well. Latency 50-200ms per rewrite. Cost is a fraction of the generation step.</p>
+
+<h2>The multi-query pattern</h2>
+<p>Generate multiple rewrites and run retrieval for each. Union and dedupe. More coverage, more cost. See <a href="multi-query.html">multi-query + fusion</a>.</p>
+
+<h2>When to skip query rewriting</h2>
+<ul>
+  <li>Very short queries with clear intent ("reset password")</li>
+  <li>Latency-critical applications where the extra LLM call is too expensive</li>
+  <li>When the corpus vocabulary closely matches user vocabulary</li>
+</ul>
+
+<h2>Diagnostic: is rewriting helping?</h2>
+<p>Compare retrieval quality with and without rewriting on the same eval set. Rewriting should improve hit rate, especially on:</p>
+<ul>
+  <li>Conversational queries with history</li>
+  <li>Short, ambiguous queries</li>
+  <li>Queries with vocabulary mismatches</li>
+</ul>
+
+<p>If rewriting doesn't help, your initial retrieval already handles query variety well (or your rewriting prompt is wrong). Test both hypotheses.</p>
+
+<h2>Preserving user intent</h2>
+<p>The failure mode of query rewriting: the rewrite subtly changes what the user asked. Guard against this by:</p>
+<ul>
+  <li>Logging both original and rewritten queries</li>
+  <li>Including the original query in the final context to the LLM, not just the rewritten version</li>
+  <li>A/B testing rewriter prompts against held-out evaluation queries</li>
+</ul>
+
+<p style="margin-top:40px;">Next: <a href="hyde.html">HyDE</a>.</p>
+<div class="prev-next"><a href="reranking.html" class="prev"><div class="label">← Previous</div><div class="title">Reranking</div></a><a href="hyde.html" class="next"><div class="label">Next →</div><div class="title">HyDE</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a></p>
+</div></footer></body></html>

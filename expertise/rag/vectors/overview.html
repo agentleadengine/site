@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vector database overview | Samuel Ochoa</title>
+<meta name="description" content="Vector databases are infrastructure for nearest-neighbor search at scale. Here's what they do, how they differ from traditional databases, and the major players.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vector database overview | Samuel Ochoa">
+<meta property="og:description" content="Vector databases are infrastructure for nearest-neighbor search at scale. Here's what they do, how they differ from traditional databases, and the major players.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../about.html">About</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>RAGS to Riches (56 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-rag.html">What is RAG?</a></li><li><a href="foundations/why-rag.html">Why RAG over fine-tuning</a></li><li><a href="foundations/the-architecture.html">The RAG architecture map</a></li><li><a href="foundations/when-not-to-use.html">When not to use RAG</a></li></ul><h4>Documents + Ingestion</h4><ul><li><a href="docs/ingestion-pipeline.html">The ingestion pipeline</a></li><li><a href="docs/parsing-pdfs.html">Parsing PDFs</a></li><li><a href="docs/parsing-html.html">Parsing HTML + web pages</a></li><li><a href="docs/tables-figures.html">Tables and figures</a></li><li><a href="docs/ocr.html">OCR for scanned documents</a></li><li><a href="docs/metadata.html">Metadata extraction</a></li></ul><h4>Chunking</h4><ul><li><a href="chunking/why-chunking.html">Why chunking matters</a></li><li><a href="chunking/fixed-size.html">Fixed-size chunking</a></li><li><a href="chunking/semantic.html">Semantic chunking</a></li><li><a href="chunking/recursive.html">Recursive chunking</a></li><li><a href="chunking/structure-aware.html">Structure-aware chunking</a></li><li><a href="chunking/chunking-code.html">Chunking code</a></li></ul><h4>Embeddings</h4><ul><li><a href="embeddings/what-are-embeddings.html">What embeddings are</a></li><li><a href="embeddings/picking-a-model.html">Picking an embedding model</a></li><li><a href="embeddings/closed-vs-open.html">Closed vs open models</a></li><li><a href="embeddings/dimensions-cost.html">Dimensions, cost, and MRL</a></li><li><a href="embeddings/fine-tuning.html">Fine-tuning embeddings</a></li></ul><h4>Vector Stores</h4><ul><li><a href="vectors/overview.html" class="active">Vector database overview</a></li><li><a href="vectors/indexing-strategies.html">HNSW, IVF, PQ</a></li><li><a href="vectors/hybrid-search.html">Hybrid search</a></li><li><a href="vectors/metadata-filtering.html">Metadata filtering</a></li><li><a href="vectors/cost-optimization.html">Cost optimization</a></li><li><a href="vectors/choosing-a-db.html">Choosing a vector DB</a></li></ul><h4>Retrieval Strategies</h4><ul><li><a href="retrieval/vector-search.html">Vector similarity search</a></li><li><a href="retrieval/bm25-sparse.html">BM25 and sparse retrieval</a></li><li><a href="retrieval/hybrid.html">Hybrid retrieval</a></li><li><a href="retrieval/reranking.html">Reranking</a></li><li><a href="retrieval/query-rewriting.html">Query rewriting</a></li><li><a href="retrieval/hyde.html">HyDE</a></li><li><a href="retrieval/multi-query.html">Multi-query + fusion</a></li></ul><h4>Advanced Patterns</h4><ul><li><a href="advanced/agentic-rag.html">Agentic RAG</a></li><li><a href="advanced/graph-rag.html">GraphRAG</a></li><li><a href="advanced/adaptive-rag.html">Adaptive RAG</a></li><li><a href="advanced/corrective-rag.html">Corrective RAG (CRAG)</a></li><li><a href="advanced/self-rag.html">Self-RAG</a></li><li><a href="advanced/multi-hop.html">Multi-hop RAG</a></li></ul><h4>Evaluation</h4><ul><li><a href="eval/why-eval.html">Why evaluation is critical</a></li><li><a href="eval/retrieval-metrics.html">Retrieval metrics</a></li><li><a href="eval/generation-metrics.html">Generation metrics</a></li><li><a href="eval/ragas-and-frameworks.html">RAGAS, TruLens, ARES</a></li><li><a href="eval/building-eval-datasets.html">Building eval datasets</a></li></ul><h4>Production</h4><ul><li><a href="prod/latency.html">Latency optimization</a></li><li><a href="prod/caching.html">Caching strategies</a></li><li><a href="prod/observability.html">Observability and tracing</a></li><li><a href="prod/cost.html">Cost management</a></li><li><a href="prod/security.html">Security and prompt injection</a></li></ul><h4>Use Cases</h4><ul><li><a href="cases/customer-support.html">Customer support RAG</a></li><li><a href="cases/internal-kb.html">Internal knowledge RAG</a></li><li><a href="cases/code-rag.html">Code search + generation</a></li><li><a href="cases/legal-compliance.html">Legal and compliance</a></li><li><a href="cases/multi-tenant.html">Multi-tenant RAG</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">RAGS to Riches</a><span class="sep">›</span><span>Vector database overview</span></div><h1 class="title">Vector database overview</h1><div class="article-meta"><span>📖 5 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">A vector database stores high-dimensional vectors and finds nearest neighbors at query time, fast. Traditional databases store rows and look up by exact match or range. Vector databases store embeddings and look up by similarity. Both have their place, and serious RAG systems usually involve both.</p>
+
+<h2>What a vector database does</h2>
+<ol>
+  <li><strong>Ingests vectors</strong> with associated metadata</li>
+  <li><strong>Indexes</strong> them in a structure optimized for nearest-neighbor queries</li>
+  <li><strong>Queries</strong>: given a query vector, returns the top-k nearest</li>
+  <li><strong>Filters</strong>: combine vector similarity with metadata predicates</li>
+  <li><strong>Updates</strong>: handles upserts, deletes, partial metadata updates</li>
+</ol>
+
+<h2>Why you can't just use Postgres</h2>
+<p>You can, actually, pgvector is a perfectly good choice for many workloads. But dedicated vector databases offer:</p>
+<ul>
+  <li>Purpose-built ANN indexes (HNSW, IVF, PQ) optimized for high dimensions</li>
+  <li>Specialized query planners for hybrid vector+metadata queries</li>
+  <li>Horizontal scaling for billion-vector workloads</li>
+  <li>Features like multi-tenancy, namespaces, and streaming updates</li>
+</ul>
+
+<p>The decision: use pgvector until you're constrained by it. Move to a dedicated vector DB when you actually hit its limits.</p>
+
+<h2>The major players (2026)</h2>
+
+<h3>Pinecone</h3>
+<p>Fully managed, serverless pricing model. Easiest to get started. Strong multi-tenancy. More expensive at scale than self-hosted alternatives. Namespaces are powerful.</p>
+
+<h3>Weaviate</h3>
+<p>Open-source with managed option. Strong hybrid search (native BM25 + vector). Rich filtering. Good for production.</p>
+
+<h3>Qdrant</h3>
+<p>Open-source, Rust-based, extremely fast. Strong quantization support (scalar, binary). Excellent filtering performance. Easy self-hosting.</p>
+
+<h3>Milvus</h3>
+<p>Open-source, enterprise-grade. Scales to billions of vectors. Complex to operate. Best for very large deployments.</p>
+
+<h3>Chroma</h3>
+<p>Open-source, embeddable. Great for prototyping and small-to-medium workloads. Not battle-tested at massive scale (yet).</p>
+
+<h3>pgvector</h3>
+<p>Postgres extension. Free, familiar, integrates with existing databases. Good for hundreds of thousands to low millions of vectors. Less purpose-built indexes than dedicated vector DBs.</p>
+
+<h3>Turbopuffer</h3>
+<p>Newer serverless vector DB designed for cost. S3-backed storage with caching. Very cheap per stored vector.</p>
+
+<h3>Vespa</h3>
+<p>Yahoo's battle-tested search engine, now open-source. Handles vector search alongside full-text, filtering, ranking. Complex but powerful.</p>
+
+<h3>Elasticsearch / OpenSearch</h3>
+<p>Full-text search platforms with vector support. Natural fit if you already run them for BM25.</p>
+
+<h3>LanceDB</h3>
+<p>Open-source embedded vector DB built on Apache Arrow. Good for local-first and notebook workflows.</p>
+
+<h3>FAISS (not a database)</h3>
+<p>Facebook's library for vector similarity search. Not a database, no persistence, no filtering, no API. But the underlying algorithms of many vector DBs. Use directly for research, not production.</p>
+
+<h2>Comparison dimensions</h2>
+
+<h3>Managed vs self-hosted</h3>
+<p>Pinecone and Weaviate Cloud vs Qdrant, Milvus, pgvector on your own infra. The tradeoff is standard: cost vs ops burden.</p>
+
+<h3>Scale</h3>
+<ul>
+  <li>Thousands to low millions: any option works, pick by feature fit</li>
+  <li>10M to 100M: Pinecone, Weaviate, Qdrant, Milvus, Turbopuffer</li>
+  <li>100M+: Milvus, Pinecone (at significant cost), Turbopuffer, Vespa</li>
+</ul>
+
+<h3>Hybrid search</h3>
+<p>Weaviate, Qdrant, OpenSearch, and Vespa have the best native hybrid search. Pinecone now supports sparse vectors. See <a href="hybrid-search.html">hybrid search</a>.</p>
+
+<h3>Filtering performance</h3>
+<p>Qdrant and Weaviate have excellent filtered search. Pinecone's filtering is adequate. pgvector with proper indexes can be very fast on structured filters.</p>
+
+<h3>Multi-tenancy</h3>
+<p>Pinecone's namespaces are clean. Weaviate has per-tenant shards. For multi-tenant RAG, these features matter a lot. See <a href="../cases/multi-tenant.html">multi-tenant RAG</a>.</p>
+
+<h2>The decision framework</h2>
+<ol>
+  <li>Starting out, low volume: pgvector or Chroma. Cheap, simple.</li>
+  <li>Growing, managed preference: Pinecone. Fast to scale, costs predictable.</li>
+  <li>Growing, self-hosted preference: Qdrant or Weaviate. Full control.</li>
+  <li>Very large scale: Milvus or Vespa.</li>
+  <li>Need full-text + vectors in one system: Elasticsearch / OpenSearch / Vespa.</li>
+  <li>Already running Postgres heavily: pgvector, unless you hit limits.</li>
+</ol>
+
+<p>Most vector DB decisions are reversible with some migration effort. Don't over-optimize this choice early.</p>
+
+<p style="margin-top:40px;">Next: <a href="indexing-strategies.html">HNSW, IVF, PQ</a>.</p>
+<div class="prev-next"><a href="../embeddings/fine-tuning.html" class="prev"><div class="label">← Previous</div><div class="title">Fine-tuning embeddings</div></a><a href="indexing-strategies.html" class="next"><div class="label">Next →</div><div class="title">HNSW, IVF, PQ</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a></p>
+</div></footer></body></html>

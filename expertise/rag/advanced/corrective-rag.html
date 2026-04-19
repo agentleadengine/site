@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Corrective RAG (CRAG) | Samuel Ochoa</title>
+<meta name="description" content="Corrective RAG evaluates retrieval quality and recovers from bad retrievals with alternate strategies. Here's the pattern.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Corrective RAG (CRAG) | Samuel Ochoa">
+<meta property="og:description" content="Corrective RAG evaluates retrieval quality and recovers from bad retrievals with alternate strategies. Here's the pattern.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../about.html">About</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>RAGS to Riches (56 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-rag.html">What is RAG?</a></li><li><a href="foundations/why-rag.html">Why RAG over fine-tuning</a></li><li><a href="foundations/the-architecture.html">The RAG architecture map</a></li><li><a href="foundations/when-not-to-use.html">When not to use RAG</a></li></ul><h4>Documents + Ingestion</h4><ul><li><a href="docs/ingestion-pipeline.html">The ingestion pipeline</a></li><li><a href="docs/parsing-pdfs.html">Parsing PDFs</a></li><li><a href="docs/parsing-html.html">Parsing HTML + web pages</a></li><li><a href="docs/tables-figures.html">Tables and figures</a></li><li><a href="docs/ocr.html">OCR for scanned documents</a></li><li><a href="docs/metadata.html">Metadata extraction</a></li></ul><h4>Chunking</h4><ul><li><a href="chunking/why-chunking.html">Why chunking matters</a></li><li><a href="chunking/fixed-size.html">Fixed-size chunking</a></li><li><a href="chunking/semantic.html">Semantic chunking</a></li><li><a href="chunking/recursive.html">Recursive chunking</a></li><li><a href="chunking/structure-aware.html">Structure-aware chunking</a></li><li><a href="chunking/chunking-code.html">Chunking code</a></li></ul><h4>Embeddings</h4><ul><li><a href="embeddings/what-are-embeddings.html">What embeddings are</a></li><li><a href="embeddings/picking-a-model.html">Picking an embedding model</a></li><li><a href="embeddings/closed-vs-open.html">Closed vs open models</a></li><li><a href="embeddings/dimensions-cost.html">Dimensions, cost, and MRL</a></li><li><a href="embeddings/fine-tuning.html">Fine-tuning embeddings</a></li></ul><h4>Vector Stores</h4><ul><li><a href="vectors/overview.html">Vector database overview</a></li><li><a href="vectors/indexing-strategies.html">HNSW, IVF, PQ</a></li><li><a href="vectors/hybrid-search.html">Hybrid search</a></li><li><a href="vectors/metadata-filtering.html">Metadata filtering</a></li><li><a href="vectors/cost-optimization.html">Cost optimization</a></li><li><a href="vectors/choosing-a-db.html">Choosing a vector DB</a></li></ul><h4>Retrieval Strategies</h4><ul><li><a href="retrieval/vector-search.html">Vector similarity search</a></li><li><a href="retrieval/bm25-sparse.html">BM25 and sparse retrieval</a></li><li><a href="retrieval/hybrid.html">Hybrid retrieval</a></li><li><a href="retrieval/reranking.html">Reranking</a></li><li><a href="retrieval/query-rewriting.html">Query rewriting</a></li><li><a href="retrieval/hyde.html">HyDE</a></li><li><a href="retrieval/multi-query.html">Multi-query + fusion</a></li></ul><h4>Advanced Patterns</h4><ul><li><a href="advanced/agentic-rag.html">Agentic RAG</a></li><li><a href="advanced/graph-rag.html">GraphRAG</a></li><li><a href="advanced/adaptive-rag.html">Adaptive RAG</a></li><li><a href="advanced/corrective-rag.html" class="active">Corrective RAG (CRAG)</a></li><li><a href="advanced/self-rag.html">Self-RAG</a></li><li><a href="advanced/multi-hop.html">Multi-hop RAG</a></li></ul><h4>Evaluation</h4><ul><li><a href="eval/why-eval.html">Why evaluation is critical</a></li><li><a href="eval/retrieval-metrics.html">Retrieval metrics</a></li><li><a href="eval/generation-metrics.html">Generation metrics</a></li><li><a href="eval/ragas-and-frameworks.html">RAGAS, TruLens, ARES</a></li><li><a href="eval/building-eval-datasets.html">Building eval datasets</a></li></ul><h4>Production</h4><ul><li><a href="prod/latency.html">Latency optimization</a></li><li><a href="prod/caching.html">Caching strategies</a></li><li><a href="prod/observability.html">Observability and tracing</a></li><li><a href="prod/cost.html">Cost management</a></li><li><a href="prod/security.html">Security and prompt injection</a></li></ul><h4>Use Cases</h4><ul><li><a href="cases/customer-support.html">Customer support RAG</a></li><li><a href="cases/internal-kb.html">Internal knowledge RAG</a></li><li><a href="cases/code-rag.html">Code search + generation</a></li><li><a href="cases/legal-compliance.html">Legal and compliance</a></li><li><a href="cases/multi-tenant.html">Multi-tenant RAG</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">RAGS to Riches</a><span class="sep">›</span><span>Corrective RAG (CRAG)</span></div><h1 class="title">Corrective RAG (CRAG)</h1><div class="article-meta"><span>📖 4 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">Corrective RAG (CRAG) adds a quality-check step between retrieval and generation. If retrieved documents are judged insufficient or irrelevant, the system triggers a fallback strategy, typically a web search, query rewriting, or different retrieval approach. It's a practical pattern for handling retrieval failures gracefully.</p>
+
+<h2>The core flow</h2>
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
+1. Retrieve from internal corpus
+2. Evaluate retrieved documents:
+   - Correct (high confidence, relevant)
+   - Ambiguous (some relevant, some not)
+   - Incorrect (nothing relevant found)
+3. Based on evaluation:
+   - Correct: generate answer from retrieved docs
+   - Ambiguous: refine retrieval, add web search, or both
+   - Incorrect: fall back to web search or "I don't know"
+4. Generate final answer
+</pre>
+
+<h2>The evaluator</h2>
+<p>The key component is the retrieval evaluator, a model (small classifier, LLM with a prompt, or score-based heuristic) that judges whether retrieval gave enough to answer.</p>
+
+<h3>LLM-based evaluator</h3>
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:12px;">
+SYSTEM: Given a user query and retrieved documents, judge whether the
+documents contain enough information to answer the query. Respond with:
+- SUFFICIENT: can answer directly
+- PARTIAL: some info present, need more
+- INSUFFICIENT: no relevant info
+
+USER:
+Query: [query]
+Documents: [doc1, doc2, doc3]
+</pre>
+
+<h3>Score-based</h3>
+<p>If all retrieved documents have cosine similarity below 0.7 (example threshold), flag as low-confidence. Cheap, no extra LLM call, but less reliable than LLM evaluation.</p>
+
+<h3>Hybrid</h3>
+<p>Score-based first pass (fast). For borderline cases, LLM evaluator.</p>
+
+<h2>Fallback strategies</h2>
+
+<h3>Web search</h3>
+<p>When internal corpus lacks info, search the web (via Serper, Tavily, Brave Search, etc.). Append web results to context. Useful for current events, general knowledge, questions outside your corpus.</p>
+
+<h3>Query rewriting and retry</h3>
+<p>Rewrite the query with different terminology, retry retrieval. Simple, no external dependencies.</p>
+
+<h3>Knowledge base expansion</h3>
+<p>Escalate to broader knowledge sources: general docs, encyclopedic sources, parent organization's docs.</p>
+
+<h3>"I don't know" response</h3>
+<p>If nothing is found, acknowledge the gap instead of hallucinating. This is the underrated answer most systems skip.</p>
+
+<h2>Why this matters</h2>
+<p>The alternative to CRAG is: the model receives low-quality context and hallucinates a plausible but wrong answer. CRAG treats "retrieval was bad" as a first-class state, not a silent failure.</p>
+
+<h2>Latency</h2>
+<p>CRAG adds one evaluation step per query. If the evaluator is a small fast model, this adds 100-300ms. For queries that trigger fallback, total latency grows (web search adds seconds).</p>
+
+<h2>Common design choices</h2>
+
+<h3>Granularity of evaluation</h3>
+<p>Evaluate per-document (which docs are relevant?) or per-set (is the overall set sufficient?). Per-set is simpler, per-document is more precise.</p>
+
+<h3>Fallback threshold</h3>
+<p>How strict is the evaluator? Strict = more fallbacks (better quality, higher cost). Lenient = fewer fallbacks (faster, cheaper, more hallucinations).</p>
+
+<h3>Parallel vs sequential fallback</h3>
+<p>Sequential: try retrieval, if bad, fall back. Parallel: always run retrieval + web search, use the better result. Parallel is faster for queries that need fallback but wastes compute on queries that don't.</p>
+
+<h2>Implementation sketch</h2>
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:12px;">
+def corrective_rag(query):
+    retrieved = retrieve(query, top_k=10)
+    judgment = evaluate(query, retrieved)
+
+    if judgment == "SUFFICIENT":
+        return generate(query, retrieved)
+
+    if judgment == "PARTIAL":
+        web_results = web_search(query)
+        return generate(query, retrieved + web_results)
+
+    if judgment == "INSUFFICIENT":
+        rewritten = rewrite_query(query)
+        retry_retrieved = retrieve(rewritten, top_k=20)
+        retry_judgment = evaluate(query, retry_retrieved)
+
+        if retry_judgment != "INSUFFICIENT":
+            return generate(query, retry_retrieved)
+
+        web_results = web_search(query)
+        return generate(query, web_results)
+</pre>
+
+<h2>When CRAG helps</h2>
+<ul>
+  <li>Corpora that don't cover all user questions (gaps are common)</li>
+  <li>Applications where hallucinations have high cost (compliance, medical, legal)</li>
+  <li>Systems with external data available as fallback</li>
+</ul>
+
+<h2>When it's overkill</h2>
+<ul>
+  <li>Closed domain where web fallback would be wrong (internal-only systems)</li>
+  <li>Simple FAQ-style corpora where retrieval rarely fails</li>
+  <li>Latency-critical applications where extra evaluation steps matter</li>
+</ul>
+
+<h2>The simplest CRAG</h2>
+<p>You don't need a full CRAG implementation to benefit from the idea. Start with:</p>
+<ul>
+  <li>Set a minimum retrieval score threshold</li>
+  <li>If no documents clear the threshold, respond "I don't have information on that"</li>
+  <li>If documents clear the threshold, proceed normally</li>
+</ul>
+
+<p>This simple version already stops most hallucination failures in production RAG.</p>
+
+<p style="margin-top:40px;">Next: <a href="self-rag.html">Self-RAG</a>.</p>
+<div class="prev-next"><a href="adaptive-rag.html" class="prev"><div class="label">← Previous</div><div class="title">Adaptive RAG</div></a><a href="self-rag.html" class="next"><div class="label">Next →</div><div class="title">Self-RAG</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a></p>
+</div></footer></body></html>

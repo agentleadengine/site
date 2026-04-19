@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What embeddings are | Samuel Ochoa</title>
+<meta name="description" content="Embeddings turn text into vectors where semantically similar text is close in space. Here's the mental model and what actually matters about them for RAG.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="What embeddings are | Samuel Ochoa">
+<meta property="og:description" content="Embeddings turn text into vectors where semantically similar text is close in space. Here's the mental model and what actually matters about them for RAG.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../about.html">About</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>RAGS to Riches (56 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-rag.html">What is RAG?</a></li><li><a href="foundations/why-rag.html">Why RAG over fine-tuning</a></li><li><a href="foundations/the-architecture.html">The RAG architecture map</a></li><li><a href="foundations/when-not-to-use.html">When not to use RAG</a></li></ul><h4>Documents + Ingestion</h4><ul><li><a href="docs/ingestion-pipeline.html">The ingestion pipeline</a></li><li><a href="docs/parsing-pdfs.html">Parsing PDFs</a></li><li><a href="docs/parsing-html.html">Parsing HTML + web pages</a></li><li><a href="docs/tables-figures.html">Tables and figures</a></li><li><a href="docs/ocr.html">OCR for scanned documents</a></li><li><a href="docs/metadata.html">Metadata extraction</a></li></ul><h4>Chunking</h4><ul><li><a href="chunking/why-chunking.html">Why chunking matters</a></li><li><a href="chunking/fixed-size.html">Fixed-size chunking</a></li><li><a href="chunking/semantic.html">Semantic chunking</a></li><li><a href="chunking/recursive.html">Recursive chunking</a></li><li><a href="chunking/structure-aware.html">Structure-aware chunking</a></li><li><a href="chunking/chunking-code.html">Chunking code</a></li></ul><h4>Embeddings</h4><ul><li><a href="embeddings/what-are-embeddings.html" class="active">What embeddings are</a></li><li><a href="embeddings/picking-a-model.html">Picking an embedding model</a></li><li><a href="embeddings/closed-vs-open.html">Closed vs open models</a></li><li><a href="embeddings/dimensions-cost.html">Dimensions, cost, and MRL</a></li><li><a href="embeddings/fine-tuning.html">Fine-tuning embeddings</a></li></ul><h4>Vector Stores</h4><ul><li><a href="vectors/overview.html">Vector database overview</a></li><li><a href="vectors/indexing-strategies.html">HNSW, IVF, PQ</a></li><li><a href="vectors/hybrid-search.html">Hybrid search</a></li><li><a href="vectors/metadata-filtering.html">Metadata filtering</a></li><li><a href="vectors/cost-optimization.html">Cost optimization</a></li><li><a href="vectors/choosing-a-db.html">Choosing a vector DB</a></li></ul><h4>Retrieval Strategies</h4><ul><li><a href="retrieval/vector-search.html">Vector similarity search</a></li><li><a href="retrieval/bm25-sparse.html">BM25 and sparse retrieval</a></li><li><a href="retrieval/hybrid.html">Hybrid retrieval</a></li><li><a href="retrieval/reranking.html">Reranking</a></li><li><a href="retrieval/query-rewriting.html">Query rewriting</a></li><li><a href="retrieval/hyde.html">HyDE</a></li><li><a href="retrieval/multi-query.html">Multi-query + fusion</a></li></ul><h4>Advanced Patterns</h4><ul><li><a href="advanced/agentic-rag.html">Agentic RAG</a></li><li><a href="advanced/graph-rag.html">GraphRAG</a></li><li><a href="advanced/adaptive-rag.html">Adaptive RAG</a></li><li><a href="advanced/corrective-rag.html">Corrective RAG (CRAG)</a></li><li><a href="advanced/self-rag.html">Self-RAG</a></li><li><a href="advanced/multi-hop.html">Multi-hop RAG</a></li></ul><h4>Evaluation</h4><ul><li><a href="eval/why-eval.html">Why evaluation is critical</a></li><li><a href="eval/retrieval-metrics.html">Retrieval metrics</a></li><li><a href="eval/generation-metrics.html">Generation metrics</a></li><li><a href="eval/ragas-and-frameworks.html">RAGAS, TruLens, ARES</a></li><li><a href="eval/building-eval-datasets.html">Building eval datasets</a></li></ul><h4>Production</h4><ul><li><a href="prod/latency.html">Latency optimization</a></li><li><a href="prod/caching.html">Caching strategies</a></li><li><a href="prod/observability.html">Observability and tracing</a></li><li><a href="prod/cost.html">Cost management</a></li><li><a href="prod/security.html">Security and prompt injection</a></li></ul><h4>Use Cases</h4><ul><li><a href="cases/customer-support.html">Customer support RAG</a></li><li><a href="cases/internal-kb.html">Internal knowledge RAG</a></li><li><a href="cases/code-rag.html">Code search + generation</a></li><li><a href="cases/legal-compliance.html">Legal and compliance</a></li><li><a href="cases/multi-tenant.html">Multi-tenant RAG</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">RAGS to Riches</a><span class="sep">›</span><span>What embeddings are</span></div><h1 class="title">What embeddings are</h1><div class="article-meta"><span>📖 5 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">An embedding is a vector of numbers that represents a piece of text. Two pieces of text with similar meaning produce vectors that point in similar directions. That's the entire idea. The rest is engineering: which model produces those vectors, how many dimensions, at what cost, for what content.</p>
+
+<h2>The geometry</h2>
+<p>Embedding models map text into a high-dimensional space (typically 768, 1024, 1536, or 3072 dimensions). In this space:</p>
+<ul>
+  <li>"Reset my password" and "I forgot my login" are close (similar meaning)</li>
+  <li>"Reset my password" and "What's the weather" are far apart</li>
+  <li>Similarity is measured with cosine similarity (angle between vectors) or dot product</li>
+</ul>
+
+<p>This geometry is how retrieval works: embed the user's query, find the nearest neighbors in your index, return those chunks.</p>
+
+<h2>How embedding models learn this</h2>
+<p>Embedding models are trained on massive pairs of related text, from semi-supervised scraping, from annotated datasets, or from contrastive learning objectives. The model is rewarded when its vectors for "similar" pairs are close and "dissimilar" pairs are far apart. Over billions of examples, it learns a space where semantic similarity maps to geometric proximity.</p>
+
+<h2>What embeddings are good at</h2>
+<ul>
+  <li>Synonyms and paraphrases ("car" ≈ "automobile")</li>
+  <li>Cross-lingual (in multilingual models)</li>
+  <li>Topic matching ("payment failed" ≈ chunks about billing issues)</li>
+  <li>Abstract relationships ("Jeff Bezos" ≈ "Amazon founder")</li>
+</ul>
+
+<h2>What embeddings are bad at</h2>
+<ul>
+  <li>Exact string matching (product codes, UUIDs, specific part numbers)</li>
+  <li>Negation ("does NOT include X" often embeds similarly to "includes X")</li>
+  <li>Rare named entities not well-represented in training data</li>
+  <li>Long documents with multiple topics (the average doesn't represent any one topic well)</li>
+  <li>Fine distinctions in technical domains (two very similar-sounding API calls with different behavior)</li>
+</ul>
+
+<p>These failure modes are why pure vector search underperforms. Hybrid search (dense + sparse) exists specifically to cover embedding weaknesses.</p>
+
+<h2>Dense vs sparse</h2>
+<ul>
+  <li><strong>Dense embeddings</strong> (what most people mean): continuous vectors from a neural model. Good at semantic similarity, weak at exact matches.</li>
+  <li><strong>Sparse embeddings</strong> (BM25, SPLADE): high-dimensional vectors with mostly zero values, where each dimension corresponds to a term or learned token. Good at exact matches and keyword-heavy queries.</li>
+</ul>
+
+<p>Modern RAG often combines both, see <a href="../retrieval/hybrid.html">hybrid retrieval</a>.</p>
+
+<h2>The two things that matter for RAG</h2>
+<ol>
+  <li><strong>Model quality.</strong> How well the model captures the semantics of your domain.</li>
+  <li><strong>Cost.</strong> Per-million-token pricing for API models, inference cost for self-hosted.</li>
+</ol>
+
+<p>Dimensions, latency, and context length matter too, but model quality dominates the retrieval ceiling.</p>
+
+<h2>What the numbers mean</h2>
+
+<h3>Dimensions</h3>
+<p>How many numbers per vector. More dimensions = more storage, more compute. The model designers pick this, you don't tune it (except via Matryoshka, see <a href="dimensions-cost.html">dimensions and cost</a>). Ranges from 384 (small models) to 3072+ (large).</p>
+
+<h3>Context length</h3>
+<p>Max tokens the model will embed at once. 512 is the old standard, 8192 is modern, and some models now go to 32K+. Longer context = can embed bigger chunks, but diminishing returns, an embedding is still one vector summarizing all tokens.</p>
+
+<h3>Similarity metric</h3>
+<ul>
+  <li><strong>Cosine</strong> (angle-based): most common, scale-invariant</li>
+  <li><strong>Dot product</strong>: used when vectors are normalized (many modern models output pre-normalized vectors, so dot product = cosine)</li>
+  <li><strong>Euclidean</strong>: rare for text, more common in computer vision</li>
+</ul>
+
+<p>Check which metric your model was trained with and use that one. Mismatched metrics degrade retrieval silently.</p>
+
+<h2>The mental model for debugging</h2>
+<p>When retrieval is failing:</p>
+<ol>
+  <li>Look at the top-k results for a failing query</li>
+  <li>Are they wrong? The embeddings don't understand your domain</li>
+  <li>Are they right but buried at rank 5-10? The embeddings work, but you need reranking</li>
+  <li>Are they missing entirely? The relevant chunk wasn't in your index (chunking or ingestion problem)</li>
+</ol>
+
+<p style="margin-top:40px;">Next: <a href="picking-a-model.html">Picking an embedding model</a>.</p>
+<div class="prev-next"><a href="../chunking/chunking-code.html" class="prev"><div class="label">← Previous</div><div class="title">Chunking code</div></a><a href="picking-a-model.html" class="next"><div class="label">Next →</div><div class="title">Picking an embedding model</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a></p>
+</div></footer></body></html>

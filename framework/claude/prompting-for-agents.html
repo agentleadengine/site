@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prompting for agents | Samuel Ochoa</title>
+<meta name="description" content="Prompting patterns designed for agentic work, not chatbot replies. XML tags, reasoning scaffolds, error recovery.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Prompting for agents | Samuel Ochoa">
+<meta property="og:description" content="Prompting patterns designed for agentic work, not chatbot replies. XML tags, reasoning scaffolds, error recovery.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../index.html">Home</a>
+<a href="../../framework/index.html" class="active">Framework</a>
+<a href="../expertise/index.html">Expertise</a>
+<a href="../playbooks/index.html">Playbooks</a>
+<a href="../writing.html">Writing</a>
+<a href="../../about.html">About</a>
+<a href="../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="what-is-autonomous-ai.html">What is autonomous AI</a></li><li><a href="the-autonomy-spectrum.html">The autonomy spectrum</a></li><li><a href="glossary.html">Glossary</a></li></ul><h4>Claude</h4><ul><li><a href="claude/overview.html">Overview</a></li><li><a href="claude/prompting-for-agents.html" class="active">Prompting for agents</a></li><li><a href="claude/extended-thinking.html">Extended thinking</a></li><li><a href="claude/tool-use.html">Tool use</a></li></ul><h4>MCP</h4><ul><li><a href="mcp/index.html">Overview</a></li><li><a href="mcp/what-is-mcp.html">What is MCP</a></li><li><a href="mcp/anatomy.html">Anatomy</a></li><li><a href="mcp/transports.html">Transports</a></li><li><a href="mcp/servers.html">Servers</a></li><li><a href="mcp/clients.html">Clients</a></li><li><a href="mcp/security.html">Security</a></li><li><a href="mcp/directory.html">Directory</a></li></ul><h4>Plugins</h4><ul><li><a href="plugins/index.html">Overview</a></li><li><a href="plugins/vs-mcp.html">Plugins vs MCP</a></li><li><a href="plugins/marketplace.html">Marketplace</a></li></ul><h4>Claude Code</h4><ul><li><a href="claude-code/index.html">Overview</a></li><li><a href="claude-code/settings.html">Settings</a></li><li><a href="claude-code/permissions.html">Permissions</a></li><li><a href="claude-code/hooks.html">Hooks</a></li><li><a href="claude-code/skills.html">Skills</a></li><li><a href="claude-code/memory.html">Memory</a></li></ul><h4>Patterns</h4><ul><li><a href="patterns/index.html">Overview</a></li><li><a href="patterns/react-loop.html">ReAct loop</a></li><li><a href="patterns/plan-execute.html">Plan-execute</a></li><li><a href="patterns/multi-agent.html">Multi-agent</a></li><li><a href="patterns/evaluation.html">Evaluation</a></li><li><a href="patterns/prompt-caching.html">Prompt caching</a></li></ul><h4>Autonomous</h4><ul><li><a href="autonomous/index.html">Overview</a></li><li><a href="autonomous/headless.html">Headless</a></li><li><a href="autonomous/scheduling.html">Scheduling</a></li><li><a href="autonomous/self-monitoring.html">Self-monitoring</a></li><li><a href="autonomous/safety.html">Safety</a></li></ul><h4>Build Guides</h4><ul><li><a href="build/index.html">Overview</a></li><li><a href="build/first-agent.html">First agent (60 min)</a></li><li><a href="build/voice-agent.html">Voice agent</a></li><li><a href="build/research-agent.html">Research agent</a></li></ul><h4>Tools</h4><ul><li><a href="tools/browser-automation.html">Browser automation</a></li><li><a href="tools/desktop-control.html">Desktop control</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Framework</a><span class="sep">›</span><span>Claude</span><span class="sep">›</span><span>Prompting for agents</span></div><h1 class="title" style="font-size:clamp(32px,4.5vw,42px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">Prompting for agents</h1><div class="article-meta"><span>📖 6 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">Prompting an agent isn't the same as prompting a chatbot. The agent has to make decisions, call tools, recover from errors, and stop when done. The prompt needs to tell it how.</p>
+
+<h2>The four sections every agent prompt needs</h2>
+
+<h3>1. Role and goal</h3>
+<p>Tell the agent what it is and what it's trying to achieve.</p>
+<pre><code>You are a research assistant. Your goal is to answer the user's question
+using web search and return a concise, sourced summary.</code></pre>
+
+<h3>2. Rules and constraints</h3>
+<p>What it must do, what it must not do, how to format output.</p>
+<pre><code>Rules:
+- Always cite sources with URLs
+- Never speculate beyond what sources say
+- If sources conflict, surface the disagreement, don't hide it
+- Stop after 3 search rounds even if you want more data</code></pre>
+
+<h3>3. Tool-use guidance</h3>
+<p>Tell it how to use each tool, when to use which, and how to handle errors.</p>
+<pre><code>You have two tools:
+- web_search: use for finding new information
+- fetch_url: use to read a specific page the user references
+
+If a tool returns an error, try once more with a reformulated input.
+If it errors twice, surface the failure to the user, don't hide it.</code></pre>
+
+<h3>4. Output format</h3>
+<p>Describe exactly what the final response should look like. For agents, be strict, the output will be parsed or acted on.</p>
+
+<h2>XML tags for structure</h2>
+<p>Claude responds well to XML-tagged sections. They help the model locate parts of the prompt and produce structured outputs.</p>
+<pre><code>&lt;task&gt;Summarize the article at the URL below.&lt;/task&gt;
+&lt;url&gt;https://example.com/article&lt;/url&gt;
+&lt;constraints&gt;
+- 200 words max
+- Include the 3 key claims with source quotes
+&lt;/constraints&gt;</code></pre>
+
+<h2>Reasoning scaffolds</h2>
+<p>For complex tasks, explicitly tell the model to think before acting:</p>
+<pre><code>Before calling any tool:
+1. Identify what's needed to complete the task
+2. Decide which tool to call and with what arguments
+3. Predict what the result will tell you
+
+After each tool call:
+1. Compare the result to what you expected
+2. Decide whether to continue or change approach</code></pre>
+<p>This works even without extended thinking enabled, the model will produce the reasoning in the main output.</p>
+
+<h2>Error recovery</h2>
+<p>Agents fail. Tools error. Give the model a playbook:</p>
+<ul>
+  <li><strong>Bounded retries.</strong> "Retry once with different arguments."</li>
+  <li><strong>Fallback tools.</strong> "If web_search fails, try fetch_url directly."</li>
+  <li><strong>Escalation.</strong> "If you can't make progress, state what you need from the user."</li>
+  <li><strong>Explicit stop conditions.</strong> "After 5 tool calls without useful results, stop and report."</li>
+</ul>
+
+<div class="callout warning">
+  <strong>Watch out:</strong> Unbounded retry loops are the #1 way an agent burns money and does nothing. Always set a hard limit.
+</div>
+
+<h2>Output format matters more than you think</h2>
+<p>If downstream code parses the agent's output, be obsessive about the format. Model output drift is real. Put the format spec near the end of the prompt (it's the last thing the model considers) and use structure like JSON schemas when possible.</p>
+
+<h2>Anti-patterns</h2>
+<ul>
+  <li><strong>Vague goals.</strong> "Help the user" → "Answer the user's question in 200 words using the provided tools."</li>
+  <li><strong>No stop conditions.</strong> Agents will loop forever if you let them.</li>
+  <li><strong>Conflicting rules.</strong> Model will pick one arbitrarily. Resolve conflicts in the prompt, not in the model's head.</li>
+  <li><strong>Too many tools.</strong> Don't give an agent 20 tools when 4 will do. More tools = more confusion.</li>
+</ul>
+<div class="prev-next"><a href="overview.html" class="prev"><div class="label">← Previous</div><div class="title">Claude overview</div></a><a href="extended-thinking.html" class="next"><div class="label">Next →</div><div class="title">Extended thinking</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../framework/index.html">Framework</a></p>
+</div></footer></body></html>

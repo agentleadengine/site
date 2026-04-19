@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tool use | Samuel Ochoa</title>
+<meta name="description" content="How tool use works mechanically. JSON schemas, parallel calls, errors, multi-turn loops.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tool use | Samuel Ochoa">
+<meta property="og:description" content="How tool use works mechanically. JSON schemas, parallel calls, errors, multi-turn loops.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../index.html">Home</a>
+<a href="../../framework/index.html" class="active">Framework</a>
+<a href="../expertise/index.html">Expertise</a>
+<a href="../playbooks/index.html">Playbooks</a>
+<a href="../writing.html">Writing</a>
+<a href="../../about.html">About</a>
+<a href="../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="what-is-autonomous-ai.html">What is autonomous AI</a></li><li><a href="the-autonomy-spectrum.html">The autonomy spectrum</a></li><li><a href="glossary.html">Glossary</a></li></ul><h4>Claude</h4><ul><li><a href="claude/overview.html">Overview</a></li><li><a href="claude/prompting-for-agents.html">Prompting for agents</a></li><li><a href="claude/extended-thinking.html">Extended thinking</a></li><li><a href="claude/tool-use.html" class="active">Tool use</a></li></ul><h4>MCP</h4><ul><li><a href="mcp/index.html">Overview</a></li><li><a href="mcp/what-is-mcp.html">What is MCP</a></li><li><a href="mcp/anatomy.html">Anatomy</a></li><li><a href="mcp/transports.html">Transports</a></li><li><a href="mcp/servers.html">Servers</a></li><li><a href="mcp/clients.html">Clients</a></li><li><a href="mcp/security.html">Security</a></li><li><a href="mcp/directory.html">Directory</a></li></ul><h4>Plugins</h4><ul><li><a href="plugins/index.html">Overview</a></li><li><a href="plugins/vs-mcp.html">Plugins vs MCP</a></li><li><a href="plugins/marketplace.html">Marketplace</a></li></ul><h4>Claude Code</h4><ul><li><a href="claude-code/index.html">Overview</a></li><li><a href="claude-code/settings.html">Settings</a></li><li><a href="claude-code/permissions.html">Permissions</a></li><li><a href="claude-code/hooks.html">Hooks</a></li><li><a href="claude-code/skills.html">Skills</a></li><li><a href="claude-code/memory.html">Memory</a></li></ul><h4>Patterns</h4><ul><li><a href="patterns/index.html">Overview</a></li><li><a href="patterns/react-loop.html">ReAct loop</a></li><li><a href="patterns/plan-execute.html">Plan-execute</a></li><li><a href="patterns/multi-agent.html">Multi-agent</a></li><li><a href="patterns/evaluation.html">Evaluation</a></li><li><a href="patterns/prompt-caching.html">Prompt caching</a></li></ul><h4>Autonomous</h4><ul><li><a href="autonomous/index.html">Overview</a></li><li><a href="autonomous/headless.html">Headless</a></li><li><a href="autonomous/scheduling.html">Scheduling</a></li><li><a href="autonomous/self-monitoring.html">Self-monitoring</a></li><li><a href="autonomous/safety.html">Safety</a></li></ul><h4>Build Guides</h4><ul><li><a href="build/index.html">Overview</a></li><li><a href="build/first-agent.html">First agent (60 min)</a></li><li><a href="build/voice-agent.html">Voice agent</a></li><li><a href="build/research-agent.html">Research agent</a></li></ul><h4>Tools</h4><ul><li><a href="tools/browser-automation.html">Browser automation</a></li><li><a href="tools/desktop-control.html">Desktop control</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Framework</a><span class="sep">›</span><span>Claude</span><span class="sep">›</span><span>Tool use</span></div><h1 class="title" style="font-size:clamp(32px,4.5vw,42px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">Tool use</h1><div class="article-meta"><span>📖 5 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">Tool use is how an agent acts. The model doesn't execute anything itself, it requests tool calls, the harness runs them, and the results become new input. Getting the mechanics right is half the battle.</p>
+
+<h2>The contract</h2>
+<p>You define a tool with three things:</p>
+<ol>
+  <li><strong>Name</strong>, a short identifier (<code>web_search</code>, <code>read_file</code>).</li>
+  <li><strong>Description</strong>, what the tool does, when to use it, when not to.</li>
+  <li><strong>Input schema</strong>. JSON schema describing arguments.</li>
+</ol>
+<p>The model decides when to call a tool based on the description. <strong>Description quality matters more than the name.</strong> A mediocre description = a tool the model won't use or will misuse.</p>
+
+<h2>The loop</h2>
+<pre><code>1. Send messages + tool definitions to the model
+2. Model responds with either:
+   - A final answer (done)
+   - A tool_use block (model wants to call a tool)
+3. Harness executes the tool, captures output
+4. Harness sends back a tool_result referencing the tool_use ID
+5. Model produces the next step (more tool calls or final answer)
+6. Repeat until final answer or max_turns reached</code></pre>
+
+<h2>Parallel tool calls</h2>
+<p>Modern Claude can request multiple tools in one turn. Your harness should execute them in parallel when possible:</p>
+<pre><code>// Model emits:
+[tool_use: search("MCP spec")]
+[tool_use: search("MCP vs API")]
+[tool_use: fetch_url("https://modelcontextprotocol.io")]
+
+// Harness runs all three concurrently,
+// returns all three results in the next turn.</code></pre>
+<p>Parallel execution cuts latency dramatically on multi-search or multi-read tasks. Don't serialize by default.</p>
+
+<h2>Tool errors</h2>
+<p>Tools fail. The network times out. The file doesn't exist. Credentials expire. Your tool result should include error info in a shape the model can reason about:</p>
+<pre><code>{
+  "status": "error",
+  "error_type": "not_found",
+  "message": "File /path/to/file.txt does not exist",
+  "suggestion": "Check the path; list the directory first."
+}</code></pre>
+<p>The model can read this and take a smarter next step (list the directory). If you return a raw stack trace, the model will often just retry the same bad call.</p>
+
+<h2>Input schemas that actually work</h2>
+<ul>
+  <li><strong>Required vs optional.</strong> Be strict about what's required. Models will hallucinate defaults otherwise.</li>
+  <li><strong>Enums over free strings.</strong> If there are 3 valid values, declare them. Prevents typos.</li>
+  <li><strong>Descriptions on every field.</strong> Same as the tool itself, descriptions drive behavior.</li>
+  <li><strong>Examples in the tool description.</strong> "Example call: search({query: 'prompt caching'})" helps a lot.</li>
+</ul>
+
+<h2>Common failure modes</h2>
+<ul>
+  <li><strong>Infinite loops.</strong> Model keeps calling the same failing tool. Fix: add a retry cap, escalate the error after N tries.</li>
+  <li><strong>Tool hallucination.</strong> Model calls a tool that doesn't exist. Fix: keep your tool list short and clear.</li>
+  <li><strong>Missing required arg.</strong> Model skips a required field. Fix: validate in the harness, return a clear error back to the model.</li>
+  <li><strong>Wrong tool for the job.</strong> Model uses <code>fetch_url</code> for a query that needs <code>search</code>. Fix: sharpen descriptions, especially "when to use" and "when not to use."</li>
+</ul>
+
+<div class="callout insight">
+  <strong>Insight:</strong> Treat tool definitions like microservices. The description is the API docs. The input schema is the contract. Write them with the same care.
+</div>
+<div class="prev-next"><a href="extended-thinking.html" class="prev"><div class="label">← Previous</div><div class="title">Extended thinking</div></a><a href="../mcp/index.html" class="next"><div class="label">Next →</div><div class="title">MCP overview</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../framework/index.html">Framework</a></p>
+</div></footer></body></html>

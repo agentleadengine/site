@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Structure-aware chunking | Samuel Ochoa</title>
+<meta name="description" content="Structure-aware chunking uses document hierarchy (headings, sections, lists) as the primary boundary signal. For any corpus with real structure, this beats everything.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Structure-aware chunking | Samuel Ochoa">
+<meta property="og:description" content="Structure-aware chunking uses document hierarchy (headings, sections, lists) as the primary boundary signal. For any corpus with real structure, this beats everything.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../about.html">About</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>RAGS to Riches (56 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-rag.html">What is RAG?</a></li><li><a href="foundations/why-rag.html">Why RAG over fine-tuning</a></li><li><a href="foundations/the-architecture.html">The RAG architecture map</a></li><li><a href="foundations/when-not-to-use.html">When not to use RAG</a></li></ul><h4>Documents + Ingestion</h4><ul><li><a href="docs/ingestion-pipeline.html">The ingestion pipeline</a></li><li><a href="docs/parsing-pdfs.html">Parsing PDFs</a></li><li><a href="docs/parsing-html.html">Parsing HTML + web pages</a></li><li><a href="docs/tables-figures.html">Tables and figures</a></li><li><a href="docs/ocr.html">OCR for scanned documents</a></li><li><a href="docs/metadata.html">Metadata extraction</a></li></ul><h4>Chunking</h4><ul><li><a href="chunking/why-chunking.html">Why chunking matters</a></li><li><a href="chunking/fixed-size.html">Fixed-size chunking</a></li><li><a href="chunking/semantic.html">Semantic chunking</a></li><li><a href="chunking/recursive.html">Recursive chunking</a></li><li><a href="chunking/structure-aware.html" class="active">Structure-aware chunking</a></li><li><a href="chunking/chunking-code.html">Chunking code</a></li></ul><h4>Embeddings</h4><ul><li><a href="embeddings/what-are-embeddings.html">What embeddings are</a></li><li><a href="embeddings/picking-a-model.html">Picking an embedding model</a></li><li><a href="embeddings/closed-vs-open.html">Closed vs open models</a></li><li><a href="embeddings/dimensions-cost.html">Dimensions, cost, and MRL</a></li><li><a href="embeddings/fine-tuning.html">Fine-tuning embeddings</a></li></ul><h4>Vector Stores</h4><ul><li><a href="vectors/overview.html">Vector database overview</a></li><li><a href="vectors/indexing-strategies.html">HNSW, IVF, PQ</a></li><li><a href="vectors/hybrid-search.html">Hybrid search</a></li><li><a href="vectors/metadata-filtering.html">Metadata filtering</a></li><li><a href="vectors/cost-optimization.html">Cost optimization</a></li><li><a href="vectors/choosing-a-db.html">Choosing a vector DB</a></li></ul><h4>Retrieval Strategies</h4><ul><li><a href="retrieval/vector-search.html">Vector similarity search</a></li><li><a href="retrieval/bm25-sparse.html">BM25 and sparse retrieval</a></li><li><a href="retrieval/hybrid.html">Hybrid retrieval</a></li><li><a href="retrieval/reranking.html">Reranking</a></li><li><a href="retrieval/query-rewriting.html">Query rewriting</a></li><li><a href="retrieval/hyde.html">HyDE</a></li><li><a href="retrieval/multi-query.html">Multi-query + fusion</a></li></ul><h4>Advanced Patterns</h4><ul><li><a href="advanced/agentic-rag.html">Agentic RAG</a></li><li><a href="advanced/graph-rag.html">GraphRAG</a></li><li><a href="advanced/adaptive-rag.html">Adaptive RAG</a></li><li><a href="advanced/corrective-rag.html">Corrective RAG (CRAG)</a></li><li><a href="advanced/self-rag.html">Self-RAG</a></li><li><a href="advanced/multi-hop.html">Multi-hop RAG</a></li></ul><h4>Evaluation</h4><ul><li><a href="eval/why-eval.html">Why evaluation is critical</a></li><li><a href="eval/retrieval-metrics.html">Retrieval metrics</a></li><li><a href="eval/generation-metrics.html">Generation metrics</a></li><li><a href="eval/ragas-and-frameworks.html">RAGAS, TruLens, ARES</a></li><li><a href="eval/building-eval-datasets.html">Building eval datasets</a></li></ul><h4>Production</h4><ul><li><a href="prod/latency.html">Latency optimization</a></li><li><a href="prod/caching.html">Caching strategies</a></li><li><a href="prod/observability.html">Observability and tracing</a></li><li><a href="prod/cost.html">Cost management</a></li><li><a href="prod/security.html">Security and prompt injection</a></li></ul><h4>Use Cases</h4><ul><li><a href="cases/customer-support.html">Customer support RAG</a></li><li><a href="cases/internal-kb.html">Internal knowledge RAG</a></li><li><a href="cases/code-rag.html">Code search + generation</a></li><li><a href="cases/legal-compliance.html">Legal and compliance</a></li><li><a href="cases/multi-tenant.html">Multi-tenant RAG</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">RAGS to Riches</a><span class="sep">›</span><span>Structure-aware chunking</span></div><h1 class="title">Structure-aware chunking</h1><div class="article-meta"><span>📖 5 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">Structure-aware chunking uses the document's own organization as the chunk boundary: headings, sections, lists, tables. For any corpus that has real structure (technical docs, wikis, legal documents, Markdown, HTML), this is the highest-performing chunking strategy. It's also the most underused.</p>
+
+<h2>The core idea</h2>
+<p>Authors already decided where ideas begin and end, that's what headings and paragraphs are. Respect their decisions.</p>
+
+<p>Chunk boundaries come from:</p>
+<ul>
+  <li>Heading changes (H1, H2, H3 shifts)</li>
+  <li>Section breaks</li>
+  <li>List boundaries</li>
+  <li>Table boundaries</li>
+  <li>Code block boundaries</li>
+</ul>
+
+<h2>The algorithm</h2>
+<ol>
+  <li>Parse document into typed elements with hierarchy (heading levels, sections, lists, etc.)</li>
+  <li>Walk the element tree, grouping adjacent elements under the same heading into candidate chunks</li>
+  <li>If a candidate chunk exceeds target size, split it by sub-element (or by recursive chunking within)</li>
+  <li>If a candidate chunk is too small, merge it with the next one (but only within the same section)</li>
+  <li>Never break across top-level sections or merge across major heading transitions</li>
+</ol>
+
+<h2>The heading context trick</h2>
+<p>Every chunk carries its heading path as metadata or prepended text. For a chunk under "Setup &gt; Authentication &gt; OAuth &gt; Configuration", the chunk text might be prepended with:</p>
+
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
+# Setup &gt; Authentication &gt; OAuth &gt; Configuration
+
+[actual chunk content...]
+</pre>
+
+<p>The LLM and embedding model both benefit from knowing where a chunk sits in the document hierarchy. Without this, a chunk about "rate limits" could be about API rate limits, OAuth token rate limits, or webhook rate limits, all of which might exist in the same document.</p>
+
+<h2>Element-type-specific rules</h2>
+
+<h3>Headings</h3>
+<p>Never a chunk by itself. Attach to the following content.</p>
+
+<h3>Tables</h3>
+<p>Never split. Serialize as a single chunk with surrounding context. See <a href="../docs/tables-figures.html">tables and figures</a>.</p>
+
+<h3>Code blocks</h3>
+<p>Never split within. Often a chunk by themselves plus a surrounding context chunk.</p>
+
+<h3>Lists</h3>
+<p>Keep lists together when possible. If a list is huge (e.g., a reference list), chunk by list sections or by logical groups.</p>
+
+<h3>Images/figures</h3>
+<p>Attach to nearest text chunk. Store figure metadata in chunk metadata. See <a href="../docs/tables-figures.html">tables and figures</a>.</p>
+
+<h2>The Markdown case</h2>
+<p>Markdown is the easiest case. Headings are unambiguous, paragraphs are clear, code blocks are explicit. A good Markdown chunker:</p>
+<ol>
+  <li>Parses into an AST</li>
+  <li>Walks headings, creating sections</li>
+  <li>Produces one chunk per section, with heading hierarchy as metadata</li>
+  <li>Splits large sections on subheadings or natural paragraph boundaries</li>
+  <li>Preserves code blocks, tables, and lists as atomic units</li>
+</ol>
+
+<h2>The HTML case</h2>
+<p>HTML is Markdown's messy cousin. Parse into DOM, identify content containers, extract hierarchical sections from heading tags. Convert to Markdown for downstream processing, then chunk as Markdown.</p>
+
+<h2>The PDF case</h2>
+<p>PDFs don't have guaranteed structure, but good parsers (Docling, Unstructured, Llamaparse) return typed elements with heading levels inferred from font size, style, and position. Quality of structure-aware chunking depends heavily on parser quality, see <a href="../docs/parsing-pdfs.html">parsing PDFs</a>.</p>
+
+<h2>Why it outperforms fixed-size</h2>
+<ul>
+  <li>Chunks align with semantic units (one section = one chunk)</li>
+  <li>Heading context disambiguates ambiguous terms</li>
+  <li>Retrieved chunks are self-contained and LLM-friendly</li>
+  <li>Citations are natural ("from Section 3.2")</li>
+  <li>User experience improves because returned chunks look like explanations, not fragments</li>
+</ul>
+
+<h2>Implementation</h2>
+<ul>
+  <li><strong>Unstructured.io</strong> returns typed elements suitable for structure-aware chunking out of the box</li>
+  <li><strong>LlamaIndex MarkdownNodeParser / HTMLNodeParser</strong> handle structure</li>
+  <li><strong>Custom parsers</strong> for domain-specific document types (legal contracts, medical records) often pay back quickly</li>
+</ul>
+
+<h2>When it's overkill</h2>
+<ul>
+  <li>Plain text without structure (chat logs, emails without formatting)</li>
+  <li>Very short documents where one chunk covers everything</li>
+  <li>Homogeneous corpora (all blog posts of similar length and shape)</li>
+</ul>
+
+<p>For everything else, documentation, knowledge bases, reports, books, technical manuals, structure-aware chunking is worth the extra engineering.</p>
+
+<p style="margin-top:40px;">Next: <a href="chunking-code.html">Chunking code</a>.</p>
+<div class="prev-next"><a href="recursive.html" class="prev"><div class="label">← Previous</div><div class="title">Recursive chunking</div></a><a href="chunking-code.html" class="next"><div class="label">Next →</div><div class="title">Chunking code</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a></p>
+</div></footer></body></html>

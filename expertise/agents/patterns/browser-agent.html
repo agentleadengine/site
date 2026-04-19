@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Browser agent | Samuel Ochoa</title>
+<meta name="description" content="Browser agents navigate web pages, click, type, extract data. Powerful, slow, hard to make reliable.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Browser agent | Samuel Ochoa">
+<meta property="og:description" content="Browser agents navigate web pages, click, type, extract data. Powerful, slow, hard to make reliable.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="loops/react.html">ReAct</a></li><li><a href="loops/tool-use.html">Tool use</a></li><li><a href="loops/planning.html">Planning loops</a></li><li><a href="loops/reflection.html">Reflection</a></li><li><a href="loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="tools/tool-design.html">Tool design</a></li><li><a href="tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="tools/error-handling.html">Tool error handling</a></li><li><a href="tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="memory/short-term.html">Short-term memory</a></li><li><a href="memory/long-term.html">Long-term memory</a></li><li><a href="memory/episodic.html">Episodic memory</a></li><li><a href="memory/procedural.html">Procedural memory</a></li><li><a href="memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="multi/peer-agents.html">Peer agents</a></li><li><a href="multi/debate.html">Debate + consensus</a></li><li><a href="multi/handoffs.html">Agent handoffs</a></li><li><a href="multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="eval/why-eval-agents.html">Why eval agents</a></li><li><a href="eval/task-completion.html">Task completion</a></li><li><a href="eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="prod/observability.html">Observability + tracing</a></li><li><a href="prod/cost-control.html">Cost control</a></li><li><a href="prod/latency.html">Latency optimization</a></li><li><a href="prod/safety.html">Safety + guardrails</a></li><li><a href="prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="patterns/research-agent.html">Research agent</a></li><li><a href="patterns/coding-agent.html">Coding agent</a></li><li><a href="patterns/customer-support.html">Customer support agent</a></li><li><a href="patterns/data-analyst.html">Data analyst agent</a></li><li><a href="patterns/browser-agent.html" class="active">Browser agent</a></li><li><a href="patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="frameworks/langgraph.html">LangGraph</a></li><li><a href="frameworks/crewai.html">CrewAI</a></li><li><a href="frameworks/autogen.html">AutoGen</a></li><li><a href="frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>Browser agent</span></div><h1 class="title">Browser agent</h1><div class="article-meta"><span>📖 3 min read</span><span>Updated 2026-04-19</span></div>
+<p class="lede">A browser agent drives a real browser: navigates URLs, clicks, types, scrolls, reads rendered content. Useful for tasks sites don't expose via APIs. Powerful. Slow. Fragile.</p>
+
+<h2>Use cases</h2>
+<ul>
+<li>Scraping data from sites without APIs</li>
+<li>Filling out forms</li>
+<li>Booking appointments, reservations</li>
+<li>Research requiring dynamic content</li>
+<li>Testing web applications</li>
+</ul>
+
+<h2>Tooling</h2>
+<ul>
+<li><strong>Playwright / Puppeteer</strong>, headless browser automation</li>
+<li><strong>Claude Computer Use</strong>, Anthropic's vision-based browser control</li>
+<li><strong>OpenAI Operator</strong>, operator model with browser</li>
+<li><strong>browser-use, Skyvern, Browserbase</strong>, higher-level frameworks</li>
+</ul>
+
+<h2>Vision vs DOM</h2>
+<p>Two control paradigms:</p>
+<ul>
+<li><strong>Vision</strong>: screenshot the page, let vision LLM decide where to click by pixel. Flexible, slow.</li>
+<li><strong>DOM</strong>: extract accessibility tree or DOM, agent works with structured elements. Faster, more fragile if page is dynamic.</li>
+</ul>
+<p>Hybrid systems use both.</p>
+
+<h2>Challenges</h2>
+
+<h3>Page reliability</h3>
+<p>Modern sites are SPAs with async loading, anti-bot protections, captchas. Agents break often.</p>
+
+<h3>Latency</h3>
+<p>Each click takes seconds. Agent sessions measured in minutes, not seconds.</p>
+
+<h3>Cost</h3>
+<p>Vision LLM calls on screenshots are expensive. Heavy context.</p>
+
+<h3>Authentication</h3>
+<p>Logged-in scenarios need credential handling. Big security surface.</p>
+
+<h2>When to use</h2>
+<ul>
+<li>No API exists for the site</li>
+<li>Task is high-value enough to justify latency and cost</li>
+<li>You have a sandboxed environment to run the browser</li>
+</ul>
+
+<h2>When to skip</h2>
+<ul>
+<li>API exists (always prefer API)</li>
+<li>Task is frequent and needs low latency</li>
+<li>Target site has strong anti-automation</li>
+</ul>
+<div class="prev-next"><a href="data-analyst.html" class="prev"><div class="label">← Previous</div><div class="title">Data analyst agent</div></a><a href="email-agent.html" class="next"><div class="label">Next →</div><div class="title">Email agent</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
+</div></footer></body></html>

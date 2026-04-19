@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orchestrator-worker | Samuel Ochoa</title>
+<meta name="description" content="The most common multi-agent pattern: one agent plans and delegates, others execute.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Orchestrator-worker | Samuel Ochoa">
+<meta property="og:description" content="The most common multi-agent pattern: one agent plans and delegates, others execute.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="loops/react.html">ReAct</a></li><li><a href="loops/tool-use.html">Tool use</a></li><li><a href="loops/planning.html">Planning loops</a></li><li><a href="loops/reflection.html">Reflection</a></li><li><a href="loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="tools/tool-design.html">Tool design</a></li><li><a href="tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="tools/error-handling.html">Tool error handling</a></li><li><a href="tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="memory/short-term.html">Short-term memory</a></li><li><a href="memory/long-term.html">Long-term memory</a></li><li><a href="memory/episodic.html">Episodic memory</a></li><li><a href="memory/procedural.html">Procedural memory</a></li><li><a href="memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="multi/orchestrator-worker.html" class="active">Orchestrator-worker</a></li><li><a href="multi/peer-agents.html">Peer agents</a></li><li><a href="multi/debate.html">Debate + consensus</a></li><li><a href="multi/handoffs.html">Agent handoffs</a></li><li><a href="multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="eval/why-eval-agents.html">Why eval agents</a></li><li><a href="eval/task-completion.html">Task completion</a></li><li><a href="eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="prod/observability.html">Observability + tracing</a></li><li><a href="prod/cost-control.html">Cost control</a></li><li><a href="prod/latency.html">Latency optimization</a></li><li><a href="prod/safety.html">Safety + guardrails</a></li><li><a href="prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="patterns/research-agent.html">Research agent</a></li><li><a href="patterns/coding-agent.html">Coding agent</a></li><li><a href="patterns/customer-support.html">Customer support agent</a></li><li><a href="patterns/data-analyst.html">Data analyst agent</a></li><li><a href="patterns/browser-agent.html">Browser agent</a></li><li><a href="patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="frameworks/langgraph.html">LangGraph</a></li><li><a href="frameworks/crewai.html">CrewAI</a></li><li><a href="frameworks/autogen.html">AutoGen</a></li><li><a href="frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>Orchestrator-worker</span></div><h1 class="title">Orchestrator-worker</h1><div class="article-meta"><span>📖 3 min read</span><span>Updated 2026-04-19</span></div>
+<p class="lede">Orchestrator-worker is the workhorse multi-agent pattern. One agent (orchestrator) receives the task, breaks it down, and delegates subtasks to specialized workers. Workers return results; orchestrator synthesizes the final answer.</p>
+
+<h2>The shape</h2>
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
+User -> Orchestrator
+         |
+         +-> Worker A (research)
+         +-> Worker B (code)
+         +-> Worker C (writing)
+         |
+         Synthesis -> User
+</pre>
+
+<h2>Why split work</h2>
+<ul>
+<li><strong>Specialization</strong>: each worker has focused system prompt + tools for its domain</li>
+<li><strong>Parallelism</strong>: independent subtasks run concurrently</li>
+<li><strong>Cost control</strong>: cheap workers for bulk tasks, expensive model for orchestration</li>
+<li><strong>Modularity</strong>: easier to test and improve one worker at a time</li>
+</ul>
+
+<h2>When it's overkill</h2>
+<p>Single-agent ReAct handles most tasks fine. Split when:</p>
+<ul>
+<li>The task genuinely has distinct, parallelizable subtasks</li>
+<li>Workers can use different models or different tool sets</li>
+<li>The synthesis work (combining results) is non-trivial</li>
+</ul>
+
+<h2>Worker design</h2>
+<p>Each worker is itself a small agent:</p>
+<ul>
+<li>Has its own system prompt tuned to its specialty</li>
+<li>Has access to a subset of tools relevant to its domain</li>
+<li>Has its own loop with its own budget</li>
+<li>Returns a structured result to the orchestrator</li>
+</ul>
+
+<h2>Handoff as a tool call</h2>
+<p>In practice: the orchestrator treats workers as tools. "Call research_worker with topic X." Clean interface.</p>
+
+<h2>Common failure modes</h2>
+<ul>
+<li><strong>Orchestrator over-delegates</strong>: spawns too many workers for small tasks</li>
+<li><strong>Worker outputs don't combine</strong>: inconsistent schemas require orchestrator to do messy reconciliation</li>
+<li><strong>No budget at worker level</strong>: each worker runs away independently</li>
+<li><strong>Synthesis loss</strong>: important details from workers get dropped in final answer</li>
+</ul>
+
+<h2>Design checklist</h2>
+<ul>
+<li>Clear schema for worker inputs and outputs</li>
+<li>Budget per worker</li>
+<li>Orchestrator's job is coordination, not re-doing worker work</li>
+<li>Synthesis step is carefully prompted to preserve key details</li>
+</ul>
+<div class="prev-next"><a href="../memory/memory-systems.html" class="prev"><div class="label">← Previous</div><div class="title">Memory system design</div></a><a href="peer-agents.html" class="next"><div class="label">Next →</div><div class="title">Peer agents</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
+</div></footer></body></html>

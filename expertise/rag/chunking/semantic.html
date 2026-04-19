@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Semantic chunking | Samuel Ochoa</title>
+<meta name="description" content="Semantic chunking splits on meaning, not size. It uses embeddings to find natural topic boundaries. Here's how and when it's worth the extra cost.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Semantic chunking | Samuel Ochoa">
+<meta property="og:description" content="Semantic chunking splits on meaning, not size. It uses embeddings to find natural topic boundaries. Here's how and when it's worth the extra cost.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../about.html">About</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>RAGS to Riches (56 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-rag.html">What is RAG?</a></li><li><a href="foundations/why-rag.html">Why RAG over fine-tuning</a></li><li><a href="foundations/the-architecture.html">The RAG architecture map</a></li><li><a href="foundations/when-not-to-use.html">When not to use RAG</a></li></ul><h4>Documents + Ingestion</h4><ul><li><a href="docs/ingestion-pipeline.html">The ingestion pipeline</a></li><li><a href="docs/parsing-pdfs.html">Parsing PDFs</a></li><li><a href="docs/parsing-html.html">Parsing HTML + web pages</a></li><li><a href="docs/tables-figures.html">Tables and figures</a></li><li><a href="docs/ocr.html">OCR for scanned documents</a></li><li><a href="docs/metadata.html">Metadata extraction</a></li></ul><h4>Chunking</h4><ul><li><a href="chunking/why-chunking.html">Why chunking matters</a></li><li><a href="chunking/fixed-size.html">Fixed-size chunking</a></li><li><a href="chunking/semantic.html" class="active">Semantic chunking</a></li><li><a href="chunking/recursive.html">Recursive chunking</a></li><li><a href="chunking/structure-aware.html">Structure-aware chunking</a></li><li><a href="chunking/chunking-code.html">Chunking code</a></li></ul><h4>Embeddings</h4><ul><li><a href="embeddings/what-are-embeddings.html">What embeddings are</a></li><li><a href="embeddings/picking-a-model.html">Picking an embedding model</a></li><li><a href="embeddings/closed-vs-open.html">Closed vs open models</a></li><li><a href="embeddings/dimensions-cost.html">Dimensions, cost, and MRL</a></li><li><a href="embeddings/fine-tuning.html">Fine-tuning embeddings</a></li></ul><h4>Vector Stores</h4><ul><li><a href="vectors/overview.html">Vector database overview</a></li><li><a href="vectors/indexing-strategies.html">HNSW, IVF, PQ</a></li><li><a href="vectors/hybrid-search.html">Hybrid search</a></li><li><a href="vectors/metadata-filtering.html">Metadata filtering</a></li><li><a href="vectors/cost-optimization.html">Cost optimization</a></li><li><a href="vectors/choosing-a-db.html">Choosing a vector DB</a></li></ul><h4>Retrieval Strategies</h4><ul><li><a href="retrieval/vector-search.html">Vector similarity search</a></li><li><a href="retrieval/bm25-sparse.html">BM25 and sparse retrieval</a></li><li><a href="retrieval/hybrid.html">Hybrid retrieval</a></li><li><a href="retrieval/reranking.html">Reranking</a></li><li><a href="retrieval/query-rewriting.html">Query rewriting</a></li><li><a href="retrieval/hyde.html">HyDE</a></li><li><a href="retrieval/multi-query.html">Multi-query + fusion</a></li></ul><h4>Advanced Patterns</h4><ul><li><a href="advanced/agentic-rag.html">Agentic RAG</a></li><li><a href="advanced/graph-rag.html">GraphRAG</a></li><li><a href="advanced/adaptive-rag.html">Adaptive RAG</a></li><li><a href="advanced/corrective-rag.html">Corrective RAG (CRAG)</a></li><li><a href="advanced/self-rag.html">Self-RAG</a></li><li><a href="advanced/multi-hop.html">Multi-hop RAG</a></li></ul><h4>Evaluation</h4><ul><li><a href="eval/why-eval.html">Why evaluation is critical</a></li><li><a href="eval/retrieval-metrics.html">Retrieval metrics</a></li><li><a href="eval/generation-metrics.html">Generation metrics</a></li><li><a href="eval/ragas-and-frameworks.html">RAGAS, TruLens, ARES</a></li><li><a href="eval/building-eval-datasets.html">Building eval datasets</a></li></ul><h4>Production</h4><ul><li><a href="prod/latency.html">Latency optimization</a></li><li><a href="prod/caching.html">Caching strategies</a></li><li><a href="prod/observability.html">Observability and tracing</a></li><li><a href="prod/cost.html">Cost management</a></li><li><a href="prod/security.html">Security and prompt injection</a></li></ul><h4>Use Cases</h4><ul><li><a href="cases/customer-support.html">Customer support RAG</a></li><li><a href="cases/internal-kb.html">Internal knowledge RAG</a></li><li><a href="cases/code-rag.html">Code search + generation</a></li><li><a href="cases/legal-compliance.html">Legal and compliance</a></li><li><a href="cases/multi-tenant.html">Multi-tenant RAG</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">RAGS to Riches</a><span class="sep">›</span><span>Semantic chunking</span></div><h1 class="title">Semantic chunking</h1><div class="article-meta"><span>📖 5 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">Semantic chunking splits text where the meaning changes, not where a character counter runs out. Instead of "1000 characters from here, then overlap, then 1000 more," it asks: "where does one idea end and the next begin?" The result is chunks that look more like coherent thoughts, which usually retrieve better than arbitrary slices.</p>
+
+<h2>The core idea</h2>
+<ol>
+  <li>Split the document into candidate boundaries (sentences or paragraphs)</li>
+  <li>Embed each candidate</li>
+  <li>Measure the similarity between adjacent candidates</li>
+  <li>When similarity drops below a threshold, you've hit a topic boundary, start a new chunk</li>
+</ol>
+
+<p>The output: variable-length chunks that each cover a single topic or subtopic.</p>
+
+<h2>The algorithm in detail</h2>
+
+<h3>Sentence-level approach</h3>
+<pre style="background:#f5f5f7; padding:16px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
+1. Split document into sentences
+2. Embed each sentence
+3. Compute cosine similarity between sentence i and sentence i+1
+4. If similarity &lt; threshold, mark as boundary
+5. Form chunks by grouping consecutive sentences between boundaries
+6. If a chunk is too small, merge with neighbor
+7. If a chunk is too large, split at the weakest similarity within it
+</pre>
+
+<h3>Window-based approach</h3>
+<p>Instead of comparing sentence-to-sentence (noisy), compare windows of N sentences to the next N. Smoother signal, better boundaries.</p>
+
+<h3>Percentile-based thresholding</h3>
+<p>Instead of a fixed similarity threshold (which varies by embedding model), use the Nth percentile of all adjacent similarities in the document. E.g., split at the bottom 5% of similarities. Adapts to each document's intrinsic similarity distribution.</p>
+
+<h2>When semantic chunking wins</h2>
+<ul>
+  <li>Long-form content with shifting topics (books, long articles, research papers)</li>
+  <li>Mixed content where one part is explanation, another is examples, another is references</li>
+  <li>Content where manual structure (headings) isn't available or isn't reliable</li>
+  <li>Cases where fixed-size chunking is demonstrably splitting mid-thought</li>
+</ul>
+
+<h2>When it's overkill</h2>
+<ul>
+  <li>Short documents where one or two chunks cover the whole thing anyway</li>
+  <li>Highly structured content (docs with clear headings), use structure-aware chunking instead</li>
+  <li>Very homogeneous content (FAQs, product catalog entries) where topic boundaries are already obvious from structure</li>
+  <li>When embedding costs matter and the corpus is large</li>
+</ul>
+
+<h2>The cost</h2>
+<p>Semantic chunking requires embedding every sentence or window during ingestion, often 5-20x more embedding calls than you'd need for retrieval alone. For a 100M-token corpus, this is a material cost.</p>
+
+<p>Mitigation: use a cheap embedding model for chunking (text-embedding-3-small, open-source models) and a better one for the retrieval index. The chunking-time embeddings don't have to match your retrieval embeddings.</p>
+
+<h2>The tuning knobs</h2>
+<ul>
+  <li><strong>Similarity threshold</strong> (or percentile): controls how often you split. Lower = more chunks, smaller size.</li>
+  <li><strong>Window size</strong>: sentence-level is noisy, window of 3-5 sentences is smoother.</li>
+  <li><strong>Min/max chunk size</strong>: prevent degenerate cases. Clamp between, say, 100 and 1500 tokens.</li>
+  <li><strong>Merge strategy for small chunks</strong>: merge with previous, next, or highest-similarity neighbor.</li>
+</ul>
+
+<h2>Implementations</h2>
+<ul>
+  <li><strong>LlamaIndex SemanticSplitterNodeParser</strong>: the reference implementation. Works. Configurable.</li>
+  <li><strong>LangChain SemanticChunker</strong>: similar, different defaults.</li>
+  <li><strong>Custom</strong>: the algorithm is ~30 lines of Python. Most teams who care end up writing their own.</li>
+</ul>
+
+<h2>The diminishing returns question</h2>
+<p>Semantic chunking usually beats fixed-size by 5-15% on retrieval metrics for long-form prose. For highly structured content, structure-aware chunking beats both. Before switching to semantic, ask: do my documents have structure I could use instead? If yes, use that. Semantic is the fallback for unstructured content.</p>
+
+<p style="margin-top:40px;">Next: <a href="recursive.html">Recursive chunking</a>.</p>
+<div class="prev-next"><a href="fixed-size.html" class="prev"><div class="label">← Previous</div><div class="title">Fixed-size chunking</div></a><a href="recursive.html" class="next"><div class="label">Next →</div><div class="title">Recursive chunking</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a></p>
+</div></footer></body></html>

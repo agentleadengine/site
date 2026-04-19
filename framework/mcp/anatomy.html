@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anatomy of an MCP | Samuel Ochoa</title>
+<meta name="description" content="The five primitives of MCP: tools, resources, prompts, servers, clients.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Anatomy of an MCP | Samuel Ochoa">
+<meta property="og:description" content="The five primitives of MCP: tools, resources, prompts, servers, clients.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../index.html">Home</a>
+<a href="../../framework/index.html" class="active">Framework</a>
+<a href="../expertise/index.html">Expertise</a>
+<a href="../playbooks/index.html">Playbooks</a>
+<a href="../writing.html">Writing</a>
+<a href="../../about.html">About</a>
+<a href="../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="what-is-autonomous-ai.html">What is autonomous AI</a></li><li><a href="the-autonomy-spectrum.html">The autonomy spectrum</a></li><li><a href="glossary.html">Glossary</a></li></ul><h4>Claude</h4><ul><li><a href="claude/overview.html">Overview</a></li><li><a href="claude/prompting-for-agents.html">Prompting for agents</a></li><li><a href="claude/extended-thinking.html">Extended thinking</a></li><li><a href="claude/tool-use.html">Tool use</a></li></ul><h4>MCP</h4><ul><li><a href="mcp/index.html">Overview</a></li><li><a href="mcp/what-is-mcp.html">What is MCP</a></li><li><a href="mcp/anatomy.html" class="active">Anatomy</a></li><li><a href="mcp/transports.html">Transports</a></li><li><a href="mcp/servers.html">Servers</a></li><li><a href="mcp/clients.html">Clients</a></li><li><a href="mcp/security.html">Security</a></li><li><a href="mcp/directory.html">Directory</a></li></ul><h4>Plugins</h4><ul><li><a href="plugins/index.html">Overview</a></li><li><a href="plugins/vs-mcp.html">Plugins vs MCP</a></li><li><a href="plugins/marketplace.html">Marketplace</a></li></ul><h4>Claude Code</h4><ul><li><a href="claude-code/index.html">Overview</a></li><li><a href="claude-code/settings.html">Settings</a></li><li><a href="claude-code/permissions.html">Permissions</a></li><li><a href="claude-code/hooks.html">Hooks</a></li><li><a href="claude-code/skills.html">Skills</a></li><li><a href="claude-code/memory.html">Memory</a></li></ul><h4>Patterns</h4><ul><li><a href="patterns/index.html">Overview</a></li><li><a href="patterns/react-loop.html">ReAct loop</a></li><li><a href="patterns/plan-execute.html">Plan-execute</a></li><li><a href="patterns/multi-agent.html">Multi-agent</a></li><li><a href="patterns/evaluation.html">Evaluation</a></li><li><a href="patterns/prompt-caching.html">Prompt caching</a></li></ul><h4>Autonomous</h4><ul><li><a href="autonomous/index.html">Overview</a></li><li><a href="autonomous/headless.html">Headless</a></li><li><a href="autonomous/scheduling.html">Scheduling</a></li><li><a href="autonomous/self-monitoring.html">Self-monitoring</a></li><li><a href="autonomous/safety.html">Safety</a></li></ul><h4>Build Guides</h4><ul><li><a href="build/index.html">Overview</a></li><li><a href="build/first-agent.html">First agent (60 min)</a></li><li><a href="build/voice-agent.html">Voice agent</a></li><li><a href="build/research-agent.html">Research agent</a></li></ul><h4>Tools</h4><ul><li><a href="tools/browser-automation.html">Browser automation</a></li><li><a href="tools/desktop-control.html">Desktop control</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Framework</a><span class="sep">›</span><a href="../mcp/index.html">MCP</a><span class="sep">›</span><span>Anatomy of an MCP</span></div><h1 class="title" style="font-size:clamp(32px,4.5vw,42px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">Anatomy of an MCP</h1><div class="article-meta"><span>📖 4 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">MCP has five primitives. Understand these and you understand the whole protocol.</p>
+
+<h2>1. Tools</h2>
+<p>Functions the model can call. Same mental model as <a href="../claude/tool-use.html">tool use</a>, the MCP server declares a name, description, and input schema; the model decides when to call it.</p>
+<pre><code>{
+  "name": "search_email",
+  "description": "Search the user's email inbox. Use when the user asks about recent messages or needs context from email.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "query": { "type": "string", "description": "Search query" },
+      "limit": { "type": "integer", "default": 20 }
+    },
+    "required": ["query"]
+  }
+}</code></pre>
+
+<h2>2. Resources</h2>
+<p>Data the model can read. Unlike tools, resources don't execute code, they just return content. Examples: a specific document, a database row, a file.</p>
+<p>Resources are addressed by URI (like <code>file:///path/to/doc.md</code> or <code>postgres://table/row?id=123</code>). The server can list available resources and return content on demand.</p>
+<p>Why not just use a tool? Resources are <em>declaratively addressable</em>, the client can show the user which resources are available and let them pin specific ones into context.</p>
+
+<h2>3. Prompts</h2>
+<p>Reusable prompt templates the server provides to the client. Less widely adopted than tools/resources, but useful for common workflows.</p>
+<pre><code>{
+  "name": "summarize_thread",
+  "description": "Summarize a conversation thread",
+  "arguments": [
+    { "name": "thread_id", "required": true }
+  ]
+}</code></pre>
+<p>The client can expose these as slash-commands or menu options. The user picks one, fills in the arguments, and the server returns a filled-in prompt the client sends to the model.</p>
+
+<h2>4. Servers</h2>
+<p>The program exposing tools, resources, and prompts. A server is a process (local) or an HTTP endpoint (remote) that speaks the MCP protocol.</p>
+<p>Servers have a lifecycle: <code>initialize</code> → <code>list_tools</code> / <code>list_resources</code> / <code>list_prompts</code> → <code>call_tool</code> / <code>read_resource</code> / <code>get_prompt</code> → <code>shutdown</code>.</p>
+<p>See <a href="servers.html">Building servers</a> for patterns.</p>
+
+<h2>5. Clients</h2>
+<p>The program consuming MCP. It connects to one or more servers, discovers what they expose, and makes those primitives available to the model.</p>
+<p>The client handles:</p>
+<ul>
+  <li>Starting and managing server processes (for stdio transport)</li>
+  <li>Connecting to server URLs (for SSE/HTTP transport)</li>
+  <li>Exposing tools to the model as tool definitions</li>
+  <li>Routing tool calls to the right server</li>
+  <li>Formatting results for the model</li>
+  <li>Permissions: which tools the model can call without approval</li>
+</ul>
+<p>Claude Code is a client. IDE extensions are clients. See <a href="clients.html">Clients</a>.</p>
+
+<h2>How they fit together</h2>
+<pre><code>┌──────────────┐   MCP    ┌──────────────┐
+│   CLIENT     │◄────────►│   SERVER     │
+│ (Claude Code)│          │  (Gmail MCP) │
+└──────┬───────┘          └──────────────┘
+       │
+       │ tool calls + results
+       │
+       ▼
+┌──────────────┐
+│    MODEL     │
+│  (Claude)    │
+└──────────────┘</code></pre>
+
+<div class="callout note">
+  <strong>Note:</strong> The model never talks to the server directly. The client is the intermediary. This keeps permission boundaries tight.
+</div>
+<div class="prev-next"><a href="what-is-mcp.html" class="prev"><div class="label">← Previous</div><div class="title">What is MCP</div></a><a href="transports.html" class="next"><div class="label">Next →</div><div class="title">Transports</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../framework/index.html">Framework</a></p>
+</div></footer></body></html>

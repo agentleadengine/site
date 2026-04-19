@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plugins vs MCP | Samuel Ochoa</title>
+<meta name="description" content="The difference between plugins and MCPs. When to build which, with a decision tree.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Plugins vs MCP | Samuel Ochoa">
+<meta property="og:description" content="The difference between plugins and MCPs. When to build which, with a decision tree.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../index.html">Home</a>
+<a href="../../framework/index.html" class="active">Framework</a>
+<a href="../expertise/index.html">Expertise</a>
+<a href="../playbooks/index.html">Playbooks</a>
+<a href="../writing.html">Writing</a>
+<a href="../../about.html">About</a>
+<a href="../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="what-is-autonomous-ai.html">What is autonomous AI</a></li><li><a href="the-autonomy-spectrum.html">The autonomy spectrum</a></li><li><a href="glossary.html">Glossary</a></li></ul><h4>Claude</h4><ul><li><a href="claude/overview.html">Overview</a></li><li><a href="claude/prompting-for-agents.html">Prompting for agents</a></li><li><a href="claude/extended-thinking.html">Extended thinking</a></li><li><a href="claude/tool-use.html">Tool use</a></li></ul><h4>MCP</h4><ul><li><a href="mcp/index.html">Overview</a></li><li><a href="mcp/what-is-mcp.html">What is MCP</a></li><li><a href="mcp/anatomy.html">Anatomy</a></li><li><a href="mcp/transports.html">Transports</a></li><li><a href="mcp/servers.html">Servers</a></li><li><a href="mcp/clients.html">Clients</a></li><li><a href="mcp/security.html">Security</a></li><li><a href="mcp/directory.html">Directory</a></li></ul><h4>Plugins</h4><ul><li><a href="plugins/index.html">Overview</a></li><li><a href="plugins/vs-mcp.html" class="active">Plugins vs MCP</a></li><li><a href="plugins/marketplace.html">Marketplace</a></li></ul><h4>Claude Code</h4><ul><li><a href="claude-code/index.html">Overview</a></li><li><a href="claude-code/settings.html">Settings</a></li><li><a href="claude-code/permissions.html">Permissions</a></li><li><a href="claude-code/hooks.html">Hooks</a></li><li><a href="claude-code/skills.html">Skills</a></li><li><a href="claude-code/memory.html">Memory</a></li></ul><h4>Patterns</h4><ul><li><a href="patterns/index.html">Overview</a></li><li><a href="patterns/react-loop.html">ReAct loop</a></li><li><a href="patterns/plan-execute.html">Plan-execute</a></li><li><a href="patterns/multi-agent.html">Multi-agent</a></li><li><a href="patterns/evaluation.html">Evaluation</a></li><li><a href="patterns/prompt-caching.html">Prompt caching</a></li></ul><h4>Autonomous</h4><ul><li><a href="autonomous/index.html">Overview</a></li><li><a href="autonomous/headless.html">Headless</a></li><li><a href="autonomous/scheduling.html">Scheduling</a></li><li><a href="autonomous/self-monitoring.html">Self-monitoring</a></li><li><a href="autonomous/safety.html">Safety</a></li></ul><h4>Build Guides</h4><ul><li><a href="build/index.html">Overview</a></li><li><a href="build/first-agent.html">First agent (60 min)</a></li><li><a href="build/voice-agent.html">Voice agent</a></li><li><a href="build/research-agent.html">Research agent</a></li></ul><h4>Tools</h4><ul><li><a href="tools/browser-automation.html">Browser automation</a></li><li><a href="tools/desktop-control.html">Desktop control</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Framework</a><span class="sep">›</span><a href="../plugins/index.html">Plugins</a><span class="sep">›</span><span>Plugins vs MCP</span></div><h1 class="title" style="font-size:clamp(32px,4.5vw,42px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">Plugins vs MCP</h1><div class="article-meta"><span>📖 4 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">Plugins and MCPs solve different problems. An MCP adds tools. A plugin bundles tools + skills + hooks into a cohesive product. Picking the right one matters.</p>
+
+<h2>Head-to-head</h2>
+<table style="width:100%; border-collapse:collapse;">
+  <thead>
+    <tr style="background: var(--accent-bg);">
+      <th style="text-align:left; padding:10px;">Aspect</th>
+      <th style="text-align:left; padding:10px;">MCP</th>
+      <th style="text-align:left; padding:10px;">Plugin</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="border-bottom:1px solid var(--border);"><td style="padding:10px;"><strong>What it is</strong></td><td style="padding:10px;">A protocol-speaking program</td><td style="padding:10px;">A package that may include MCPs, skills, hooks</td></tr>
+    <tr style="border-bottom:1px solid var(--border);"><td style="padding:10px;"><strong>Scope</strong></td><td style="padding:10px;">Narrow, just tools/resources</td><td style="padding:10px;">Broad, whole workflows</td></tr>
+    <tr style="border-bottom:1px solid var(--border);"><td style="padding:10px;"><strong>Install</strong></td><td style="padding:10px;">Add to config, restart client</td><td style="padding:10px;">One-command install</td></tr>
+    <tr style="border-bottom:1px solid var(--border);"><td style="padding:10px;"><strong>Portability</strong></td><td style="padding:10px;">Any MCP client</td><td style="padding:10px;">Claude Code-specific (for now)</td></tr>
+    <tr style="border-bottom:1px solid var(--border);"><td style="padding:10px;"><strong>Contains</strong></td><td style="padding:10px;">Tools, resources, prompts</td><td style="padding:10px;">MCP servers, skills, hooks, config</td></tr>
+    <tr><td style="padding:10px;"><strong>Best for</strong></td><td style="padding:10px;">Connecting one service</td><td style="padding:10px;">Shipping a complete feature</td></tr>
+  </tbody>
+</table>
+
+<h2>Decision tree</h2>
+<p><strong>Q1: Do you just need to expose tools from an existing service?</strong></p>
+<ul>
+  <li>Yes → build an MCP server. Ship via npm/PyPI.</li>
+  <li>No → go to Q2.</li>
+</ul>
+<p><strong>Q2: Do you need to bundle multiple things (MCP + skill + hook)?</strong></p>
+<ul>
+  <li>Yes → build a plugin.</li>
+  <li>No → go to Q3.</li>
+</ul>
+<p><strong>Q3: Do you want a named, slash-invokable workflow (not an auto-used tool)?</strong></p>
+<ul>
+  <li>Yes → build a skill (can live standalone or inside a plugin).</li>
+</ul>
+
+<h2>Real-world example</h2>
+<p>Consider a "Send SMS to a number" feature:</p>
+<ul>
+  <li><strong>As an MCP:</strong> a Twilio MCP server exposes a <code>send_sms</code> tool. Agent can call it whenever it thinks it should. Useful.</li>
+  <li><strong>As a skill:</strong> a <code>/send-sms</code> skill with instructions for composing a short, polite SMS. User invokes it explicitly.</li>
+  <li><strong>As a plugin:</strong> bundles the Twilio MCP + the <code>/send-sms</code> skill + a hook that logs every SMS sent to a database.</li>
+</ul>
+<p>The plugin is the "product" users install. The MCP and skill are the building blocks.</p>
+
+<h2>When to upgrade an MCP to a plugin</h2>
+<ul>
+  <li>When users consistently pair it with specific prompts → bake them in as skills</li>
+  <li>When users need event logging or side effects → add a hook</li>
+  <li>When the install story "add this to config, then this, then this" → collapse into one install</li>
+</ul>
+<div class="prev-next"><a href="index.html" class="prev"><div class="label">← Previous</div><div class="title">Plugins overview</div></a><a href="marketplace.html" class="next"><div class="label">Next →</div><div class="title">Marketplaces</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../framework/index.html">Framework</a></p>
+</div></footer></body></html>

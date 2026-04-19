@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glossary | Samuel Ochoa</title>
+<meta name="description" content="Plain-language definitions of AI, marketing, direct response, SEO, and business ops terms.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Glossary | Samuel Ochoa">
+<meta property="og:description" content="Plain-language definitions of AI, marketing, direct response, SEO, and business ops terms.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<style>
+.gloss-layout { max-width: 960px; margin: 0 auto; padding: 48px 32px; }
+.gloss-term { font-size: 36px; font-weight: 800; margin: 0 0 8px 0; }
+.gloss-topic { display: inline-block; background: #f3f0ff; color: #4a00e0; padding: 4px 12px; border-radius: 4px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 12px; }
+.gloss-def { font-size: 18px; line-height: 1.7; color: #333; margin: 16px 0; }
+.gloss-detail { font-size: 16px; line-height: 1.7; color: #4a4a52; margin: 12px 0; }
+.gloss-related { margin-top: 32px; padding: 20px; background: #fafafa; border-radius: 8px; }
+.gloss-related h4 { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: #666; margin: 0 0 8px 0; }
+.gloss-related a { display: inline-block; margin-right: 8px; color: #4a00e0; text-decoration: none; }
+.gloss-related a:hover { text-decoration: underline; }
+.gloss-index { max-width: 1100px; margin: 0 auto; padding: 48px 32px; }
+.gloss-filter { display: flex; gap: 8px; margin: 16px 0 24px; flex-wrap: wrap; }
+.gloss-chip { padding: 6px 14px; background: #fff; border: 1px solid #e5e5ea; color: #333; border-radius: 999px; cursor: pointer; font-size: 13px; font-weight: 500; font-family: inherit; }
+.gloss-chip:hover { border-color: #4a00e0; color: #4a00e0; }
+.gloss-chip.active { background: #4a00e0; color: #fff; border-color: #4a00e0; }
+.gloss-search { margin: 16px 0; }
+.gloss-search input { width: 100%; padding: 12px 16px; border: 1px solid #e5e5ea; border-radius: 8px; font-size: 15px; font-family: inherit; }
+.gloss-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+.gloss-card { display: block; padding: 16px 18px; background: #fff; border: 1px solid #e5e5ea; border-radius: 8px; text-decoration: none; color: #333; transition: border-color 0.15s; }
+.gloss-card:hover { border-color: #4a00e0; }
+.gloss-card.hidden { display: none; }
+.gloss-card-term { font-weight: 600; font-size: 16px; color: #4a00e0; }
+.gloss-card-topic { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #666; margin: 2px 0 6px 0; }
+.gloss-card-summary { font-size: 13px; color: #666; line-height: 1.5; }
+.gloss-count { color: #666; font-size: 14px; margin-bottom: 12px; }
+</style>
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../index.html">Home</a>
+<a href="../framework/index.html">Framework</a>
+<a href="../expertise/index.html">Expertise</a>
+<a href="../playbooks/index.html">Playbooks</a>
+<a href="../glossary/index.html" class="active">Glossary</a>
+<a href="../writing.html">Writing</a>
+<a href="../contact.html">Contact</a>
+</div>
+</div></nav><div class="gloss-index">
+<h1 style="font-size: 42px; margin: 0 0 8px 0;">Glossary</h1>
+<p style="font-size: 17px; color: #666; margin: 0 0 24px 0;">Terms from AI, marketing, direct response, SEO, and business ops. Plain-language definitions.</p>
+
+<div class="gloss-search"><input type="text" id="gloss-search" placeholder="Search terms..."></div>
+<div class="gloss-filter"><button class="gloss-chip active" data-topic="all">All</button><button class="gloss-chip" data-topic="AI">AI</button><button class="gloss-chip" data-topic="Business">Business</button><button class="gloss-chip" data-topic="Direct Response">Direct Response</button><button class="gloss-chip" data-topic="Marketing">Marketing</button><button class="gloss-chip" data-topic="SEO">SEO</button><button class="gloss-chip" data-topic="Sales">Sales</button></div>
+<p class="gloss-count"><span id="gloss-count">103</span> terms</p>
+
+<div class="gloss-grid" id="gloss-grid"><a href="ab-test.html" class="gloss-card" data-topic="Marketing" data-search="a/b test comparing two variants (a and b) to determine which performs better.">
+<div class="gloss-card-term">A/B Test</div>
+<div class="gloss-card-topic">Marketing</div>
+<div class="gloss-card-summary">Comparing two variants (A and B) to determine which performs better.</div>
+</a><a href="ae.html" class="gloss-card" data-topic="Sales" data-search="ae account executive. the closer role in b2b sales.">
+<div class="gloss-card-term">AE</div>
+<div class="gloss-card-topic">Sales</div>
+<div class="gloss-card-summary">Account Executive. The closer role in B2B sales.</div>
+</a><a href="agent.html" class="gloss-card" data-topic="AI" data-search="ai agent an llm in a loop with tools. the llm reasons, picks actions, executes via tools, observes results, and continues until a goal is reached.">
+<div class="gloss-card-term">AI Agent</div>
+<div class="gloss-card-topic">AI</div>
+<div class="gloss-card-summary">An LLM in a loop with tools. The LLM reasons, picks actions, executes via tools, observes results, and continues until a...</div>
+</a><a href="aida.html" class="gloss-card" data-topic="Direct Response" data-search="aida attention-interest-desire-action. the oldest copywriting formula (1898).">
+<div class="gloss-card-term">AIDA</div>
+<div class="gloss-card-topic">Direct Response</div>
+<div class="gloss-card-summary">Attention-Interest-Desire-Action. The oldest copywriting formula (1898).</div>
+</a><a href="arr.html" class="gloss-card" data-topic="Business" data-search="arr annual recurring revenue. contracted subscription revenue on an annualized basis.">
+<div class="gloss-card-term">ARR</div>
+<div class="gloss-card-topic">Business</div>
+<div class="gloss-card-summary">Annual Recurring Revenue. Contracted subscription revenue on an annualized basis.</div>
+</a><a href="attention.html" class="gloss-card" data-topic="AI" data-search="attention mechanism the mechanism by which transformers weight the importance of different parts of input when producing output.">
+<div class="gloss-card-term">Attention Mechanism</div>
+<div class="gloss-card-topic">AI</div>
+<div class="gloss-card-summary">The mechanism by which transformers weight the importance of different parts of input when producing output.</div>
+</a><a href="attribution.html" class="gloss-card" data-topic="Marketing" data-search="attribution determining which marketing touchpoints get credit for a conversion.">
+<div class="gloss-card-term">Attribution</div>
+<div class="gloss-card-topic">Marketing</div>
+<div class="gloss-card-summary">Determining which marketing touchpoints get credit for a conversion.</div>
+</a><a href="backlink.html" class="gloss-card" data-topic="SEO" data-search="backlink a link from another website to yours. a key ranking signal.">
+<div class="gloss-card-term">Backlink</div>
+<div class="gloss-card-topic">SEO</div>
+<div class="gloss-card-summary">A link from another website to yours. A key ranking signal.</div>
+</a><a href="bm25.html" class="gloss-card" data-topic="AI" data-search="bm25 classical keyword-based information retrieval algorithm. scores documents by term frequency and document rarity.">
+<div class="gloss-card-term">BM25</div>
+<div class="gloss-card-topic">AI</div>
+<div class="gloss-card-summary">Classical keyword-based information retrieval algorithm. Scores documents by term frequency and document rarity.</div>
+</a><a href="burn-rate.html" class="gloss-card" data-topic="Business" data-search="burn rate monthly cash loss (gross burn) or net cash decrease (net burn).">
+<div class="gloss-card-term">Burn Rate</div>
+<div class="gloss-card-topic">Business</div>
+<div class="gloss-card-summary">Monthly cash loss (gross burn) or net cash decrease (net burn).</div>
+</a><a href="persona.html" class="gloss-card" data-topic="Marketing" data-search="buyer persona a fictionalized representation of an icp individual: their day, worries, decisions, language.">
+<div class="gloss-card-term">Buyer Persona</div>
+<div class="gloss-card-topic">Marketing</div>
+<div class="gloss-card-summary">A fictionalized representation of an ICP individual: their day, worries, decisions, language.</div>
+</a><a href="cac.html" class="gloss-card" data-topic="Marketing" data-search="cac customer acquisition cost. total spend to acquire one customer. includes ads, salaries, tools, commissions.">
+<div class="gloss-card-term">CAC</div>
+<div class="gloss-card-topic">Marketing</div>
+<div class="gloss-card-summary">Customer Acquisition Cost. Total spend to acquire one customer. Includes ads, salaries, tools, commissions.</div>
+</a><a href="chunking.html" class="gloss-card" data-topic="AI" data-search="chunking splitting documents into smaller pieces for retrieval. affects rag quality significantly.">
+<div class="gloss-card-term">Chunking</div>
+<div class="gloss-card-topic">AI</div>
+<div class="gloss-card-summary">Splitting documents into smaller pieces for retrieval. Affects RAG quality significantly.</div>
+</a><a href="churn.html" class="gloss-card" data-topic="Business" data-search="churn customers or revenue lost in a period. monthly churn = cancellations / total customers.">
+<div class="gloss-card-term">Churn</div>
+<div class="gloss-card-topic">Business</div>
+<div class="gloss-card-summary">Customers or revenue lost in a period. Monthly churn = cancellations / total customers.</div>
+</a><a href="content-cluster.html" class="gloss-card" data-topic="SEO" data-search="content cluster a pillar page + supporting pages on a topic, all interlinked to build topical authority.">
+<div class="gloss-card-term">Content Cluster</div>
+<div class="gloss-card-topic">SEO</div>
+<div class="gloss-card-summary">A pillar page + supporting pages on a topic, all interlinked to build topical authority.</div>
+</a><a href="context-window.html" class="gloss-card" data-topic="AI" data-search="context window maximum number of tokens an llm can process in a single request (input + output combined).">
+<div class="gloss-card-term">Context Window</div>
+<div class="gloss-card-topic">AI</div>
+<div class="gloss-card-summary">Maximum number of tokens an LLM can process in a single request (input + output combined).</div>
+</a><a href="conversion.html" class="gloss-card" data-topic="Marketing" data-search="conversion a desired action completed by a visitor: signup, purchase, demo request, form fill.">
+<div class="gloss-card-term">Conversion</div>
+<div class="gloss-card-topic">Marketing</div>
+<div class="gloss-card-summary">A desired action completed by a visitor: signup, purchase, demo request, form fill.</div>
+</a><a href="conversion-rate.html" class="gloss-card" data-topic="Marketing" data-search="conversion rate percentage of visitors who complete a conversion.">
+<div class="gloss-card-term">Conversion Rate</div>
+<div class="gloss-card-topic">Marketing</div>
+<div class="gloss-card-summary">Percentage of visitors who complete a conversion.</div>
+</a><a href="copywriting.html" class="gloss-card" data-topic="Direct Response" data-search="copywriting the craft of writing words designed to persuade a reader to take an action.">
+<div class="gloss-card-term">Copywriting</div>
+<div class="gloss-card-topic">Direct Response</div>
+<div class="gloss-card-summary">The craft of writing words designed to persuade a reader to take an action.</div>
+</a><a href="cpa.html" class="gloss-card" data-topic="Marketing" data-search="cpa cost per acquisition. cost for one conversion event (lead, sale, signup).">
+<div class="gloss-card-term">CPA</div>
+<div class="gloss-card-topic">Marketing</div>
+<div class="gloss-card-summary">Cost Per Acquisition. Cost for one conversion event (lead, sale, signup).</div>
+</a><a href="cpc.html" class="gloss-card" data-topic="Marketing" data-search="cpc cost per click. average cost for each click on your ad.">
+<div class="gloss-card-term">CPC</div>
+<div class="gloss-card-topic">Marketing</div>
+<div class="gloss-card-summary">Cost Per Click. Average cost for each click on your ad.</div>
+</a><a href="cpm.html" class="gloss-card" data-topic="Marketing" data-search="cpm cost per mille. what you pay per 1,000 ad impressions.">
+<div class="gloss-card-term">CPM</div>
+<div class="gloss-card-topic">Marketing</div>
+<div class="gloss-card-summary">Cost Per Mille. What you pay per 1,000 ad impressions.</div>
+</a><a href="cro.html" class="gloss-card" data-topic="Marketing" data-search="cro conversion rate optimization. the practice of improving the % of visitors who convert.">
+<div class="gloss-card-term">CRO</div>
+<div class="gloss-card-topic">Marketing</div>
+<div class="gloss-card-summary">Conversion Rate Optimization. The practice of improving the % of visitors who convert.</div>
+</a><a href="cta.html" class="gloss-card" data-topic="Direct Response" data-search="cta call-to-action. the specific next step you want the reader to take.">
+<div class="gloss-card-term">CTA</div>
+<div class="gloss-card-topic">Direct Response</div>
+<div class="gloss-card-summary">Call-To-Action. The specific next step you want the reader to take.</div>
+</a><a href="ctr.html" class="gloss-card" data-topic="Marketing" data-search="ctr click-through rate. percentage of impressions that resulted in a click.">
+<div class="gloss-card-term">CTR</div>
+<div class="gloss-card-topic">Marketing</div>
+<div class="gloss-card-summary">Click-Through Rate. Percentage of impressions that resulted in a click.</div>
+</a><a href="direct-response.html" class="gloss-card" data-topic="Direct Response" data-search="direct response advertising designed to elicit a measurable immediate response (buy, click, call, reply).">
+<div class="gloss-card-term">Direct Response</div>
+<div class="gloss-card-topic">Direct Response</div>
+<div class="gloss-card-summary">Advertising designed to elicit a measurable immediate response (buy, click, call, reply).</div>
+</a><a href="discovery-call.html" class="gloss-card" data-topic="Sales" data-search="discovery call the first substantive sales conversation. goal: qualify the prospect, understand their situation.">
+<div class="gloss-card-term">Discovery Call</div>
+<div class="gloss-card-topic">Sales</div>
+<div class="gloss-card-summary">The first substantive sales conversation. Goal: qualify the prospect, understand their situation.</div>
+</a><a href="domain-rating.html" class="gloss-card" data-topic="SEO" data-search="domain rating / authority scores (ahrefs dr, moz da) estimating a site's authority based on backlink profile.">
+<div class="gloss-card-term">Domain Rating / Authority</div>
+<div class="gloss-card-topic">SEO</div>
+<div class="gloss-card-summary">Scores (Ahrefs DR, Moz DA) estimating a site's authority based on backlink profile.</div>
+</a><a href="embedding.html" class="gloss-card" data-topic="AI" data-search="embedding a vector representation of text where semantically similar text produces similar vectors.">
+<div class="gloss-card-term">Embedding</div>
+<div class="gloss-card-topic">AI</div>
+<div class="gloss-card-summary">A vector representation of text where semantically similar text produces similar vectors.</div>
+</a><a href="featured-snippet.html" class="gloss-card" data-topic="SEO" data-search="featured snippet a special serp result that answers a query directly from your content, placed above normal rank-1.">
+<div class="gloss-card-term">Featured Snippet</div>
+<div class="gloss-card-topic">SEO</div>
+<div class="gloss-card-summary">A special SERP result that answers a query directly from your content, placed above normal rank-1.</div>
+</a><a href="few-shot.html" class="gloss-card" data-topic="AI" data-search="few-shot prompting giving the llm 2-10 examples of desired input-output pairs before the actual task.">
+<div class="gloss-card-term">Few-Shot Prompting</div>
+<div class="gloss-card-topic">AI</div>
+<div class="gloss-card-summary">Giving the LLM 2-10 examples of desired input-output pairs before the actual task.</div>
+</a><a href="fine-tuning.html" class="gloss-card" data-topic="AI" data-search="fine-tuning training an existing model on additional data to adapt it to a specific task or style.">
+<div class="gloss-card-term">Fine-Tuning</div>
+<div class="gloss-card-topic">AI</div>
+<div class="gloss-card-summary">Training an existing model on additional data to adapt it to a specific task or style.</div>
+</a><a href="forecast.html" class="gloss-card" data-topic="Sales" data-search="forecast prediction of what will close in a period. usually commit, best case, pipeline, omitted categories.">
+<div class="gloss-card-term">Forecast</div>
+<div class="gloss-card-topic">Sales</div>
+<div class="gloss-card-summary">Prediction of what will close in a period. Usually Commit, Best Case, Pipeline, Omitted categories.</div>
+</a><a href="foundation-model.html" class="gloss-card" data-topic="AI" data-search="foundation model a large pre-trained model that can be adapted to many tasks via prompting or fine-tuning.">
+<div class="gloss-card-term">Foundation Model</div>
+<div class="gloss-card-topic">AI</div>
+<div class="gloss-card-summary">A large pre-trained model that can be adapted to many tasks via prompting or fine-tuning.</div>
+</a><a href="function-calling.html" class="gloss-card" data-topic="AI" data-search="function calling the api pattern where llms emit structured requests to call developer-defined functions.">
+<div class="gloss-card-term">Function Calling</div>
+<div class="gloss-card-topic">AI</div>
+<div class="gloss-card-summary">The API pattern where LLMs emit structured requests to call developer-defined functions.</div>
+</a><a href="funnel.html" class="gloss-card" data-topic="Marketing" data-search="funnel the conceptual journey from first touch to paying customer, stages narrowing like a funnel.">
+<div class="gloss-card-term">Funnel</div>
+<div class="gloss-card-topic">Marketing</div>
+<div class="gloss-card-summary">The conceptual journey from first touch to paying customer, stages narrowing like a funnel.</div>
+</a><a href="google-business-profile.html" class="gloss-card" data-topic="SEO" data-search="google business profile free business listing on google, shows in maps and local search.">
+<div class="gloss-card-term">Google Business Profile</div>
+<div class="gloss-card-topic">SEO</div>
+<div class="gloss-card-summary">Free business listing on Google, shows in Maps and local search.</div>
+</a><a href="grounding.html" class="gloss-card" data-topic="AI" data-search="grounding ensuring llm responses are anchored in specific factual context rather than the model's internal beliefs.">
+<div class="gloss-card-term">Grounding</div>
+<div class="gloss-card-topic">AI</div>
+<div class="gloss-card-summary">Ensuring LLM responses are anchored in specific factual context rather than the model's internal beliefs.</div>
+</a><a href="guarantee.html" class="gloss-card" data-topic="Direct Response" data-search="guarantee a promise to the buyer that reduces their risk (money-back, satisfaction, performance).">
+<div class="gloss-card-term">Guarantee</div>
+<div class="gloss-card-topic">Direct Response</div>
+<div class="gloss-card-summary">A promise to the buyer that reduces their risk (money-back, satisfaction, performance).</div>
+</a><a href="hallucination.html" class="gloss-card" data-topic="AI" data-search="hallucination an llm producing false information that sounds plausible. the model invents facts.">
+<div class="gloss-card-term">Hallucination</div>
+<div class="gloss-card-topic">AI</div>
+<div class="gloss-card-summary">An LLM producing false information that sounds plausible. The model invents facts.</div>
+</a><a href="headlines.html" class="gloss-card" data-topic="Direct Response" data-search="headlines the first line of a piece of copy. the gate that decides if the reader continues.">
+<div class="gloss-card-term">Headlines</div>
+<div class="gloss-card-topic">Direct Response</div>
+<div class="gloss-card-summary">The first line of a piece of copy. The gate that decides if the reader continues.</div>
+</a><a href="hooks.html" class="gloss-card" data-topic="Direct Response" data-search="hooks the opening line or moment that stops scroll / earns attention.">
+<div class="gloss-card-term">Hooks</div>
+<div class="gloss-card-topic">Direct Response</div>
+<div class="gloss-card-summary">The opening line or moment that stops scroll / earns attention.</div>
+</a><a href="icp.html" class="gloss-card" data-topic="Marketing" data-search="icp ideal customer profile. detailed definition of the customer you most want to acquire.">
+<div class="gloss-card-term">ICP</div>
+<div class="gloss-card-topic">Marketing</div>
+<div class="gloss-card-summary">Ideal Customer Profile. Detailed definition of the customer you most want to acquire.</div>
+</a><a href="inbound.html" class="gloss-card" data-topic="Sales" data-search="inbound leads that come to you (via content, ads, referrals).">
+<div class="gloss-card-term">Inbound</div>
+<div class="gloss-card-topic">Sales</div>
+<div class="gloss-card-summary">Leads that come to you (via content, ads, referrals).</div>
+</a><a href="incrementality.html" class="gloss-card" data-topic="Marketing" data-search="incrementality testing testing whether a marketing channel or tactic actually causes conversions or just captures them.">
+<div class="gloss-card-term">Incrementality Testing</div>
+<div class="gloss-card-topic">Marketing</div>
+<div class="gloss-card-summary">Testing whether a marketing channel or tactic actually causes conversions or just captures them.</div>
+</a><a href="keyword.html" class="gloss-card" data-topic="SEO" data-search="keyword a word or phrase users type into search engines.">
+<div class="gloss-card-term">Keyword</div>
+<div class="gloss-card-topic">SEO</div>
+<div class="gloss-card-summary">A word or phrase users type into search engines.</div>
+</a><a href="keyword-difficulty.html" class="gloss-card" data-topic="SEO" data-search="keyword difficulty estimate of how hard it is to rank for a keyword. based on competing sites' authority.">
+<div class="gloss-card-term">Keyword Difficulty</div>
+<div class="gloss-card-topic">SEO</div>
+<div class="gloss-card-summary">Estimate of how hard it is to rank for a keyword. Based on competing sites' authority.</div>
+</a><a href="kpi.html" class="gloss-card" data-topic="Business" data-search="kpi key performance indicator. a metric linked to a specific business goal.">
+<div class="gloss-card-term">KPI</div>
+<div class="gloss-card-topic">Business</div>
+<div class="gloss-card-summary">Key Performance Indicator. A metric linked to a specific business goal.</div>
+</a><a href="lead-gen.html" class="gloss-card" data-topic="Direct Response" data-search="lead generation the process of attracting and capturing potential customer contact info for follow-up.">
+<div class="gloss-card-term">Lead Generation</div>
+<div class="gloss-card-topic">Direct Response</div>
+<div class="gloss-card-summary">The process of attracting and capturing potential customer contact info for follow-up.</div>
+</a><a href="lead-magnet.html" class="gloss-card" data-topic="Direct Response" data-search="lead magnet a free resource offered in exchange for contact information. the opt-in incentive.">
+<div class="gloss-card-term">Lead Magnet</div>
+<div class="gloss-card-topic">Direct Response</div>
+<div class="gloss-card-summary">A free resource offered in exchange for contact information. The opt-in incentive.</div>
+</a><a href="llm.html" class="gloss-card" data-topic="AI" data-search="llm large language model. a neural network trained on massive text data that predicts the next token in a sequence, producing coherent language output.">
+<div class="gloss-card-term">LLM</div>
+<div class="gloss-card-topic">AI</div>
+<div class="gloss-card-summary">Large Language Model. A neural network trained on massive text data that predicts the next token in a sequence, producin...</div>
+</a><a href="local-seo.html" class="gloss-card" data-topic="SEO" data-search="local seo optimization for location-based searches ('dentist near me'). focuses on google business profile, local citations, reviews.">
+<div class="gloss-card-term">Local SEO</div>
+<div class="gloss-card-topic">SEO</div>
+<div class="gloss-card-summary">Optimization for location-based searches ('dentist near me'). Focuses on Google Business Profile, local citations, revie...</div>
+</a><a href="lookalike.html" class="gloss-card" data-topic="Marketing" data-search="lookalike audience an audience the ad platform builds to resemble your existing customers based on a 'seed' list.">
+<div class="gloss-card-term">Lookalike Audience</div>
+<div class="gloss-card-topic">Marketing</div>
+<div class="gloss-card-summary">An audience the ad platform builds to resemble your existing customers based on a 'seed' list.</div>
+</a><a href="ltv.html" class="gloss-card" data-topic="Marketing" data-search="ltv lifetime value. total gross profit a customer generates over their relationship with you.">
+<div class="gloss-card-term">LTV</div>
+<div class="gloss-card-topic">Marketing</div>
+<div class="gloss-card-summary">Lifetime Value. Total gross profit a customer generates over their relationship with you.</div>
+</a><a href="ltv-cac-ratio.html" class="gloss-card" data-topic="Marketing" data-search="ltv:cac ratio of lifetime value to customer acquisition cost. below 3:1 is fragile, 5:1+ is healthy.">
+<div class="gloss-card-term">LTV:CAC</div>
+<div class="gloss-card-topic">Marketing</div>
+<div class="gloss-card-summary">Ratio of Lifetime Value to Customer Acquisition Cost. Below 3:1 is fragile, 5:1+ is healthy.</div>
+</a><a href="mmm.html" class="gloss-card" data-topic="Marketing" data-search="marketing mix modeling statistical modeling of total marketing spend vs total revenue to estimate each channel's contribution.">
+<div class="gloss-card-term">Marketing Mix Modeling</div>
+<div class="gloss-card-topic">Marketing</div>
+<div class="gloss-card-summary">Statistical modeling of total marketing spend vs total revenue to estimate each channel's contribution.</div>
+</a><a href="mcp.html" class="gloss-card" data-topic="AI" data-search="mcp model context protocol. anthropic's open protocol for llms to connect to external tools and data sources.">
+<div class="gloss-card-term">MCP</div>
+<div class="gloss-card-topic">AI</div>
+<div class="gloss-card-summary">Model Context Protocol. Anthropic's open protocol for LLMs to connect to external tools and data sources.</div>
+</a><a href="meddic.html" class="gloss-card" data-topic="Sales" data-search="meddic qualification framework. metrics, economic buyer, decision criteria, decision process, identify pain, champion.">
+<div class="gloss-card-term">MEDDIC</div>
+<div class="gloss-card-topic">Sales</div>
+<div class="gloss-card-summary">Qualification framework. Metrics, Economic Buyer, Decision Criteria, Decision Process, Identify Pain, Champion.</div>
+</a><a href="mer.html" class="gloss-card" data-topic="Marketing" data-search="mer media efficiency ratio. total revenue divided by total ad spend. blended across all channels.">
+<div class="gloss-card-term">MER</div>
+<div class="gloss-card-topic">Marketing</div>
+<div class="gloss-card-summary">Media Efficiency Ratio. Total revenue divided by total ad spend. Blended across all channels.</div>
+</a><a href="meta-description.html" class="gloss-card" data-topic="SEO" data-search="meta description the text snippet shown under your page title in search results.">
+<div class="gloss-card-term">Meta Description</div>
+<div class="gloss-card-topic">SEO</div>
+<div class="gloss-card-summary">The text snippet shown under your page title in search results.</div>
+</a><a href="mrr.html" class="gloss-card" data-topic="Business" data-search="mrr monthly recurring revenue. arr / 12. useful for month-over-month growth tracking.">
+<div class="gloss-card-term">MRR</div>
+<div class="gloss-card-topic">Business</div>
+<div class="gloss-card-summary">Monthly Recurring Revenue. ARR / 12. Useful for month-over-month growth tracking.</div>
+</a><a href="nrr.html" class="gloss-card" data-topic="Business" data-search="nrr net revenue retention. revenue from existing customers this period ÷ their revenue last period.">
+<div class="gloss-card-term">NRR</div>
+<div class="gloss-card-topic">Business</div>
+<div class="gloss-card-summary">Net Revenue Retention. Revenue from existing customers this period ÷ their revenue last period.</div>
+</a><a href="offer.html" class="gloss-card" data-topic="Direct Response" data-search="offer what you're asking the prospect to do and what they get in return.">
+<div class="gloss-card-term">Offer</div>
+<div class="gloss-card-topic">Direct Response</div>
+<div class="gloss-card-summary">What you're asking the prospect to do and what they get in return.</div>
+</a><a href="okr.html" class="gloss-card" data-topic="Business" data-search="okr objectives and key results. goal-setting framework: one qualitative objective, 2-4 measurable key results.">
+<div class="gloss-card-term">OKR</div>
+<div class="gloss-card-topic">Business</div>
+<div class="gloss-card-summary">Objectives and Key Results. Goal-setting framework: one qualitative objective, 2-4 measurable key results.</div>
+</a><a href="on-page-seo.html" class="gloss-card" data-topic="SEO" data-search="on-page seo optimizations on the page itself: title, meta description, headings, content, internal links.">
+<div class="gloss-card-term">On-Page SEO</div>
+<div class="gloss-card-topic">SEO</div>
+<div class="gloss-card-summary">Optimizations on the page itself: title, meta description, headings, content, internal links.</div>
+</a><a href="ote.html" class="gloss-card" data-topic="Sales" data-search="ote on-target earnings. total compensation (base + variable) if quota is met.">
+<div class="gloss-card-term">OTE</div>
+<div class="gloss-card-topic">Sales</div>
+<div class="gloss-card-summary">On-Target Earnings. Total compensation (base + variable) if quota is met.</div>
+</a><a href="outbound.html" class="gloss-card" data-topic="Sales" data-search="outbound sales activity where you initiate contact with prospects (cold email, calls, linkedin).">
+<div class="gloss-card-term">Outbound</div>
+<div class="gloss-card-topic">Sales</div>
+<div class="gloss-card-summary">Sales activity where you initiate contact with prospects (cold email, calls, LinkedIn).</div>
+</a><a href="p-and-l.html" class="gloss-card" data-topic="Business" data-search="p&l profit and loss statement. revenue - cogs - opex = net income.">
+<div class="gloss-card-term">P&L</div>
+<div class="gloss-card-topic">Business</div>
+<div class="gloss-card-summary">Profit and Loss statement. Revenue - COGS - OpEx = Net Income.</div>
+</a><a href="pas.html" class="gloss-card" data-topic="Direct Response" data-search="pas problem-agitate-solution. classical copywriting formula. name the problem, make it vivid, present the solution.">
+<div class="gloss-card-term">PAS</div>
+<div class="gloss-card-topic">Direct Response</div>
+<div class="gloss-card-summary">Problem-Agitate-Solution. Classical copywriting formula. Name the problem, make it vivid, present the solution.</div>
+</a><a href="pastor.html" class="gloss-card" data-topic="Direct Response" data-search="pastor problem-amplify-story-transformation-offer-response. expanded formula for long-form.">
+<div class="gloss-card-term">PASTOR</div>
+<div class="gloss-card-topic">Direct Response</div>
+<div class="gloss-card-summary">Problem-Amplify-Story-Transformation-Offer-Response. Expanded formula for long-form.</div>
+</a><a href="payback-period.html" class="gloss-card" data-topic="Marketing" data-search="payback period how long it takes to recover cac in gross profit from a customer.">
+<div class="gloss-card-term">Payback Period</div>
+<div class="gloss-card-topic">Marketing</div>
+<div class="gloss-card-summary">How long it takes to recover CAC in gross profit from a customer.</div>
+</a><a href="pipeline.html" class="gloss-card" data-topic="Sales" data-search="pipeline active sales opportunities at various stages, tracked in a crm.">
+<div class="gloss-card-term">Pipeline</div>
+<div class="gloss-card-topic">Sales</div>
+<div class="gloss-card-summary">Active sales opportunities at various stages, tracked in a CRM.</div>
+</a><a href="pmf.html" class="gloss-card" data-topic="Marketing" data-search="product-market fit the stage where a product reliably converts prospects to paying customers in a real market.">
+<div class="gloss-card-term">Product-Market Fit</div>
+<div class="gloss-card-topic">Marketing</div>
+<div class="gloss-card-summary">The stage where a product reliably converts prospects to paying customers in a real market.</div>
+</a><a href="prompt-engineering.html" class="gloss-card" data-topic="AI" data-search="prompt engineering the craft of designing llm prompts to reliably produce desired outputs.">
+<div class="gloss-card-term">Prompt Engineering</div>
+<div class="gloss-card-topic">AI</div>
+<div class="gloss-card-summary">The craft of designing LLM prompts to reliably produce desired outputs.</div>
+</a><a href="prospecting.html" class="gloss-card" data-topic="Marketing" data-search="prospecting paid advertising aimed at new audiences who haven't engaged with the brand.">
+<div class="gloss-card-term">Prospecting</div>
+<div class="gloss-card-topic">Marketing</div>
+<div class="gloss-card-summary">Paid advertising aimed at new audiences who haven't engaged with the brand.</div>
+</a><a href="quota.html" class="gloss-card" data-topic="Sales" data-search="quota revenue target assigned to a sales rep for a time period.">
+<div class="gloss-card-term">Quota</div>
+<div class="gloss-card-topic">Sales</div>
+<div class="gloss-card-summary">Revenue target assigned to a sales rep for a time period.</div>
+</a><a href="rag.html" class="gloss-card" data-topic="AI" data-search="rag retrieval-augmented generation. fetch relevant context from a knowledge base, paste into the llm prompt, generate an answer grounded in that context.">
+<div class="gloss-card-term">RAG</div>
+<div class="gloss-card-topic">AI</div>
+<div class="gloss-card-summary">Retrieval-Augmented Generation. Fetch relevant context from a knowledge base, paste into the LLM prompt, generate an ans...</div>
+</a><a href="ranking.html" class="gloss-card" data-topic="SEO" data-search="ranking position on the serp. rank 1 gets the most clicks; rank 10 gets very few.">
+<div class="gloss-card-term">Ranking</div>
+<div class="gloss-card-topic">SEO</div>
+<div class="gloss-card-summary">Position on the SERP. Rank 1 gets the most clicks; rank 10 gets very few.</div>
+</a><a href="react.html" class="gloss-card" data-topic="AI" data-search="react reasoning + acting. the canonical agent pattern: think, act (call tool), observe result, repeat.">
+<div class="gloss-card-term">ReAct</div>
+<div class="gloss-card-topic">AI</div>
+<div class="gloss-card-summary">Reasoning + Acting. The canonical agent pattern: think, act (call tool), observe result, repeat.</div>
+</a><a href="reranking.html" class="gloss-card" data-topic="AI" data-search="reranking a second-stage model that reorders retrieved documents by relevance. typically uses a cross-encoder.">
+<div class="gloss-card-term">Reranking</div>
+<div class="gloss-card-topic">AI</div>
+<div class="gloss-card-summary">A second-stage model that reorders retrieved documents by relevance. Typically uses a cross-encoder.</div>
+</a><a href="retargeting.html" class="gloss-card" data-topic="Marketing" data-search="retargeting showing ads to people who've previously interacted with your brand (visited site, watched video, etc.).">
+<div class="gloss-card-term">Retargeting</div>
+<div class="gloss-card-topic">Marketing</div>
+<div class="gloss-card-summary">Showing ads to people who've previously interacted with your brand (visited site, watched video, etc.).</div>
+</a><a href="retention.html" class="gloss-card" data-topic="Business" data-search="retention the percentage of customers still active after a time period.">
+<div class="gloss-card-term">Retention</div>
+<div class="gloss-card-topic">Business</div>
+<div class="gloss-card-summary">The percentage of customers still active after a time period.</div>
+</a><a href="roas.html" class="gloss-card" data-topic="Marketing" data-search="roas return on ad spend. revenue divided by ad spend, expressed as a multiple.">
+<div class="gloss-card-term">ROAS</div>
+<div class="gloss-card-topic">Marketing</div>
+<div class="gloss-card-summary">Return On Ad Spend. Revenue divided by ad spend, expressed as a multiple.</div>
+</a><a href="runway.html" class="gloss-card" data-topic="Business" data-search="runway how many months a company can operate at current burn rate before running out of cash.">
+<div class="gloss-card-term">Runway</div>
+<div class="gloss-card-topic">Business</div>
+<div class="gloss-card-summary">How many months a company can operate at current burn rate before running out of cash.</div>
+</a><a href="sales-letter.html" class="gloss-card" data-topic="Direct Response" data-search="sales letter a long-form written piece that walks the reader from problem to solution to offer.">
+<div class="gloss-card-term">Sales Letter</div>
+<div class="gloss-card-topic">Direct Response</div>
+<div class="gloss-card-summary">A long-form written piece that walks the reader from problem to solution to offer.</div>
+</a><a href="scarcity.html" class="gloss-card" data-topic="Direct Response" data-search="scarcity quantity-based reason to act now. limited seats, limited stock, limited capacity.">
+<div class="gloss-card-term">Scarcity</div>
+<div class="gloss-card-topic">Direct Response</div>
+<div class="gloss-card-summary">Quantity-based reason to act now. Limited seats, limited stock, limited capacity.</div>
+</a><a href="schema.html" class="gloss-card" data-topic="SEO" data-search="schema markup structured data that tells search engines what your content is about (article, product, event, faq).">
+<div class="gloss-card-term">Schema Markup</div>
+<div class="gloss-card-topic">SEO</div>
+<div class="gloss-card-summary">Structured data that tells search engines what your content is about (article, product, event, FAQ).</div>
+</a><a href="sdr.html" class="gloss-card" data-topic="Sales" data-search="sdr sales development representative. the prospecting role in b2b sales teams.">
+<div class="gloss-card-term">SDR</div>
+<div class="gloss-card-topic">Sales</div>
+<div class="gloss-card-summary">Sales Development Representative. The prospecting role in B2B sales teams.</div>
+</a><a href="search-volume.html" class="gloss-card" data-topic="SEO" data-search="search volume estimated number of monthly searches for a keyword.">
+<div class="gloss-card-term">Search Volume</div>
+<div class="gloss-card-topic">SEO</div>
+<div class="gloss-card-summary">Estimated number of monthly searches for a keyword.</div>
+</a><a href="semantic-search.html" class="gloss-card" data-topic="AI" data-search="semantic search search based on meaning rather than exact keywords. uses embeddings to match intent.">
+<div class="gloss-card-term">Semantic Search</div>
+<div class="gloss-card-topic">AI</div>
+<div class="gloss-card-summary">Search based on meaning rather than exact keywords. Uses embeddings to match intent.</div>
+</a><a href="seo.html" class="gloss-card" data-topic="SEO" data-search="seo search engine optimization. the practice of improving a site's visibility in organic search results.">
+<div class="gloss-card-term">SEO</div>
+<div class="gloss-card-topic">SEO</div>
+<div class="gloss-card-summary">Search Engine Optimization. The practice of improving a site's visibility in organic search results.</div>
+</a><a href="serp.html" class="gloss-card" data-topic="SEO" data-search="serp search engine results page. the page google shows for a query.">
+<div class="gloss-card-term">SERP</div>
+<div class="gloss-card-topic">SEO</div>
+<div class="gloss-card-summary">Search Engine Results Page. The page Google shows for a query.</div>
+</a><a href="system-prompt.html" class="gloss-card" data-topic="AI" data-search="system prompt the instructions given to an llm defining its role, behavior, and constraints. appears before user messages.">
+<div class="gloss-card-term">System Prompt</div>
+<div class="gloss-card-topic">AI</div>
+<div class="gloss-card-summary">The instructions given to an LLM defining its role, behavior, and constraints. Appears before user messages.</div>
+</a><a href="technical-seo.html" class="gloss-card" data-topic="SEO" data-search="technical seo site-level optimizations: crawlability, speed, mobile-friendliness, structured data, redirects.">
+<div class="gloss-card-term">Technical SEO</div>
+<div class="gloss-card-topic">SEO</div>
+<div class="gloss-card-summary">Site-level optimizations: crawlability, speed, mobile-friendliness, structured data, redirects.</div>
+</a><a href="token.html" class="gloss-card" data-topic="AI" data-search="token unit of text processed by llms. roughly 3-4 characters or 0.75 words in english.">
+<div class="gloss-card-term">Token</div>
+<div class="gloss-card-topic">AI</div>
+<div class="gloss-card-summary">Unit of text processed by LLMs. Roughly 3-4 characters or 0.75 words in English.</div>
+</a><a href="tool-use.html" class="gloss-card" data-topic="AI" data-search="tool use an llm's ability to request function/api calls and incorporate results into its reasoning.">
+<div class="gloss-card-term">Tool Use</div>
+<div class="gloss-card-topic">AI</div>
+<div class="gloss-card-summary">An LLM's ability to request function/API calls and incorporate results into its reasoning.</div>
+</a><a href="transformer.html" class="gloss-card" data-topic="AI" data-search="transformer the neural network architecture underlying modern llms. uses self-attention to process sequences.">
+<div class="gloss-card-term">Transformer</div>
+<div class="gloss-card-topic">AI</div>
+<div class="gloss-card-summary">The neural network architecture underlying modern LLMs. Uses self-attention to process sequences.</div>
+</a><a href="urgency.html" class="gloss-card" data-topic="Direct Response" data-search="urgency time-based reason to act now. cohort closing, price rising, bonus expiring.">
+<div class="gloss-card-term">Urgency</div>
+<div class="gloss-card-topic">Direct Response</div>
+<div class="gloss-card-summary">Time-based reason to act now. Cohort closing, price rising, bonus expiring.</div>
+</a><a href="utm.html" class="gloss-card" data-topic="Marketing" data-search="utm parameters url parameters tagged onto links to track the source, medium, campaign in analytics.">
+<div class="gloss-card-term">UTM Parameters</div>
+<div class="gloss-card-topic">Marketing</div>
+<div class="gloss-card-summary">URL parameters tagged onto links to track the source, medium, campaign in analytics.</div>
+</a><a href="value-equation.html" class="gloss-card" data-topic="Direct Response" data-search="value equation perceived value = (dream outcome × likelihood of achievement) / (time delay × effort).">
+<div class="gloss-card-term">Value Equation</div>
+<div class="gloss-card-topic">Direct Response</div>
+<div class="gloss-card-summary">Perceived value = (dream outcome × likelihood of achievement) / (time delay × effort).</div>
+</a><a href="vector-database.html" class="gloss-card" data-topic="AI" data-search="vector database a database optimized to store and query high-dimensional vectors by similarity, not by exact match.">
+<div class="gloss-card-term">Vector Database</div>
+<div class="gloss-card-topic">AI</div>
+<div class="gloss-card-summary">A database optimized to store and query high-dimensional vectors by similarity, not by exact match.</div>
+</a><a href="vsl.html" class="gloss-card" data-topic="Direct Response" data-search="vsl video sales letter. long-form video that pitches a single offer, structured like a classic sales letter.">
+<div class="gloss-card-term">VSL</div>
+<div class="gloss-card-topic">Direct Response</div>
+<div class="gloss-card-summary">Video Sales Letter. Long-form video that pitches a single offer, structured like a classic sales letter.</div>
+</a><a href="zero-shot.html" class="gloss-card" data-topic="AI" data-search="zero-shot asking an llm to do a task with no examples, relying entirely on task description.">
+<div class="gloss-card-term">Zero-Shot</div>
+<div class="gloss-card-topic">AI</div>
+<div class="gloss-card-summary">Asking an LLM to do a task with no examples, relying entirely on task description.</div>
+</a></div>
+</div>
+
+<script>
+(function(){
+    const search = document.getElementById('gloss-search');
+    const chips = document.querySelectorAll('.gloss-chip');
+    const cards = document.querySelectorAll('.gloss-card');
+    const count = document.getElementById('gloss-count');
+    let activeTopic = 'all';
+
+    function apply() {
+        const q = (search.value || '').toLowerCase().trim();
+        let shown = 0;
+        cards.forEach(c => {
+            const topic = c.dataset.topic;
+            const text = c.dataset.search;
+            const match = (activeTopic === 'all' || topic === activeTopic) && (!q || text.includes(q));
+            c.classList.toggle('hidden', !match);
+            if (match) shown++;
+        });
+        count.textContent = shown;
+    }
+
+    search.addEventListener('input', apply);
+    chips.forEach(ch => {
+        ch.addEventListener('click', () => {
+            chips.forEach(c => c.classList.remove('active'));
+            ch.classList.add('active');
+            activeTopic = ch.dataset.topic;
+            apply();
+        });
+    });
+})();
+</script><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a></p>
+</div></footer></body></html>

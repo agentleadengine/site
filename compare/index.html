@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comparisons | Samuel Ochoa</title>
+<meta name="description" content="Head-to-head comparisons of tools and approaches.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Comparisons | Samuel Ochoa">
+<meta property="og:description" content="Head-to-head comparisons of tools and approaches.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<style>
+.cmp-layout { max-width: 960px; margin: 0 auto; padding: 48px 32px; }
+.cmp-topic { display: inline-block; background: #f3f0ff; color: #4a00e0; padding: 4px 12px; border-radius: 4px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 12px; }
+.cmp-title { font-size: 36px; font-weight: 800; margin: 0 0 8px 0; }
+.cmp-subtitle { font-size: 17px; color: #666; margin: 0 0 32px 0; }
+.cmp-summary { font-size: 17px; line-height: 1.7; margin-bottom: 32px; padding: 20px; background: #fafafa; border-radius: 8px; border-left: 4px solid #4a00e0; }
+.cmp-matrix { overflow-x: auto; }
+.cmp-matrix table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+.cmp-matrix th, .cmp-matrix td { padding: 12px 14px; text-align: left; border-bottom: 1px solid #e5e5ea; font-size: 14px; line-height: 1.5; }
+.cmp-matrix th { background: #fafafa; font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 0.8px; }
+.cmp-verdict { background: #f3f0ff; border: 1px solid #e0d4ff; padding: 20px 24px; border-radius: 10px; margin: 32px 0; }
+.cmp-verdict h3 { margin-top: 0; color: #4a00e0; }
+.cmp-content h2 { font-size: 24px; margin: 32px 0 12px; }
+.cmp-content p, .cmp-content li { font-size: 16px; line-height: 1.7; }
+.cmp-index { max-width: 1100px; margin: 0 auto; padding: 48px 32px; }
+.cmp-filter { display: flex; gap: 8px; margin: 16px 0 24px; flex-wrap: wrap; }
+.cmp-chip { padding: 6px 14px; background: #fff; border: 1px solid #e5e5ea; color: #333; border-radius: 999px; cursor: pointer; font-size: 13px; font-weight: 500; font-family: inherit; }
+.cmp-chip:hover { border-color: #4a00e0; color: #4a00e0; }
+.cmp-chip.active { background: #4a00e0; color: #fff; border-color: #4a00e0; }
+.cmp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
+.cmp-card { display: block; padding: 16px 18px; background: #fff; border: 1px solid #e5e5ea; border-radius: 8px; text-decoration: none; color: #333; }
+.cmp-card:hover { border-color: #4a00e0; }
+.cmp-card.hidden { display: none; }
+.cmp-card-title { font-weight: 600; font-size: 16px; color: #4a00e0; }
+.cmp-card-topic { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #666; margin: 2px 0 6px 0; }
+.cmp-card-summary { font-size: 13px; color: #666; line-height: 1.5; }
+</style>
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../index.html">Home</a>
+<a href="../framework/index.html">Framework</a>
+<a href="../expertise/index.html">Expertise</a>
+<a href="../playbooks/index.html">Playbooks</a>
+<a href="../glossary/index.html">Glossary</a>
+<a href="../compare/index.html" class="active">Compare</a>
+<a href="../writing.html">Writing</a>
+</div>
+</div></nav><div class="cmp-index">
+<h1 style="font-size: 42px; margin: 0 0 8px 0;">Comparisons</h1>
+<p style="font-size: 17px; color: #666; margin: 0 0 24px 0;">Head-to-head breakdowns of the tools and approaches I actually use and evaluate.</p>
+<div class="cmp-filter"><button class="cmp-chip active" data-topic="all">All</button><button class="cmp-chip" data-topic="AI Models">AI Models</button><button class="cmp-chip" data-topic="AI Patterns">AI Patterns</button><button class="cmp-chip" data-topic="AI Techniques">AI Techniques</button><button class="cmp-chip" data-topic="AI Writing">AI Writing</button><button class="cmp-chip" data-topic="Agent Frameworks">Agent Frameworks</button><button class="cmp-chip" data-topic="Analytics">Analytics</button><button class="cmp-chip" data-topic="Attribution">Attribution</button><button class="cmp-chip" data-topic="Automation">Automation</button><button class="cmp-chip" data-topic="B2B Data">B2B Data</button><button class="cmp-chip" data-topic="BaaS">BaaS</button><button class="cmp-chip" data-topic="CRM">CRM</button><button class="cmp-chip" data-topic="CSS Frameworks">CSS Frameworks</button><button class="cmp-chip" data-topic="Caching">Caching</button><button class="cmp-chip" data-topic="Cloud">Cloud</button><button class="cmp-chip" data-topic="Coding Agents">Coding Agents</button><button class="cmp-chip" data-topic="Cold Email">Cold Email</button><button class="cmp-chip" data-topic="Communication">Communication</button><button class="cmp-chip" data-topic="Data Warehouses">Data Warehouses</button><button class="cmp-chip" data-topic="Databases">Databases</button><button class="cmp-chip" data-topic="Deliverability">Deliverability</button><button class="cmp-chip" data-topic="Design Tools">Design Tools</button><button class="cmp-chip" data-topic="E2E Testing">E2E Testing</button><button class="cmp-chip" data-topic="Ecommerce Platforms">Ecommerce Platforms</button><button class="cmp-chip" data-topic="Email Marketing">Email Marketing</button><button class="cmp-chip" data-topic="Email Warming">Email Warming</button><button class="cmp-chip" data-topic="Embeddings">Embeddings</button><button class="cmp-chip" data-topic="Hosting">Hosting</button><button class="cmp-chip" data-topic="LLM Frameworks">LLM Frameworks</button><button class="cmp-chip" data-topic="ML Frameworks">ML Frameworks</button><button class="cmp-chip" data-topic="Messaging">Messaging</button><button class="cmp-chip" data-topic="Monitoring">Monitoring</button><button class="cmp-chip" data-topic="Newsletters">Newsletters</button><button class="cmp-chip" data-topic="Notes">Notes</button><button class="cmp-chip" data-topic="Outreach">Outreach</button><button class="cmp-chip" data-topic="Paid Ads">Paid Ads</button><button class="cmp-chip" data-topic="Payments">Payments</button><button class="cmp-chip" data-topic="Product Analytics">Product Analytics</button><button class="cmp-chip" data-topic="Productivity">Productivity</button><button class="cmp-chip" data-topic="Project Management">Project Management</button><button class="cmp-chip" data-topic="Publishing">Publishing</button><button class="cmp-chip" data-topic="SEO Tools">SEO Tools</button><button class="cmp-chip" data-topic="Sales Engagement">Sales Engagement</button><button class="cmp-chip" data-topic="Sales Intelligence">Sales Intelligence</button><button class="cmp-chip" data-topic="Scheduling">Scheduling</button><button class="cmp-chip" data-topic="Transactional Email">Transactional Email</button><button class="cmp-chip" data-topic="Vector DBs">Vector DBs</button><button class="cmp-chip" data-topic="Video Conferencing">Video Conferencing</button><button class="cmp-chip" data-topic="Writing Tools">Writing Tools</button></div>
+<p style="color: #666; font-size: 14px; margin-bottom: 12px;"><span id="cmp-count">77</span> comparisons</p>
+<div class="cmp-grid" id="cmp-grid"><a href="agent-vs-workflow.html" class="cmp-card" data-topic="AI Patterns" data-search="agent workflow">
+<div class="cmp-card-title">Agent vs Workflow</div>
+<div class="cmp-card-topic">AI Patterns</div>
+<div class="cmp-card-summary">Autonomous reasoning loops vs deterministic step-by-step pipelines.</div>
+</a><a href="ahrefs-vs-semrush.html" class="cmp-card" data-topic="SEO Tools" data-search="ahrefs semrush">
+<div class="cmp-card-title">Ahrefs vs Semrush</div>
+<div class="cmp-card-topic">SEO Tools</div>
+<div class="cmp-card-summary">The two flagship SEO toolkits.</div>
+</a><a href="ahrefs-vs-moz.html" class="cmp-card" data-topic="SEO Tools" data-search="ahrefs moz">
+<div class="cmp-card-title">Ahrefs vs Moz</div>
+<div class="cmp-card-topic">SEO Tools</div>
+<div class="cmp-card-summary">Modern SEO toolkit vs long-standing alternative.</div>
+</a><a href="aider-vs-cursor.html" class="cmp-card" data-topic="Coding Agents" data-search="aider cursor">
+<div class="cmp-card-title">Aider vs Cursor</div>
+<div class="cmp-card-topic">Coding Agents</div>
+<div class="cmp-card-summary">Open-source CLI coding assistant vs AI-powered IDE.</div>
+</a><a href="apollo-vs-zoominfo.html" class="cmp-card" data-topic="B2B Data" data-search="apollo zoominfo">
+<div class="cmp-card-title">Apollo vs ZoomInfo</div>
+<div class="cmp-card-topic">B2B Data</div>
+<div class="cmp-card-summary">Two B2B contact databases with different price points and quality.</div>
+</a><a href="apollo-vs-clay.html" class="cmp-card" data-topic="B2B Data" data-search="apollo clay">
+<div class="cmp-card-title">Apollo vs Clay</div>
+<div class="cmp-card-topic">B2B Data</div>
+<div class="cmp-card-summary">Contact database vs enrichment platform.</div>
+</a><a href="apollo-vs-instantly.html" class="cmp-card" data-topic="Outreach" data-search="apollo instantly">
+<div class="cmp-card-title">Apollo vs Instantly</div>
+<div class="cmp-card-topic">Outreach</div>
+<div class="cmp-card-summary">All-in-one data + outreach vs dedicated cold email tool.</div>
+</a><a href="asana-vs-monday.html" class="cmp-card" data-topic="Project Management" data-search="asana monday">
+<div class="cmp-card-title">Asana vs Monday</div>
+<div class="cmp-card-topic">Project Management</div>
+<div class="cmp-card-summary">Two popular PM tools.</div>
+</a><a href="asana-vs-clickup.html" class="cmp-card" data-topic="Project Management" data-search="asana clickup">
+<div class="cmp-card-title">Asana vs ClickUp</div>
+<div class="cmp-card-topic">Project Management</div>
+<div class="cmp-card-summary">Focused PM tool vs everything-platform.</div>
+</a><a href="aws-vs-gcp.html" class="cmp-card" data-topic="Cloud" data-search="aws gcp">
+<div class="cmp-card-title">AWS vs GCP</div>
+<div class="cmp-card-topic">Cloud</div>
+<div class="cmp-card-summary">Market leader vs Google's cloud offering.</div>
+</a><a href="aws-vs-azure.html" class="cmp-card" data-topic="Cloud" data-search="aws azure">
+<div class="cmp-card-title">AWS vs Azure</div>
+<div class="cmp-card-topic">Cloud</div>
+<div class="cmp-card-summary">Leader vs enterprise-focused competitor.</div>
+</a><a href="bge-vs-nomic.html" class="cmp-card" data-topic="Embeddings" data-search="bge-m3 nomic-embed-v1.5">
+<div class="cmp-card-title">BGE-M3 vs nomic-embed-v1.5</div>
+<div class="cmp-card-topic">Embeddings</div>
+<div class="cmp-card-summary">Two top open-source embedding models.</div>
+</a><a href="calendly-vs-savvycal.html" class="cmp-card" data-topic="Scheduling" data-search="calendly savvycal">
+<div class="cmp-card-title">Calendly vs SavvyCal</div>
+<div class="cmp-card-topic">Scheduling</div>
+<div class="cmp-card-summary">Market leader vs design-forward challenger.</div>
+</a><a href="chroma-vs-pinecone.html" class="cmp-card" data-topic="Vector DBs" data-search="chroma pinecone">
+<div class="cmp-card-title">Chroma vs Pinecone</div>
+<div class="cmp-card-topic">Vector DBs</div>
+<div class="cmp-card-summary">Embedded vs managed. Different use cases entirely.</div>
+</a><a href="claude-vs-gpt4.html" class="cmp-card" data-topic="AI Models" data-search="claude gpt-4">
+<div class="cmp-card-title">Claude vs GPT-4</div>
+<div class="cmp-card-topic">AI Models</div>
+<div class="cmp-card-summary">Both are flagship LLMs. Different strengths on reasoning, coding, and tool use.</div>
+</a><a href="claude-vs-gemini.html" class="cmp-card" data-topic="AI Models" data-search="claude gemini">
+<div class="cmp-card-title">Claude vs Gemini</div>
+<div class="cmp-card-topic">AI Models</div>
+<div class="cmp-card-summary">Anthropic vs Google. Different tradeoffs on context, cost, and integrations.</div>
+</a><a href="claude-code-vs-cursor.html" class="cmp-card" data-topic="Coding Agents" data-search="claude code cursor">
+<div class="cmp-card-title">Claude Code vs Cursor</div>
+<div class="cmp-card-topic">Coding Agents</div>
+<div class="cmp-card-summary">CLI-based vs IDE-integrated coding assistants.</div>
+</a><a href="haiku-vs-4o-mini.html" class="cmp-card" data-topic="AI Models" data-search="claude haiku gpt-4o-mini">
+<div class="cmp-card-title">Claude Haiku vs GPT-4o-mini</div>
+<div class="cmp-card-topic">AI Models</div>
+<div class="cmp-card-summary">Small, fast, cheap models for high-volume use cases.</div>
+</a><a href="close-vs-hubspot.html" class="cmp-card" data-topic="CRM" data-search="close hubspot">
+<div class="cmp-card-title">Close vs HubSpot</div>
+<div class="cmp-card-topic">CRM</div>
+<div class="cmp-card-summary">Inside-sales-focused vs full-stack CRM.</div>
+</a><a href="convertkit-vs-beehiiv.html" class="cmp-card" data-topic="Newsletters" data-search="convertkit beehiiv">
+<div class="cmp-card-title">ConvertKit vs Beehiiv</div>
+<div class="cmp-card-topic">Newsletters</div>
+<div class="cmp-card-summary">Two creator-focused newsletter platforms.</div>
+</a><a href="cypress-vs-playwright.html" class="cmp-card" data-topic="E2E Testing" data-search="cypress playwright">
+<div class="cmp-card-title">Cypress vs Playwright</div>
+<div class="cmp-card-topic">E2E Testing</div>
+<div class="cmp-card-summary">Two leading end-to-end testing frameworks.</div>
+</a><a href="datadog-vs-new-relic.html" class="cmp-card" data-topic="Monitoring" data-search="datadog new relic">
+<div class="cmp-card-title">Datadog vs New Relic</div>
+<div class="cmp-card-topic">Monitoring</div>
+<div class="cmp-card-summary">Two observability platforms.</div>
+</a><a href="cold-email-tool-vs-builtin-warming.html" class="cmp-card" data-topic="Deliverability" data-search="dedicated warming built-in warming">
+<div class="cmp-card-title">Dedicated warming vs Built-in warming</div>
+<div class="cmp-card-topic">Deliverability</div>
+<div class="cmp-card-summary">Standalone warming services vs warming bundled with your cold email tool.</div>
+</a><a href="figma-vs-sketch.html" class="cmp-card" data-topic="Design Tools" data-search="figma sketch">
+<div class="cmp-card-title">Figma vs Sketch</div>
+<div class="cmp-card-topic">Design Tools</div>
+<div class="cmp-card-summary">Cloud-native vs Mac-only design tool.</div>
+</a><a href="figma-vs-canva.html" class="cmp-card" data-topic="Design Tools" data-search="figma canva">
+<div class="cmp-card-title">Figma vs Canva</div>
+<div class="cmp-card-topic">Design Tools</div>
+<div class="cmp-card-summary">Professional design tool vs accessible design for non-designers.</div>
+</a><a href="ga4-vs-amplitude.html" class="cmp-card" data-topic="Analytics" data-search="ga4 amplitude">
+<div class="cmp-card-title">GA4 vs Amplitude</div>
+<div class="cmp-card-topic">Analytics</div>
+<div class="cmp-card-summary">Free web analytics vs product analytics platform.</div>
+</a><a href="gong-vs-chorus.html" class="cmp-card" data-topic="Sales Intelligence" data-search="gong chorus">
+<div class="cmp-card-title">Gong vs Chorus</div>
+<div class="cmp-card-topic">Sales Intelligence</div>
+<div class="cmp-card-summary">Two leading sales conversation intelligence platforms.</div>
+</a><a href="google-search-vs-pmax.html" class="cmp-card" data-topic="Paid Ads" data-search="google search performance max">
+<div class="cmp-card-title">Google Search vs Performance Max</div>
+<div class="cmp-card-topic">Paid Ads</div>
+<div class="cmp-card-summary">Manual keyword-based vs AI-driven automated Google campaigns.</div>
+</a><a href="gpt4-vs-gemini.html" class="cmp-card" data-topic="AI Models" data-search="gpt-4 gemini">
+<div class="cmp-card-title">GPT-4 vs Gemini</div>
+<div class="cmp-card-topic">AI Models</div>
+<div class="cmp-card-summary">Two flagship models with different strengths.</div>
+</a><a href="grammarly-vs-hemingway.html" class="cmp-card" data-topic="Writing Tools" data-search="grammarly hemingway">
+<div class="cmp-card-title">Grammarly vs Hemingway</div>
+<div class="cmp-card-topic">Writing Tools</div>
+<div class="cmp-card-summary">Grammar checker vs readability editor.</div>
+</a><a href="hubspot-vs-salesforce.html" class="cmp-card" data-topic="CRM" data-search="hubspot salesforce">
+<div class="cmp-card-title">HubSpot vs Salesforce</div>
+<div class="cmp-card-topic">CRM</div>
+<div class="cmp-card-summary">SMB-friendly vs enterprise-grade CRM.</div>
+</a><a href="instantly-vs-smartlead.html" class="cmp-card" data-topic="Cold Email" data-search="instantly smartlead">
+<div class="cmp-card-title">Instantly vs Smartlead</div>
+<div class="cmp-card-topic">Cold Email</div>
+<div class="cmp-card-summary">Two of the most popular cold email tools in 2026.</div>
+</a><a href="instantly-vs-lemlist.html" class="cmp-card" data-topic="Cold Email" data-search="instantly lemlist">
+<div class="cmp-card-title">Instantly vs Lemlist</div>
+<div class="cmp-card-topic">Cold Email</div>
+<div class="cmp-card-summary">Volume-focused vs personalization-focused.</div>
+</a><a href="klaviyo-vs-mailchimp.html" class="cmp-card" data-topic="Email Marketing" data-search="klaviyo mailchimp">
+<div class="cmp-card-title">Klaviyo vs Mailchimp</div>
+<div class="cmp-card-topic">Email Marketing</div>
+<div class="cmp-card-summary">DTC-focused vs general-purpose email marketing.</div>
+</a><a href="langchain-vs-llamaindex.html" class="cmp-card" data-topic="LLM Frameworks" data-search="langchain llamaindex">
+<div class="cmp-card-title">LangChain vs LlamaIndex</div>
+<div class="cmp-card-topic">LLM Frameworks</div>
+<div class="cmp-card-summary">General LLM orchestration vs data-focused framework.</div>
+</a><a href="langgraph-vs-crewai.html" class="cmp-card" data-topic="Agent Frameworks" data-search="langgraph crewai">
+<div class="cmp-card-title">LangGraph vs CrewAI</div>
+<div class="cmp-card-topic">Agent Frameworks</div>
+<div class="cmp-card-summary">Graph-based vs role-based multi-agent frameworks.</div>
+</a><a href="linkedin-vs-meta-b2b.html" class="cmp-card" data-topic="Paid Ads" data-search="linkedin ads meta ads">
+<div class="cmp-card-title">LinkedIn Ads vs Meta Ads</div>
+<div class="cmp-card-topic">Paid Ads</div>
+<div class="cmp-card-summary">B2B default vs broader consumer platform for B2B use cases.</div>
+</a><a href="make-vs-n8n.html" class="cmp-card" data-topic="Automation" data-search="make n8n">
+<div class="cmp-card-title">Make vs n8n</div>
+<div class="cmp-card-topic">Automation</div>
+<div class="cmp-card-summary">Closed-source hosted vs open-source self-hostable automation.</div>
+</a><a href="medium-vs-substack.html" class="cmp-card" data-topic="Publishing" data-search="medium substack">
+<div class="cmp-card-title">Medium vs Substack</div>
+<div class="cmp-card-topic">Publishing</div>
+<div class="cmp-card-summary">Platform with algorithm vs owned-audience newsletter.</div>
+</a><a href="meta-vs-google-ads.html" class="cmp-card" data-topic="Paid Ads" data-search="meta ads google ads">
+<div class="cmp-card-title">Meta Ads vs Google Ads</div>
+<div class="cmp-card-topic">Paid Ads</div>
+<div class="cmp-card-summary">Interrupt-based vs intent-based paid advertising.</div>
+</a><a href="meta-vs-youtube.html" class="cmp-card" data-topic="Paid Ads" data-search="meta ads youtube ads">
+<div class="cmp-card-title">Meta Ads vs YouTube Ads</div>
+<div class="cmp-card-topic">Paid Ads</div>
+<div class="cmp-card-summary">Short-form interrupt feed vs longer-form video platform.</div>
+</a><a href="milvus-vs-pinecone.html" class="cmp-card" data-topic="Vector DBs" data-search="milvus pinecone">
+<div class="cmp-card-title">Milvus vs Pinecone</div>
+<div class="cmp-card-topic">Vector DBs</div>
+<div class="cmp-card-summary">Enterprise open-source vs managed leader.</div>
+</a><a href="mixpanel-vs-amplitude.html" class="cmp-card" data-topic="Analytics" data-search="mixpanel amplitude">
+<div class="cmp-card-title">Mixpanel vs Amplitude</div>
+<div class="cmp-card-topic">Analytics</div>
+<div class="cmp-card-summary">Two similar product analytics platforms.</div>
+</a><a href="notion-vs-linear.html" class="cmp-card" data-topic="Productivity" data-search="notion linear">
+<div class="cmp-card-title">Notion vs Linear</div>
+<div class="cmp-card-topic">Productivity</div>
+<div class="cmp-card-summary">Docs + databases vs issue tracker.</div>
+</a><a href="notion-vs-obsidian.html" class="cmp-card" data-topic="Notes" data-search="notion obsidian">
+<div class="cmp-card-title">Notion vs Obsidian</div>
+<div class="cmp-card-topic">Notes</div>
+<div class="cmp-card-summary">Cloud-first notes/database vs local-first linked notes.</div>
+</a><a href="notion-ai-vs-chatgpt.html" class="cmp-card" data-topic="AI Writing" data-search="notion ai chatgpt">
+<div class="cmp-card-title">Notion AI vs ChatGPT</div>
+<div class="cmp-card-topic">AI Writing</div>
+<div class="cmp-card-summary">In-app AI in Notion vs standalone AI chat.</div>
+</a><a href="openai-embed-vs-voyage.html" class="cmp-card" data-topic="Embeddings" data-search="openai text-embedding-3 voyage-3">
+<div class="cmp-card-title">OpenAI text-embedding-3 vs Voyage-3</div>
+<div class="cmp-card-topic">Embeddings</div>
+<div class="cmp-card-summary">Both flagship embedding APIs. Different strengths.</div>
+</a><a href="openai-embed-vs-cohere.html" class="cmp-card" data-topic="Embeddings" data-search="openai text-embedding-3 cohere embed-v3">
+<div class="cmp-card-title">OpenAI text-embedding-3 vs Cohere embed-v3</div>
+<div class="cmp-card-topic">Embeddings</div>
+<div class="cmp-card-summary">Two managed embedding APIs.</div>
+</a><a href="pgvector-vs-pinecone.html" class="cmp-card" data-topic="Vector DBs" data-search="pgvector pinecone">
+<div class="cmp-card-title">pgvector vs Pinecone</div>
+<div class="cmp-card-topic">Vector DBs</div>
+<div class="cmp-card-summary">Postgres extension vs dedicated vector DB.</div>
+</a><a href="pinecone-vs-weaviate.html" class="cmp-card" data-topic="Vector DBs" data-search="pinecone weaviate">
+<div class="cmp-card-title">Pinecone vs Weaviate</div>
+<div class="cmp-card-topic">Vector DBs</div>
+<div class="cmp-card-summary">Two of the most popular vector databases. Different posture on managed vs open-source.</div>
+</a><a href="pinecone-vs-qdrant.html" class="cmp-card" data-topic="Vector DBs" data-search="pinecone qdrant">
+<div class="cmp-card-title">Pinecone vs Qdrant</div>
+<div class="cmp-card-topic">Vector DBs</div>
+<div class="cmp-card-summary">Managed leader vs open-source leader. Different cost curves.</div>
+</a><a href="pipedrive-vs-hubspot.html" class="cmp-card" data-topic="CRM" data-search="pipedrive hubspot">
+<div class="cmp-card-title">Pipedrive vs HubSpot</div>
+<div class="cmp-card-topic">CRM</div>
+<div class="cmp-card-summary">Sales-focused lean CRM vs full-stack marketing+sales+service.</div>
+</a><a href="postgres-vs-mongodb.html" class="cmp-card" data-topic="Databases" data-search="postgres mongodb">
+<div class="cmp-card-title">Postgres vs MongoDB</div>
+<div class="cmp-card-topic">Databases</div>
+<div class="cmp-card-summary">Relational workhorse vs document database.</div>
+</a><a href="posthog-vs-amplitude.html" class="cmp-card" data-topic="Product Analytics" data-search="posthog amplitude">
+<div class="cmp-card-title">PostHog vs Amplitude</div>
+<div class="cmp-card-topic">Product Analytics</div>
+<div class="cmp-card-summary">Open-source product analytics vs managed leader.</div>
+</a><a href="pytorch-vs-tensorflow.html" class="cmp-card" data-topic="ML Frameworks" data-search="pytorch tensorflow">
+<div class="cmp-card-title">PyTorch vs TensorFlow</div>
+<div class="cmp-card-topic">ML Frameworks</div>
+<div class="cmp-card-summary">Research-friendly vs production-hardened ML frameworks.</div>
+</a><a href="rag-vs-finetuning.html" class="cmp-card" data-topic="AI Techniques" data-search="rag fine-tuning">
+<div class="cmp-card-title">RAG vs Fine-tuning</div>
+<div class="cmp-card-topic">AI Techniques</div>
+<div class="cmp-card-summary">Retrieval-augmented generation vs fine-tuning an LLM.</div>
+</a><a href="rag-vs-long-context.html" class="cmp-card" data-topic="AI Techniques" data-search="rag long-context window">
+<div class="cmp-card-title">RAG vs Long-context window</div>
+<div class="cmp-card-topic">AI Techniques</div>
+<div class="cmp-card-summary">Fetch-relevant-context vs stuff-everything-in-context.</div>
+</a><a href="redis-vs-memcached.html" class="cmp-card" data-topic="Caching" data-search="redis memcached">
+<div class="cmp-card-title">Redis vs Memcached</div>
+<div class="cmp-card-topic">Caching</div>
+<div class="cmp-card-summary">Full-featured vs minimal in-memory cache.</div>
+</a><a href="salesloft-vs-outreach.html" class="cmp-card" data-topic="Sales Engagement" data-search="salesloft outreach">
+<div class="cmp-card-title">Salesloft vs Outreach</div>
+<div class="cmp-card-topic">Sales Engagement</div>
+<div class="cmp-card-summary">The two enterprise sales engagement platforms.</div>
+</a><a href="screaming-frog-vs-sitebulb.html" class="cmp-card" data-topic="SEO Tools" data-search="screaming frog sitebulb">
+<div class="cmp-card-title">Screaming Frog vs Sitebulb</div>
+<div class="cmp-card-topic">SEO Tools</div>
+<div class="cmp-card-summary">Two technical SEO crawlers.</div>
+</a><a href="sendgrid-vs-postmark.html" class="cmp-card" data-topic="Transactional Email" data-search="sendgrid postmark">
+<div class="cmp-card-title">SendGrid vs Postmark</div>
+<div class="cmp-card-topic">Transactional Email</div>
+<div class="cmp-card-summary">Volume-focused vs deliverability-focused.</div>
+</a><a href="shopify-vs-woocommerce.html" class="cmp-card" data-topic="Ecommerce Platforms" data-search="shopify woocommerce">
+<div class="cmp-card-title">Shopify vs WooCommerce</div>
+<div class="cmp-card-topic">Ecommerce Platforms</div>
+<div class="cmp-card-summary">Hosted SaaS vs WordPress plugin.</div>
+</a><a href="slack-vs-teams.html" class="cmp-card" data-topic="Communication" data-search="slack microsoft teams">
+<div class="cmp-card-title">Slack vs Microsoft Teams</div>
+<div class="cmp-card-topic">Communication</div>
+<div class="cmp-card-summary">Developer-friendly vs enterprise-integrated chat.</div>
+</a><a href="snowflake-vs-bigquery.html" class="cmp-card" data-topic="Data Warehouses" data-search="snowflake bigquery">
+<div class="cmp-card-title">Snowflake vs BigQuery</div>
+<div class="cmp-card-topic">Data Warehouses</div>
+<div class="cmp-card-summary">Multi-cloud vs Google's native warehouse.</div>
+</a><a href="stripe-vs-paypal.html" class="cmp-card" data-topic="Payments" data-search="stripe paypal">
+<div class="cmp-card-title">Stripe vs PayPal</div>
+<div class="cmp-card-topic">Payments</div>
+<div class="cmp-card-summary">Developer-first vs consumer-first payment processor.</div>
+</a><a href="substack-vs-beehiiv.html" class="cmp-card" data-topic="Newsletters" data-search="substack beehiiv">
+<div class="cmp-card-title">Substack vs Beehiiv</div>
+<div class="cmp-card-topic">Newsletters</div>
+<div class="cmp-card-summary">Paid newsletters focus vs creator growth focus.</div>
+</a><a href="supabase-vs-firebase.html" class="cmp-card" data-topic="BaaS" data-search="supabase firebase">
+<div class="cmp-card-title">Supabase vs Firebase</div>
+<div class="cmp-card-topic">BaaS</div>
+<div class="cmp-card-summary">Open-source Postgres-based BaaS vs Google's closed-source BaaS.</div>
+</a><a href="tailwind-vs-bootstrap.html" class="cmp-card" data-topic="CSS Frameworks" data-search="tailwind css bootstrap">
+<div class="cmp-card-title">Tailwind CSS vs Bootstrap</div>
+<div class="cmp-card-topic">CSS Frameworks</div>
+<div class="cmp-card-summary">Utility-first vs component-first CSS.</div>
+</a><a href="telegram-vs-whatsapp.html" class="cmp-card" data-topic="Messaging" data-search="telegram whatsapp">
+<div class="cmp-card-title">Telegram vs WhatsApp</div>
+<div class="cmp-card-topic">Messaging</div>
+<div class="cmp-card-summary">Power-user messenger vs dominant global messenger.</div>
+</a><a href="tiktok-vs-meta.html" class="cmp-card" data-topic="Paid Ads" data-search="tiktok ads meta ads">
+<div class="cmp-card-title">TikTok Ads vs Meta Ads</div>
+<div class="cmp-card-topic">Paid Ads</div>
+<div class="cmp-card-summary">The two big social ad platforms. Different creative rules, different audiences.</div>
+</a><a href="triple-whale-vs-northbeam.html" class="cmp-card" data-topic="Attribution" data-search="triple whale northbeam">
+<div class="cmp-card-title">Triple Whale vs Northbeam</div>
+<div class="cmp-card-topic">Attribution</div>
+<div class="cmp-card-summary">DTC-focused attribution tools.</div>
+</a><a href="triple-whale-vs-rockerbox.html" class="cmp-card" data-topic="Attribution" data-search="triple whale rockerbox">
+<div class="cmp-card-title">Triple Whale vs Rockerbox</div>
+<div class="cmp-card-topic">Attribution</div>
+<div class="cmp-card-summary">DTC-focused vs enterprise-focused attribution.</div>
+</a><a href="vercel-vs-netlify.html" class="cmp-card" data-topic="Hosting" data-search="vercel netlify">
+<div class="cmp-card-title">Vercel vs Netlify</div>
+<div class="cmp-card-topic">Hosting</div>
+<div class="cmp-card-summary">Two leading frontend/JAMstack hosts.</div>
+</a><a href="warmy-vs-mailwarm.html" class="cmp-card" data-topic="Email Warming" data-search="warmy mailwarm">
+<div class="cmp-card-title">Warmy vs Mailwarm</div>
+<div class="cmp-card-topic">Email Warming</div>
+<div class="cmp-card-summary">Two dedicated inbox warming services.</div>
+</a><a href="weaviate-vs-qdrant.html" class="cmp-card" data-topic="Vector DBs" data-search="weaviate qdrant">
+<div class="cmp-card-title">Weaviate vs Qdrant</div>
+<div class="cmp-card-topic">Vector DBs</div>
+<div class="cmp-card-summary">Two strong open-source vector DBs with different design tradeoffs.</div>
+</a><a href="zapier-vs-make.html" class="cmp-card" data-topic="Automation" data-search="zapier make">
+<div class="cmp-card-title">Zapier vs Make</div>
+<div class="cmp-card-topic">Automation</div>
+<div class="cmp-card-summary">Two leading automation platforms.</div>
+</a><a href="zoom-vs-google-meet.html" class="cmp-card" data-topic="Video Conferencing" data-search="zoom google meet">
+<div class="cmp-card-title">Zoom vs Google Meet</div>
+<div class="cmp-card-topic">Video Conferencing</div>
+<div class="cmp-card-summary">Dedicated video conferencing vs Google Workspace bundle.</div>
+</a></div>
+</div>
+
+<script>
+(function(){
+    const chips = document.querySelectorAll('.cmp-chip');
+    const cards = document.querySelectorAll('.cmp-card');
+    const count = document.getElementById('cmp-count');
+    let activeTopic = 'all';
+    function apply() {
+        let shown = 0;
+        cards.forEach(c => {
+            const topic = c.dataset.topic;
+            const match = activeTopic === 'all' || topic === activeTopic;
+            c.classList.toggle('hidden', !match);
+            if (match) shown++;
+        });
+        count.textContent = shown;
+    }
+    chips.forEach(ch => ch.addEventListener('click', () => {
+        chips.forEach(c => c.classList.remove('active'));
+        ch.classList.add('active');
+        activeTopic = ch.dataset.topic;
+        apply();
+    }));
+})();
+</script><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a></p>
+</div></footer></body></html>

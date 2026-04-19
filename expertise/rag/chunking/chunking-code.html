@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chunking code | Samuel Ochoa</title>
+<meta name="description" content="Code is not prose. Function, class, and file boundaries matter more than line counts. Here's how to chunk code for retrieval without destroying its structure.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Chunking code | Samuel Ochoa">
+<meta property="og:description" content="Code is not prose. Function, class, and file boundaries matter more than line counts. Here's how to chunk code for retrieval without destroying its structure.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../about.html">About</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>RAGS to Riches (56 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-rag.html">What is RAG?</a></li><li><a href="foundations/why-rag.html">Why RAG over fine-tuning</a></li><li><a href="foundations/the-architecture.html">The RAG architecture map</a></li><li><a href="foundations/when-not-to-use.html">When not to use RAG</a></li></ul><h4>Documents + Ingestion</h4><ul><li><a href="docs/ingestion-pipeline.html">The ingestion pipeline</a></li><li><a href="docs/parsing-pdfs.html">Parsing PDFs</a></li><li><a href="docs/parsing-html.html">Parsing HTML + web pages</a></li><li><a href="docs/tables-figures.html">Tables and figures</a></li><li><a href="docs/ocr.html">OCR for scanned documents</a></li><li><a href="docs/metadata.html">Metadata extraction</a></li></ul><h4>Chunking</h4><ul><li><a href="chunking/why-chunking.html">Why chunking matters</a></li><li><a href="chunking/fixed-size.html">Fixed-size chunking</a></li><li><a href="chunking/semantic.html">Semantic chunking</a></li><li><a href="chunking/recursive.html">Recursive chunking</a></li><li><a href="chunking/structure-aware.html">Structure-aware chunking</a></li><li><a href="chunking/chunking-code.html" class="active">Chunking code</a></li></ul><h4>Embeddings</h4><ul><li><a href="embeddings/what-are-embeddings.html">What embeddings are</a></li><li><a href="embeddings/picking-a-model.html">Picking an embedding model</a></li><li><a href="embeddings/closed-vs-open.html">Closed vs open models</a></li><li><a href="embeddings/dimensions-cost.html">Dimensions, cost, and MRL</a></li><li><a href="embeddings/fine-tuning.html">Fine-tuning embeddings</a></li></ul><h4>Vector Stores</h4><ul><li><a href="vectors/overview.html">Vector database overview</a></li><li><a href="vectors/indexing-strategies.html">HNSW, IVF, PQ</a></li><li><a href="vectors/hybrid-search.html">Hybrid search</a></li><li><a href="vectors/metadata-filtering.html">Metadata filtering</a></li><li><a href="vectors/cost-optimization.html">Cost optimization</a></li><li><a href="vectors/choosing-a-db.html">Choosing a vector DB</a></li></ul><h4>Retrieval Strategies</h4><ul><li><a href="retrieval/vector-search.html">Vector similarity search</a></li><li><a href="retrieval/bm25-sparse.html">BM25 and sparse retrieval</a></li><li><a href="retrieval/hybrid.html">Hybrid retrieval</a></li><li><a href="retrieval/reranking.html">Reranking</a></li><li><a href="retrieval/query-rewriting.html">Query rewriting</a></li><li><a href="retrieval/hyde.html">HyDE</a></li><li><a href="retrieval/multi-query.html">Multi-query + fusion</a></li></ul><h4>Advanced Patterns</h4><ul><li><a href="advanced/agentic-rag.html">Agentic RAG</a></li><li><a href="advanced/graph-rag.html">GraphRAG</a></li><li><a href="advanced/adaptive-rag.html">Adaptive RAG</a></li><li><a href="advanced/corrective-rag.html">Corrective RAG (CRAG)</a></li><li><a href="advanced/self-rag.html">Self-RAG</a></li><li><a href="advanced/multi-hop.html">Multi-hop RAG</a></li></ul><h4>Evaluation</h4><ul><li><a href="eval/why-eval.html">Why evaluation is critical</a></li><li><a href="eval/retrieval-metrics.html">Retrieval metrics</a></li><li><a href="eval/generation-metrics.html">Generation metrics</a></li><li><a href="eval/ragas-and-frameworks.html">RAGAS, TruLens, ARES</a></li><li><a href="eval/building-eval-datasets.html">Building eval datasets</a></li></ul><h4>Production</h4><ul><li><a href="prod/latency.html">Latency optimization</a></li><li><a href="prod/caching.html">Caching strategies</a></li><li><a href="prod/observability.html">Observability and tracing</a></li><li><a href="prod/cost.html">Cost management</a></li><li><a href="prod/security.html">Security and prompt injection</a></li></ul><h4>Use Cases</h4><ul><li><a href="cases/customer-support.html">Customer support RAG</a></li><li><a href="cases/internal-kb.html">Internal knowledge RAG</a></li><li><a href="cases/code-rag.html">Code search + generation</a></li><li><a href="cases/legal-compliance.html">Legal and compliance</a></li><li><a href="cases/multi-tenant.html">Multi-tenant RAG</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">RAGS to Riches</a><span class="sep">›</span><span>Chunking code</span></div><h1 class="title">Chunking code</h1><div class="article-meta"><span>📖 5 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">Code has syntax and structure that prose doesn't. Fixed-size chunking of a Python file can split a function in the middle, which makes both halves useless for retrieval. Chunking code needs its own rules, and the rules are straightforward once you accept that code is not prose.</p>
+
+<h2>The principle</h2>
+<p>Code chunks should align with semantic units of the language:</p>
+<ul>
+  <li>Functions</li>
+  <li>Classes</li>
+  <li>Methods</li>
+  <li>Modules (for small files)</li>
+  <li>Logical blocks (for scripts without functions)</li>
+</ul>
+
+<p>Never split a function across two chunks. Never put half a class definition in one chunk and half in another.</p>
+
+<h2>Language-aware parsers</h2>
+
+<h3>Tree-sitter</h3>
+<p>Industry-standard incremental parser with grammars for 100+ languages. Produces concrete syntax trees from source code. The backbone of most serious code-chunking implementations.</p>
+
+<h3>LangChain CodeSplitter</h3>
+<p>Uses tree-sitter under the hood for common languages. Works for prototyping.</p>
+
+<h3>Language-specific AST tools</h3>
+<ul>
+  <li>Python: <code>ast</code> module</li>
+  <li>JavaScript/TypeScript: <code>@babel/parser</code>, tsc's compiler API</li>
+  <li>Go: <code>go/ast</code></li>
+  <li>Rust: <code>syn</code></li>
+  <li>Java: JavaParser</li>
+</ul>
+
+<h2>The chunking strategy by code type</h2>
+
+<h3>Small file (&lt; 500 tokens)</h3>
+<p>One chunk for the whole file.</p>
+
+<h3>Medium file (500-2000 tokens)</h3>
+<p>One chunk per top-level definition (function, class, module). Keep imports and file-level context attached to the first chunk.</p>
+
+<h3>Large file (&gt; 2000 tokens)</h3>
+<p>Split by class or function. For large classes, one chunk per method with class signature prepended as context.</p>
+
+<h3>Monolithic function (rare but real)</h3>
+<p>If a single function exceeds chunk size, split by logical blocks (while respecting brace matching). This is a code smell anyway, surface it in documentation.</p>
+
+<h2>Context enrichment</h2>
+<p>Each code chunk benefits from surrounding context:</p>
+<ul>
+  <li>File path and project structure</li>
+  <li>Class signature (for method chunks)</li>
+  <li>Import statements from the same file</li>
+  <li>Module docstring</li>
+  <li>Immediate preceding/following functions (for cross-reference understanding)</li>
+</ul>
+
+<p>Pattern: prepend a context header to each chunk:</p>
+
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:12px;">
+# File: services/payments/processor.py
+# Module docstring: Handles payment processing and refunds.
+# Class: PaymentProcessor
+# Imports: stripe, pydantic, ..repositories.orders
+
+def process_refund(self, order_id: str, amount: Decimal) -&gt; RefundResult:
+    ...
+</pre>
+
+<h2>Embedding models for code</h2>
+<p>General-purpose text embeddings work for code but not optimally. Code-specific embedding models include:</p>
+<ul>
+  <li><strong>Voyage Code</strong> - optimized for code retrieval</li>
+  <li><strong>OpenAI text-embedding-3-large</strong> with code-specific prompting</li>
+  <li><strong>CodeBERT, GraphCodeBERT</strong> - research models</li>
+  <li><strong>jina-embeddings-v2-base-code</strong> - open-source code embeddings</li>
+</ul>
+
+<p>For systems that primarily retrieve code, a code-specific embedding model typically gives 15-30% better retrieval quality.</p>
+
+<h2>Code + docs hybrid</h2>
+<p>Most documentation RAG systems need to retrieve across code AND prose:</p>
+<ul>
+  <li>API reference docs (prose)</li>
+  <li>Code examples (code)</li>
+  <li>Error messages and their causes (mixed)</li>
+  <li>Changelog and migration guides (prose with embedded code)</li>
+</ul>
+
+<p>Strategy: chunk prose and code with their respective strategies, embed everything into the same index with element_type metadata. At retrieval, you can optionally filter or boost by type depending on query intent.</p>
+
+<h2>Code search use case specifics</h2>
+<p>If the use case is "find the function that does X" (semantic code search):</p>
+<ul>
+  <li>Embed function name + signature + docstring + body as the chunk</li>
+  <li>For very large bodies, emit a second chunk with just name + signature + docstring (higher weight for name-based queries)</li>
+  <li>Include function invocations in the chunk context (helps with "how is this used" queries)</li>
+</ul>
+
+<h2>The common mistakes</h2>
+<ul>
+  <li>Using prose chunking defaults on code (splits functions)</li>
+  <li>Treating code and comments as separate chunks (they reinforce each other)</li>
+  <li>Dropping imports (they encode dependencies)</li>
+  <li>Ignoring file structure (a function's meaning depends on what file it's in)</li>
+</ul>
+
+<p style="margin-top:40px;">Next: <a href="../embeddings/what-are-embeddings.html">What embeddings are</a>.</p>
+<div class="prev-next"><a href="structure-aware.html" class="prev"><div class="label">← Previous</div><div class="title">Structure-aware chunking</div></a><a href="../embeddings/what-are-embeddings.html" class="next"><div class="label">Next →</div><div class="title">What embeddings are</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a></p>
+</div></footer></body></html>

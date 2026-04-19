@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Permissions | Samuel Ochoa</title>
+<meta name="description" content="Designing an allow/deny permission model that lets the agent move fast without breaking things.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Permissions | Samuel Ochoa">
+<meta property="og:description" content="Designing an allow/deny permission model that lets the agent move fast without breaking things.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../index.html">Home</a>
+<a href="../../framework/index.html" class="active">Framework</a>
+<a href="../expertise/index.html">Expertise</a>
+<a href="../playbooks/index.html">Playbooks</a>
+<a href="../writing.html">Writing</a>
+<a href="../../about.html">About</a>
+<a href="../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="what-is-autonomous-ai.html">What is autonomous AI</a></li><li><a href="the-autonomy-spectrum.html">The autonomy spectrum</a></li><li><a href="glossary.html">Glossary</a></li></ul><h4>Claude</h4><ul><li><a href="claude/overview.html">Overview</a></li><li><a href="claude/prompting-for-agents.html">Prompting for agents</a></li><li><a href="claude/extended-thinking.html">Extended thinking</a></li><li><a href="claude/tool-use.html">Tool use</a></li></ul><h4>MCP</h4><ul><li><a href="mcp/index.html">Overview</a></li><li><a href="mcp/what-is-mcp.html">What is MCP</a></li><li><a href="mcp/anatomy.html">Anatomy</a></li><li><a href="mcp/transports.html">Transports</a></li><li><a href="mcp/servers.html">Servers</a></li><li><a href="mcp/clients.html">Clients</a></li><li><a href="mcp/security.html">Security</a></li><li><a href="mcp/directory.html">Directory</a></li></ul><h4>Plugins</h4><ul><li><a href="plugins/index.html">Overview</a></li><li><a href="plugins/vs-mcp.html">Plugins vs MCP</a></li><li><a href="plugins/marketplace.html">Marketplace</a></li></ul><h4>Claude Code</h4><ul><li><a href="claude-code/index.html">Overview</a></li><li><a href="claude-code/settings.html">Settings</a></li><li><a href="claude-code/permissions.html" class="active">Permissions</a></li><li><a href="claude-code/hooks.html">Hooks</a></li><li><a href="claude-code/skills.html">Skills</a></li><li><a href="claude-code/memory.html">Memory</a></li></ul><h4>Patterns</h4><ul><li><a href="patterns/index.html">Overview</a></li><li><a href="patterns/react-loop.html">ReAct loop</a></li><li><a href="patterns/plan-execute.html">Plan-execute</a></li><li><a href="patterns/multi-agent.html">Multi-agent</a></li><li><a href="patterns/evaluation.html">Evaluation</a></li><li><a href="patterns/prompt-caching.html">Prompt caching</a></li></ul><h4>Autonomous</h4><ul><li><a href="autonomous/index.html">Overview</a></li><li><a href="autonomous/headless.html">Headless</a></li><li><a href="autonomous/scheduling.html">Scheduling</a></li><li><a href="autonomous/self-monitoring.html">Self-monitoring</a></li><li><a href="autonomous/safety.html">Safety</a></li></ul><h4>Build Guides</h4><ul><li><a href="build/index.html">Overview</a></li><li><a href="build/first-agent.html">First agent (60 min)</a></li><li><a href="build/voice-agent.html">Voice agent</a></li><li><a href="build/research-agent.html">Research agent</a></li></ul><h4>Tools</h4><ul><li><a href="tools/browser-automation.html">Browser automation</a></li><li><a href="tools/desktop-control.html">Desktop control</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Framework</a><span class="sep">›</span><a href="../claude-code/index.html">Claude Code</a><span class="sep">›</span><span>Permissions</span></div><h1 class="title" style="font-size:clamp(32px,4.5vw,42px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">Permissions</h1><div class="article-meta"><span>📖 5 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">Permissions are the difference between a fast autonomous agent and a fast autonomous disaster. Designing them well is the single highest-leverage config decision you'll make.</p>
+
+<h2>The three modes</h2>
+<ul>
+  <li><strong>manual</strong>, every tool call requires explicit approval. Safe. Slow.</li>
+  <li><strong>auto</strong>, pre-approved actions run; unknown actions prompt. The default for real work.</li>
+  <li><strong>plan</strong>, generate a plan first, user approves plan, execute.</li>
+</ul>
+
+<h2>Allow lists, what to say yes to</h2>
+<p>Think in tiers:</p>
+
+<h3>Always safe (allow widely)</h3>
+<ul>
+  <li><code>Read</code>, <code>Glob</code>, <code>Grep</code>, reading files</li>
+  <li><code>Bash(ls:*)</code>, <code>Bash(cat:*)</code>, <code>Bash(head:*)</code>, <code>Bash(tail:*)</code></li>
+  <li><code>Bash(git status)</code>, <code>Bash(git log:*)</code>, <code>Bash(git diff:*)</code></li>
+  <li>Information-gathering MCPs: <code>mcp__search__*</code>, <code>mcp__docs__*</code></li>
+</ul>
+
+<h3>Mostly safe (allow with patterns)</h3>
+<ul>
+  <li><code>Edit</code>, <code>Write</code>, file modifications</li>
+  <li><code>Bash(npm install:*)</code>, <code>Bash(bun install:*)</code>, dependency installs (within trusted dirs)</li>
+  <li><code>Bash(git add:*)</code>, <code>Bash(git commit:*)</code>, local git work</li>
+  <li>Most MCP read operations</li>
+</ul>
+
+<h3>Risky, require explicit approval</h3>
+<ul>
+  <li><code>Bash(git push:*)</code>, pushes to remote</li>
+  <li><code>Bash(curl:*)</code> with POST to unknown endpoints</li>
+  <li>MCP tools that modify external state: <code>mcp__github__create_pr</code>, <code>mcp__stripe__charge</code></li>
+  <li>Anything touching production systems</li>
+</ul>
+
+<h3>Never, deny always</h3>
+<ul>
+  <li><code>Bash(sudo:*)</code>, no</li>
+  <li><code>Bash(rm -rf:*)</code>, no</li>
+  <li><code>Bash(security dump-keychain:*)</code>, keychain exfiltration</li>
+  <li>MCP <code>delete_*</code> patterns on production services</li>
+  <li><code>Bash(dd:*)</code>, <code>mkfs:*</code>, <code>diskutil erase*</code>, destructive disk ops</li>
+</ul>
+
+<h2>Pattern syntax</h2>
+<p>Allow/deny entries use a specific pattern syntax:</p>
+<ul>
+  <li><code>Bash(ls)</code>, exactly <code>ls</code> with no args</li>
+  <li><code>Bash(ls:*)</code>. <code>ls</code> with any args</li>
+  <li><code>mcp__notion__*</code>, any tool from the notion MCP</li>
+  <li><code>Edit</code>, allow the built-in Edit tool (no pattern needed, it's a non-Bash tool)</li>
+</ul>
+
+<h2>The deny list always wins</h2>
+<p>If a call matches both an allow pattern and a deny pattern, it's denied. Use this: broad allows + surgical denies.</p>
+
+<pre><code>"allow": ["Bash(git:*)"],
+"deny": ["Bash(git push:*)", "Bash(git reset --hard:*)"]</code></pre>
+<p>Result: agent can do all git operations except push and hard-reset.</p>
+
+<h2>Auto mode strategy</h2>
+<p>The goal of auto mode is "zero interruptions for 95% of work." Design it in two passes:</p>
+<ol>
+  <li><strong>Start conservative.</strong> Small allow list: read-only tools, safe shell commands, known MCPs.</li>
+  <li><strong>Expand on friction.</strong> Every time you approve the same thing twice, consider adding it to the allow list.</li>
+</ol>
+<p>The <code>/fewer-permission-prompts</code> skill in Claude Code can analyze your recent session history and suggest allow-list additions.</p>
+
+<h2>Per-project permissions</h2>
+<p>Drop a <code>.claude/settings.json</code> in a project directory to override permissions for that project. Useful for prod repos (stricter) vs, playground repos (looser).</p>
+
+<h2>Audit log</h2>
+<p>Claude Code records every tool call. Review periodically. If something surprising got auto-approved, tighten the allow list.</p>
+
+<div class="callout insight">
+  <strong>Insight:</strong> A good permission model is felt as <em>absence</em>, absence of interruptions, absence of surprises. If you're constantly either approving things or getting surprised, your list needs work.
+</div>
+<div class="prev-next"><a href="settings.html" class="prev"><div class="label">← Previous</div><div class="title">Settings</div></a><a href="hooks.html" class="next"><div class="label">Next →</div><div class="title">Hooks</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../framework/index.html">Framework</a></p>
+</div></footer></body></html>

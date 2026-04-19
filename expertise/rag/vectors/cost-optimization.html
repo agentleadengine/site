@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cost optimization | Samuel Ochoa</title>
+<meta name="description" content="Vector storage and retrieval can get expensive at scale. Here are the levers I pull to reduce cost without killing quality.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cost optimization | Samuel Ochoa">
+<meta property="og:description" content="Vector storage and retrieval can get expensive at scale. Here are the levers I pull to reduce cost without killing quality.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../about.html">About</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>RAGS to Riches (56 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-rag.html">What is RAG?</a></li><li><a href="foundations/why-rag.html">Why RAG over fine-tuning</a></li><li><a href="foundations/the-architecture.html">The RAG architecture map</a></li><li><a href="foundations/when-not-to-use.html">When not to use RAG</a></li></ul><h4>Documents + Ingestion</h4><ul><li><a href="docs/ingestion-pipeline.html">The ingestion pipeline</a></li><li><a href="docs/parsing-pdfs.html">Parsing PDFs</a></li><li><a href="docs/parsing-html.html">Parsing HTML + web pages</a></li><li><a href="docs/tables-figures.html">Tables and figures</a></li><li><a href="docs/ocr.html">OCR for scanned documents</a></li><li><a href="docs/metadata.html">Metadata extraction</a></li></ul><h4>Chunking</h4><ul><li><a href="chunking/why-chunking.html">Why chunking matters</a></li><li><a href="chunking/fixed-size.html">Fixed-size chunking</a></li><li><a href="chunking/semantic.html">Semantic chunking</a></li><li><a href="chunking/recursive.html">Recursive chunking</a></li><li><a href="chunking/structure-aware.html">Structure-aware chunking</a></li><li><a href="chunking/chunking-code.html">Chunking code</a></li></ul><h4>Embeddings</h4><ul><li><a href="embeddings/what-are-embeddings.html">What embeddings are</a></li><li><a href="embeddings/picking-a-model.html">Picking an embedding model</a></li><li><a href="embeddings/closed-vs-open.html">Closed vs open models</a></li><li><a href="embeddings/dimensions-cost.html">Dimensions, cost, and MRL</a></li><li><a href="embeddings/fine-tuning.html">Fine-tuning embeddings</a></li></ul><h4>Vector Stores</h4><ul><li><a href="vectors/overview.html">Vector database overview</a></li><li><a href="vectors/indexing-strategies.html">HNSW, IVF, PQ</a></li><li><a href="vectors/hybrid-search.html">Hybrid search</a></li><li><a href="vectors/metadata-filtering.html">Metadata filtering</a></li><li><a href="vectors/cost-optimization.html" class="active">Cost optimization</a></li><li><a href="vectors/choosing-a-db.html">Choosing a vector DB</a></li></ul><h4>Retrieval Strategies</h4><ul><li><a href="retrieval/vector-search.html">Vector similarity search</a></li><li><a href="retrieval/bm25-sparse.html">BM25 and sparse retrieval</a></li><li><a href="retrieval/hybrid.html">Hybrid retrieval</a></li><li><a href="retrieval/reranking.html">Reranking</a></li><li><a href="retrieval/query-rewriting.html">Query rewriting</a></li><li><a href="retrieval/hyde.html">HyDE</a></li><li><a href="retrieval/multi-query.html">Multi-query + fusion</a></li></ul><h4>Advanced Patterns</h4><ul><li><a href="advanced/agentic-rag.html">Agentic RAG</a></li><li><a href="advanced/graph-rag.html">GraphRAG</a></li><li><a href="advanced/adaptive-rag.html">Adaptive RAG</a></li><li><a href="advanced/corrective-rag.html">Corrective RAG (CRAG)</a></li><li><a href="advanced/self-rag.html">Self-RAG</a></li><li><a href="advanced/multi-hop.html">Multi-hop RAG</a></li></ul><h4>Evaluation</h4><ul><li><a href="eval/why-eval.html">Why evaluation is critical</a></li><li><a href="eval/retrieval-metrics.html">Retrieval metrics</a></li><li><a href="eval/generation-metrics.html">Generation metrics</a></li><li><a href="eval/ragas-and-frameworks.html">RAGAS, TruLens, ARES</a></li><li><a href="eval/building-eval-datasets.html">Building eval datasets</a></li></ul><h4>Production</h4><ul><li><a href="prod/latency.html">Latency optimization</a></li><li><a href="prod/caching.html">Caching strategies</a></li><li><a href="prod/observability.html">Observability and tracing</a></li><li><a href="prod/cost.html">Cost management</a></li><li><a href="prod/security.html">Security and prompt injection</a></li></ul><h4>Use Cases</h4><ul><li><a href="cases/customer-support.html">Customer support RAG</a></li><li><a href="cases/internal-kb.html">Internal knowledge RAG</a></li><li><a href="cases/code-rag.html">Code search + generation</a></li><li><a href="cases/legal-compliance.html">Legal and compliance</a></li><li><a href="cases/multi-tenant.html">Multi-tenant RAG</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">RAGS to Riches</a><span class="sep">›</span><span>Cost optimization</span></div><h1 class="title">Cost optimization</h1><div class="article-meta"><span>📖 5 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">A naive production RAG system scales cost linearly with corpus size and query volume. At 100M vectors and millions of monthly queries, that cost becomes real. Here are the cost levers, ranked by impact.</p>
+
+<h2>Storage costs</h2>
+
+<h3>1. Reduce dimensions</h3>
+<p>Use Matryoshka truncation to store 1024-dim vectors from a 3072-dim model. 3x storage savings, typically &lt;5% quality loss. See <a href="../embeddings/dimensions-cost.html">dimensions and cost</a>.</p>
+
+<h3>2. Quantize</h3>
+<p>int8 quantization: 4x savings, minimal quality loss. Binary quantization: 32x savings, larger quality loss but recoverable with reranking.</p>
+
+<h3>3. Prune redundant chunks</h3>
+<p>Many corpora have duplicate or near-duplicate content. Deduplicate at ingestion time. For news, blog archives, or documentation with multiple versions, this often removes 20-40% of the index.</p>
+
+<h3>4. Archive cold data</h3>
+<p>Separate recent/hot data from cold historical data. Put cold data on cheaper tiered storage or take it out of the active index. Serverless vector DBs (Turbopuffer, Pinecone serverless) price partly on access frequency.</p>
+
+<h2>Query costs</h2>
+
+<h3>5. Cache query embeddings</h3>
+<p>Common queries repeat. Cache the embedding of each query for 24 hours or until you re-embed the corpus. See <a href="../prod/caching.html">caching</a>.</p>
+
+<h3>6. Cache full retrieval results</h3>
+<p>For deterministic queries against an unchanged index, cache top-k results. Especially valuable for popular questions in customer-facing RAG.</p>
+
+<h3>7. Skip retrieval when possible</h3>
+<p>Use a lightweight classifier or the LLM itself to decide whether the query needs RAG. Trivial queries ("hi", "thanks", "can you help") don't require retrieval, serve them directly.</p>
+
+<h3>8. Reduce top-k when possible</h3>
+<p>Passing top-5 instead of top-20 cuts reranker and generation costs. Only increase top-k when reranking proves top-5 isn't enough.</p>
+
+<h2>Embedding costs</h2>
+
+<h3>9. Avoid needless reindexing</h3>
+<p>Don't re-embed unchanged chunks. Hash each chunk's content; only re-embed when hash changes.</p>
+
+<h3>10. Use cheaper embeddings for lower-value segments</h3>
+<p>Old archives, long-tail content, or low-volume segments can use cheaper embedding models. Hot content can use the premium model.</p>
+
+<h3>11. Self-host for bulk ingestion</h3>
+<p>At high volume, self-hosted embedding models beat API pricing. Even if you use an API for queries, batch ingestion can run on self-hosted infrastructure.</p>
+
+<h2>Reranker costs</h2>
+
+<h3>12. Rerank fewer candidates</h3>
+<p>Reranking top-50 is cheaper than top-200. If quality is adequate at smaller candidate sets, use them.</p>
+
+<h3>13. Use lighter rerankers</h3>
+<p>cross-encoder/ms-marco-MiniLM vs cross-encoder/ms-marco-electra-base: meaningful cost difference, smaller quality difference.</p>
+
+<h3>14. Skip reranking for high-confidence results</h3>
+<p>If dense retrieval returns a very high-scoring result (cosine &gt; 0.85, say), you may not need reranking. Test the threshold against your eval set.</p>
+
+<h2>Generation costs</h2>
+
+<h3>15. Route to smaller models</h3>
+<p>Use GPT-4o-mini, Claude Haiku, Gemini Flash for simple queries. Reserve large models for complex reasoning.</p>
+
+<h3>16. Trim context</h3>
+<p>If retrieved chunks contain boilerplate, trim it before sending to the generator. Every 100 tokens saved is real money at scale.</p>
+
+<h3>17. Summarize long contexts</h3>
+<p>When retrieved context is very long, a cheap summarization pass can produce a more focused input for the final answer generation.</p>
+
+<h2>Infrastructure costs</h2>
+
+<h3>18. Right-size the vector DB</h3>
+<p>Many teams over-provision. Measure actual query QPS and scale down. Serverless options scale to zero.</p>
+
+<h3>19. Consolidate indexes</h3>
+<p>Multiple small indexes have overhead. One index with metadata filters can be cheaper than ten tiny indexes.</p>
+
+<h3>20. Use managed when small, self-hosted when big</h3>
+<p>The crossover point for Pinecone vs Qdrant self-hosted is usually around $500-1500/month in usage. Do the math.</p>
+
+<h2>The budget hierarchy</h2>
+<p>For a typical production RAG system at moderate scale, the cost breakdown looks like:</p>
+<ul>
+  <li>40-60%: LLM generation (largest single cost for most systems)</li>
+  <li>15-25%: embedding generation (especially at ingestion and on reindexes)</li>
+  <li>10-20%: vector DB storage and queries</li>
+  <li>5-15%: reranker inference</li>
+  <li>5-10%: infrastructure (ingestion workers, monitoring, etc.)</li>
+</ul>
+
+<p>Optimize from biggest to smallest. No point shaving 10% off vector DB costs if generation is 10x bigger.</p>
+
+<h2>The quality-cost frontier</h2>
+<p>Every cost optimization has a quality cost. Maintain an eval set. Measure quality before and after each optimization. Ship only changes where the quality loss is acceptable.</p>
+
+<p>Without an eval set, cost optimization is gambling, you're reducing bills but also reducing quality invisibly.</p>
+
+<p style="margin-top:40px;">Next: <a href="choosing-a-db.html">Choosing a vector DB</a>.</p>
+<div class="prev-next"><a href="metadata-filtering.html" class="prev"><div class="label">← Previous</div><div class="title">Metadata filtering</div></a><a href="choosing-a-db.html" class="next"><div class="label">Next →</div><div class="title">Choosing a vector DB</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a></p>
+</div></footer></body></html>

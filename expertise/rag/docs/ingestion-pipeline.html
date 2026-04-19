@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The ingestion pipeline | Samuel Ochoa</title>
+<meta name="description" content="Ingestion is 80% of a real RAG system. Here's the pipeline pattern I use and the stages that matter most.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The ingestion pipeline | Samuel Ochoa">
+<meta property="og:description" content="Ingestion is 80% of a real RAG system. Here's the pipeline pattern I use and the stages that matter most.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../about.html">About</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>RAGS to Riches (56 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-rag.html">What is RAG?</a></li><li><a href="foundations/why-rag.html">Why RAG over fine-tuning</a></li><li><a href="foundations/the-architecture.html">The RAG architecture map</a></li><li><a href="foundations/when-not-to-use.html">When not to use RAG</a></li></ul><h4>Documents + Ingestion</h4><ul><li><a href="docs/ingestion-pipeline.html" class="active">The ingestion pipeline</a></li><li><a href="docs/parsing-pdfs.html">Parsing PDFs</a></li><li><a href="docs/parsing-html.html">Parsing HTML + web pages</a></li><li><a href="docs/tables-figures.html">Tables and figures</a></li><li><a href="docs/ocr.html">OCR for scanned documents</a></li><li><a href="docs/metadata.html">Metadata extraction</a></li></ul><h4>Chunking</h4><ul><li><a href="chunking/why-chunking.html">Why chunking matters</a></li><li><a href="chunking/fixed-size.html">Fixed-size chunking</a></li><li><a href="chunking/semantic.html">Semantic chunking</a></li><li><a href="chunking/recursive.html">Recursive chunking</a></li><li><a href="chunking/structure-aware.html">Structure-aware chunking</a></li><li><a href="chunking/chunking-code.html">Chunking code</a></li></ul><h4>Embeddings</h4><ul><li><a href="embeddings/what-are-embeddings.html">What embeddings are</a></li><li><a href="embeddings/picking-a-model.html">Picking an embedding model</a></li><li><a href="embeddings/closed-vs-open.html">Closed vs open models</a></li><li><a href="embeddings/dimensions-cost.html">Dimensions, cost, and MRL</a></li><li><a href="embeddings/fine-tuning.html">Fine-tuning embeddings</a></li></ul><h4>Vector Stores</h4><ul><li><a href="vectors/overview.html">Vector database overview</a></li><li><a href="vectors/indexing-strategies.html">HNSW, IVF, PQ</a></li><li><a href="vectors/hybrid-search.html">Hybrid search</a></li><li><a href="vectors/metadata-filtering.html">Metadata filtering</a></li><li><a href="vectors/cost-optimization.html">Cost optimization</a></li><li><a href="vectors/choosing-a-db.html">Choosing a vector DB</a></li></ul><h4>Retrieval Strategies</h4><ul><li><a href="retrieval/vector-search.html">Vector similarity search</a></li><li><a href="retrieval/bm25-sparse.html">BM25 and sparse retrieval</a></li><li><a href="retrieval/hybrid.html">Hybrid retrieval</a></li><li><a href="retrieval/reranking.html">Reranking</a></li><li><a href="retrieval/query-rewriting.html">Query rewriting</a></li><li><a href="retrieval/hyde.html">HyDE</a></li><li><a href="retrieval/multi-query.html">Multi-query + fusion</a></li></ul><h4>Advanced Patterns</h4><ul><li><a href="advanced/agentic-rag.html">Agentic RAG</a></li><li><a href="advanced/graph-rag.html">GraphRAG</a></li><li><a href="advanced/adaptive-rag.html">Adaptive RAG</a></li><li><a href="advanced/corrective-rag.html">Corrective RAG (CRAG)</a></li><li><a href="advanced/self-rag.html">Self-RAG</a></li><li><a href="advanced/multi-hop.html">Multi-hop RAG</a></li></ul><h4>Evaluation</h4><ul><li><a href="eval/why-eval.html">Why evaluation is critical</a></li><li><a href="eval/retrieval-metrics.html">Retrieval metrics</a></li><li><a href="eval/generation-metrics.html">Generation metrics</a></li><li><a href="eval/ragas-and-frameworks.html">RAGAS, TruLens, ARES</a></li><li><a href="eval/building-eval-datasets.html">Building eval datasets</a></li></ul><h4>Production</h4><ul><li><a href="prod/latency.html">Latency optimization</a></li><li><a href="prod/caching.html">Caching strategies</a></li><li><a href="prod/observability.html">Observability and tracing</a></li><li><a href="prod/cost.html">Cost management</a></li><li><a href="prod/security.html">Security and prompt injection</a></li></ul><h4>Use Cases</h4><ul><li><a href="cases/customer-support.html">Customer support RAG</a></li><li><a href="cases/internal-kb.html">Internal knowledge RAG</a></li><li><a href="cases/code-rag.html">Code search + generation</a></li><li><a href="cases/legal-compliance.html">Legal and compliance</a></li><li><a href="cases/multi-tenant.html">Multi-tenant RAG</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">RAGS to Riches</a><span class="sep">›</span><span>The ingestion pipeline</span></div><h1 class="title">The ingestion pipeline</h1><div class="article-meta"><span>📖 6 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">Ingestion is the unsexy 80% of any production RAG system. Demos skip it. Real systems live and die by it. If your ingestion is broken, no amount of retrieval sophistication saves you, you're doing advanced reasoning on garbage.</p>
+
+<h2>The canonical pipeline</h2>
+<ol>
+  <li><strong>Connect to source</strong> (API, filesystem, storage bucket, database)</li>
+  <li><strong>Detect changes</strong> (full, delta, or event-driven)</li>
+  <li><strong>Fetch raw document</strong> with auth and rate limiting</li>
+  <li><strong>Parse</strong> into structured text plus metadata</li>
+  <li><strong>Clean + normalize</strong> (boilerplate, encoding, whitespace)</li>
+  <li><strong>Enrich</strong> (extract entities, tags, summaries)</li>
+  <li><strong>Chunk</strong></li>
+  <li><strong>Embed</strong></li>
+  <li><strong>Upsert</strong> to index with metadata</li>
+  <li><strong>Log + monitor</strong></li>
+</ol>
+
+<h2>Full vs delta vs event-driven</h2>
+
+<h3>Full reindex</h3>
+<p>Simplest. Rebuild the entire index from scratch on a schedule. Safe, easy to reason about. Expensive and slow for large corpora. Okay up to ~100K documents or whenever the corpus fits in a nightly rebuild window.</p>
+
+<h3>Delta sync</h3>
+<p>Only re-ingest documents that changed since the last sync. Requires reliable change detection, last-modified timestamps, content hashes, or a change log from the source system. Most common pattern at medium scale.</p>
+
+<h3>Event-driven</h3>
+<p>Source system emits events (webhook, message queue, CDC stream) that trigger per-document updates. Near-real-time. Most complex to operate. Required when freshness matters in minutes rather than hours.</p>
+
+<p>Pick the least complex pattern that meets your freshness requirement. Most teams over-engineer this.</p>
+
+<h2>Idempotency</h2>
+<p>Every ingestion step must be safely retryable. Networks fail, parsers crash, embedding APIs rate-limit. The pipeline needs to handle partial failures without producing duplicate chunks or corrupted indexes.</p>
+
+<p>Implementation patterns:</p>
+<ul>
+  <li>Deterministic chunk IDs (hash of document ID + chunk position)</li>
+  <li>Upsert by ID, not insert</li>
+  <li>Store document-level metadata separately from chunk embeddings so you can reprocess chunks without re-fetching sources</li>
+  <li>Use a durable job queue (not in-memory tasks) for anything that runs longer than seconds</li>
+</ul>
+
+<h2>The change detection problem</h2>
+<p>Most RAG failures in production come from silent data drift: the source system changed, the pipeline didn't notice, and the index is stale.</p>
+
+<p>What to monitor:</p>
+<ul>
+  <li>Document count per source (sudden drops = upstream broken)</li>
+  <li>Time since last successful sync per source</li>
+  <li>Hash collisions or version mismatches</li>
+  <li>Failed parse rate per document type</li>
+  <li>Embedding failures</li>
+</ul>
+
+<h2>The permissions propagation problem</h2>
+<p>Documents in source systems have access controls. If you don't propagate those controls into your index, you'll leak data across tenants. Every chunk needs to carry its permission metadata from source to retrieval.</p>
+
+<p>Two main patterns:</p>
+<ul>
+  <li><strong>Static permissions at ingest:</strong> record who can see each chunk at ingestion time. Filter at query time. Fast but requires reindexing when permissions change.</li>
+  <li><strong>Dynamic permissions at query:</strong> store a reference to the source document, check permissions against the source system at query time. Slower but always accurate.</li>
+</ul>
+<p>Static with incremental permission sync is the common production compromise.</p>
+
+<h2>The "where did this come from" problem</h2>
+<p>Every chunk in your index must be traceable back to its source document. At minimum:</p>
+<ul>
+  <li>Source system identifier</li>
+  <li>Document ID in that system</li>
+  <li>Document URL (for citations and for the user)</li>
+  <li>Ingestion timestamp</li>
+  <li>Chunk position within the document</li>
+  <li>Embedding model version (so you know when to reindex)</li>
+</ul>
+
+<p>Without this metadata, your RAG system can't produce real citations, and it can't recover from bad chunks, you can't find and fix what you can't trace.</p>
+
+<h2>Tools I actually use</h2>
+<ul>
+  <li><strong>Unstructured.io</strong>, polymorphic document parser, handles most file types reasonably</li>
+  <li><strong>LlamaIndex</strong> for high-level pipeline orchestration</li>
+  <li><strong>Temporal</strong> or <strong>Airflow</strong> for production workflow scheduling</li>
+  <li><strong>Celery</strong> or <strong>SQS</strong> for job queues at smaller scale</li>
+  <li><strong>Custom Python</strong> for everything that actually ships, because every real corpus has weird edge cases</li>
+</ul>
+
+<h2>The build-vs-buy trap</h2>
+<p>Commercial "RAG-as-a-service" ingestion tools (Vectara, Superlinked, etc.) save time on the happy path and cost you when your data has edge cases, which it will. For a serious system, expect to own the ingestion pipeline end-to-end. The question isn't whether to build, it's whether to build now or after you've outgrown a vendor.</p>
+
+<p style="margin-top:40px;">Next: <a href="parsing-pdfs.html">Parsing PDFs</a>.</p>
+<div class="prev-next"><a href="../foundations/when-not-to-use.html" class="prev"><div class="label">← Previous</div><div class="title">When not to use RAG</div></a><a href="parsing-pdfs.html" class="next"><div class="label">Next →</div><div class="title">Parsing PDFs</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a></p>
+</div></footer></body></html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Observability and tracing | Samuel Ochoa</title>
+<meta name="description" content="Without observability, RAG bugs are invisible. Here's what to log, what to track, and how to debug production RAG issues.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Observability and tracing | Samuel Ochoa">
+<meta property="og:description" content="Without observability, RAG bugs are invisible. Here's what to log, what to track, and how to debug production RAG issues.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../about.html">About</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>RAGS to Riches (56 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-rag.html">What is RAG?</a></li><li><a href="foundations/why-rag.html">Why RAG over fine-tuning</a></li><li><a href="foundations/the-architecture.html">The RAG architecture map</a></li><li><a href="foundations/when-not-to-use.html">When not to use RAG</a></li></ul><h4>Documents + Ingestion</h4><ul><li><a href="docs/ingestion-pipeline.html">The ingestion pipeline</a></li><li><a href="docs/parsing-pdfs.html">Parsing PDFs</a></li><li><a href="docs/parsing-html.html">Parsing HTML + web pages</a></li><li><a href="docs/tables-figures.html">Tables and figures</a></li><li><a href="docs/ocr.html">OCR for scanned documents</a></li><li><a href="docs/metadata.html">Metadata extraction</a></li></ul><h4>Chunking</h4><ul><li><a href="chunking/why-chunking.html">Why chunking matters</a></li><li><a href="chunking/fixed-size.html">Fixed-size chunking</a></li><li><a href="chunking/semantic.html">Semantic chunking</a></li><li><a href="chunking/recursive.html">Recursive chunking</a></li><li><a href="chunking/structure-aware.html">Structure-aware chunking</a></li><li><a href="chunking/chunking-code.html">Chunking code</a></li></ul><h4>Embeddings</h4><ul><li><a href="embeddings/what-are-embeddings.html">What embeddings are</a></li><li><a href="embeddings/picking-a-model.html">Picking an embedding model</a></li><li><a href="embeddings/closed-vs-open.html">Closed vs open models</a></li><li><a href="embeddings/dimensions-cost.html">Dimensions, cost, and MRL</a></li><li><a href="embeddings/fine-tuning.html">Fine-tuning embeddings</a></li></ul><h4>Vector Stores</h4><ul><li><a href="vectors/overview.html">Vector database overview</a></li><li><a href="vectors/indexing-strategies.html">HNSW, IVF, PQ</a></li><li><a href="vectors/hybrid-search.html">Hybrid search</a></li><li><a href="vectors/metadata-filtering.html">Metadata filtering</a></li><li><a href="vectors/cost-optimization.html">Cost optimization</a></li><li><a href="vectors/choosing-a-db.html">Choosing a vector DB</a></li></ul><h4>Retrieval Strategies</h4><ul><li><a href="retrieval/vector-search.html">Vector similarity search</a></li><li><a href="retrieval/bm25-sparse.html">BM25 and sparse retrieval</a></li><li><a href="retrieval/hybrid.html">Hybrid retrieval</a></li><li><a href="retrieval/reranking.html">Reranking</a></li><li><a href="retrieval/query-rewriting.html">Query rewriting</a></li><li><a href="retrieval/hyde.html">HyDE</a></li><li><a href="retrieval/multi-query.html">Multi-query + fusion</a></li></ul><h4>Advanced Patterns</h4><ul><li><a href="advanced/agentic-rag.html">Agentic RAG</a></li><li><a href="advanced/graph-rag.html">GraphRAG</a></li><li><a href="advanced/adaptive-rag.html">Adaptive RAG</a></li><li><a href="advanced/corrective-rag.html">Corrective RAG (CRAG)</a></li><li><a href="advanced/self-rag.html">Self-RAG</a></li><li><a href="advanced/multi-hop.html">Multi-hop RAG</a></li></ul><h4>Evaluation</h4><ul><li><a href="eval/why-eval.html">Why evaluation is critical</a></li><li><a href="eval/retrieval-metrics.html">Retrieval metrics</a></li><li><a href="eval/generation-metrics.html">Generation metrics</a></li><li><a href="eval/ragas-and-frameworks.html">RAGAS, TruLens, ARES</a></li><li><a href="eval/building-eval-datasets.html">Building eval datasets</a></li></ul><h4>Production</h4><ul><li><a href="prod/latency.html">Latency optimization</a></li><li><a href="prod/caching.html">Caching strategies</a></li><li><a href="prod/observability.html" class="active">Observability and tracing</a></li><li><a href="prod/cost.html">Cost management</a></li><li><a href="prod/security.html">Security and prompt injection</a></li></ul><h4>Use Cases</h4><ul><li><a href="cases/customer-support.html">Customer support RAG</a></li><li><a href="cases/internal-kb.html">Internal knowledge RAG</a></li><li><a href="cases/code-rag.html">Code search + generation</a></li><li><a href="cases/legal-compliance.html">Legal and compliance</a></li><li><a href="cases/multi-tenant.html">Multi-tenant RAG</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">RAGS to Riches</a><span class="sep">›</span><span>Observability and tracing</span></div><h1 class="title">Observability and tracing</h1><div class="article-meta"><span>📖 5 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">RAG pipelines have many stages, each of which can fail independently or in subtle ways. Without observability, you find out quality is bad because users complain, and you can't tell which stage is responsible. Observability is what turns RAG from a black box into a debuggable system.</p>
+
+<h2>What to log per query</h2>
+
+<h3>Inputs</h3>
+<ul>
+  <li>Original user query</li>
+  <li>User ID, tenant ID, session ID</li>
+  <li>User context (permissions, preferences)</li>
+  <li>Request timestamp</li>
+</ul>
+
+<h3>Pipeline</h3>
+<ul>
+  <li>Rewritten query (if applicable)</li>
+  <li>Query embedding (or embedding model version)</li>
+  <li>Retrieved chunks with IDs, scores, metadata</li>
+  <li>Reranked order with scores</li>
+  <li>Final context sent to generator</li>
+  <li>Tool calls (for agentic RAG)</li>
+</ul>
+
+<h3>Outputs</h3>
+<ul>
+  <li>Generated answer</li>
+  <li>Token counts (input and output)</li>
+  <li>Model version used</li>
+</ul>
+
+<h3>Performance</h3>
+<ul>
+  <li>Latency per stage</li>
+  <li>Total latency</li>
+  <li>Cache hits/misses per layer</li>
+</ul>
+
+<h3>User feedback</h3>
+<ul>
+  <li>Thumbs up/down if provided</li>
+  <li>Follow-up query (implies dissatisfaction)</li>
+  <li>Session outcome</li>
+</ul>
+
+<h2>Trace structure</h2>
+<p>Use distributed tracing. Each query gets a trace; each stage is a span within that trace.</p>
+
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:12px;">
+trace: query_001
+├── span: query_preprocessing (15ms)
+├── span: embedding (80ms) [cache miss]
+├── span: retrieval (45ms)
+│   ├── span: vector_search (30ms)
+│   └── span: bm25_search (15ms)
+├── span: fusion (3ms)
+├── span: reranking (150ms)
+├── span: generation (1200ms)
+└── span: post_processing (20ms)
+Total: 1513ms
+</pre>
+
+<p>Traces let you see exactly where time goes per query.</p>
+
+<h2>Metrics to aggregate</h2>
+
+<h3>Performance</h3>
+<ul>
+  <li>Latency distributions per stage (p50, p95, p99)</li>
+  <li>Throughput (queries per second)</li>
+  <li>Error rate per stage</li>
+  <li>Timeout rate</li>
+</ul>
+
+<h3>Quality proxies</h3>
+<ul>
+  <li>Retrieval score distributions (dropping over time = distribution drift)</li>
+  <li>Top-1 confidence scores</li>
+  <li>Generation token counts (extremely long or short answers may be off)</li>
+  <li>Empty retrieval rate (queries with no relevant results)</li>
+</ul>
+
+<h3>User signals</h3>
+<ul>
+  <li>Thumbs up/down rate</li>
+  <li>Follow-up query rate</li>
+  <li>Session abandonment rate</li>
+  <li>Clicks on citations</li>
+</ul>
+
+<h3>Cost</h3>
+<ul>
+  <li>Tokens in / out per query</li>
+  <li>API spend by provider</li>
+  <li>Vector DB queries</li>
+  <li>Embedding API calls</li>
+</ul>
+
+<h2>The tooling landscape</h2>
+
+<h3>Generic tracing</h3>
+<ul>
+  <li><strong>OpenTelemetry</strong>: standard for distributed tracing. Integrates with most backends.</li>
+  <li><strong>Datadog, Honeycomb, Jaeger</strong>: standard observability platforms.</li>
+</ul>
+
+<h3>LLM-specific observability</h3>
+<ul>
+  <li><strong>Langfuse</strong>: open-source LLM observability with tracing and evaluation.</li>
+  <li><strong>LangSmith</strong>: LangChain's managed tracing platform.</li>
+  <li><strong>Phoenix (Arize)</strong>: open-source LLM observability + eval.</li>
+  <li><strong>Helicone</strong>: observability for LLM API calls.</li>
+  <li><strong>W&amp;B Weave</strong>: Weights &amp; Biases' LLM tracing.</li>
+  <li><strong>Traceloop / OpenLLMetry</strong>: OpenTelemetry-based LLM observability.</li>
+</ul>
+
+<h2>Debugging workflows</h2>
+
+<h3>"This query gave a bad answer"</h3>
+<ol>
+  <li>Find the trace for the query</li>
+  <li>Look at retrieved chunks: were they relevant?</li>
+  <li>If not: retrieval problem. Check embedding, BM25 scores, chunk boundaries.</li>
+  <li>If yes: generation problem. Check the prompt, the model output, the context formatting.</li>
+</ol>
+
+<h3>"Latency spiked today"</h3>
+<ol>
+  <li>Look at per-stage latency distributions</li>
+  <li>Identify the stage that regressed</li>
+  <li>Correlate with deployments, traffic patterns, external API status</li>
+</ol>
+
+<h3>"Retrieval quality seems to be dropping"</h3>
+<ol>
+  <li>Sample recent queries; run them against your eval metrics</li>
+  <li>Compare score distributions over time</li>
+  <li>Check index freshness: is content being ingested?</li>
+  <li>Check for embedding model drift</li>
+</ol>
+
+<h2>PII and compliance</h2>
+<p>User queries often contain PII. Logging choices matter:</p>
+<ul>
+  <li>Hash user identifiers</li>
+  <li>Consider redacting query content for regulated data</li>
+  <li>Retention policies: how long do traces stay?</li>
+  <li>Access controls on observability dashboards</li>
+</ul>
+
+<h2>Sampling</h2>
+<p>Full tracing at high QPS is expensive. Options:</p>
+<ul>
+  <li>Sample 1-10% of queries for full tracing</li>
+  <li>Always trace errors and slow queries (100%)</li>
+  <li>Always trace queries with user feedback (100%)</li>
+  <li>Aggregate metrics for all queries</li>
+</ul>
+
+<h2>Alerting</h2>
+<p>Configure alerts on:</p>
+<ul>
+  <li>Latency p99 exceeding threshold</li>
+  <li>Error rate above 1%</li>
+  <li>Empty retrieval rate above threshold</li>
+  <li>Cost per day exceeding budget</li>
+  <li>Negative feedback rate climbing</li>
+</ul>
+
+<p>Alerts should be actionable. "Retrieval is slow" → specific runbook for investigation.</p>
+
+<h2>The production vs offline gap</h2>
+<p>Offline eval tests a fixed query set. Production has distribution drift, new user patterns, edge cases your eval doesn't cover. Observability closes the gap, real user data flowing back into the eval set keeps tests grounded.</p>
+
+<p>The loop: production → observability → sample queries for labeling → eval set expansion → next iteration.</p>
+
+<p style="margin-top:40px;">Next: <a href="cost.html">Cost management</a>.</p>
+<div class="prev-next"><a href="caching.html" class="prev"><div class="label">← Previous</div><div class="title">Caching strategies</div></a><a href="cost.html" class="next"><div class="label">Next →</div><div class="title">Cost management</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a></p>
+</div></footer></body></html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parsing HTML + web pages | Samuel Ochoa</title>
+<meta name="description" content="Parsing HTML is deceptively hard. Boilerplate, nav menus, ads, and dynamic content all pollute the useful text. Here's how to get clean content reliably.">
+<meta name="author" content="Samuel Ochoa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Parsing HTML + web pages | Samuel Ochoa">
+<meta property="og:description" content="Parsing HTML is deceptively hard. Boilerplate, nav menus, ads, and dynamic content all pollute the useful text. Here's how to get clean content reliably.">
+<meta property="og:site_name" content="Samuel Ochoa">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+<body><nav class="topbar"><div class="topbar-inner">
+<a href="../../../index.html" class="logo"><span class="dot"></span>Samuel Ochoa</a>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../../../framework/index.html">Framework</a>
+<a href="../../../expertise/index.html" class="active">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a>
+<a href="../../../writing.html">Writing</a>
+<a href="../../../about.html">About</a>
+<a href="../../../contact.html">Contact</a>
+</div>
+</div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>RAGS to Riches (56 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-rag.html">What is RAG?</a></li><li><a href="foundations/why-rag.html">Why RAG over fine-tuning</a></li><li><a href="foundations/the-architecture.html">The RAG architecture map</a></li><li><a href="foundations/when-not-to-use.html">When not to use RAG</a></li></ul><h4>Documents + Ingestion</h4><ul><li><a href="docs/ingestion-pipeline.html">The ingestion pipeline</a></li><li><a href="docs/parsing-pdfs.html">Parsing PDFs</a></li><li><a href="docs/parsing-html.html" class="active">Parsing HTML + web pages</a></li><li><a href="docs/tables-figures.html">Tables and figures</a></li><li><a href="docs/ocr.html">OCR for scanned documents</a></li><li><a href="docs/metadata.html">Metadata extraction</a></li></ul><h4>Chunking</h4><ul><li><a href="chunking/why-chunking.html">Why chunking matters</a></li><li><a href="chunking/fixed-size.html">Fixed-size chunking</a></li><li><a href="chunking/semantic.html">Semantic chunking</a></li><li><a href="chunking/recursive.html">Recursive chunking</a></li><li><a href="chunking/structure-aware.html">Structure-aware chunking</a></li><li><a href="chunking/chunking-code.html">Chunking code</a></li></ul><h4>Embeddings</h4><ul><li><a href="embeddings/what-are-embeddings.html">What embeddings are</a></li><li><a href="embeddings/picking-a-model.html">Picking an embedding model</a></li><li><a href="embeddings/closed-vs-open.html">Closed vs open models</a></li><li><a href="embeddings/dimensions-cost.html">Dimensions, cost, and MRL</a></li><li><a href="embeddings/fine-tuning.html">Fine-tuning embeddings</a></li></ul><h4>Vector Stores</h4><ul><li><a href="vectors/overview.html">Vector database overview</a></li><li><a href="vectors/indexing-strategies.html">HNSW, IVF, PQ</a></li><li><a href="vectors/hybrid-search.html">Hybrid search</a></li><li><a href="vectors/metadata-filtering.html">Metadata filtering</a></li><li><a href="vectors/cost-optimization.html">Cost optimization</a></li><li><a href="vectors/choosing-a-db.html">Choosing a vector DB</a></li></ul><h4>Retrieval Strategies</h4><ul><li><a href="retrieval/vector-search.html">Vector similarity search</a></li><li><a href="retrieval/bm25-sparse.html">BM25 and sparse retrieval</a></li><li><a href="retrieval/hybrid.html">Hybrid retrieval</a></li><li><a href="retrieval/reranking.html">Reranking</a></li><li><a href="retrieval/query-rewriting.html">Query rewriting</a></li><li><a href="retrieval/hyde.html">HyDE</a></li><li><a href="retrieval/multi-query.html">Multi-query + fusion</a></li></ul><h4>Advanced Patterns</h4><ul><li><a href="advanced/agentic-rag.html">Agentic RAG</a></li><li><a href="advanced/graph-rag.html">GraphRAG</a></li><li><a href="advanced/adaptive-rag.html">Adaptive RAG</a></li><li><a href="advanced/corrective-rag.html">Corrective RAG (CRAG)</a></li><li><a href="advanced/self-rag.html">Self-RAG</a></li><li><a href="advanced/multi-hop.html">Multi-hop RAG</a></li></ul><h4>Evaluation</h4><ul><li><a href="eval/why-eval.html">Why evaluation is critical</a></li><li><a href="eval/retrieval-metrics.html">Retrieval metrics</a></li><li><a href="eval/generation-metrics.html">Generation metrics</a></li><li><a href="eval/ragas-and-frameworks.html">RAGAS, TruLens, ARES</a></li><li><a href="eval/building-eval-datasets.html">Building eval datasets</a></li></ul><h4>Production</h4><ul><li><a href="prod/latency.html">Latency optimization</a></li><li><a href="prod/caching.html">Caching strategies</a></li><li><a href="prod/observability.html">Observability and tracing</a></li><li><a href="prod/cost.html">Cost management</a></li><li><a href="prod/security.html">Security and prompt injection</a></li></ul><h4>Use Cases</h4><ul><li><a href="cases/customer-support.html">Customer support RAG</a></li><li><a href="cases/internal-kb.html">Internal knowledge RAG</a></li><li><a href="cases/code-rag.html">Code search + generation</a></li><li><a href="cases/legal-compliance.html">Legal and compliance</a></li><li><a href="cases/multi-tenant.html">Multi-tenant RAG</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">RAGS to Riches</a><span class="sep">›</span><span>Parsing HTML + web pages</span></div><h1 class="title">Parsing HTML + web pages</h1><div class="article-meta"><span>📖 5 min read</span><span>Updated 2026-04-18</span></div>
+<p class="lede">Every web page has ~10% content and ~90% navigation, ads, menus, footers, cookie banners, and boilerplate. Naive HTML-to-text extraction feeds all of that into your index, which pollutes retrieval and embedding space. Clean web extraction is a discipline.</p>
+
+<h2>The extraction stack</h2>
+
+<h3>1. Fetch</h3>
+<p>HTTP GET (or a headless browser for JS-heavy sites). Handle redirects, cookies, user agents, rate limits. Respect robots.txt when applicable.</p>
+
+<h3>2. Dynamic content rendering</h3>
+<p>If the site is an SPA (React, Vue, Angular), raw HTML is empty. You need a headless browser (Playwright, Puppeteer) to render the DOM before extraction. Significantly slower and more expensive than static fetching.</p>
+
+<h3>3. Boilerplate removal</h3>
+<p>Strip navigation, sidebars, footers, comments, ads. This is the make-or-break step.</p>
+
+<h3>4. Content extraction</h3>
+<p>Preserve structure: headings, paragraphs, lists, code blocks, tables.</p>
+
+<h3>5. Link rewriting</h3>
+<p>Absolute-ize relative URLs. Keep link targets as metadata if they matter for your use case.</p>
+
+<h2>The library landscape</h2>
+
+<h3>Readability / trafilatura</h3>
+<p>Python libraries that heuristically extract "main content" from HTML. Trafilatura is my default, best signal-to-noise ratio on general-purpose web content. Handles blog posts, news articles, documentation pages well.</p>
+
+<h3>Readability.js / Mozilla Readability</h3>
+<p>The algorithm that powers browser reader modes. Good baseline. Works well for article-style content.</p>
+
+<h3>BeautifulSoup / lxml</h3>
+<p>Low-level HTML parsers. Use when you know the structure and can write specific selectors (e.g., "every .docs-content div"). Precise but brittle, breaks when sites redesign.</p>
+
+<h3>Jina Reader / Diffbot / Firecrawl</h3>
+<p>Managed services that return clean markdown from URLs. Jina Reader is free for light use, Firecrawl is the commercial leader for RAG-oriented scraping. Worth it when you have many sources and don't want to maintain extraction logic.</p>
+
+<h3>html-to-text / html-to-markdown</h3>
+<p>Naive converters. Avoid for RAG, they preserve all the junk.</p>
+
+<h2>HTML → Markdown is usually the right format</h2>
+<p>For RAG, convert HTML to Markdown rather than plaintext. Markdown preserves structure (headings, lists, code, links) in a format that chunking and embeddings both handle well. Plain text loses everything.</p>
+
+<p>My stack: trafilatura or Firecrawl → Markdown → chunker. Skipping to plaintext drops too much signal.</p>
+
+<h2>Patterns for documentation sites</h2>
+<p>Developer docs, knowledge bases, and product help centers usually have predictable structure. For these:</p>
+<ul>
+  <li>Use the site's sitemap.xml as your crawl list</li>
+  <li>Target the main content area with a specific CSS selector</li>
+  <li>Extract headings as metadata (for structure-aware chunking)</li>
+  <li>Preserve code blocks as distinct chunks</li>
+  <li>Capture the full breadcrumb path as metadata</li>
+</ul>
+
+<h2>Patterns for messy sources (blogs, news, general web)</h2>
+<ul>
+  <li>Trafilatura with its default config handles most cases</li>
+  <li>Filter out pages with very short extracted content (likely boilerplate-only)</li>
+  <li>Filter out pages that look identical to each other (deduplicate by content hash)</li>
+  <li>Keep the canonical URL if present (many pages have multiple URLs)</li>
+</ul>
+
+<h2>The hidden problems</h2>
+
+<h3>Duplicate content</h3>
+<p>Many sites have print versions, AMP versions, paginated archives, and tag pages that duplicate core content. Deduplicate aggressively during ingestion.</p>
+
+<h3>Stale + evergreen mixed</h3>
+<p>A site might have a 2015 blog post right next to a 2024 product doc. Without publish dates as metadata, retrieval can surface outdated info. Always capture dates when available and use them as filters or boosts.</p>
+
+<h3>Paywalls and auth walls</h3>
+<p>Public URL ≠ public content. Check what your scraper is actually seeing. Many sites serve a paywall page with the article name but no content.</p>
+
+<h3>Single-page apps that break fetching</h3>
+<p>If curl returns "Loading..." and nothing else, you need a headless browser. This adds 3-10x latency per page and requires significantly more infrastructure.</p>
+
+<h3>Rate limiting</h3>
+<p>Aggressive scraping gets blocked. Use polite delays, rotate user agents, respect Retry-After headers. For large-scale scraping of a single domain, talk to them about a partnership or an official feed before you get blocked.</p>
+
+<h2>The quality check</h2>
+<p>Same as for PDFs: sample 10 pages randomly from your extracted corpus. Look at the raw extracted text. Is it the article? Is it the article plus ten lines of nav menu? Is it empty because the extraction failed silently? Fix the extraction before embedding.</p>
+
+<p style="margin-top:40px;">Next: <a href="tables-figures.html">Tables and figures</a>.</p>
+<div class="prev-next"><a href="parsing-pdfs.html" class="prev"><div class="label">← Previous</div><div class="title">Parsing PDFs</div></a><a href="tables-figures.html" class="next"><div class="label">Next →</div><div class="title">Tables and figures</div></a></div></div></div><footer><div class="container">
+<p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
+<a href="../../../playbooks/index.html">Playbooks</a></p>
+</div></footer></body></html>
