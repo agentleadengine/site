@@ -219,59 +219,106 @@
 <a href="../../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="../foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="../foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="../foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="../loops/react.html">ReAct</a></li><li><a href="../loops/tool-use.html">Tool use</a></li><li><a href="../loops/planning.html">Planning loops</a></li><li><a href="../loops/reflection.html">Reflection</a></li><li><a href="../loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="../tools/tool-design.html">Tool design</a></li><li><a href="../tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="../tools/error-handling.html">Tool error handling</a></li><li><a href="../tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="../tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="../memory/short-term.html">Short-term memory</a></li><li><a href="../memory/long-term.html">Long-term memory</a></li><li><a href="../memory/episodic.html">Episodic memory</a></li><li><a href="../memory/procedural.html">Procedural memory</a></li><li><a href="../memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="../multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="../multi/peer-agents.html">Peer agents</a></li><li><a href="../multi/debate.html">Debate + consensus</a></li><li><a href="../multi/handoffs.html">Agent handoffs</a></li><li><a href="../multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="../eval/why-eval-agents.html">Why eval agents</a></li><li><a href="../eval/task-completion.html">Task completion</a></li><li><a href="../eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="../eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="../prod/observability.html">Observability + tracing</a></li><li><a href="../prod/cost-control.html">Cost control</a></li><li><a href="../prod/latency.html">Latency optimization</a></li><li><a href="../prod/safety.html">Safety + guardrails</a></li><li><a href="../prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/research-agent.html">Research agent</a></li><li><a href="../patterns/coding-agent.html" class="active">Coding agent</a></li><li><a href="../patterns/customer-support.html">Customer support agent</a></li><li><a href="../patterns/data-analyst.html">Data analyst agent</a></li><li><a href="../patterns/browser-agent.html">Browser agent</a></li><li><a href="../patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="../frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="../frameworks/langgraph.html">LangGraph</a></li><li><a href="../frameworks/crewai.html">CrewAI</a></li><li><a href="../frameworks/autogen.html">AutoGen</a></li><li><a href="../frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>Coding agent</span></div><h1 class="title">Coding agent</h1><div class="article-meta"><span>📖 3 min read</span><span>Updated 2026-04-19</span></div>
-<p class="lede">Coding agents write code, run it, read errors, fix, iterate. The test suite is the verifier; the error trace is the feedback. Claude Code, Cursor, and tools like Devin are built on this pattern.</p>
+<p class="lede">Coding agents write code, run it, read the errors, fix, iterate. The test suite is the verifier. The compiler is the other verifier. The error trace is a rich signal that tells the agent exactly what broke. That tight feedback loop is why coding agents actually work today, well ahead of most other verticals. Claude Code, Cursor, Devin, Aider, they're all this same pattern tuned for different UIs.</p>
 
 <h2>The loop</h2>
-<ol>
-<li>Read the task</li>
-<li>Explore the codebase (read files, search)</li>
-<li>Plan changes</li>
-<li>Write code</li>
-<li>Run tests</li>
-<li>Read errors if any</li>
-<li>Fix and iterate until passing</li>
-<li>Submit changes</li>
-</ol>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Coding agent pipeline');
+  sketch.numberedSteps(svg, rc, {direction: 'h', x: 30, y: 80, w: 840, items: [
+    {title: 'Explore', sub: 'read files, search'},
+    {title: 'Plan', sub: 'sketch the change'},
+    {title: 'Edit', sub: 'write code'},
+    {title: 'Verify', sub: 'run tests / typecheck'},
+    {title: 'Fix', sub: 'on failure, iterate'}
+  ]});
+});
+</script>
+<p>The loop is the key. Each iteration, the verifier tells the agent exactly what's wrong. The agent reads the specific error and plans the fix. Loop until verify passes, then submit.</p>
 
 <h2>Core tools</h2>
 <ul>
-<li><code>read_file(path)</code></li>
-<li><code>write_file(path, contents)</code></li>
-<li><code>run_command(cmd)</code>, for tests, build, linters</li>
-<li><code>search_code(query)</code></li>
-<li><code>list_files(dir)</code></li>
+<li><code>read_file(path)</code> — read source files.</li>
+<li><code>write_file(path, contents)</code> — overwrite.</li>
+<li><code>edit_file(path, old, new)</code> — targeted edit (safer than full overwrite).</li>
+<li><code>search_code(query)</code> — grep across the codebase.</li>
+<li><code>list_files(dir)</code> — navigate directories.</li>
+<li><code>run_command(cmd)</code> — tests, build, linter, formatter.</li>
+<li><code>git_diff()</code> — see what's been changed so far this session.</li>
 </ul>
 
-<h2>Why this works</h2>
-<p>Code has a natural verifier: compilers, test suites, linters. When the agent writes bad code, the feedback is unambiguous. The LLM uses the error message to plan the fix. Few domains have this tight feedback loop, it's why coding agents are ahead of other verticals.</p>
+<h2>Why this works (when it does)</h2>
+<p>Code has a deterministic verifier. The test either passes or fails. The compile either succeeds or gives a specific error. The lint either returns no issues or points at the line. That's rich, unambiguous feedback: exactly what a self-correcting agent needs. Few other domains have this, which is why coding agents are ahead of, say, marketing agents or HR agents, agents in those domains lack a cheap objective verifier.</p>
 
-<h2>Context management</h2>
-<p>Codebases are too big to fit in context. Agent must:</p>
+<h2>Context management: the hard part</h2>
+<p>Codebases don't fit in context. A 10K-file repo would be millions of tokens. The agent has to navigate:</p>
 <ul>
-<li>Navigate via search and directory listings</li>
-<li>Pull only relevant files into context</li>
-<li>Keep track of file paths and recent edits</li>
+<li><strong>Search first.</strong> Find the right files via <code>search_code</code> or directory listing before reading.</li>
+<li><strong>Load only relevant files.</strong> Not "read everything just in case."</li>
+<li><strong>Drop files from context</strong> once the edit is made and verified.</li>
+<li><strong>Summarize long files</strong> instead of loading the whole file when only one function matters.</li>
 </ul>
+<p>Agents that "read the whole module to understand it" burn context and make worse decisions. Precise reads beat thorough reads.</p>
 
-<h2>Testing matters</h2>
-<p>Agent quality tracks test suite quality. Without tests, agent has no feedback. Encourage users to have good tests before deploying a coding agent.</p>
+<h2>A worked example: fixing a failing test</h2>
+<ol>
+<li><strong>Task:</strong> "The test <code>test_discount_calculation</code> is failing. Fix it."</li>
+<li><strong>Explore:</strong> agent runs the test → reads the error: <code>AssertionError: expected 80.0, got 90.0</code>.</li>
+<li><strong>Search:</strong> <code>search_code("def calculate_discount")</code> → finds the function.</li>
+<li><strong>Read:</strong> the function + the test file to understand intended behavior.</li>
+<li><strong>Plan:</strong> the test expects 20% off; function applies 10%. Fix the rate.</li>
+<li><strong>Edit:</strong> one-line change.</li>
+<li><strong>Verify:</strong> run the test → passes. Run the full suite → all pass.</li>
+<li><strong>Submit:</strong> show diff, ready to commit.</li>
+</ol>
+<p>8 tool calls, about 30 seconds. The error message told the agent exactly what to fix. That's the feedback loop at work.</p>
+
+<h2>Testing is the gatekeeper</h2>
+<p>Coding-agent quality tracks test-suite quality directly:</p>
+<ul>
+<li>No tests → no verifier → agent guesses.</li>
+<li>Weak tests → weak verifier → agent ships bugs that the tests don't catch.</li>
+<li>Strong tests → strong verifier → agent produces reliable changes.</li>
+</ul>
+<p>Encourage users to invest in tests before deploying a coding agent. The ROI shows up immediately.</p>
 
 <h2>Safety</h2>
-<p>Coding agents can do damage. Guardrails:</p>
+<p>A coding agent can modify files, run commands, push to git. It can do real damage. Non-negotiable guardrails:</p>
 <ul>
-<li>Run in sandboxed environment</li>
-<li>Restrict filesystem access</li>
-<li>Require human approval for git push, deploy</li>
-<li>Don't give access to production secrets</li>
+<li><strong>Sandboxed execution.</strong> Run in a container or locked-down shell; don't let the agent touch things it shouldn't.</li>
+<li><strong>Filesystem restrictions.</strong> Scope to the repo; don't give it the whole home directory.</li>
+<li><strong>Human approval for destructive operations.</strong> <code>git push</code>, <code>rm -rf</code>, deploy commands, force-push.</li>
+<li><strong>No production secrets.</strong> Agent shouldn't have credentials it doesn't need.</li>
+<li><strong>Approval for dependency changes.</strong> New packages are supply-chain attack surface.</li>
 </ul>
 
-<h2>Tools in the ecosystem</h2>
+<h2>Failure modes</h2>
 <ul>
-<li>Claude Code, CLI-based coding agent</li>
-<li>Cursor / Windsurf, IDE-integrated</li>
-<li>Cognition Devin, more autonomous, session-based</li>
-<li>GitHub Copilot Workspace, task-level agent</li>
-<li>Aider, Continue, Cline, open-source variants</li>
+<li><strong>"Fixed" but not fixed.</strong> Test still fails, agent claims success. Always re-run tests after the agent says it's done.</li>
+<li><strong>Unrelated files edited.</strong> Agent gets "helpful" and refactors things you didn't ask for. Keep scope tight via prompt.</li>
+<li><strong>Stuck fixing the symptom.</strong> Tests keep failing the same way; agent keeps making small tweaks. Detect cycle, escalate or stop.</li>
+<li><strong>Context window collapse.</strong> Over-explored, lost track of what it was doing. Summarize aggressively.</li>
+<li><strong>Shipping without running tests.</strong> Always require verification before claiming done.</li>
+</ul>
+
+<h2>The ecosystem</h2>
+<ul>
+<li><strong>Claude Code</strong> — CLI-based, terminal-native.</li>
+<li><strong>Cursor / Windsurf</strong> — IDE-integrated, inline.</li>
+<li><strong>Cognition Devin</strong> — more autonomous, session-based.</li>
+<li><strong>GitHub Copilot Workspace</strong> — task-level agent.</li>
+<li><strong>Aider, Continue, Cline</strong> — open-source.</li>
+</ul>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Before you deploy a coding agent, audit your test suite. Weak tests = weak agent.</li>
+<li>Start on a single narrow task (bug fix, lint fix) to learn the ergonomics before letting the agent touch broader work.</li>
+<li>Read <a href="../loops/self-correction.html">self-correction</a> for the verifier-driven loop that powers these.</li>
 </ul>
 <div class="prev-next"><a href="research-agent.html" class="prev"><div class="label">← Previous</div><div class="title">Research agent</div></a><a href="customer-support.html" class="next"><div class="label">Next →</div><div class="title">Customer support agent</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>

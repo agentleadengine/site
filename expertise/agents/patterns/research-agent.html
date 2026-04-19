@@ -219,47 +219,100 @@
 <a href="../../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="../foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="../foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="../foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="../loops/react.html">ReAct</a></li><li><a href="../loops/tool-use.html">Tool use</a></li><li><a href="../loops/planning.html">Planning loops</a></li><li><a href="../loops/reflection.html">Reflection</a></li><li><a href="../loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="../tools/tool-design.html">Tool design</a></li><li><a href="../tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="../tools/error-handling.html">Tool error handling</a></li><li><a href="../tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="../tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="../memory/short-term.html">Short-term memory</a></li><li><a href="../memory/long-term.html">Long-term memory</a></li><li><a href="../memory/episodic.html">Episodic memory</a></li><li><a href="../memory/procedural.html">Procedural memory</a></li><li><a href="../memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="../multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="../multi/peer-agents.html">Peer agents</a></li><li><a href="../multi/debate.html">Debate + consensus</a></li><li><a href="../multi/handoffs.html">Agent handoffs</a></li><li><a href="../multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="../eval/why-eval-agents.html">Why eval agents</a></li><li><a href="../eval/task-completion.html">Task completion</a></li><li><a href="../eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="../eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="../prod/observability.html">Observability + tracing</a></li><li><a href="../prod/cost-control.html">Cost control</a></li><li><a href="../prod/latency.html">Latency optimization</a></li><li><a href="../prod/safety.html">Safety + guardrails</a></li><li><a href="../prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/research-agent.html" class="active">Research agent</a></li><li><a href="../patterns/coding-agent.html">Coding agent</a></li><li><a href="../patterns/customer-support.html">Customer support agent</a></li><li><a href="../patterns/data-analyst.html">Data analyst agent</a></li><li><a href="../patterns/browser-agent.html">Browser agent</a></li><li><a href="../patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="../frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="../frameworks/langgraph.html">LangGraph</a></li><li><a href="../frameworks/crewai.html">CrewAI</a></li><li><a href="../frameworks/autogen.html">AutoGen</a></li><li><a href="../frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>Research agent</span></div><h1 class="title">Research agent</h1><div class="article-meta"><span>📖 3 min read</span><span>Updated 2026-04-19</span></div>
-<p class="lede">A research agent takes a question, searches the web (and internal sources), reads results, synthesizes a structured answer with citations. Useful for competitive intelligence, market research, due diligence, fact-finding.</p>
+<p class="lede">A research agent takes a question, searches sources (web, internal, databases), reads what it finds, cross-references, and synthesizes a structured answer with citations. It's one of the most valuable agent patterns because it automates work that's high-value and time-consuming for humans: competitive intelligence, market research, due diligence, investment memos. The craft is in making the agent rigorous, not just fast.</p>
 
 <h2>The loop</h2>
-<ol>
-<li>Decompose the question into sub-queries</li>
-<li>Search for each sub-query</li>
-<li>Read top results</li>
-<li>Extract relevant claims with source links</li>
-<li>Identify gaps; iterate with more searches if needed</li>
-<li>Synthesize final answer with citations</li>
-</ol>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Research agent pipeline');
+  sketch.numberedSteps(svg, rc, {direction: 'h', x: 30, y: 80, w: 840, items: [
+    {title: 'Decompose', sub: 'break question into sub-queries'},
+    {title: 'Search', sub: 'parallel across sources'},
+    {title: 'Read', sub: 'top results + extract claims'},
+    {title: 'Gap-check', sub: 'what\'s still unknown?'},
+    {title: 'Synthesize', sub: 'final answer + citations'}
+  ]});
+});
+</script>
 
 <h2>Core tools</h2>
 <ul>
-<li><code>web_search(query)</code>, public web search</li>
-<li><code>read_url(url)</code>, fetch and parse a page</li>
-<li><code>search_internal(query)</code>, internal knowledge base</li>
-<li><code>summarize(text, focus)</code>, distill relevant info</li>
+<li><code>web_search(query)</code> — public web with recency filter.</li>
+<li><code>read_url(url)</code> — fetch + parse a page's main content.</li>
+<li><code>search_internal(query)</code> — internal KB or document store.</li>
+<li><code>search_academic(query)</code> — for research-heavy domains.</li>
+<li><code>summarize(text, focus)</code> — distill a long doc to the relevant claims.</li>
+<li><code>note_claim(text, source_url)</code> — scratch pad with source attribution.</li>
 </ul>
 
 <h2>Design choices</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'The three big design choices');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Choice', w: 220},
+    {title: 'What to pick', w: 580}
+  ], rows: [
+    ['Breadth vs depth', 'Start broad (many queries, shallow), then deep on the top findings'],
+    ['Source diversity', 'Require 2+ corroborating sources for any important claim'],
+    ['Citation granularity', 'Every factual claim links to the specific source that supports it']
+  ]});
+});
+</script>
 
-<h3>Breadth vs depth</h3>
-<p>Breadth: more queries, shallower read per result. Depth: fewer queries, full-article read per source. Research tasks usually need both in sequence.</p>
+<h2>A worked example: "Who are the top 3 competitors for product X?"</h2>
+<ol>
+<li><strong>Decompose:</strong> "Who sells similar products?" + "Who shows up in competitive comparison articles?" + "What does product X say about competitors?"</li>
+<li><strong>Parallel search</strong> on all three.</li>
+<li><strong>Read</strong> the top 5 results per query, extract named competitors.</li>
+<li><strong>Score by frequency + source diversity.</strong> A competitor mentioned in 4 independent sources ranks higher than one mentioned once.</li>
+<li><strong>Deep-read</strong> on the top 3: their product page, pricing, recent news.</li>
+<li><strong>Synthesize</strong>: 3-competitor brief with URLs for every claim.</li>
+</ol>
+<p>Took 12 tool calls, 4 LLM turns, ~60 seconds, ~$0.25. A human doing the same is 1–2 hours.</p>
 
-<h3>Source diversity</h3>
-<p>Don't summarize from one source. Require multiple corroborating sources for key claims.</p>
-
-<h3>Citation quality</h3>
-<p>Every factual claim should link to the specific source. Without citations, hallucinations creep in.</p>
+<h2>Citation discipline</h2>
+<p>Citations are the difference between a research agent and a plausible-sounding bullshit generator. Hard rules:</p>
+<ul>
+<li>Every factual claim in the final answer links to the specific source that supports it.</li>
+<li>Claims without a supporting source get hedged ("reportedly," "we couldn't verify") or dropped.</li>
+<li>When sources disagree, say so. Don't paper over conflict.</li>
+<li>Track which source a claim came from at extraction time, not at synthesis time. Retroactive citation-matching is where hallucinations sneak in.</li>
+</ul>
 
 <h2>Failure modes</h2>
 <ul>
-<li>Research keeps going, never produces final output (budget hits first)</li>
-<li>Summarizes from a single source without cross-checking</li>
-<li>Cites sources that don't actually support the claim</li>
-<li>Misses a key perspective (no counter-search)</li>
+<li><strong>Never stops searching.</strong> Agent keeps finding "one more thing to check" until budget hits. Fix: set an explicit exit criterion in the prompt ("stop when you can answer with 3+ cited sources").</li>
+<li><strong>Single-source summary.</strong> Relies on one blog post. Fix: require cross-source corroboration.</li>
+<li><strong>Hallucinated citations.</strong> Agent cites source, but the source doesn't actually contain the claim. Fix: verify citations at synthesis, either programmatically or with a reflection pass.</li>
+<li><strong>One-sided research.</strong> Searches only for confirming evidence. Fix: include a "search for counter-arguments" step in the plan.</li>
+<li><strong>Lost in the weeds.</strong> Over-reads long documents and loses the question. Fix: use <code>summarize(text, focus: question)</code> rather than dumping full articles into context.</li>
 </ul>
 
-<h2>Production tools</h2>
-<p>Frameworks: Manus, OpenDevin (code research), Claude with web search, custom pipelines built on LangGraph. Commercial: Perplexity, Consensus, Elicit.</p>
+<h2>Parallel is a massive win here</h2>
+<p>Research is the canonical parallel case. You're searching multiple queries; they're independent. Batch them. A 5-query research task that takes 10 seconds sequential takes 2 seconds parallel, with no quality loss.</p>
+
+<h2>Production systems + frameworks</h2>
+<ul>
+<li><strong>Built on</strong>: LangGraph, Claude Agent SDK, OpenAI Assistants.</li>
+<li><strong>Commercial</strong>: Perplexity, Consensus, Elicit, Exa, You.com.</li>
+<li><strong>Open-source</strong>: GPT-Researcher, STORM (Stanford), various LangChain templates.</li>
+</ul>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Pick one concrete research task you do by hand regularly. Build an agent for it with 5 tools and a tight prompt.</li>
+<li>Read <a href="../loops/planning.html">planning loops</a> for the plan-then-execute pattern most research agents use.</li>
+<li>Read <a href="../tools/parallel-tools.html">parallel tool calls</a> for the latency win.</li>
+</ul>
 <div class="prev-next"><a href="../prod/human-in-loop.html" class="prev"><div class="label">← Previous</div><div class="title">Human-in-the-loop</div></a><a href="coding-agent.html" class="next"><div class="label">Next →</div><div class="title">Coding agent</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

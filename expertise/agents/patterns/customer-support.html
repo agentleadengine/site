@@ -219,55 +219,125 @@
 <a href="../../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="../foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="../foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="../foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="../loops/react.html">ReAct</a></li><li><a href="../loops/tool-use.html">Tool use</a></li><li><a href="../loops/planning.html">Planning loops</a></li><li><a href="../loops/reflection.html">Reflection</a></li><li><a href="../loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="../tools/tool-design.html">Tool design</a></li><li><a href="../tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="../tools/error-handling.html">Tool error handling</a></li><li><a href="../tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="../tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="../memory/short-term.html">Short-term memory</a></li><li><a href="../memory/long-term.html">Long-term memory</a></li><li><a href="../memory/episodic.html">Episodic memory</a></li><li><a href="../memory/procedural.html">Procedural memory</a></li><li><a href="../memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="../multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="../multi/peer-agents.html">Peer agents</a></li><li><a href="../multi/debate.html">Debate + consensus</a></li><li><a href="../multi/handoffs.html">Agent handoffs</a></li><li><a href="../multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="../eval/why-eval-agents.html">Why eval agents</a></li><li><a href="../eval/task-completion.html">Task completion</a></li><li><a href="../eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="../eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="../prod/observability.html">Observability + tracing</a></li><li><a href="../prod/cost-control.html">Cost control</a></li><li><a href="../prod/latency.html">Latency optimization</a></li><li><a href="../prod/safety.html">Safety + guardrails</a></li><li><a href="../prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/research-agent.html">Research agent</a></li><li><a href="../patterns/coding-agent.html">Coding agent</a></li><li><a href="../patterns/customer-support.html" class="active">Customer support agent</a></li><li><a href="../patterns/data-analyst.html">Data analyst agent</a></li><li><a href="../patterns/browser-agent.html">Browser agent</a></li><li><a href="../patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="../frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="../frameworks/langgraph.html">LangGraph</a></li><li><a href="../frameworks/crewai.html">CrewAI</a></li><li><a href="../frameworks/autogen.html">AutoGen</a></li><li><a href="../frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>Customer support agent</span></div><h1 class="title">Customer support agent</h1><div class="article-meta"><span>📖 3 min read</span><span>Updated 2026-04-19</span></div>
-<p class="lede">Customer support agents field user questions, retrieve relevant articles, answer with citations, escalate when the question is outside scope. Simple concept; many failure modes in production.</p>
+<p class="lede">Customer support is the most-deployed agent pattern in production, and also the one most teams get wrong. The concept is simple: read the ticket, retrieve relevant KB content, answer, escalate if stuck. The execution has a dozen failure modes, most of them about being too eager to answer. The best support agents say "I'll get a human on this" more readily than they say "here's my guess."</p>
 
 <h2>The flow</h2>
-<ol>
-<li>User asks question</li>
-<li>Agent retrieves relevant KB articles</li>
-<li>Agent answers with citations</li>
-<li>If question is out of scope: escalate to human</li>
-<li>If question contains PII or policy content: apply guardrails</li>
-<li>Log for review</li>
-</ol>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Support agent pipeline');
+  sketch.numberedSteps(svg, rc, {direction: 'h', x: 30, y: 80, w: 840, items: [
+    {title: 'Classify', sub: 'category + sentiment'},
+    {title: 'Retrieve', sub: 'KB articles + user context'},
+    {title: 'Answer', sub: 'with citations'},
+    {title: 'Escalate?', sub: 'if low-confidence / out-of-scope'},
+    {title: 'Log', sub: 'trace for review'}
+  ]});
+});
+</script>
 
 <h2>Core tools</h2>
 <ul>
-<li><code>search_kb(query)</code>, the main retrieval tool</li>
-<li><code>get_user_context(user_id)</code>, user history, plan, tickets</li>
-<li><code>create_ticket(summary, priority)</code>, escalation</li>
-<li><code>send_reply(user_id, text)</code>, actually respond</li>
+<li><code>search_kb(query)</code> — retrieval over your knowledge base. Quality here drives everything.</li>
+<li><code>get_user_context(user_id)</code> — plan, recent activity, tickets. Scoped by user.</li>
+<li><code>create_ticket(summary, priority)</code> — escalation path to humans.</li>
+<li><code>send_reply(user_id, text)</code> — the actual response.</li>
+<li><code>mark_for_review(reason)</code> — flag for later human audit even when auto-responding.</li>
 </ul>
 
 <h2>Key design choices</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Decisions that determine success');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Decision', w: 240},
+    {title: 'What to pick', w: 560}
+  ], rows: [
+    ['Retrieval quality', 'Hybrid (keyword + semantic) + reranker. Do not skimp.'],
+    ['Escalation threshold', 'Bias toward escalation. Wrong answer is worse than delay.'],
+    ['Personalization', 'Scope strictly by user_id. Cross-user leaks are the worst bug.'],
+    ['Auto-send vs draft', 'Draft-first for anything policy-sensitive; auto-send for FAQ']
+  ]});
+});
+</script>
 
-<h3>Retrieval quality is everything</h3>
-<p>See the RAG section of the site. Bad retrieval = agent has no good context = bad answers. Invest in hybrid retrieval, reranking, and eval.</p>
-
-<h3>Escalation must be fast and clean</h3>
-<p>When agent can't answer, don't fake competence. Escalate with all context preserved so the human doesn't start from zero.</p>
-
-<h3>Personalization with caution</h3>
-<p>Pulling user context helps answers but leaks can embarrass. Never cross user boundaries. Audit carefully.</p>
-
-<h3>Guardrails</h3>
+<h2>Retrieval quality drives everything</h2>
+<p>A customer support agent is mostly a retrieval system with an LLM on top. If retrieval returns the wrong articles, no amount of prompting fixes the answer. Invest here first:</p>
 <ul>
-<li>Don't promise refunds, discounts, or policy exceptions</li>
-<li>Don't acknowledge or deny account specifics you can't verify</li>
-<li>Escalate legal, threat, or abuse situations</li>
+<li>Hybrid search (keyword + semantic) instead of either alone.</li>
+<li>A reranker on the top-20 results to surface the truly relevant.</li>
+<li>Eval on a labeled set of "this query should return that article."</li>
+</ul>
+<p>Without retrieval quality, you have a confident hallucinator, not a support agent.</p>
+
+<h2>Escalation: the hardest design decision</h2>
+<p>Every support-agent team tunes this. Escalate too aggressively and humans drown in tickets the agent could've handled. Too rarely and customers get garbage answers to questions the agent shouldn't have attempted.</p>
+<p>Good escalation triggers:</p>
+<ul>
+<li>Agent confidence below threshold.</li>
+<li>No relevant KB article above a relevance score.</li>
+<li>Question mentions refund, cancellation, legal, or safety.</li>
+<li>User explicitly asks for a human.</li>
+<li>User sentiment is angry (don't make it worse with a bot reply).</li>
+<li>Question involves making account changes (don't auto-execute).</li>
+</ul>
+
+<h2>A worked example: a billing question</h2>
+<ol>
+<li><strong>Ticket:</strong> "Why did I get charged twice last month?"</li>
+<li><strong>Classify:</strong> billing, neutral sentiment.</li>
+<li><strong>Get user context:</strong> 2 charges in March, one was a proration, one was the regular monthly bill.</li>
+<li><strong>Retrieve:</strong> KB article on proration after plan upgrades.</li>
+<li><strong>Draft reply:</strong> explains the two charges with specific dates and amounts, links to the KB article, offers to refund the proration if the user prefers.</li>
+<li><strong>Human approval required</strong> (policy: any reply mentioning refunds goes through a human).</li>
+<li>Agent submits the draft, human approves, reply sends.</li>
+</ol>
+<p>The agent did 80% of the work; the human approved. Perfect use case for pre-action approval.</p>
+
+<h2>Personalization with caution</h2>
+<p>Pulling user context makes answers dramatically better. It also makes cross-user leaks possible. Rules:</p>
+<ul>
+<li>Every retrieval filters by the current user_id. No exceptions.</li>
+<li>Code-review any path that touches user data for missing filters.</li>
+<li>Don't let the agent share raw tool output with the user. Summarize first.</li>
+<li>Audit a sample of transcripts weekly looking for any cross-user leak patterns.</li>
+</ul>
+
+<h2>Hard guardrails</h2>
+<ul>
+<li>Never promise refunds, discounts, or policy exceptions without explicit authorization.</li>
+<li>Never acknowledge or deny account specifics the agent can't verify from the tools.</li>
+<li>Escalate any legal threat, abuse, or safety concern to a human immediately.</li>
+<li>Don't respond in anger-matching tone; escalate when sentiment is hostile.</li>
 </ul>
 
 <h2>Measurement</h2>
 <ul>
-<li>Deflection rate (tickets handled without escalation)</li>
-<li>Customer satisfaction on agent responses</li>
-<li>Accuracy (did the answer match the right KB article?)</li>
-<li>Escalation rate</li>
-<li>False positive escalations (should have handled)</li>
+<li><strong>Deflection rate</strong>: % of tickets resolved without human touch.</li>
+<li><strong>CSAT on agent-resolved tickets</strong>: are users actually happy with the answer?</li>
+<li><strong>Accuracy</strong>: did the answer use the right KB article?</li>
+<li><strong>Escalation rate</strong>: and subcategories (correct escalation vs "should've handled").</li>
+<li><strong>Resolution time</strong>: faster isn't always better if accuracy drops.</li>
 </ul>
+<p>Track accuracy and CSAT together. High deflection + low CSAT = agent is just shoving wrong answers at users.</p>
 
-<h2>The trap: too eager to answer</h2>
-<p>Agent should say "I don't know, let me get a human" more readily than "here's my best guess." In support, confident wrong answers are worse than acknowledged gaps.</p>
+<h2>The "too eager to answer" trap</h2>
+<p>Models are trained to be helpful. That bias makes them over-answer. In support, confident wrong answers are worse than "I'll get a human." Prompt the agent to escalate when anything is uncertain, not to make a best guess.</p>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Start with draft-first, not auto-send. Measure quality before expanding autonomy.</li>
+<li>Nail retrieval quality before worrying about the agent loop.</li>
+<li>Read <a href="../prod/human-in-loop.html">human-in-the-loop</a> for approval patterns.</li>
+<li>Read <a href="../prod/safety.html">safety + guardrails</a> for the rules every support agent needs.</li>
+</ul>
 <div class="prev-next"><a href="coding-agent.html" class="prev"><div class="label">← Previous</div><div class="title">Coding agent</div></a><a href="data-analyst.html" class="next"><div class="label">Next →</div><div class="title">Data analyst agent</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

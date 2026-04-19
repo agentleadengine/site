@@ -219,60 +219,116 @@
 <a href="../../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="../foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="../foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="../foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="../loops/react.html">ReAct</a></li><li><a href="../loops/tool-use.html">Tool use</a></li><li><a href="../loops/planning.html">Planning loops</a></li><li><a href="../loops/reflection.html">Reflection</a></li><li><a href="../loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="../tools/tool-design.html">Tool design</a></li><li><a href="../tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="../tools/error-handling.html">Tool error handling</a></li><li><a href="../tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="../tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="../memory/short-term.html">Short-term memory</a></li><li><a href="../memory/long-term.html">Long-term memory</a></li><li><a href="../memory/episodic.html">Episodic memory</a></li><li><a href="../memory/procedural.html">Procedural memory</a></li><li><a href="../memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="../multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="../multi/peer-agents.html">Peer agents</a></li><li><a href="../multi/debate.html">Debate + consensus</a></li><li><a href="../multi/handoffs.html">Agent handoffs</a></li><li><a href="../multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="../eval/why-eval-agents.html">Why eval agents</a></li><li><a href="../eval/task-completion.html">Task completion</a></li><li><a href="../eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="../eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="../prod/observability.html">Observability + tracing</a></li><li><a href="../prod/cost-control.html">Cost control</a></li><li><a href="../prod/latency.html">Latency optimization</a></li><li><a href="../prod/safety.html">Safety + guardrails</a></li><li><a href="../prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/research-agent.html">Research agent</a></li><li><a href="../patterns/coding-agent.html">Coding agent</a></li><li><a href="../patterns/customer-support.html">Customer support agent</a></li><li><a href="../patterns/data-analyst.html" class="active">Data analyst agent</a></li><li><a href="../patterns/browser-agent.html">Browser agent</a></li><li><a href="../patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="../frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="../frameworks/langgraph.html">LangGraph</a></li><li><a href="../frameworks/crewai.html">CrewAI</a></li><li><a href="../frameworks/autogen.html">AutoGen</a></li><li><a href="../frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>Data analyst agent</span></div><h1 class="title">Data analyst agent</h1><div class="article-meta"><span>📖 3 min read</span><span>Updated 2026-04-19</span></div>
-<p class="lede">A data analyst agent answers questions by querying databases, running analyses, and producing reports. The core skill: translating natural language questions into SQL (or similar), then interpreting results.</p>
+<p class="lede">A data analyst agent answers questions by querying data, running analyses, and interpreting results. The hard part isn't the SQL; modern LLMs write solid SQL. The hard part is making sure the agent understands the schema, writes a query that actually answers the question, interprets results correctly, and doesn't confidently state garbage when the data is weird. Done well, it's a huge productivity win for analytics teams. Done poorly, it's a confident bullshit generator in front of the board.</p>
 
 <h2>The loop</h2>
-<ol>
-<li>User asks a question</li>
-<li>Agent understands the data schema (via tool)</li>
-<li>Agent writes SQL</li>
-<li>Executes, gets results</li>
-<li>Interprets results</li>
-<li>May write more queries for follow-ups</li>
-<li>Synthesizes final answer with visualizations or tables</li>
-</ol>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Data-analyst pipeline');
+  sketch.numberedSteps(svg, rc, {direction: 'h', x: 30, y: 80, w: 840, items: [
+    {title: 'Explore', sub: 'schema + sample rows'},
+    {title: 'Write', sub: 'draft SQL'},
+    {title: 'Execute', sub: 'run + inspect'},
+    {title: 'Interpret', sub: 'numbers → narrative'},
+    {title: 'Follow-up', sub: 'more queries if needed'}
+  ]});
+});
+</script>
 
 <h2>Core tools</h2>
 <ul>
-<li><code>list_tables()</code></li>
-<li><code>describe_table(table)</code></li>
-<li><code>run_query(sql)</code></li>
-<li><code>create_chart(data, type)</code></li>
-<li><code>explain_plan(sql)</code>, for expensive queries</li>
+<li><code>list_tables()</code> — all available tables with short descriptions.</li>
+<li><code>describe_table(table)</code> — columns + types + sample rows.</li>
+<li><code>run_query(sql)</code> — execute (read-only) and return results.</li>
+<li><code>explain_plan(sql)</code> — for large queries, cost-check before running.</li>
+<li><code>create_chart(data, type)</code> — render visualizations when appropriate.</li>
+<li><code>note_finding(text)</code> — scratch pad for the synthesis step.</li>
 </ul>
 
-<h2>Why schema context matters</h2>
-<p>LLM can't write correct SQL without knowing table structure. Schema must be in context or discoverable via tools. For large schemas, this is a RAG problem over your DB metadata.</p>
+<h2>Schema context is everything</h2>
+<p>An LLM can't write correct SQL without knowing the schema. A big enterprise schema might have 500 tables; you can't dump them all into context. This is a RAG problem over your metadata: given the user's question, retrieve the relevant tables and their descriptions first. Only then write SQL.</p>
+<p>Signals that schema context is the bottleneck: agent writes syntactically valid SQL that queries the wrong table, or confuses two similarly-named columns. Fix with better metadata + retrieval, not better prompts.</p>
 
-<h2>Safety</h2>
+<h2>Safety: read-only by default</h2>
 <ul>
-<li>Read-only database access (usually)</li>
-<li>Query timeouts (agent doesn't crash the DB)</li>
-<li>Row-level security on the DB side (the agent sees only what the user should)</li>
-<li>Cost caps on long-running queries</li>
+<li><strong>Read-only DB user.</strong> Agent can't accidentally drop a table.</li>
+<li><strong>Query timeouts.</strong> A runaway query shouldn't take down the warehouse.</li>
+<li><strong>Row-level security</strong> enforced by the DB, not the agent. The agent inherits the user's permissions, nothing more.</li>
+<li><strong>Cost caps</strong> on expensive operations (full table scans, cross joins).</li>
+<li><strong>Prod separation.</strong> Agent should hit a read replica or separate analytics DB, not production transactional DB.</li>
 </ul>
 
-<h2>Interpretation quality</h2>
-<p>Numbers without interpretation aren't useful. Agent should:</p>
+<h2>Interpretation: numbers need narrative</h2>
+<p>A table of numbers isn't an answer. The agent should:</p>
 <ul>
-<li>State findings in natural language</li>
-<li>Point out surprising numbers</li>
-<li>Flag data quality issues (missing, inconsistent)</li>
-<li>Offer follow-up analyses</li>
+<li>State findings in plain language ("Revenue was $240K in March, up 12% from February").</li>
+<li>Point out anything surprising ("Interesting: the spike is driven entirely by one enterprise customer").</li>
+<li>Flag data quality issues ("Note: 3% of rows have null order_date and were excluded").</li>
+<li>Offer follow-up analyses ("Want me to break this down by region?").</li>
 </ul>
+<p>Without interpretation, the agent is just a slow SQL IDE.</p>
 
-<h2>When to visualize</h2>
-<p>Charts for trends, distributions, comparisons. Tables for exact numbers, specific records. Agent picks based on the question.</p>
+<h2>Visualize or table?</h2>
+<ul>
+<li><strong>Charts</strong>: trends, distributions, comparisons, anything where the shape matters.</li>
+<li><strong>Tables</strong>: exact numbers, specific records, precise counts.</li>
+</ul>
+<p>Agent picks based on the question. "How has X trended?" → line chart. "Which 5 customers bought most last month?" → table.</p>
+
+<h2>A worked example</h2>
+<p>User: "Which marketing channel drove the most revenue last quarter?"</p>
+<ol>
+<li><strong>List tables</strong> → finds <code>orders</code>, <code>customers</code>, <code>marketing_attribution</code>.</li>
+<li><strong>Describe marketing_attribution</strong> → discovers <code>channel</code>, <code>customer_id</code>, <code>campaign_id</code>.</li>
+<li><strong>Write SQL:</strong> join orders to marketing_attribution on customer_id, group by channel, sum revenue, filter to last quarter.</li>
+<li><strong>Execute:</strong> returns 6 channels, revenue amounts.</li>
+<li><strong>Sanity check:</strong> total across channels matches known quarterly revenue. Good.</li>
+<li><strong>Note surprise:</strong> "Paid search was #1 ($480K). But referrals were #2 ($230K), doubled from the prior quarter."</li>
+<li><strong>Offer follow-up:</strong> "Want to see the referral growth broken down by referring source?"</li>
+</ol>
+<p>Good output is a narrative with numbers, not a data dump.</p>
 
 <h2>Common failure modes</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Where analyst agents go wrong');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Failure', w: 260},
+    {title: 'Mitigation', w: 540}
+  ], rows: [
+    ['SQL runs but wrong question', 'Restate question back to user before running'],
+    ['Count / sum confusion', 'Prompt to verify metric definition matches question'],
+    ['Wrong join (doubles rows)', 'Sanity-check totals against known aggregates'],
+    ['Confident answer from bad data', 'Flag nulls, missing, inconsistent columns'],
+    ['Expensive query on huge table', 'Use explain_plan before running']
+  ]});
+});
+</script>
+
+<h2>Sanity-check patterns</h2>
+<p>Before reporting a number, agent should:</p>
 <ul>
-<li>Writes SQL that runs but answers wrong question</li>
-<li>Misinterprets query results (confuses counts with sums)</li>
-<li>Doesn't notice join mistakes</li>
-<li>Confidently answers from bad data</li>
+<li>Check the grand total is plausible vs known benchmarks.</li>
+<li>Test the query on a small sample first when feasible.</li>
+<li>Cross-check with a second, different query formulation.</li>
+<li>Flag anything anomalous rather than smoothing it over.</li>
 </ul>
 
-<p>Mitigation: test queries on small samples, sanity-check totals, flag anomalies.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>Start with a narrow scope: one or two high-value questions on a clean dataset. Prove accuracy before expanding.</li>
+<li>Build a schema-retrieval layer if your DB is larger than ~50 tables. Metadata RAG is the quiet multiplier.</li>
+<li>Read the <a href="../../rag/index.html">RAG section</a> for the retrieval patterns underneath all of this.</li>
+<li>Read <a href="../prod/safety.html">safety + guardrails</a> for the DB access controls.</li>
+</ul>
 <div class="prev-next"><a href="customer-support.html" class="prev"><div class="label">← Previous</div><div class="title">Customer support agent</div></a><a href="browser-agent.html" class="next"><div class="label">Next →</div><div class="title">Browser agent</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
