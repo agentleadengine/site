@@ -219,79 +219,172 @@
 <a href="../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../what-is-autonomous-ai.html">What is autonomous AI</a></li><li><a href="../the-autonomy-spectrum.html">The autonomy spectrum</a></li><li><a href="../glossary.html">Glossary</a></li></ul><h4>Claude</h4><ul><li><a href="../claude/overview.html">Overview</a></li><li><a href="../claude/prompting-for-agents.html">Prompting for agents</a></li><li><a href="../claude/extended-thinking.html">Extended thinking</a></li><li><a href="../claude/tool-use.html">Tool use</a></li></ul><h4>MCP</h4><ul><li><a href="../mcp/index.html">Overview</a></li><li><a href="../mcp/what-is-mcp.html">What is MCP</a></li><li><a href="../mcp/anatomy.html">Anatomy</a></li><li><a href="../mcp/transports.html">Transports</a></li><li><a href="../mcp/servers.html">Servers</a></li><li><a href="../mcp/clients.html">Clients</a></li><li><a href="../mcp/security.html">Security</a></li><li><a href="../mcp/directory.html">Directory</a></li></ul><h4>Plugins</h4><ul><li><a href="../plugins/index.html">Overview</a></li><li><a href="../plugins/vs-mcp.html">Plugins vs MCP</a></li><li><a href="../plugins/marketplace.html">Marketplace</a></li></ul><h4>Claude Code</h4><ul><li><a href="../claude-code/index.html">Overview</a></li><li><a href="../claude-code/settings.html">Settings</a></li><li><a href="../claude-code/permissions.html">Permissions</a></li><li><a href="../claude-code/hooks.html">Hooks</a></li><li><a href="../claude-code/skills.html">Skills</a></li><li><a href="../claude-code/memory.html">Memory</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/index.html">Overview</a></li><li><a href="../patterns/react-loop.html">ReAct loop</a></li><li><a href="../patterns/plan-execute.html">Plan-execute</a></li><li><a href="../patterns/multi-agent.html">Multi-agent</a></li><li><a href="../patterns/evaluation.html">Evaluation</a></li><li><a href="../patterns/prompt-caching.html">Prompt caching</a></li></ul><h4>Autonomous</h4><ul><li><a href="../autonomous/index.html">Overview</a></li><li><a href="../autonomous/headless.html" class="active">Headless</a></li><li><a href="../autonomous/scheduling.html">Scheduling</a></li><li><a href="../autonomous/self-monitoring.html">Self-monitoring</a></li><li><a href="../autonomous/safety.html">Safety</a></li></ul><h4>Build Guides</h4><ul><li><a href="../build/index.html">Overview</a></li><li><a href="../build/first-agent.html">First agent (60 min)</a></li><li><a href="../build/voice-agent.html">Voice agent</a></li><li><a href="../build/research-agent.html">Research agent</a></li></ul><h4>Tools</h4><ul><li><a href="../tools/browser-automation.html">Browser automation</a></li><li><a href="../tools/desktop-control.html">Desktop control</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Framework</a><span class="sep">›</span><a href="../autonomous/index.html">Autonomous</a><span class="sep">›</span><span>Headless mode</span></div><h1 class="title" style="font-size:clamp(32px,4.5vw,42px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">Headless mode</h1><div class="article-meta"><span>📖 4 min read</span><span>Updated 2026-04-18</span></div>
-<p class="lede">Headless mode runs Claude Code non-interactively. No terminal UI, no approval prompts (either pre-authorized or blocked). The agent takes input, does the work, and emits output, ready to be wired into automation.</p>
+<p class="lede">Headless mode is Claude Code with no human attached. No terminal, no approval prompts, no interactive UI. The agent takes a prompt from somewhere (a script, a cron job, a webhook), does its work, and writes its output somewhere. That's it. Headless is the prerequisite for running an agent on a schedule, inside a CI pipeline, or as part of a larger system. It's the first real step toward autonomy.</p>
 
-<h2>Why you'd want it</h2>
+<h2>What "headless" actually means.</h2>
+<p>When you run <code>claude</code> normally, you get an interactive terminal session. You type things. The agent asks you for approvals. It waits when it's unsure. There's a human in the loop at every risky step.</p>
+
+<p>When you run claude headless, all of that is gone. There's no terminal to type into, no human to ask. The agent gets its prompt from stdin (or a file), runs, and emits output to stdout. Approval prompts don't happen — they either pre-approve automatically (because you set up a tight allow list) or the action is denied (because nobody's there to say yes).</p>
+
+<p>This is the mode you need when the agent is supposed to run when you're not at the computer.</p>
+
+<h2>Why you'd want to run an agent headless.</h2>
+
+<div class="sketch" data-viewbox="0 0 900 280" id="dg-headless-why">
+  <svg></svg>
+  <div class="sketch-caption">~ when headless becomes necessary ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-headless-why');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.table(svg, rc, {
+    x: 20, y: 30,
+    cols: [
+      { title: 'Trigger',              w: 220 },
+      { title: 'What fires it',        w: 330 },
+      { title: 'Example',              w: 330 }
+    ],
+    rows: [
+      ['Scheduled (cron)',    'a time',                       'every morning at 6am, build a report'],
+      ['Webhook',             'an event from another system', 'new Stripe charge → summarize for finance'],
+      ['CI/CD step',          'a code push or deploy',        'after tests fail, analyze + open issue'],
+      ['Part of a service',   'a programmatic call',          'user submits form → agent processes it']
+    ]
+  });
+});
+</script>
+
+<p>The common thread: no human pressing "go." Each of these situations needs the agent to operate on its own, then hand back whatever it produced.</p>
+
+<h2>How to actually run it.</h2>
+<p>Claude Code's CLI supports headless mode with a few flags:</p>
+
+<pre><code>echo "Analyze yesterday's error logs and write a summary" \
+  | claude --headless --print --max-turns 50 --permission-mode auto</code></pre>
+
+<p>Breaking down the flags:</p>
+
 <ul>
-  <li>Running an agent from a cron job</li>
-  <li>Running an agent as a CI/CD step</li>
-  <li>Running an agent from a webhook handler</li>
-  <li>Running an agent inside a larger system (as a microservice)</li>
+  <li><code>--headless</code>, disable the interactive UI, read the prompt from stdin</li>
+  <li><code>--print</code>, write the final response to stdout and exit (don't hang)</li>
+  <li><code>--max-turns N</code>, hard cap on agent turns — this is your cost cap. Always set it.</li>
+  <li><code>--permission-mode auto</code>, use the allow/deny lists; don't prompt. Unknown actions get denied.</li>
+  <li><code>--no-input</code>, never ask the user for anything. Fail loudly instead.</li>
 </ul>
 
-<h2>How to run Claude Code headless</h2>
-<p>The CLI supports a non-interactive mode, pass a prompt, get output, exit.</p>
-<pre><code>echo "Analyze yesterday's error logs and write a summary" | claude --headless --print</code></pre>
-<p>Options you'll want:</p>
-<ul>
-  <li><code>--headless</code>, disable the TUI, read prompt from stdin</li>
-  <li><code>--print</code>, print final response to stdout and exit</li>
-  <li><code>--max-turns N</code>, hard cap on agent turns</li>
-  <li><code>--permission-mode auto</code>, pre-approve known-safe actions</li>
-  <li><code>--no-input</code>, never prompt the user; fail or skip when a decision is needed</li>
-</ul>
+<h2>What changes in headless mode.</h2>
+<p>Three things shift when there's no human in the loop. If your agent was designed for interactive use, these will bite you.</p>
 
-<h2>What changes in headless mode</h2>
-<ul>
-  <li><strong>Approval prompts become denials.</strong> If the agent tries to do something that needs approval and no one's there, the harness denies the call. Your permission list had better cover what the agent needs.</li>
-  <li><strong>Errors surface immediately.</strong> No retry-from-interactive. Design for graceful failure.</li>
-  <li><strong>State management matters.</strong> Each run starts from a clean slate unless you persist context (memory file, external DB).</li>
-</ul>
+<div class="sketch" data-viewbox="0 0 900 280" id="dg-headless-changes">
+  <svg></svg>
+  <div class="sketch-caption">~ three things that shift when no one's watching ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-headless-changes');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.table(svg, rc, {
+    x: 20, y: 30,
+    cols: [
+      { title: 'What changes',                w: 240 },
+      { title: 'What it means',               w: 320 },
+      { title: 'How to handle',               w: 320 }
+    ],
+    rows: [
+      ['Approval becomes denial', 'no human to say yes',               'allow-list must cover every real need'],
+      ['Errors surface immediately', 'no rescue via retry-interactive', 'design for graceful failure + escalation'],
+      ['Clean state every run',   'no carryover from last session',    'persist context via memory files or DB']
+    ]
+  });
+});
+</script>
 
-<h2>Permission design for headless</h2>
-<p>In headless mode, the permission list has to be right. No user to rescue you.</p>
-<ul>
-  <li>Allow everything the agent will actually need</li>
-  <li>Deny everything risky (even if it seems unlikely)</li>
-  <li>Log every tool call so you can review later</li>
-  <li>Set a strict <code>--max-turns</code> to cap runaway costs</li>
-</ul>
+<h2>Permission design for headless runs.</h2>
+<p>This is where most headless agents go wrong. The permission list that worked great interactively might leave huge gaps in headless. Two things to check before you go unattended:</p>
 
-<h2>Patterns</h2>
+<ol>
+  <li><strong>Does the allow list cover everything the agent actually needs?</strong> Watch a few real runs interactively. Every tool the agent used needs to be in allow (or a specific deny for the bad variants). Anything missing from both lists will silently be denied, which = task fails.</li>
+  <li><strong>Does the deny list cover everything risky?</strong> In interactive mode, you'd catch a surprise with your eyes. In headless mode, a surprise just... runs. Every destructive operation, every spend-money path, every production touch, needs to be explicitly listed.</li>
+</ol>
 
-<h3>Task-runner pattern</h3>
-<p>Write a shell script or cron entry that pipes a task description into Claude Code:</p>
+<p>The rule: <strong>if you're not 100% sure what the agent might try, don't run it headless yet.</strong> Watch it interactively until the behavior is predictable, then graduate.</p>
+
+<h2>The three canonical headless patterns.</h2>
+
+<h3>The task-runner pattern.</h3>
+<p>A shell script (or cron entry) pipes a fixed prompt into Claude:</p>
+
 <pre><code>#!/bin/bash
 claude --headless --print --max-turns 50 &lt;&lt; 'EOF'
-Check yesterday's server logs for 5xx errors. Summarize into
-a report. Post to Slack channel #alerts.
+Check yesterday's server logs for 5xx errors. Summarize
+the top 3 into a markdown report. Post to Slack #alerts.
 EOF</code></pre>
 
-<h3>Webhook handler pattern</h3>
-<p>A web server receives a webhook, formulates a prompt, invokes Claude Code headless, returns the response.</p>
+<p>Simple. Runs wherever cron runs. Output goes where you redirect it. This is the pattern for most scheduled agents.</p>
 
-<h3>CI/CD step pattern</h3>
-<p>In a GitHub Action: after the test suite runs, invoke Claude headless to analyze failures and open an issue.</p>
+<h3>The webhook-handler pattern.</h3>
+<p>A web server accepts incoming webhooks (from Stripe, GitHub, Linear, whatever), formulates a prompt for the agent, runs it headless, and returns the response. The agent becomes an on-demand service other systems can trigger.</p>
 
-<h2>Logging</h2>
-<p>Every headless run should log:</p>
+<h3>The CI/CD-step pattern.</h3>
+<p>Inside a GitHub Action, after test failures, invoke Claude headless to analyze the failures, look for patterns, and open a GitHub issue. The agent becomes a teammate that reviews the build and files bugs. Works the same for any CI platform.</p>
+
+<h2>Logging. Non-negotiable for headless runs.</h2>
+<p>In interactive mode, you see what the agent's doing. In headless mode, if you don't log it, you'll never know. Every headless run should capture:</p>
+
 <ul>
-  <li>Timestamp</li>
-  <li>Input prompt</li>
-  <li>All tool calls + results</li>
-  <li>Final output</li>
-  <li>Exit code</li>
-  <li>Cost (tokens consumed)</li>
+  <li>Timestamp + run ID</li>
+  <li>The input prompt</li>
+  <li>Every tool call and its result (use a PostToolUse hook)</li>
+  <li>The final output</li>
+  <li>The exit code</li>
+  <li>Tokens consumed (for cost tracking)</li>
 </ul>
-<p>Use a PostToolUse hook to pipe tool calls to your log system.</p>
 
-<h2>Common pitfalls</h2>
-<ul>
-  <li><strong>Infinite loops.</strong> Set max-turns. Always.</li>
-  <li><strong>Forgotten credentials.</strong> Headless runs don't have access to your keychain unless you explicitly pass env vars.</li>
-  <li><strong>Silent failures.</strong> A headless run that errors at tool-call time but still exits 0 will run for months unnoticed. Make errors loud.</li>
-  <li><strong>Runaway costs.</strong> Without a human checking in, a broken agent can spend thousands of dollars of API calls in a week. Budget alerts matter.</li>
-</ul>
+<p>Logs should go somewhere you can search later — a file, a database, a logging service. The moment something goes wrong, the first thing you'll want is the log from that run. If it's not there, you're reverse-engineering from gut feel.</p>
+
+<h2>The four pitfalls that will get you.</h2>
+
+<div class="sketch" data-viewbox="0 0 900 300" id="dg-headless-pitfalls">
+  <svg></svg>
+  <div class="sketch-caption">~ headless pitfalls ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-headless-pitfalls');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.table(svg, rc, {
+    x: 20, y: 30,
+    cols: [
+      { title: 'Pitfall',                   w: 220 },
+      { title: 'What happens',               w: 350 },
+      { title: 'Fix',                        w: 300 }
+    ],
+    rows: [
+      ['Infinite loop',       'agent keeps calling failing tool',    'always set --max-turns'],
+      ['Missing credentials', 'keychain not accessible from cron',   'pass env vars explicitly'],
+      ['Silent failure',      'errors happen, exit code still 0',    'make errors loud; monitor exit codes'],
+      ['Runaway cost',        'broken agent burns $1000 overnight',  'hard turn cap + API budget alerts']
+    ]
+  });
+});
+</script>
+
+<p>Each of these has burned somebody. The fixes are simple; just don't skip them.</p>
+
+<h2>Headless as a graduation, not a starting point.</h2>
+<p>Don't write an agent in headless mode from day one. Write it interactively. Watch it run on real tasks. Tune the permission list. Fix the weird edge cases you notice. <em>Then</em> graduate the class of task to headless.</p>
+
+<p>The pattern that works: interactive for 50+ real runs without surprises, then headless with aggressive logging for another 50, then schedule it (see <a href="scheduling.html">Scheduling</a>). Skipping steps here is how agents cause real damage. Don't.</p>
 <div class="prev-next"><a href="index.html" class="prev"><div class="label">← Previous</div><div class="title">Autonomous overview</div></a><a href="scheduling.html" class="next"><div class="label">Next →</div><div class="title">Scheduling</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../framework/index.html">Framework</a></p>
 </div></footer><script>
