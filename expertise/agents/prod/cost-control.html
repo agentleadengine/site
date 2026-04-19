@@ -219,50 +219,112 @@
 <a href="../../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="../foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="../foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="../foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="../loops/react.html">ReAct</a></li><li><a href="../loops/tool-use.html">Tool use</a></li><li><a href="../loops/planning.html">Planning loops</a></li><li><a href="../loops/reflection.html">Reflection</a></li><li><a href="../loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="../tools/tool-design.html">Tool design</a></li><li><a href="../tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="../tools/error-handling.html">Tool error handling</a></li><li><a href="../tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="../tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="../memory/short-term.html">Short-term memory</a></li><li><a href="../memory/long-term.html">Long-term memory</a></li><li><a href="../memory/episodic.html">Episodic memory</a></li><li><a href="../memory/procedural.html">Procedural memory</a></li><li><a href="../memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="../multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="../multi/peer-agents.html">Peer agents</a></li><li><a href="../multi/debate.html">Debate + consensus</a></li><li><a href="../multi/handoffs.html">Agent handoffs</a></li><li><a href="../multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="../eval/why-eval-agents.html">Why eval agents</a></li><li><a href="../eval/task-completion.html">Task completion</a></li><li><a href="../eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="../eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="../prod/observability.html">Observability + tracing</a></li><li><a href="../prod/cost-control.html" class="active">Cost control</a></li><li><a href="../prod/latency.html">Latency optimization</a></li><li><a href="../prod/safety.html">Safety + guardrails</a></li><li><a href="../prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/research-agent.html">Research agent</a></li><li><a href="../patterns/coding-agent.html">Coding agent</a></li><li><a href="../patterns/customer-support.html">Customer support agent</a></li><li><a href="../patterns/data-analyst.html">Data analyst agent</a></li><li><a href="../patterns/browser-agent.html">Browser agent</a></li><li><a href="../patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="../frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="../frameworks/langgraph.html">LangGraph</a></li><li><a href="../frameworks/crewai.html">CrewAI</a></li><li><a href="../frameworks/autogen.html">AutoGen</a></li><li><a href="../frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>Cost control</span></div><h1 class="title">Cost control</h1><div class="article-meta"><span>📖 3 min read</span><span>Updated 2026-04-19</span></div>
-<p class="lede">Agents can rack up bills fast. A single runaway session can cost $10. A thousand users hitting the same problem can cost $10,000 in a day. Cost control is a first-class production concern, not an afterthought.</p>
+<p class="lede">Agent costs can sneak up on you in a way single-call costs don't. A stuck session can cost $10 instead of $0.10. One bug multiplied across a thousand users can burn $10K in an afternoon. Cost control isn't a nice-to-have; it's what separates agents-in-production from agents-that-got-their-team-yelled-at. This page is the playbook.</p>
 
-<h2>Where the cost goes</h2>
+<h2>Where the cost actually goes</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'The four cost buckets');
+  sketch.bars(svg, rc, {x: 40, y: 60, w: 820, labelW: 240, items: [
+    {label: 'LLM input tokens', value: 55, note: 'biggest bucket usually'},
+    {label: 'LLM output tokens', value: 35, note: 'reasoning + final response'},
+    {label: 'Tool / API costs', value: 25, note: 'paid APIs, compute'},
+    {label: 'Memory / vector DB', value: 10, note: 'storage + queries'}
+  ]});
+});
+</script>
+<p>LLM tokens dominate almost every agent's bill. Input tokens grow with context length; output tokens grow with how much reasoning + response the model produces. Optimize those first.</p>
+
+<h2>Six cost-reduction techniques (in order of ROI)</h2>
+<div class="sketch" data-viewbox="0 0 900 320"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 320);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Cheapest wins first');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Technique', w: 220},
+    {title: 'Typical savings', w: 580}
+  ], rows: [
+    ['Prompt caching', '30–90% on system-prompt tokens across multi-turn'],
+    ['Model routing', '50–80% by sending easy tasks to cheap model'],
+    ['Context trimming', '20–60% by summarizing stale turns'],
+    ['Tool output caps', '10–40% on turns after big tool results'],
+    ['Per-session budget', 'Caps worst-case cost; doesn\'t reduce average'],
+    ['Tool result caching', '20–50% on repeat queries']
+  ]});
+});
+</script>
+
+<h2>Prompt caching: do this first</h2>
+<p>Anthropic's Claude, Google's Gemini, and OpenAI all support caching stable parts of the prompt. Your system prompt is the same every turn; cache it. On Anthropic, a cached token is 10% of the normal input cost, and cache hits are typical on multi-turn sessions. For agents with a 2K-token system prompt and 15-turn sessions, this alone can cut your bill in half.</p>
+
+<h2>Model routing: cheap for easy, premium for hard</h2>
+<p>Not every task needs the flagship model. A lightweight classifier (or even a rule) decides: "This looks simple → cheap model. This looks complex → premium." Can cut costs 70–80% on query-heavy agents where most requests are easy. Build escalation too: cheap model tries first, escalates if stuck.</p>
+
+<h2>Context trimming</h2>
+<p>A 20-turn agent session that sends 80K tokens every turn is mostly paying to resend old context. Summarize old turns into a few hundred tokens when context passes a threshold. Can drop per-turn cost 40–70% on long sessions.</p>
+
+<h2>Tool output limits</h2>
+<p>A tool that returns 50K of text blows up the next LLM call. Cap every tool's output at a reasonable size (e.g., 4K tokens). If the agent needs more, it can call a follow-up tool with narrower scope.</p>
+
+<h2>Per-session budget (the safety net)</h2>
+<p>A hard cap at $0.50 or whatever fits your product. When hit, gracefully terminate. Doesn't reduce average cost but prevents the $10 runaway from happening at all. This is the thing you absolutely cannot ship without.</p>
+
+<h2>Caching expensive tool results</h2>
+<p>Same search query within the session → cached result. Same LLM prompt with deterministic settings → cached. Especially valuable when your agent naturally repeats queries (research, debugging, customer lookup).</p>
+
+<h2>The four-layer budget stack</h2>
 <ul>
-<li>LLM tokens in (context + user input)</li>
-<li>LLM tokens out (reasoning + final output)</li>
-<li>Tool call side-costs (paid APIs, compute)</li>
-<li>Memory/vector DB storage and queries</li>
+<li><strong>Per-session:</strong> $X cap per agent run.</li>
+<li><strong>Per-user per-day:</strong> one user can't eat the whole budget.</li>
+<li><strong>Per-tenant per-month:</strong> one customer can't blow the SaaS P&amp;L.</li>
+<li><strong>Global rate limit:</strong> catches systemic issues before they compound.</li>
 </ul>
+<p>Layered so a single failure at one layer doesn't cascade.</p>
 
-<h2>Cost reduction strategies</h2>
+<h2>Measure cost per outcome, not per request</h2>
+<p>A task that takes 3 sessions to complete costs 3× what a single session shows. Track cost-per-resolved-task (or cost-per-successful-outcome). That's the number that matters for unit economics, not cost-per-request.</p>
 
-<h3>Model routing</h3>
-<p>Cheap model for simple tasks, expensive model for complex ones. Classify upfront or escalate mid-session.</p>
-
-<h3>Prompt caching</h3>
-<p>Claude and Gemini support caching the system prompt so it's not reprocessed each turn. Massive savings in multi-turn sessions.</p>
-
-<h3>Context trimming</h3>
-<p>Don't send 50K of history when the model needs 5K. Summarize aggressively.</p>
-
-<h3>Tool output limits</h3>
-<p>Cap each tool's response size. Huge tool outputs balloon the next LLM call.</p>
-
-<h3>Budget per session</h3>
-<p>Hard cap: "This session can't exceed $0.50." When reached, gracefully terminate.</p>
-
-<h3>Caching expensive tool results</h3>
-<p>Same search query = cached result. Same model inference on same prompt = cached.</p>
-
-<h2>The budget stack</h2>
+<h2>A worked example</h2>
+<p>Team's support agent costs average $0.28 per ticket. Monthly spend: $14K at 50K tickets. Actions:</p>
 <ul>
-<li>Per-request cost cap</li>
-<li>Per-user daily cap</li>
-<li>Per-tenant monthly cap</li>
-<li>Global hourly rate limit</li>
+<li>Turn on prompt caching. System prompt is 3K tokens, avg 8 turns. Drops cost to $0.18/ticket. Monthly: $9K.</li>
+<li>Add model routing: 60% of tickets go to cheap model. Drops to $0.11/ticket. Monthly: $5.5K.</li>
+<li>Trim context on long tickets. p95 cost drops 40%. Average drops to $0.09. Monthly: $4.5K.</li>
 </ul>
-<p>Layered, so no single failure breaks the bank.</p>
-
-<h2>Measuring cost per outcome</h2>
-<p>Cost per resolved task, not cost per request. A task that takes 3 sessions to complete costs more than it looks.</p>
+<p>$10K/month back with a week of engineering. No quality drop (verified against eval set).</p>
 
 <h2>Cost alerts</h2>
-<p>Alert when cost per task rises 20%+. Usually signals a regression (bad prompt, model downgrade, agent stuck in loops).</p>
+<p>Set alerts on:</p>
+<ul>
+<li>Average cost per task rising 20%+ week-over-week.</li>
+<li>p99 session cost exceeding a threshold.</li>
+<li>% of sessions hitting the budget cap (spike means something changed).</li>
+<li>Model mix drifting (cheap-to-premium ratio shifting).</li>
+</ul>
+
+<h2>Pitfalls</h2>
+<ul>
+<li><strong>No budget cap.</strong> One bug = one enormous bill.</li>
+<li><strong>Caching off.</strong> Leaving 40–50% savings on the table.</li>
+<li><strong>Premium model for everything.</strong> Cost 5× what you needed.</li>
+<li><strong>No cost-per-outcome tracking.</strong> You're optimizing the wrong metric.</li>
+<li><strong>Silent quality drops when cutting costs.</strong> Always re-run eval after any cost optimization.</li>
+</ul>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Turn on prompt caching today. It's free savings.</li>
+<li>Add a per-session budget cap if you don't have one. Non-negotiable.</li>
+<li>Read <a href="observability.html">observability + tracing</a> to see where your tokens go.</li>
+<li>Read <a href="latency.html">latency optimization</a>, which overlaps heavily with cost work.</li>
+</ul>
 <div class="prev-next"><a href="observability.html" class="prev"><div class="label">← Previous</div><div class="title">Observability + tracing</div></a><a href="latency.html" class="next"><div class="label">Next →</div><div class="title">Latency optimization</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

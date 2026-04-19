@@ -219,43 +219,101 @@
 <a href="../../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="../foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="../foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="../foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="../loops/react.html">ReAct</a></li><li><a href="../loops/tool-use.html">Tool use</a></li><li><a href="../loops/planning.html">Planning loops</a></li><li><a href="../loops/reflection.html">Reflection</a></li><li><a href="../loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="../tools/tool-design.html">Tool design</a></li><li><a href="../tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="../tools/error-handling.html">Tool error handling</a></li><li><a href="../tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="../tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="../memory/short-term.html">Short-term memory</a></li><li><a href="../memory/long-term.html">Long-term memory</a></li><li><a href="../memory/episodic.html">Episodic memory</a></li><li><a href="../memory/procedural.html">Procedural memory</a></li><li><a href="../memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="../multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="../multi/peer-agents.html">Peer agents</a></li><li><a href="../multi/debate.html">Debate + consensus</a></li><li><a href="../multi/handoffs.html">Agent handoffs</a></li><li><a href="../multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="../eval/why-eval-agents.html">Why eval agents</a></li><li><a href="../eval/task-completion.html">Task completion</a></li><li><a href="../eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="../eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="../prod/observability.html">Observability + tracing</a></li><li><a href="../prod/cost-control.html">Cost control</a></li><li><a href="../prod/latency.html">Latency optimization</a></li><li><a href="../prod/safety.html">Safety + guardrails</a></li><li><a href="../prod/human-in-loop.html" class="active">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/research-agent.html">Research agent</a></li><li><a href="../patterns/coding-agent.html">Coding agent</a></li><li><a href="../patterns/customer-support.html">Customer support agent</a></li><li><a href="../patterns/data-analyst.html">Data analyst agent</a></li><li><a href="../patterns/browser-agent.html">Browser agent</a></li><li><a href="../patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="../frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="../frameworks/langgraph.html">LangGraph</a></li><li><a href="../frameworks/crewai.html">CrewAI</a></li><li><a href="../frameworks/autogen.html">AutoGen</a></li><li><a href="../frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>Human-in-the-loop</span></div><h1 class="title">Human-in-the-loop</h1><div class="article-meta"><span>📖 2 min read</span><span>Updated 2026-04-19</span></div>
-<p class="lede">Fully autonomous agents are a small fraction of production systems. Most agents in production have humans in the loop at specific decision points. Knowing when to pause for human review is a design decision, not a limitation.</p>
+<p class="lede">Fully autonomous agents are rare in real production. Most production agent systems have humans in the loop at specific decision points, not because the AI isn't smart enough, but because some decisions shouldn't be fully automated even if they could be. Human-in-the-loop isn't a limitation. It's a design choice. Knowing where to place the human is how you ship reliably without becoming a headline.</p>
 
-<h2>When to pause for human</h2>
-<ul>
-<li>Destructive actions (see safety module)</li>
-<li>External communication (emails sent, calls made)</li>
-<li>Financial transactions</li>
-<li>Low-confidence agent responses</li>
-<li>Escalations from tools that detect issues</li>
-<li>Compliance-flagged content</li>
-</ul>
+<h2>When the human should pause things</h2>
+<div class="sketch" data-viewbox="0 0 900 300"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 300);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Pause points, by reason');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Trigger', w: 260},
+    {title: 'Why pause', w: 540}
+  ], rows: [
+    ['Destructive actions', 'Can\'t undo if wrong'],
+    ['External communication', 'Reputation + legal stakes'],
+    ['Financial transactions', 'Direct harm potential'],
+    ['Low-confidence response', 'Agent knows it\'s unsure'],
+    ['Tool-flagged issues', 'Verifier says "check this"'],
+    ['Compliance boundaries', 'Legal / regulatory rule triggered']
+  ]});
+});
+</script>
 
-<h2>The interaction model</h2>
+<h2>Three interaction models</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Pick the model that fits the stakes');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Model', w: 200},
+    {title: 'How it works', w: 340},
+    {title: 'When to use', w: 260}
+  ], rows: [
+    ['Pre-action approval', 'Agent proposes; human clicks to execute', 'High-stakes: send, pay, publish'],
+    ['Post-action review', 'Agent acts; human reviews later', 'Bulk actions, low-to-mid stakes'],
+    ['Async handoff', 'Agent pauses; human resumes task later', 'Ambiguity or escalation']
+  ]});
+});
+</script>
 
-<h3>Pre-action approval</h3>
-<p>Agent proposes action. Human sees it, approves or edits. Then it executes.</p>
+<h2>Pre-action approval: the default for high-stakes</h2>
+<p>The strongest pattern: agent <em>always proposes</em>, human clicks execute. The agent wrote the email draft; the human presses send. The agent picked the refund; the human approves. This keeps the human as the actor of record, which matters for liability and for user trust. Most users are more comfortable with "AI helped me do this" than "AI did this to me."</p>
 
-<h3>Post-action review</h3>
-<p>Agent takes action. Human reviews later. For less-critical actions where speed matters.</p>
+<h2>Post-action review: for scale</h2>
+<p>When volume is too high for per-action approval, let the agent act and review a sample. The agent auto-categorized 1000 tickets today; a human reviews 5% randomly sampled, weighted toward low-confidence cases. Drift in the auto-categorizer shows up in the review rate quickly.</p>
 
-<h3>Async handoff</h3>
-<p>Agent pauses task, surfaces to human queue. Human resumes with annotations. Agent continues.</p>
-
-<h2>Queue management</h2>
-<p>If agent actions exceed human review capacity, queue builds up and UX degrades. Either:</p>
-<ul>
-<li>Automate more (tolerate more autonomy)</li>
-<li>Hire more reviewers</li>
-<li>Reduce agent throughput</li>
-<li>Tier the queue (urgent vs routine)</li>
-</ul>
+<h2>Async handoff: for escalation</h2>
+<p>Agent is mid-task, hits something it can't handle. Don't fail the session; hand off. Tier-1 → tier-2. Support agent → human rep. Billing agent → finance. The task pauses, joins a human queue, picks back up after resolution.</p>
 
 <h2>The confidence threshold</h2>
-<p>Agent can estimate its own confidence. Route high-confidence actions through automatically; queue low-confidence for review. Over time, track which actions were approved vs changed, calibrate the threshold.</p>
+<p>An agent can (and should) estimate its own confidence on any action: "I'm 95% sure this is the right refund" vs "I'm only 40% sure this is the right category." Route by threshold:</p>
+<ul>
+<li>&gt;90% confidence → auto-execute (if the action is reversible or low-stakes).</li>
+<li>50–90% confidence → queue for human approval.</li>
+<li>&lt;50% confidence → return to user for clarification.</li>
+</ul>
+<p>Track the calibration: when the agent says 90%, how often is it actually right? Adjust thresholds with real production data.</p>
 
-<h2>Agent proposing vs executing</h2>
-<p>Strong pattern: agent always proposes, human clicks to execute. Keeps human as the actor of record. Lowers liability and improves trust.</p>
+<h2>A worked example: customer refunds</h2>
+<ul>
+<li><strong>Auto-approve</strong> refunds under $50 with clear policy match (70% of cases).</li>
+<li><strong>Pre-action approval</strong> for $50–$500 refunds (25% of cases; human clicks to execute).</li>
+<li><strong>Async handoff to a human</strong> for refunds over $500 or policy-unclear cases (5% of cases).</li>
+</ul>
+<p>Agent handles 95% of volume with a human touching 30% of dollars. One human reviewer can keep up with thousands of tickets a day because most cases are pre-approved low-risk.</p>
+
+<h2>Queue management</h2>
+<p>If agent output exceeds human review capacity, queues build up and the UX degrades. When you see this happening:</p>
+<ul>
+<li>Automate more at the top of the funnel (raise the auto-approve threshold for low-stakes cases).</li>
+<li>Hire more reviewers.</li>
+<li>Reduce agent throughput (slow the input rate).</li>
+<li>Tier the queue: urgent items jump the line, routine waits.</li>
+</ul>
+
+<h2>Pitfalls</h2>
+<ul>
+<li><strong>Human rubber-stamping.</strong> If reviewers just click approve on everything, the human-in-loop is theater. Design the UI so refusing is as easy as approving.</li>
+<li><strong>No escalation path.</strong> Agent can't hand off, just fails. User experience collapses at the first edge case.</li>
+<li><strong>Review fatigue.</strong> Too many requests kill attention quality. Prioritize which actions actually need a human.</li>
+<li><strong>Queue SLAs not measured.</strong> If the average wait is 2 hours, users churn. Track and alert.</li>
+<li><strong>Ambiguous confidence.</strong> Agent says "high confidence" on things it gets wrong. Calibrate using real outcomes.</li>
+</ul>
+
+<h2>What to do with this</h2>
+<ul>
+<li>For each agent action, pick one of the three models (pre-approval, post-review, async handoff) based on stakes.</li>
+<li>Build the escalation path before the first customer needs it.</li>
+<li>Read <a href="safety.html">safety + guardrails</a> for the threats that motivate human-in-loop.</li>
+<li>Read <a href="../multi/handoffs.html">agent handoffs</a> for the agent-to-human transition details.</li>
+</ul>
 <div class="prev-next"><a href="safety.html" class="prev"><div class="label">← Previous</div><div class="title">Safety + guardrails</div></a><a href="../patterns/research-agent.html" class="next"><div class="label">Next →</div><div class="title">Research agent</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

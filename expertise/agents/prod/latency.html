@@ -219,53 +219,101 @@
 <a href="../../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="../foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="../foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="../foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="../loops/react.html">ReAct</a></li><li><a href="../loops/tool-use.html">Tool use</a></li><li><a href="../loops/planning.html">Planning loops</a></li><li><a href="../loops/reflection.html">Reflection</a></li><li><a href="../loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="../tools/tool-design.html">Tool design</a></li><li><a href="../tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="../tools/error-handling.html">Tool error handling</a></li><li><a href="../tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="../tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="../memory/short-term.html">Short-term memory</a></li><li><a href="../memory/long-term.html">Long-term memory</a></li><li><a href="../memory/episodic.html">Episodic memory</a></li><li><a href="../memory/procedural.html">Procedural memory</a></li><li><a href="../memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="../multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="../multi/peer-agents.html">Peer agents</a></li><li><a href="../multi/debate.html">Debate + consensus</a></li><li><a href="../multi/handoffs.html">Agent handoffs</a></li><li><a href="../multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="../eval/why-eval-agents.html">Why eval agents</a></li><li><a href="../eval/task-completion.html">Task completion</a></li><li><a href="../eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="../eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="../prod/observability.html">Observability + tracing</a></li><li><a href="../prod/cost-control.html">Cost control</a></li><li><a href="../prod/latency.html" class="active">Latency optimization</a></li><li><a href="../prod/safety.html">Safety + guardrails</a></li><li><a href="../prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/research-agent.html">Research agent</a></li><li><a href="../patterns/coding-agent.html">Coding agent</a></li><li><a href="../patterns/customer-support.html">Customer support agent</a></li><li><a href="../patterns/data-analyst.html">Data analyst agent</a></li><li><a href="../patterns/browser-agent.html">Browser agent</a></li><li><a href="../patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="../frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="../frameworks/langgraph.html">LangGraph</a></li><li><a href="../frameworks/crewai.html">CrewAI</a></li><li><a href="../frameworks/autogen.html">AutoGen</a></li><li><a href="../frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>Latency optimization</span></div><h1 class="title">Latency optimization</h1><div class="article-meta"><span>📖 3 min read</span><span>Updated 2026-04-19</span></div>
-<p class="lede">A multi-step agent session can take 30-120 seconds. For async workflows this is fine. For user-facing agents, most users won't wait. Latency optimization is how you make agents feel responsive.</p>
+<p class="lede">A typical multi-step agent takes 10–60 seconds. Async workflows don't care. User-facing UIs absolutely do. Latency is what makes an agent feel either like a capable assistant or like a slow, mysterious black box. Most agent latency optimization isn't about making the model faster. It's about doing fewer serial round-trips and telling the user what's happening while you work.</p>
 
-<h2>Where latency goes</h2>
+<h2>Where the seconds go</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Four latency buckets');
+  sketch.bars(svg, rc, {x: 40, y: 60, w: 820, labelW: 260, items: [
+    {label: 'LLM inference per turn', value: 60, note: '1–5s, larger for big models'},
+    {label: 'Tool calls', value: 40, note: '200ms–2s each'},
+    {label: 'Serial turns', value: 70, note: 'each adds full inference'},
+    {label: 'Context processing', value: 30, note: 'grows with context size'}
+  ]});
+});
+</script>
+
+<h2>The user-perception moves (biggest impact)</h2>
+<p>These don't reduce total latency. They make latency feel tolerable.</p>
 <ul>
-<li>LLM inference (time to first token + full generation)</li>
-<li>Tool execution (especially web-hitting tools)</li>
-<li>Sequential LLM calls (each turn adds latency)</li>
-<li>Context size (bigger context = slower inference)</li>
+<li><strong>Stream the final response.</strong> 500ms to first token feels fast even if total generation is 8 seconds.</li>
+<li><strong>Status updates.</strong> "Searching the web..." "Checking your account..." "Drafting response..." reassures the user the agent is working.</li>
+<li><strong>Progressive disclosure.</strong> Show partial results as they arrive instead of waiting for the complete answer.</li>
+</ul>
+<p>Three lines of UI work that change the UX from "this is broken" to "this is thinking."</p>
+
+<h2>The structural moves (actual latency reduction)</h2>
+<ul>
+<li><strong>Parallel tool calls.</strong> Covered fully at <a href="../tools/parallel-tools.html">parallel tool calls</a>. Cheapest latency win, often 2–5×.</li>
+<li><strong>Smaller model.</strong> A smaller model might cut per-turn inference from 3s to 0.8s with acceptable quality for many tasks.</li>
+<li><strong>Prompt caching.</strong> Cached tokens skip processing. Both cost and latency improve.</li>
+<li><strong>Shorter context.</strong> Trim aggressively. Big context = slower inference.</li>
+<li><strong>Fewer turns.</strong> Better prompts produce fewer round-trips. Measure avg turns; reducing from 8 to 5 cuts wall-clock 37%.</li>
+<li><strong>Async mode.</strong> For tasks that take &gt;10s, don't block the UI. Return immediately, notify on completion.</li>
 </ul>
 
-<h2>Techniques</h2>
-
-<h3>Streaming</h3>
-<p>Stream the final output to the user so they see progress. 500ms to first token feels much faster than 10s to a complete response.</p>
-
-<h3>Status updates</h3>
-<p>Show the agent's current step to the user. "Searching..." "Thinking..." reassures they haven't hung.</p>
-
-<h3>Parallel tool calls</h3>
-<p>Covered on <a href="../tools/parallel-tools.html">parallel tool calls</a>. Cuts latency for independent operations.</p>
-
-<h3>Smaller, faster model</h3>
-<p>Route to Haiku or 4o-mini when the task doesn't need Sonnet or Opus.</p>
-
-<h3>Prompt caching</h3>
-<p>Reduces both cost and latency since cached tokens don't need reprocessing.</p>
-
-<h3>Shorter context</h3>
-<p>Bigger context = slower inference. Aggressive trimming helps.</p>
-
-<h3>Async processing</h3>
-<p>For non-interactive workflows, run agents in background. User gets notified when done.</p>
-
-<h2>The latency budget</h2>
-<ul>
-<li>Real-time chat: under 5s total feels fast, 10s is tolerable</li>
-<li>Form submit with agent processing: 5-15s okay with spinner</li>
-<li>Async/batch: minutes to hours, no latency concern</li>
-</ul>
-<p>Choose the mode that fits your UX, not the other way around.</p>
+<h2>The latency budget by UX mode</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'How fast does it need to feel?');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'UX mode', w: 220},
+    {title: 'Target + tolerance', w: 580}
+  ], rows: [
+    ['Real-time chat', '<5s great, <10s tolerable, >15s bad'],
+    ['Form submit + processing', '5–15s okay with spinner / status'],
+    ['Long async task', 'Minutes fine; just tell user up front'],
+    ['Background / batch', 'Minutes to hours; no UI blocking']
+  ]});
+});
+</script>
+<p>Pick the UX mode that fits your agent's actual latency, not the other way around. Don't try to shoehorn a 30-second task into a chat UI; move to form-submit or async and save everyone the pain.</p>
 
 <h2>The p99 problem</h2>
-<p>Mean latency isn't the user experience. p99 is. If p50 is 3s but p99 is 60s, many users wait a minute. Kill long-tail latency by:</p>
+<p>Average latency hides the experience most users actually have. If p50 is 4s and p99 is 90s, one in a hundred users waits a minute and a half. That's the user you lose.</p>
+<p>Kill the tail:</p>
 <ul>
-<li>Aggressive timeouts at every step</li>
-<li>Fallback when steps hang</li>
-<li>Budget-based termination</li>
+<li>Timeout every tool call aggressively (5–15s per tool).</li>
+<li>Timeout every agent run (60s for user-facing, longer for async).</li>
+<li>Budget-based termination (hit $ cap → wrap up).</li>
+<li>Detect stuck loops early and halt.</li>
+</ul>
+<p>The tail is where users lose trust. Optimizing p50 matters less than cutting p99.</p>
+
+<h2>A worked example</h2>
+<p>Team's search agent p50 was 4s, p99 was 45s. Investigation:</p>
+<ul>
+<li>p99 sessions hit step cap (10 steps) every time.</li>
+<li>In those sessions, the agent was calling the same search tool 8 times with slight variations.</li>
+<li>Root cause: tool description was vague; model couldn't tell when it had enough results.</li>
+<li>Fix: sharpen tool description to "returns up to 5 results; if you need more, use a narrower query, don't re-run the same query."</li>
+<li>Result: p99 drops from 45s to 11s. p50 stays at 4s (good decisions weren't affected). Cost also drops 25%.</li>
+</ul>
+
+<h2>Pitfalls</h2>
+<ul>
+<li><strong>No streaming.</strong> Users wait 10s for an empty screen.</li>
+<li><strong>No tool timeouts.</strong> One hung tool = hung session.</li>
+<li><strong>Optimizing p50, ignoring p99.</strong> Tail users churn.</li>
+<li><strong>Mismatched UX mode.</strong> Trying to put a 30-second agent in a chat bubble.</li>
+<li><strong>Parallel not enabled.</strong> Sequential tool calls that could be concurrent.</li>
+</ul>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Measure p50 and p99 for your agent. If p99 is &gt;3× p50, you have a tail problem.</li>
+<li>Turn on streaming + status updates. Fastest UX improvement you'll do.</li>
+<li>Read <a href="../tools/parallel-tools.html">parallel tool calls</a> for the biggest single latency win.</li>
+<li>Read <a href="cost-control.html">cost control</a>; the two share most optimization techniques.</li>
 </ul>
 <div class="prev-next"><a href="cost-control.html" class="prev"><div class="label">← Previous</div><div class="title">Cost control</div></a><a href="safety.html" class="next"><div class="label">Next →</div><div class="title">Safety + guardrails</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
