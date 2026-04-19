@@ -222,6 +222,23 @@
 <p class="lede">MER (Media Efficiency Ratio) is Total Revenue / Total Ad Spend. It's blended across all channels, can't be faked by platforms, and reflects real business outcomes. For most DTC brands, it's the single most important metric.</p>
 
 <h2>MER calculation</h2>
+<div class="sketch" data-viewbox="0 0 900 240"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 240);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'MER: total revenue / total ad spend');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Metric', w: 220},
+    {title: 'What it tells you', w: 580}
+  ], rows: [
+    ['Per-channel ROAS', 'Useful but overlaps; double-counted conversions'],
+    ['Blended CAC', 'Total spend ÷ new customers; simple truth'],
+    ['MER', 'Total revenue ÷ total ad spend; whole-business view']
+  ]});
+});
+</script>
 <pre style="background:#f5f5f7; padding:14px; border-radius:6px;">
 MER = Total Revenue / Total Ad Spend (same period)
 

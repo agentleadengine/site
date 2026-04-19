@@ -232,6 +232,24 @@
 <pre>CAC = Total ad spend / Customers acquired</pre>
 
 <h2>Target ratios by business type</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'LTV:CAC target by model');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Business', w: 240},
+    {title: 'Target ratio', w: 560}
+  ], rows: [
+    ['SaaS (subscription)', '3:1 minimum, 5:1+ ideal'],
+    ['Ecomm (AOV + repeat)', '3:1 on first order; LTV ratio 4:1+'],
+    ['Services / consulting', 'Up to 10:1 (high margin)'],
+    ['Low-margin ecomm', '3:1 is tight; focus on payback']
+  ]});
+});
+</script>
 <ul>
 <li><strong>DTC single-purchase</strong>: 3:1 minimum, 5:1 healthy</li>
 <li><strong>DTC subscription</strong>: 4-10:1 range</li>

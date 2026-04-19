@@ -222,6 +222,21 @@
 <p class="lede">Marketing Mix Modeling uses historical data (spend and revenue by channel over time) to statistically estimate each channel's contribution. Privacy-safe (no user-level data), but requires scale and sophistication to set up.</p>
 
 <h2>How MMM works</h2>
+<div class="sketch" data-viewbox="0 0 900 240"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 240);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Marketing Mix Modeling');
+  sketch.numberedSteps(svg, rc, {direction: 'h', x: 30, y: 80, w: 840, items: [
+    {title: 'Weekly spend + rev data', sub: 'per channel'},
+    {title: 'Control variables', sub: 'seasonality, price, etc'},
+    {title: 'Regression model', sub: 'incremental contribution'},
+    {title: 'Optimize budget', sub: 'reallocate to highest-contribution'}
+  ]});
+});
+</script>
 <ol>
 <li>Collect historical data: spend by channel, total revenue, external factors (seasonality, competitors, weather)</li>
 <li>Statistical model fits the relationship: revenue = f(spend by channel, factors)</li>
