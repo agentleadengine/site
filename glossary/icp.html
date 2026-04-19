@@ -59,4 +59,27 @@
 <div class="gloss-related"><h4>Related terms</h4><a href="persona.html">Buyer Persona</a></div>
 </div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a></p>
-</div></footer></body></html>
+</div></footer><script>
+(function(){
+  const bar = document.querySelector('nav.topbar');
+  if (!bar || bar.dataset.navInit) return;
+  bar.dataset.navInit = '1';
+  const inner = bar.querySelector('.topbar-inner');
+  const links = bar.querySelector('.nav-links');
+  if (!inner || !links) return;
+  const btn = document.createElement('button');
+  btn.className = 'hamburger';
+  btn.setAttribute('aria-label', 'Toggle menu');
+  btn.setAttribute('aria-expanded', 'false');
+  btn.innerHTML = '<span></span><span></span><span></span>';
+  inner.appendChild(btn);
+  btn.addEventListener('click', function() {
+    const open = bar.classList.toggle('nav-open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    bar.classList.remove('nav-open');
+    btn.setAttribute('aria-expanded', 'false');
+  }));
+})();
+</script></body></html>

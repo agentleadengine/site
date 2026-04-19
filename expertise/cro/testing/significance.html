@@ -25,4 +25,27 @@
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Conversion Rate Optimization (34 pages)</h4><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="foundations/what-is-cro.html">What is CRO?</a></li><li><a href="foundations/when-to-do-cro.html">When to do CRO</a></li><li><a href="foundations/scope-and-strategy.html">Scope and strategy</a></li></ul><h4>Research</h4><ul><li><a href="research/analytics-audit.html">Analytics audit</a></li><li><a href="research/heatmaps-recordings.html">Heatmaps + recordings</a></li><li><a href="research/user-interviews.html">User interviews</a></li><li><a href="research/surveys.html">On-site surveys</a></li><li><a href="research/usability-testing.html">Usability testing</a></li></ul><h4>Frameworks</h4><ul><li><a href="frameworks/lift.html">LIFT model</a></li><li><a href="frameworks/ice.html">ICE scoring</a></li><li><a href="frameworks/pxl.html">PXL prioritization</a></li><li><a href="frameworks/fogg-behavior.html">Fogg Behavior Model</a></li></ul><h4>Landing Pages</h4><ul><li><a href="pages/above-the-fold.html">Above the fold</a></li><li><a href="pages/headlines-copy.html">Headlines + copy</a></li><li><a href="pages/social-proof.html">Social proof</a></li><li><a href="pages/forms.html">Form design</a></li><li><a href="pages/ctas.html">CTA design</a></li><li><a href="pages/page-speed.html">Page speed</a></li></ul><h4>Checkout + Conversion</h4><ul><li><a href="conversion/checkout-optimization.html">Checkout optimization</a></li><li><a href="conversion/cart-abandonment.html">Cart abandonment</a></li><li><a href="conversion/trust-signals.html">Trust signals</a></li><li><a href="conversion/friction-audit.html">Friction audit</a></li></ul><h4>Testing</h4><ul><li><a href="testing/ab-testing-setup.html">A/B testing setup</a></li><li><a href="testing/sample-size.html">Sample size</a></li><li><a href="testing/significance.html" class="active">Significance</a></li><li><a href="testing/what-to-test.html">What to test</a></li><li><a href="testing/velocity.html">Testing velocity</a></li></ul><h4>Analytics</h4><ul><li><a href="analytics/funnels.html">Funnel analysis</a></li><li><a href="analytics/segments.html">Segment analysis</a></li><li><a href="analytics/attribution.html">Attribution gotchas</a></li></ul><h4>Tools</h4><ul><li><a href="tools/google-optimize-alternatives.html">Google Optimize alternatives</a></li><li><a href="tools/vwo.html">VWO</a></li><li><a href="tools/optimizely.html">Optimizely</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">Conversion Rate Optimization</a><span class="sep">›</span><span>Statistical significance</span></div><h1 class="title">Statistical significance</h1><div class="article-meta"><span>📖 3 min read</span><span>Updated 2026-04-19</span></div><p class="lede">Statistical significance tells you the difference between variants is unlikely to be random. 95% confidence (p-value 0.05) is standard.</p><h2>P-value</h2><p>Probability the result is random. Lower is better.</p><h2>Common mistakes</h2><ul><li>Stopping early (p-hacking)</li><li>Ignoring base rates</li><li>Running many tests without correction</li><li>Interpreting non-significance as 'no effect'</li></ul><h2>Practical threshold</h2><p>95% confidence + minimum sample size. Lower confidence on low-stakes, higher on high-stakes.</p></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
-</div></footer></body></html>
+</div></footer><script>
+(function(){
+  const bar = document.querySelector('nav.topbar');
+  if (!bar || bar.dataset.navInit) return;
+  bar.dataset.navInit = '1';
+  const inner = bar.querySelector('.topbar-inner');
+  const links = bar.querySelector('.nav-links');
+  if (!inner || !links) return;
+  const btn = document.createElement('button');
+  btn.className = 'hamburger';
+  btn.setAttribute('aria-label', 'Toggle menu');
+  btn.setAttribute('aria-expanded', 'false');
+  btn.innerHTML = '<span></span><span></span><span></span>';
+  inner.appendChild(btn);
+  btn.addEventListener('click', function() {
+    const open = bar.classList.toggle('nav-open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    bar.classList.remove('nav-open');
+    btn.setAttribute('aria-expanded', 'false');
+  }));
+})();
+</script></body></html>

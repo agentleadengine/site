@@ -889,7 +889,59 @@ footer p { margin: 0; letter-spacing: 0.02em; }
 
 @media (max-width: 900px) {
     .container { padding: 0 24px; width: 100%; }
-    nav.topbar .topbar-inner { padding: 0 24px; width: 100%; }
+    nav.topbar .topbar-inner { padding: 0 24px; width: 100%; position: relative; }
+    /* Mobile nav: hide links, show hamburger */
+    nav.topbar .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0; right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: var(--white);
+        border-bottom: 1px solid var(--gray-100);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        padding: 8px 0;
+    }
+    nav.topbar.nav-open .nav-links { display: flex; }
+    nav.topbar .nav-links a {
+        padding: 14px 24px;
+        font-size: 14px;
+        letter-spacing: 0.05em;
+        border-bottom: 1px solid var(--gray-100);
+    }
+    nav.topbar .nav-links a:last-child { border-bottom: none; }
+    nav.topbar .nav-links a::after { display: none; }
+    nav.topbar .hamburger {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 40px;
+        height: 40px;
+        padding: 0 8px;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        margin-left: auto;
+    }
+    nav.topbar .hamburger span {
+        display: block;
+        height: 2px;
+        background: var(--gray-900);
+        transition: transform 0.2s, opacity 0.2s;
+    }
+    nav.topbar.nav-open .hamburger span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+    nav.topbar.nav-open .hamburger span:nth-child(2) {
+        opacity: 0;
+    }
+    nav.topbar.nav-open .hamburger span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
     .framework-layout {
         grid-template-columns: 1fr;
         gap: 32px;
@@ -914,6 +966,9 @@ footer p { margin: 0; letter-spacing: 0.02em; }
     .framework-content h2 { font-size: 24px; }
     h2.section-title { font-size: 36px !important; }
 }
+
+/* Hide hamburger on desktop */
+nav.topbar .hamburger { display: none; }
 
 @media (max-width: 640px) {
     .hero .photo-placeholder { width: 112px; height: 112px; font-size: 42px; }
