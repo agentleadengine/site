@@ -231,6 +231,22 @@
 </ul>
 
 <h2>The structure</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Body copy architecture');
+  sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 42, layers: [
+    {label: 'Lead (hook them in)', sub: '1st sentence earns the next'},
+    {label: 'Agitate the problem', sub: 'make the pain felt'},
+    {label: 'Introduce the mechanism', sub: 'why your thing works'},
+    {label: 'Proof + stories', sub: 'testimonials, results'},
+    {label: 'Offer + guarantee', sub: 'the ask, risk-free'}
+  ]});
+});
+</script>
 
 <h3>1. Agitate the problem</h3>
 <p>Make the reader feel the pain they already have. Not describe it clinically, feel it. Specific moments. Sensory details. Consequences of not solving it. <a href="formulas.html">PAS</a> (Problem-Agitate-Solution) is built on this.</p>

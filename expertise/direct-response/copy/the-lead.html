@@ -230,6 +230,26 @@
 </ol>
 
 <h2>The six lead types</h2>
+<div class="sketch" data-viewbox="0 0 900 300"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 300);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Six classic lead types');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Type', w: 220},
+    {title: 'When to use', w: 580}
+  ], rows: [
+    ['Offer lead', 'Market is most aware; get to the offer fast'],
+    ['Promise lead', 'State the payoff up front'],
+    ['Problem lead', 'Start with the pain they feel'],
+    ['Story lead', 'Great for warm audiences + high sophistication'],
+    ['Big secret lead', 'Curiosity + mechanism'],
+    ['"You" lead', 'Feels personal; opens with identity or belief']
+  ]});
+});
+</script>
 <p>Classical direct-response teaching codifies the main lead types used in the field. These have proven durable across a century of copy:</p>
 
 <h3>1. Offer lead</h3>

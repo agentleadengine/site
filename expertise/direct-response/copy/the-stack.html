@@ -222,6 +222,26 @@
 <p class="lede">Every piece of direct-response copy that works is working at multiple levels simultaneously, headline, lead, body, close, CTA, P.S., each doing a specific job. Master the stack and you stop thinking about copy as inspiration and start producing it on schedule.</p>
 
 <h2>The stack, top to bottom</h2>
+<div class="sketch" data-viewbox="0 0 900 340"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 340);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'The copy stack from pre-header to PS');
+  sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 32, layers: [
+    {label: 'Pre-header', sub: 'qualifier line'},
+    {label: 'Headline', sub: 'the main promise'},
+    {label: 'Deck / sub-headline', sub: 'sharpen the promise'},
+    {label: 'Lead', sub: 'hook'},
+    {label: 'Body', sub: 'story, mechanism, proof'},
+    {label: 'Offer', sub: 'what they get'},
+    {label: 'Guarantee', sub: 'kill the risk'},
+    {label: 'CTA', sub: 'the specific action'},
+    {label: 'PS', sub: 'one more reason'}
+  ]});
+});
+</script>
 <ol>
  <li><strong>Headline</strong>, gets attention, promises value, earns the next sentence</li>
  <li><strong>Pre-header / deck</strong>, qualifies the audience, deepens the headline promise</li>

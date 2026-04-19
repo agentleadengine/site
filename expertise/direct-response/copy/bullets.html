@@ -246,6 +246,25 @@ Strongest: "Why our boring 7-word subject line beats every clever one, and the e
 </blockquote>
 
 <h2>The patterns that always work</h2>
+<div class="sketch" data-viewbox="0 0 900 300"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 300);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Bullet patterns that convert');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Pattern', w: 220},
+    {title: 'Example', w: 580}
+  ], rows: [
+    ['The "how to"', '"How to double your pipeline in 30 days..."'],
+    ['The number claim', '"The 3 words that killed my open rate..."'],
+    ['The counterintuitive', '"Why emailing LESS makes you more money..."'],
+    ['The warning', '"The one mistake 9/10 founders make..."'],
+    ['The secret', '"What top performers do on Mondays..."']
+  ]});
+});
+</script>
 
 <h3>The Number-Lead</h3>
 <p>"The 3 words that open every one of our cold emails."<br>
