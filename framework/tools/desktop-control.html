@@ -219,85 +219,171 @@
 <a href="../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../what-is-autonomous-ai.html">What is autonomous AI</a></li><li><a href="../the-autonomy-spectrum.html">The autonomy spectrum</a></li><li><a href="../glossary.html">Glossary</a></li></ul><h4>Claude</h4><ul><li><a href="../claude/overview.html">Overview</a></li><li><a href="../claude/prompting-for-agents.html">Prompting for agents</a></li><li><a href="../claude/extended-thinking.html">Extended thinking</a></li><li><a href="../claude/tool-use.html">Tool use</a></li></ul><h4>MCP</h4><ul><li><a href="../mcp/index.html">Overview</a></li><li><a href="../mcp/what-is-mcp.html">What is MCP</a></li><li><a href="../mcp/anatomy.html">Anatomy</a></li><li><a href="../mcp/transports.html">Transports</a></li><li><a href="../mcp/servers.html">Servers</a></li><li><a href="../mcp/clients.html">Clients</a></li><li><a href="../mcp/security.html">Security</a></li><li><a href="../mcp/directory.html">Directory</a></li></ul><h4>Plugins</h4><ul><li><a href="../plugins/index.html">Overview</a></li><li><a href="../plugins/vs-mcp.html">Plugins vs MCP</a></li><li><a href="../plugins/marketplace.html">Marketplace</a></li></ul><h4>Claude Code</h4><ul><li><a href="../claude-code/index.html">Overview</a></li><li><a href="../claude-code/settings.html">Settings</a></li><li><a href="../claude-code/permissions.html">Permissions</a></li><li><a href="../claude-code/hooks.html">Hooks</a></li><li><a href="../claude-code/skills.html">Skills</a></li><li><a href="../claude-code/memory.html">Memory</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/index.html">Overview</a></li><li><a href="../patterns/react-loop.html">ReAct loop</a></li><li><a href="../patterns/plan-execute.html">Plan-execute</a></li><li><a href="../patterns/multi-agent.html">Multi-agent</a></li><li><a href="../patterns/evaluation.html">Evaluation</a></li><li><a href="../patterns/prompt-caching.html">Prompt caching</a></li></ul><h4>Autonomous</h4><ul><li><a href="../autonomous/index.html">Overview</a></li><li><a href="../autonomous/headless.html">Headless</a></li><li><a href="../autonomous/scheduling.html">Scheduling</a></li><li><a href="../autonomous/self-monitoring.html">Self-monitoring</a></li><li><a href="../autonomous/safety.html">Safety</a></li></ul><h4>Build Guides</h4><ul><li><a href="../build/index.html">Overview</a></li><li><a href="../build/first-agent.html">First agent (60 min)</a></li><li><a href="../build/voice-agent.html">Voice agent</a></li><li><a href="../build/research-agent.html">Research agent</a></li></ul><h4>Tools</h4><ul><li><a href="../tools/browser-automation.html">Browser automation</a></li><li><a href="../tools/desktop-control.html" class="active">Desktop control</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Framework</a><span class="sep">›</span><span>Tools</span><span class="sep">›</span><span>Desktop control</span></div><h1 class="title" style="font-size:clamp(32px,4.5vw,42px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">Desktop control</h1><div class="article-meta"><span>📖 6 min read</span><span>Updated 2026-04-18</span></div>
-<p class="lede">Desktop control lets an agent drive native apps. Finder, Photos, System Settings, third-party apps with no APIs. It's powerful and the least mature layer of agent tooling. Use carefully.</p>
+<p class="lede">Desktop control is the "go anywhere" level of agent tooling. If you can do it with a mouse and keyboard, the agent can do it — Finder, Photos, System Settings, third-party apps with no APIs, everything. It's powerful and it's the least mature layer of the stack. Use it when nothing else works, and know the failure modes before you turn it on.</p>
 
-<h2>How it works</h2>
-<p>The agent takes a screenshot, reasons about what's on screen, and emits actions: click at (x, y), type text, press keys, scroll. It's pixel-based vision, not DOM-aware.</p>
+<h2>How it actually works.</h2>
+<p>The agent does the same thing a human would: it looks at the screen, decides what to do, and does it. Concretely, each cycle is:</p>
 
-<h2>When to reach for it</h2>
+<div class="sketch" data-viewbox="0 0 900 260" id="dg-desktop-loop">
+  <svg></svg>
+  <div class="sketch-caption">~ desktop control loop ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-desktop-loop');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.numberedSteps(svg, rc, {
+    direction: 'h', x: 30, y: 90, w: 860,
+    items: [
+      { title: 'Screenshot',    sub: 'capture screen' },
+      { title: 'Reason',        sub: 'what\'s here? what next?' },
+      { title: 'Act',           sub: 'click / type / key' },
+      { title: 'Wait',          sub: 'UI updates' },
+      { title: 'Repeat',        sub: 'until goal or stop' }
+    ]
+  });
+});
+</script>
+
+<p>Unlike browser automation, this is purely pixel-based. The agent doesn't have DOM access. It sees an image; it reasons about what's in the image. Slower, more expensive, and more error-prone than DOM work, but it works on ANYTHING visible on your screen.</p>
+
+<h2>When to reach for desktop control, and when not to.</h2>
+
+<div class="sketch" data-viewbox="0 0 900 280" id="dg-desktop-when">
+  <svg></svg>
+  <div class="sketch-caption">~ reach for it / don't reach for it ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-desktop-when');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.compare(svg, rc, {
+    x: 30, y: 30, w: 840, h: 230,
+    left: {
+      title: 'Don\'t use desktop control',
+      items: [
+        'If an API or MCP exists — use that',
+        'If the web version works — use browser automation',
+        'If a shell command does it — use the shell',
+        'For anything on shared or production systems'
+      ]
+    },
+    right: {
+      title: 'Use desktop control',
+      items: [
+        'Native apps with no API',
+        'Cross-app workflows (Finder → Photos → Mail)',
+        'System Settings / Preferences',
+        'Apps you own on your own machine',
+        'Legacy tools nobody built an API for'
+      ]
+    }
+  });
+});
+</script>
+
+<h2>The tiered permission model.</h2>
+<p>Anthropic's Computer Use (and similar systems) uses tiered permissions <em>per application</em>, because the damage an agent can do varies wildly by app. Three tiers:</p>
+
 <ul>
-  <li>Native desktop apps with no API (many older pro apps)</li>
-  <li>Cross-app workflows (Finder → Photos → Mail)</li>
-  <li>System Settings, Preferences</li>
-  <li>Apps you paid for and trust (your own workstation)</li>
+  <li><strong>Read</strong>: the agent can screenshot and observe the app. Cannot click or type in it.</li>
+  <li><strong>Click</strong>: can click buttons and links. Cannot type text or use modifier keys.</li>
+  <li><strong>Full</strong>: can click, type, use modifier keys, drag and drop.</li>
 </ul>
 
-<h2>When NOT to use it</h2>
+<p>The default tiers matter more than you'd think. <strong>Browsers</strong> default to "read" — the agent can observe what's in your browser but can't click things there. That's on purpose: for actual browser control, you should be using the Chrome extension (DOM-aware) rather than blindly clicking pixels. <strong>Terminals and IDEs</strong> default to "click" — the agent can click buttons in your editor but can't type code directly. For code, use the Edit tool or shell commands. <strong>Everything else</strong> defaults to "full."</p>
+
+<p>These defaults prevent a common failure: the agent reads a suspicious email, sees a scary link, and clicks it via pixel-based desktop control — bypassing all the link-safety rules that would have kicked in if it used the Chrome extension instead. The tier system catches this automatically.</p>
+
+<h2>Reliability patterns.</h2>
+
+<h3>Visual anchors, not raw coordinates.</h3>
+<p>Never hard-code "click at (450, 230)." Click "the search icon near the top-right." The model re-locates the icon on each screenshot, which means the agent survives window-position changes, resolution changes, theme changes, all the things that would break coordinate-based automation.</p>
+
+<h3>State verification after each action.</h3>
+<p>After every action, screenshot and verify it worked. "Did the dialog close? Did the text appear? Did state change?" If no, retry or replan. If you plow forward assuming the click succeeded, you get agents that hallucinate whole multi-step sequences that didn't actually happen.</p>
+
+<h3>Batched actions for known sequences.</h3>
+<p>Each screenshot+reason cycle is expensive (maybe 2-4 seconds). If you know the next 5 actions, batch them. Computer Use supports a <code>computer_batch</code> that runs a sequence without screenshotting between each step. "Open Spotlight, type 'Maps,' press Enter, wait" is 4 actions in one batch. Big speedup.</p>
+
+<h3>Hard timeouts.</h3>
+<p>Desktop apps can hang, modals can appear unexpectedly, things freeze. Set a max-turns budget for any desktop task. If the goal isn't reached in N steps, stop. Better to fail loudly than to spin forever.</p>
+
+<h2>Safety. Non-negotiable things.</h2>
+
+<div class="sketch" data-viewbox="0 0 900 280" id="dg-desktop-safety">
+  <svg></svg>
+  <div class="sketch-caption">~ desktop control never-list ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-desktop-safety');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.table(svg, rc, {
+    x: 20, y: 30,
+    cols: [
+      { title: 'Never',                          w: 300 },
+      { title: 'Why',                             w: 260 },
+      { title: 'Do instead',                      w: 320 }
+    ],
+    rows: [
+      ['Drive through login screens',            'credentials in context = leak',       'you type the password; agent takes over after'],
+      ['Enter payment info',                     'irreversible + fraud risk',           'always human, full stop'],
+      ['Click destructive confirmations',        '"Are you sure? Yes" → disaster',      'prompt: stop and ask on any delete dialog'],
+      ['Give blanket access to all apps',        'any app becomes attack surface',      'request access per-app, scoped to task']
+    ]
+  });
+});
+</script>
+
+<h2>Cost. Desktop control is expensive.</h2>
+<p>Every screenshot is an image. Images cost a lot more tokens than text (roughly 10-20× per "turn" of equivalent information). A 50-step desktop task can easily cost 10× a comparable DOM-based task. Budget accordingly.</p>
+
+<p>Mitigations that help:</p>
 <ul>
-  <li><strong>If an API or MCP exists.</strong> API is faster, more reliable.</li>
-  <li><strong>If the web version works.</strong> Browser automation beats desktop on reliability.</li>
-  <li><strong>For anything with irreversible consequences on shared systems.</strong> Desktop control is "fast and blunt."</li>
+  <li><strong>Batch aggressively.</strong> Every action batched is one screenshot saved.</li>
+  <li><strong>Compressed screenshots</strong> where high fidelity isn't needed. Lower resolution works for "did this dialog close?" checks.</li>
+  <li><strong>Cache screenshots</strong> when you can reason "nothing changed since the last one." Don't re-capture unless you expect change.</li>
 </ul>
 
-<h2>Permission tiers</h2>
-<p>Anthropic's Computer Use (and similar systems) have tiered permissions:</p>
-<ul>
-  <li><strong>read</strong>, can screenshot only (observe, don't interact)</li>
-  <li><strong>click</strong>, can click, but not type or use keyboard shortcuts</li>
-  <li><strong>full</strong>, can click, type, use modifier keys, drag, etc.</li>
-</ul>
-<p>Default: browsers are tier "read" (observe, but use Chrome extension for actual control). Terminals/IDEs are tier "click" (can click buttons, can't type into the editor). Everything else is tier "full."</p>
-<p>This prevents common mistakes like: agent reads an email, sees a malicious link, and clicks it via desktop control (instead of opening it in Chrome where link safety rules apply).</p>
+<h2>The last-resort principle.</h2>
+<p>Desktop control is the agent tool of last resort. Before reaching for it, exhaust every alternative:</p>
 
-<h2>The loop</h2>
-<pre><code>1. Take screenshot
-2. Reason: what is on screen? What's the next step toward the goal?
-3. Emit action (click, type, key)
-4. Wait briefly for UI to update
-5. Take screenshot again
-6. Repeat</code></pre>
+<div class="sketch" data-viewbox="0 0 900 240" id="dg-desktop-ladder">
+  <svg></svg>
+  <div class="sketch-caption">~ try these first, in order ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-desktop-ladder');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.numberedSteps(svg, rc, {
+    direction: 'h', x: 30, y: 90, w: 860,
+    items: [
+      { title: 'API / MCP',       sub: 'fastest, cheapest' },
+      { title: 'Chrome extension', sub: 'DOM-aware, resilient' },
+      { title: 'Shell command',   sub: 'local + scripted' },
+      { title: 'Desktop control', sub: 'last resort' }
+    ]
+  });
+});
+</script>
 
-<h2>Batch actions</h2>
-<p>Each screenshot + reason cycle is slow. If you know the next 5 actions, batch them. Computer Use supports a <code>computer_batch</code> tool that executes a sequence without screenshotting between each.</p>
-<p>Example: open Spotlight, type "Maps," press Enter, wait. That's 4 actions as one batch.</p>
+<p>The reason: every tier above desktop control is faster, cheaper, and more reliable. Desktop control is the "can do anything" option, which also makes it the "can break anything" option. Use it when the power is necessary — not as a default.</p>
 
-<h2>Reliability patterns</h2>
-
-<h3>Visual anchors over coordinates</h3>
-<p>Don't click (450, 230). Click "the search icon near the top-right." The model re-locates it each time, robust to window movement.</p>
-
-<h3>State verification</h3>
-<p>After each action, screenshot and verify. "Did the dialog close? Did the text appear? Did the state change?" If no, retry or replan.</p>
-
-<h3>Timeouts</h3>
-<p>Apps can hang. Set a max-turns budget for any desktop task. If the goal isn't reached, stop.</p>
-
-<h2>Safety</h2>
-<ul>
-  <li><strong>Never drive through login screens.</strong> You type the password, not the agent.</li>
-  <li><strong>Never enter payment information.</strong> Ever.</li>
-  <li><strong>Avoid destructive dialogs.</strong> "Are you sure you want to delete?" is the agent's fault if it clicks Yes. Design prompts that say "if a destructive confirmation appears, stop and ask."</li>
-  <li><strong>Scope the agent's app access.</strong> Don't give it access to apps it doesn't need. Request access explicitly for each.</li>
-</ul>
-
-<h2>Cost</h2>
-<p>Screenshots are images. Images are expensive (both in tokens and in inference time). A 50-step desktop task can cost 10× a comparable DOM-based task.</p>
-<p>Mitigations:</p>
-<ul>
-  <li>Batch actions wherever possible</li>
-  <li>Use compressed screenshots when high fidelity isn't needed</li>
-  <li>Cache previous screenshots if you can reason "nothing changed since last shot"</li>
-</ul>
-
-<h2>The last-resort principle</h2>
-<p>Desktop control is the agent tool of last resort. Exhaust the alternatives:</p>
-<ol>
-  <li>Can an API or MCP do this? Use that.</li>
-  <li>Can a browser (via Chrome extension) do this? Use that.</li>
-  <li>Can a shell command do this? Use that.</li>
-  <li>Only then, desktop control.</li>
-</ol>
-<p>The reason: every tier above is faster, cheaper, and more reliable. Desktop is the "can do anything" option, which is also the "can break anything" option.</p>
+<p>That said: when you do need it, nothing else can do what it does. An agent that can drive any app on your desktop, combine apps across workflows, operate on whatever is in front of it right now — that's a real unlock. Just reach for it with eyes open.</p>
 <div class="prev-next"><a href="browser-automation.html" class="prev"><div class="label">← Previous</div><div class="title">Browser automation</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../framework/index.html">Framework</a></p>
 </div></footer><script>
