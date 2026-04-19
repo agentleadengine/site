@@ -177,8 +177,20 @@ What's left:
 
 ## 🎉 SEO EXPERTISE SECTION COMPLETE: 100 / 100 ✅
 
-Running total: 100 / ~486 expertise deep articles.
-Next expertise section: `expertise/agents/` (~80 articles).
+## 🎉 AGENTS EXPERTISE SECTION COMPLETE: 44 / 44 ✅
+
+- `expertise/agents/foundations/` — 4/4 ✅
+- `expertise/agents/loops/` — 5/5 ✅
+- `expertise/agents/tools/` — 5/5 ✅
+- `expertise/agents/memory/` — 5/5 ✅
+- `expertise/agents/multi/` — 5/5 ✅
+- `expertise/agents/eval/` — 4/4 ✅
+- `expertise/agents/prod/` — 5/5 ✅
+- `expertise/agents/patterns/` — 6/6 ✅
+- `expertise/agents/frameworks/` — 5/5 ✅
+
+Running total: 144 / ~486 expertise deep articles.
+Next expertise section: `expertise/rag/` or any other expertise section.
 
 ## Site status: 100% of everything above the article layer is done.
 
