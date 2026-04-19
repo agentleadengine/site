@@ -239,6 +239,25 @@
 <p>Most process mapping exercises fail by aiming at Level 3 when Level 2 would've been enough. You get stuck in detail and lose the big picture.</p>
 
 <h2>The five elements of a mapped process</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Five elements of a good process map');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Element', w: 200},
+    {title: 'What it captures', w: 600}
+  ], rows: [
+    ['Input', 'What comes in'],
+    ['Steps', 'The sequence'],
+    ['Owner per step', 'Who does what'],
+    ['Output', 'What comes out'],
+    ['SLA / quality', 'What good looks like']
+  ]});
+});
+</script>
 <ol>
   <li><strong>Trigger</strong>, what starts this process?</li>
   <li><strong>Steps</strong>, the actions, in order</li>

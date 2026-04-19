@@ -222,6 +222,24 @@
 <p class="lede">Every vendor relationship is a managed outsourcing of a piece of your business. Most teams sign vendor contracts, put them in a spreadsheet, and forget about them until renewal. Vendors know this. They price and serve accordingly. Treated like managed relationships instead, vendors are leverage, more capability per dollar than building in-house can deliver.</p>
 
 <h2>The vendor spectrum</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Vendor tiers');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Tier', w: 220},
+    {title: 'How to manage', w: 580}
+  ], rows: [
+    ['Strategic', 'QBRs, deep relationship, co-plan roadmap'],
+    ['Preferred', 'Annual review, pricing benchmarks'],
+    ['Transactional', 'Renewal calendar, fast swap potential'],
+    ['Commodity', 'Lowest cost, compete at renewal']
+  ]});
+});
+</script>
 <ul>
   <li><strong>Commodity</strong>, many substitutes, low switching cost (e.g., most SaaS productivity tools)</li>
   <li><strong>Differentiated</strong>, few substitutes, meaningful switching cost (e.g., your CRM, your ERP)</li>
