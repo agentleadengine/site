@@ -222,6 +222,23 @@
 <p class="lede">The reason most teams tolerate mediocrity is that feedback is expensive to give. It's socially uncomfortable. It risks the relationship. And the alternative, saying nothing, is painless in the short term. Radical candor, coined by Kim Scott, is the discipline of being willing to pay the short-term cost because the long-term cost of not is much higher.</p>
 
 <h2>The two axes</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Radical candor quadrants');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Challenge ↓ / Care →', w: 280},
+    {title: 'Low care', w: 240},
+    {title: 'High care', w: 280}
+  ], rows: [
+    ['Low challenge', 'Manipulative insincerity', 'Ruinous empathy'],
+    ['High challenge', 'Obnoxious aggression', 'Radical candor ✓']
+  ]});
+});
+</script>
 <ul>
   <li><strong>Care personally</strong>, do you genuinely care about this person's success, growth, and well-being?</li>
   <li><strong>Challenge directly</strong>, are you willing to tell them hard truths they don't want to hear?</li>

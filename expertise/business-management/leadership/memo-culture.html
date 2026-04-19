@@ -231,6 +231,22 @@
 </ul>
 
 <h2>The standard memo structure</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Standard memo structure');
+  sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 42, layers: [
+    {label: 'TL;DR (1-2 sentences)', sub: 'the punchline'},
+    {label: 'Context', sub: 'what situation demands a decision'},
+    {label: 'Options considered', sub: 'what you evaluated'},
+    {label: 'Recommendation', sub: 'the answer + why'},
+    {label: 'Open questions', sub: 'what needs input'}
+  ]});
+});
+</script>
 <ol>
   <li><strong>Context</strong>, what's the situation, why now?</li>
   <li><strong>Problem / opportunity</strong>, what are we trying to decide?</li>

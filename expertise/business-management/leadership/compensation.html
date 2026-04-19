@@ -222,6 +222,24 @@
 <p class="lede">Compensation is the most visible expression of a company's priorities. Done well, it aligns incentives, attracts the right people, and makes retention cheap. Done casually, it generates resentment, turnover, and the wrong behaviors. Almost every early company I've seen starts with ad-hoc compensation decisions and spends years cleaning up the inequities those decisions created.</p>
 
 <h2>The components</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Compensation components');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Component', w: 220},
+    {title: 'Purpose', w: 580}
+  ], rows: [
+    ['Base salary', 'Predictable; what you pay no matter what'],
+    ['Variable (bonus / commission)', 'Tied to outcomes'],
+    ['Equity', 'Upside + retention'],
+    ['Benefits', 'Baseline expectation']
+  ]});
+});
+</script>
 <ul>
   <li><strong>Base salary</strong>, predictable, non-negotiable-after-sign cash</li>
   <li><strong>Variable / bonus</strong>, performance-tied cash</li>
