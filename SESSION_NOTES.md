@@ -168,9 +168,10 @@ What's left:
 - `expertise/seo/on-page/` — 15/15 ✅ (2026-04-19)
 - `expertise/seo/technical/` — 15/15 ✅ (2026-04-19)
 - `expertise/seo/links/` — 10/10 ✅ (2026-04-19)
+- `expertise/seo/content/` — 10/10 ✅ (2026-04-19)
 
-Running total: 60 / ~486 expertise deep articles.
-Next: `expertise/seo/content/` (10 articles).
+Running total: 70 / ~486 expertise deep articles.
+Next: `expertise/seo/local/` (8 articles).
 
 ## Site status: 100% of everything above the article layer is done.
 
