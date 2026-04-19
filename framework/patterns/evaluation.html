@@ -219,66 +219,145 @@
 <a href="../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../what-is-autonomous-ai.html">What is autonomous AI</a></li><li><a href="../the-autonomy-spectrum.html">The autonomy spectrum</a></li><li><a href="../glossary.html">Glossary</a></li></ul><h4>Claude</h4><ul><li><a href="../claude/overview.html">Overview</a></li><li><a href="../claude/prompting-for-agents.html">Prompting for agents</a></li><li><a href="../claude/extended-thinking.html">Extended thinking</a></li><li><a href="../claude/tool-use.html">Tool use</a></li></ul><h4>MCP</h4><ul><li><a href="../mcp/index.html">Overview</a></li><li><a href="../mcp/what-is-mcp.html">What is MCP</a></li><li><a href="../mcp/anatomy.html">Anatomy</a></li><li><a href="../mcp/transports.html">Transports</a></li><li><a href="../mcp/servers.html">Servers</a></li><li><a href="../mcp/clients.html">Clients</a></li><li><a href="../mcp/security.html">Security</a></li><li><a href="../mcp/directory.html">Directory</a></li></ul><h4>Plugins</h4><ul><li><a href="../plugins/index.html">Overview</a></li><li><a href="../plugins/vs-mcp.html">Plugins vs MCP</a></li><li><a href="../plugins/marketplace.html">Marketplace</a></li></ul><h4>Claude Code</h4><ul><li><a href="../claude-code/index.html">Overview</a></li><li><a href="../claude-code/settings.html">Settings</a></li><li><a href="../claude-code/permissions.html">Permissions</a></li><li><a href="../claude-code/hooks.html">Hooks</a></li><li><a href="../claude-code/skills.html">Skills</a></li><li><a href="../claude-code/memory.html">Memory</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/index.html">Overview</a></li><li><a href="../patterns/react-loop.html">ReAct loop</a></li><li><a href="../patterns/plan-execute.html">Plan-execute</a></li><li><a href="../patterns/multi-agent.html">Multi-agent</a></li><li><a href="../patterns/evaluation.html" class="active">Evaluation</a></li><li><a href="../patterns/prompt-caching.html">Prompt caching</a></li></ul><h4>Autonomous</h4><ul><li><a href="../autonomous/index.html">Overview</a></li><li><a href="../autonomous/headless.html">Headless</a></li><li><a href="../autonomous/scheduling.html">Scheduling</a></li><li><a href="../autonomous/self-monitoring.html">Self-monitoring</a></li><li><a href="../autonomous/safety.html">Safety</a></li></ul><h4>Build Guides</h4><ul><li><a href="../build/index.html">Overview</a></li><li><a href="../build/first-agent.html">First agent (60 min)</a></li><li><a href="../build/voice-agent.html">Voice agent</a></li><li><a href="../build/research-agent.html">Research agent</a></li></ul><h4>Tools</h4><ul><li><a href="../tools/browser-automation.html">Browser automation</a></li><li><a href="../tools/desktop-control.html">Desktop control</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Framework</a><span class="sep">›</span><a href="../patterns/index.html">Patterns</a><span class="sep">›</span><span>Agent evaluation</span></div><h1 class="title" style="font-size:clamp(32px,4.5vw,42px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">Agent evaluation</h1><div class="article-meta"><span>📖 5 min read</span><span>Updated 2026-04-18</span></div>
-<p class="lede">"It works" is not an evaluation. An agent without evals is a prototype. The #1 reason agents fail in production is nobody measured whether they worked before shipping.</p>
+<p class="lede">"It works on my laptop" is not an evaluation. "The demo was great" is not an evaluation. The single biggest reason agents fail in production is that nobody measured whether they worked before shipping. This page is about how to actually evaluate an agent, which is harder than it sounds for several good reasons, and what a real eval harness looks like.</p>
 
-<h2>Why evaluating agents is hard</h2>
-<ul>
-  <li><strong>Nondeterminism.</strong> Same input → different output. Single-run correctness is meaningless.</li>
-  <li><strong>No ground truth for many tasks.</strong> "Write a good email" has no single right answer.</li>
-  <li><strong>Multi-step.</strong> Output quality depends on the whole trajectory, not just the final answer.</li>
-  <li><strong>Environment coupling.</strong> Agents act on systems. Those systems have state. Repeatability is hard.</li>
-</ul>
+<h2>Why evaluating agents is hard.</h2>
+<p>If agents could be evaluated like normal software (give input, check output matches expected), this would be a short page. They can't. Four things make agent evaluation genuinely tricky:</p>
 
-<h2>The eval taxonomy</h2>
+<div class="sketch" data-viewbox="0 0 900 280" id="dg-eval-hard">
+  <svg></svg>
+  <div class="sketch-caption">~ why evaluating agents is hard ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-eval-hard');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.table(svg, rc, {
+    x: 20, y: 30,
+    cols: [
+      { title: 'Challenge',                w: 220 },
+      { title: 'What it means',            w: 340 },
+      { title: 'What to do about it',      w: 320 }
+    ],
+    rows: [
+      ['Nondeterminism',        'same input → different output each run',     'average over many runs, not one'],
+      ['No single right answer','"write a good email" has infinite right answers', 'rubric-based scoring, not exact match'],
+      ['Multi-step trajectories','quality depends on whole path, not final answer','grade the process, not just the result'],
+      ['Environment coupling',  'agents act on real systems with state',      'replay harness, mocked tools, or dedicated sandbox']
+    ]
+  });
+});
+</script>
+
+<h2>The eval taxonomy. Six kinds, used together.</h2>
+<p>There isn't one eval. A mature agent has a stack of them, each catching different failure modes.</p>
+
 <ol>
-  <li><strong>Unit evals</strong>, specific input → expected output (or property). Deterministic parts of the agent (parsing, formatting).</li>
-  <li><strong>End-to-end evals</strong>, full-agent runs on labeled test cases, scored against expected behavior.</li>
-  <li><strong>Regression evals</strong>, a fixed suite you run on every change. Catches regressions when you change the prompt.</li>
-  <li><strong>Adversarial evals</strong>, intentionally tricky inputs to surface failure modes.</li>
-  <li><strong>Production shadow evals</strong>, run the agent on live traffic in shadow mode, compare to incumbent.</li>
-  <li><strong>Human eval</strong>, humans rate agent output on defined rubrics.</li>
+  <li><strong>Unit evals.</strong> The deterministic parts of your agent (parsing, formatting, schema validation) tested like normal code. Fast, reliable, should run on every commit.</li>
+  <li><strong>End-to-end evals.</strong> Full-agent runs on a labeled set of test cases, scored against expected behavior. The core of your agent testing.</li>
+  <li><strong>Regression evals.</strong> A frozen suite of cases that must always pass. Run before every prompt or model change to catch regressions.</li>
+  <li><strong>Adversarial evals.</strong> Intentionally tricky inputs designed to expose failure modes: prompt injection, ambiguous requests, edge cases, confusing tool results.</li>
+  <li><strong>Production shadow evals.</strong> Run the agent on real live traffic in parallel with the current production system (without acting) and compare. The closest thing to reality without the risk.</li>
+  <li><strong>Human evals.</strong> Real people rate a sample of outputs on a rubric. Slow, expensive, indispensable for anything touching quality judgment.</li>
 </ol>
 
-<h2>Building an eval harness</h2>
-<p>Minimum viable eval harness:</p>
-<ol>
-  <li>A JSON/YAML file of test cases. Each case has input, expected behavior (free text or structured), optional expected output.</li>
-  <li>A runner that executes the agent on each case, captures outputs.</li>
-  <li>A grader that scores outputs. For structured outputs, exact match. For free text, use another LLM call (LLM-as-judge) with a rubric.</li>
-  <li>A report showing pass rates, broken cases, and drift from last run.</li>
-</ol>
+<h2>The minimum viable eval harness.</h2>
+<p>You don't need a fancy platform. You need four parts.</p>
 
-<h2>LLM-as-judge</h2>
-<p>Use a strong model (Opus-class) to grade another model's outputs against a rubric. Cheaper than human eval, often good enough.</p>
-<p>Rules:</p>
+<div class="sketch" data-viewbox="0 0 900 260" id="dg-eval-harness">
+  <svg></svg>
+  <div class="sketch-caption">~ minimum viable eval harness ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-eval-harness');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.numberedSteps(svg, rc, {
+    direction: 'h', x: 30, y: 80, w: 860,
+    items: [
+      { title: 'Test cases file', sub: 'JSON/YAML: input + expected' },
+      { title: 'Runner',          sub: 'runs agent on each case' },
+      { title: 'Grader',          sub: 'scores outputs (LLM or rules)' },
+      { title: 'Report',          sub: 'pass rate + broken cases + drift' }
+    ]
+  });
+});
+</script>
+
+<p>That's it. A test cases file (even 20 cases to start). A small runner script. A grader (either exact-match for structured outputs, or an LLM-as-judge for free text). A report at the end that tells you what passed, what failed, and how today compares to yesterday.</p>
+
+<p>Build this in an afternoon. Start running it. The insights come fast.</p>
+
+<h2>LLM-as-judge. The pragmatic middle ground.</h2>
+<p>For outputs without a single right answer ("did the agent write a good email?"), you can't use exact-match grading. Human eval works but is slow and expensive. The pragmatic middle: use a strong LLM as the judge. Give it the rubric and the candidate output; get back a score.</p>
+
+<p>Rules that keep LLM-as-judge honest:</p>
+
 <ul>
-  <li>Judge should be different (or at least stronger) than the model being graded</li>
-  <li>Rubric must be explicit. "rate 1-5 on accuracy" is not enough; define each score level</li>
-  <li>Run judge multiple times and average, reduces variance</li>
-  <li>Spot-check with human eval monthly to catch judge drift</li>
+  <li><strong>The judge should be different from (or stronger than) the agent being graded.</strong> Using Sonnet to grade Sonnet is better than using Sonnet to grade itself, and using Opus to grade Sonnet is better still.</li>
+  <li><strong>The rubric must be explicit.</strong> "Rate accuracy 1-5" is useless. "5 = every claim is directly supported by the cited source; 4 = one minor inference beyond sources; 3 = some unverified claims..." — define each level.</li>
+  <li><strong>Run the judge multiple times and average.</strong> Judges are noisy too. Three runs and an average is measurably more stable than one run.</li>
+  <li><strong>Spot-check with human eval monthly.</strong> Is the judge agreeing with humans on the tough cases? If it's drifting, recalibrate the rubric or swap the judge model.</li>
 </ul>
 
-<h2>Metrics that matter</h2>
-<ul>
-  <li><strong>Task success rate.</strong> % of cases completed correctly.</li>
-  <li><strong>Tool-call count.</strong> How many steps to finish? Fewer is usually better.</li>
-  <li><strong>Cost per task.</strong> Tokens × rate. Track it, especially as you change prompts.</li>
-  <li><strong>Latency.</strong> P50, P95. User-perceived speed.</li>
-  <li><strong>Error rate.</strong> Tools that errored; model calls that returned malformed output.</li>
-  <li><strong>Safety metric.</strong> How often did the agent do something in the deny list (that slipped through)?</li>
-</ul>
+<h2>The metrics that actually matter.</h2>
+<p>Once you have a harness running, track these. The individual numbers matter less than the trends.</p>
 
-<h2>Process</h2>
+<div class="sketch" data-viewbox="0 0 900 290" id="dg-eval-metrics">
+  <svg></svg>
+  <div class="sketch-caption">~ metrics, ranked by importance ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-eval-metrics');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.bars(svg, rc, {
+    x: 30, y: 30, w: 840, barH: 32, gap: 14, labelW: 210,
+    items: [
+      { label: 'Task success rate',  value: 95, note: '% of cases completed correctly' },
+      { label: 'Safety violations',  value: 92, note: 'any deny-list bypass? EVER?' },
+      { label: 'Cost per task',      value: 80, note: 'tokens × rate; track as you tune' },
+      { label: 'Tool-call count',    value: 70, note: 'fewer steps usually = better agent' },
+      { label: 'Latency (p50, p95)', value: 68, note: 'user-perceived speed' },
+      { label: 'Error rate',         value: 65, note: 'tool errors, malformed outputs' }
+    ]
+  });
+});
+</script>
+
+<p>Don't just look at the averages. Look at the distribution. An agent with 98% success but that fails badly on the remaining 2% is worse than an agent with 92% success that fails gracefully. Tails matter.</p>
+
+<h2>The process that actually works.</h2>
 <ol>
-  <li><strong>Start with 10 hand-written test cases.</strong> Run them before every prompt change.</li>
-  <li><strong>Grow the set.</strong> Every bug found in prod → add a test case.</li>
-  <li><strong>Run regularly.</strong> On every meaningful change. At least weekly in prod.</li>
-  <li><strong>Track over time.</strong> A single number means less than the delta.</li>
+  <li><strong>Write 10 hand-crafted test cases on day 1.</strong> Real cases from your target task. You already have them in your head; write them down.</li>
+  <li><strong>Run them before every prompt change.</strong> Even small edits. Regression is real. 15 seconds of eval run is cheap insurance.</li>
+  <li><strong>Every bug you find in production → add a test case.</strong> This is how your suite grows. 10 cases becomes 50 becomes 200, each one earned.</li>
+  <li><strong>Run the full suite weekly</strong> as models, tools, and context drift. Scheduled. Automated. No exceptions.</li>
+  <li><strong>Track over time.</strong> A single run is just a number. The trend line is where insight lives. Is pass rate going up or down? Are tails getting worse? Is cost per task drifting?</li>
 </ol>
 
 <div class="callout insight">
-  <strong>The eval is the product.</strong> If your agent is hard to eval, it's too complex, simplify. A better agent is one whose behavior you can measure.
+  <strong>The eval is the product.</strong> If your agent is hard to evaluate, it's probably too complex — simplify it. A better agent is one whose behavior you can measure. The teams that win ship simpler agents with tighter evals, not fancier agents with vibes-based testing.
 </div>
+
+<h2>One more thing: evals vs. eval-ops.</h2>
+<p>Building the harness is the easy part. Keeping it useful over months is the hard part. Plan for:</p>
+<ul>
+  <li><strong>Test-case rot.</strong> Cases that passed for the wrong reason, or that no longer reflect real usage, need pruning.</li>
+  <li><strong>Rubric drift.</strong> Your sense of "good" evolves. Update the rubric; re-score historical runs so trends stay apples-to-apples.</li>
+  <li><strong>Model updates.</strong> When Anthropic ships a new Claude, re-run your entire suite. Sometimes new models pass things old ones couldn't; sometimes they fail things old ones could. Always check.</li>
+</ul>
+
+<p>The best agent teams I've seen treat eval as a first-class engineering practice, with its own owner, its own sprint time, its own retros. It's unglamorous, and it's the difference between agents that ship and agents that keep almost-shipping.</p>
 <div class="prev-next"><a href="multi-agent.html" class="prev"><div class="label">← Previous</div><div class="title">Multi-agent</div></a><a href="prompt-caching.html" class="next"><div class="label">Next →</div><div class="title">Prompt caching</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../framework/index.html">Framework</a></p>
 </div></footer><script>
