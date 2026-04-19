@@ -105,12 +105,29 @@ can drop in a `<div class="sketch" data-viewbox="...">` and call the
 - `framework/claude-code/skills.html` (+ anatomy table, skills-vs-hooks-vs-mcps)
 - `framework/claude-code/memory.html` (+ 4-kinds table, save-vs-don't compare)
 
-### Patterns section (3/5 done)
+### Patterns section (COMPLETE, 5/5)
 
 - `framework/patterns/index.html` (+ patterns table)
 - `framework/patterns/react-loop.html` (+ loop, why-bars, failures table)
 - `framework/patterns/plan-execute.html` (+ flow, why-bars, when-compare)
 - `framework/patterns/multi-agent.html` (+ architecture, why-bars, when-compare)
+- `framework/patterns/evaluation.html` (+ why-hard table, harness, metrics bars)
+- `framework/patterns/prompt-caching.html` (+ layout stack, cost bars, when-compare)
+
+### Autonomous section (COMPLETE, 5/5)
+
+- `framework/autonomous/index.html` (+ 6-layer stack, worth-it compare, progression)
+- `framework/autonomous/safety.html` (+ safety stack, kill-switch bars, never-list, drill)
+- `framework/autonomous/headless.html` (+ when-table, changes-table, pitfalls)
+- `framework/autonomous/scheduling.html` (+ scheduler-vs-trigger, cadence, design rules)
+- `framework/autonomous/self-monitoring.html` (+ 6-questions, 3-layers, retry policy)
+
+### Build section (COMPLETE, 4/4)
+
+- `framework/build/index.html` (+ 3-guides table, 5-step shape)
+- `framework/build/first-agent.html` (+ architecture diagram; kept proven tutorial)
+- `framework/build/voice-agent.html` (+ pipeline, latency bars, state-machine, barge-in)
+- `framework/build/research-agent.html` (+ 6-step pipeline, failure-modes table)
 
 ### Autonomous section
 
@@ -126,14 +143,13 @@ can drop in a `<div class="sketch" data-viewbox="...">` and call the
 
 Do in this order:
 
-**Patterns** (2 left): evaluation, prompt-caching
-**Autonomous** (3 left): headless, scheduling, self-monitoring
-**Build** (4): index, first-agent, voice-agent, research-agent
 **Plugins** (3): index, vs-mcp, marketplace
 **Tools** (2): browser-automation, desktop-control
 **MCP loose ends**: directory page + add a diagram to servers.html
 
-Total: ~14 pages remaining in the framework.
+Total: **~6 pages remaining** in the framework — very close to done.
+
+Then the site-wide remainder: 79 glossary terms + ~900 expertise pages.
 
 ## After the framework
 
