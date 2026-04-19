@@ -37,6 +37,11 @@
 .gloss-card-topic { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #666; margin: 2px 0 6px 0; }
 .gloss-card-summary { font-size: 13px; color: #666; line-height: 1.5; }
 .gloss-count { color: #666; font-size: 14px; margin-bottom: 12px; }
+
+.gloss-section-head { font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em; color: #4a00e0; font-weight: 800; margin: 32px 0 8px 0; }
+.gloss-explain, .gloss-why { font-size: 16px; line-height: 1.75; color: #2a2a30; margin: 0 0 8px 0; }
+.gloss-example { font-size: 15px; line-height: 1.7; color: #3f3f46; background: #f7f5ff; border-left: 3px solid #4a00e0; padding: 14px 18px; border-radius: 6px; margin: 0 0 8px 0; white-space: pre-line; }
+
 </style>
 <link rel="icon" type="image/png" href="../logo.png">
 
@@ -247,9 +252,18 @@
 <a href="index.html" style="color:#4a00e0; text-decoration: none; font-size: 14px;">← Glossary</a>
 <span class="gloss-topic" style="margin-top: 24px;">AI</span>
 <h1 class="gloss-term">Hallucination</h1>
-<p class="gloss-def">An LLM producing false information that sounds plausible. The model invents facts.</p>
-<p class="gloss-detail">Mitigated by RAG (ground in real context), better prompts, and verification systems.</p>
-<div class="gloss-related"><h4>Related terms</h4><a href="rag.html">RAG</a><a href="grounding.html">Grounding</a><a href="llm.html">LLM</a></div>
+<p class="gloss-def">When an AI makes up facts and says them confidently. The most common failure mode of LLMs.</p>
+
+<h3 class="gloss-section-head">Explained simply.</h3>
+<p class="gloss-explain">LLMs are trained to produce plausible-sounding text, not true text. Usually those overlap. Sometimes they don't. When the model generates a fact, citation, name, or statistic that sounds right but isn't real, that's a hallucination. The model isn't lying on purpose — it's doing what it was trained to do (predict the next likely word), and the most likely next word happens to be wrong. The dangerous part is that hallucinations read with the same tone of confidence as correct answers.</p>
+
+<h3 class="gloss-section-head">An example.</h3>
+<div class="gloss-example">Ask a model for a legal citation and it might produce 'Smith v. Jones, 2019, 447 F.3d 221' — which is formatted correctly, spelled like real case law, and completely invented. Lawyers have been fined for filing briefs with hallucinated citations.</div>
+
+<h3 class="gloss-section-head">Why it matters.</h3>
+<p class="gloss-why">Hallucinations don't go away; you manage them. Use RAG so the model can cite real sources. Ask it to show its work. Build checks that verify claims against a trusted database. For anything consequential (legal, medical, financial), never trust the first output.</p>
+
+<div class="gloss-related"><h4>Related terms</h4><a href="grounding.html">Grounding</a><a href="rag.html">Rag</a><a href="llm.html">Llm</a></div>
 </div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a></p>
 </div></footer><script>

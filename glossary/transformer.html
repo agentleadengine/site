@@ -37,6 +37,11 @@
 .gloss-card-topic { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #666; margin: 2px 0 6px 0; }
 .gloss-card-summary { font-size: 13px; color: #666; line-height: 1.5; }
 .gloss-count { color: #666; font-size: 14px; margin-bottom: 12px; }
+
+.gloss-section-head { font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em; color: #4a00e0; font-weight: 800; margin: 32px 0 8px 0; }
+.gloss-explain, .gloss-why { font-size: 16px; line-height: 1.75; color: #2a2a30; margin: 0 0 8px 0; }
+.gloss-example { font-size: 15px; line-height: 1.7; color: #3f3f46; background: #f7f5ff; border-left: 3px solid #4a00e0; padding: 14px 18px; border-radius: 6px; margin: 0 0 8px 0; white-space: pre-line; }
+
 </style>
 <link rel="icon" type="image/png" href="../logo.png">
 
@@ -247,9 +252,18 @@
 <a href="index.html" style="color:#4a00e0; text-decoration: none; font-size: 14px;">← Glossary</a>
 <span class="gloss-topic" style="margin-top: 24px;">AI</span>
 <h1 class="gloss-term">Transformer</h1>
-<p class="gloss-def">The neural network architecture underlying modern LLMs. Uses self-attention to process sequences.</p>
-<p class="gloss-detail">Introduced in 2017 'Attention Is All You Need' paper. Foundation of GPT, Claude, Gemini, all major LLMs.</p>
-<div class="gloss-related"><h4>Related terms</h4><a href="llm.html">LLM</a><a href="attention.html">Attention Mechanism</a></div>
+<p class="gloss-def">The neural network design that made modern AI possible. What's inside every LLM.</p>
+
+<h3 class="gloss-section-head">Explained simply.</h3>
+<p class="gloss-explain">The transformer is a blueprint for a type of neural network, introduced by Google in a 2017 paper titled 'Attention Is All You Need.' Its key insight was the attention mechanism — a way for the model to weigh which parts of the input matter most for each word it's generating. Before transformers, AI read text word-by-word, losing track of long-range context. Transformers can see the whole input at once. Every major LLM — GPT, Claude, Gemini — is a transformer.</p>
+
+<h3 class="gloss-section-head">An example.</h3>
+<div class="gloss-example">When the model reads 'The bank of the river was muddy', the transformer's attention mechanism lets 'bank' attend to 'river' strongly. This is how it knows you mean the river edge, not a financial institution. That same mechanism operating across thousands of words is what makes LLMs coherent.</div>
+
+<h3 class="gloss-section-head">Why it matters.</h3>
+<p class="gloss-why">You don't need to understand transformer internals to build with AI, but knowing the architecture name helps you read the literature and understand why models have context limits, why attention is computationally expensive, and why different model families differ.</p>
+
+<div class="gloss-related"><h4>Related terms</h4><a href="llm.html">Llm</a><a href="foundation-model.html">Foundation Model</a><a href="attention.html">Attention</a></div>
 </div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a></p>
 </div></footer><script>

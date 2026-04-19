@@ -37,6 +37,11 @@
 .gloss-card-topic { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #666; margin: 2px 0 6px 0; }
 .gloss-card-summary { font-size: 13px; color: #666; line-height: 1.5; }
 .gloss-count { color: #666; font-size: 14px; margin-bottom: 12px; }
+
+.gloss-section-head { font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em; color: #4a00e0; font-weight: 800; margin: 32px 0 8px 0; }
+.gloss-explain, .gloss-why { font-size: 16px; line-height: 1.75; color: #2a2a30; margin: 0 0 8px 0; }
+.gloss-example { font-size: 15px; line-height: 1.7; color: #3f3f46; background: #f7f5ff; border-left: 3px solid #4a00e0; padding: 14px 18px; border-radius: 6px; margin: 0 0 8px 0; white-space: pre-line; }
+
 </style>
 <link rel="icon" type="image/png" href="../logo.png">
 
@@ -247,9 +252,18 @@
 <a href="index.html" style="color:#4a00e0; text-decoration: none; font-size: 14px;">← Glossary</a>
 <span class="gloss-topic" style="margin-top: 24px;">AI</span>
 <h1 class="gloss-term">Prompt Engineering</h1>
-<p class="gloss-def">The craft of designing LLM prompts to reliably produce desired outputs.</p>
-<p class="gloss-detail">Includes system prompts, examples, formatting, constraints, and chain-of-thought structuring.</p>
-<div class="gloss-related"><h4>Related terms</h4><a href="llm.html">LLM</a><a href="system-prompt.html">System Prompt</a><a href="few-shot.html">Few-Shot Prompting</a></div>
+<p class="gloss-def">The craft of writing instructions that get an AI to do what you want.</p>
+
+<h3 class="gloss-section-head">Explained simply.</h3>
+<p class="gloss-explain">LLMs are extraordinarily sensitive to how you phrase a request. The same task can produce garbage or gold depending on word choice, structure, and what you include. Prompt engineering is the practice of testing, refining, and standardizing those prompts so you get reliable results. It includes things like: giving examples (few-shot), assigning a role ('you are a careful tax accountant'), breaking tasks into steps, and specifying the output format.</p>
+
+<h3 class="gloss-section-head">An example.</h3>
+<div class="gloss-example">Bad prompt: 'Summarize this.' Better prompt: 'Summarize the key findings of the following report in 3 bullet points, each no longer than 15 words. Focus on financial implications, not marketing. Report: [...]'. The second gets consistent, usable output every time. The first gets a different flavor each run.</div>
+
+<h3 class="gloss-section-head">Why it matters.</h3>
+<p class="gloss-why">Prompt engineering is the cheapest lever you have. Before you fine-tune, before you build agents, before you add RAG — try rewriting the prompt. A better prompt often closes 80% of the quality gap.</p>
+
+<div class="gloss-related"><h4>Related terms</h4><a href="system-prompt.html">System Prompt</a><a href="few-shot.html">Few Shot</a><a href="zero-shot.html">Zero Shot</a></div>
 </div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a></p>
 </div></footer><script>

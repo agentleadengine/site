@@ -37,6 +37,11 @@
 .gloss-card-topic { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #666; margin: 2px 0 6px 0; }
 .gloss-card-summary { font-size: 13px; color: #666; line-height: 1.5; }
 .gloss-count { color: #666; font-size: 14px; margin-bottom: 12px; }
+
+.gloss-section-head { font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em; color: #4a00e0; font-weight: 800; margin: 32px 0 8px 0; }
+.gloss-explain, .gloss-why { font-size: 16px; line-height: 1.75; color: #2a2a30; margin: 0 0 8px 0; }
+.gloss-example { font-size: 15px; line-height: 1.7; color: #3f3f46; background: #f7f5ff; border-left: 3px solid #4a00e0; padding: 14px 18px; border-radius: 6px; margin: 0 0 8px 0; white-space: pre-line; }
+
 </style>
 <link rel="icon" type="image/png" href="../logo.png">
 
@@ -247,9 +252,18 @@
 <a href="index.html" style="color:#4a00e0; text-decoration: none; font-size: 14px;">← Glossary</a>
 <span class="gloss-topic" style="margin-top: 24px;">AI</span>
 <h1 class="gloss-term">System Prompt</h1>
-<p class="gloss-def">The instructions given to an LLM defining its role, behavior, and constraints. Appears before user messages.</p>
-<p class="gloss-detail">Sets the agent's persona, rules, tools available, output format.</p>
-<div class="gloss-related"><h4>Related terms</h4><a href="prompt-engineering.html">Prompt Engineering</a><a href="llm.html">LLM</a></div>
+<p class="gloss-def">Standing instructions for the AI. The 'rules of engagement' baked in before the conversation starts.</p>
+
+<h3 class="gloss-section-head">Explained simply.</h3>
+<p class="gloss-explain">A system prompt is a message at the very beginning of a chat that sets the AI's role, tone, constraints, and goals. The user never sees it. It persists for the whole conversation. It's the difference between a generic assistant and a focused specialist. Think of it as the job description the AI is working from.</p>
+
+<h3 class="gloss-section-head">An example.</h3>
+<div class="gloss-example">System prompt: 'You are a customer support agent for Acme Corp. Only answer questions about Acme products. Never discuss competitors. If unsure, say so and offer to hand off to a human. Keep responses under 80 words.' Now every user message is interpreted through that lens, with no further setup.</div>
+
+<h3 class="gloss-section-head">Why it matters.</h3>
+<p class="gloss-why">The system prompt is where most production behavior gets defined. Changing one line can completely transform your agent. Most people underinvest in their system prompt and then wonder why their AI is inconsistent.</p>
+
+<div class="gloss-related"><h4>Related terms</h4><a href="prompt-engineering.html">Prompt Engineering</a><a href="few-shot.html">Few Shot</a></div>
 </div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a></p>
 </div></footer><script>

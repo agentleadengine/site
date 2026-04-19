@@ -37,6 +37,11 @@
 .gloss-card-topic { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #666; margin: 2px 0 6px 0; }
 .gloss-card-summary { font-size: 13px; color: #666; line-height: 1.5; }
 .gloss-count { color: #666; font-size: 14px; margin-bottom: 12px; }
+
+.gloss-section-head { font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em; color: #4a00e0; font-weight: 800; margin: 32px 0 8px 0; }
+.gloss-explain, .gloss-why { font-size: 16px; line-height: 1.75; color: #2a2a30; margin: 0 0 8px 0; }
+.gloss-example { font-size: 15px; line-height: 1.7; color: #3f3f46; background: #f7f5ff; border-left: 3px solid #4a00e0; padding: 14px 18px; border-radius: 6px; margin: 0 0 8px 0; white-space: pre-line; }
+
 </style>
 <link rel="icon" type="image/png" href="../logo.png">
 
@@ -247,9 +252,18 @@
 <a href="index.html" style="color:#4a00e0; text-decoration: none; font-size: 14px;">← Glossary</a>
 <span class="gloss-topic" style="margin-top: 24px;">AI</span>
 <h1 class="gloss-term">Tool Use</h1>
-<p class="gloss-def">An LLM's ability to request function/API calls and incorporate results into its reasoning.</p>
-<p class="gloss-detail">Also called function calling. Foundation of agentic behavior.</p>
-<div class="gloss-related"><h4>Related terms</h4><a href="agent.html">AI Agent</a><a href="react.html">ReAct</a><a href="function-calling.html">Function Calling</a></div>
+<p class="gloss-def">When an AI can call external functions to do things it can't do itself.</p>
+
+<h3 class="gloss-section-head">Explained simply.</h3>
+<p class="gloss-explain">An LLM on its own can only output text. It can't actually send an email, query a database, or check a calendar. Tool use is the mechanism by which the model says 'I want to use tool X with these arguments' — and your code runs the tool and gives the result back. The model then reads the result and decides what to do next. With tools, an LLM stops being a chat partner and becomes something much more capable.</p>
+
+<h3 class="gloss-section-head">An example.</h3>
+<div class="gloss-example">You give Claude a 'search_database' tool. User asks 'what's our biggest account?'. Claude decides to call search_database(query="top accounts by revenue, limit 1"), reads the result, and replies: 'Your biggest account is Acme, with $1.2M in ARR.' Without tools, it would just guess or say it couldn't answer.</div>
+
+<h3 class="gloss-section-head">Why it matters.</h3>
+<p class="gloss-why">Tools are how LLMs become agents. Every autonomous system is really an LLM plus a good set of tools plus a loop that lets it call them repeatedly. The tools you give it are what define what your agent can do.</p>
+
+<div class="gloss-related"><h4>Related terms</h4><a href="function-calling.html">Function Calling</a><a href="agent.html">Agent</a><a href="mcp.html">Mcp</a><a href="react.html">React</a></div>
 </div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a></p>
 </div></footer><script>

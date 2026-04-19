@@ -37,6 +37,11 @@
 .gloss-card-topic { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #666; margin: 2px 0 6px 0; }
 .gloss-card-summary { font-size: 13px; color: #666; line-height: 1.5; }
 .gloss-count { color: #666; font-size: 14px; margin-bottom: 12px; }
+
+.gloss-section-head { font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em; color: #4a00e0; font-weight: 800; margin: 32px 0 8px 0; }
+.gloss-explain, .gloss-why { font-size: 16px; line-height: 1.75; color: #2a2a30; margin: 0 0 8px 0; }
+.gloss-example { font-size: 15px; line-height: 1.7; color: #3f3f46; background: #f7f5ff; border-left: 3px solid #4a00e0; padding: 14px 18px; border-radius: 6px; margin: 0 0 8px 0; white-space: pre-line; }
+
 </style>
 <link rel="icon" type="image/png" href="../logo.png">
 
@@ -246,10 +251,19 @@
 </div></nav><div class="gloss-layout">
 <a href="index.html" style="color:#4a00e0; text-decoration: none; font-size: 14px;">← Glossary</a>
 <span class="gloss-topic" style="margin-top: 24px;">AI</span>
-<h1 class="gloss-term">RAG</h1>
-<p class="gloss-def">Retrieval-Augmented Generation. Fetch relevant context from a knowledge base, paste into the LLM prompt, generate an answer grounded in that context.</p>
-<p class="gloss-detail">The dominant pattern for giving LLMs access to private or up-to-date information without fine-tuning.</p>
-<div class="gloss-related"><h4>Related terms</h4><a href="vector-database.html">Vector Database</a><a href="embedding.html">Embedding</a><a href="llm.html">LLM</a></div>
+<h1 class="gloss-term">RAG (Retrieval-Augmented Generation)</h1>
+<p class="gloss-def">Giving an AI a library to look things up in before it answers. Open-book mode.</p>
+
+<h3 class="gloss-section-head">Explained simply.</h3>
+<p class="gloss-explain">An LLM only knows what it learned during training. It doesn't know your company's internal docs, last week's emails, or a PDF you just got. RAG solves this in three steps: (1) store your documents in a searchable index; (2) when a question comes in, find the most relevant snippets; (3) paste those snippets into the AI's prompt along with the question. Now the AI is 'open-book' — it can quote from your library.</p>
+
+<h3 class="gloss-section-head">An example.</h3>
+<div class="gloss-example">You build a customer support bot for your SaaS. You load all 500 help-center articles into a vector database. When a customer asks 'how do I cancel?', RAG finds the 3 most relevant articles, pastes them into the prompt, and the AI writes an answer using only facts from those articles. No hallucinations.</div>
+
+<h3 class="gloss-section-head">Why it matters.</h3>
+<p class="gloss-why">Fine-tuning takes days, costs money, and gets stale the moment your docs change. RAG updates the moment you update your docs. Almost every 'ChatGPT for your company' product is RAG under the hood.</p>
+
+<div class="gloss-related"><h4>Related terms</h4><a href="embedding.html">Embedding</a><a href="vector-database.html">Vector Database</a><a href="semantic-search.html">Semantic Search</a><a href="chunking.html">Chunking</a><a href="reranking.html">Reranking</a></div>
 </div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a></p>
 </div></footer><script>

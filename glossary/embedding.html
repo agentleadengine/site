@@ -37,6 +37,11 @@
 .gloss-card-topic { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #666; margin: 2px 0 6px 0; }
 .gloss-card-summary { font-size: 13px; color: #666; line-height: 1.5; }
 .gloss-count { color: #666; font-size: 14px; margin-bottom: 12px; }
+
+.gloss-section-head { font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em; color: #4a00e0; font-weight: 800; margin: 32px 0 8px 0; }
+.gloss-explain, .gloss-why { font-size: 16px; line-height: 1.75; color: #2a2a30; margin: 0 0 8px 0; }
+.gloss-example { font-size: 15px; line-height: 1.7; color: #3f3f46; background: #f7f5ff; border-left: 3px solid #4a00e0; padding: 14px 18px; border-radius: 6px; margin: 0 0 8px 0; white-space: pre-line; }
+
 </style>
 <link rel="icon" type="image/png" href="../logo.png">
 
@@ -247,9 +252,18 @@
 <a href="index.html" style="color:#4a00e0; text-decoration: none; font-size: 14px;">← Glossary</a>
 <span class="gloss-topic" style="margin-top: 24px;">AI</span>
 <h1 class="gloss-term">Embedding</h1>
-<p class="gloss-def">A vector representation of text where semantically similar text produces similar vectors.</p>
-<p class="gloss-detail">Embeddings power semantic search. Models like text-embedding-3 from OpenAI produce these.</p>
-<div class="gloss-related"><h4>Related terms</h4><a href="vector-database.html">Vector Database</a><a href="rag.html">RAG</a><a href="semantic-search.html">Semantic Search</a></div>
+<p class="gloss-def">A way to turn text into numbers that represent its meaning, so computers can compare ideas.</p>
+
+<h3 class="gloss-section-head">Explained simply.</h3>
+<p class="gloss-explain">An embedding is a long list of numbers (usually 384 to 1,536 of them) that captures the meaning of a piece of text. The trick is: similar meanings get similar number lists. 'The cat sat on the mat' and 'A feline rested on the rug' will have embeddings that are very close together, even though they share almost no words. This is how a computer can 'know' two sentences mean the same thing.</p>
+
+<h3 class="gloss-section-head">An example.</h3>
+<div class="gloss-example">You embed your 500 help-center articles. You embed the question 'how do I cancel?'. You measure distance between that question's embedding and every article's embedding. The 3 closest articles are probably the ones that answer the question, even if they don't use the word 'cancel' (they might say 'end subscription' or 'close account').</div>
+
+<h3 class="gloss-section-head">Why it matters.</h3>
+<p class="gloss-why">Embeddings are the foundation of RAG, semantic search, classification, and clustering. Once you have good embeddings for your data, you can do things that keyword search can't.</p>
+
+<div class="gloss-related"><h4>Related terms</h4><a href="vector-database.html">Vector Database</a><a href="semantic-search.html">Semantic Search</a><a href="rag.html">Rag</a><a href="chunking.html">Chunking</a></div>
 </div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a></p>
 </div></footer><script>

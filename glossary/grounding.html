@@ -37,6 +37,11 @@
 .gloss-card-topic { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #666; margin: 2px 0 6px 0; }
 .gloss-card-summary { font-size: 13px; color: #666; line-height: 1.5; }
 .gloss-count { color: #666; font-size: 14px; margin-bottom: 12px; }
+
+.gloss-section-head { font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em; color: #4a00e0; font-weight: 800; margin: 32px 0 8px 0; }
+.gloss-explain, .gloss-why { font-size: 16px; line-height: 1.75; color: #2a2a30; margin: 0 0 8px 0; }
+.gloss-example { font-size: 15px; line-height: 1.7; color: #3f3f46; background: #f7f5ff; border-left: 3px solid #4a00e0; padding: 14px 18px; border-radius: 6px; margin: 0 0 8px 0; white-space: pre-line; }
+
 </style>
 <link rel="icon" type="image/png" href="../logo.png">
 
@@ -247,9 +252,18 @@
 <a href="index.html" style="color:#4a00e0; text-decoration: none; font-size: 14px;">← Glossary</a>
 <span class="gloss-topic" style="margin-top: 24px;">AI</span>
 <h1 class="gloss-term">Grounding</h1>
-<p class="gloss-def">Ensuring LLM responses are anchored in specific factual context rather than the model's internal beliefs.</p>
-<p class="gloss-detail">RAG is a grounding technique. Citations are a grounding signal.</p>
-<div class="gloss-related"><h4>Related terms</h4><a href="rag.html">RAG</a><a href="hallucination.html">Hallucination</a></div>
+<p class="gloss-def">Tying an AI's answers to real, verifiable sources so it can't just make things up.</p>
+
+<h3 class="gloss-section-head">Explained simply.</h3>
+<p class="gloss-explain">Grounding is the opposite of hallucination. Instead of letting the model answer from its training memory (which might be stale or wrong), you force it to answer ONLY using sources you provide — documents, database rows, search results. The model is instructed to cite or refuse. A well-grounded system is much harder to catch in a lie because every claim traces back to a source.</p>
+
+<h3 class="gloss-section-head">An example.</h3>
+<div class="gloss-example">A grounded customer support bot is told: 'Answer only using the help articles I'm pasting below. If the answer isn't in them, say "I don't have that info" and offer to hand off to a human.' Now if a user asks something off-topic, the bot honestly says it doesn't know — instead of making something up.</div>
+
+<h3 class="gloss-section-head">Why it matters.</h3>
+<p class="gloss-why">Grounding is what turns an AI from a plausibly-wrong chatbot into a reliable production system. Every serious enterprise AI app is grounded. If you're shipping AI to end users, figure out grounding before you ship.</p>
+
+<div class="gloss-related"><h4>Related terms</h4><a href="rag.html">Rag</a><a href="hallucination.html">Hallucination</a><a href="semantic-search.html">Semantic Search</a></div>
 </div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a></p>
 </div></footer><script>

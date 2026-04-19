@@ -37,6 +37,11 @@
 .gloss-card-topic { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #666; margin: 2px 0 6px 0; }
 .gloss-card-summary { font-size: 13px; color: #666; line-height: 1.5; }
 .gloss-count { color: #666; font-size: 14px; margin-bottom: 12px; }
+
+.gloss-section-head { font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em; color: #4a00e0; font-weight: 800; margin: 32px 0 8px 0; }
+.gloss-explain, .gloss-why { font-size: 16px; line-height: 1.75; color: #2a2a30; margin: 0 0 8px 0; }
+.gloss-example { font-size: 15px; line-height: 1.7; color: #3f3f46; background: #f7f5ff; border-left: 3px solid #4a00e0; padding: 14px 18px; border-radius: 6px; margin: 0 0 8px 0; white-space: pre-line; }
+
 </style>
 <link rel="icon" type="image/png" href="../logo.png">
 
@@ -246,10 +251,19 @@
 </div></nav><div class="gloss-layout">
 <a href="index.html" style="color:#4a00e0; text-decoration: none; font-size: 14px;">← Glossary</a>
 <span class="gloss-topic" style="margin-top: 24px;">AI</span>
-<h1 class="gloss-term">AI Agent</h1>
-<p class="gloss-def">An LLM in a loop with tools. The LLM reasons, picks actions, executes via tools, observes results, and continues until a goal is reached.</p>
-<p class="gloss-detail">Distinct from a single LLM call. Agents can browse, call APIs, write files, coordinate sub-tasks.</p>
-<div class="gloss-related"><h4>Related terms</h4><a href="llm.html">LLM</a><a href="tool-use.html">Tool Use</a><a href="react.html">ReAct</a></div>
+<h1 class="gloss-term">Agent</h1>
+<p class="gloss-def">An AI that can take actions on its own. Not just answer, but DO.</p>
+
+<h3 class="gloss-section-head">Explained simply.</h3>
+<p class="gloss-explain">A chatbot writes you an email. An agent writes the email AND sends it. That's the difference. An agent has tools (send email, search the web, open a file, run code), a goal, and the ability to decide when to use which tool. It runs in a loop: think → act → look at the result → think again. It keeps going until the goal is met or it hits a limit you set.</p>
+
+<h3 class="gloss-section-head">An example.</h3>
+<div class="gloss-example">You tell an agent: 'Find me 5 podcasts about AI and draft personalized pitches.' A chatbot would give you a template. An agent would search Spotify for AI podcasts, open each show page, extract the host's name and style, then write 5 custom drafts, and save them to a file. You come back in 10 minutes and the work is done.</div>
+
+<h3 class="gloss-section-head">Why it matters.</h3>
+<p class="gloss-why">Agents are the whole point of building on top of models. A model by itself is a parlor trick. A model plus tools plus a loop is a worker. Every useful AI product shipping in 2026 is some flavor of agent.</p>
+
+<div class="gloss-related"><h4>Related terms</h4><a href="tool-use.html">Tool Use</a><a href="react.html">React</a><a href="mcp.html">Mcp</a><a href="function-calling.html">Function Calling</a></div>
 </div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a></p>
 </div></footer><script>

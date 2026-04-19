@@ -37,6 +37,11 @@
 .gloss-card-topic { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #666; margin: 2px 0 6px 0; }
 .gloss-card-summary { font-size: 13px; color: #666; line-height: 1.5; }
 .gloss-count { color: #666; font-size: 14px; margin-bottom: 12px; }
+
+.gloss-section-head { font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em; color: #4a00e0; font-weight: 800; margin: 32px 0 8px 0; }
+.gloss-explain, .gloss-why { font-size: 16px; line-height: 1.75; color: #2a2a30; margin: 0 0 8px 0; }
+.gloss-example { font-size: 15px; line-height: 1.7; color: #3f3f46; background: #f7f5ff; border-left: 3px solid #4a00e0; padding: 14px 18px; border-radius: 6px; margin: 0 0 8px 0; white-space: pre-line; }
+
 </style>
 <link rel="icon" type="image/png" href="../logo.png">
 
@@ -247,9 +252,18 @@
 <a href="index.html" style="color:#4a00e0; text-decoration: none; font-size: 14px;">← Glossary</a>
 <span class="gloss-topic" style="margin-top: 24px;">AI</span>
 <h1 class="gloss-term">Chunking</h1>
-<p class="gloss-def">Splitting documents into smaller pieces for retrieval. Affects RAG quality significantly.</p>
-<p class="gloss-detail">Strategies: fixed-size, semantic, recursive, structure-aware. Covered in the RAG section.</p>
-<div class="gloss-related"><h4>Related terms</h4><a href="rag.html">RAG</a><a href="embedding.html">Embedding</a></div>
+<p class="gloss-def">Cutting long documents into smaller pieces so the AI can work with them.</p>
+
+<h3 class="gloss-section-head">Explained simply.</h3>
+<p class="gloss-explain">A 300-page manual won't fit in a prompt, and even if it did, asking the model to reason over it all at once gives bad answers. Chunking is the practice of splitting documents into smaller, self-contained pieces (usually 200–800 words each) before you store them. Each chunk gets its own embedding. When a question comes in, you retrieve the best matching CHUNKS, not whole documents.</p>
+
+<h3 class="gloss-section-head">An example.</h3>
+<div class="gloss-example">You have a 50-page employee handbook. You chunk it into 150 pieces, one per section. When someone asks 'how many sick days do I get?', RAG retrieves the 3 chunks that mention sick leave, pastes them into the prompt, and the AI answers using just those 3 paragraphs — not all 50 pages.</div>
+
+<h3 class="gloss-section-head">Why it matters.</h3>
+<p class="gloss-why">Bad chunking is the single biggest reason RAG systems give bad answers. Chunks too small = missing context. Too big = irrelevant noise overwhelms the real answer. Getting this right matters more than which model or database you pick.</p>
+
+<div class="gloss-related"><h4>Related terms</h4><a href="rag.html">Rag</a><a href="embedding.html">Embedding</a><a href="retrieval.html">Retrieval</a></div>
 </div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a></p>
 </div></footer><script>

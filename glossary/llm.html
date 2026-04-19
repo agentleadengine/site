@@ -37,6 +37,11 @@
 .gloss-card-topic { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #666; margin: 2px 0 6px 0; }
 .gloss-card-summary { font-size: 13px; color: #666; line-height: 1.5; }
 .gloss-count { color: #666; font-size: 14px; margin-bottom: 12px; }
+
+.gloss-section-head { font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em; color: #4a00e0; font-weight: 800; margin: 32px 0 8px 0; }
+.gloss-explain, .gloss-why { font-size: 16px; line-height: 1.75; color: #2a2a30; margin: 0 0 8px 0; }
+.gloss-example { font-size: 15px; line-height: 1.7; color: #3f3f46; background: #f7f5ff; border-left: 3px solid #4a00e0; padding: 14px 18px; border-radius: 6px; margin: 0 0 8px 0; white-space: pre-line; }
+
 </style>
 <link rel="icon" type="image/png" href="../logo.png">
 
@@ -246,10 +251,19 @@
 </div></nav><div class="gloss-layout">
 <a href="index.html" style="color:#4a00e0; text-decoration: none; font-size: 14px;">← Glossary</a>
 <span class="gloss-topic" style="margin-top: 24px;">AI</span>
-<h1 class="gloss-term">LLM</h1>
-<p class="gloss-def">Large Language Model. A neural network trained on massive text data that predicts the next token in a sequence, producing coherent language output.</p>
-<p class="gloss-detail">Examples: Claude, GPT-4, Gemini. Modern LLMs have tens to hundreds of billions of parameters. Foundation of most modern AI applications.</p>
-<div class="gloss-related"><h4>Related terms</h4><a href="transformer.html">Transformer</a><a href="token.html">Token</a><a href="context-window.html">Context Window</a><a href="foundation-model.html">Foundation Model</a></div>
+<h1 class="gloss-term">LLM (Large Language Model)</h1>
+<p class="gloss-def">A very large pattern-matcher trained on enormous amounts of text. What people mean when they say 'AI' these days.</p>
+
+<h3 class="gloss-section-head">Explained simply.</h3>
+<p class="gloss-explain">An LLM is a computer program that learned to predict the next word by reading most of the writing on the internet. That's it. That's the magic trick. If you give it a half-finished sentence, it can guess what comes next so well that the answer feels intelligent. Because it learned from so much text, it has absorbed facts, grammar, code, reasoning patterns, and writing styles. ChatGPT, Claude, and Gemini are all LLMs.</p>
+
+<h3 class="gloss-section-head">An example.</h3>
+<div class="gloss-example">Type 'The capital of France is' into an LLM. It knows the next most likely word is 'Paris' because it read that sentence or a close variant hundreds of thousands of times during training. Now type 'Write a poem about Paris in the style of Shakespeare' and it's doing the same trick, just over a much longer answer.</div>
+
+<h3 class="gloss-section-head">Why it matters.</h3>
+<p class="gloss-why">Understanding that an LLM is predicting text, not looking things up, explains almost every strange thing it does: why it can hallucinate, why prompting works, why it's amazing at some tasks and terrible at others. It is a very smart writer. It is not a database.</p>
+
+<div class="gloss-related"><h4>Related terms</h4><a href="foundation-model.html">Foundation Model</a><a href="transformer.html">Transformer</a><a href="hallucination.html">Hallucination</a><a href="context-window.html">Context Window</a></div>
 </div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a></p>
 </div></footer><script>

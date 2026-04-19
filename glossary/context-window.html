@@ -37,6 +37,11 @@
 .gloss-card-topic { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #666; margin: 2px 0 6px 0; }
 .gloss-card-summary { font-size: 13px; color: #666; line-height: 1.5; }
 .gloss-count { color: #666; font-size: 14px; margin-bottom: 12px; }
+
+.gloss-section-head { font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em; color: #4a00e0; font-weight: 800; margin: 32px 0 8px 0; }
+.gloss-explain, .gloss-why { font-size: 16px; line-height: 1.75; color: #2a2a30; margin: 0 0 8px 0; }
+.gloss-example { font-size: 15px; line-height: 1.7; color: #3f3f46; background: #f7f5ff; border-left: 3px solid #4a00e0; padding: 14px 18px; border-radius: 6px; margin: 0 0 8px 0; white-space: pre-line; }
+
 </style>
 <link rel="icon" type="image/png" href="../logo.png">
 
@@ -247,9 +252,18 @@
 <a href="index.html" style="color:#4a00e0; text-decoration: none; font-size: 14px;">← Glossary</a>
 <span class="gloss-topic" style="margin-top: 24px;">AI</span>
 <h1 class="gloss-term">Context Window</h1>
-<p class="gloss-def">Maximum number of tokens an LLM can process in a single request (input + output combined).</p>
-<p class="gloss-detail">Ranges from 4K (old models) to 1M+ (Gemini Pro, Claude Sonnet). Longer windows = more context but slower and more expensive.</p>
-<div class="gloss-related"><h4>Related terms</h4><a href="token.html">Token</a><a href="llm.html">LLM</a></div>
+<p class="gloss-def">The AI's working memory. Everything it can 'see' and 'think about' at once.</p>
+
+<h3 class="gloss-section-head">Explained simply.</h3>
+<p class="gloss-explain">Imagine the model is reading a book out loud to answer your question, but it can only hold a certain number of pages in its hands at one time. The context window is how many pages those are. It includes your question, the conversation so far, any documents you pasted in, the AI's instructions, and the answer it's generating. When the window is full, the oldest pages get put down and forgotten. The AI does not remember anything that falls off the edge of the window unless you tell it again.</p>
+
+<h3 class="gloss-section-head">An example.</h3>
+<div class="gloss-example">You paste a 50-page PDF into Claude and ask a question. That PDF plus your question plus Claude's answer all have to fit inside the context window. If you then paste ANOTHER 50-page PDF, the first one might start getting squeezed out. Ask about page 3 of the first PDF later and Claude might not remember it — not because it was a bad model, but because the page is no longer in its hands.</div>
+
+<h3 class="gloss-section-head">Why it matters.</h3>
+<p class="gloss-why">Bigger window = you can feed it more without it losing track. Claude Sonnet holds 1 million tokens (roughly 750,000 words, about 10 full novels). Older models held 4,000 tokens (about 3,000 words, 10 pages). When an agent starts acting weird after a long session, the usual reason is that the important context has fallen off the window. Fix it by summarizing, chunking, or starting fresh.</p>
+
+<div class="gloss-related"><h4>Related terms</h4><a href="token.html">Token</a><a href="llm.html">Llm</a><a href="attention.html">Attention</a></div>
 </div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a></p>
 </div></footer><script>

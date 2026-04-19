@@ -218,48 +218,117 @@
 <a href="../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Foundations</h4><ul><li><a href="index.html">Overview</a></li><li><a href="what-is-autonomous-ai.html">What is autonomous AI</a></li><li><a href="the-autonomy-spectrum.html" class="active">The autonomy spectrum</a></li><li><a href="glossary.html">Glossary</a></li></ul><h4>Claude</h4><ul><li><a href="claude/overview.html">Overview</a></li><li><a href="claude/prompting-for-agents.html">Prompting for agents</a></li><li><a href="claude/extended-thinking.html">Extended thinking</a></li><li><a href="claude/tool-use.html">Tool use</a></li></ul><h4>MCP</h4><ul><li><a href="mcp/index.html">Overview</a></li><li><a href="mcp/what-is-mcp.html">What is MCP</a></li><li><a href="mcp/anatomy.html">Anatomy</a></li><li><a href="mcp/transports.html">Transports</a></li><li><a href="mcp/servers.html">Servers</a></li><li><a href="mcp/clients.html">Clients</a></li><li><a href="mcp/security.html">Security</a></li><li><a href="mcp/directory.html">Directory</a></li></ul><h4>Plugins</h4><ul><li><a href="plugins/index.html">Overview</a></li><li><a href="plugins/vs-mcp.html">Plugins vs MCP</a></li><li><a href="plugins/marketplace.html">Marketplace</a></li></ul><h4>Claude Code</h4><ul><li><a href="claude-code/index.html">Overview</a></li><li><a href="claude-code/settings.html">Settings</a></li><li><a href="claude-code/permissions.html">Permissions</a></li><li><a href="claude-code/hooks.html">Hooks</a></li><li><a href="claude-code/skills.html">Skills</a></li><li><a href="claude-code/memory.html">Memory</a></li></ul><h4>Patterns</h4><ul><li><a href="patterns/index.html">Overview</a></li><li><a href="patterns/react-loop.html">ReAct loop</a></li><li><a href="patterns/plan-execute.html">Plan-execute</a></li><li><a href="patterns/multi-agent.html">Multi-agent</a></li><li><a href="patterns/evaluation.html">Evaluation</a></li><li><a href="patterns/prompt-caching.html">Prompt caching</a></li></ul><h4>Autonomous</h4><ul><li><a href="autonomous/index.html">Overview</a></li><li><a href="autonomous/headless.html">Headless</a></li><li><a href="autonomous/scheduling.html">Scheduling</a></li><li><a href="autonomous/self-monitoring.html">Self-monitoring</a></li><li><a href="autonomous/safety.html">Safety</a></li></ul><h4>Build Guides</h4><ul><li><a href="build/index.html">Overview</a></li><li><a href="build/first-agent.html">First agent (60 min)</a></li><li><a href="build/voice-agent.html">Voice agent</a></li><li><a href="build/research-agent.html">Research agent</a></li></ul><h4>Tools</h4><ul><li><a href="tools/browser-automation.html">Browser automation</a></li><li><a href="tools/desktop-control.html">Desktop control</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../index.html">Home</a><span class="sep">›</span><a href="index.html">Framework</a><span class="sep">›</span><span>The autonomy spectrum</span></div><h1 class="title" style="font-size:clamp(32px,4.5vw,42px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">The autonomy spectrum</h1><div class="article-meta"><span>📖 5 min read</span><span>Updated 2026-04-18</span></div>
-<p class="lede">Not every AI system is an agent. Not every agent is autonomous. Autonomy is a spectrum from passive chatbot to fully self-running system. Knowing where you are on the spectrum tells you what you can and can't do.</p>
+<p class="lede">AI systems are not all the same. Some wait for you to type. Some take actions. Some run on their own, all day, with nobody watching. The autonomy spectrum is the ladder between "it just answers" and "it just runs." Knowing which rung your system is on tells you what it can do, what it will break, and what to build next.</p>
 
-<h2>The five levels</h2>
+<h2>The five levels.</h2>
+<p>There are five useful rungs on the ladder. Each one adds something the one below it doesn't have.</p>
 
-<h3>Level 1. Chatbot</h3>
-<p>Generates text in response to a user's message. No memory, no tools, no action. A very fast autocomplete.</p>
-<p><em>Example:</em> early ChatGPT, before tool use.</p>
+<h3>Level 1. Chatbot.</h3>
+<p><strong>What it is:</strong> You type, it types back. That's it. No memory of past conversations. No tools. No actions in the real world. A very fast, very well-read writing partner.</p>
+<p><strong>What it CAN do:</strong> Draft an email. Answer a question. Explain a concept. Write a poem.</p>
+<p><strong>What it CAN'T do:</strong> Send the email. Check if the answer is actually correct by looking it up. Remember what you talked about last week.</p>
+<p><strong>Example:</strong> Early ChatGPT (before tool use was added). You ask. It answers. Conversation ends, memory gone.</p>
 
-<h3>Level 2. Assistant</h3>
-<p>Chatbot plus <strong>memory</strong> and maybe limited tools (search, file access). Still initiated by the human; still waits for prompts.</p>
-<p><em>Example:</em> modern Claude/ChatGPT with the "search the web" tool enabled.</p>
+<h3>Level 2. Assistant.</h3>
+<p><strong>What it is:</strong> A chatbot that got a notebook and a couple of tools. It can remember (to a degree). It can search the web, read a file you gave it, or look at a picture.</p>
+<p><strong>What it CAN do:</strong> Everything Level 1 can, plus pull in facts from the outside world before answering. Continue a conversation.</p>
+<p><strong>What it CAN'T do:</strong> Take multi-step actions without you. Every new task still starts with you typing.</p>
+<p><strong>Example:</strong> Modern Claude or ChatGPT with web search turned on. You ask "what's the weather in Paris?" and it actually looks it up instead of guessing.</p>
 
-<h3>Level 3. Agent with human-in-the-loop</h3>
-<p>Can chain tool calls, take multi-step actions, use external systems. But every risky action requires human approval. Good for code-writing, research, customer support.</p>
-<p><em>Example:</em> Claude Code running in default mode, it asks before running a shell command.</p>
+<h3>Level 3. Agent with human in the loop.</h3>
+<p><strong>What it is:</strong> Now it can string actions together. It can write code, run that code, see the error, fix it, and try again. But at every risky step (running a shell command, sending a message, spending money) it stops and asks: <em>"Okay?"</em> You say yes or no.</p>
+<p><strong>What it CAN do:</strong> Long, multi-step tasks. Complex research. Coding projects. Careful customer support.</p>
+<p><strong>What it CAN'T do:</strong> Run while you're asleep. Every decision still needs you at the keyboard to green-light it.</p>
+<p><strong>Example:</strong> Claude Code in default mode. You ask it to build a feature. It writes files, tries to run tests, and every time it wants to execute a shell command, it pops up asking for permission.</p>
 
-<h3>Level 4. Agent with auto mode</h3>
-<p>Pre-authorized to do most things within a defined scope. Stops and asks only for actions outside that scope. This is where most real productivity lives today.</p>
-<p><em>Example:</em> Claude Code with <a href="claude-code/permissions.html">auto mode</a> enabled and a deny list for destructive commands.</p>
+<h3>Level 4. Agent with auto mode.</h3>
+<p><strong>What it is:</strong> You've pre-approved a playbook. Inside that playbook, the agent acts without asking. Outside it, the agent pauses and asks. Think of giving an employee a budget and a scope: within that, they decide; beyond it, they call you.</p>
+<p><strong>What it CAN do:</strong> Finish a whole project while you get coffee. Run for an hour or more without check-ins. Handle branching tasks.</p>
+<p><strong>What it CAN'T do:</strong> Operate fully unsupervised over days. Recover from big surprises without you.</p>
+<p><strong>Example:</strong> Claude Code with auto mode on and a <a href="claude-code/permissions.html">deny list</a> blocking destructive commands like <code>rm -rf</code>. It builds, tests, commits, and files a PR, only stopping if it wants to do something outside the playbook. <em>This is where most real productivity lives in 2026.</em></p>
 
-<h3>Level 5. Fully autonomous</h3>
-<p>Runs headless. Scheduled or event-triggered. Self-monitors. Can escalate when it gets stuck, but doesn't require a human to run. Has durable state.</p>
-<p><em>Example:</em> a scheduled agent that scrapes a data source, writes a daily report, emails stakeholders, and flags anomalies, all without a person starting it.</p>
+<h3>Level 5. Fully autonomous.</h3>
+<p><strong>What it is:</strong> Nobody is watching. The agent runs on a schedule (every hour, every night) or on an event (a new email arrives, a metric crosses a threshold). It does the job. If it gets stuck, it pings a human, tags the work as needs-review, and keeps going on the rest.</p>
+<p><strong>What it CAN do:</strong> Monitor. React. Produce reports. Make decisions on rails you defined. Work 24/7 without a human session.</p>
+<p><strong>What it CAN'T do:</strong> Save you if the rails are wrong. A confident, wrong agent at Level 5 is the most expensive kind of bug.</p>
+<p><strong>Example:</strong> A scheduled research agent that pulls competitor pricing every morning at 6am, writes a one-page summary, emails it to the team, and flags anything that changed by more than 10%. Nobody hits "run" on this. Ever.</p>
 
-<h2>How to know where you are</h2>
-<p>Ask these questions:</p>
-<ol>
-  <li><strong>Who starts each run?</strong> Human → Level 1, 3. Schedule or event → Level 4, 5.</li>
-  <li><strong>How many tool calls between human approvals?</strong> 0 → Level 1, 2. 1, 5 → Level 3. Dozens → Level 4. Unlimited within scope → Level 5.</li>
-  <li><strong>Can it recover from errors on its own?</strong> No → Level 1, 3. Yes, for some → Level 4. Yes, for most → Level 5.</li>
-  <li><strong>Does it know when to stop?</strong> Only if a human tells it → Level 1, 4. Via built-in self-checks → Level 5.</li>
-</ol>
+<hr style="margin: 40px 0; border: 0; border-top: 1px solid #e5e5ea;" />
 
-<h2>Picking the right level for your system</h2>
-<div class="callout insight">
-  <strong>Insight:</strong> Most people aim too high too soon. Start at Level 3. Prove it works. Then reduce human approvals one at a time as trust builds.
+<h2>How to tell which level YOU'RE on.</h2>
+<p>Pick the AI system you're working with (or thinking about building). Walk through these four questions <em>in order</em>. Stop at the first NO.</p>
+
+<div class="callout" style="background:#f7f5ff; border-left:3px solid #4a00e0; padding:18px 22px; border-radius:6px;">
+  <p style="margin:0 0 12px 0;"><strong>1. Who presses &ldquo;go&rdquo;?</strong></p>
+  <ul style="margin:0 0 0 18px;">
+    <li>A human, every single time → <strong>Level 1, 2, or 3.</strong> Continue below.</li>
+    <li>A schedule or an event (no human click) → <strong>Level 4 or 5.</strong> Skip to question 3.</li>
+  </ul>
 </div>
 
-<p>Level 5 is glamorous but brittle. The failure modes are unforgiving, a fully autonomous agent that silently goes off the rails can cause real damage. Build up in stages.</p>
+<div class="callout" style="background:#f7f5ff; border-left:3px solid #4a00e0; padding:18px 22px; border-radius:6px; margin-top:14px;">
+  <p style="margin:0 0 12px 0;"><strong>2. Can it chain actions (use tools, read results, do another thing)?</strong></p>
+  <ul style="margin:0 0 0 18px;">
+    <li>No, it only talks → <strong>Level 1.</strong></li>
+    <li>It can use a tool or two, but one step at a time → <strong>Level 2.</strong></li>
+    <li>Yes, it chains many steps, but stops and asks before anything risky → <strong>Level 3.</strong></li>
+  </ul>
+</div>
 
-<h2>Trust curves, not trust switches</h2>
-<p>Autonomy should follow observed reliability. If your agent has handled 1,000 tasks at Level 3 without a major error, promote it to Level 4 for that class of task. Not all classes at once, specific ones. The mistake is flipping a system from Level 3 to Level 5 because "it's working." Working on 1,000 tasks ≠ working on 10,000.</p>
+<div class="callout" style="background:#f7f5ff; border-left:3px solid #4a00e0; padding:18px 22px; border-radius:6px; margin-top:14px;">
+  <p style="margin:0 0 12px 0;"><strong>3. How often does a human have to approve an action?</strong></p>
+  <ul style="margin:0 0 0 18px;">
+    <li>Every risky action → <strong>Level 3.</strong></li>
+    <li>Only when the action is outside a pre-approved scope → <strong>Level 4.</strong></li>
+    <li>Almost never. Maybe a weekly escalation → <strong>Level 5.</strong></li>
+  </ul>
+</div>
+
+<div class="callout" style="background:#f7f5ff; border-left:3px solid #4a00e0; padding:18px 22px; border-radius:6px; margin-top:14px;">
+  <p style="margin:0 0 12px 0;"><strong>4. What happens when it hits an error it didn't expect?</strong></p>
+  <ul style="margin:0 0 0 18px;">
+    <li>It crashes, or asks the human → <strong>Level 1, 2, or 3.</strong></li>
+    <li>It retries, logs, and routes around most common errors → <strong>Level 4.</strong></li>
+    <li>It self-heals, reports what happened, and keeps working → <strong>Level 5.</strong></li>
+  </ul>
+</div>
+
+<p style="margin-top:24px;">The first level where you answer <em>"no, not yet"</em> is your current rung. Everything below that rung is what you already have. Everything above is what you'd need to build next.</p>
+
+<h2>A quick reference table.</h2>
+<div style="overflow-x:auto; margin: 16px 0;">
+<table style="width:100%; border-collapse: collapse; font-size: 14px;">
+  <thead>
+    <tr style="background:#f7f5ff;">
+      <th style="text-align:left; padding:12px; border-bottom:2px solid #4a00e0;">Level</th>
+      <th style="text-align:left; padding:12px; border-bottom:2px solid #4a00e0;">Human starts it?</th>
+      <th style="text-align:left; padding:12px; border-bottom:2px solid #4a00e0;">Chains actions?</th>
+      <th style="text-align:left; padding:12px; border-bottom:2px solid #4a00e0;">Approvals needed?</th>
+      <th style="text-align:left; padding:12px; border-bottom:2px solid #4a00e0;">Self-recovers?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="padding:12px; border-bottom:1px solid #eee;"><strong>1. Chatbot</strong></td><td style="padding:12px; border-bottom:1px solid #eee;">Always</td><td style="padding:12px; border-bottom:1px solid #eee;">No</td><td style="padding:12px; border-bottom:1px solid #eee;">N/A</td><td style="padding:12px; border-bottom:1px solid #eee;">No</td></tr>
+    <tr><td style="padding:12px; border-bottom:1px solid #eee;"><strong>2. Assistant</strong></td><td style="padding:12px; border-bottom:1px solid #eee;">Always</td><td style="padding:12px; border-bottom:1px solid #eee;">One or two steps</td><td style="padding:12px; border-bottom:1px solid #eee;">N/A</td><td style="padding:12px; border-bottom:1px solid #eee;">No</td></tr>
+    <tr><td style="padding:12px; border-bottom:1px solid #eee;"><strong>3. HITL Agent</strong></td><td style="padding:12px; border-bottom:1px solid #eee;">Always</td><td style="padding:12px; border-bottom:1px solid #eee;">Many</td><td style="padding:12px; border-bottom:1px solid #eee;">Every risky step</td><td style="padding:12px; border-bottom:1px solid #eee;">No</td></tr>
+    <tr><td style="padding:12px; border-bottom:1px solid #eee;"><strong>4. Auto-Mode Agent</strong></td><td style="padding:12px; border-bottom:1px solid #eee;">Usually</td><td style="padding:12px; border-bottom:1px solid #eee;">Many</td><td style="padding:12px; border-bottom:1px solid #eee;">Only outside scope</td><td style="padding:12px; border-bottom:1px solid #eee;">For common errors</td></tr>
+    <tr><td style="padding:12px;"><strong>5. Fully Autonomous</strong></td><td style="padding:12px;">Schedule or event</td><td style="padding:12px;">Unlimited within scope</td><td style="padding:12px;">Rare escalations</td><td style="padding:12px;">Yes, by design</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>Picking the right level for your system.</h2>
+<div class="callout insight">
+  <strong>The honest rule:</strong> Most people aim for Level 5 too early. Start at Level 3. Prove the agent works on real tasks, with you watching. Then <em>remove human approvals one category at a time</em> as trust is earned.
+</div>
+
+<p>Level 5 sounds glamorous, but it's brittle. A fully autonomous agent that silently goes off the rails can cause real damage before anyone notices. You don't want to find out your pricing-update agent has been setting everything to $1 for three days.</p>
+
+<p>Build up in stages. Ship at Level 3. Watch it run. When it handles a category of task a hundred times without a mistake, promote that <em>specific category</em> to Level 4. Not all tasks, just that one. Repeat for each category. Eventually the surface area of Level 4 is big enough that running on a schedule (Level 5) is a small, safe extension of what already works.</p>
+
+<h2>Trust is a curve, not a switch.</h2>
+<p>The mistake most teams make is flipping a working Level 3 system to Level 5 because &ldquo;it's been working.&rdquo; Working on 1,000 tasks does not mean working on 10,000. The failures it hasn't hit yet are statistically waiting for you at scale.</p>
+<p>Autonomy should follow <em>observed reliability</em>, measured per task category, over time. Graduate one category at a time. Log everything. Set rails. Build the "ping the human" path early, and the rest of the ladder is just more tasks moving up it.</p>
 <div class="prev-next"><a href="what-is-autonomous-ai.html" class="prev"><div class="label">← Previous</div><div class="title">What is autonomous AI</div></a><a href="glossary.html" class="next"><div class="label">Next →</div><div class="title">Glossary</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../framework/index.html">Framework</a></p>
 </div></footer><script>

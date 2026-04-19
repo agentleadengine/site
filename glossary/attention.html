@@ -37,6 +37,11 @@
 .gloss-card-topic { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #666; margin: 2px 0 6px 0; }
 .gloss-card-summary { font-size: 13px; color: #666; line-height: 1.5; }
 .gloss-count { color: #666; font-size: 14px; margin-bottom: 12px; }
+
+.gloss-section-head { font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em; color: #4a00e0; font-weight: 800; margin: 32px 0 8px 0; }
+.gloss-explain, .gloss-why { font-size: 16px; line-height: 1.75; color: #2a2a30; margin: 0 0 8px 0; }
+.gloss-example { font-size: 15px; line-height: 1.7; color: #3f3f46; background: #f7f5ff; border-left: 3px solid #4a00e0; padding: 14px 18px; border-radius: 6px; margin: 0 0 8px 0; white-space: pre-line; }
+
 </style>
 <link rel="icon" type="image/png" href="../logo.png">
 
@@ -246,10 +251,19 @@
 </div></nav><div class="gloss-layout">
 <a href="index.html" style="color:#4a00e0; text-decoration: none; font-size: 14px;">← Glossary</a>
 <span class="gloss-topic" style="margin-top: 24px;">AI</span>
-<h1 class="gloss-term">Attention Mechanism</h1>
-<p class="gloss-def">The mechanism by which transformers weight the importance of different parts of input when producing output.</p>
-<p class="gloss-detail">Self-attention lets the model relate every token to every other token.</p>
-<div class="gloss-related"><h4>Related terms</h4><a href="transformer.html">Transformer</a><a href="llm.html">LLM</a></div>
+<h1 class="gloss-term">Attention</h1>
+<p class="gloss-def">The mechanism that lets an AI focus on the right parts of its input.</p>
+
+<h3 class="gloss-section-head">Explained simply.</h3>
+<p class="gloss-explain">When you read 'I walked to the bank', your brain instantly figures out which 'bank' is meant based on surrounding context. Attention is the math that lets a model do the same thing. For every word it processes, it computes which OTHER words in the input are most important to pay attention to. This is how transformers handle long, complicated inputs without losing the thread.</p>
+
+<h3 class="gloss-section-head">An example.</h3>
+<div class="gloss-example">In 'The dog that chased the cat was brown', attention links 'brown' back to 'dog' (not 'cat'), because it has learned from training data that adjectives usually refer to the grammatical subject. Without attention, the model would struggle to know which noun to describe.</div>
+
+<h3 class="gloss-section-head">Why it matters.</h3>
+<p class="gloss-why">Attention is what makes LLMs feel smart. It's also why they're slow and expensive — comparing every word to every other word is computationally heavy. Most performance research on LLMs is really about making attention cheaper.</p>
+
+<div class="gloss-related"><h4>Related terms</h4><a href="transformer.html">Transformer</a><a href="llm.html">Llm</a><a href="context-window.html">Context Window</a></div>
 </div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a></p>
 </div></footer><script>

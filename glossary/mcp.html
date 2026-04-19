@@ -37,6 +37,11 @@
 .gloss-card-topic { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #666; margin: 2px 0 6px 0; }
 .gloss-card-summary { font-size: 13px; color: #666; line-height: 1.5; }
 .gloss-count { color: #666; font-size: 14px; margin-bottom: 12px; }
+
+.gloss-section-head { font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em; color: #4a00e0; font-weight: 800; margin: 32px 0 8px 0; }
+.gloss-explain, .gloss-why { font-size: 16px; line-height: 1.75; color: #2a2a30; margin: 0 0 8px 0; }
+.gloss-example { font-size: 15px; line-height: 1.7; color: #3f3f46; background: #f7f5ff; border-left: 3px solid #4a00e0; padding: 14px 18px; border-radius: 6px; margin: 0 0 8px 0; white-space: pre-line; }
+
 </style>
 <link rel="icon" type="image/png" href="../logo.png">
 
@@ -246,10 +251,19 @@
 </div></nav><div class="gloss-layout">
 <a href="index.html" style="color:#4a00e0; text-decoration: none; font-size: 14px;">← Glossary</a>
 <span class="gloss-topic" style="margin-top: 24px;">AI</span>
-<h1 class="gloss-term">MCP</h1>
-<p class="gloss-def">Model Context Protocol. Anthropic's open protocol for LLMs to connect to external tools and data sources.</p>
-<p class="gloss-detail">Think of it as a standard plug for AI tools. Growing ecosystem of MCP servers.</p>
-<div class="gloss-related"><h4>Related terms</h4><a href="tool-use.html">Tool Use</a><a href="agent.html">AI Agent</a></div>
+<h1 class="gloss-term">MCP (Model Context Protocol)</h1>
+<p class="gloss-def">A standard way for an AI to talk to tools and data. Think of it as a USB port for AI.</p>
+
+<h3 class="gloss-section-head">Explained simply.</h3>
+<p class="gloss-explain">Before MCP, every AI tool had its own custom way of hooking into outside systems. Want Claude to read your Notion? Custom code. Want ChatGPT to use your CRM? Different custom code. MCP fixes this by defining ONE protocol. You write an MCP server once (for Notion, Gmail, your database, whatever), and any MCP-compatible AI can plug into it. Like how any USB-C device works with any USB-C port.</p>
+
+<h3 class="gloss-section-head">An example.</h3>
+<div class="gloss-example">You install the 'Gmail MCP' and the 'Calendar MCP'. Now Claude, Claude Code, Cursor, and any other MCP-supporting app can read your email and check your calendar without anyone writing custom glue code. You add a third tool later, and every app you have picks it up.</div>
+
+<h3 class="gloss-section-head">Why it matters.</h3>
+<p class="gloss-why">MCP is what turns an AI from a chat window into a hub that connects to everything you actually use. Without a standard, every integration is a one-off project. With MCP, it's a plug-in. If you want to build an autonomous system that touches real tools, MCP is how you do it.</p>
+
+<div class="gloss-related"><h4>Related terms</h4><a href="tool-use.html">Tool Use</a><a href="agent.html">Agent</a><a href="function-calling.html">Function Calling</a></div>
 </div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a></p>
 </div></footer><script>
