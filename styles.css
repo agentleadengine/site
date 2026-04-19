@@ -1287,20 +1287,26 @@ footer p { margin: 0; letter-spacing: 0.02em; }
         padding: 0;
         gap: 4px;
     }
-    nav.topbar .nav-mega-cats .nav-cat {
-        background: #ffffff;
+    nav.topbar .nav-mega-cats .nav-cat,
+    nav.topbar .nav-mega-cats .nav-cat.is-active,
+    nav.topbar .nav-mega-cats .nav-cat:hover {
+        background: #ffffff !important;
+        color: var(--gray-900) !important;
         border: 1px solid #e5e5ea;
         padding: 14px 16px;
         font-size: 14px;
         border-radius: 10px;
         margin-bottom: 6px;
     }
-    nav.topbar .nav-mega-cats .nav-cat.is-active {
-        background: #ffffff;
-        color: var(--gray-900);
+    nav.topbar .nav-mega-cats .nav-cat:active {
+        background: var(--primary-purple) !important;
+        color: #ffffff !important;
     }
-    nav.topbar .nav-mega-cats .nav-cat.is-active .nav-cat-arrow {
-        color: var(--primary-purple);
+    nav.topbar .nav-mega-cats .nav-cat .nav-cat-arrow,
+    nav.topbar .nav-mega-cats .nav-cat.is-active .nav-cat-arrow,
+    nav.topbar .nav-mega-cats .nav-cat:hover .nav-cat-arrow {
+        color: #a1a1aa !important;
+        transform: none !important;
     }
     /* Hide the big content panel on mobile — keep menu simple */
     nav.topbar .nav-mega-content { display: none; }
