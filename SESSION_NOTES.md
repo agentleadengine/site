@@ -139,17 +139,28 @@ can drop in a `<div class="sketch" data-viewbox="...">` and call the
 - 25 AI terms rewritten in the richer format (see `glossary/*.html` with
   `.gloss-explain`, `.gloss-example`, `.gloss-why` sections)
 
-## Remaining framework pages — in section-completion order
+## FRAMEWORK IS 100% COMPLETE ✅
 
-Do in this order:
+Every section done. Every flagship page rewritten at teaching depth
+with multiple hand-drawn diagrams.
 
-**Plugins** (3): index, vs-mcp, marketplace
-**Tools** (2): browser-automation, desktop-control
-**MCP loose ends**: directory page + add a diagram to servers.html
+Section-by-section: Foundations ✅, Claude ✅, MCP ✅, Claude Code ✅,
+Patterns ✅, Autonomous ✅, Build ✅, Plugins ✅, Tools ✅.
 
-Total: **~6 pages remaining** in the framework — very close to done.
+## Remaining scope — beyond the framework
 
-Then the site-wide remainder: 79 glossary terms + ~900 expertise pages.
+What's left for future sessions:
+
+1. **79 remaining glossary terms** (non-AI categories): Direct Response,
+   Marketing, Business, Sales, SEO. Use the same 4-section template
+   as the AI glossary terms (def / explain / example / why).
+2. **10 expertise hub pages** (SEO, Agents, RAG, Direct Response, Paid Ads,
+   Cold Email, Growth Marketing, Email Marketing, CRO, Business Management).
+3. **89 expertise subsection index pages** (auto-generated, could enrich with intros).
+4. **~800 expertise deep articles** (the big chunk).
+
+Expertise section is the main remaining scope. At ~1,500 words per article,
+this is roughly several sessions of focused work.
 
 ## After the framework
 
