@@ -179,18 +179,24 @@ What's left:
 
 ## 🎉 AGENTS EXPERTISE SECTION COMPLETE: 44 / 44 ✅
 
-- `expertise/agents/foundations/` — 4/4 ✅
-- `expertise/agents/loops/` — 5/5 ✅
-- `expertise/agents/tools/` — 5/5 ✅
-- `expertise/agents/memory/` — 5/5 ✅
-- `expertise/agents/multi/` — 5/5 ✅
-- `expertise/agents/eval/` — 4/4 ✅
-- `expertise/agents/prod/` — 5/5 ✅
-- `expertise/agents/patterns/` — 6/6 ✅
-- `expertise/agents/frameworks/` — 5/5 ✅
+## 🎉 RAG EXPERTISE SECTION COMPLETE: 52 / 52 ✅
 
-Running total: 144 / ~486 expertise deep articles.
-Next expertise section: `expertise/rag/` or any other expertise section.
+RAG articles were already written at teaching depth. This pass added
+hand-drawn Blueprint × Purple Marker diagrams to every deep article:
+
+- `expertise/rag/foundations/` — 4/4 ✅
+- `expertise/rag/docs/` — 6/6 ✅
+- `expertise/rag/chunking/` — 6/6 ✅
+- `expertise/rag/embeddings/` — 5/5 ✅
+- `expertise/rag/vectors/` — 6/6 ✅
+- `expertise/rag/retrieval/` — 7/7 ✅
+- `expertise/rag/eval/` — 5/5 ✅
+- `expertise/rag/prod/` — 5/5 ✅
+- `expertise/rag/advanced/` — 6/6 ✅
+- `expertise/rag/cases/` — 5/5 ✅ (minus index.html + one article)
+
+Running total: 196 / ~486 expertise deep articles.
+Next expertise section: `expertise/direct-response/` or other.
 
 ## Site status: 100% of everything above the article layer is done.
 
