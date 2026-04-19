@@ -225,6 +225,22 @@
 <p>The #1 reason founders hit a ceiling is they can't scale themselves. A personal brain isn't a system. An operating system is, and it's what lets the business grow past the founder's daily involvement.</p>
 
 <h2>The five components</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Company operating system, five components');
+  sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 42, layers: [
+    {label: 'Strategy + goals', sub: 'where are we going'},
+    {label: 'Meeting rhythm', sub: 'how we sync'},
+    {label: 'Metrics + reviews', sub: 'how we know'},
+    {label: 'Decision-making', sub: 'how we decide'},
+    {label: 'Writing + docs', sub: 'how we remember'}
+  ]});
+});
+</script>
 <ol>
   <li><strong>Meetings</strong>, the rhythm. Weekly, monthly, quarterly.</li>
   <li><strong>Scorecards</strong>, the numbers that say how it's going.</li>

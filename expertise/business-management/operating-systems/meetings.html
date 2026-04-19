@@ -233,6 +233,25 @@
 <p>Default: no. Make people justify "why a meeting."</p>
 
 <h2>Meeting types + their formats</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Meeting types + formats');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Type', w: 220},
+    {title: 'Format', w: 580}
+  ], rows: [
+    ['Decision-making', 'Memo → discussion → decision'],
+    ['Info-sharing', 'Short, async-first if possible'],
+    ['Brainstorm', 'Silent write first, then discuss'],
+    ['1:1', 'Direct report\'s agenda, weekly 30min'],
+    ['Status / standup', 'Fast; only if needed']
+  ]});
+});
+</script>
 
 <h3>Decision meetings</h3>
 <p>A real decision needs to be made. Format:</p>

@@ -222,6 +222,25 @@
 <p class="lede">The Weekly Business Review, also called the L10, the staff meeting, the WBR, is the heartbeat of a running business. 60-90 minutes a week. Same agenda. Same people. Non-negotiable. Every operator I respect runs one.</p>
 
 <h2>Why weekly</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Weekly business review agenda');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Section', w: 200},
+    {title: 'Minutes', w: 600}
+  ], rows: [
+    ['Metrics review', '15 — scorecard'],
+    ['Weekly rocks / goals', '10 — on track vs off'],
+    ['To-dos from last week', '5 — closed list'],
+    ['Issues list (IDS)', '40 — identify, discuss, solve'],
+    ['Close / recap', '5 — cascading messages']
+  ]});
+});
+</script>
 <p>Monthly is too slow, problems compound for 30 days before they surface. Daily is too frequent, not enough changes day-to-day to warrant leadership time. Weekly is the right cadence: problems surface within a week, get addressed, status changes tracked.</p>
 
 <h2>The canonical agenda (EOS/L10 format, use it)</h2>

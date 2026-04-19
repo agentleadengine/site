@@ -226,6 +226,26 @@
 <p>A decision log is institutional memory. It survives people leaving, meetings forgotten, context lost.</p>
 
 <h2>What belongs in a decision log</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Decision log entry template');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Field', w: 220},
+    {title: 'Content', w: 580}
+  ], rows: [
+    ['Date + decision ID', 'Sequential number'],
+    ['Context', 'What situation required a decision'],
+    ['Options considered', 'The ones you evaluated'],
+    ['Decision + rationale', 'What and why'],
+    ['Owner + reviewers', 'Who decided'],
+    ['Revisit-by date', 'When to check if it aged']
+  ]});
+});
+</script>
 <p>Not every small call. The ones that:</p>
 <ul>
   <li>Affect how the business operates going forward</li>
