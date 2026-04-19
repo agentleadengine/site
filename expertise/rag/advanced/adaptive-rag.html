@@ -222,6 +222,24 @@
 <p class="lede">Not every query needs the same retrieval strategy. Adaptive RAG classifies incoming queries and routes them to the most suitable approach, simple retrieval, hybrid, multi-query, agentic, or no retrieval at all. It's how production systems balance cost, latency, and quality.</p>
 
 <h2>The core idea</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Adaptive RAG: classify query, pick path');
+  sketch.box(svg, rc, {x: 60, y: 90, w: 180, h: 80, title: 'Query'});
+  sketch.box(svg, rc, {x: 290, y: 90, w: 180, h: 80, title: 'Classifier'});
+  sketch.box(svg, rc, {x: 520, y: 30, w: 180, h: 50, title: 'No retrieval'});
+  sketch.box(svg, rc, {x: 520, y: 100, w: 180, h: 50, title: 'Single retrieval'});
+  sketch.box(svg, rc, {x: 520, y: 170, w: 180, h: 50, title: 'Multi-hop'});
+  sketch.arrow(svg, rc, {x1: 240, x2: 290, y: 130, bidirectional: false});
+  sketch.arrow(svg, rc, {x1: 470, x2: 520, y1: 130, y2: 55, bidirectional: false});
+  sketch.arrow(svg, rc, {x1: 470, x2: 520, y: 130, bidirectional: false});
+  sketch.arrow(svg, rc, {x1: 470, x2: 520, y1: 130, y2: 195, bidirectional: false});
+});
+</script>
 <p>A classifier sits between the user and the retrieval pipeline. It looks at the query and decides:</p>
 <ul>
   <li>Does this even need retrieval? (many queries don't)</li>

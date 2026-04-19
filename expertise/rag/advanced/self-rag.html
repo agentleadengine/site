@@ -222,6 +222,21 @@
 <p class="lede">Self-RAG trains (or prompts) a model to decide when retrieval is needed, judge the relevance of retrieved documents, and reflect on whether its generated answer is grounded and correct. It's a framework for making retrieval and generation self-aware, not just reactive.</p>
 
 <h2>The idea</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Self-RAG: model decides when to retrieve');
+  sketch.numberedSteps(svg, rc, {direction: 'h', x: 30, y: 80, w: 840, items: [
+    {title: 'Need retrieval?', sub: 'model decides'},
+    {title: 'Retrieve if yes', sub: 'fetch context'},
+    {title: 'Generate', sub: 'with or without'},
+    {title: 'Critique', sub: 'self-rate faithfulness'}
+  ]});
+});
+</script>
 <p>Traditional RAG has fixed orchestration: retrieve-then-generate. Self-RAG inserts reflection tokens throughout:</p>
 <ul>
   <li><code>[Retrieve]</code> or <code>[No Retrieve]</code>: the model decides at each step whether to retrieve</li>

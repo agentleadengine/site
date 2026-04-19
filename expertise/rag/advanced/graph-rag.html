@@ -233,6 +233,21 @@
 <p>These require aggregating information across many documents, not finding one chunk. Pure vector retrieval either misses most of the relevant material or returns too much noise.</p>
 
 <h2>The GraphRAG pipeline</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'GraphRAG: extract entities, then traverse');
+  sketch.numberedSteps(svg, rc, {direction: 'h', x: 30, y: 80, w: 840, items: [
+    {title: 'Extract', sub: 'entities + relations'},
+    {title: 'Build graph', sub: 'nodes + edges'},
+    {title: 'Cluster', sub: 'community detection'},
+    {title: 'Query', sub: 'traverse + summarize'}
+  ]});
+});
+</script>
 
 <h3>Indexing phase</h3>
 <ol>

@@ -222,6 +222,21 @@
 <p class="lede">Corrective RAG (CRAG) adds a quality-check step between retrieval and generation. If retrieved documents are judged insufficient or irrelevant, the system triggers a fallback strategy, typically a web search, query rewriting, or different retrieval approach. It's a practical pattern for handling retrieval failures gracefully.</p>
 
 <h2>The core flow</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Corrective RAG: grade retrieval before generating');
+  sketch.numberedSteps(svg, rc, {direction: 'h', x: 30, y: 80, w: 840, items: [
+    {title: 'Retrieve', sub: 'top-k chunks'},
+    {title: 'Grade', sub: 'are they relevant?'},
+    {title: 'Fallback?', sub: 'rewrite / web search'},
+    {title: 'Generate', sub: 'from best context'}
+  ]});
+});
+</script>
 <pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
 1. Retrieve from internal corpus
 2. Evaluate retrieved documents:

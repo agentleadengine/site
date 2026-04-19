@@ -222,6 +222,25 @@
 <p class="lede">Vanilla RAG retrieves once and generates once. Agentic RAG lets the model decide when to retrieve, what to retrieve, and whether the retrieval was sufficient. It's the natural evolution from "search then answer" to "reason, search, search again, refine, answer." Most serious production systems end up in some version of this architecture.</p>
 
 <h2>The pattern</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Agentic RAG: retrieval as a tool, called in a loop');
+  sketch.box(svg, rc, {x: 60, y: 90, w: 160, h: 70, title: 'Agent'});
+  sketch.box(svg, rc, {x: 280, y: 30, w: 160, h: 60, title: 'search_docs()'});
+  sketch.box(svg, rc, {x: 280, y: 100, w: 160, h: 60, title: 'fetch_url()'});
+  sketch.box(svg, rc, {x: 280, y: 170, w: 160, h: 60, title: 'query_db()'});
+  sketch.box(svg, rc, {x: 540, y: 90, w: 160, h: 70, title: 'LLM reasons'});
+  sketch.arrow(svg, rc, {x1: 220, x2: 280, y1: 120, y2: 60, bidirectional: true});
+  sketch.arrow(svg, rc, {x1: 220, x2: 280, y: 130, bidirectional: true});
+  sketch.arrow(svg, rc, {x1: 220, x2: 280, y1: 130, y2: 200, bidirectional: true});
+  sketch.arrow(svg, rc, {x1: 440, x2: 540, y: 130, bidirectional: false});
+  sketch.arrow(svg, rc, {x1: 620, x2: 140, y1: 160, y2: 160, bidirectional: false, label: 'loop until done'});
+});
+</script>
 <p>Instead of hardcoded retrieve-then-generate, you expose retrieval as a tool the LLM can call:</p>
 
 <pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
