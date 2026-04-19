@@ -300,6 +300,33 @@ await server.connect(new StdioServerTransport());</code></pre>
 <h2>The three patterns most useful servers follow.</h2>
 <p>When you're sketching out a new server, you're usually picking one of these three shapes. The shape is the most important design decision you'll make.</p>
 
+<div class="sketch" data-viewbox="0 0 900 280" id="dg-server-patterns">
+  <svg></svg>
+  <div class="sketch-caption">~ three server shapes ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-server-patterns');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.table(svg, rc, {
+    x: 20, y: 30,
+    cols: [
+      { title: 'Pattern',              w: 200 },
+      { title: 'What it is',           w: 330 },
+      { title: 'When to pick it',      w: 350 }
+    ],
+    rows: [
+      ['Thin wrapper',      'one tool per API endpoint',               'you have an existing API to wrap (80% case)'],
+      ['Aggregator',        'one tool hits multiple backends',         'searching / finding across several sources'],
+      ['Resource-first',    'data exposed as URIs, not tools',         'document/DB-heavy server; users pin items']
+    ]
+  });
+});
+</script>
+
 <h3>Pattern 1. The thin wrapper.</h3>
 <p>The most common and usually the best. You have an existing API (GitHub, Slack, Notion, Stripe, your internal CRM), and each tool in your server corresponds to one endpoint on that API. The MCP server is a thin layer of translation: tool call comes in, HTTP request goes out, result comes back.</p>
 
