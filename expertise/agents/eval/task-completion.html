@@ -219,35 +219,99 @@
 <a href="../../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="../foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="../foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="../foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="../loops/react.html">ReAct</a></li><li><a href="../loops/tool-use.html">Tool use</a></li><li><a href="../loops/planning.html">Planning loops</a></li><li><a href="../loops/reflection.html">Reflection</a></li><li><a href="../loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="../tools/tool-design.html">Tool design</a></li><li><a href="../tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="../tools/error-handling.html">Tool error handling</a></li><li><a href="../tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="../tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="../memory/short-term.html">Short-term memory</a></li><li><a href="../memory/long-term.html">Long-term memory</a></li><li><a href="../memory/episodic.html">Episodic memory</a></li><li><a href="../memory/procedural.html">Procedural memory</a></li><li><a href="../memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="../multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="../multi/peer-agents.html">Peer agents</a></li><li><a href="../multi/debate.html">Debate + consensus</a></li><li><a href="../multi/handoffs.html">Agent handoffs</a></li><li><a href="../multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="../eval/why-eval-agents.html">Why eval agents</a></li><li><a href="../eval/task-completion.html" class="active">Task completion</a></li><li><a href="../eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="../eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="../prod/observability.html">Observability + tracing</a></li><li><a href="../prod/cost-control.html">Cost control</a></li><li><a href="../prod/latency.html">Latency optimization</a></li><li><a href="../prod/safety.html">Safety + guardrails</a></li><li><a href="../prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/research-agent.html">Research agent</a></li><li><a href="../patterns/coding-agent.html">Coding agent</a></li><li><a href="../patterns/customer-support.html">Customer support agent</a></li><li><a href="../patterns/data-analyst.html">Data analyst agent</a></li><li><a href="../patterns/browser-agent.html">Browser agent</a></li><li><a href="../patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="../frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="../frameworks/langgraph.html">LangGraph</a></li><li><a href="../frameworks/crewai.html">CrewAI</a></li><li><a href="../frameworks/autogen.html">AutoGen</a></li><li><a href="../frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>Task completion</span></div><h1 class="title">Task completion</h1><div class="article-meta"><span>📖 2 min read</span><span>Updated 2026-04-19</span></div>
-<p class="lede">Task completion is the primary agent metric. Forget trajectory, forget cost, did the agent achieve the user's goal? If not, nothing else matters. Measuring task completion reliably is harder than it sounds.</p>
+<p class="lede">Task completion is the headline metric for any agent. Forget cost, forget trajectory, forget the fancy dashboards, did the agent actually do what the user wanted? If not, nothing else matters. Measuring it reliably is harder than it looks. The agent will cheerfully say "done!" when it hasn't finished, or produce a correct-looking answer that's subtly wrong. A good completion eval looks at the <em>outcome</em>, not the agent's self-report.</p>
 
-<h2>Grading approaches</h2>
+<h2>Four grading approaches</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Pick grading to fit the task');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Approach', w: 220},
+    {title: 'When to use', w: 580}
+  ], rows: [
+    ['Binary (yes / no)', 'Task has a clear pass/fail: file created, test passes, correct number'],
+    ['Graded (1–5)', 'Task has degrees of correct: writing quality, helpfulness'],
+    ['Ground-truth compare', 'You have a known-good answer to compare against'],
+    ['LLM-as-judge', 'Open-ended outputs where no single right answer exists']
+  ]});
+});
+</script>
 
-<h3>Binary</h3>
-<p>Did it work? Yes/no. Works when the task has a clear success criterion (test passed, file created with expected contents, correct answer to a question).</p>
+<h2>Prefer binary when you can</h2>
+<p>Binary is cheap, reproducible, non-debatable. "Did the PR get merged? Yes/No." "Did the SQL return the right row count? Yes/No." If you can express success as a boolean, do. Graded scales introduce judge variance and make regressions harder to spot.</p>
 
-<h3>Graded</h3>
-<p>Scale 1-5. Useful for tasks where "correct" has degrees (writing quality, helpfulness, thoroughness).</p>
-
-<h3>Ground-truth comparison</h3>
-<p>Compare agent's output to a known-correct answer. Direct match, semantic similarity, or structured equivalence.</p>
-
-<h3>LLM-as-judge</h3>
-<p>Use a strong LLM to grade agent output. Scales, but introduces judge bias.</p>
-
-<h2>What to watch out for</h2>
+<h2>The four failure modes you must catch</h2>
 <ul>
-<li><strong>False success</strong>: agent claims completion but didn't actually finish</li>
-<li><strong>Partial completion</strong>: did half the task, stopped</li>
-<li><strong>Silent failure</strong>: error occurred but was swallowed; final response is plausible but wrong</li>
-<li><strong>Over-completion</strong>: did what was asked and also did things not asked (scope creep)</li>
+<li><strong>False success.</strong> Agent says "done!" but didn't actually finish. The most dangerous mode, because the agent sounds confident.</li>
+<li><strong>Partial completion.</strong> Did half the task, stopped. Often looks plausible because half the work was fine.</li>
+<li><strong>Silent failure.</strong> A tool errored, got swallowed, agent fabricated the answer. Output looks reasonable; it's wrong.</li>
+<li><strong>Over-completion.</strong> Did what was asked and also did things not asked. Scope creep; in some domains (deletes, sends) this is catastrophic.</li>
 </ul>
 
-<h2>Verifier design</h2>
-<p>For each eval case, the verifier should check the actual outcome, not just the agent's claim. Agent says "I deleted the file", verifier checks the file is actually gone.</p>
+<h2>Verifier design: check the outcome, not the claim</h2>
+<p>This is the single biggest mistake in agent eval. Don't trust what the agent says happened. Check what actually happened. A few examples:</p>
+<ul>
+<li>Agent: "I deleted the file." Verifier: actually check the file is gone.</li>
+<li>Agent: "I sent the email." Verifier: check the email log.</li>
+<li>Agent: "The customer has been refunded." Verifier: check the refund in the payment system.</li>
+<li>Agent: "I answered the question correctly." Verifier: compare the answer to ground truth, don't take the agent's word for it.</li>
+</ul>
 
-<h2>Run multiple times</h2>
-<p>Agents are non-deterministic. Run each eval case 3-5 times. If it passes 5/5 you have high confidence. 3/5 is a reliability problem.</p>
+<h2>A worked example: a "fix the failing test" agent</h2>
+<p>Naive eval: "Did the agent say it fixed the test?" This catches almost nothing. Agents say they fixed things they didn't.</p>
+<p>Good eval:</p>
+<ol>
+<li>Verifier runs the test suite <em>before</em> the agent runs. Record failures.</li>
+<li>Agent runs.</li>
+<li>Verifier runs the test suite <em>after</em>. Record failures.</li>
+<li>Pass if the specific test that was failing is now passing <em>and</em> no other test regressed.</li>
+</ol>
+<p>That catches false successes ("I fixed it" but the test still fails), partial completion (fixed one test, broke another), and silent failures (agent never actually changed any code).</p>
+
+<h2>Non-determinism: always run multiple times</h2>
+<p>Agents are stochastic. The same eval case can pass once, fail twice, pass again. Single-run pass/fail is noisy. Always run each case 3–5 times:</p>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Reading pass rates across multiple runs');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Rate', w: 180},
+    {title: 'Read it as', w: 620}
+  ], rows: [
+    ['5/5 pass', 'Solid. Case is reliably handled.'],
+    ['4/5 pass', 'Mostly reliable. Acceptable for low-stakes.'],
+    ['3/5 pass', 'Flaky. Reliability problem. Investigate.'],
+    ['<= 2/5 pass', 'Broken. This case is unlikely to work in prod.']
+  ]});
+});
+</script>
+
+<h2>LLM-as-judge: useful, biased</h2>
+<p>When outputs are free-form (writing, summaries, conversations), use a strong LLM to grade: "Does this output accomplish the task?" Judge outputs a score and rationale. This scales. But the judge has its own biases; validate every few weeks against human grading on a sample.</p>
+
+<h2>Pitfalls</h2>
+<ul>
+<li><strong>Trusting the agent's self-report.</strong> Always verify outcomes independently.</li>
+<li><strong>One-run scoring.</strong> Non-determinism makes single runs misleading.</li>
+<li><strong>Grading only the final answer.</strong> Agent might have taken 20 steps to produce a 4-step answer; you're missing the cost signal.</li>
+<li><strong>Bad ground truth.</strong> Your "expected answer" was itself wrong; every run fails even when the agent is correct.</li>
+<li><strong>Over-strict matching.</strong> Exact-string match fails for semantically equivalent answers; use semantic similarity or an LLM judge.</li>
+</ul>
+
+<h2>What to do with this</h2>
+<ul>
+<li>For every agent you care about, write a verifier that checks outcomes independently.</li>
+<li>Run each eval case 3–5 times. Report pass rate, not a single pass/fail.</li>
+<li>Read <a href="trajectory-eval.html">trajectory evaluation</a> for the "how it got there" side.</li>
+<li>Read <a href="regression.html">regression testing</a> for turning this into a CI loop.</li>
+</ul>
 <div class="prev-next"><a href="why-eval-agents.html" class="prev"><div class="label">← Previous</div><div class="title">Why eval agents</div></a><a href="trajectory-eval.html" class="next"><div class="label">Next →</div><div class="title">Trajectory evaluation</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

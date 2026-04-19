@@ -219,49 +219,104 @@
 <a href="../../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="../foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="../foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="../foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="../loops/react.html">ReAct</a></li><li><a href="../loops/tool-use.html">Tool use</a></li><li><a href="../loops/planning.html">Planning loops</a></li><li><a href="../loops/reflection.html">Reflection</a></li><li><a href="../loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="../tools/tool-design.html">Tool design</a></li><li><a href="../tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="../tools/error-handling.html">Tool error handling</a></li><li><a href="../tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="../tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="../memory/short-term.html">Short-term memory</a></li><li><a href="../memory/long-term.html">Long-term memory</a></li><li><a href="../memory/episodic.html">Episodic memory</a></li><li><a href="../memory/procedural.html">Procedural memory</a></li><li><a href="../memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="../multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="../multi/peer-agents.html">Peer agents</a></li><li><a href="../multi/debate.html">Debate + consensus</a></li><li><a href="../multi/handoffs.html">Agent handoffs</a></li><li><a href="../multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="../eval/why-eval-agents.html">Why eval agents</a></li><li><a href="../eval/task-completion.html">Task completion</a></li><li><a href="../eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="../eval/regression.html" class="active">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="../prod/observability.html">Observability + tracing</a></li><li><a href="../prod/cost-control.html">Cost control</a></li><li><a href="../prod/latency.html">Latency optimization</a></li><li><a href="../prod/safety.html">Safety + guardrails</a></li><li><a href="../prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/research-agent.html">Research agent</a></li><li><a href="../patterns/coding-agent.html">Coding agent</a></li><li><a href="../patterns/customer-support.html">Customer support agent</a></li><li><a href="../patterns/data-analyst.html">Data analyst agent</a></li><li><a href="../patterns/browser-agent.html">Browser agent</a></li><li><a href="../patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="../frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="../frameworks/langgraph.html">LangGraph</a></li><li><a href="../frameworks/crewai.html">CrewAI</a></li><li><a href="../frameworks/autogen.html">AutoGen</a></li><li><a href="../frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>Regression testing</span></div><h1 class="title">Regression testing</h1><div class="article-meta"><span>📖 2 min read</span><span>Updated 2026-04-19</span></div>
-<p class="lede">Every tweak to a system prompt, every model upgrade, every tool change can break something that used to work. Regression testing catches these breaks before they hit production.</p>
+<p class="lede">Every prompt edit, every model upgrade, every new tool can break something that used to work. Regression testing is the CI loop that catches those breaks before they ship. For traditional software, unit tests catch regressions. For agents, a well-curated eval set run on every change does the same job. The gap between "we have evals" and "evals gate our merges" is the gap between research-quality agents and production-quality agents.</p>
 
-<h2>The eval set as regression suite</h2>
-<p>Your eval set doubles as your regression tests. Run it before shipping any agent change. If pass rate drops, investigate.</p>
-
-<h2>What to include</h2>
+<h2>Your eval set is your regression suite</h2>
+<p>If you've built out the eval set from the previous pages, you already have a regression suite. Run it before any meaningful agent change:</p>
 <ul>
-<li>All known-good behaviors (the "this used to work" cases)</li>
-<li>Past bugs (so they don't come back)</li>
-<li>Adversarial inputs (prompt injection, edge cases)</li>
-<li>Safety-critical cases (never-do-this boundaries)</li>
+<li>System prompt edits.</li>
+<li>New or removed tools.</li>
+<li>Tool-description changes.</li>
+<li>Model upgrades.</li>
+<li>Orchestration changes (loop limits, retries, etc).</li>
+<li>Dependencies (a library update can change behavior).</li>
 </ul>
+<p>If pass rate drops, don't ship. Investigate.</p>
 
-<h2>Running regression</h2>
-<p>Set up as CI-like pipeline:</p>
+<h2>What belongs in the regression set</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Every case earns its place');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Case type', w: 260},
+    {title: 'Purpose', w: 540}
+  ], rows: [
+    ['Known-good behaviors', 'Catch silent regressions in core workflows'],
+    ['Past production bugs', 'Make sure they stay fixed'],
+    ['Adversarial inputs', 'Prompt injection, hostile inputs'],
+    ['Safety-critical cases', 'Never-do-this boundaries held'],
+    ['Cost / latency cases', 'Catch efficiency regressions']
+  ]});
+});
+</script>
+
+<h2>The CI loop</h2>
 <ol>
-<li>Developer proposes change (prompt edit, new tool, model upgrade)</li>
-<li>Run full regression suite against the new config</li>
-<li>Compare pass rate to baseline</li>
-<li>Ship only if no meaningful regression</li>
+<li><strong>Developer proposes change.</strong> Commit, PR, or ready-for-review.</li>
+<li><strong>CI runs regression suite.</strong> Full suite on main-branch merges, fast subset on PRs.</li>
+<li><strong>Compare to baseline.</strong> Pass rate on the new config vs last release.</li>
+<li><strong>Ship only if pass rate holds.</strong> Any drop: investigate before merging.</li>
+<li><strong>Post-deploy: run full suite on production config weekly.</strong> Catches model-side drift you didn't deploy.</li>
 </ol>
 
 <h2>The flaky-test problem</h2>
-<p>Agents are non-deterministic. A test might pass 4/5 runs and fail 1/5. Classify:</p>
+<p>Agents are non-deterministic. A case that passes 4/5 times and fails 1/5 isn't a regression; it's noise. You have to classify cases:</p>
 <ul>
-<li>Consistent pass → fine</li>
-<li>Consistent fail → definite regression</li>
-<li>Flaky → run more times, calculate real pass rate, may need to accept statistical noise</li>
+<li><strong>Consistent pass (5/5):</strong> everything's fine.</li>
+<li><strong>Consistent fail (0/5):</strong> clean regression, block merge.</li>
+<li><strong>Flaky (say 3/5):</strong> investigate, don't block automatically. Run more times to get a real pass rate and compare it to baseline pass rate for that same case.</li>
+</ul>
+<p>Track the <em>pass rate</em> for each flaky case over time. A flaky case that drops from 4/5 to 2/5 is a regression even if individual runs look inconsistent.</p>
+
+<h2>The cost problem</h2>
+<p>A 100-case regression suite running 3–5 times per case per change can cost real money. Strategies:</p>
+<ul>
+<li><strong>Tiered runs.</strong> Fast 20-case smoke suite on every PR. Full 200-case suite on pre-release. Scheduled weekly run for drift detection.</li>
+<li><strong>Smart selection.</strong> If the change only affects the billing agent, only run billing-related cases at PR time.</li>
+<li><strong>Cheap surrogate.</strong> For some cases, a cheap model evaluator gives 80% of the signal at 10% of the cost.</li>
 </ul>
 
-<h2>Cost of regression runs</h2>
-<p>Running a 100-case eval suite on every change can add up. Strategies:</p>
+<h2>A worked example: catching a prompt-edit regression</h2>
+<ol>
+<li>Team edits the system prompt to add a new safety instruction.</li>
+<li>PR triggers fast smoke suite: 20 cases, ~$2, runs in 3 minutes. All pass.</li>
+<li>PR triggers full regression: 150 cases, ~$15, runs overnight. 4 cases drop from pass to fail.</li>
+<li>Team reads the traces. New instruction caused the agent to over-refuse on some legitimate requests.</li>
+<li>Revise prompt. Re-run. 150/150 pass. Ship.</li>
+</ol>
+<p>Without the regression suite, 4 bug reports would have hit the queue the next week, each requiring its own investigation.</p>
+
+<h2>Maintenance</h2>
+<p>A regression set rots. Maintain it deliberately:</p>
 <ul>
-<li>Tiered: fast subset on every change, full suite before release</li>
-<li>Smart selection: run tests most likely to be affected by the change</li>
-<li>Monthly full runs with smaller per-change runs</li>
+<li><strong>Add a case for every production bug.</strong> So it doesn't come back.</li>
+<li><strong>Remove cases that no longer reflect reality.</strong> Your product changed; some cases are obsolete.</li>
+<li><strong>Audit quarterly.</strong> Are the cases representative of current production? Add underrepresented categories.</li>
+<li><strong>Version the set.</strong> Tag cases with when they were added; lets you compare "regression on stable cases" vs "regression on recent additions."</li>
 </ul>
 
-<h2>Eval set maintenance</h2>
+<h2>Drift: the silent killer</h2>
+<p>Even without a code change, the model can change under you. Provider pushes an update, your agent starts behaving differently. Without a scheduled regression run, you find out when users complain. Run the full suite weekly on production config regardless of whether you shipped anything. A mysterious pass-rate drop is usually drift.</p>
+
+<h2>Pitfalls</h2>
 <ul>
-<li>Add cases for every production bug</li>
-<li>Remove cases that no longer reflect reality</li>
-<li>Quarterly audit to make sure it still represents real use</li>
+<li><strong>No baseline.</strong> "Pass rate dropped" means nothing without a reference number.</li>
+<li><strong>Hand-running before ship.</strong> Humans skip the eval when they're in a rush. Automate it.</li>
+<li><strong>Treating flakiness as failure.</strong> You'll reject legitimate changes because of noise.</li>
+<li><strong>Never adding new cases.</strong> Your regression set becomes irrelevant to current production.</li>
+<li><strong>Skipping eval on "small" changes.</strong> A one-word prompt edit can shift behavior substantially.</li>
+</ul>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Wire your eval set into CI this week. Start with a fast smoke subset blocking merges.</li>
+<li>Run full regression weekly regardless of changes to catch drift.</li>
+<li>Read <a href="../prod/observability.html">observability + tracing</a> for the production-side counterpart.</li>
+<li>Revisit <a href="task-completion.html">task completion</a> and <a href="trajectory-eval.html">trajectory eval</a> for what the suite should measure.</li>
 </ul>
 <div class="prev-next"><a href="trajectory-eval.html" class="prev"><div class="label">← Previous</div><div class="title">Trajectory evaluation</div></a><a href="../prod/observability.html" class="next"><div class="label">Next →</div><div class="title">Observability + tracing</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>

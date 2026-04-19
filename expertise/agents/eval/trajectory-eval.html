@@ -219,58 +219,113 @@
 <a href="../../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="../foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="../foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="../foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="../loops/react.html">ReAct</a></li><li><a href="../loops/tool-use.html">Tool use</a></li><li><a href="../loops/planning.html">Planning loops</a></li><li><a href="../loops/reflection.html">Reflection</a></li><li><a href="../loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="../tools/tool-design.html">Tool design</a></li><li><a href="../tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="../tools/error-handling.html">Tool error handling</a></li><li><a href="../tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="../tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="../memory/short-term.html">Short-term memory</a></li><li><a href="../memory/long-term.html">Long-term memory</a></li><li><a href="../memory/episodic.html">Episodic memory</a></li><li><a href="../memory/procedural.html">Procedural memory</a></li><li><a href="../memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="../multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="../multi/peer-agents.html">Peer agents</a></li><li><a href="../multi/debate.html">Debate + consensus</a></li><li><a href="../multi/handoffs.html">Agent handoffs</a></li><li><a href="../multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="../eval/why-eval-agents.html">Why eval agents</a></li><li><a href="../eval/task-completion.html">Task completion</a></li><li><a href="../eval/trajectory-eval.html" class="active">Trajectory evaluation</a></li><li><a href="../eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="../prod/observability.html">Observability + tracing</a></li><li><a href="../prod/cost-control.html">Cost control</a></li><li><a href="../prod/latency.html">Latency optimization</a></li><li><a href="../prod/safety.html">Safety + guardrails</a></li><li><a href="../prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/research-agent.html">Research agent</a></li><li><a href="../patterns/coding-agent.html">Coding agent</a></li><li><a href="../patterns/customer-support.html">Customer support agent</a></li><li><a href="../patterns/data-analyst.html">Data analyst agent</a></li><li><a href="../patterns/browser-agent.html">Browser agent</a></li><li><a href="../patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="../frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="../frameworks/langgraph.html">LangGraph</a></li><li><a href="../frameworks/crewai.html">CrewAI</a></li><li><a href="../frameworks/autogen.html">AutoGen</a></li><li><a href="../frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>Trajectory evaluation</span></div><h1 class="title">Trajectory evaluation</h1><div class="article-meta"><span>📖 3 min read</span><span>Updated 2026-04-19</span></div>
-<p class="lede">Trajectory evaluation looks at how the agent got to its answer, not just whether it got there. Two agents with the same final answer can differ by 10x in cost, or produce the answer via completely different reasoning paths.</p>
+<p class="lede">Trajectory evaluation looks at <em>how</em> the agent got to its answer, not just whether it got there. Two agents can give the exact same final answer while differing by 10× in cost, using completely different tools, making different safety decisions along the way. Task completion tells you <em>if</em> it worked. Trajectory eval tells you <em>how well</em> it worked. Both matter. The second is how you catch silent cost spikes and weird model regressions.</p>
 
-<h2>What to measure in trajectories</h2>
+<h2>Four categories to measure</h2>
+<div class="sketch" data-viewbox="0 0 900 300"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 300);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Trajectory dimensions');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Category', w: 220},
+    {title: 'What to look at', w: 580}
+  ], rows: [
+    ['Efficiency', 'Step count, tool-call count, tokens used, wall-clock'],
+    ['Tool selection', 'Right tools picked, no forbidden tools, no redundant calls'],
+    ['Reasoning quality', 'Logical steps, no circular loops, uncertainty acknowledged'],
+    ['Error recovery', 'Sensible response to failures, tried alternatives, didn\'t loop']
+  ]});
+});
+</script>
 
-<h3>Efficiency</h3>
+<h2>Efficiency: usually the first regression</h2>
+<p>The most common silent regression is efficiency. Completion rate stays at 95%. Nobody notices anything. But the average task now takes 12 tool calls instead of 5, and your bill doubled. Efficiency metrics catch this immediately:</p>
 <ul>
-<li>Number of tool calls</li>
-<li>Number of reasoning steps</li>
-<li>Total tokens used</li>
-<li>Time elapsed</li>
+<li>Average steps per task, by eval case category.</li>
+<li>Average tokens per task.</li>
+<li>p95 latency (the tail is where regressions hide).</li>
+<li>Cost per task.</li>
+</ul>
+<p>Track these as trend lines. A sudden jump after a prompt change is your signal.</p>
+
+<h2>Tool selection: did it pick right?</h2>
+<p>For each eval case, note which tools the "ideal" trajectory would use. Compare to what the agent actually did:</p>
+<ul>
+<li>Did it use the expected tools?</li>
+<li>Did it use tools it shouldn't have? (safety signal)</li>
+<li>Did it call the same tool redundantly?</li>
+<li>Did it miss an obvious-better tool?</li>
+</ul>
+<p>Tool-selection regressions are often caused by prompt edits or tool-description changes. They're easy to catch if you look for them.</p>
+
+<h2>Reasoning quality</h2>
+<p>Harder to measure, but important. Use an LLM-as-judge pass on the trajectory:</p>
+<ul>
+<li>Did each step follow logically from the last observation?</li>
+<li>Were there circular or contradictory reasoning steps?</li>
+<li>Did the agent recognize when it was uncertain and act on that uncertainty (search, ask, verify)?</li>
+<li>Did it jump to conclusions without adequate evidence?</li>
+</ul>
+<p>Flag trajectories with low reasoning scores for human review. You'll learn a lot about where your agent struggles.</p>
+
+<h2>Error recovery: the hidden quality signal</h2>
+<p>Almost every production agent trajectory has at least one tool error. The question is how the agent handled it. Measure:</p>
+<ul>
+<li>% of runs with at least one error.</li>
+<li>Of those, % that recovered vs failed.</li>
+<li>Average steps spent recovering.</li>
+<li>Did the agent loop on the same error?</li>
 </ul>
 
-<h3>Tool selection</h3>
-<ul>
-<li>Did it use the right tools?</li>
-<li>Did it use tools it shouldn't have (safety)?</li>
-<li>Did it use tools redundantly?</li>
-</ul>
+<h2>Automatable checks</h2>
+<p>Not every trajectory property needs an LLM judge. Many can be checked with simple rules:</p>
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
+assert trajectory.step_count <= 15
+assert "delete_production_data" not in trajectory.tools_called
+assert no_duplicate_calls(trajectory, threshold=3)
+assert final_answer.matches_schema(expected_schema)</pre>
+<p>These run in microseconds and catch the worst regressions cheaply.</p>
 
-<h3>Reasoning quality</h3>
-<ul>
-<li>Did the reasoning follow logically from observations?</li>
-<li>Were any steps circular or contradictory?</li>
-<li>Did the agent reason about its own uncertainty?</li>
-</ul>
-
-<h3>Error recovery</h3>
-<ul>
-<li>When tools failed, did the agent respond sensibly?</li>
-<li>Did it try alternatives?</li>
-<li>Did it loop forever?</li>
-</ul>
-
-<h2>Automated checks</h2>
-<p>Some trajectory properties can be checked automatically:</p>
-<ul>
-<li>Step count (should be below threshold)</li>
-<li>No forbidden tools called</li>
-<li>No tool called more than N times with same args (loop detection)</li>
-<li>Final answer in expected shape</li>
-</ul>
+<h2>A worked example: catching a silent cost regression</h2>
+<ol>
+<li>Team updates the system prompt to be more detailed.</li>
+<li>Completion rate on eval stays at 95%. "Ship it."</li>
+<li>Trajectory metrics: average steps jumped from 5.2 to 8.7. Cost per task up 40%.</li>
+<li>CI blocks the change. Team investigates.</li>
+<li>Turns out the new prompt encourages over-exploration. They trim it. Steps drop back to 5.3. Ship.</li>
+</ol>
+<p>Without trajectory eval, the cost regression ships and nobody notices until the next billing cycle.</p>
 
 <h2>LLM-as-judge on trajectories</h2>
-<p>Give a judge LLM the full trajectory + expected answer. Ask:</p>
+<p>Give a judge LLM the full trajectory (or summary) plus the expected outcome. Ask:</p>
 <ul>
 <li>Did the agent take a reasonable path?</li>
-<li>Were there obvious inefficiencies?</li>
-<li>Any warning signs in reasoning?</li>
+<li>Were there obvious inefficiencies you can describe?</li>
+<li>Any warning signs in the reasoning?</li>
+<li>Rate overall trajectory quality 1–5.</li>
 </ul>
+<p>Works well for nuanced judgment. Expensive, so sample rather than running on every case.</p>
 
 <h2>Comparative trajectory eval</h2>
-<p>Compare trajectories across model versions or prompt changes. Even if task-completion rate is the same, shorter/cheaper trajectories indicate improvement.</p>
+<p>When you change anything (prompt, model, tool), compare trajectories across versions. Same completion rate + shorter trajectory = improvement. Same completion rate + longer trajectory = silent regression you should fix before shipping.</p>
+
+<h2>Pitfalls</h2>
+<ul>
+<li><strong>Only looking at final answer.</strong> You miss cost and tool-selection regressions.</li>
+<li><strong>No trajectory baseline.</strong> You can't detect regressions against nothing.</li>
+<li><strong>Judge overhead.</strong> LLM-as-judge on every case is expensive. Sample.</li>
+<li><strong>Metrics without alerts.</strong> Collecting and never looking is worse than not collecting; step spikes should page someone.</li>
+</ul>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Start tracking step count and token count per run. Trend-line them. Baseline is the first thing you need.</li>
+<li>Read <a href="../prod/observability.html">observability + tracing</a> for the instrumentation that makes all of this possible.</li>
+<li>Read <a href="regression.html">regression testing</a> for making trajectory eval a ship blocker.</li>
+</ul>
 <div class="prev-next"><a href="task-completion.html" class="prev"><div class="label">← Previous</div><div class="title">Task completion</div></a><a href="regression.html" class="next"><div class="label">Next →</div><div class="title">Regression testing</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
