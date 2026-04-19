@@ -219,38 +219,97 @@
 <a href="../../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="../foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="../foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="../foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="../loops/react.html">ReAct</a></li><li><a href="../loops/tool-use.html">Tool use</a></li><li><a href="../loops/planning.html">Planning loops</a></li><li><a href="../loops/reflection.html">Reflection</a></li><li><a href="../loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="../tools/tool-design.html">Tool design</a></li><li><a href="../tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="../tools/error-handling.html">Tool error handling</a></li><li><a href="../tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="../tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="../memory/short-term.html">Short-term memory</a></li><li><a href="../memory/long-term.html">Long-term memory</a></li><li><a href="../memory/episodic.html">Episodic memory</a></li><li><a href="../memory/procedural.html">Procedural memory</a></li><li><a href="../memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="../multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="../multi/peer-agents.html">Peer agents</a></li><li><a href="../multi/debate.html">Debate + consensus</a></li><li><a href="../multi/handoffs.html">Agent handoffs</a></li><li><a href="../multi/routing.html" class="active">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="../eval/why-eval-agents.html">Why eval agents</a></li><li><a href="../eval/task-completion.html">Task completion</a></li><li><a href="../eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="../eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="../prod/observability.html">Observability + tracing</a></li><li><a href="../prod/cost-control.html">Cost control</a></li><li><a href="../prod/latency.html">Latency optimization</a></li><li><a href="../prod/safety.html">Safety + guardrails</a></li><li><a href="../prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/research-agent.html">Research agent</a></li><li><a href="../patterns/coding-agent.html">Coding agent</a></li><li><a href="../patterns/customer-support.html">Customer support agent</a></li><li><a href="../patterns/data-analyst.html">Data analyst agent</a></li><li><a href="../patterns/browser-agent.html">Browser agent</a></li><li><a href="../patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="../frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="../frameworks/langgraph.html">LangGraph</a></li><li><a href="../frameworks/crewai.html">CrewAI</a></li><li><a href="../frameworks/autogen.html">AutoGen</a></li><li><a href="../frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>Agent routing</span></div><h1 class="title">Agent routing</h1><div class="article-meta"><span>📖 2 min read</span><span>Updated 2026-04-19</span></div>
-<p class="lede">In multi-agent systems, incoming requests need to reach the right agent. Routing is the classifier that picks which agent to invoke based on the request. Get routing wrong and users talk to the wrong specialist.</p>
+<p class="lede">Routing is how a multi-agent system decides which agent answers each incoming request. It's a classifier that looks at the user's message and picks: billing agent, technical agent, generalist, human. Good routing is invisible. Bad routing sends users to the wrong specialist, who then has to hand off, so the user waits twice and everyone's annoyed.</p>
 
-<h2>Routing approaches</h2>
+<h2>Four approaches, each with tradeoffs</h2>
+<div class="sketch" data-viewbox="0 0 900 300"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 300);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Four routing strategies');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Approach', w: 180},
+    {title: 'How', w: 340},
+    {title: 'Tradeoff', w: 280}
+  ], rows: [
+    ['Rule-based', 'If-else on keywords or patterns', 'Fast + brittle'],
+    ['LLM classifier', 'Small LLM picks a category', 'Flexible + adds latency'],
+    ['Embedding-based', 'Semantic similarity to agent description', 'Fast + no LLM call'],
+    ['Hybrid', 'Rules for obvious, LLM for ambiguous', 'Best all-around']
+  ]});
+});
+</script>
 
-<h3>Rule-based</h3>
-<p>Hard-coded logic. If message contains "password" → auth agent. If contains "billing" → billing agent. Simple, fast, brittle.</p>
+<h2>Rule-based: start here</h2>
+<p>Keyword or regex rules. "If message contains 'refund' or 'charge' or 'invoice' → billing agent." Takes 10 minutes to write. Runs in microseconds. Wrong 10–20% of the time on real user phrasings, but you know exactly when it's wrong and can add rules.</p>
+<p>Use rules for the top 60% of traffic that's easy. Use a smarter mechanism for the rest.</p>
 
-<h3>LLM classifier</h3>
-<p>A lightweight LLM reads the request and emits a category. Flexible, handles novel phrasings. Costs one LLM call per route.</p>
+<h2>LLM classifier: flexible, modest cost</h2>
+<p>A small, fast model reads the user's message and emits a category: <code>{"route": "billing", "confidence": 0.82}</code>. Handles novel phrasings and edge cases that rules miss. Costs one extra LLM call per request, usually under 200ms and &lt;$0.001. Almost always worth it for user-facing routing.</p>
 
-<h3>Embedding-based</h3>
-<p>Embed the request, find nearest agent by similarity to their capability description. Fast, doesn't require LLM call per route.</p>
+<h2>Embedding-based: cheapest when traffic is high</h2>
+<p>Embed the user's message. Embed each agent's capability description. Cosine-similarity → top match. No LLM call per route, just a vector lookup. Very fast and near-free per request.</p>
+<p>Good for high-volume systems where the LLM classifier latency or cost adds up. Less nuanced than an LLM classifier on weird requests.</p>
 
-<h3>Hybrid</h3>
-<p>Rules for obvious cases, LLM fallback for ambiguous. Best balance of speed and accuracy.</p>
+<h2>Hybrid: what production usually ends up with</h2>
+<p>Rules for the clear cases, LLM classifier for everything else. The rules handle 70% of requests at zero latency. The LLM handles the 30% that's ambiguous, taking 200ms. Total average latency stays low, routing accuracy stays high. This is where most mature systems settle.</p>
+
+<h2>A worked example: a multi-agent support system</h2>
+<ol>
+<li><strong>Request arrives:</strong> "Can I get a refund for my last order? I'm also seeing a weird error when I try to log in."</li>
+<li><strong>Rule-based first pass:</strong> matches both "refund" (billing) and "error" + "log in" (auth). Not a clean single match → fall through to LLM.</li>
+<li><strong>LLM classifier:</strong> "This has two distinct requests: billing (refund) and auth (login issue). Route to billing first, flag auth as follow-up."</li>
+<li><strong>Billing agent</strong> handles the refund. At the end, notices the auth follow-up and hands off to auth agent (who picks up from handoff payload).</li>
+</ol>
+<p>Clean result, no user annoyance, two specialists collaborated via routing + handoff.</p>
+
+<h2>Always have a generalist fallback</h2>
+<p>Some requests don't match any specialist. "Hi, I have a question" → no category yet. Without a generalist, the router picks the least-wrong specialist and gets it wrong. With a generalist, unusual queries get a graceful "tell me more about what you need" agent that can then route to a specialist once the intent is clear.</p>
 
 <h2>Routing to multiple agents</h2>
-<p>Sometimes a request needs multiple specialists. Router can:</p>
+<p>When a request spans multiple domains:</p>
 <ul>
-<li>Pick one agent; that agent can call others as tools</li>
-<li>Fan out to multiple agents, aggregate results</li>
-<li>Pick the primary agent; loop in others on demand</li>
+<li><strong>Pick a primary.</strong> Primary agent handles the main thread, calls specialists as tools for sub-tasks.</li>
+<li><strong>Fan out.</strong> Route to several specialists in parallel, aggregate their responses. Works for "give me the full picture" queries.</li>
+<li><strong>Sequential chain.</strong> First specialist handles part 1, hands to second for part 2. Works for "first do A, then do B" queries.</li>
 </ul>
 
-<h2>The "general" agent</h2>
-<p>Always have a fallback generalist agent for requests that don't match any specialist. Without one, unusual queries fall through the cracks.</p>
-
 <h2>Measuring routing quality</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Metrics that catch routing problems');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Metric', w: 280},
+    {title: 'Healthy range', w: 520}
+  ], rows: [
+    ['Correct-route rate', '>= 90% on labeled eval set'],
+    ['Handoff rate', '< 15% (higher = routing is missing intent)'],
+    ['Ambiguous-route rate', 'Track; classifier should flag low confidence'],
+    ['User re-route / correction rate', 'Users asking to be transferred']
+  ]});
+});
+</script>
+
+<h2>Pitfalls</h2>
 <ul>
-<li>Correct-route rate (did the request reach the right agent?)</li>
-<li>Handoff rate (% of requests that require cross-agent handoff)</li>
-<li>Ambiguous-route rate (routes that the classifier wasn't confident on)</li>
+<li><strong>No fallback.</strong> Unusual request → agent mismatched → bad UX. Always have a generalist.</li>
+<li><strong>Over-specialization.</strong> 15 micro-specialists instead of 3 broad ones. Router accuracy collapses. Merge.</li>
+<li><strong>Rule brittleness without monitoring.</strong> Rules drift from user phrasings over time. Measure and update.</li>
+<li><strong>No confidence threshold.</strong> LLM classifier with 0.5 confidence on a routing call shouldn't be trusted; escalate to generalist.</li>
+<li><strong>Silent mis-routes.</strong> User got routed wrong, agent failed silently. Log all handoffs + completions; investigate mis-match patterns.</li>
+</ul>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Start rule-based. Measure accuracy. Add LLM classifier once rules stop improving. Hybrid is where you want to end up.</li>
+<li>Read <a href="handoffs.html">agent handoffs</a> for what happens after routing (and what happens when routing was wrong).</li>
+<li>Read <a href="orchestrator-worker.html">orchestrator-worker</a> — your router is effectively a lightweight orchestrator.</li>
 </ul>
 <div class="prev-next"><a href="handoffs.html" class="prev"><div class="label">← Previous</div><div class="title">Agent handoffs</div></a><a href="../eval/why-eval-agents.html" class="next"><div class="label">Next →</div><div class="title">Why eval agents</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>

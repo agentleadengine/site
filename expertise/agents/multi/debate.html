@@ -219,41 +219,103 @@
 <a href="../../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="../foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="../foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="../foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="../loops/react.html">ReAct</a></li><li><a href="../loops/tool-use.html">Tool use</a></li><li><a href="../loops/planning.html">Planning loops</a></li><li><a href="../loops/reflection.html">Reflection</a></li><li><a href="../loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="../tools/tool-design.html">Tool design</a></li><li><a href="../tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="../tools/error-handling.html">Tool error handling</a></li><li><a href="../tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="../tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="../memory/short-term.html">Short-term memory</a></li><li><a href="../memory/long-term.html">Long-term memory</a></li><li><a href="../memory/episodic.html">Episodic memory</a></li><li><a href="../memory/procedural.html">Procedural memory</a></li><li><a href="../memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="../multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="../multi/peer-agents.html">Peer agents</a></li><li><a href="../multi/debate.html" class="active">Debate + consensus</a></li><li><a href="../multi/handoffs.html">Agent handoffs</a></li><li><a href="../multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="../eval/why-eval-agents.html">Why eval agents</a></li><li><a href="../eval/task-completion.html">Task completion</a></li><li><a href="../eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="../eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="../prod/observability.html">Observability + tracing</a></li><li><a href="../prod/cost-control.html">Cost control</a></li><li><a href="../prod/latency.html">Latency optimization</a></li><li><a href="../prod/safety.html">Safety + guardrails</a></li><li><a href="../prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/research-agent.html">Research agent</a></li><li><a href="../patterns/coding-agent.html">Coding agent</a></li><li><a href="../patterns/customer-support.html">Customer support agent</a></li><li><a href="../patterns/data-analyst.html">Data analyst agent</a></li><li><a href="../patterns/browser-agent.html">Browser agent</a></li><li><a href="../patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="../frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="../frameworks/langgraph.html">LangGraph</a></li><li><a href="../frameworks/crewai.html">CrewAI</a></li><li><a href="../frameworks/autogen.html">AutoGen</a></li><li><a href="../frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>Debate + consensus</span></div><h1 class="title">Debate + consensus</h1><div class="article-meta"><span>📖 3 min read</span><span>Updated 2026-04-19</span></div>
-<p class="lede">Debate is a multi-agent pattern where two or more agents argue opposing sides of a question. A judge (another agent or a human) evaluates. On many reasoning tasks, debate produces more accurate answers than a single agent.</p>
+<p class="lede">Debate is a multi-agent pattern where two or more agents argue opposing sides of a question. A judge, another agent or a human, evaluates and picks a winner or synthesizes. It sounds exotic. It actually works: on many reasoning tasks, debate produces more accurate answers than a single agent running alone. The trick is that arguing against yourself surfaces flaws your first-draft reasoning missed.</p>
 
-<h2>The basic setup</h2>
+<h2>The setup</h2>
+<div class="sketch" data-viewbox="0 0 900 300"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 300);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Debate: two sides, one judge');
+  sketch.box(svg, rc, {x: 60, y: 90, w: 200, h: 80, title: 'Agent A', sub: 'argues Yes'});
+  sketch.box(svg, rc, {x: 350, y: 90, w: 200, h: 80, title: 'Agent B', sub: 'argues No'});
+  sketch.box(svg, rc, {x: 640, y: 90, w: 200, h: 80, title: 'Judge', sub: 'reads transcript, decides'});
+  sketch.arrow(svg, rc, {x1: 260, x2: 350, y: 130, bidirectional: true, label: 'N rounds'});
+  sketch.arrow(svg, rc, {x1: 550, x2: 640, y: 130, bidirectional: false});
+  sketch.note(svg, 450, 230, 'each debater sees prior arguments + responds', {size: 13});
+});
+</script>
 <ol>
-<li>Question is posed</li>
-<li>Agent A is assigned one position</li>
-<li>Agent B is assigned the opposite position (or "find the flaws" role)</li>
-<li>They exchange arguments for N rounds</li>
-<li>Judge reviews the transcript and decides or synthesizes</li>
+<li>The question is posed.</li>
+<li>Agent A is assigned one side (e.g., "argue yes").</li>
+<li>Agent B is assigned the opposite side, or the "find the flaws" role.</li>
+<li>They exchange arguments for N rounds (usually 2–4).</li>
+<li>A judge reads the full transcript and either picks a side or synthesizes.</li>
 </ol>
 
-<h2>When debate helps</h2>
+<h2>Why it works</h2>
+<p>A single agent's first-pass reasoning can be confidently wrong in a consistent direction. When you force the same model to argue the opposite side, it's now actively looking for holes in the first position. The holes that exist, it finds. The judge, seeing both sides, has more signal than either agent alone had. Result: better final answers on problems where single-agent output tends to be inconsistent.</p>
+
+<h2>When to reach for debate</h2>
 <ul>
-<li>Decision problems with multiple plausible answers</li>
-<li>Fact-checking (one agent claims, another verifies)</li>
-<li>Strategy problems (competing approaches)</li>
-<li>Risk analysis (optimist vs pessimist)</li>
+<li><strong>Decision problems with multiple plausible answers.</strong> Build vs buy, react vs deliberate, approve vs escalate.</li>
+<li><strong>Fact-checking.</strong> One agent makes a claim, another tries to refute it. Surfaces unsupported claims fast.</li>
+<li><strong>Strategy evaluation.</strong> "Approach X vs approach Y" benefits from having each side championed.</li>
+<li><strong>Risk analysis.</strong> "Optimist vs pessimist" agent produces a balanced view neither would have alone.</li>
 </ul>
 
-<h2>The quality hypothesis</h2>
-<p>A single agent can be wrong in the same direction its entire reasoning. Forcing it to construct opposing arguments surfaces flaws in its initial position. The judge, seeing both sides, often reaches a better answer than either debater alone.</p>
+<h2>A worked example: a fact-check</h2>
+<p>Claim under review: "Startup X raised $50M Series B in March 2026."</p>
+<ol>
+<li><strong>Claim agent:</strong> searches for evidence of the raise. Finds two press releases and a Crunchbase entry. Argues: "Yes, the raise happened."</li>
+<li><strong>Skeptic agent:</strong> searches for contradictions. Notices the press releases are both from the company itself, no third-party reporting, Crunchbase entry created recently with minimal provenance. Argues: "The evidence chain is thin."</li>
+<li><strong>Round 2:</strong> claim agent defends by finding independent coverage. Skeptic notes the coverage dates are all after the initial press release, no primary-source confirmation.</li>
+<li><strong>Judge:</strong> "Claim is plausible but unverified. Recommend flagging as 'reported, unverified' rather than 'confirmed.'"</li>
+</ol>
+<p>A single agent would likely have taken the press releases at face value. Debate caught the soft evidence chain.</p>
 
-<h2>Research findings</h2>
-<p>Academic work has shown debate-based agents outperforming single agents on math, logic, and fact-checking benchmarks. The effect is strongest on problems where single-agent output is inconsistent.</p>
+<h2>Is it worth the cost?</h2>
+<div class="sketch" data-viewbox="0 0 900 240"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 240);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Debate\'s 3–5× cost: when it\'s worth it');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 160,
+    left: {title: 'Worth it', items: [
+      'High-stakes decisions',
+      'Fact-checking published content',
+      'Any task where accuracy >> cost',
+      'Problems with many plausible answers'
+    ]},
+    right: {title: 'Skip it', items: [
+      'Simple lookups',
+      'High-volume, low-stakes tasks',
+      'Latency-critical applications',
+      'Problems with one clear right answer'
+    ]}
+  });
+});
+</script>
+
+<h2>The empirical picture</h2>
+<p>Published benchmarks show debate-based agents outperforming single-agent baselines on math, logic, fact-checking, and multi-step reasoning tasks. The gains are biggest where single-agent outputs are inconsistent run-to-run. For tasks the model nails the first time, debate is just expensive noise.</p>
 
 <h2>Failure modes</h2>
 <ul>
-<li><strong>Both agents converge</strong> instead of debating (model is too compliant)</li>
-<li><strong>Shallow arguments</strong> if model doesn't have depth on the topic</li>
-<li><strong>Judge weakness</strong>: poorly-designed judge undoes the value of the debate</li>
-<li><strong>Cost</strong>: 3-5x single-agent token use</li>
+<li><strong>Both agents converge.</strong> Models are trained to be compliant; if the "opposing" agent agrees instead of pushing back, you got no value. Fix: harden the personas, require each agent to find at least one flaw per round.</li>
+<li><strong>Shallow arguments.</strong> If the model doesn't have depth on the topic, both agents produce generic talking points. Fix: give them tools (search, retrieval) so they can find real evidence.</li>
+<li><strong>Weak judge.</strong> A judge that rubber-stamps one side undoes the entire mechanism. Fix: prompt the judge to explicitly weigh each argument and cite specific points.</li>
+<li><strong>Cost.</strong> 3–5× single-agent spend. Use only where warranted.</li>
+<li><strong>Endless debate.</strong> No stop condition; agents bicker forever. Fix: hard cap at 3–4 rounds.</li>
 </ul>
 
-<h2>Practical adoption</h2>
-<p>Use debate sparingly, for high-stakes decisions or fact-checking. Every LLM call with debate costs 3-5x single-turn. But for tasks where accuracy matters more than cost, it's worth the premium.</p>
+<h2>Prompting notes</h2>
+<ul>
+<li>Give each debater a specific position <em>and</em> a mandate ("you must find at least one flaw in the opposing argument each round").</li>
+<li>The judge prompt should include: read every round, weigh evidence, identify the strongest argument on each side, render a decision with rationale.</li>
+<li>Share the full transcript with each debater before each new round, so they can respond specifically.</li>
+</ul>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Try debate on your most-error-prone decision task. Measure eval delta against a single-agent baseline.</li>
+<li>Read <a href="peer-agents.html">peer agents</a> for the general pattern debate sits inside.</li>
+<li>Read <a href="../loops/reflection.html">reflection</a> for the single-agent cousin of the same idea.</li>
+</ul>
 <div class="prev-next"><a href="peer-agents.html" class="prev"><div class="label">← Previous</div><div class="title">Peer agents</div></a><a href="handoffs.html" class="next"><div class="label">Next →</div><div class="title">Agent handoffs</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

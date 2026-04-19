@@ -219,37 +219,91 @@
 <a href="../../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="../foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="../foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="../foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="../loops/react.html">ReAct</a></li><li><a href="../loops/tool-use.html">Tool use</a></li><li><a href="../loops/planning.html">Planning loops</a></li><li><a href="../loops/reflection.html">Reflection</a></li><li><a href="../loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="../tools/tool-design.html">Tool design</a></li><li><a href="../tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="../tools/error-handling.html">Tool error handling</a></li><li><a href="../tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="../tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="../memory/short-term.html">Short-term memory</a></li><li><a href="../memory/long-term.html">Long-term memory</a></li><li><a href="../memory/episodic.html">Episodic memory</a></li><li><a href="../memory/procedural.html">Procedural memory</a></li><li><a href="../memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="../multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="../multi/peer-agents.html" class="active">Peer agents</a></li><li><a href="../multi/debate.html">Debate + consensus</a></li><li><a href="../multi/handoffs.html">Agent handoffs</a></li><li><a href="../multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="../eval/why-eval-agents.html">Why eval agents</a></li><li><a href="../eval/task-completion.html">Task completion</a></li><li><a href="../eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="../eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="../prod/observability.html">Observability + tracing</a></li><li><a href="../prod/cost-control.html">Cost control</a></li><li><a href="../prod/latency.html">Latency optimization</a></li><li><a href="../prod/safety.html">Safety + guardrails</a></li><li><a href="../prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/research-agent.html">Research agent</a></li><li><a href="../patterns/coding-agent.html">Coding agent</a></li><li><a href="../patterns/customer-support.html">Customer support agent</a></li><li><a href="../patterns/data-analyst.html">Data analyst agent</a></li><li><a href="../patterns/browser-agent.html">Browser agent</a></li><li><a href="../patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="../frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="../frameworks/langgraph.html">LangGraph</a></li><li><a href="../frameworks/crewai.html">CrewAI</a></li><li><a href="../frameworks/autogen.html">AutoGen</a></li><li><a href="../frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>Peer agents</span></div><h1 class="title">Peer agents</h1><div class="article-meta"><span>📖 2 min read</span><span>Updated 2026-04-19</span></div>
-<p class="lede">Peer agent systems have multiple agents that interact directly without a central orchestrator. They coordinate by passing messages, sharing state, or using shared tools. Harder to reason about, but fits some problems better than orchestrator-worker.</p>
+<p class="lede">Peer agents are a multi-agent system with no boss. Several agents talk to each other directly, share state, and coordinate through protocols rather than a central orchestrator. It's the pattern people imagine when they hear "multi-agent AI." It's also the pattern that's hardest to debug and easiest to make too complex. For most production use cases, orchestrator-worker wins. Peer agents are for specific problems where no single agent has the full picture.</p>
 
-<h2>When peer structure helps</h2>
-<ul>
-<li>Simulating multi-party interactions (debate, negotiation)</li>
-<li>Emergent behavior from agent-to-agent communication</li>
-<li>Distributed problem-solving where no single agent has full context</li>
-</ul>
+<h2>What peer means in practice</h2>
+<p>In orchestrator-worker, information flows up-and-down. The orchestrator knows everything; workers know only their slice. In peer systems, agents talk sideways. Agent A sends a message to agent B. Agent B replies to A, or routes to C, or writes to a shared blackboard others read. No agent is the authoritative decider.</p>
 
 <h2>The shape</h2>
-<p>Agents communicate via shared channels, message passing, or by reading/writing to shared state. No one is "in charge."</p>
+<div class="sketch" data-viewbox="0 0 900 320"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 320);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Peer agents: no central boss');
+  sketch.circle(svg, rc, {cx: 250, cy: 160, r: 55, title: 'Agent A', sub: 'analyst'});
+  sketch.circle(svg, rc, {cx: 450, cy: 160, r: 55, title: 'Agent B', sub: 'critic'});
+  sketch.circle(svg, rc, {cx: 650, cy: 160, r: 55, title: 'Agent C', sub: 'editor'});
+  sketch.arrow(svg, rc, {x1: 305, x2: 395, y: 140, bidirectional: true});
+  sketch.arrow(svg, rc, {x1: 505, x2: 595, y: 140, bidirectional: true});
+  sketch.arrow(svg, rc, {x1: 280, x2: 620, y1: 200, y2: 200, bidirectional: true, label: 'shared blackboard'});
+  sketch.note(svg, 450, 280, 'agents exchange messages directly', {size: 13});
+});
+</script>
+
+<h2>When peer structure actually fits</h2>
+<ul>
+<li><strong>Simulating multi-party interactions.</strong> Debates, negotiations, multi-character narratives. Each party needs its own persona; no orchestrator should be whispering the answers.</li>
+<li><strong>Distributed problem-solving.</strong> No single agent has full context, information gets pieced together through exchange.</li>
+<li><strong>Emergent research.</strong> You want behavior to emerge, not be dictated. Academic territory more than production.</li>
+</ul>
 
 <h2>Coordination mechanisms</h2>
-<ul>
-<li><strong>Turn-taking</strong>: agents speak in sequence</li>
-<li><strong>Event-driven</strong>: agents respond when something they care about happens</li>
-<li><strong>Shared blackboard</strong>: agents write facts or claims to a shared space, others react</li>
-<li><strong>Voting or consensus</strong>: agents reach agreement through explicit protocols</li>
-</ul>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'How peers coordinate');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Mechanism', w: 220},
+    {title: 'How it works', w: 580}
+  ], rows: [
+    ['Turn-taking', 'Agents speak in fixed sequence. Simple, deterministic.'],
+    ['Event-driven', 'Agents react when something in their concern arrives.'],
+    ['Shared blackboard', 'All agents read/write a shared state. Others react.'],
+    ['Voting / consensus', 'Agents reach agreement through explicit protocol.']
+  ]});
+});
+</script>
 
 <h2>The complexity tax</h2>
-<p>Peer systems are hard to debug:</p>
+<p>Peer systems pay a real cost:</p>
 <ul>
-<li>Non-determinism from interaction order</li>
-<li>Deadlocks (agents waiting on each other)</li>
-<li>Cost explosion if agents trigger each other recursively</li>
-<li>Hard to set clear success criteria</li>
+<li><strong>Non-determinism.</strong> Two runs with the same input can produce different interaction orders and different outcomes.</li>
+<li><strong>Deadlocks.</strong> Agents wait on each other. Without careful protocol design, the system hangs.</li>
+<li><strong>Cost explosion.</strong> Agents trigger each other. One insight sparks three responses, each sparking more. Token usage balloons.</li>
+<li><strong>Hard to debug.</strong> A 40-turn peer trace across 5 agents is exhausting to read.</li>
+<li><strong>Unclear success.</strong> When is it "done"? You need an explicit stop condition, or someone to call the vote.</li>
 </ul>
 
-<h2>Pragmatic use</h2>
-<p>For most production systems, start with orchestrator-worker. Move to peer agents only when the problem genuinely needs distributed coordination and you can accept the debugging cost.</p>
+<h2>A worked example (worth it): product debate</h2>
+<p>Task: "Should we build feature X?" You spin up three peer agents: a "PM persona" agent (user value), an "engineer persona" agent (feasibility, cost), and a "CFO persona" agent (revenue impact). They exchange arguments for 3 rounds, each building on what the others said. A fourth "facilitator" agent summarizes the debate and surfaces the key tradeoffs.</p>
+<p>No single agent could do this well because no single agent has the right mental model. The interaction surfaces tradeoffs none would have identified alone.</p>
+
+<h2>A worked example (not worth it): fetching data from three sources</h2>
+<p>Task: "Summarize recent news about Apple from the web, our internal brief, and a financial database."</p>
+<p>Tempting to make this peer agents. Don't. This is orchestrator-worker: one orchestrator, three workers, parallel fetches, synthesis step. No agent needs to talk to any other agent. Making it peer adds complexity without benefit.</p>
+
+<h2>Pragmatic rule</h2>
+<p>Start with orchestrator-worker. Graduate to peer agents only when the task genuinely benefits from agent-to-agent interaction, and you can accept the debugging cost. 90% of production multi-agent systems are orchestrator-worker in peer-agent clothing. Simplify.</p>
+
+<h2>Pitfalls</h2>
+<ul>
+<li><strong>No stop condition.</strong> Agents debate forever. Cap rounds.</li>
+<li><strong>No structured message format.</strong> Agents free-form at each other; parsing is a mess.</li>
+<li><strong>No global budget.</strong> Local budgets don't prevent system-wide runaway when agents keep triggering each other.</li>
+<li><strong>"Peer" as a buzzword.</strong> If the info only flows in one direction, you don't have peers, you have workers.</li>
+</ul>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Before reaching for peer agents, re-examine whether orchestrator-worker solves your problem. Usually it does.</li>
+<li>If peer truly fits, read <a href="debate.html">debate + consensus</a> for the most well-studied peer pattern.</li>
+<li>Read <a href="handoffs.html">agent handoffs</a> for the messaging format between agents.</li>
+</ul>
 <div class="prev-next"><a href="orchestrator-worker.html" class="prev"><div class="label">← Previous</div><div class="title">Orchestrator-worker</div></a><a href="debate.html" class="next"><div class="label">Next →</div><div class="title">Debate + consensus</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

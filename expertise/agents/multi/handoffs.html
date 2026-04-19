@@ -219,50 +219,90 @@
 <a href="../../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="../foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="../foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="../foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="../loops/react.html">ReAct</a></li><li><a href="../loops/tool-use.html">Tool use</a></li><li><a href="../loops/planning.html">Planning loops</a></li><li><a href="../loops/reflection.html">Reflection</a></li><li><a href="../loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="../tools/tool-design.html">Tool design</a></li><li><a href="../tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="../tools/error-handling.html">Tool error handling</a></li><li><a href="../tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="../tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="../memory/short-term.html">Short-term memory</a></li><li><a href="../memory/long-term.html">Long-term memory</a></li><li><a href="../memory/episodic.html">Episodic memory</a></li><li><a href="../memory/procedural.html">Procedural memory</a></li><li><a href="../memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="../multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="../multi/peer-agents.html">Peer agents</a></li><li><a href="../multi/debate.html">Debate + consensus</a></li><li><a href="../multi/handoffs.html" class="active">Agent handoffs</a></li><li><a href="../multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="../eval/why-eval-agents.html">Why eval agents</a></li><li><a href="../eval/task-completion.html">Task completion</a></li><li><a href="../eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="../eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="../prod/observability.html">Observability + tracing</a></li><li><a href="../prod/cost-control.html">Cost control</a></li><li><a href="../prod/latency.html">Latency optimization</a></li><li><a href="../prod/safety.html">Safety + guardrails</a></li><li><a href="../prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/research-agent.html">Research agent</a></li><li><a href="../patterns/coding-agent.html">Coding agent</a></li><li><a href="../patterns/customer-support.html">Customer support agent</a></li><li><a href="../patterns/data-analyst.html">Data analyst agent</a></li><li><a href="../patterns/browser-agent.html">Browser agent</a></li><li><a href="../patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="../frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="../frameworks/langgraph.html">LangGraph</a></li><li><a href="../frameworks/crewai.html">CrewAI</a></li><li><a href="../frameworks/autogen.html">AutoGen</a></li><li><a href="../frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>Agent handoffs</span></div><h1 class="title">Agent handoffs</h1><div class="article-meta"><span>📖 2 min read</span><span>Updated 2026-04-19</span></div>
-<p class="lede">When multiple agents participate in a task, handoff is the moment one passes control to another. Done cleanly, it's invisible to the user. Done poorly, context is lost and the user has to repeat themselves.</p>
+<p class="lede">Handoff is the moment one agent passes control to another. Done well, the user never notices. Done poorly, context vanishes and the user has to repeat themselves, or worse, both agents try to do the same work. Good handoffs are boring: one agent tells the next exactly what's been done, what's left, and what to care about. Nothing magical, just discipline.</p>
 
 <h2>The handoff payload</h2>
-<p>What passes from agent A to agent B:</p>
-<ul>
-<li>Original user goal</li>
-<li>Context gathered so far (facts, decisions, partial work)</li>
-<li>Specific task for agent B</li>
-<li>Constraints (budget, time, quality bar)</li>
-<li>Success criteria for the handoff</li>
-</ul>
-
-<h2>When to hand off</h2>
-<ul>
-<li>Current agent has reached its specialty boundary</li>
-<li>Another agent has better tools for the remaining work</li>
-<li>Escalation to a more capable model (cheap → expensive when needed)</li>
-<li>Human-in-the-loop (agent → human)</li>
-</ul>
-
-<h2>The clean handoff pattern</h2>
+<p>What should pass from agent A to agent B is usually the same set of fields:</p>
 <pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
 {
   "original_goal": "User wanted X",
   "progress_summary": "I've done A, B, C. Remaining: D, E.",
   "next_task": "Do D using tools X, Y",
-  "context_to_preserve": [...key facts...],
-  "constraints": {"budget": "$0.50", "timeout": "60s"}
-}
-</pre>
+  "context_to_preserve": {
+    "key_facts": [...],
+    "user_constraints": [...],
+    "prior_decisions": [...]
+  },
+  "constraints": {"budget_remaining": "$0.30", "timeout_remaining": "40s"}
+}</pre>
+<p>Structured, not free-form. The receiving agent parses the payload and starts with full context. No "wait, what were we doing again?"</p>
+
+<h2>When to hand off</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Four legitimate handoff triggers');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Trigger', w: 280},
+    {title: 'What\'s happening', w: 520}
+  ], rows: [
+    ['Specialty boundary reached', 'Research done, now need coding agent'],
+    ['Better tools elsewhere', 'Current agent lacks the API needed next'],
+    ['Escalation to a bigger model', 'Cheap model out of its depth; escalate to premium'],
+    ['Human-in-the-loop', 'Crosses a safety or authorization threshold']
+  ]});
+});
+</script>
 
 <h2>The user experience</h2>
-<p>User shouldn't know they were handed off. The receiving agent introduces itself naturally: "I'll take it from here on the technical review." No "transferring you to a different department" moments.</p>
+<p>From the user's perspective, handoff should be invisible. No "transferring you to a different department" moments. The receiving agent picks up naturally: "I'll take over the code implementation. I see the research worker found that Y is the right library. Starting there."</p>
+<p>Internally there are two agents. Externally, one continuous conversation.</p>
+
+<h2>A worked example: support ticket escalation</h2>
+<ol>
+<li><strong>Tier-1 agent</strong> takes the ticket. Tries to resolve with standard tools. Hits a case it can't handle.</li>
+<li><strong>Handoff triggered:</strong> payload includes the ticket, what was tried, what the customer confirmed, why tier-1 is stuck, and urgency.</li>
+<li><strong>Tier-2 agent</strong> receives the payload. Loads the ticket + tier-1's summary. Greets the customer: "I'm continuing from where the earlier check left off. I can see you've already tried X. Let me look at Y."</li>
+<li><strong>If tier-2 also gets stuck:</strong> human handoff. Same payload pattern, now including tier-2's notes.</li>
+</ol>
+<p>The customer experiences one conversation. Internally, three agents (two LLM, one human) collaborated. The payload is what made it seamless.</p>
+
+<h2>Designing the trigger</h2>
+<p>Every agent's system prompt should say exactly when to hand off and to whom:</p>
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
+"You are the tier-1 agent. Hand off to tier-2 when:
+ - The ticket requires admin privileges you don't have
+ - You've tried 3 tools without progress
+ - The customer explicitly asks for a human
+When handing off, call the tool handoff(next_agent, payload)."</pre>
+<p>Explicit triggers prevent thrashing (too-early handoffs) and prevent stalling (agent keeps trying past its depth).</p>
+
+<h2>The clean handoff pattern</h2>
+<ul>
+<li><strong>Handoff is a tool call.</strong> The sending agent calls <code>handoff(next_agent, payload)</code> instead of trying to "invoke" the next agent directly.</li>
+<li><strong>The orchestrator routes.</strong> Handoff tool call kicks it up to the orchestrator, which loads the receiving agent and passes the payload in.</li>
+<li><strong>Budget transfers too.</strong> If $0.30 is left, the receiving agent gets $0.30, not a fresh allocation.</li>
+<li><strong>Full trace continues.</strong> The receiving agent's turns get logged under the same session ID. Observability doesn't break.</li>
+</ul>
 
 <h2>Failure modes</h2>
 <ul>
-<li>Handoff loses critical context → user has to repeat</li>
-<li>Both agents partially do the same work → wasted cost</li>
-<li>Handoff happens too late → receiving agent can't catch up</li>
-<li>Handoff happens too early → sending agent hadn't finished its part</li>
+<li><strong>Context loss.</strong> Payload was incomplete; receiving agent re-asks the user. Fix: strict payload schema.</li>
+<li><strong>Too-late handoff.</strong> Sending agent wasted 15 turns failing before handing off. Fix: lower the trigger threshold.</li>
+<li><strong>Too-early handoff.</strong> Agent hands off before finishing what it could. Fix: require the sending agent to document why it can't proceed.</li>
+<li><strong>Overlapping work.</strong> Both agents do part of the same subtask. Fix: payload must clearly state what's already done.</li>
+<li><strong>Ping-pong.</strong> Agent A hands to B hands to A hands to B. Fix: max handoff depth, circular-handoff detection.</li>
 </ul>
 
-<h2>Designing the trigger</h2>
-<p>Make handoff conditions explicit in each agent's system prompt. "When X happens, hand off to agent Y via tool Z." Clear boundaries reduce thrashing.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>Define a strict handoff payload schema once and reuse it across all your agents. Arbitrariness here is where bugs live.</li>
+<li>Read <a href="routing.html">agent routing</a> for how the orchestrator decides who receives the handoff.</li>
+<li>Read <a href="../prod/human-in-loop.html">human-in-the-loop</a> for the agent-to-human handoff case.</li>
+</ul>
 <div class="prev-next"><a href="debate.html" class="prev"><div class="label">← Previous</div><div class="title">Debate + consensus</div></a><a href="routing.html" class="next"><div class="label">Next →</div><div class="title">Agent routing</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
