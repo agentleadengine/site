@@ -134,10 +134,12 @@ can drop in a `<div class="sketch" data-viewbox="...">` and call the
 - `framework/autonomous/index.html` (+ 6-layer stack, worth-it compare, progression)
 - `framework/autonomous/safety.html` (+ safety stack, kill-switch bars, never-list, drill)
 
-### Glossary
+### Glossary (COMPLETE, 103/103)
 
-- 25 AI terms rewritten in the richer format (see `glossary/*.html` with
-  `.gloss-explain`, `.gloss-example`, `.gloss-why` sections)
+- 25 AI terms + 78 non-AI terms (Direct Response, Marketing, Business,
+  Sales, SEO). All rewritten in the deep 4-section template
+  (def / explain / example / why). Generators: `_rewrite_glossary_ai.py`
+  and `_rewrite_glossary_rest.py` in repo root.
 
 ## FRAMEWORK IS 100% COMPLETE ✅
 
@@ -147,16 +149,15 @@ with multiple hand-drawn diagrams.
 Section-by-section: Foundations ✅, Claude ✅, MCP ✅, Claude Code ✅,
 Patterns ✅, Autonomous ✅, Build ✅, Plugins ✅, Tools ✅.
 
-## Remaining scope — beyond the framework
+## Remaining scope — beyond the framework + glossary
 
-What's left for future sessions:
+What's left:
 
-1. **79 remaining glossary terms** (non-AI categories): Direct Response,
-   Marketing, Business, Sales, SEO. Use the same 4-section template
-   as the AI glossary terms (def / explain / example / why).
-2. **10 expertise hub pages** (SEO, Agents, RAG, Direct Response, Paid Ads,
-   Cold Email, Growth Marketing, Email Marketing, CRO, Business Management).
-3. **89 expertise subsection index pages** (auto-generated, could enrich with intros).
+1. ~~79 remaining glossary terms~~ ✅ DONE (2026-04-19)
+2. ~~10 expertise hub pages~~ ✅ DONE (2026-04-19). Every hub has a
+   teaching-depth intro + subsection-map diagram.
+3. **89 expertise subsection index pages** (auto-generated, could enrich
+   with intros + diagrams). Next priority.
 4. **~800 expertise deep articles** (the big chunk).
 
 Expertise section is the main remaining scope. At ~1,500 words per article,
