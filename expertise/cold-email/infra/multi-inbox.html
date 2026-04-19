@@ -222,6 +222,21 @@
 <p class="lede">One mailbox can safely send 30-50 emails per day before reputation starts degrading. To scale cold email beyond that, you rotate across multiple mailboxes. Done right, this gives you higher volume with lower per-mailbox risk. Done wrong, it replicates bad sending patterns across all your mailboxes simultaneously.</p>
 
 <h2>The math</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Scale sending via multiple inboxes');
+  sketch.numberedSteps(svg, rc, {direction: 'h', x: 30, y: 80, w: 840, items: [
+    {title: 'Buy 10 domains', sub: 'look-alikes of main'},
+    {title: '3 inboxes per domain', sub: '= 30 sending inboxes'},
+    {title: '50/day per inbox', sub: 'respecting provider caps'},
+    {title: '= 1,500 emails/day', sub: 'without burning any single inbox'}
+  ]});
+});
+</script>
 <p>Suppose you want to send 1,000 emails/day. Options:</p>
 <ul>
   <li>1 mailbox at 1,000/day: dead in a week</li>

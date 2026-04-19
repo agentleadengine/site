@@ -222,6 +222,21 @@
 <p class="lede">A cold email campaign that doesn't integrate with your CRM is a campaign that drops leads on the floor. Positive replies need to become opportunities. Bounces need to update lead records. Unsubscribes need to propagate globally. Here's the integration architecture that keeps outbound and CRM in sync.</p>
 
 <h2>What needs to flow between systems</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Cold email ↔ CRM integration');
+  sketch.numberedSteps(svg, rc, {direction: 'h', x: 30, y: 80, w: 840, items: [
+    {title: 'Upload list', sub: 'cold tool from CRM'},
+    {title: 'Send + track', sub: 'opens, clicks, replies'},
+    {title: 'Sync replies', sub: 'to CRM as activity'},
+    {title: 'Create tasks', sub: 'for SDR follow-up'}
+  ]});
+});
+</script>
 
 <h3>Outbound to CRM</h3>
 <ul>

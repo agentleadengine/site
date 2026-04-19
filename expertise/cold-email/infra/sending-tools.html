@@ -222,6 +222,24 @@
 <p class="lede">Cold email tools handle sequence automation, mailbox rotation, reply detection, and reporting. The market has consolidated around a few major players. Here's how they compare and what I actually reach for.</p>
 
 <h2>The three tiers</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Cold email tool tiers');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Tier', w: 200},
+    {title: 'Tools + fit', w: 600}
+  ], rows: [
+    ['1 (production)', 'Instantly, Smartlead, Lemlist — multi-inbox rotation'],
+    ['2 (serious)', 'Apollo sequences, Outreach, Salesloft — SDR teams'],
+    ['3 (starter)', 'Mailshake, Reply.io, Woodpecker — small scale'],
+    ['Custom', 'SendGrid/Postmark + your own code']
+  ]});
+});
+</script>
 
 <h3>Tier 1: Volume-optimized cold email tools</h3>
 <p>Built specifically for cold outbound at scale. Support multi-inbox, warming, spintax, deep reporting.</p>

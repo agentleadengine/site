@@ -222,6 +222,26 @@
 <p class="lede">The reply handling process is where cold campaigns translate into pipeline. Every positive reply that slips through the cracks is revenue lost. Every ambiguous response that's mishandled is a meeting never booked. Here's the discipline for managing cold email replies at scale.</p>
 
 <h2>The reply taxonomy</h2>
+<div class="sketch" data-viewbox="0 0 900 300"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 300);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Reply categories + response time');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Reply type', w: 220},
+    {title: 'Target response time', w: 580}
+  ], rows: [
+    ['Positive / interested', '< 1 hour during business'],
+    ['Not now / future', 'Same day; nurture'],
+    ['Out-of-office', 'Auto-pause sequence'],
+    ['Wrong person', 'Ask for referral'],
+    ['Unsub / angry', 'Remove + ack'],
+    ['Spam filter / auto-reply', 'No action; filter']
+  ]});
+});
+</script>
 <p>Replies fall into predictable categories:</p>
 
 <h3>Positive (the goal)</h3>
