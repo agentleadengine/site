@@ -222,6 +222,21 @@
 <p class="lede">Price is signal, not just cost. How you price changes which prospects show up, what they expect, how they treat the relationship, and how they use the product. Operators who think of price only as "what the market will bear" are leaving everything else on the table.</p>
 
 <h2>What price signals</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Price signals quality (usually)');
+  sketch.bars(svg, rc, {x: 40, y: 60, w: 820, labelW: 240, items: [
+    {label: 'Cheap', value: 20, note: 'signals low quality, attracts bargain hunters'},
+    {label: 'Mid-market', value: 50, note: 'safe, commoditized'},
+    {label: 'Premium', value: 80, note: 'signals quality, attracts serious buyers'},
+    {label: 'Ultra-premium', value: 95, note: 'exclusivity, status; only works with proof'}
+  ]});
+});
+</script>
 <ul>
  <li><strong>Quality.</strong> Higher price = higher assumed quality, absent contradicting evidence.</li>
  <li><strong>Scarcity.</strong> Expensive = fewer available; cheap = commodity.</li>

@@ -231,6 +231,21 @@
 </ul>
 
 <h2>The bonus design process</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Designing bonuses that actually move the needle');
+  sketch.numberedSteps(svg, rc, {direction: 'h', x: 30, y: 80, w: 840, items: [
+    {title: 'Find objections', sub: '"but what if..."'},
+    {title: 'Handle each', sub: 'one bonus per objection'},
+    {title: 'Price them', sub: 'value > base offer'},
+    {title: 'Stack', sub: 'total value visible'}
+  ]});
+});
+</script>
 
 <h3>Step 1. List every objection</h3>
 <p>Before designing bonuses, list every reason the prospect might say no:</p>

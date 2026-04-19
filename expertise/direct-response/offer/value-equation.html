@@ -222,6 +222,24 @@
 <p class="lede">The value equation is the single most useful one-line framework in modern direct response. Once you've internalized it, you stop guessing at why offers convert or don't, you diagnose the equation.</p>
 
 <h2>The equation</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Hormozi\'s value equation');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Variable', w: 240},
+    {title: 'Move to increase value', w: 560}
+  ], rows: [
+    ['↑ Dream outcome', 'Bigger, more specific, more aspirational'],
+    ['↑ Perceived likelihood', 'Proof, guarantees, testimonials'],
+    ['↓ Time delay', 'Faster path to result'],
+    ['↓ Effort / sacrifice', 'Done-for-you, less work for them']
+  ]});
+});
+</script>
 <pre style="background:#f5f5f7; padding:20px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:15px; text-align:center;">
  Dream Outcome × Perceived Likelihood
 Value = ────────────────────────────────────────────

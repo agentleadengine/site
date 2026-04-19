@@ -231,6 +231,21 @@
 </ul>
 
 <h2>The construction</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Grand slam: the four pieces');
+  sketch.numberedSteps(svg, rc, {direction: 'h', x: 30, y: 80, w: 840, items: [
+    {title: 'Dream outcome', sub: 'what they get'},
+    {title: 'Likelihood', sub: 'why it\'ll work'},
+    {title: 'Time', sub: 'how fast'},
+    {title: 'Effort', sub: 'how little work'}
+  ]});
+});
+</script>
 
 <h3>Step 1. Nail the dream outcome</h3>
 <p>Not "access to our tool." "The weekly report that shows you exactly which customers are about to cancel, with specific outreach scripts, delivered every Monday." The outcome is concrete and the prospect can see themselves using it.</p>

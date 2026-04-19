@@ -225,6 +225,25 @@
 <p>Every purchase involves risk. The prospect isn't sure it'll work for them. They're not sure the company will deliver. They're not sure they'll be able to return if it doesn't. A guarantee neutralizes that risk, moving it to the seller, which is where, by every ethical and commercial argument, it belongs.</p>
 
 <h2>The guarantee ladder</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Guarantee strength ladder');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Level', w: 260},
+    {title: 'What you\'re saying', w: 540}
+  ], rows: [
+    ['30-day refund', 'Minimum; table stakes'],
+    ['90-day refund', '"Try it a full quarter"'],
+    ['Results-based refund', '"If X doesn\'t happen, you don\'t pay"'],
+    ['Better-than-your-money-back', 'Refund + a bonus if you don\'t get results'],
+    ['Unconditional lifetime', 'Strongest; high risk for you']
+  ]});
+});
+</script>
 <p>Weak to strong:</p>
 
 <h3>1. No guarantee</h3>
