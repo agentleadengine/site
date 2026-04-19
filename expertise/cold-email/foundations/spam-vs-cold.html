@@ -222,6 +222,28 @@
 <p class="lede">Email providers, regulators, and recipients all treat cold email and spam differently. The difference isn't "my email is good, spam is bad." It's a specific set of properties that determine whether a message is legal, gets delivered, and gets replied to.</p>
 
 <h2>The legal distinction</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Cold vs spam');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Cold (lawful + deliverable)', items: [
+      'Researched target',
+      'Clear business purpose',
+      'Easy unsubscribe',
+      'Real sender identity'
+    ]},
+    right: {title: 'Spam (illegal + blocked)', items: [
+      'Scraped / bought list',
+      'No business context',
+      'No / hidden unsubscribe',
+      'Faked or obscured sender']}
+  });
+});
+</script>
 <p>Under US CAN-SPAM (the controlling law for US-recipient cold email):</p>
 <ul>
   <li>Commercial email is legal if it complies with specific requirements</li>

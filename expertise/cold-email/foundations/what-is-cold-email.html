@@ -222,6 +222,24 @@
 <p class="lede">Cold email is one-to-one outreach via email to a specific prospect who hasn't opted in, with a specific offer and a specific ask. It's not broadcast marketing. It's not newsletters. It's not transactional. It's a sales motion that happens to use the email protocol.</p>
 
 <h2>The working definition</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Cold email vs adjacent things');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Type', w: 220},
+    {title: 'What it is', w: 580}
+  ], rows: [
+    ['Cold email', 'Targeted 1:1 email to a researched prospect'],
+    ['Newsletter / marketing', 'Opt-in list, one-to-many broadcasts'],
+    ['Spam', 'Bulk unsolicited to scraped lists'],
+    ['Transactional', 'Receipts, password resets, etc']
+  ]});
+});
+</script>
 <p>Cold email has four defining properties:</p>
 <ol>
   <li><strong>One-to-one shaped.</strong> Even when automated at volume, each message is addressed to a specific person with a specific personalization.</li>
