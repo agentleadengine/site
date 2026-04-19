@@ -219,16 +219,43 @@
 <a href="../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../what-is-autonomous-ai.html">What is autonomous AI</a></li><li><a href="../the-autonomy-spectrum.html">The autonomy spectrum</a></li><li><a href="../glossary.html">Glossary</a></li></ul><h4>Claude</h4><ul><li><a href="../claude/overview.html">Overview</a></li><li><a href="../claude/prompting-for-agents.html">Prompting for agents</a></li><li><a href="../claude/extended-thinking.html">Extended thinking</a></li><li><a href="../claude/tool-use.html">Tool use</a></li></ul><h4>MCP</h4><ul><li><a href="../mcp/index.html">Overview</a></li><li><a href="../mcp/what-is-mcp.html">What is MCP</a></li><li><a href="../mcp/anatomy.html">Anatomy</a></li><li><a href="../mcp/transports.html">Transports</a></li><li><a href="../mcp/servers.html">Servers</a></li><li><a href="../mcp/clients.html">Clients</a></li><li><a href="../mcp/security.html">Security</a></li><li><a href="../mcp/directory.html">Directory</a></li></ul><h4>Plugins</h4><ul><li><a href="../plugins/index.html">Overview</a></li><li><a href="../plugins/vs-mcp.html">Plugins vs MCP</a></li><li><a href="../plugins/marketplace.html">Marketplace</a></li></ul><h4>Claude Code</h4><ul><li><a href="../claude-code/index.html">Overview</a></li><li><a href="../claude-code/settings.html">Settings</a></li><li><a href="../claude-code/permissions.html">Permissions</a></li><li><a href="../claude-code/hooks.html">Hooks</a></li><li><a href="../claude-code/skills.html">Skills</a></li><li><a href="../claude-code/memory.html">Memory</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/index.html">Overview</a></li><li><a href="../patterns/react-loop.html">ReAct loop</a></li><li><a href="../patterns/plan-execute.html">Plan-execute</a></li><li><a href="../patterns/multi-agent.html">Multi-agent</a></li><li><a href="../patterns/evaluation.html">Evaluation</a></li><li><a href="../patterns/prompt-caching.html">Prompt caching</a></li></ul><h4>Autonomous</h4><ul><li><a href="../autonomous/index.html">Overview</a></li><li><a href="../autonomous/headless.html">Headless</a></li><li><a href="../autonomous/scheduling.html">Scheduling</a></li><li><a href="../autonomous/self-monitoring.html">Self-monitoring</a></li><li><a href="../autonomous/safety.html">Safety</a></li></ul><h4>Build Guides</h4><ul><li><a href="../build/index.html">Overview</a></li><li><a href="../build/first-agent.html" class="active">First agent (60 min)</a></li><li><a href="../build/voice-agent.html">Voice agent</a></li><li><a href="../build/research-agent.html">Research agent</a></li></ul><h4>Tools</h4><ul><li><a href="../tools/browser-automation.html">Browser automation</a></li><li><a href="../tools/desktop-control.html">Desktop control</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Framework</a><span class="sep">›</span><a href="../build/index.html">Build</a><span class="sep">›</span><span>Your first autonomous agent in 60 minutes</span></div><h1 class="title" style="font-size:clamp(32px,4.5vw,42px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">Your first autonomous agent in 60 minutes</h1><div class="article-meta"><span>📖 8 min read</span><span>Updated 2026-04-18</span></div>
-<p class="lede">Sixty minutes. A working agent that runs headless, using an MCP for tools and a skill for a defined task.</p>
+<p class="lede">Sixty minutes from now, you'll have a real autonomous agent running on a schedule, pulling data from your actual Gmail and Google Calendar, and producing a useful daily digest every morning. This isn't a demo. The code you write here is the code you'd ship. Eight steps, about five minutes each. Open a terminal; let's go.</p>
 
-<h2>Goal</h2>
-<p>By the end, you'll have a <code>daily-digest</code> agent that:</p>
+<h2>What you'll have at the end.</h2>
+<p>A <code>daily-digest</code> agent that runs at 6:30am every weekday and:</p>
 <ul>
-  <li>Reads your calendar for today</li>
-  <li>Checks your email for anything urgent</li>
-  <li>Produces a one-paragraph summary</li>
-  <li>Runs from the command line with one command</li>
+  <li>Reads your Google Calendar for today</li>
+  <li>Scans your Gmail for anything urgent since last night</li>
+  <li>Writes a one-paragraph summary</li>
+  <li>Runs completely headless from a cron job</li>
 </ul>
+
+<div class="sketch" data-viewbox="0 0 900 310" id="dg-first-agent">
+  <svg></svg>
+  <div class="sketch-caption">~ what you're building ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-first-agent');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  // Cron at top
+  sketch.box(svg, rc, { x: 350, y: 20, w: 200, h: 70, title: 'Cron', sub: '6:30am weekdays', titleY: 34, subY: 60, titleSize: 20, subSize: 14 });
+  // Claude Code (harness) in middle
+  sketch.box(svg, rc, { x: 310, y: 130, w: 280, h: 80, title: 'Claude Code', sub: '/daily-digest skill', titleY: 40, subY: 68, titleSize: 22, subSize: 14 });
+  // Tools at bottom
+  sketch.box(svg, rc, { x: 60,  y: 250, w: 220, h: 70, title: 'Gmail MCP', sub: 'search inbox', titleY: 34, subY: 60, titleSize: 18, subSize: 14 });
+  sketch.box(svg, rc, { x: 340, y: 250, w: 220, h: 70, title: 'Calendar MCP', sub: 'list events', titleY: 34, subY: 60, titleSize: 18, subSize: 14 });
+  sketch.box(svg, rc, { x: 620, y: 250, w: 220, h: 70, title: 'Log file', sub: 'write output', titleY: 34, subY: 60, titleSize: 18, subSize: 14 });
+  // Arrows
+  sketch.arrow(svg, rc, { x1: 450, x2: 450, y1: 90, y2: 130, bidirectional: false });
+  sketch.arrow(svg, rc, { x1: 400, x2: 170, y1: 210, y2: 250, bidirectional: false });
+  sketch.arrow(svg, rc, { x1: 450, x2: 450, y1: 210, y2: 250, bidirectional: false });
+  sketch.arrow(svg, rc, { x1: 500, x2: 730, y1: 210, y2: 250, bidirectional: false });
+});
+</script>
 
 <h2>Step 1: Install Claude Code (5 min)</h2>
 <pre><code>npm install -g @anthropic-ai/claude-code
@@ -306,16 +333,21 @@ EOF</code></pre>
 30 6 * * 1-5 ~/bin/daily-digest.sh</code></pre>
 <p>Runs at 6:30 AM weekdays. Output appends to <code>~/daily-digest.log</code>.</p>
 
-<h2>You're done</h2>
-<p>You have a scheduled, headless, MCP-connected agent running a named skill. That's the base of everything else in this framework.</p>
+<h2>You're done. What you actually built.</h2>
+<p>Take a second and appreciate this. What's running on your machine now is a full autonomous agent. On a schedule (Level 4 on the <a href="../the-autonomy-spectrum.html">autonomy spectrum</a>). With tools it can actually use (MCP). With a permission list (safety). With a defined skill (your digest). No babysitting. Just tomorrow morning, it writes something useful, you read it over coffee.</p>
 
-<h2>Next steps</h2>
+<p>Everything else in this framework is variations on this pattern. Different tools. Different skills. More sophisticated safety. But the shape is the same: <strong>Claude + MCPs + skill + schedule + permissions</strong>. You now have that shape working.</p>
+
+<h2>Where to go next.</h2>
 <ul>
-  <li>Pipe the output to Slack or Telegram instead of a log file</li>
-  <li>Add a quality check: re-run if output looks wrong</li>
-  <li>Add safety: dead-man's-switch ping on every successful run</li>
-  <li>Build a <a href="voice-agent.html">voice agent</a> next</li>
+  <li>Swap the log-file output for Slack or Telegram so the digest shows up on your phone</li>
+  <li>Add a dead-man's-switch heartbeat so you know if the agent stops running (see <a href="../autonomous/self-monitoring.html">self-monitoring</a>)</li>
+  <li>Add a quality check (re-run if the output seems wrong, notify if still bad)</li>
+  <li>Graduate to the <a href="voice-agent.html">voice agent</a> build — same concepts, fancier interface</li>
+  <li>Or the <a href="research-agent.html">research agent</a> — same concepts, deeper ReAct pattern</li>
 </ul>
+
+<p>The framework from here is extensions of what you just built. You've crossed the hard line: not talking about autonomous AI, actually running some.</p>
 <div class="prev-next"><a href="index.html" class="prev"><div class="label">← Previous</div><div class="title">Build guides overview</div></a><a href="voice-agent.html" class="next"><div class="label">Next →</div><div class="title">Voice agent</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../framework/index.html">Framework</a></p>
 </div></footer><script>
