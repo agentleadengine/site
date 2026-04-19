@@ -222,6 +222,23 @@
 <p class="lede">Hiring is the single highest-leverage activity in a company, and the one most managers do worst. The cost of a bad hire is 3-5x their salary when you count ramp, lost output, team drag, and eventual severance. Yet most interview processes measure charisma, not performance.</p>
 
 <h2>What predicts job performance (validated research)</h2>
+<div class="sketch" data-viewbox="0 0 900 300"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 300);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'What actually predicts performance');
+  sketch.bars(svg, rc, {x: 40, y: 60, w: 820, labelW: 260, items: [
+    {label: 'Work sample / take-home', value: 95, note: 'strongest signal'},
+    {label: 'Structured interview', value: 75, note: 'if rubric-based'},
+    {label: 'Reference check (well done)', value: 60, note: 'signal if specific'},
+    {label: 'GMA / cognitive test', value: 55, note: 'fast and valid'},
+    {label: 'Years of experience', value: 20, note: 'weak'},
+    {label: 'Unstructured chat', value: 10, note: 'essentially noise'}
+  ]});
+});
+</script>
 <p>Meta-analyses of hiring-success predictors, ranked by correlation with actual performance:</p>
 <ul>
   <li><strong>Work sample tests</strong>, having them do the actual job (r ≈ 0.54)</li>

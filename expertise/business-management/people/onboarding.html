@@ -232,6 +232,23 @@
 </ol>
 
 <h2>The 30/60/90 framework</h2>
+<div class="sketch" data-viewbox="0 0 900 240"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 240);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, '30 / 60 / 90 onboarding');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'By day', w: 180},
+    {title: 'Expectation', w: 620}
+  ], rows: [
+    ['30', 'Learning — understand the system + people'],
+    ['60', 'Contributing — owning smaller pieces'],
+    ['90', 'Driving — owning outcomes']
+  ]});
+});
+</script>
 
 <h3>First 30 days, context + relationships</h3>
 <p>Goals:</p>

@@ -225,6 +225,24 @@
 <p>Most job descriptions list responsibilities ("manage the team, drive results, own the pipeline"). Those are activities, not outcomes. Scorecards describe outcomes, what the person will have produced by month 12.</p>
 
 <h2>The template</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Role scorecard template');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Section', w: 240},
+    {title: 'Content', w: 560}
+  ], rows: [
+    ['Mission', 'Why the role exists'],
+    ['Outcomes (3–5)', 'Measurable results expected in 6–12 mo'],
+    ['Competencies', 'Skills + behaviors needed'],
+    ['Fit to culture', 'Values the person must live']
+  ]});
+});
+</script>
 <pre><code>ROLE: [Title]
 REPORTS TO: [Manager]
 START DATE: [Date]
