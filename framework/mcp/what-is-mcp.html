@@ -284,7 +284,7 @@
 
 <div class="sketch" data-viewbox="0 0 920 340" id="dg-mcp-flow">
   <svg></svg>
-  <div class="sketch-caption">~ tool call → server → result → back to the model ~</div>
+  <div class="sketch-caption">~ model ↔ client ↔ server ~</div>
 </div>
 <script>
 document.addEventListener('sketch:ready', function() {
@@ -293,13 +293,11 @@ document.addEventListener('sketch:ready', function() {
   wrap.dataset.drawn = '1';
   var svg = wrap.querySelector('svg');
   var rc = sketch.rc(svg);
-  sketch.box(svg, rc, { x: 40,  y: 90, w: 240, h: 140, title: 'Model',  sub: 'asks for action' });
-  sketch.box(svg, rc, { x: 340, y: 90, w: 240, h: 140, title: 'Client', sub: 'routes + enforces' });
-  sketch.box(svg, rc, { x: 640, y: 90, w: 240, h: 140, title: 'Server', sub: 'does the work' });
-  sketch.arrow(svg, rc, { x1: 280, x2: 340, y: 144, label: 'tool call' });
-  sketch.arrow(svg, rc, { x1: 580, x2: 640, y: 144, label: 'MCP' });
-  sketch.arrow(svg, rc, { x1: 580, x2: 640, y: 182, label: 'result', color: '#8b5cf6' });
-  sketch.arrow(svg, rc, { x1: 280, x2: 340, y: 182, label: 'response', color: '#8b5cf6' });
+  sketch.box(svg, rc, { x: 40,  y: 90, w: 240, h: 140, title: 'Model',  sub: '(Claude)' });
+  sketch.box(svg, rc, { x: 340, y: 90, w: 240, h: 140, title: 'Client', sub: '(Claude Code)' });
+  sketch.box(svg, rc, { x: 640, y: 90, w: 240, h: 140, title: 'Server', sub: '(Gmail MCP)' });
+  sketch.arrow(svg, rc, { x1: 280, x2: 340, y: 160, label: 'tool calls' });
+  sketch.arrow(svg, rc, { x1: 580, x2: 640, y: 160, label: 'MCP' });
 });
 </script>
 

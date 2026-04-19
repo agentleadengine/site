@@ -265,9 +265,9 @@
 <h2>The loop. How the four parts actually work together.</h2>
 <p>Here's the magic, plain and clear:</p>
 
-<div class="sketch" data-viewbox="0 0 920 340" id="dg-agent-loop">
+<div class="sketch" data-viewbox="0 0 940 320" id="dg-agent-loop">
   <svg></svg>
-  <div class="sketch-caption">~ the agent loop ~</div>
+  <div class="sketch-caption">~ think → act → see → repeat ~</div>
 </div>
 <script>
 document.addEventListener('sketch:ready', function() {
@@ -276,20 +276,34 @@ document.addEventListener('sketch:ready', function() {
   wrap.dataset.drawn = '1';
   var svg = wrap.querySelector('svg');
   var rc = sketch.rc(svg);
-  // Four stages in a loop
-  sketch.box(svg, rc, { x: 60,  y: 60,  w: 200, h: 110, title: 'Think',   sub: 'what to do next' });
-  sketch.box(svg, rc, { x: 320, y: 60,  w: 200, h: 110, title: 'Act',     sub: 'use a tool' });
-  sketch.box(svg, rc, { x: 580, y: 60,  w: 200, h: 110, title: 'See',     sub: 'tool result' });
-  sketch.box(svg, rc, { x: 320, y: 220, w: 200, h: 90,  title: 'Done?',   sub: 'yes → stop · no → loop', subSize: 15 });
-  // Linear arrows between stages
-  sketch.arrow(svg, rc, { x1: 260, x2: 320, y: 115, label: '→', bidirectional: false });
-  sketch.arrow(svg, rc, { x1: 520, x2: 580, y: 115, label: '→', bidirectional: false });
-  // Down arrow from See to Done?
-  sketch.arrow(svg, rc, { x1: 680, x2: 520, y1: 170, y2: 265, bidirectional: false });
-  // Left arrow from Done? back to Think (loop)
-  sketch.arrow(svg, rc, { x1: 320, x2: 160, y1: 265, y2: 170, label: 'loop', bidirectional: false, color: '#8b5cf6' });
-  sketch.note(svg, 160, 40, 'GOAL', { size: 20, color: '#4a00e0' });
-  sketch.arrow(svg, rc, { x1: 160, x2: 160, y1: 48, y2: 60, bidirectional: false });
+
+  // Three stages in a row
+  sketch.box(svg, rc, { x: 40,  y: 70, w: 240, h: 120, title: 'Think', sub: 'what to do next' });
+  sketch.box(svg, rc, { x: 350, y: 70, w: 240, h: 120, title: 'Act',   sub: 'use a tool' });
+  sketch.box(svg, rc, { x: 660, y: 70, w: 240, h: 120, title: 'See',   sub: 'tool result' });
+
+  // Forward arrows
+  sketch.arrow(svg, rc, { x1: 280, x2: 350, y: 130, bidirectional: false });
+  sketch.arrow(svg, rc, { x1: 590, x2: 660, y: 130, bidirectional: false });
+
+  // Curved loop-back arrow from "See" (bottom-right) back to "Think" (bottom-left)
+  var loopPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  loopPath.setAttribute('d', 'M 780 195 Q 780 280 470 280 Q 160 280 160 195');
+  loopPath.setAttribute('fill', 'none');
+  loopPath.setAttribute('stroke', '#8b5cf6');
+  loopPath.setAttribute('stroke-width', '2.5');
+  loopPath.setAttribute('stroke-dasharray', '6 4');
+  svg.appendChild(loopPath);
+  // Arrowhead on the loop (pointing up toward Think)
+  var ah = rc.polygon([[152,205],[160,195],[168,205]], {
+    roughness: 1.4, stroke: '#8b5cf6', strokeWidth: 2, fill: '#8b5cf6', fillStyle: 'solid'
+  });
+  svg.appendChild(ah);
+  sketch.note(svg, 470, 275, 'loop until done', { size: 16, color: '#8b5cf6' });
+
+  // GOAL label above Think
+  sketch.note(svg, 160, 40, 'GOAL', { size: 22, color: '#4a00e0' });
+  sketch.arrow(svg, rc, { x1: 160, x2: 160, y1: 50, y2: 70, bidirectional: false });
 });
 </script>
 

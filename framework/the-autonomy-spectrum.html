@@ -224,9 +224,9 @@
 <h2>The five levels.</h2>
 <p>There are five useful rungs on the ladder. Each one adds something the one below it doesn't have.</p>
 
-<div class="sketch" data-viewbox="0 0 920 380" id="dg-ladder">
+<div class="sketch" data-viewbox="0 0 940 260" id="dg-ladder">
   <svg></svg>
-  <div class="sketch-caption">~ the autonomy ladder ~</div>
+  <div class="sketch-caption">~ five rungs from chatbot to fully autonomous ~</div>
 </div>
 <script>
 document.addEventListener('sketch:ready', function() {
@@ -235,24 +235,33 @@ document.addEventListener('sketch:ready', function() {
   wrap.dataset.drawn = '1';
   var svg = wrap.querySelector('svg');
   var rc = sketch.rc(svg);
-  // Five stacked rungs, each one further right and higher
   var rungs = [
     { n: 1, label: 'Chatbot',         sub: 'answers only' },
-    { n: 2, label: 'Assistant',       sub: '+ memory + tool' },
-    { n: 3, label: 'HITL Agent',      sub: '+ chains, asks first' },
-    { n: 4, label: 'Auto Agent',      sub: '+ pre-approved scope' },
-    { n: 5, label: 'Fully Autonomous', sub: 'runs on its own' }
+    { n: 2, label: 'Assistant',       sub: '+ memory' },
+    { n: 3, label: 'HITL Agent',      sub: 'asks first' },
+    { n: 4, label: 'Auto Agent',      sub: 'pre-approved' },
+    { n: 5, label: 'Autonomous',      sub: 'runs alone' }
   ];
+  var BW = 160, BH = 120, GAP = 20, Y = 50;
   rungs.forEach(function(r, i) {
-    var x = 40 + i * 165;
-    var y = 310 - i * 55;
-    sketch.box(svg, rc, { x: x, y: y, w: 180, h: 70, title: r.label, sub: r.sub, titleY: 32, subY: 56, titleSize: 20, subSize: 14 });
-    // Big level number in the corner
-    sketch.note(svg, x + 15, y + 18, 'L' + r.n, { size: 16, color: '#8b5cf6' });
+    var x = 20 + i * (BW + GAP);
+    sketch.box(svg, rc, {
+      x: x, y: Y, w: BW, h: BH,
+      title: r.label, sub: r.sub,
+      titleY: 56, subY: 86, titleSize: 20, subSize: 14
+    });
+    // Level badge in top-left of each box
+    sketch.note(svg, x + 18, Y + 22, 'L' + r.n, { size: 18, color: '#8b5cf6' });
   });
-  // Diagonal "trend" arrow rising
-  sketch.arrow(svg, rc, { x1: 30, x2: 860, y1: 340, y2: 5, bidirectional: false, color: '#8b5cf6' });
-  sketch.note(svg, 780, 330, 'more autonomy →', { size: 16, color: '#8b5cf6' });
+  // Trend arrow BELOW the row — horizontal, left-to-right
+  var ARROW_Y = Y + BH + 30;
+  sketch.arrow(svg, rc, {
+    x1: 30, x2: 910, y: ARROW_Y,
+    bidirectional: false, color: '#8b5cf6'
+  });
+  sketch.note(svg, 470, ARROW_Y + 25, 'more autonomy →', {
+    size: 18, color: '#8b5cf6'
+  });
 });
 </script>
 
