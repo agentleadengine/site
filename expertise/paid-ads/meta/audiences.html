@@ -222,6 +222,23 @@
 <p class="lede">Pre-2021, Meta targeting was surgical: obscure interests, narrow demographics, custom combinations. Post-iOS 14, signal loss has made broad targeting often win. The platform's AI now does most of the targeting - your creative does the rest.</p>
 
 <h2>Audience types</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Three audience types');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Type', w: 220},
+    {title: 'Source', w: 580}
+  ], rows: [
+    ['Core (interest)', 'Meta demographics + interests'],
+    ['Custom', 'Your data — customer list, site visitors, engagement'],
+    ['Lookalike (LLA)', 'Meta finds people similar to a seed custom audience']
+  ]});
+});
+</script>
 
 <h3>Broad</h3>
 <p>Country + age range. Let Meta's AI find the conversions. Post-iOS 14 best practice for most advertisers.</p>

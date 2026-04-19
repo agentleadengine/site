@@ -222,6 +222,20 @@
 <p class="lede">Meta Ads serves Facebook, Instagram, Messenger, and Audience Network from one system. It's the dominant paid channel for DTC, consumer products, local services, and many B2B plays. Post-iOS 14 it's harder but not dead.</p>
 
 <h2>The hierarchy</h2>
+<div class="sketch" data-viewbox="0 0 900 240"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 240);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Meta account hierarchy');
+  sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 50, layers: [
+    {label: 'Campaign', sub: 'objective + budget (if CBO)'},
+    {label: 'Ad Set', sub: 'audience + placement + optimization'},
+    {label: 'Ad', sub: 'creative + copy'}
+  ]});
+});
+</script>
 <ul>
 <li><strong>Account</strong>: your top-level ad account</li>
 <li><strong>Campaign</strong>: defines the objective (traffic, conversions, etc.)</li>

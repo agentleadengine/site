@@ -222,6 +222,25 @@
 <p class="lede">Picking the wrong campaign objective is one of the most common Meta mistakes. The objective tells Meta what to optimize for. Wrong objective = optimizing for the wrong outcome.</p>
 
 <h2>The objectives in 2026</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Meta campaign objectives');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Objective', w: 220},
+    {title: 'Use when', w: 580}
+  ], rows: [
+    ['Sales', 'Ecomm purchase or form conversion'],
+    ['Leads', 'Form-fill or Messenger lead capture'],
+    ['Engagement', 'Messages, post engagement, video views'],
+    ['Traffic', 'Usually a mistake — downstream optimization weak'],
+    ['Awareness', 'Reach + frequency, big brand spend']
+  ]});
+});
+</script>
 <ul>
 <li><strong>Sales</strong>: optimize for purchases. Default for DTC.</li>
 <li><strong>Leads</strong>: form submissions or calls.</li>

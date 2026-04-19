@@ -222,6 +222,24 @@
 <p class="lede">Retargeting hits people who've already visited your site, engaged with your content, or started a checkout. Cheaper CAC than prospecting, but easy to overdo.</p>
 
 <h2>Retargeting audiences</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Retargeting tiers');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Warmth', w: 240},
+    {title: 'Audience', w: 560}
+  ], rows: [
+    ['Hottest', 'Cart abandoners, checkout abandoners'],
+    ['Warm', 'Site visitors last 7–30 days'],
+    ['Cool', 'Video viewers, page engagers'],
+    ['Cold re-engagement', '180-day site visitors who didn\'t convert']
+  ]});
+});
+</script>
 <ul>
 <li><strong>All website visitors (30 days)</strong>: broadest retarget</li>
 <li><strong>Cart abandoners</strong>: highest intent, highest conversion</li>
