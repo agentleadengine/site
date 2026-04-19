@@ -176,6 +176,240 @@
     }, opts));
   }
 
+  // ---- Stack of layered boxes (for layered architectures) ---------------
+  // cfg: { x, y, w, layers: [{label, sub, color?}, ...], layerH? }
+  function stack(svg, rc, cfg) {
+    const lh = cfg.layerH || 60;
+    const gap = 6;
+    cfg.layers.forEach((layer, i) => {
+      const by = cfg.y + i * (lh + gap);
+      box(svg, rc, {
+        x: cfg.x, y: by, w: cfg.w, h: lh,
+        title: layer.label,
+        sub: layer.sub,
+        titleY: 30, subY: 48, titleSize: 18, subSize: 13,
+        fillColor: layer.color || COLORS.fill,
+        strokeColor: layer.stroke || COLORS.stroke,
+        textColor: layer.textColor || COLORS.text
+      });
+    });
+  }
+
+  // ---- Numbered steps (a vertical or horizontal sequence of numbered nodes)
+  // cfg: { items: [{title, sub}...], x, y, w, direction: 'h'|'v' }
+  function numberedSteps(svg, rc, cfg) {
+    const dir = cfg.direction || 'h';
+    const N = cfg.items.length;
+    const stepGap = cfg.gap || 30;
+    const radius = cfg.radius || 28;
+    cfg.items.forEach((it, i) => {
+      let cx, cy;
+      if (dir === 'h') {
+        const totalW = (cfg.w || 800) - radius * 2;
+        cx = cfg.x + radius + (totalW / Math.max(N-1, 1)) * i;
+        cy = cfg.y;
+      } else {
+        cx = cfg.x;
+        cy = cfg.y + (radius * 2 + stepGap) * i;
+      }
+      // Rough circle
+      svg.appendChild(rc.circle(cx, cy, radius * 2, {
+        roughness: 1.8, stroke: COLORS.stroke, strokeWidth: 2.5,
+        fill: COLORS.fill, fillStyle: 'solid'
+      }));
+      text(svg, cx, cy + 7, String(i + 1), {
+        size: 22, weight: 700, color: COLORS.text, font: "'Kalam', cursive"
+      });
+      // Title below (or to the right for vertical)
+      if (dir === 'h') {
+        text(svg, cx, cy + radius + 22, it.title, {
+          size: 17, weight: 700, color: COLORS.text
+        });
+        if (it.sub) text(svg, cx, cy + radius + 44, it.sub, {
+          size: 13, weight: 400, color: COLORS.sub
+        });
+      } else {
+        text(svg, cx + radius + 14, cy - 2, it.title, {
+          anchor: 'start', size: 18, weight: 700, color: COLORS.text
+        });
+        if (it.sub) text(svg, cx + radius + 14, cy + 20, it.sub, {
+          anchor: 'start', size: 13, weight: 400, color: COLORS.sub
+        });
+      }
+      // Arrow to next item
+      if (i < N - 1) {
+        if (dir === 'h') {
+          const nextCx = cfg.x + radius + ((cfg.w || 800) - radius * 2) / Math.max(N-1, 1) * (i + 1);
+          svg.appendChild(rc.line(cx + radius + 2, cy, nextCx - radius - 2, cy, {
+            roughness: 1.8, stroke: COLORS.strokeSoft, strokeWidth: 2
+          }));
+          svg.appendChild(rc.polygon(
+            [[nextCx - radius - 8, cy - 6], [nextCx - radius - 2, cy], [nextCx - radius - 8, cy + 6]],
+            { roughness: 1.4, stroke: COLORS.strokeSoft, strokeWidth: 1.5, fill: COLORS.strokeSoft, fillStyle: 'solid' }
+          ));
+        } else {
+          svg.appendChild(rc.line(cx, cy + radius + 2, cx, cy + radius * 2 + stepGap - 2, {
+            roughness: 1.8, stroke: COLORS.strokeSoft, strokeWidth: 2
+          }));
+        }
+      }
+    });
+  }
+
+  // ---- Simple bar chart (horizontal bars) -------------------------------
+  // cfg: { x, y, w, barH?, gap?, items: [{label, value, max, note?}] }
+  function bars(svg, rc, cfg) {
+    const barH = cfg.barH || 32;
+    const gap = cfg.gap || 14;
+    const labelW = cfg.labelW || 140;
+    const chartW = cfg.w - labelW - 60;
+    const maxVal = cfg.max || Math.max(...cfg.items.map(it => it.value));
+    cfg.items.forEach((it, i) => {
+      const by = cfg.y + i * (barH + gap);
+      // Label to the left
+      text(svg, cfg.x + labelW - 10, by + barH / 2 + 6, it.label, {
+        anchor: 'end', size: 15, weight: 600, color: COLORS.text
+      });
+      // Bar
+      const bw = Math.max(4, chartW * (it.value / maxVal));
+      svg.appendChild(rc.rectangle(cfg.x + labelW, by, bw, barH, {
+        roughness: 1.6, stroke: COLORS.stroke, strokeWidth: 2,
+        fill: it.color || COLORS.fill, fillStyle: 'solid'
+      }));
+      // Value note at end of bar
+      const noteText = it.note != null ? it.note : String(it.value);
+      text(svg, cfg.x + labelW + bw + 8, by + barH / 2 + 6, noteText, {
+        anchor: 'start', size: 14, weight: 700, color: COLORS.strokeSoft,
+        font: "'JetBrains Mono', monospace"
+      });
+    });
+  }
+
+  // ---- Side-by-side comparison (two columns) ----------------------------
+  // cfg: { x, y, w, h, left: {title, items: [...]}, right: {...} }
+  function compare(svg, rc, cfg) {
+    const halfW = (cfg.w - 30) / 2;
+    ['left', 'right'].forEach((side, i) => {
+      const col = cfg[side];
+      const cx = cfg.x + (i === 0 ? 0 : halfW + 30);
+      // Column box
+      svg.appendChild(rc.rectangle(cx, cfg.y, halfW, cfg.h, {
+        roughness: 1.8, stroke: COLORS.stroke, strokeWidth: 2.5,
+        fill: i === 0 ? '#fef3f2' : COLORS.fill, fillStyle: 'solid'
+      }));
+      // Title header
+      text(svg, cx + halfW / 2, cfg.y + 32, col.title, {
+        size: 22, weight: 800, color: i === 0 ? '#dc2626' : COLORS.text
+      });
+      // Items
+      (col.items || []).forEach((item, j) => {
+        text(svg, cx + 16, cfg.y + 62 + j * 26, '• ' + item, {
+          anchor: 'start', size: 14, weight: 500,
+          color: i === 0 ? '#7f1d1d' : COLORS.sub
+        });
+      });
+    });
+  }
+
+  // ---- Annotation: arrow from a point to a text label -------------------
+  // cfg: { fromX, fromY, toX, toY, text }
+  function annotate(svg, rc, cfg) {
+    // Curved path
+    const ctrlX = (cfg.fromX + cfg.toX) / 2;
+    const ctrlY = cfg.fromY - 30;
+    const p = el('path', {
+      d: `M ${cfg.fromX} ${cfg.fromY} Q ${ctrlX} ${ctrlY} ${cfg.toX} ${cfg.toY}`,
+      fill: 'none', stroke: COLORS.strokeSoft, 'stroke-width': '2', 'stroke-dasharray': '5 3'
+    });
+    svg.appendChild(p);
+    // Small arrowhead at destination
+    const dx = cfg.toX - ctrlX, dy = cfg.toY - ctrlY;
+    const len = Math.sqrt(dx*dx + dy*dy);
+    const ux = dx/len, uy = dy/len;
+    const hx = cfg.toX - 10*ux, hy = cfg.toY - 10*uy;
+    svg.appendChild(rc.polygon([
+      [hx - 4*uy, hy + 4*ux],
+      [cfg.toX, cfg.toY],
+      [hx + 4*uy, hy - 4*ux]
+    ], { roughness: 1.3, stroke: COLORS.strokeSoft, fill: COLORS.strokeSoft, fillStyle: 'solid' }));
+    // Label at from side
+    text(svg, cfg.fromX, cfg.fromY - 8, cfg.text, {
+      size: 17, weight: 700, color: COLORS.strokeSoft, font: "'Kalam', cursive"
+    });
+  }
+
+  // ---- Venn diagram (two or three overlapping circles) ------------------
+  // cfg: { x, y, sets: [{label, fill?}, ...], r? }
+  function venn(svg, rc, cfg) {
+    const R = cfg.r || 100;
+    const N = cfg.sets.length;
+    const overlap = R * 0.7;
+    cfg.sets.forEach((s, i) => {
+      const cx = cfg.x + i * overlap;
+      svg.appendChild(rc.circle(cx, cfg.y, R * 2, {
+        roughness: 1.8, stroke: COLORS.stroke, strokeWidth: 2.5,
+        fill: s.fill || (i === 0 ? 'rgba(139,92,246,0.15)' : 'rgba(236,72,153,0.15)'),
+        fillStyle: 'solid'
+      }));
+      // Label positioned away from overlap
+      const lx = i === 0 ? cx - R * 0.6 : cx + R * 0.6;
+      text(svg, lx, cfg.y + 5, s.label, {
+        size: 18, weight: 700, color: COLORS.text
+      });
+    });
+  }
+
+  // ---- Hand-drawn table (rows + columns) --------------------------------
+  // cfg: { x, y, cols: [{title, w}], rows: [[cell, cell, ...]] }
+  function table(svg, rc, cfg) {
+    const rowH = cfg.rowH || 36;
+    const headerH = cfg.headerH || 42;
+    let totalW = 0;
+    cfg.cols.forEach(c => totalW += c.w);
+    const totalH = headerH + cfg.rows.length * rowH;
+    // Outer rect
+    svg.appendChild(rc.rectangle(cfg.x, cfg.y, totalW, totalH, {
+      roughness: 1.4, stroke: COLORS.stroke, strokeWidth: 2.5,
+      fill: COLORS.fill, fillStyle: 'solid'
+    }));
+    // Header row background darker
+    svg.appendChild(rc.rectangle(cfg.x, cfg.y, totalW, headerH, {
+      roughness: 1.2, stroke: COLORS.stroke, strokeWidth: 1.5,
+      fill: '#e9d5ff', fillStyle: 'solid'
+    }));
+    // Column dividers
+    let curX = cfg.x;
+    cfg.cols.forEach((c, i) => {
+      if (i > 0) {
+        svg.appendChild(rc.line(curX, cfg.y, curX, cfg.y + totalH, {
+          roughness: 1.4, stroke: COLORS.stroke, strokeWidth: 1
+        }));
+      }
+      // Header text
+      text(svg, curX + c.w / 2, cfg.y + headerH / 2 + 7, c.title, {
+        size: 15, weight: 800, color: COLORS.text
+      });
+      curX += c.w;
+    });
+    // Row dividers + cell content
+    cfg.rows.forEach((row, ri) => {
+      const ry = cfg.y + headerH + ri * rowH;
+      if (ri > 0) {
+        svg.appendChild(rc.line(cfg.x, ry, cfg.x + totalW, ry, {
+          roughness: 1.2, stroke: COLORS.stroke, strokeWidth: 0.75
+        }));
+      }
+      let colX = cfg.x;
+      cfg.cols.forEach((c, ci) => {
+        const cell = row[ci] || '';
+        text(svg, colX + c.w / 2, ry + rowH / 2 + 5, cell, {
+          size: 13, weight: 500, color: COLORS.sub
+        });
+        colX += c.w;
+      });
+    });
+  }
+
   // ---- rough.js convenience ---------------------------------------------
   function rc(svg) {
     if (!window.rough) throw new Error('rough.js not loaded yet');
@@ -220,6 +454,7 @@
 
   // Expose API
   window.sketch = {
-    COLORS, el, text, crosshair, box, circle, arrow, note, rc
+    COLORS, el, text, crosshair, box, circle, arrow, note, rc,
+    stack, numberedSteps, bars, compare, annotate, venn, table
   };
 })();

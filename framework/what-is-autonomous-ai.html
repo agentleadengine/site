@@ -238,6 +238,32 @@
 <h2>The four parts every autonomous AI needs.</h2>
 <p>An autonomous system is not one thing. It's four things stacked on top of each other. Most people think "AI" means the first one. It actually needs all four. If any one is missing, the whole thing falls apart, and troubleshooting is just figuring out which one failed.</p>
 
+<div class="sketch" data-viewbox="0 0 780 340" id="dg-four-layers">
+  <svg></svg>
+  <div class="sketch-caption">~ the four layers, stacked ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-four-layers');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.stack(svg, rc, {
+    x: 100, y: 25, w: 580, layerH: 68,
+    layers: [
+      { label: '4. Permissions', sub: 'what the agent can do without asking', color: '#fef3c7' },
+      { label: '3. Harness',     sub: 'the runtime gluing everything together', color: '#fce7f3' },
+      { label: '2. Tools',       sub: 'actions the AI can call (the hands)',    color: '#dbeafe' },
+      { label: '1. Model',       sub: 'the brain (Claude, GPT, etc.)',           color: '#d1fae5' }
+    ]
+  });
+  sketch.note(svg, 60, 60,  'top layer', { size: 15, color: '#8b5cf6' });
+  sketch.note(svg, 60, 316, 'foundation', { size: 15, color: '#8b5cf6' });
+  sketch.annotate(svg, rc, { fromX: 30, fromY: 50, toX: 90, toY: 45, text: '' });
+});
+</script>
+
 <h3>1. The model. The brain.</h3>
 <p>The model is the large language model doing the thinking, the Claude, GPT, or Gemini you've heard of. It's brilliant at reading, writing, reasoning, and planning. But it's <em>just</em> that: a brain in a jar. It can produce text. It cannot, on its own, send an email or open a file or click a button. It's like having a genius in a room with no internet, no phone, no pen, no hands. Incredibly smart, but it can't actually do anything outside the room.</p>
 
