@@ -164,9 +164,12 @@ What's left:
 ### Deep articles: completed subsections
 
 - `expertise/seo/foundations/` — 10/10 ✅ (2026-04-19)
-  - what-is-seo, how-search-engines-work, ranking-factors,
-    seo-vs-sem-vs-smo, organic-vs-paid, black-white-gray-hat,
-    google-algorithm-history, core-web-vitals, eeat, seo-team-roles
+- `expertise/seo/keywords/` — 10/10 ✅ (2026-04-19)
+- `expertise/seo/on-page/` — 15/15 ✅ (2026-04-19)
+- `expertise/seo/technical/` — 15/15 ✅ (2026-04-19)
+
+Running total: 50 / ~486 expertise deep articles.
+Next: `expertise/seo/links/` (10 articles).
 
 ## Site status: 100% of everything above the article layer is done.
 
