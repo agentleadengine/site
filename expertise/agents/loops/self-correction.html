@@ -219,46 +219,102 @@
 <a href="../../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="../foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="../foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="../foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="../loops/react.html">ReAct</a></li><li><a href="../loops/tool-use.html">Tool use</a></li><li><a href="../loops/planning.html">Planning loops</a></li><li><a href="../loops/reflection.html">Reflection</a></li><li><a href="../loops/self-correction.html" class="active">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="../tools/tool-design.html">Tool design</a></li><li><a href="../tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="../tools/error-handling.html">Tool error handling</a></li><li><a href="../tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="../tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="../memory/short-term.html">Short-term memory</a></li><li><a href="../memory/long-term.html">Long-term memory</a></li><li><a href="../memory/episodic.html">Episodic memory</a></li><li><a href="../memory/procedural.html">Procedural memory</a></li><li><a href="../memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="../multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="../multi/peer-agents.html">Peer agents</a></li><li><a href="../multi/debate.html">Debate + consensus</a></li><li><a href="../multi/handoffs.html">Agent handoffs</a></li><li><a href="../multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="../eval/why-eval-agents.html">Why eval agents</a></li><li><a href="../eval/task-completion.html">Task completion</a></li><li><a href="../eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="../eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="../prod/observability.html">Observability + tracing</a></li><li><a href="../prod/cost-control.html">Cost control</a></li><li><a href="../prod/latency.html">Latency optimization</a></li><li><a href="../prod/safety.html">Safety + guardrails</a></li><li><a href="../prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/research-agent.html">Research agent</a></li><li><a href="../patterns/coding-agent.html">Coding agent</a></li><li><a href="../patterns/customer-support.html">Customer support agent</a></li><li><a href="../patterns/data-analyst.html">Data analyst agent</a></li><li><a href="../patterns/browser-agent.html">Browser agent</a></li><li><a href="../patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="../frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="../frameworks/langgraph.html">LangGraph</a></li><li><a href="../frameworks/crewai.html">CrewAI</a></li><li><a href="../frameworks/autogen.html">AutoGen</a></li><li><a href="../frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>Self-correction</span></div><h1 class="title">Self-correction</h1><div class="article-meta"><span>📖 3 min read</span><span>Updated 2026-04-19</span></div>
-<p class="lede">Self-correction is the agent detecting its own errors and fixing them without human intervention. Run a test, see it fail, fix the code, test again. Write a response, notice factual errors, rewrite. It's an underused pattern that dramatically improves reliability.</p>
+<p class="lede">Self-correction is when the agent detects its own errors and fixes them without a human in the loop. It needs a <em>verifier</em>: something outside the model that can say "this is wrong, and here's why." Run code → fail test → fix code → pass test. Draft claim → fact-check against source → rewrite if unsupported. The pattern is simple but the power is enormous. It's the difference between an agent that gives up at the first stumble and one that actually gets things done.</p>
 
-<h2>What triggers self-correction</h2>
-<ul>
-<li>Tool returns an error</li>
-<li>Test suite fails</li>
-<li>Verification check fails (claim not supported by context, code doesn't compile)</li>
-<li>External judge/critic flags the output</li>
-<li>User feedback indicates issue</li>
-</ul>
+<h2>The essential ingredient: a verifier</h2>
+<p>Self-correction is not the same as reflection. Reflection asks the model to critique itself (subjective). Self-correction runs an <em>objective</em> check: does the code compile? Do the tests pass? Is the claim backed by the source? Without a verifier outside the model, the model doesn't know it's wrong and can't correct.</p>
+<p>Verifiers are the secret weapon of good agents. If you can find or build one for your task, you can self-correct. If you can't, you're stuck with reflection or human review.</p>
 
 <h2>The correction loop</h2>
-<ol>
-<li>Agent produces output</li>
-<li>Verification step: is this output actually correct?</li>
-<li>If no: capture specific failure (error message, failed test, specific wrong claim)</li>
-<li>Agent reasons about the failure: "the test failed because X, so I need to change Y"</li>
-<li>Agent produces corrected output</li>
-<li>Verify again; iterate until pass or give up</li>
-</ol>
+<div class="sketch" data-viewbox="0 0 900 300"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 300);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Self-correction with a verifier');
+  sketch.box(svg, rc, {x: 60, y: 80, w: 180, h: 80, title: 'Produce', sub: 'first attempt'});
+  sketch.box(svg, rc, {x: 300, y: 80, w: 180, h: 80, title: 'Verify', sub: 'external check'});
+  sketch.box(svg, rc, {x: 540, y: 80, w: 180, h: 80, title: 'Read error', sub: 'agent reasons about it'});
+  sketch.box(svg, rc, {x: 300, y: 200, w: 180, h: 70, title: 'Fix + retry', sub: 'back to verify'});
+  sketch.arrow(svg, rc, {x1: 240, x2: 300, y: 120, bidirectional: false});
+  sketch.arrow(svg, rc, {x1: 480, x2: 540, y: 120, bidirectional: false, label: 'fails'});
+  sketch.arrow(svg, rc, {x1: 630, x2: 390, y1: 160, y2: 200, bidirectional: false});
+  sketch.arrow(svg, rc, {x1: 390, x2: 390, y1: 200, y2: 160, bidirectional: false, label: 'retry'});
+  sketch.note(svg, 760, 110, 'stop after 3–5', {size: 13});
+});
+</script>
 
-<h2>Self-correction in coding</h2>
-<p>A coding agent writes code, runs tests, sees failures, reads error messages, fixes. This is why coding agents work: the test suite is the verifier, and the error trace is rich enough to act on.</p>
-
-<h2>Self-correction in prose</h2>
-<p>Harder. No automatic verifier for "is this essay good." Requires either reflection (see previous page), an LLM-as-judge, or user feedback.</p>
-
-<h2>Self-correction in research</h2>
-<p>Agent says "X is true." Verifier checks: is this supported by retrieved context? If no, agent must re-search or hedge the claim.</p>
-
-<h2>The stop condition</h2>
-<p>Self-correction can loop forever if the agent can't actually fix the problem. Hard limits:</p>
+<h2>The triggers</h2>
 <ul>
-<li>Max 3-5 correction attempts per issue</li>
-<li>Cost budget</li>
-<li>Escalate to human if still failing</li>
+<li><strong>Tool returned an error.</strong> API 500, rate limit, bad response.</li>
+<li><strong>Test suite failed.</strong> The coding agent's daily bread.</li>
+<li><strong>Type check or compile error.</strong> Code wouldn't even run.</li>
+<li><strong>Claim unsupported.</strong> Agent wrote "X is true," verifier couldn't find X in the retrieved context.</li>
+<li><strong>Schema violation.</strong> Output didn't match expected shape.</li>
+<li><strong>External judge flagged it.</strong> LLM-as-judge or rule engine said no.</li>
+</ul>
+
+<h2>A worked example: coding agent</h2>
+<ol>
+<li><strong>Produce:</strong> agent writes <code>def divide(a, b): return a / b</code>.</li>
+<li><strong>Verify:</strong> run the test suite. Test <code>divide(10, 0)</code> fails with <code>ZeroDivisionError</code>.</li>
+<li><strong>Agent reads error:</strong> "The test expected the function to return None when b is 0, but it raised an exception. I need to handle b == 0."</li>
+<li><strong>Fix:</strong> <code>def divide(a, b): return None if b == 0 else a / b</code>.</li>
+<li><strong>Verify again:</strong> all tests pass. Done.</li>
+</ol>
+<p>This is why coding agents work: the test suite is a near-perfect verifier, and the error message is a rich signal that tells the agent exactly what to change. Take away the tests and you take away the feedback loop; the agent starts fumbling.</p>
+
+<h2>Self-correction by task type</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Can you build a verifier for your task?');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Task', w: 220},
+    {title: 'Verifier', w: 340},
+    {title: 'Self-correction quality', w: 240}
+  ], rows: [
+    ['Code generation', 'Test suite + compiler', 'Excellent'],
+    ['SQL queries', 'Run query, check result shape', 'Very good'],
+    ['Structured extraction', 'JSON schema + validation', 'Very good'],
+    ['Research claims', 'Source retrieval + grounding check', 'Good'],
+    ['Prose writing', 'LLM-as-judge (weaker signal)', 'Moderate'],
+    ['Creative tasks', 'Usually no verifier', 'Skip self-correction']
+  ]});
+});
+</script>
+
+<h2>Stop conditions</h2>
+<p>Self-correction can spiral. A model that can't fix a problem will iterate on the same wrong answer forever. Hard limits:</p>
+<ul>
+<li>Max 3–5 correction attempts per issue.</li>
+<li>If the new output is essentially the same as the old, stop, the model is stuck.</li>
+<li>Cost budget across the whole correction sequence.</li>
+<li>Escalate to a human or a stronger model after N failures.</li>
 </ul>
 
 <h2>The quality ceiling</h2>
-<p>Self-correction only works if the model is <em>capable</em> of producing a correct answer. Fundamentally hard problems (genuinely novel reasoning, specialized domain knowledge the model lacks) don't yield to self-correction. The model will iterate on the same wrong answer.</p>
+<p>Self-correction only works when the model is <em>capable</em> of producing the right answer but drifted from it. For problems beyond the model's capability (novel research, niche domain expertise the model doesn't have), self-correction doesn't help. The model just repeats variations of the wrong answer. You'll see this in traces: the test keeps failing, the fixes keep missing the real issue, and you're burning cost. Have a stop rule, escalate to a stronger model, or break the task into smaller pieces the current model can handle.</p>
+
+<h2>Pitfalls</h2>
+<ul>
+<li><strong>No verifier, calling it self-correction anyway.</strong> If there's no external check, you have reflection, not self-correction.</li>
+<li><strong>Vague error messages.</strong> "Failed" doesn't help the model correct. "Expected list[int], got list[str] at index 3" does.</li>
+<li><strong>No cap.</strong> Model runs in circles, costs stack.</li>
+<li><strong>Same-wrong-answer loop.</strong> Detect it and halt. Not every problem yields to more iterations.</li>
+<li><strong>Hiding verifier failures from the model.</strong> Show the model the actual error text, not a paraphrase.</li>
+</ul>
+
+<h2>What to do with this</h2>
+<ul>
+<li>For your agent, ask: can I build a verifier? Tests, schemas, grounding checks, rule engines. Any of them unlocks self-correction.</li>
+<li>Read <a href="../tools/error-handling.html">tool error handling</a> for the return-structured-errors pattern that makes this work.</li>
+<li>Read <a href="../prod/human-in-loop.html">human-in-the-loop</a> for what happens when self-correction gives up.</li>
+</ul>
 <div class="prev-next"><a href="reflection.html" class="prev"><div class="label">← Previous</div><div class="title">Reflection</div></a><a href="../tools/tool-design.html" class="next"><div class="label">Next →</div><div class="title">Tool design</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

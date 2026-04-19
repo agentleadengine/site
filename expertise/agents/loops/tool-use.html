@@ -219,59 +219,121 @@
 <a href="../../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="../foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="../foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="../foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="../loops/react.html">ReAct</a></li><li><a href="../loops/tool-use.html" class="active">Tool use</a></li><li><a href="../loops/planning.html">Planning loops</a></li><li><a href="../loops/reflection.html">Reflection</a></li><li><a href="../loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="../tools/tool-design.html">Tool design</a></li><li><a href="../tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="../tools/error-handling.html">Tool error handling</a></li><li><a href="../tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="../tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="../memory/short-term.html">Short-term memory</a></li><li><a href="../memory/long-term.html">Long-term memory</a></li><li><a href="../memory/episodic.html">Episodic memory</a></li><li><a href="../memory/procedural.html">Procedural memory</a></li><li><a href="../memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="../multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="../multi/peer-agents.html">Peer agents</a></li><li><a href="../multi/debate.html">Debate + consensus</a></li><li><a href="../multi/handoffs.html">Agent handoffs</a></li><li><a href="../multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="../eval/why-eval-agents.html">Why eval agents</a></li><li><a href="../eval/task-completion.html">Task completion</a></li><li><a href="../eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="../eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="../prod/observability.html">Observability + tracing</a></li><li><a href="../prod/cost-control.html">Cost control</a></li><li><a href="../prod/latency.html">Latency optimization</a></li><li><a href="../prod/safety.html">Safety + guardrails</a></li><li><a href="../prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/research-agent.html">Research agent</a></li><li><a href="../patterns/coding-agent.html">Coding agent</a></li><li><a href="../patterns/customer-support.html">Customer support agent</a></li><li><a href="../patterns/data-analyst.html">Data analyst agent</a></li><li><a href="../patterns/browser-agent.html">Browser agent</a></li><li><a href="../patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="../frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="../frameworks/langgraph.html">LangGraph</a></li><li><a href="../frameworks/crewai.html">CrewAI</a></li><li><a href="../frameworks/autogen.html">AutoGen</a></li><li><a href="../frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>Tool use</span></div><h1 class="title">Tool use</h1><div class="article-meta"><span>📖 4 min read</span><span>Updated 2026-04-19</span></div>
-<p class="lede">Tool use is how agents affect anything outside their own reasoning. A tool is a function, with a name, description, parameter schema, that the LLM can request to call. The orchestrator executes it and returns the result.</p>
+<p class="lede">Tool use is how an agent does anything outside its own head. Without tools, the model just talks. With tools, it can search, query, send, create, delete, run code. A tool is a function you register with the model. It has a name, a description, and a schema for its arguments. The model requests a call, your code runs the call, the result goes back. That's the whole mechanic. Getting it right is 80% of the work of building a good agent.</p>
 
-<h2>Modern tool-use APIs</h2>
-<p>Every major LLM provider offers native tool-use support:</p>
-<ul>
-<li><strong>Anthropic Claude</strong>, tools defined in API call, model emits structured tool_use blocks</li>
-<li><strong>OpenAI</strong>, function calling, now "tools" with JSON schema</li>
-<li><strong>Google Gemini</strong>, function calling with FunctionDeclaration objects</li>
-</ul>
+<h2>The mental model</h2>
+<p>You're not giving the model access to your functions. You're giving it a <em>menu</em>. The menu lists each tool's name, what it does, and what arguments it needs. The model picks a dish. You cook it. You hand back the plate. The model decides what to do with it.</p>
+<p>The model never sees your code. It only sees what's on the menu. If your menu is confusing, the model orders the wrong thing. If your menu is precise, the model orders well.</p>
 
-<p>All three follow the same basic shape: you provide tool definitions, the model returns structured tool calls, your code executes them and feeds results back.</p>
-
-<h2>Anatomy of a tool definition</h2>
+<h2>Anatomy of a tool</h2>
+<div class="sketch" data-viewbox="0 0 900 300"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 300);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'What a tool looks like to the model');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Field', w: 200},
+    {title: 'What it is', w: 600}
+  ], rows: [
+    ['name', 'Short, specific. search_web not do_stuff.'],
+    ['description', 'One or two sentences. When to call, what it returns.'],
+    ['input schema', 'JSON schema: types, required fields, enums.'],
+    ['return shape', 'Not in the spec, but implied. Keep it consistent.']
+  ]});
+});
+</script>
 <pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
 {
   "name": "search_web",
-  "description": "Search the web for recent information. Returns top 5 results with snippets.",
+  "description": "Search the web for recent information. Returns top 5 results with title, url, snippet.",
   "input_schema": {
     "type": "object",
     "properties": {
-      "query": {"type": "string", "description": "search query"},
-      "recency": {"type": "string", "enum": ["day", "week", "month"]}
+      "query": {"type": "string", "description": "what to search for"},
+      "recency": {"type": "string", "enum": ["day", "week", "month"], "description": "how recent results must be"}
     },
     "required": ["query"]
   }
-}
-</pre>
+}</pre>
 
-<h2>The loop</h2>
-<ol>
-<li>Agent receives user prompt + tool definitions</li>
-<li>Agent responds with either final answer or tool_use block</li>
-<li>If tool_use: orchestrator calls actual function with given args</li>
-<li>Orchestrator sends result back to agent as tool_result</li>
-<li>Repeat until agent gives final answer</li>
-</ol>
+<h2>The five-step tool-use loop</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'One turn, five things happen');
+  sketch.numberedSteps(svg, rc, {direction: 'h', x: 30, y: 80, w: 840, items: [
+    {title: 'Register tools', sub: 'send specs + user prompt'},
+    {title: 'Model picks', sub: 'returns tool_use block'},
+    {title: 'You validate', sub: 'args match schema?'},
+    {title: 'You execute', sub: 'run the function'},
+    {title: 'Send result back', sub: 'as tool_result'}
+  ]});
+});
+</script>
 
-<h2>What the LLM sees</h2>
-<p>The model sees your tool name, description, and parameter schema. That's it. It doesn't see your code. Everything the LLM needs to know about when to call the tool, how to call it, and what it returns must be in the description.</p>
+<h2>What the big three APIs look like</h2>
+<div class="sketch" data-viewbox="0 0 900 240"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[2];
+  const svg = sketch.createSvg(el, 900, 240);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Tool use across providers');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Provider', w: 200},
+    {title: 'API shape', w: 600}
+  ], rows: [
+    ['Anthropic Claude', 'tools param, model emits tool_use blocks, you return tool_result'],
+    ['OpenAI', 'tools param, function calling, assistant emits tool_calls, you return tool role messages'],
+    ['Google Gemini', 'FunctionDeclarations, model emits function_call parts, you send function_response']
+  ]});
+});
+</script>
+<p>Different names, same pattern. Write your orchestrator against a thin adapter and you can swap providers without rewriting the loop.</p>
 
 <h2>Parallel tool calls</h2>
-<p>Modern APIs support calling multiple tools in a single step. "Search these three things at once." Saves latency when tools are independent.</p>
+<p>Modern APIs let the model request multiple tools in one turn. "Search for X, look up Y, fetch Z." Your code runs them in parallel and returns all three results at once. This is a huge latency win for independent calls. If two tools have no dependency, let the model batch them.</p>
 
-<h2>The error-return pattern</h2>
-<p>When a tool fails (network error, invalid args, no results), return a structured error the LLM can reason about:</p>
+<h2>A worked example: "Which of my last 3 support tickets is still open?"</h2>
+<ol>
+<li><strong>Model sees:</strong> user prompt + 4 tool specs (<code>list_tickets</code>, <code>get_ticket</code>, <code>update_ticket</code>, <code>escalate</code>).</li>
+<li><strong>Model requests:</strong> <code>list_tickets(user_id: "me", limit: 3, order_by: "created_desc")</code>.</li>
+<li><strong>You run it, return:</strong> <code>[{id: 991, status: "closed"}, {id: 992, status: "open"}, {id: 993, status: "closed"}]</code>.</li>
+<li><strong>Model thinks:</strong> only 992 is open, so the answer is one.</li>
+<li><strong>Model returns:</strong> final answer text. No more tool calls needed.</li>
+</ol>
+<p>The model never called <code>get_ticket</code>, <code>update_ticket</code>, or <code>escalate</code>. It picked the one tool that answered the question. Good menu → good choice.</p>
+
+<h2>Errors: return them, don't throw them</h2>
+<p>When a tool fails, don't crash the loop. Return a structured error <em>as the tool result</em>:</p>
 <pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
 {
   "error": "rate_limit",
   "message": "Rate limited. Try again in 60 seconds.",
   "retry_after": 60
-}
-</pre>
-<p>The agent can see the error type and decide whether to retry, pivot, or ask the user.</p>
+}</pre>
+<p>Now the model can read the error and decide: retry, pivot to a different tool, or tell the user. If you throw instead, the agent just dies. If you return a plain string like "something broke," the model has nothing to reason about. Structured errors let the agent recover.</p>
+
+<h2>Pitfalls</h2>
+<ul>
+<li><strong>Too many tools.</strong> The model has to pick right from a list of N. Every new tool makes the picking harder. Fewer, sharper tools beat a kitchen sink.</li>
+<li><strong>Vague names.</strong> <code>get_data()</code> tells the model nothing. <code>get_customer_orders(customer_id)</code> is unmistakable.</li>
+<li><strong>Vague descriptions.</strong> "Searches stuff" → the model will call it when it shouldn't. "Searches the web for news articles from the last week" → the model knows exactly when to reach for it.</li>
+<li><strong>No validation.</strong> Model hallucinates an argument; your code gets garbage. Validate against the schema before executing.</li>
+<li><strong>Overlapping tools.</strong> Two tools that do similar things confuse the model. Merge them or make the difference explicit in the descriptions.</li>
+</ul>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Read <a href="../tools/tool-design.html">tool design</a> and <a href="../tools/tool-descriptions.html">tool descriptions matter</a> for the craft of writing good tools.</li>
+<li>Read <a href="../tools/error-handling.html">tool error handling</a> to get the recovery patterns right.</li>
+<li>Check out <a href="../tools/parallel-tools.html">parallel tool calls</a> for latency wins.</li>
+</ul>
 <div class="prev-next"><a href="react.html" class="prev"><div class="label">← Previous</div><div class="title">ReAct</div></a><a href="planning.html" class="next"><div class="label">Next →</div><div class="title">Planning loops</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

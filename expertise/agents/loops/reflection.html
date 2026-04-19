@@ -219,46 +219,116 @@
 <a href="../../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="../foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="../foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="../foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="../loops/react.html">ReAct</a></li><li><a href="../loops/tool-use.html">Tool use</a></li><li><a href="../loops/planning.html">Planning loops</a></li><li><a href="../loops/reflection.html" class="active">Reflection</a></li><li><a href="../loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="../tools/tool-design.html">Tool design</a></li><li><a href="../tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="../tools/error-handling.html">Tool error handling</a></li><li><a href="../tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="../tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="../memory/short-term.html">Short-term memory</a></li><li><a href="../memory/long-term.html">Long-term memory</a></li><li><a href="../memory/episodic.html">Episodic memory</a></li><li><a href="../memory/procedural.html">Procedural memory</a></li><li><a href="../memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="../multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="../multi/peer-agents.html">Peer agents</a></li><li><a href="../multi/debate.html">Debate + consensus</a></li><li><a href="../multi/handoffs.html">Agent handoffs</a></li><li><a href="../multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="../eval/why-eval-agents.html">Why eval agents</a></li><li><a href="../eval/task-completion.html">Task completion</a></li><li><a href="../eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="../eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="../prod/observability.html">Observability + tracing</a></li><li><a href="../prod/cost-control.html">Cost control</a></li><li><a href="../prod/latency.html">Latency optimization</a></li><li><a href="../prod/safety.html">Safety + guardrails</a></li><li><a href="../prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/research-agent.html">Research agent</a></li><li><a href="../patterns/coding-agent.html">Coding agent</a></li><li><a href="../patterns/customer-support.html">Customer support agent</a></li><li><a href="../patterns/data-analyst.html">Data analyst agent</a></li><li><a href="../patterns/browser-agent.html">Browser agent</a></li><li><a href="../patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="../frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="../frameworks/langgraph.html">LangGraph</a></li><li><a href="../frameworks/crewai.html">CrewAI</a></li><li><a href="../frameworks/autogen.html">AutoGen</a></li><li><a href="../frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>Reflection</span></div><h1 class="title">Reflection</h1><div class="article-meta"><span>📖 3 min read</span><span>Updated 2026-04-19</span></div>
-<p class="lede">Reflection: after the agent produces an answer or a plan, it's prompted to critique itself. "Is this correct? Is anything missing? What would I change?" The revised answer is often meaningfully better than the first.</p>
+<p class="lede">Reflection is the simplest quality boost you can add to an agent. The pattern: after the agent produces an answer, you run a second LLM call that critiques the answer. "Is this correct? Is anything missing? What would you change?" The agent reads the critique, revises, returns. That one extra step routinely buys 5–20% quality on hard tasks, at the cost of roughly doubling the spend. For anything where the answer matters more than the dollar, it's a cheap trade.</p>
 
 <h2>The pattern</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Reflection: draft → critique → revise');
+  sketch.numberedSteps(svg, rc, {direction: 'h', x: 30, y: 80, w: 840, items: [
+    {title: 'Draft', sub: 'first answer'},
+    {title: 'Critique', sub: 'find issues'},
+    {title: 'Revise', sub: 'fix them'},
+    {title: 'Done', sub: 'or loop again'}
+  ]});
+});
+</script>
 <ol>
-<li>Agent produces initial output (answer, plan, code, whatever)</li>
-<li>Reflection step: another LLM call asks "review this output, find issues, suggest improvements"</li>
-<li>Revision step: agent produces a new version incorporating the reflection</li>
-<li>Optional: loop reflection-revision until satisfied or max iterations</li>
+<li><strong>Draft:</strong> the agent produces whatever it would normally produce.</li>
+<li><strong>Critique:</strong> a second LLM call gets the draft and a critique prompt. It lists problems.</li>
+<li><strong>Revise:</strong> a third LLM call takes the draft + critique and produces v2.</li>
+<li><strong>Stop</strong> (or loop 1–2 more times if the task is high-stakes).</li>
 </ol>
 
-<h2>When reflection wins</h2>
-<ul>
-<li>Code generation (catches bugs before shipping)</li>
-<li>Complex reasoning (catches logic errors)</li>
-<li>Writing tasks (catches tone, factual, structural issues)</li>
-<li>Plans (identifies missed steps or bad assumptions)</li>
-</ul>
+<h2>Why this works</h2>
+<p>The model wrote the draft with one set of constraints in its head. When you ask it to critique, you're putting it in a different mental mode: adversarial, look-for-errors, grade-this. In that mode it catches things it missed the first time. It's the same trick editors use on their own writing: do a draft, take a break, re-read as a stranger.</p>
 
-<h2>When it doesn't</h2>
-<ul>
-<li>Simple tasks where the first answer is fine</li>
-<li>Cost-sensitive high-volume workflows</li>
-<li>Latency-critical apps</li>
-<li>When the model keeps producing the same "reflection" (it's not learning from itself)</li>
-</ul>
+<h2>A worked example: code generation</h2>
+<p><strong>Draft:</strong></p>
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
+def get_avg(nums):
+    return sum(nums) / len(nums)</pre>
+<p><strong>Critique prompt:</strong> "Review this function. List edge cases it doesn't handle."</p>
+<p><strong>Critique output:</strong> "Empty list → ZeroDivisionError. Non-numeric input → TypeError. No type hints or docstring."</p>
+<p><strong>Revise:</strong></p>
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
+def get_avg(nums: list[float]) -> float:
+    """Return the mean of a list of numbers. Returns 0.0 if the list is empty."""
+    if not nums:
+        return 0.0
+    return sum(nums) / len(nums)</pre>
+<p>Same model, same problem. First draft is fragile. Second draft ships. The difference is the middle step.</p>
+
+<h2>When reflection pays off</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Is it worth 2× the cost?');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Worth it', items: [
+      'code you\'ll ship',
+      'complex multi-step reasoning',
+      'plans before execution',
+      'writing that will be published',
+      'anything high-stakes'
+    ]},
+    right: {title: 'Skip it', items: [
+      'simple lookups',
+      'chat replies to casual questions',
+      'high-volume + cost-sensitive flows',
+      'latency-critical UIs',
+      'tasks the model nails first try'
+    ]}
+  });
+});
+</script>
 
 <h2>Self vs separate critic</h2>
-<p>Two approaches:</p>
+<p>Two flavors of reflection:</p>
 <ul>
-<li><strong>Self-reflection:</strong> same model critiques its own output. Cheaper, faster. Limited by the model's self-awareness.</li>
-<li><strong>Separate critic:</strong> a different model (or different prompt persona) critiques. More expensive. Often produces meaningfully different feedback.</li>
+<li><strong>Self-reflection:</strong> the same model, new prompt, critiques its own output. Cheap, fast. Limited by the model's self-awareness; models have blind spots they keep missing.</li>
+<li><strong>Separate critic:</strong> a different model (or at minimum a very different persona prompt) critiques. More expensive but surfaces genuinely different feedback.</li>
 </ul>
-
-<p>For high-stakes outputs (production code, published content), separate critic is worth the cost.</p>
+<p>For real production code or published writing, pay for the separate critic. For internal tools, self-reflection is usually enough.</p>
 
 <h2>The empirical gain</h2>
-<p>On standard benchmarks, reflection improves output quality by 5-20% over no reflection. Bigger gains on complex reasoning tasks, smaller on factual retrieval.</p>
+<p>Published benchmarks show reflection adds 5–20% quality depending on the task. The gains concentrate in:</p>
+<ul>
+<li>Tasks with verifiable correctness (code, math) → biggest gains</li>
+<li>Tasks with multi-step reasoning → meaningful gains</li>
+<li>Factual retrieval from context → small gains (model usually gets it right once)</li>
+<li>Simple formatting tasks → essentially zero gain</li>
+</ul>
 
-<h2>Infinite reflection loops</h2>
-<p>Without a stop condition, reflection can run forever. Cap at 2-3 iterations and accept diminishing returns.</p>
+<h2>Stop conditions</h2>
+<p>Reflection can loop forever if you let it. Always cap:</p>
+<ul>
+<li>Max 2–3 reflection iterations. Diminishing returns after that.</li>
+<li>If the revision is essentially identical to the draft, stop. The model ran out of changes to make.</li>
+<li>If the critique says "no issues," stop.</li>
+</ul>
+
+<h2>Pitfalls</h2>
+<ul>
+<li><strong>Reflection on everything.</strong> You doubled your bill for no quality gain on simple tasks. Apply reflection only where it earns its cost.</li>
+<li><strong>Vague critique prompts.</strong> "Review this" produces generic feedback. "Find edge cases. Check types. Check for off-by-one errors" produces specific, actionable feedback.</li>
+<li><strong>Same-blindspot reflection.</strong> If the model missed something in the draft because of a systematic blindspot, it'll miss it in the critique too. Switch models or change persona.</li>
+<li><strong>Losing the draft.</strong> Debug-tip: save draft, critique, and revision separately in your trace. When reflection breaks, you need to see which step went wrong.</li>
+</ul>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Add one reflection pass to your highest-stakes agent output. Measure: does the eval set improve?</li>
+<li>Read <a href="self-correction.html">self-correction</a>, which is reflection with an external verifier.</li>
+<li>Read <a href="../multi/debate.html">debate + consensus</a> for the multi-agent version of the same idea.</li>
+</ul>
 <div class="prev-next"><a href="planning.html" class="prev"><div class="label">← Previous</div><div class="title">Planning loops</div></a><a href="self-correction.html" class="next"><div class="label">Next →</div><div class="title">Self-correction</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

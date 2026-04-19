@@ -219,52 +219,115 @@
 <a href="../../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="../foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="../foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="../foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="../loops/react.html">ReAct</a></li><li><a href="../loops/tool-use.html">Tool use</a></li><li><a href="../loops/planning.html" class="active">Planning loops</a></li><li><a href="../loops/reflection.html">Reflection</a></li><li><a href="../loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="../tools/tool-design.html">Tool design</a></li><li><a href="../tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="../tools/error-handling.html">Tool error handling</a></li><li><a href="../tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="../tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="../memory/short-term.html">Short-term memory</a></li><li><a href="../memory/long-term.html">Long-term memory</a></li><li><a href="../memory/episodic.html">Episodic memory</a></li><li><a href="../memory/procedural.html">Procedural memory</a></li><li><a href="../memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="../multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="../multi/peer-agents.html">Peer agents</a></li><li><a href="../multi/debate.html">Debate + consensus</a></li><li><a href="../multi/handoffs.html">Agent handoffs</a></li><li><a href="../multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="../eval/why-eval-agents.html">Why eval agents</a></li><li><a href="../eval/task-completion.html">Task completion</a></li><li><a href="../eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="../eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="../prod/observability.html">Observability + tracing</a></li><li><a href="../prod/cost-control.html">Cost control</a></li><li><a href="../prod/latency.html">Latency optimization</a></li><li><a href="../prod/safety.html">Safety + guardrails</a></li><li><a href="../prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/research-agent.html">Research agent</a></li><li><a href="../patterns/coding-agent.html">Coding agent</a></li><li><a href="../patterns/customer-support.html">Customer support agent</a></li><li><a href="../patterns/data-analyst.html">Data analyst agent</a></li><li><a href="../patterns/browser-agent.html">Browser agent</a></li><li><a href="../patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="../frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="../frameworks/langgraph.html">LangGraph</a></li><li><a href="../frameworks/crewai.html">CrewAI</a></li><li><a href="../frameworks/autogen.html">AutoGen</a></li><li><a href="../frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>Planning loops</span></div><h1 class="title">Planning loops</h1><div class="article-meta"><span>📖 3 min read</span><span>Updated 2026-04-19</span></div>
-<p class="lede">A ReAct agent makes decisions one step at a time. A planning agent thinks about the whole problem first, produces a plan, then executes. The plan gives the system structure; the execution stays flexible.</p>
+<p class="lede">ReAct makes one decision at a time: think, act, observe, repeat. Planning loops flip that: think about the <em>whole</em> task first, write out the plan, then execute the plan step by step. The plan adds structure. Execution keeps flexibility. For tasks with 8+ steps or for anything you want to review before running, planning loops are the right shape.</p>
 
-<h2>The plan-then-execute pattern</h2>
+<h2>The pattern</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Plan → Execute → Replan');
+  sketch.box(svg, rc, {x: 60, y: 80, w: 200, h: 90, title: 'Plan', sub: 'list all the steps'});
+  sketch.box(svg, rc, {x: 320, y: 80, w: 200, h: 90, title: 'Execute', sub: 'run them one by one'});
+  sketch.box(svg, rc, {x: 580, y: 80, w: 200, h: 90, title: 'Synthesize', sub: 'combine results'});
+  sketch.arrow(svg, rc, {x1: 260, x2: 320, y: 125, bidirectional: false});
+  sketch.arrow(svg, rc, {x1: 520, x2: 580, y: 125, bidirectional: false});
+  sketch.arrow(svg, rc, {x1: 420, x2: 160, y1: 170, y2: 200, bidirectional: false, label: 'replan if something breaks'});
+  sketch.note(svg, 160, 240, 'plan once', {size: 13, color: '#8b5cf6'});
+  sketch.note(svg, 420, 240, 'execute many', {size: 13, color: '#8b5cf6'});
+  sketch.note(svg, 680, 240, 'answer once', {size: 13, color: '#8b5cf6'});
+});
+</script>
 <ol>
-<li><strong>Plan step:</strong> agent is prompted to produce a step-by-step plan for the task. Output is a structured list of actions.</li>
-<li><strong>Execute step:</strong> orchestrator walks the plan, calling tools at each step. Agent can call for replanning if something changes.</li>
-<li><strong>Final step:</strong> agent synthesizes results into a final answer.</li>
+<li><strong>Plan:</strong> prompt the model to produce a structured list of steps. "Research Y by doing these 5 things."</li>
+<li><strong>Execute:</strong> orchestrator walks the list. At each step, it calls the right tool or runs a mini ReAct loop.</li>
+<li><strong>Synthesize:</strong> final LLM call combines the step results into the user-facing answer.</li>
 </ol>
 
-<h2>When planning helps</h2>
+<h2>Why plan first</h2>
+<p>Three concrete wins over pure ReAct:</p>
 <ul>
-<li>Tasks with many steps where the full shape is knowable up front</li>
-<li>When you want to review the plan before execution (safety, cost control)</li>
-<li>When steps are independent and parallelizable</li>
-<li>When failures mid-task benefit from a "restart from step N" recovery</li>
+<li><strong>You can review it.</strong> For high-stakes tasks (spend money, send email, modify prod), a human approves the plan before it runs.</li>
+<li><strong>You can parallelize.</strong> If steps 2, 3, 4 are independent, run them at the same time. ReAct forces them sequential.</li>
+<li><strong>You can recover smartly.</strong> Step 4 fails? Restart from step 4, not from scratch. The plan is a checkpoint structure.</li>
 </ul>
 
-<h2>When planning doesn't help</h2>
+<h2>When planning helps vs doesn't</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Planning: when to reach for it');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Planning pays off', items: [
+      '8+ step tasks',
+      'shape is knowable up front',
+      'some steps run in parallel',
+      'you want to preview before running',
+      'failure recovery matters'
+    ]},
+    right: {title: 'ReAct is better', items: [
+      '1–5 step tasks',
+      'path depends on each result',
+      'latency matters (plan adds an LLM call)',
+      'task is too fluid to outline',
+      'small surface area'
+    ]}
+  });
+});
+</script>
+
+<h2>A worked example: "Research the top 3 competitors for product X"</h2>
+<p>Plan phase, model writes:</p>
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
+1. Identify top 3 competitors of X (web_search)
+2. For each, fetch their pricing page (web_fetch, parallel)
+3. For each, fetch their product page (web_fetch, parallel)
+4. Extract key features from each (llm call per competitor)
+5. Write comparison table (synthesize)</pre>
+<p>Execute phase: steps 2 and 3 run in parallel for 3 competitors (6 fetches, simultaneously). Total wall time: ~6 seconds instead of ~20 if done sequentially. Plan saved time <em>and</em> gave you a reviewable artifact.</p>
+
+<h2>Hybrid: plan + ReAct inside each step</h2>
+<p>The most robust shape in production. Outer loop is a plan. Inner loop at each step is a small ReAct agent. Plan gives the skeleton; ReAct handles tactics when a step turns out to be trickier than expected ("fetch failed, try a different URL").</p>
+
+<h2>Replanning triggers</h2>
+<p>Plans go stale. Hard-code these replan triggers:</p>
 <ul>
-<li>Exploratory tasks where each step's result changes the next step radically</li>
-<li>Tasks where you genuinely don't know what the plan looks like until you start</li>
-<li>Low-latency use cases (planning step adds one LLM call)</li>
+<li>A step returned an unexpected result (competitor doesn't have a pricing page)</li>
+<li>Cost for a step exceeded its budget</li>
+<li>User intervened with new info mid-execution</li>
+<li>Two consecutive steps failed</li>
+</ul>
+<p>When triggered, the agent generates a new plan from the <em>current</em> state (what it knows now, what's already been done).</p>
+
+<h2>Plan-prompt craft</h2>
+<p>A planning prompt is different from a ReAct prompt. Include:</p>
+<ul>
+<li><strong>The goal</strong>, one sentence.</li>
+<li><strong>The tools available</strong>, names + one-line descriptions.</li>
+<li><strong>Constraints</strong>, budget, time, safety rails.</li>
+<li><strong>Output format</strong>, a numbered list with tool calls specified.</li>
+<li><strong>A bias</strong>, "prefer fewer steps" or "parallelize independent steps."</li>
+</ul>
+<p>Bad planning prompts produce 15-step plans for 3-step tasks. Good prompts produce tight, parallelizable plans.</p>
+
+<h2>Pitfalls</h2>
+<ul>
+<li><strong>Over-planning.</strong> Model writes 20 steps when 4 would do. Fix with a "prefer fewer steps" instruction.</li>
+<li><strong>Rigid plan, changing reality.</strong> Tool at step 3 returned nothing useful; rest of plan is now garbage. Fix with replan triggers.</li>
+<li><strong>Plan leaks into context forever.</strong> At step 18, the original 20-step plan is still in context eating tokens. Drop completed steps or summarize.</li>
+<li><strong>Planning everything.</strong> Small tasks don't need a plan phase. The extra LLM call costs more than it saves.</li>
 </ul>
 
-<h2>Hybrid: plan + react</h2>
-<p>Most modern systems use a hybrid: produce a high-level plan, then run ReAct within each plan step. Plan gives structure, ReAct handles tactics.</p>
-
-<h2>Replanning</h2>
-<p>Real tasks don't go according to plan. Build replanning triggers:</p>
+<h2>What to do with this</h2>
 <ul>
-<li>Tool returned unexpected result</li>
-<li>Cost exceeded budget for a plan step</li>
-<li>User intervened with new info</li>
-<li>Multiple steps failed</li>
-</ul>
-
-<p>On trigger, agent generates a new plan from the current state.</p>
-
-<h2>Plan quality is prompt quality</h2>
-<p>A good plan-step prompt tells the model:</p>
-<ul>
-<li>The high-level goal</li>
-<li>Available tools</li>
-<li>Constraints (budget, time, safety)</li>
-<li>Format for the plan output</li>
-<li>Instructions to prefer fewer steps over more</li>
+<li>Start with ReAct. Add planning only when ReAct traces are getting long (>10 steps) or tasks need parallelization.</li>
+<li>Read <a href="reflection.html">reflection</a> to add a quality check to your planning output.</li>
+<li>Read <a href="../multi/orchestrator-worker.html">orchestrator-worker</a> for the multi-agent cousin of plan-then-execute.</li>
 </ul>
 <div class="prev-next"><a href="tool-use.html" class="prev"><div class="label">← Previous</div><div class="title">Tool use</div></a><a href="reflection.html" class="next"><div class="label">Next →</div><div class="title">Reflection</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>

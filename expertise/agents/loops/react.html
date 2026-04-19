@@ -219,52 +219,95 @@
 <a href="../../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="../foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="../foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="../foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="../loops/react.html" class="active">ReAct</a></li><li><a href="../loops/tool-use.html">Tool use</a></li><li><a href="../loops/planning.html">Planning loops</a></li><li><a href="../loops/reflection.html">Reflection</a></li><li><a href="../loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="../tools/tool-design.html">Tool design</a></li><li><a href="../tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="../tools/error-handling.html">Tool error handling</a></li><li><a href="../tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="../tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="../memory/short-term.html">Short-term memory</a></li><li><a href="../memory/long-term.html">Long-term memory</a></li><li><a href="../memory/episodic.html">Episodic memory</a></li><li><a href="../memory/procedural.html">Procedural memory</a></li><li><a href="../memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="../multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="../multi/peer-agents.html">Peer agents</a></li><li><a href="../multi/debate.html">Debate + consensus</a></li><li><a href="../multi/handoffs.html">Agent handoffs</a></li><li><a href="../multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="../eval/why-eval-agents.html">Why eval agents</a></li><li><a href="../eval/task-completion.html">Task completion</a></li><li><a href="../eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="../eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="../prod/observability.html">Observability + tracing</a></li><li><a href="../prod/cost-control.html">Cost control</a></li><li><a href="../prod/latency.html">Latency optimization</a></li><li><a href="../prod/safety.html">Safety + guardrails</a></li><li><a href="../prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/research-agent.html">Research agent</a></li><li><a href="../patterns/coding-agent.html">Coding agent</a></li><li><a href="../patterns/customer-support.html">Customer support agent</a></li><li><a href="../patterns/data-analyst.html">Data analyst agent</a></li><li><a href="../patterns/browser-agent.html">Browser agent</a></li><li><a href="../patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="../frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="../frameworks/langgraph.html">LangGraph</a></li><li><a href="../frameworks/crewai.html">CrewAI</a></li><li><a href="../frameworks/autogen.html">AutoGen</a></li><li><a href="../frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>ReAct</span></div><h1 class="title">ReAct</h1><div class="article-meta"><span>📖 4 min read</span><span>Updated 2026-04-19</span></div>
-<p class="lede">ReAct (Reasoning + Acting) is the foundational agent loop introduced in 2022. At each step, the agent reasons out loud about what to do next, takes an action (calls a tool), observes the result, then reasons again. Nearly every modern agent uses some variant.</p>
+<p class="lede">ReAct stands for <em>Reason + Act</em>. It's the foundational agent loop: the model thinks out loud about what to do, calls a tool, reads the result, thinks again, calls another tool, and keeps going until it's done. Almost every agent you've ever used runs some flavor of ReAct. If you only learn one loop pattern, learn this one. Everything else (planning, reflection, multi-agent) is a layer on top.</p>
 
-<h2>The loop</h2>
+<h2>Why "thinking out loud" is the trick</h2>
+<p>The original insight from the ReAct paper: when you make the model write its reasoning <em>before</em> it picks an action, its actions get noticeably better. The model commits to a rationale ("I need to find X, so I'll search"), then acts on that rationale. And the reasoning stays in the context, so subsequent steps build on it instead of starting fresh. Same model, same tools, bigger success rate, just because the reasoning got written down.</p>
+
+<h2>The loop, drawn out</h2>
+<div class="sketch" data-viewbox="0 0 900 300"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 300);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'ReAct: Thought → Action → Observation');
+  sketch.box(svg, rc, {x: 60, y: 80, w: 180, h: 80, title: 'Thought', sub: 'what should I do next?'});
+  sketch.box(svg, rc, {x: 300, y: 80, w: 180, h: 80, title: 'Action', sub: 'call tool(args)'});
+  sketch.box(svg, rc, {x: 540, y: 80, w: 180, h: 80, title: 'Observation', sub: 'tool returned this'});
+  sketch.arrow(svg, rc, {x1: 240, x2: 300, y: 120, bidirectional: false});
+  sketch.arrow(svg, rc, {x1: 480, x2: 540, y: 120, bidirectional: false});
+  sketch.arrow(svg, rc, {x1: 630, x2: 150, y1: 160, y2: 230, bidirectional: false, label: 'back to thought'});
+  sketch.box(svg, rc, {x: 60, y: 200, w: 180, h: 70, title: 'Done?', sub: 'yes → final answer'});
+  sketch.note(svg, 760, 110, 'loop 3–10×', {size: 14});
+});
+</script>
+
+<h2>What a trace actually looks like</h2>
 <pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
-Thought: I need to find X. I'll search for it.
-Action: web_search(query="X")
-Observation: [search results]
-Thought: Based on the results, I need to...
-Action: [next tool call]
-Observation: [result]
-...
-Thought: I have enough. Final answer: ...
-</pre>
+Thought: User wants the current AAPL price. I don't have real-time data. I'll search.
+Action: web_search(query="AAPL stock price today")
+Observation: AAPL is $178.42 as of 3:45pm ET, up 0.8%.
+Thought: I have the price. No more tools needed.
+Final answer: Apple (AAPL) is trading at $178.42, up 0.8% today.</pre>
+<p>Three things to notice: the model wrote a short rationale before every action, the action had a specific tool + args, the observation came back and was referenced in the next thought. That's the whole pattern.</p>
 
-<h2>Why reasoning out loud helps</h2>
-<p>Having the LLM write its reasoning explicitly before each action improves quality for complex tasks. The model commits to a rationale, which makes its actions more coherent. And the reasoning is in the context for subsequent steps.</p>
+<h2>Stop conditions (you must set these)</h2>
+<p>A ReAct loop will happily run forever if you let it. Real production loops have multiple stop conditions:</p>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Five ways the loop ends');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Stop condition', w: 280},
+    {title: 'Why it matters', w: 520}
+  ], rows: [
+    ['Model emits final answer', 'Normal success path. Model decides it\'s done.'],
+    ['Max step count hit', 'Hard cap at 10–30 steps. Prevents runaway.'],
+    ['Cost cap hit', 'Stop at $0.50 per run. Prevents surprise bills.'],
+    ['Timeout', '60 seconds max. User won\'t wait forever.'],
+    ['Same-action loop detected', 'If model calls same tool with same args 3× → halt.']
+  ]});
+});
+</script>
 
-<p>Modern tool-use APIs (Claude, GPT-4, Gemini) have native support for ReAct-like reasoning via structured output, where reasoning and tool calls are emitted in a structured format the orchestrator parses.</p>
+<h2>A worked example: "What's the weather in my meeting city?"</h2>
+<ol>
+<li><strong>Thought:</strong> "I need to know where the user's next meeting is." → <strong>Action:</strong> <code>get_calendar_next_event()</code>.</li>
+<li><strong>Observation:</strong> "Meeting in Austin, 3pm tomorrow."</li>
+<li><strong>Thought:</strong> "Tomorrow's Austin weather." → <strong>Action:</strong> <code>weather_forecast(city: "Austin", date: "tomorrow")</code>.</li>
+<li><strong>Observation:</strong> "86°F, light rain."</li>
+<li><strong>Thought:</strong> "Got it, I can answer now." → <strong>Final:</strong> "Austin will be 86°F with light rain when you're there tomorrow afternoon."</li>
+</ol>
+<p>Two tool calls, four thoughts, clean answer. The model didn't know the city until step 2; it couldn't have been planned. ReAct fits exactly because the path depends on what you learn along the way.</p>
 
-<h2>Stop conditions</h2>
-<p>ReAct loops need clear stop conditions:</p>
+<h2>The four failure modes</h2>
 <ul>
-<li>Agent emits a final answer (not a tool call)</li>
-<li>Max step count reached (typically 10-30)</li>
-<li>Max cost budget reached</li>
-<li>Timeout reached</li>
-<li>Infinite-loop detection (same tool, same args, N times)</li>
+<li><strong>Tool hallucination.</strong> Model calls a tool that doesn't exist, or passes an argument schema that's wrong. Fix: tight tool schemas + validation before execution.</li>
+<li><strong>Premature answer.</strong> Model stops exploring and guesses. Fix: system prompt should say "call tools when uncertain" and give examples.</li>
+<li><strong>Infinite loop.</strong> Same tool, same args, over and over. Fix: detect duplicate consecutive actions, halt with an error.</li>
+<li><strong>Lost-in-context.</strong> At turn 15 the context is huge and the model forgets what it was doing. Fix: summarize old observations every N steps, or switch to a planning loop for long tasks.</li>
 </ul>
 
-<h2>Common failure modes</h2>
+<h2>ReAct variants you'll meet</h2>
 <ul>
-<li><strong>Tool hallucination</strong>, LLM calls a tool that doesn't exist or with wrong args</li>
-<li><strong>Premature answer</strong>, agent stops exploring when it should keep going</li>
-<li><strong>Infinite loop</strong>, agent repeats the same reasoning + action forever</li>
-<li><strong>Lost-in-context</strong>, after many steps, the context is long and the model starts forgetting earlier reasoning</li>
-</ul>
-
-<h2>Variants</h2>
-<ul>
-<li><strong>Plan-then-execute</strong>, agent plans full sequence first, then executes. Works for tasks with known structure.</li>
-<li><strong>Reflection</strong>, agent reviews its own trace and critiques itself before continuing. Higher quality, higher cost.</li>
-<li><strong>Multi-agent ReAct</strong>, agents call other agents as tools.</li>
+<li><strong>Plan-then-execute:</strong> write the whole plan up front, then run ReAct inside each plan step. Structure without rigidity.</li>
+<li><strong>Reflection:</strong> after each answer, a second LLM call critiques it; the agent revises. Higher quality, double the cost.</li>
+<li><strong>Multi-agent:</strong> one agent's "tool" is another agent. Orchestrator-worker is the usual shape.</li>
 </ul>
 
 <h2>When ReAct is the wrong shape</h2>
-<p>For tasks with a known execution plan, skip ReAct and use a deterministic workflow. ReAct's value is in exploration; if the path is known, the reasoning overhead is waste.</p>
+<p>If you can write the sequence of steps in advance, skip ReAct. ReAct's value is <em>exploration</em>. If there's nothing to explore, the reasoning overhead is wasted tokens and latency. Use a deterministic workflow and save 70% on both.</p>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Build a minimum ReAct loop with 3 tools and a 10-step cap. You'll learn more from that than from reading.</li>
+<li>Read <a href="tool-use.html">tool use</a> for the mechanics of the action step.</li>
+<li>Read <a href="planning.html">planning loops</a> for tasks where the path is partially knowable up front.</li>
+</ul>
 <div class="prev-next"><a href="../foundations/architecture.html" class="prev"><div class="label">← Previous</div><div class="title">Architecture map</div></a><a href="tool-use.html" class="next"><div class="label">Next →</div><div class="title">Tool use</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
