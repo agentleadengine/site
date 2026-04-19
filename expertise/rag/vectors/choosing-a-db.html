@@ -222,6 +222,25 @@
 <p class="lede">The vector DB decision gets over-engineered. Most of the time the right answer is "the one your team can operate" plus "it supports hybrid search and metadata filtering." Everything else is second-order. Here's how I actually pick.</p>
 
 <h2>The decision matrix</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'The question tree that picks the DB');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Your situation', w: 360},
+    {title: 'Start with', w: 440}
+  ], rows: [
+    ['< 1M vectors, already on Postgres', 'pgvector'],
+    ['Hosted, minimal ops, any scale', 'Pinecone'],
+    ['Self-host + hybrid search + filters', 'Weaviate or Qdrant'],
+    ['> 100M vectors, heavy ops', 'Milvus'],
+    ['Embedded / local / prototype', 'Chroma or FAISS']
+  ]});
+});
+</script>
 
 <h3>Prototype / &lt; 1M vectors / low traffic</h3>
 <ul>

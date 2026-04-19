@@ -242,6 +242,26 @@
 <p>The decision: use pgvector until you're constrained by it. Move to a dedicated vector DB when you actually hit its limits.</p>
 
 <h2>The major players (2026)</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Vector DBs: who\'s who');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'DB', w: 200},
+    {title: 'Sweet spot', w: 600}
+  ], rows: [
+    ['Pinecone', 'Hosted, scales, simple API, priciest'],
+    ['Weaviate / Qdrant', 'Self-host friendly, strong hybrid search'],
+    ['pgvector (Postgres)', 'Already have Postgres? Start here'],
+    ['Chroma', 'Easy local / prototype; limited at scale'],
+    ['Milvus', 'High scale, more ops'],
+    ['FAISS', 'Library, not a service; fastest for embedded']
+  ]});
+});
+</script>
 
 <h3>Pinecone</h3>
 <p>Fully managed, serverless pricing model. Easiest to get started. Strong multi-tenancy. More expensive at scale than self-hosted alternatives. Namespaces are powerful.</p>

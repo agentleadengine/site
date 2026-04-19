@@ -236,6 +236,23 @@ top_k: 10
 <p>The database's job: find the 10 nearest neighbors that also satisfy all filter conditions. Sounds simple, isn't.</p>
 
 <h2>Three strategies</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Three ways to combine vector search + filters');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Strategy', w: 200},
+    {title: 'How it works', w: 600}
+  ], rows: [
+    ['Pre-filter', 'Filter first, then vector-search the subset'],
+    ['Post-filter', 'Top-k vector search, then filter results'],
+    ['Integrated', 'DB walks the index with filter in mind (best)']
+  ]});
+});
+</script>
 
 <h3>Pre-filter</h3>
 <p>Narrow the candidate set to matching metadata first, then search only those. Exact: returns only filter-matching documents.</p>

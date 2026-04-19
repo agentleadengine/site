@@ -231,6 +231,21 @@
 <p>The hybrid result is almost always more useful.</p>
 
 <h2>The two components</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Hybrid = dense + sparse');
+  sketch.box(svg, rc, {x: 60, y: 90, w: 200, h: 80, title: 'Dense', sub: 'semantic meaning'});
+  sketch.box(svg, rc, {x: 350, y: 90, w: 200, h: 80, title: 'Sparse (BM25)', sub: 'exact keywords'});
+  sketch.box(svg, rc, {x: 640, y: 90, w: 200, h: 80, title: 'Fusion', sub: 'combined ranking'});
+  sketch.arrow(svg, rc, {x1: 260, x2: 640, y: 130, bidirectional: false});
+  sketch.arrow(svg, rc, {x1: 550, x2: 640, y: 130, bidirectional: false});
+  sketch.note(svg, 460, 210, 'RRF or weighted combination', {size: 13});
+});
+</script>
 
 <h3>Dense (vector) retrieval</h3>
 <p>Embed query, find nearest neighbors. Covered throughout this section.</p>
