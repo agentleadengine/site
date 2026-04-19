@@ -219,61 +219,108 @@
 <a href="../../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="../foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="../foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="../foundations/architecture.html" class="active">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="../loops/react.html">ReAct</a></li><li><a href="../loops/tool-use.html">Tool use</a></li><li><a href="../loops/planning.html">Planning loops</a></li><li><a href="../loops/reflection.html">Reflection</a></li><li><a href="../loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="../tools/tool-design.html">Tool design</a></li><li><a href="../tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="../tools/error-handling.html">Tool error handling</a></li><li><a href="../tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="../tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="../memory/short-term.html">Short-term memory</a></li><li><a href="../memory/long-term.html">Long-term memory</a></li><li><a href="../memory/episodic.html">Episodic memory</a></li><li><a href="../memory/procedural.html">Procedural memory</a></li><li><a href="../memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="../multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="../multi/peer-agents.html">Peer agents</a></li><li><a href="../multi/debate.html">Debate + consensus</a></li><li><a href="../multi/handoffs.html">Agent handoffs</a></li><li><a href="../multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="../eval/why-eval-agents.html">Why eval agents</a></li><li><a href="../eval/task-completion.html">Task completion</a></li><li><a href="../eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="../eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="../prod/observability.html">Observability + tracing</a></li><li><a href="../prod/cost-control.html">Cost control</a></li><li><a href="../prod/latency.html">Latency optimization</a></li><li><a href="../prod/safety.html">Safety + guardrails</a></li><li><a href="../prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/research-agent.html">Research agent</a></li><li><a href="../patterns/coding-agent.html">Coding agent</a></li><li><a href="../patterns/customer-support.html">Customer support agent</a></li><li><a href="../patterns/data-analyst.html">Data analyst agent</a></li><li><a href="../patterns/browser-agent.html">Browser agent</a></li><li><a href="../patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="../frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="../frameworks/langgraph.html">LangGraph</a></li><li><a href="../frameworks/crewai.html">CrewAI</a></li><li><a href="../frameworks/autogen.html">AutoGen</a></li><li><a href="../frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>The agent architecture map</span></div><h1 class="title">The agent architecture map</h1><div class="article-meta"><span>📖 5 min read</span><span>Updated 2026-04-19</span></div>
-<p class="lede">An agent looks simple in a slide: LLM, tools, loop. In production, it's a stack of components you need to design and operate. Here's the map.</p>
+<p class="lede">In a diagram an agent is three boxes: LLM, tools, loop. In production it's a dozen components you have to build, operate, and debug. This page is the map. Once you can see the whole stack, it becomes obvious why your first agent broke and what you need to add to make the next one survive.</p>
 
-<h2>The layers</h2>
+<h2>The full stack</h2>
+<div class="sketch" data-viewbox="0 0 900 460"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 460);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'The production agent stack');
+  sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 44, layers: [
+    {label: 'User interface', sub: 'chat, API, CLI, batch'},
+    {label: 'Input + auth', sub: 'who is asking, what are they allowed to do'},
+    {label: 'Prompt assembly', sub: 'system + user + memory + tool specs'},
+    {label: 'LLM inference', sub: 'the model call'},
+    {label: 'Tool registry', sub: 'every tool name, description, schema'},
+    {label: 'Tool execution', sub: 'runs the call, handles errors + timeouts'},
+    {label: 'Memory', sub: 'session state + long-term facts'},
+    {label: 'Orchestration', sub: 'the loop + stop conditions'},
+    {label: 'Safety + guardrails', sub: 'injection defenses, filters, rate limits'}
+  ]});
+});
+</script>
+<p>Every layer is a separate design decision. Skip one and you get a specific failure mode: skip memory and you lose context between turns, skip guardrails and you ship an injection hole, skip orchestration limits and you get runaway bills.</p>
+
+<h2>The flow from click to answer</h2>
 <ol>
-<li><strong>User interface</strong>, where the agent's invoked (chat, API, CLI, batch)</li>
-<li><strong>Input processing</strong>, validation, authentication, session state</li>
-<li><strong>Prompt assembly</strong>, system prompt, user prompt, context, memory</li>
-<li><strong>LLM inference</strong>, the reasoning model call</li>
-<li><strong>Tool registry</strong>, the functions the LLM can call, with descriptions</li>
-<li><strong>Tool execution</strong>, calling the tool, handling errors, timeouts</li>
-<li><strong>Memory</strong>, short-term (session), long-term (persistent facts)</li>
-<li><strong>Orchestration</strong>, the loop that drives reasoning until a stop condition</li>
-<li><strong>Safety + guardrails</strong>, prompt injection defenses, content filters, rate limits</li>
-<li><strong>Observability</strong>, tracing every step for debugging and eval</li>
-<li><strong>Cost + latency control</strong>, budgets, timeouts, caching</li>
-<li><strong>Output formatting</strong>, structured output, streaming, finalizing response</li>
+<li><strong>User input arrives.</strong> API call, chat message, cron fire.</li>
+<li><strong>Auth + session resolved.</strong> Who is this, what can they see, is there a prior conversation?</li>
+<li><strong>Prompt is assembled.</strong> System prompt + user input + pulled memory + tool definitions. This is the most underrated step.</li>
+<li><strong>First LLM call.</strong> Model sees everything, returns either an answer or a tool call.</li>
+<li><strong>If tool call:</strong> validate arguments, execute, capture result, append to context.</li>
+<li><strong>Loop:</strong> back to the model with updated context. Repeat until done or cap hit.</li>
+<li><strong>Final answer.</strong> Format, stream, return to user.</li>
+<li><strong>Persist.</strong> Save session state, update long-term memory if needed.</li>
+<li><strong>Log the trace.</strong> Every LLM call, every tool call, every input and output, for debugging and eval.</li>
 </ol>
 
-<h2>The flow</h2>
+<h2>Where production agents actually break</h2>
+<div class="sketch" data-viewbox="0 0 900 320"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 320);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Common failure points by layer');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Layer', w: 220},
+    {title: 'Typical failure', w: 580}
+  ], rows: [
+    ['Prompt assembly', 'Context too long, stale memory, missing tool specs'],
+    ['Tool descriptions', 'Model calls wrong tool or with wrong arguments'],
+    ['Tool execution', 'Slow API, rate limit hit, unhandled error bubbles up'],
+    ['Orchestration', 'Infinite loop, or stops too early with wrong answer'],
+    ['Memory', 'Remembers wrong thing, forgets right thing, leaks across users'],
+    ['Safety', 'Prompt injection, exfiltration via tool, harmful output'],
+    ['Cost', 'Long session, no cap, one bad run costs $50']
+  ]});
+});
+</script>
+
+<h2>Minimum viable production agent</h2>
+<p>The short list of things that have to exist before you ship. Missing any of these and the agent will fail silently in ways that are expensive to fix after the fact:</p>
 <ol>
-<li>User input arrives</li>
-<li>System builds context: system prompt + user prompt + relevant memory</li>
-<li>Agent calls LLM with context and available tools</li>
-<li>LLM responds: either a final answer or a tool call request</li>
-<li>If tool call: orchestrator executes, captures result, adds to context</li>
-<li>Loop continues until final answer or max steps</li>
-<li>Final response formatted and returned</li>
-<li>Session state persisted</li>
-<li>Trace logged for observability</li>
+<li><strong>A system prompt</strong> that states the goal, constraints, tone, and when to stop.</li>
+<li><strong>Three to eight tools</strong>, each with a precise description and a typed schema.</li>
+<li><strong>A loop with hard caps</strong> on steps (~10–20), time (~60 seconds), and cost (~$0.50).</li>
+<li><strong>Structured output</strong> so the caller doesn't have to parse free text.</li>
+<li><strong>Tracing</strong> that captures every LLM request, every tool call, every latency, every token count.</li>
+<li><strong>Tool-level error handling</strong> so one flaky API doesn't kill the whole run.</li>
+<li><strong>An eval set</strong> of at least 30 real cases you can re-run whenever you change anything.</li>
+<li><strong>A kill switch</strong> (a flag or env var) that lets you disable the agent without redeploying.</li>
 </ol>
 
-<h2>Where things break</h2>
+<h2>A worked example: customer support agent</h2>
+<p>Say you're building an agent to handle Tier 1 support tickets. Walk the stack:</p>
 <ul>
-<li><strong>Prompt assembly</strong>, context too long, too short, stale memory</li>
-<li><strong>Tool descriptions</strong>, LLM calls wrong tools with wrong args</li>
-<li><strong>Tool execution</strong>, slow APIs, rate limits, error responses</li>
-<li><strong>Infinite loops</strong>, agent keeps trying, never reaches stop</li>
-<li><strong>Hallucination in tool args</strong>, LLM invents parameter values</li>
-<li><strong>Runaway cost</strong>, long sessions, no budget enforcement</li>
+<li><strong>UI:</strong> webhook from your ticketing system. Trigger on new ticket.</li>
+<li><strong>Auth:</strong> verify the webhook signature. Load the customer's account.</li>
+<li><strong>Prompt:</strong> system prompt ("you are a support agent, be polite, only use these tools") + the ticket + last 3 messages from this customer + tool specs.</li>
+<li><strong>Tools:</strong> <code>get_account()</code>, <code>get_recent_orders()</code>, <code>refund()</code>, <code>escalate_to_human()</code>, <code>send_reply()</code>.</li>
+<li><strong>Memory:</strong> short-term = this ticket's context. Long-term = nothing yet; one ticket is one session.</li>
+<li><strong>Loop:</strong> max 8 steps, $0.20 cap.</li>
+<li><strong>Safety:</strong> <code>refund()</code> over $100 requires human approval. No PII in logs.</li>
+<li><strong>Observability:</strong> every trace saved to your eval store tagged by outcome.</li>
+</ul>
+<p>That's a production agent. Not complicated, but every piece is deliberate.</p>
+
+<h2>The layers you'll underbuild the first time</h2>
+<ul>
+<li><strong>Tool descriptions.</strong> First attempt is always too terse. The model treats the description as the source of truth about when to call a tool; skimp here and it calls the wrong one.</li>
+<li><strong>Stop conditions.</strong> "Max 10 steps" feels fine until you hit a bug that makes the agent call the same tool 10 times. Add per-tool caps too.</li>
+<li><strong>Tracing.</strong> "I'll add logging later" is how you end up with a production agent that's failing 12% of the time and you have no way to see what's happening.</li>
+<li><strong>Eval.</strong> Without a repeatable test set, every change is a coin flip.</li>
 </ul>
 
-<h2>The minimum viable production agent</h2>
+<h2>What to do with this</h2>
 <ul>
-<li>System prompt with clear goal + tool instructions</li>
-<li>3-8 well-described tools</li>
-<li>ReAct-style loop with max 10-20 steps</li>
-<li>Structured output schema</li>
-<li>Tracing (every LLM call + tool call logged)</li>
-<li>Cost budget per session</li>
-<li>Timeout per session</li>
-<li>Error handling on every tool</li>
-<li>Eval set of at least 30 test cases</li>
+<li>Draw your own agent's stack layer by layer. Circle the layers that don't exist yet. Build those before you ship.</li>
+<li>Read <a href="../loops/react.html">ReAct</a> for the orchestration layer in detail.</li>
+<li>Read <a href="../prod/observability.html">observability + tracing</a> before you put traffic on it.</li>
 </ul>
-
-<p>Missing any of these and your agent will fail in production. Not immediately, silently, over time, in ways that are hard to diagnose without the missing piece.</p>
 <div class="prev-next"><a href="when-not-to-use.html" class="prev"><div class="label">← Previous</div><div class="title">When not to use agents</div></a><a href="../loops/react.html" class="next"><div class="label">Next →</div><div class="title">ReAct</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

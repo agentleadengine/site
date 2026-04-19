@@ -219,44 +219,123 @@
 <a href="../../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../foundations/what-is-an-agent.html" class="active">What is an AI agent?</a></li><li><a href="../foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="../foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="../foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="../loops/react.html">ReAct</a></li><li><a href="../loops/tool-use.html">Tool use</a></li><li><a href="../loops/planning.html">Planning loops</a></li><li><a href="../loops/reflection.html">Reflection</a></li><li><a href="../loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="../tools/tool-design.html">Tool design</a></li><li><a href="../tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="../tools/error-handling.html">Tool error handling</a></li><li><a href="../tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="../tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="../memory/short-term.html">Short-term memory</a></li><li><a href="../memory/long-term.html">Long-term memory</a></li><li><a href="../memory/episodic.html">Episodic memory</a></li><li><a href="../memory/procedural.html">Procedural memory</a></li><li><a href="../memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="../multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="../multi/peer-agents.html">Peer agents</a></li><li><a href="../multi/debate.html">Debate + consensus</a></li><li><a href="../multi/handoffs.html">Agent handoffs</a></li><li><a href="../multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="../eval/why-eval-agents.html">Why eval agents</a></li><li><a href="../eval/task-completion.html">Task completion</a></li><li><a href="../eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="../eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="../prod/observability.html">Observability + tracing</a></li><li><a href="../prod/cost-control.html">Cost control</a></li><li><a href="../prod/latency.html">Latency optimization</a></li><li><a href="../prod/safety.html">Safety + guardrails</a></li><li><a href="../prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/research-agent.html">Research agent</a></li><li><a href="../patterns/coding-agent.html">Coding agent</a></li><li><a href="../patterns/customer-support.html">Customer support agent</a></li><li><a href="../patterns/data-analyst.html">Data analyst agent</a></li><li><a href="../patterns/browser-agent.html">Browser agent</a></li><li><a href="../patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="../frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="../frameworks/langgraph.html">LangGraph</a></li><li><a href="../frameworks/crewai.html">CrewAI</a></li><li><a href="../frameworks/autogen.html">AutoGen</a></li><li><a href="../frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>What is an AI agent?</span></div><h1 class="title">What is an AI agent?</h1><div class="article-meta"><span>📖 4 min read</span><span>Updated 2026-04-19</span></div>
-<p class="lede">The simplest definition: an AI agent is an LLM in a loop with tools. It gets a goal. It thinks. It picks a tool. It uses the tool. It thinks again based on what the tool returned. It repeats until the goal is done. That's it.</p>
+<p class="lede">An AI agent is an LLM in a loop with tools. Give it a goal. It thinks. It picks a tool. It uses the tool. It reads the result. It thinks again. It repeats until the goal is done. That's the whole idea. Everything else (frameworks, memory systems, multi-agent orchestration) is scaffolding around this one loop. If you understand the loop, you understand agents.</p>
 
-<h2>The three components</h2>
+<h2>Why this matters</h2>
+<p>A plain LLM call is a one-shot: you send a prompt, you get an answer, done. The model works with whatever context you crammed into the prompt. If it needs fresh information, it guesses. If it needs to take an action in the real world, it can't.</p>
+<p>An agent breaks out of the one-shot. It can look things up. It can call APIs. It can check its own work. It can run until it actually finishes the task instead of producing a plausible-sounding sentence. That's the jump from "chatbot that sounds smart" to "system that gets things done."</p>
+
+<h2>The loop, drawn out</h2>
+<div class="sketch" data-viewbox="0 0 900 320"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 320);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'The agent loop');
+  sketch.box(svg, rc, {x: 60, y: 80, w: 180, h: 90, title: 'Goal', sub: 'user gives a task'});
+  sketch.box(svg, rc, {x: 290, y: 80, w: 180, h: 90, title: 'LLM thinks', sub: 'picks next step'});
+  sketch.box(svg, rc, {x: 520, y: 80, w: 180, h: 90, title: 'Tool call', sub: 'search / API / code'});
+  sketch.box(svg, rc, {x: 290, y: 210, w: 180, h: 70, title: 'Done?', sub: 'yes → reply'});
+  sketch.arrow(svg, rc, {x1: 240, x2: 290, y: 125, bidirectional: false});
+  sketch.arrow(svg, rc, {x1: 470, x2: 520, y: 125, bidirectional: false, label: 'call'});
+  sketch.arrow(svg, rc, {x1: 610, x2: 380, y1: 170, y2: 210, bidirectional: false, label: 'result'});
+  sketch.arrow(svg, rc, {x1: 290, x2: 290, y1: 245, y2: 170, bidirectional: false, label: 'no, loop again'});
+  sketch.note(svg, 720, 245, 'every loop → one more step', {size: 14});
+});
+</script>
+<p>Four moving parts. Goal goes in. The LLM picks what to do. A tool runs. The result comes back. The LLM checks whether the goal is done. If not, it loops. That's the whole shape.</p>
+
+<h2>The three components, precisely</h2>
 <ol>
-<li><strong>The LLM</strong>, the reasoning engine. Takes context, decides what to do next.</li>
-<li><strong>Tools</strong>, functions the LLM can call. Search the web, query a database, send an email, run code.</li>
-<li><strong>The loop</strong>, orchestration that runs until the task is complete or a stop condition fires.</li>
+<li><strong>The model</strong>, the reasoning engine. It takes the running conversation (goal + all prior tool calls + all tool results) and decides what to do next: call another tool, or stop and answer.</li>
+<li><strong>Tools</strong>, functions the model can call. A tool has a name, a description, and a schema for its arguments. Examples: <code>web_search(query)</code>, <code>query_db(sql)</code>, <code>send_email(to, subject, body)</code>, <code>run_python(code)</code>. Tools are how the agent reaches the outside world.</li>
+<li><strong>The loop</strong>, the orchestration code that runs the cycle: send context to the model, parse its choice, execute the tool if one was called, append the result, repeat until the model says "I'm done" or a stop condition fires (max steps, timeout, cost cap).</li>
 </ol>
 
-<h2>Why this is different from a normal LLM call</h2>
-<p>A normal LLM call: prompt in, answer out. One shot. The LLM does what it can with the context it has.</p>
-<p>An agent: prompt in, but the LLM can reach out for information, take actions, and incorporate results before responding. It can decide "I don't know this, let me search," execute the search, read the results, and respond. The agent can take many reasoning and action steps, not just one.</p>
+<h2>Agent vs LLM call, side by side</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'LLM call vs agent');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Plain LLM call', items: [
+      'one turn, no tools',
+      'stuck with training data',
+      'can\'t act on the world',
+      'hallucinates when it doesn\'t know',
+      'great for: writing, summarizing'
+    ]},
+    right: {title: 'Agent', items: [
+      'many turns, tool calls between',
+      'can look up current info',
+      'can take real actions',
+      'can verify its own work',
+      'great for: multi-step tasks'
+    ]}
+  });
+});
+</script>
 
-<h2>The spectrum of autonomy</h2>
+<h2>A worked example: "Book me a flight to Austin next Thursday"</h2>
+<p>Watch the loop run:</p>
+<ol>
+<li><strong>Turn 1 — model thinks:</strong> "I need to know what Thursday means. Today's date would help." → calls <code>get_current_date()</code>.</li>
+<li><strong>Tool result:</strong> <code>2026-04-19</code>. Appended to context.</li>
+<li><strong>Turn 2 — model thinks:</strong> "Thursday is 2026-04-23. I need flights from the user's home airport to AUS on that date." → calls <code>search_flights(from: "DFW", to: "AUS", date: "2026-04-23")</code>.</li>
+<li><strong>Tool result:</strong> a list of 6 flights with times and prices.</li>
+<li><strong>Turn 3 — model thinks:</strong> "Before I book, I should confirm preferences." → calls <code>ask_user("Morning or evening? Budget?")</code>.</li>
+<li><strong>User replies:</strong> "Morning, under $300."</li>
+<li><strong>Turn 4 — model thinks:</strong> "The 8am flight at $247 matches." → calls <code>book_flight(id: "AA1234")</code>.</li>
+<li><strong>Tool result:</strong> confirmation number. Model stops. Replies to user with the booking.</li>
+</ol>
+<p>Same model that would have hallucinated a fake flight number in a one-shot prompt, now actually books a real flight. The difference is the loop and the tools.</p>
+
+<h2>The autonomy spectrum</h2>
+<p>"Agent" covers a wide range. Here's roughly where real systems sit:</p>
+<div class="sketch" data-viewbox="0 0 900 240"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[2];
+  const svg = sketch.createSvg(el, 900, 240);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'How much agent is in this agent?');
+  sketch.bars(svg, rc, {x: 40, y: 60, w: 820, labelW: 220, items: [
+    {label: 'One tool call', value: 20, note: 'barely an agent'},
+    {label: 'ReAct loop', value: 45, note: 'most "agents" today'},
+    {label: 'Plan-then-execute', value: 60, note: 'plans first, then runs'},
+    {label: 'Multi-agent', value: 75, note: 'specialists coordinate'},
+    {label: 'Fully autonomous', value: 95, note: 'self-correcting, long-running'}
+  ]});
+});
+</script>
+<p>Most production agents you'll build sit in the middle: a bounded loop with maybe 3–10 tools, running for 5–30 steps, with a timeout. The "fully autonomous agent that runs for days" is rare and hard. Don't start there.</p>
+
+<h2>When agents pay off</h2>
 <ul>
-<li><strong>Prompt + single tool</strong>, minimal agent behavior, one tool call per request</li>
-<li><strong>ReAct-style loops</strong>, multi-step reasoning and tool use until answer is reached</li>
-<li><strong>Planning agents</strong>, form a plan first, then execute steps</li>
-<li><strong>Multi-agent systems</strong>, multiple specialized agents coordinating</li>
-<li><strong>Fully autonomous</strong>, agents with long-running tasks, self-correction, persistent memory</li>
+<li><strong>The task needs information the model doesn't have.</strong> Current data, your private database, anything post-training-cutoff.</li>
+<li><strong>The task is multi-step and each step depends on the previous one.</strong> You can't write a single prompt because you don't know step 3 until step 2 finishes.</li>
+<li><strong>The task requires real-world actions.</strong> Send the email, write the file, create the ticket.</li>
+<li><strong>The task benefits from self-checking.</strong> Write code, run tests, see failures, fix. Research a topic, verify claims, correct errors.</li>
 </ul>
 
-<p>Most production agents sit in the middle: structured loops with bounded autonomy.</p>
-
-<h2>What agents enable</h2>
+<h2>Pitfalls people hit early</h2>
 <ul>
-<li>Tasks that require information the model doesn't have (RAG, search, tool use)</li>
-<li>Multi-step workflows where each step depends on prior results</li>
-<li>Tasks requiring real-world actions (sending emails, writing files, booking meetings)</li>
-<li>Longer-running work that needs planning and checkpoints</li>
+<li><strong>Using an agent where a prompt would do.</strong> If one well-written prompt produces the answer, don't wrap it in a loop. Agents are slower, more expensive, and less reliable than a single call. Start simple.</li>
+<li><strong>No stop conditions.</strong> Agents happily loop forever if you let them. Always set a max step count and a cost cap.</li>
+<li><strong>Too many tools.</strong> Ten tools means the model has to pick correctly ten ways. Fewer, sharper tools beat a kitchen sink.</li>
+<li><strong>Vague tool descriptions.</strong> The tool description is the prompt the model sees. A bad description guarantees misuse.</li>
+<li><strong>Treating agents like magic.</strong> Garbage prompts, garbage tools, bad base model reasoning, bad data → garbage agent. The loop doesn't fix any of that.</li>
 </ul>
 
-<h2>What agents don't magically fix</h2>
+<h2>What to do with this</h2>
 <ul>
-<li>Bad prompts, agents amplify prompt quality, they don't replace it</li>
-<li>Bad tools, agents can only do what tools allow</li>
-<li>Bad reasoning, if the base model reasons poorly, loops don't help</li>
-<li>Bad data, garbage inputs produce garbage agent traces</li>
+<li>Read <a href="agent-vs-workflow.html">agent vs workflow</a> to figure out which shape actually fits your task.</li>
+<li>Then <a href="when-not-to-use.html">when not to use agents</a> — the decision that saves the most money.</li>
+<li>When you're ready for the mechanics, <a href="../loops/react.html">ReAct</a> is the loop pattern you'll write first.</li>
 </ul>
 <div class="prev-next"><a href="../index.html" class="prev"><div class="label">← Previous</div><div class="title">Overview</div></a><a href="agent-vs-workflow.html" class="next"><div class="label">Next →</div><div class="title">Agent vs workflow</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>

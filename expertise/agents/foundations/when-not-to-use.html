@@ -219,31 +219,91 @@
 <a href="../../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="../foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="../foundations/when-not-to-use.html" class="active">When not to use agents</a></li><li><a href="../foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="../loops/react.html">ReAct</a></li><li><a href="../loops/tool-use.html">Tool use</a></li><li><a href="../loops/planning.html">Planning loops</a></li><li><a href="../loops/reflection.html">Reflection</a></li><li><a href="../loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="../tools/tool-design.html">Tool design</a></li><li><a href="../tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="../tools/error-handling.html">Tool error handling</a></li><li><a href="../tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="../tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="../memory/short-term.html">Short-term memory</a></li><li><a href="../memory/long-term.html">Long-term memory</a></li><li><a href="../memory/episodic.html">Episodic memory</a></li><li><a href="../memory/procedural.html">Procedural memory</a></li><li><a href="../memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="../multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="../multi/peer-agents.html">Peer agents</a></li><li><a href="../multi/debate.html">Debate + consensus</a></li><li><a href="../multi/handoffs.html">Agent handoffs</a></li><li><a href="../multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="../eval/why-eval-agents.html">Why eval agents</a></li><li><a href="../eval/task-completion.html">Task completion</a></li><li><a href="../eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="../eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="../prod/observability.html">Observability + tracing</a></li><li><a href="../prod/cost-control.html">Cost control</a></li><li><a href="../prod/latency.html">Latency optimization</a></li><li><a href="../prod/safety.html">Safety + guardrails</a></li><li><a href="../prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/research-agent.html">Research agent</a></li><li><a href="../patterns/coding-agent.html">Coding agent</a></li><li><a href="../patterns/customer-support.html">Customer support agent</a></li><li><a href="../patterns/data-analyst.html">Data analyst agent</a></li><li><a href="../patterns/browser-agent.html">Browser agent</a></li><li><a href="../patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="../frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="../frameworks/langgraph.html">LangGraph</a></li><li><a href="../frameworks/crewai.html">CrewAI</a></li><li><a href="../frameworks/autogen.html">AutoGen</a></li><li><a href="../frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>When not to use agents</span></div><h1 class="title">When not to use agents</h1><div class="article-meta"><span>📖 3 min read</span><span>Updated 2026-04-19</span></div>
-<p class="lede">Agents get overused because they're exciting to build. But for many tasks they're worse on every metric: cost, latency, reliability, debuggability. Here are the cases where you should skip the agent.</p>
+<p class="lede">Agents are fun to build so people build them everywhere. For most tasks they're the wrong tool: slower, more expensive, less predictable, harder to debug. This page is the "don't" list. If your use case shows up here, you probably want a plain function call or a fixed workflow instead.</p>
 
-<h2>When the task is deterministic</h2>
-<p>"Parse this document, extract these five fields, insert into database." Not an agent problem. A single LLM call, or even a traditional parser, is faster and more reliable.</p>
+<h2>The test, upfront</h2>
+<p>Before you build an agent, ask these five questions. If you answer "no" to any of them, you probably don't need an agent.</p>
+<ol>
+<li>Will the path through the task be different each run?</li>
+<li>Does the next step depend on information I don't have in the prompt?</li>
+<li>Do I have at least 3 meaningfully different tools the model could call?</li>
+<li>Am I okay with 10–60 seconds per run and variable cost?</li>
+<li>Can my team debug a 30-turn agent trace when it goes wrong?</li>
+</ol>
+<p>Four yeses means you have a real agent use case. Three or fewer means something else fits better.</p>
 
-<h2>When latency matters</h2>
-<p>Agent loops can take 10-60 seconds. For real-time applications, agents are too slow. Pre-compute, cache, or use a single-turn LLM with sufficient context.</p>
+<h2>The don't-use list</h2>
+<div class="sketch" data-viewbox="0 0 900 380"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 380);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Signs you don\'t need an agent');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Signal', w: 280},
+    {title: 'Use this instead', w: 520}
+  ], rows: [
+    ['Task steps are fixed', 'A plain workflow. Write the sequence in code.'],
+    ['One LLM call would do it', 'One LLM call. Don\'t wrap it in a loop.'],
+    ['Latency under 2 seconds matters', 'Single-turn with precomputed context.'],
+    ['Every run must produce same output', 'Deterministic code. Agents are non-deterministic.'],
+    ['Compliance / audit requirements', 'Workflow with logged steps and approvals.'],
+    ['Underlying tools are flaky', 'Fix the tools first. Agents amplify failures.'],
+    ['Team has no tracing / observability', 'Don\'t ship an agent until you do.'],
+    ['Problem is ill-defined', 'Define the problem first. Agents don\'t save bad specs.']
+  ]});
+});
+</script>
 
-<h2>When cost matters</h2>
-<p>Every tool call is additional LLM tokens. Agent sessions often run 5-10x the tokens of single-turn. At scale, this dominates your bill.</p>
+<h2>Deterministic tasks: don't use an agent</h2>
+<p>"Parse this PDF, pull out the five fields, write a row to the database." The steps are known. The sequence never changes. A plain function with one LLM call for extraction is faster, cheaper, more reliable. Wrapping that in an agent adds nothing but variance.</p>
 
-<h2>When you need determinism</h2>
-<p>Regulated workflows, auditable decisions, legal outputs. An agent's non-determinism (different reasoning each run) is a feature for exploration but a liability for compliance.</p>
+<h2>Low-latency interactions: don't use an agent</h2>
+<p>Chat UIs where the user is waiting for a reply under two seconds. Autocomplete. Anything embedded in a hot path. Agents need to loop: think, call, wait, think, call, wait. Even a fast loop is 5–10 seconds. For real-time, put the context in the prompt and do one call.</p>
 
-<h2>When the task is narrow and well-defined</h2>
-<p>A function call works. "Given this weather data, tell me if I should bring a jacket." The LLM gets the data in the prompt; no agent needed.</p>
+<h2>Compliance-critical outputs: don't use an agent (by itself)</h2>
+<p>Medical advice, legal decisions, financial approvals. Agents are non-deterministic by design: two runs of the same task can pick different tools, different orders, different answers. Auditors hate that. Use workflows with logged, reviewable steps. If an agent is involved, have it <em>draft</em> and have a human or rule-engine approve.</p>
 
-<h2>When the tools are unreliable</h2>
-<p>Agents amplify tool failures. If your database is flaky, your agent will encounter failures mid-task, and recovery patterns are hard. Fix infrastructure before adding agents.</p>
+<h2>When one LLM call is enough</h2>
+<p>"Given this support ticket, classify the category and sentiment." You have all the input. The output is structured. Just call the LLM with the ticket and a schema. No tools, no loop. The test: if you can fit all the information needed into the prompt, you don't need an agent.</p>
 
-<h2>When the team can't debug agents</h2>
-<p>Agent traces are complex. Without observability tooling and the discipline to review them, agents fail silently in production. If your team can't commit to observability, don't ship an agent.</p>
+<h2>When the tools are flaky</h2>
+<p>An agent makes 10 tool calls. If each tool fails 5% of the time, about 40% of agent runs hit at least one failure. Now you need recovery logic: retries, fallbacks, "the database was down, try again later." That's a different, harder problem. Fix your underlying tools first. Agents amplify infrastructure problems.</p>
 
-<h2>When the problem is ill-defined</h2>
-<p>"Help me with marketing." Agents don't help with ambiguous tasks better than humans asking clarifying questions. Fix the spec before building the tool.</p>
+<h2>When you can't afford to debug them</h2>
+<p>A broken workflow has a specific failing step you can read and fix. A broken agent has a 40-turn trace of LLM reasoning, tool calls, and results that you have to read through to find the one wrong decision at turn 17. Teams that haven't invested in tracing, eval datasets, and the discipline to actually read the traces should not ship agents. The first time it fails silently in production, you'll understand why.</p>
+
+<h2>Cost comparison at scale</h2>
+<div class="sketch" data-viewbox="0 0 900 240"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 240);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Cost per 10,000 tasks');
+  sketch.bars(svg, rc, {x: 40, y: 60, w: 820, labelW: 240, items: [
+    {label: 'Single LLM call', value: 10, note: '~$100'},
+    {label: 'Fixed 3-step workflow', value: 25, note: '~$250'},
+    {label: 'Bounded agent (6 turns avg)', value: 55, note: '~$550'},
+    {label: 'Unbounded agent (20 turns)', value: 95, note: '~$2,000+'}
+  ]});
+});
+</script>
+<p>At 10,000 runs a month, the gap between a workflow and an unbounded agent is the difference between a Netflix subscription and a car payment. If the agent buys you nothing the workflow couldn't, that's just money set on fire.</p>
+
+<h2>The "we should use an agent" trap</h2>
+<p>Agents feel like the future so teams reach for them. Symptoms you've fallen into this: you built an agent and its trace always looks the same. Or every new edge case means a new "tool" that's really just a hard-coded function. Or the agent works great on your demo cases and randomly fails on customer cases. The fix is usually to rip out the loop and replace it with a workflow, keeping the agent only at the step that actually needs a decision.</p>
+
+<h2>When an agent is actually the right choice</h2>
+<p>The flip side: don't under-use agents either. If the task truly branches at runtime, you have real tools, you've thought about tracing, and the variance is acceptable, an agent is exactly right. Research, debugging, open-ended customer support, code generation, anything where the next step depends on what you just learned.</p>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Run the five-question test on your use case before you write a line of agent code.</li>
+<li>Read <a href="architecture.html">the architecture map</a> to see how agents fit inside larger systems (usually as one component, not the whole thing).</li>
+<li>Revisit <a href="agent-vs-workflow.html">agent vs workflow</a> when the decision gets fuzzy.</li>
+</ul>
 <div class="prev-next"><a href="agent-vs-workflow.html" class="prev"><div class="label">← Previous</div><div class="title">Agent vs workflow</div></a><a href="architecture.html" class="next"><div class="label">Next →</div><div class="title">Architecture map</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
