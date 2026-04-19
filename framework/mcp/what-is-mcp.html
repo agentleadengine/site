@@ -218,56 +218,121 @@
 <a href="../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../what-is-autonomous-ai.html">What is autonomous AI</a></li><li><a href="../the-autonomy-spectrum.html">The autonomy spectrum</a></li><li><a href="../glossary.html">Glossary</a></li></ul><h4>Claude</h4><ul><li><a href="../claude/overview.html">Overview</a></li><li><a href="../claude/prompting-for-agents.html">Prompting for agents</a></li><li><a href="../claude/extended-thinking.html">Extended thinking</a></li><li><a href="../claude/tool-use.html">Tool use</a></li></ul><h4>MCP</h4><ul><li><a href="../mcp/index.html">Overview</a></li><li><a href="../mcp/what-is-mcp.html" class="active">What is MCP</a></li><li><a href="../mcp/anatomy.html">Anatomy</a></li><li><a href="../mcp/transports.html">Transports</a></li><li><a href="../mcp/servers.html">Servers</a></li><li><a href="../mcp/clients.html">Clients</a></li><li><a href="../mcp/security.html">Security</a></li><li><a href="../mcp/directory.html">Directory</a></li></ul><h4>Plugins</h4><ul><li><a href="../plugins/index.html">Overview</a></li><li><a href="../plugins/vs-mcp.html">Plugins vs MCP</a></li><li><a href="../plugins/marketplace.html">Marketplace</a></li></ul><h4>Claude Code</h4><ul><li><a href="../claude-code/index.html">Overview</a></li><li><a href="../claude-code/settings.html">Settings</a></li><li><a href="../claude-code/permissions.html">Permissions</a></li><li><a href="../claude-code/hooks.html">Hooks</a></li><li><a href="../claude-code/skills.html">Skills</a></li><li><a href="../claude-code/memory.html">Memory</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/index.html">Overview</a></li><li><a href="../patterns/react-loop.html">ReAct loop</a></li><li><a href="../patterns/plan-execute.html">Plan-execute</a></li><li><a href="../patterns/multi-agent.html">Multi-agent</a></li><li><a href="../patterns/evaluation.html">Evaluation</a></li><li><a href="../patterns/prompt-caching.html">Prompt caching</a></li></ul><h4>Autonomous</h4><ul><li><a href="../autonomous/index.html">Overview</a></li><li><a href="../autonomous/headless.html">Headless</a></li><li><a href="../autonomous/scheduling.html">Scheduling</a></li><li><a href="../autonomous/self-monitoring.html">Self-monitoring</a></li><li><a href="../autonomous/safety.html">Safety</a></li></ul><h4>Build Guides</h4><ul><li><a href="../build/index.html">Overview</a></li><li><a href="../build/first-agent.html">First agent (60 min)</a></li><li><a href="../build/voice-agent.html">Voice agent</a></li><li><a href="../build/research-agent.html">Research agent</a></li></ul><h4>Tools</h4><ul><li><a href="../tools/browser-automation.html">Browser automation</a></li><li><a href="../tools/desktop-control.html">Desktop control</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Framework</a><span class="sep">›</span><a href="../mcp/index.html">MCP</a><span class="sep">›</span><span>What is MCP?</span></div><h1 class="title" style="font-size:clamp(32px,4.5vw,42px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">What is MCP?</h1><div class="article-meta"><span>📖 5 min read</span><span>Updated 2026-04-18</span></div>
-<p class="lede">MCP (Model Context Protocol) is an open standard, introduced by Anthropic in late 2024, for connecting tools and data to AI models. Think of it as the USB-C port of AI.</p>
+<p class="lede">MCP is the thing that lets an AI do stuff outside the chat window. Without it, an AI can only talk. With it, an AI can reach into your email, your files, your calendar, your database, your anything, and actually use them. Let's take this apart carefully, because understanding MCP is the difference between "AI is a cool chatbot" and "AI is running half my work for me."</p>
 
-<h2>The problem MCP solves</h2>
-<p>Before MCP, every time you wanted to give an AI app access to a new tool. Gmail, GitHub, your local file system, someone had to write custom glue code. That glue was non-portable: it worked with one app and one model, and had to be rewritten for the next.</p>
-<p>MCP standardizes the glue. Write one MCP server for Gmail and any MCP-speaking client (Claude Code, Claude.ai, other agents) can use it. Build once, plug in anywhere.</p>
+<h2>Start with a problem you've felt.</h2>
+<p>You've probably had this thought: <em>"It would be so useful if this AI could just check my email and tell me what's urgent."</em> Or your calendar. Or your Notion. Or your CRM. But when you ask, it can't. You have to copy-paste things in. You become the middleman between the AI and your stuff.</p>
 
-<h2>The one-sentence pitch</h2>
-<p><strong>"A standard way for AI agents to discover and use external tools and data."</strong></p>
+<p>That was the whole state of AI until late 2024. The model was a brain in a jar. Very smart. Very well-read. But it had no hands. It could not reach out and touch anything in the real world. If you wanted it to use a tool, someone had to write custom code to connect that one specific tool to that one specific AI app. And if you wanted to use the same tool with a different AI? Someone had to write it <em>again</em>. Different code, same job. It was a massive amount of wasted effort, and it meant that most AI apps were stuck in the chat window forever.</p>
 
-<h2>What MCP actually does</h2>
-<p>An MCP server exposes three things to an MCP client:</p>
+<p>MCP fixes this. That's the whole story. Everything else in this page is details.</p>
+
+<h2>The mental model: MCP is a universal plug.</h2>
+<p>The most common analogy for MCP is the USB-C port, and it's actually a good one. Stay with it for a minute.</p>
+
+<p>Think about how USB-C changed your life. Before USB-C, every device had its own plug. Your iPhone used Lightning. Your Android used Micro-USB. Your laptop used some barrel connector. Your headphones had a 3.5mm jack. Your external hard drive used USB-A or Thunderbolt. Every new device meant a new cable, a new charger, a new adapter sitting in a drawer somewhere.</p>
+
+<p>Then USB-C became standard. Suddenly, the same cable charged your phone, your laptop, your headphones, your tablet. Same port on the wall outlet. Same cable in your bag. New gadget comes out? It has USB-C. Works with everything you already own.</p>
+
+<p>MCP does the exact same thing for AI tools. Before MCP, every AI and every tool had to build a custom connection. After MCP, there's one plug. The AI speaks MCP. The tool speaks MCP. They understand each other, no matter who made them. Write a tool once, and every MCP-aware AI can use it forever.</p>
+
+<p>That is the entire point of MCP, expressed as plainly as possible. Everything from here on is making that point precise.</p>
+
+<h2>Let's be concrete. What does MCP actually do?</h2>
+<p>MCP stands for "Model Context Protocol." That name is unfortunately not very helpful, so let me translate each word:</p>
+
 <ul>
-  <li><strong>Tools</strong>, functions the model can call (e.g. <code>search_email</code>, <code>create_issue</code>)</li>
-  <li><strong>Resources</strong>, data the model can read (e.g, documents, database records)</li>
-  <li><strong>Prompts</strong>, reusable prompt templates</li>
+  <li><strong>Model</strong> means the AI. Claude, GPT, Gemini, whatever.</li>
+  <li><strong>Context</strong> means the outside information and abilities the AI needs to do its job. Your files. Your tools. Your data.</li>
+  <li><strong>Protocol</strong> is just a fancy word for "a shared set of rules for how two things talk to each other."</li>
 </ul>
-<p>The client (e.g. Claude Code) connects to the server, asks what's available, and makes those tools/resources/prompts available to the model.</p>
 
-<h2>Why it matters for autonomy</h2>
-<p>Autonomous agents need <em>many</em> tools to do real work. Without MCP, connecting an agent to 20 services means writing 20 custom integrations and maintaining them as APIs change. With MCP, you install 20 pre-built servers (your own or from the community) and the agent uses them immediately.</p>
+<p>So MCP is a shared set of rules for how AI models get access to outside stuff. The rules say: "If you want to expose a tool to an AI, here's how you describe it. If you want your AI to call a tool, here's how you ask. Here's how the tool sends back a result. Here's how errors work." Because everyone follows the same rules, everything plugs into everything.</p>
+
+<h2>Two sides of the connection: servers and clients.</h2>
+<p>There are only two roles in MCP, and once you understand them, the whole thing clicks.</p>
+
+<p><strong>An MCP server</strong> is the side that <em>has stuff</em>. It's a little program that sits on a computer and says "I can do X, Y, and Z." If you want to let an AI use Gmail, there's an MCP server for Gmail. It runs somewhere (your computer, Google's cloud, wherever) and announces to the world: "I can search emails. I can send emails. I can label threads." That's an MCP server.</p>
+
+<p><strong>An MCP client</strong> is the side that <em>uses stuff</em>. This is the AI app you're actually talking to. Claude Code is an MCP client. Claude.ai is an MCP client. Cursor is an MCP client. Any AI app that can connect to MCP servers and make their abilities available to its model is a client.</p>
+
+<p>The client says to the server: "Hi, what can you do?" The server responds with a list. The client shows that list to the model. Now when the model wants to use one of those abilities, it speaks the MCP protocol to the server, the server does the work, and the result comes back. That's the whole dance.</p>
 
 <div class="callout insight">
-  <strong>Insight:</strong> MCP doesn't make a model smarter. It multiplies what the model can reach. That's what makes autonomous work viable.
+  <strong>The quick way to remember it:</strong> servers hold the tools, clients hold the model. MCP is the phone line between them.
 </div>
 
-<h2>Who uses MCP today</h2>
-<ul>
-  <li><strong>Claude Code</strong>. Anthropic's CLI agent, MCP-first</li>
-  <li><strong>Claude.ai</strong>, the web app supports remote MCP servers for "connectors"</li>
-  <li><strong>IDEs</strong>. Cursor, Zed, and others speak MCP for in-editor tools</li>
-  <li><strong>Custom agent frameworks</strong>. LangGraph, CrewAI, and others have MCP adapters</li>
-</ul>
+<h2>A worked example. Walk it through end to end.</h2>
+<p>Imagine you're using Claude Code (an MCP client) and you've installed the Gmail MCP server (using a one-line command you got from a directory of MCPs).</p>
 
-<h2>Who builds MCP servers</h2>
-<ul>
-  <li><strong>Anthropic</strong>, reference servers for common integrations</li>
-  <li><strong>Service providers</strong>, companies (Notion, Slack, Figma, Canva) ship official MCPs so agents can use their products</li>
-  <li><strong>The community</strong>, hundreds of open-source MCPs on GitHub for everything from databases to home automation</li>
-  <li><strong>You</strong>, writing a custom MCP for your own tool is a few dozen lines of code</li>
-</ul>
+<p>You type: <em>"What are the three most urgent emails in my inbox right now, and draft a reply to each?"</em></p>
 
-<h2>What MCP is NOT</h2>
-<ul>
-  <li><strong>Not a model.</strong> MCP is a protocol. The model (Claude, GPT, whatever) still does the thinking.</li>
-  <li><strong>Not tied to one vendor.</strong> It's an open spec. GPT and Gemini can (and will) speak MCP too, even if the early momentum was Anthropic-led.</li>
-  <li><strong>Not magic.</strong> A bad tool is still bad, wrapped in MCP or not. Design discipline still applies.</li>
-</ul>
+<p>Here's what actually happens under the hood:</p>
 
-<h2>What to read next</h2>
-<p>Head to <a href="anatomy.html">Anatomy</a> to understand the five primitives, or jump to <a href="directory.html">Directory</a> for a curated list of MCPs worth trying.</p>
+<ol>
+  <li>Claude Code (the client) asks the Gmail MCP server at startup: "What can you do?" The server answers: "I have tools called <code>search_emails</code>, <code>get_email</code>, <code>draft_reply</code>."</li>
+  <li>Claude Code hands that list to the Claude model. The model now knows these tools exist and how to use them.</li>
+  <li>The model reads your request. It thinks: <em>"To find the most urgent emails, I need to search the inbox."</em> It calls <code>search_emails</code> with something like: <code>{"query": "in:inbox", "limit": 50}</code>.</li>
+  <li>Claude Code sends that call through MCP to the Gmail server. The server talks to Gmail's API, gets the emails, and sends a result back. Let's say it returns a list of 50 email summaries.</li>
+  <li>The model reads the summaries, figures out which three look urgent (maybe based on sender, keywords, how old they are), and calls <code>get_email</code> three times to read each one in full.</li>
+  <li>For each of the three, the model drafts a reply and calls <code>draft_reply</code> to save it to your Gmail drafts.</li>
+  <li>The model writes a response back to you: <em>"I found three urgent emails and drafted replies. They're in your drafts folder. Here's a summary of each..."</em></li>
+</ol>
+
+<p>You typed one sentence. The AI did seven steps across your real email account. None of it required custom code. It worked because both sides spoke MCP.</p>
+
+<h2>The three things an MCP server can offer.</h2>
+<p>MCP servers don't just expose tools. They can expose three different kinds of things to an AI:</p>
+
+<h3>1. Tools. Things the AI can DO.</h3>
+<p>Tools are actions. "Send this email." "Create this calendar event." "Run this database query." "Open this file." A tool has a name, a description (so the AI knows when to use it), and a list of arguments. The AI picks a tool, fills in the arguments, and the server does the work.</p>
+<p>This is the most common kind of MCP capability, and it's probably what you'll use 80% of the time.</p>
+
+<h3>2. Resources. Things the AI can READ.</h3>
+<p>Resources are data. Documents. Database rows. Images. Logs. Anything the AI needs to <em>look at</em> but not necessarily change. A resource has a location (like a URL) and some content. The AI can ask to fetch a resource and then reason about what's inside.</p>
+<p>Think of tools as verbs and resources as nouns. Tools are what the AI can do. Resources are what the AI can see.</p>
+
+<h3>3. Prompts. Pre-written instructions the AI can borrow.</h3>
+<p>Prompts are reusable templates that a server offers to the AI. For example, a "code review" MCP server might offer a prompt called <code>security_review</code> that already contains careful instructions for finding security bugs. Instead of you writing those instructions every time, the MCP server ships them as a prompt and the model can pull them in.</p>
+<p>You won't use prompts as often as tools, but they're powerful for sharing expertise. Somebody else does the work of writing the perfect instruction; you just borrow it.</p>
+
+<h2>Why this matters SO much for autonomous AI.</h2>
+<p>Here's the thing. A chatbot needs a human present at every step. It answers, you act. An autonomous AI is one that runs on its own. That only works if the AI can do things without you. And doing things means touching tools.</p>
+
+<p>If connecting each tool to your AI is a multi-day coding project, autonomous AI is never going to be affordable for most people. Only huge companies with big engineering teams can afford to build and maintain dozens of custom integrations. The rest of us are stuck with chatbots.</p>
+
+<p>MCP breaks that lock. Installing a new MCP server is usually one command. There are already hundreds of pre-built servers for common stuff (Notion, Slack, GitHub, Google Drive, Stripe, your database, your file system, a web browser, on and on). Your agent gets new abilities as fast as you can install servers. Instead of "I could automate this if I had a dev team for six months," it's "I could automate this tonight if I install the three right MCPs."</p>
+
+<p>This is why MCP is so important for the whole idea of an autonomous AI. It's not a nice-to-have. It is the thing that makes it economically possible for a single person to build an agent that actually does useful work.</p>
+
+<h2>The common confusions, cleared up.</h2>
+
+<h3>"Isn't this just a fancy API wrapper?"</h3>
+<p>Kind of, but the difference matters. A normal API wrapper connects one service to one app. If you write a wrapper for Gmail that works with Claude, it does NOT work with GPT. Or Cursor. Or anyone else. Every combination needs its own wrapper. MCP is a <em>standard</em>, which means one wrapper works with every AI app that speaks MCP. That's a big deal.</p>
+
+<h3>"Isn't this just function calling?"</h3>
+<p>Close, but not quite. Function calling is the lower-level mechanism by which a model requests to run a function. MCP uses function calling under the hood. But MCP adds something on top: a standard for how tools get <em>discovered</em>, described, authenticated, and connected. Function calling is "how the model asks to run a thing." MCP is "how the thing advertises itself to every model in the world." You can think of MCP as function calling's delivery mechanism.</p>
+
+<h3>"Is MCP only for Claude?"</h3>
+<p>No. Anthropic created MCP and open-sourced it, but it's an open standard. Any AI can implement it. OpenAI has announced support. Gemini is moving toward it. Open-source agent frameworks support it. Over time, MCP is becoming the industry standard for AI tool use, regardless of which model is underneath.</p>
+
+<h3>"Does MCP make the AI smarter?"</h3>
+<p>No. A dumb AI with MCP is still dumb. MCP doesn't change the brain. It gives the brain hands. But having hands is the difference between "interesting chatbot" and "useful assistant." It's not that MCP makes the model smarter; it multiplies what the model's existing intelligence can actually do in the world.</p>
+
+<h2>What to do with this knowledge.</h2>
+<p>A few things worth trying, in order:</p>
+
+<ol>
+  <li><strong>Install one MCP server</strong> with an AI app you already use. Claude Code is the easiest on-ramp. Try a file-system MCP or a web-search MCP first, they're the most beginner-friendly. Just watching the AI reach out to a tool and bring back a real result changes how you think about what's possible.</li>
+  <li><strong>Look at the MCP directory</strong> (see the link below) for a server that connects to something you use daily, your notes app, your CRM, your email, and install it. Ask the AI to do a small real task. Notice what changes.</li>
+  <li><strong>Plan one workflow in your life or work</strong> that would change if the AI could reach into a specific system. That's your first real MCP project. It'll tell you which server to find next.</li>
+  <li><strong>Eventually, build your own MCP server</strong> for something you wish existed. It's usually 50-100 lines of code. Once you've built one, MCP stops feeling like magic and starts feeling like a tool you own.</li>
+</ol>
+
+<p>Most people's frustration with AI right now comes from the gap between what they say it can do and what it actually does in their life. MCP is the bridge across that gap. Understanding it puts you ahead of 95% of people who are still treating AI as a chatbot.</p>
+
+<h2>What to read next.</h2>
+<p>Head to <a href="anatomy.html">Anatomy of an MCP</a> to see what's inside a server (it's simpler than you'd guess), or jump to the <a href="directory.html">MCP directory</a> for a curated list of servers worth installing today.</p>
 <div class="prev-next"><a href="index.html" class="prev"><div class="label">← Previous</div><div class="title">MCP overview</div></a><a href="anatomy.html" class="next"><div class="label">Next →</div><div class="title">Anatomy of an MCP</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../framework/index.html">Framework</a></p>
 </div></footer><script>
