@@ -222,6 +222,24 @@
 <p class="lede">Most businesses that fail picked the wrong market. Most that thrive picked the right one and then worked hard. The asymmetry is brutal, you cannot outwork a bad market selection. Another way to put it of this idea: "A great product with a bad market loses. A mediocre product with a great market wins. Find the market first."</p>
 
 <h2>The four market criteria</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Pick markets on these four');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Criterion', w: 220},
+    {title: 'What to check', w: 580}
+  ], rows: [
+    ['Pain / desire', 'Is the problem urgent, felt, unresolved?'],
+    ['Purchasing power', 'Can they afford the solution?'],
+    ['Easy to reach', 'Do they gather somewhere you can target?'],
+    ['Growing', 'Is the segment expanding, not shrinking?']
+  ]});
+});
+</script>
 <p>The four traits of a great market:</p>
 <ol>
  <li><strong>Massive pain.</strong> Prospects feel the problem acutely and often. "Mild annoyance" doesn't buy. "I can't sleep at night because of this" buys.</li>

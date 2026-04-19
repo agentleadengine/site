@@ -225,6 +225,22 @@
 <p>Demographics describe categories; they don't describe <em>reasons to buy</em>. Two "35-year-old male founders of 10-person SaaS companies in New York" can have completely different problems, budgets, and willingness to buy. Demographics are the weakest signal you have; psychographics (beliefs, fears, desires) are 10x stronger, and <em>situations</em> (the specific moment they're in) are 100x stronger.</p>
 
 <h2>The layered definition</h2>
+<div class="sketch" data-viewbox="0 0 900 300"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 300);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Dream-customer layers, narrowest to widest');
+  sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 44, layers: [
+    {label: 'Identity + beliefs', sub: 'how they see themselves'},
+    {label: 'Fears + frustrations', sub: 'what keeps them up'},
+    {label: 'Desires + ambitions', sub: 'what they want to become'},
+    {label: 'Buying triggers', sub: 'what makes them act'},
+    {label: 'Demographics', sub: 'last, and least useful alone'}
+  ]});
+});
+</script>
 
 <h3>Layer 1. Demographics</h3>
 <p>Age, location, industry, company size, role. The background information. Necessary but not sufficient.</p>

@@ -222,6 +222,28 @@
 <p class="lede">There's a classic question a question to his copywriting students: "If you and I both had a hamburger stand, and we had to compete to see who could sell the most hamburgers, what advantages would you most like to have on your side?" Students said the best beef, the best location, the best price, the best recipe. The answer: none of those. <em>"I'd only want one advantage: a starving crowd."</em></p>
 
 <h2>The principle</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Starving crowd: quick diagnostic');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Starving signals', items: [
+      'People actively search solutions',
+      'They tolerate bad products',
+      'They tell stories about the pain',
+      'Competitors thrive despite flaws'
+    ]},
+    right: {title: 'Not starving signals', items: [
+      'You have to explain the problem',
+      'Existing options get low engagement',
+      'Conversations are flat',
+      'Budget is an afterthought']}
+  });
+});
+</script>
 <p>The market you sell to matters more than the product you sell. A mediocre product sold to a market that's actively looking for a solution beats a world-class product sold to people who don't care. Starving crowds buy. Well-fed crowds don't, no matter how good the food is.</p>
 
 <p>This is the single most important strategic decision in direct response. If you pick a bad market, no amount of copywriting, offer engineering, or ad optimization will save you. If you pick a great market, you'll make money with amateur execution.</p>
