@@ -233,6 +233,24 @@
 <p>All are jaded. All get 50+ link-building pitches a week. Generic "your article about X missed my article about Y" emails die on arrival.</p>
 
 <h2>The link-building offer types</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Link-building offer types');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Type', w: 220},
+    {title: 'What you offer', w: 580}
+  ], rows: [
+    ['Guest post', 'Original article for their site'],
+    ['Broken link replacement', 'Replace their broken link with yours'],
+    ['Resource roundup', 'Ask to be added to a listicle'],
+    ['Data / research pitch', 'Original data they can cite']
+  ]});
+});
+</script>
 
 <h3>Broken link replacement</h3>
 <p>"Your [resource page / blog post] links to [dead URL]. I have [relevant replacement]. Want me to send details?"</p>

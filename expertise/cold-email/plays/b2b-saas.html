@@ -233,6 +233,24 @@
 <p>Avoid: "B2B SaaS, 50-500 employees", too broad. Better: "B2B SaaS companies 50-200 people, who raised Series A-B in last 18 months, with AEs but no dedicated RevOps."</p>
 
 <h2>Best signals</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Best intent signals for B2B SaaS');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Signal', w: 240},
+    {title: 'Why it matters', w: 560}
+  ], rows: [
+    ['Using your competitor', 'Already sold on the category'],
+    ['Recent fundraise', 'Budget + priorities shifting'],
+    ['Hiring related role', 'Active problem'],
+    ['Integration partner presence', 'Part of the ecosystem']
+  ]});
+});
+</script>
 
 <ul>
 <li>Recent funding round (30-90 days fresh)</li>

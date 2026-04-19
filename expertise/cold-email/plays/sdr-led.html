@@ -222,6 +222,24 @@
 <p class="lede">Once a company has scaled past founder-led outbound, cold email shifts to an SDR team. The playbook changes: volume goes up, personalization per email goes down, operational rigor goes way up. This is how SDR-led cold email actually runs.</p>
 
 <h2>Team structure</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'SDR team quotas (B2B SaaS)');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Metric', w: 220},
+    {title: 'Typical target', w: 580}
+  ], rows: [
+    ['Emails / day / SDR', '100–200 targeted'],
+    ['Meetings booked / month', '8–15'],
+    ['Pipeline $ / SDR / mo', '$100k–300k'],
+    ['SDR-AE ratio', '1:2 to 1:4']
+  ]});
+});
+</script>
 
 <p>Typical SDR team running cold email:</p>
 <ul>

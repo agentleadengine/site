@@ -235,6 +235,20 @@
 <p>The narrower, the higher the close rate. Agencies that try to do everything for everyone close nothing cold.</p>
 
 <h2>The pitch pattern</h2>
+<div class="sketch" data-viewbox="0 0 900 240"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 240);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Agency cold outreach pattern');
+  sketch.numberedSteps(svg, rc, {direction: 'h', x: 30, y: 80, w: 840, items: [
+    {title: 'Specific observation', sub: 'about their marketing'},
+    {title: 'Value insight', sub: 'not a pitch yet'},
+    {title: 'Soft CTA', sub: 'worth a conversation?'}
+  ]});
+});
+</script>
 
 <p>Agency cold pitches work best when they offer specific value upfront, not a discovery call:</p>
 
