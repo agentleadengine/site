@@ -222,6 +222,31 @@
 <p class="lede">On most platforms, creative is 40-50% of performance. On TikTok, it's 70-80%. A brand can have perfect targeting and budget and still fail if the creative doesn't look native to the feed.</p>
 
 <h2>Native vs produced</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'What TikTok creative looks like');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Native (works)', items: [
+      'Handheld / phone camera',
+      'Real person talking',
+      'No heavy edits',
+      'Trending audio / format',
+      'Feels like organic content'
+    ]},
+    right: {title: 'Produced (fails)', items: [
+      'Studio lighting',
+      'Stock footage',
+      'Voice-over narration',
+      'Square or horizontal aspect',
+      'Looks like a TV commercial'
+    ]}
+  });
+});
+</script>
 <p>Native = looks like something a regular user would post. Shaky, casual, conversational, trend-aware.</p>
 <p>Produced = professional lighting, polished editing, brand-forward. This is what worked on Facebook 2015. It fails on TikTok 2026.</p>
 

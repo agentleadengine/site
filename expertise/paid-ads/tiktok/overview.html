@@ -222,6 +222,25 @@
 <p class="lede">TikTok Ads works fundamentally differently from Meta or Google. It's creative-first: the creative determines everything. Targeting barely matters compared to whether your ad looks native to the feed. Running TikTok like Meta is the #1 way advertisers lose money there.</p>
 
 <h2>Why TikTok is different</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'TikTok vs other ad platforms');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Dimension', w: 220},
+    {title: 'TikTok reality', w: 580}
+  ], rows: [
+    ['Content', 'Native / UGC wins; produced feels like an ad'],
+    ['Algorithm', 'Interest graph; targeting matters less'],
+    ['Hook', '0–3s decides everything'],
+    ['Production', 'Low-fi beats high-fi'],
+    ['Creator leverage', 'Spark Ads on organic posts work best']
+  ]});
+});
+</script>
 <ul>
 <li>Users scroll for entertainment, not intent</li>
 <li>Native creative (looks like a regular TikTok) outperforms polished ads 10-50x</li>

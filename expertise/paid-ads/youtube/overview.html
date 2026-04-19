@@ -222,6 +222,25 @@
 <p class="lede">YouTube Ads lets you reach the world's biggest video audience. Different intent modes (search vs recommended vs pre-roll), different formats. Best for brands that have video creative capacity and want scale.</p>
 
 <h2>Ad formats</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'YouTube ad formats');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Format', w: 240},
+    {title: 'When to use', w: 560}
+  ], rows: [
+    ['Skippable in-stream', 'Most common; 5s hook matters'],
+    ['Non-skippable 15s', 'Forced view; higher CPM'],
+    ['Bumper (6s)', 'Reach + awareness'],
+    ['In-feed discovery', 'Ads on YouTube home / search'],
+    ['YouTube Shorts ads', 'Mobile vertical format, growing fast']
+  ]});
+});
+</script>
 <ul>
 <li><strong>Skippable In-Stream</strong>: 5-second skip button. Most common. Pay per view (30s+ or completed).</li>
 <li><strong>Non-Skippable In-Stream</strong>: 15-20s forced. Pay per impression.</li>

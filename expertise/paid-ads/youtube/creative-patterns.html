@@ -222,6 +222,21 @@
 <p class="lede">YouTube creative is longer-form than TikTok or Meta. You have 30-60 seconds typically. The patterns that work optimize for the 5-second skip moment: hook hard, then deliver.</p>
 
 <h2>The 5-second rule</h2>
+<div class="sketch" data-viewbox="0 0 900 240"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 240);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'YouTube video structure');
+  sketch.numberedSteps(svg, rc, {direction: 'h', x: 30, y: 80, w: 840, items: [
+    {title: '0-5s hook', sub: 'stop the skip'},
+    {title: '5-40s body', sub: 'promise + proof'},
+    {title: '40-55s pitch', sub: 'offer + why now'},
+    {title: '55-60s CTA', sub: 'exact next step'}
+  ]});
+});
+</script>
 <p>Users skip at 5 seconds if not hooked. The first 5 seconds must:</p>
 <ul>
 <li>State who this is for</li>

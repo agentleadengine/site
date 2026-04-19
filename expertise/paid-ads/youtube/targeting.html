@@ -222,6 +222,24 @@
 <p class="lede">YouTube targeting inherits from Google Ads plus YouTube-specific options. Keywords (based on video searches), topics, placements (specific channels or videos), audiences.</p>
 
 <h2>Audience options</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'YouTube targeting layers');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Layer', w: 220},
+    {title: 'Examples', w: 580}
+  ], rows: [
+    ['Audiences', 'In-market, affinity, custom intent, life events'],
+    ['Content / placement', 'Specific channels, videos, topics, keywords'],
+    ['Demographics', 'Age, gender, household income'],
+    ['Remarketing', 'Visited your site, watched your channel']
+  ]});
+});
+</script>
 <ul>
 <li><strong>Demographics</strong>: age, gender, parental status, income</li>
 <li><strong>Affinity</strong>: broad interests (sports fans, tech enthusiasts)</li>
