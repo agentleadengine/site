@@ -156,9 +156,22 @@ What's left:
 1. ~~79 remaining glossary terms~~ ✅ DONE (2026-04-19)
 2. ~~10 expertise hub pages~~ ✅ DONE (2026-04-19). Every hub has a
    teaching-depth intro + subsection-map diagram.
-3. **89 expertise subsection index pages** (auto-generated, could enrich
-   with intros + diagrams). Next priority.
-4. **~800 expertise deep articles** (the big chunk).
+3. ~~89 expertise subsection index pages~~ ✅ DONE (2026-04-19). Every
+   subsection now has a domain-specific intro. Generator:
+   `_enrich_subsection_indexes.py` at repo root.
+4. **~800 expertise deep articles** — ALL THAT REMAINS. The big chunk.
+
+## Site status: 100% of everything above the article layer is done.
+
+What's left is the deepest layer: the ~800 individual articles across
+the 10 expertise sections. Each section averages ~80 articles. At
+~1,500 words of teaching content per article, this is the multi-session
+mountain. Expect several sessions of focused work.
+
+Current quality bar: every framework page, every glossary entry, every
+expertise hub, every subsection index is at teaching depth with
+consistent voice and Blueprint × Purple Marker diagrams. The expertise
+deep articles should match that quality or we've devalued the rest.
 
 Expertise section is the main remaining scope. At ~1,500 words per article,
 this is roughly several sessions of focused work.
