@@ -159,7 +159,14 @@ What's left:
 3. ~~89 expertise subsection index pages~~ ✅ DONE (2026-04-19). Every
    subsection now has a domain-specific intro. Generator:
    `_enrich_subsection_indexes.py` at repo root.
-4. **~800 expertise deep articles** — ALL THAT REMAINS. The big chunk.
+4. **~486 expertise deep articles** — the big chunk (in progress).
+
+### Deep articles: completed subsections
+
+- `expertise/seo/foundations/` — 10/10 ✅ (2026-04-19)
+  - what-is-seo, how-search-engines-work, ranking-factors,
+    seo-vs-sem-vs-smo, organic-vs-paid, black-white-gray-hat,
+    google-algorithm-history, core-web-vitals, eeat, seo-team-roles
 
 ## Site status: 100% of everything above the article layer is done.
 
