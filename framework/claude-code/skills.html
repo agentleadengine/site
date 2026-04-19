@@ -219,61 +219,132 @@
 <a href="../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../what-is-autonomous-ai.html">What is autonomous AI</a></li><li><a href="../the-autonomy-spectrum.html">The autonomy spectrum</a></li><li><a href="../glossary.html">Glossary</a></li></ul><h4>Claude</h4><ul><li><a href="../claude/overview.html">Overview</a></li><li><a href="../claude/prompting-for-agents.html">Prompting for agents</a></li><li><a href="../claude/extended-thinking.html">Extended thinking</a></li><li><a href="../claude/tool-use.html">Tool use</a></li></ul><h4>MCP</h4><ul><li><a href="../mcp/index.html">Overview</a></li><li><a href="../mcp/what-is-mcp.html">What is MCP</a></li><li><a href="../mcp/anatomy.html">Anatomy</a></li><li><a href="../mcp/transports.html">Transports</a></li><li><a href="../mcp/servers.html">Servers</a></li><li><a href="../mcp/clients.html">Clients</a></li><li><a href="../mcp/security.html">Security</a></li><li><a href="../mcp/directory.html">Directory</a></li></ul><h4>Plugins</h4><ul><li><a href="../plugins/index.html">Overview</a></li><li><a href="../plugins/vs-mcp.html">Plugins vs MCP</a></li><li><a href="../plugins/marketplace.html">Marketplace</a></li></ul><h4>Claude Code</h4><ul><li><a href="../claude-code/index.html">Overview</a></li><li><a href="../claude-code/settings.html">Settings</a></li><li><a href="../claude-code/permissions.html">Permissions</a></li><li><a href="../claude-code/hooks.html">Hooks</a></li><li><a href="../claude-code/skills.html" class="active">Skills</a></li><li><a href="../claude-code/memory.html">Memory</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/index.html">Overview</a></li><li><a href="../patterns/react-loop.html">ReAct loop</a></li><li><a href="../patterns/plan-execute.html">Plan-execute</a></li><li><a href="../patterns/multi-agent.html">Multi-agent</a></li><li><a href="../patterns/evaluation.html">Evaluation</a></li><li><a href="../patterns/prompt-caching.html">Prompt caching</a></li></ul><h4>Autonomous</h4><ul><li><a href="../autonomous/index.html">Overview</a></li><li><a href="../autonomous/headless.html">Headless</a></li><li><a href="../autonomous/scheduling.html">Scheduling</a></li><li><a href="../autonomous/self-monitoring.html">Self-monitoring</a></li><li><a href="../autonomous/safety.html">Safety</a></li></ul><h4>Build Guides</h4><ul><li><a href="../build/index.html">Overview</a></li><li><a href="../build/first-agent.html">First agent (60 min)</a></li><li><a href="../build/voice-agent.html">Voice agent</a></li><li><a href="../build/research-agent.html">Research agent</a></li></ul><h4>Tools</h4><ul><li><a href="../tools/browser-automation.html">Browser automation</a></li><li><a href="../tools/desktop-control.html">Desktop control</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Framework</a><span class="sep">›</span><a href="../claude-code/index.html">Claude Code</a><span class="sep">›</span><span>Skills, named invokable prompts</span></div><h1 class="title" style="font-size:clamp(32px,4.5vw,42px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">Skills, named invokable prompts</h1><div class="article-meta"><span>📖 4 min read</span><span>Updated 2026-04-18</span></div>
-<p class="lede">A skill is a named bundle of instructions the user (or the agent) can invoke with a slash command. It's a way to capture repeated workflows as first-class features.</p>
+<p class="lede">A skill is a reusable, named workflow you can invoke in Claude Code with a single slash command. It bundles a prompt, any tools it needs, and permission rules, and gives it a name like <code>/review</code> or <code>/summarize-thread</code>. The practical effect: every repeated task in your life becomes a one-word command instead of a prompt you rewrite every time. Think of it as your agent's command palette.</p>
 
-<h2>Why skills exist</h2>
-<p>Any workflow you find yourself pasting the same prompt for is a candidate to become a skill. Named. Discoverable. Reusable. Versionable.</p>
+<h2>The idea in one sentence.</h2>
+<p>If you catch yourself typing the same prompt twice, it should be a skill. That's the whole principle. Anything you've figured out how to ask Claude well, any recurring workflow, any "this prompt works great for X", can be captured as a skill and invoked by name from then on.</p>
 
-<h2>Anatomy</h2>
-<p>A skill is a directory with:</p>
+<p>Before skills, every time you wanted Claude to review code, you'd paste a long prompt describing exactly what kind of review you wanted. After skills, you just type <code>/review</code>. The prompt is still doing the work, but you've given it a label and put it somewhere Claude Code can find.</p>
+
+<h2>Anatomy: what's inside a skill.</h2>
+<p>A skill is a small directory with three things in it:</p>
+
+<div class="sketch" data-viewbox="0 0 900 260" id="dg-skill-anatomy">
+  <svg></svg>
+  <div class="sketch-caption">~ what's inside a skill ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-skill-anatomy');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.table(svg, rc, {
+    x: 20, y: 30,
+    cols: [
+      { title: 'Part',       w: 210 },
+      { title: 'What it is',                        w: 310 },
+      { title: 'What it does',                      w: 360 }
+    ],
+    rows: [
+      ['manifest',           'YAML/JSON frontmatter in the prompt', 'name, description, triggers, required perms'],
+      ['prompt body',        'markdown instructions',               'the actual instructions the model receives'],
+      ['(optional) assets',  'scripts, templates, reference docs',  'things the prompt can reference or execute']
+    ]
+  });
+});
+</script>
+
+<p>You can look at any of the built-in skills that ship with Claude Code to see exactly how they're structured. They're plain text files, so you can read them, copy them, and modify them.</p>
+
+<h2>A concrete example.</h2>
+<p>Let's build <code>/summarize-thread</code>: a skill that fetches a specific Slack thread and produces a three-bullet summary.</p>
+
+<p>The manifest says: name is <code>summarize-thread</code>, it needs the Slack MCP (<code>mcp__slack__*</code>), and it takes one argument: a thread URL.</p>
+
+<p>The prompt body says, roughly:</p>
+
+<pre><code>You're summarizing a Slack thread. Use the Slack MCP to fetch the thread
+at the URL given. Produce exactly three bullets:
+1. Who the participants are.
+2. What was decided (if anything).
+3. What the open questions are.
+
+Keep each bullet under 20 words. No markdown formatting.
+If the thread has fewer than 3 messages, say so and skip the summary.</code></pre>
+
+<p>When you (or the model) type <code>/summarize-thread &lt;url&gt;</code>, Claude Code loads the prompt, fills in the URL argument, and runs. The model does the work. You get a consistent, three-bullet summary every time.</p>
+
+<h2>Built-in skills worth knowing.</h2>
+<p>Claude Code ships with a bunch of skills out of the box. These are the ones you'll actually use:</p>
+
 <ul>
-  <li><strong>A manifest</strong>, name, description, triggers, required permissions</li>
-  <li><strong>A prompt file</strong>, the instructions the model receives when the skill is invoked</li>
-  <li><strong>(Optional) scripts or assets</strong>, things the prompt references</li>
+  <li><strong><code>/review</code></strong>, review pending changes in the current repo (pairs with git status)</li>
+  <li><strong><code>/security-review</code></strong>, focused security audit on changed files</li>
+  <li><strong><code>/simplify</code></strong>, look at recent code for over-engineering, recommend cuts</li>
+  <li><strong><code>/init</code></strong>, generate a <code>CLAUDE.md</code> tailored to the current codebase</li>
+  <li><strong><code>/loop</code></strong>, re-run a prompt on a schedule (for ongoing work)</li>
+  <li><strong><code>/fewer-permission-prompts</code></strong>, analyzes your session history and suggests new allow-list entries to reduce future interruptions</li>
 </ul>
 
-<h2>Example skill: /summarize-thread</h2>
-<p>Goal: pull a specific Slack thread and produce a 3-bullet summary.</p>
-<p>Manifest describes: name (<code>summarize-thread</code>), description (when to use), required permissions (<code>mcp__slack__*</code>), arguments (thread URL).</p>
-<p>The prompt file says: "Fetch the thread via Slack MCP. Summarize in exactly 3 bullets. Include speakers and decisions made."</p>
-<p>When the user types <code>/summarize-thread</code>, Claude Code loads the prompt, passes arguments, runs.</p>
+<p>Run <code>/help</code> in Claude Code to see the full list on your install. Read the source of a few skills to see how they're built; they're often the clearest way to learn the pattern.</p>
 
-<h2>Built-in skills (examples)</h2>
-<ul>
-  <li><strong><code>/review</code></strong>, review a pending pull request</li>
-  <li><strong><code>/security-review</code></strong>, security audit of pending changes</li>
-  <li><strong><code>/simplify</code></strong>, review recent code for over-engineering</li>
-  <li><strong><code>/init</code></strong>, generate a CLAUDE.md for a codebase</li>
-  <li><strong><code>/loop</code></strong>, re-run a prompt on an interval</li>
-  <li><strong><code>/fewer-permission-prompts</code></strong>, analyze session history, suggest allow-list additions</li>
-</ul>
+<h2>Skill vs. Hook vs. MCP. When to use which.</h2>
+<p>All three are ways to extend Claude Code, and they're easy to confuse. Here's the clean split:</p>
 
-<h2>When to reach for a skill vs, a hook vs, an MCP</h2>
-<ul>
-  <li><strong>Skill</strong>, a specific workflow the <em>user</em> (or model) explicitly invokes</li>
-  <li><strong>Hook</strong>, runs automatically on an event (tool call, session start, etc.)</li>
-  <li><strong>MCP</strong>, exposes raw tools for the model to use flexibly</li>
-</ul>
+<div class="sketch" data-viewbox="0 0 900 240" id="dg-skill-hook-mcp">
+  <svg></svg>
+  <div class="sketch-caption">~ skills vs hooks vs MCPs ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-skill-hook-mcp');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.table(svg, rc, {
+    x: 20, y: 30,
+    cols: [
+      { title: 'Extension',  w: 150 },
+      { title: 'Who triggers it',          w: 250 },
+      { title: 'When it runs',             w: 240 },
+      { title: 'Good for',                 w: 260 }
+    ],
+    rows: [
+      ['Skill', 'you (or the model)',        'when invoked by name', 'repeatable workflows'],
+      ['Hook',  'Claude Code automatically', 'on lifecycle events',  'automation + safety + logging'],
+      ['MCP',   'the model, as needed',      'anytime a tool is called', 'exposing raw capabilities']
+    ]
+  });
+});
+</script>
 
-<h2>Writing a good skill</h2>
+<p>Short rule: if a user explicitly wants to do a thing, make it a skill. If something should happen automatically on an event, make it a hook. If you're giving the model a new capability to use freely, make it an MCP.</p>
+
+<h2>Writing a good skill, five rules.</h2>
 <ol>
-  <li><strong>Narrow scope.</strong> One job, done well. "Summarize a Slack thread." Not "Slack assistant."</li>
-  <li><strong>Clear description.</strong> When should the user invoke this? When should they NOT?</li>
-  <li><strong>Deterministic output.</strong> Structure, format, length, be specific.</li>
-  <li><strong>Declare permissions.</strong> What MCPs does it need? What tools? Make it explicit.</li>
-  <li><strong>Include examples.</strong> In the prompt, show one or two examples of perfect output.</li>
+  <li><strong>Narrow scope.</strong> One job, done well. "Summarize a Slack thread" is a good skill. "Slack assistant" is too broad. The narrower the scope, the better the skill.</li>
+  <li><strong>Clear description.</strong> The description field should say when to use the skill AND when not to. "Use when you need a 3-bullet summary of a single Slack thread. Do NOT use for multiple threads at once."</li>
+  <li><strong>Deterministic output.</strong> Specify format, structure, length. If you don't say "3 bullets, each under 20 words," you'll get a different thing every run. Vague prompts produce vague results.</li>
+  <li><strong>Declare your permissions.</strong> If the skill needs an MCP or specific tools, list them in the manifest. Claude Code can then pre-approve them just for this skill, instead of asking on every invocation.</li>
+  <li><strong>Include a worked example in the prompt.</strong> One or two concrete examples of perfect output teaches the model much better than abstract instructions. This is few-shot prompting at the skill level.</li>
 </ol>
 
-<h2>Distribution</h2>
-<p>Skills can live in:</p>
+<h2>Where skills live.</h2>
+<p>Three locations, in increasing scope:</p>
+
 <ul>
-  <li><strong>Your personal skills directory</strong>. <code>~/.claude/skills/</code></li>
-  <li><strong>A project</strong>. <code>.claude/skills/</code> in a repo</li>
-  <li><strong>A plugin</strong>, bundled with MCPs and hooks</li>
+  <li><strong>Personal</strong>, <code>~/.claude/skills/</code>. Your own skills, available in every Claude Code session.</li>
+  <li><strong>Project-scoped</strong>, <code>.claude/skills/</code> inside a repo. Skills that only make sense in that project. Check into git so the team gets them too.</li>
+  <li><strong>Bundled in a plugin</strong>, distributed together with MCPs and hooks. Good for sharing a coherent workflow with many people.</li>
 </ul>
 
-<h2>Skills as the "commands" of your agent</h2>
-<p>Think of skills as the command palette of your agent. Over time, a power user of Claude Code will have 20+ skills covering their most common workflows. Their cognitive load drops, they don't remember the perfect prompt, they remember the slash-command name.</p>
+<h2>Skills as your agent's command palette.</h2>
+<p>Spend a month serious with Claude Code and you'll build up 20+ skills. Not because you planned to; because every time you type the same prompt twice, capturing it as a skill pays for itself within a week. Your command palette grows in step with your workflow.</p>
+
+<p>This is the real leverage. You stop remembering how to ask Claude things well. You remember the name of the skill. The cognitive overhead of "what was that prompt that works for X again?" disappears. Over time, your entire recurring workflow is just a list of slash commands, each one carrying years of your prompt-engineering refinement with it.</p>
 <div class="prev-next"><a href="hooks.html" class="prev"><div class="label">← Previous</div><div class="title">Hooks</div></a><a href="memory.html" class="next"><div class="label">Next →</div><div class="title">Memory</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../framework/index.html">Framework</a></p>
 </div></footer><script>
