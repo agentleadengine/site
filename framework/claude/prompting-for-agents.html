@@ -219,46 +219,107 @@
 <a href="../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../what-is-autonomous-ai.html">What is autonomous AI</a></li><li><a href="../the-autonomy-spectrum.html">The autonomy spectrum</a></li><li><a href="../glossary.html">Glossary</a></li></ul><h4>Claude</h4><ul><li><a href="../claude/overview.html">Overview</a></li><li><a href="../claude/prompting-for-agents.html" class="active">Prompting for agents</a></li><li><a href="../claude/extended-thinking.html">Extended thinking</a></li><li><a href="../claude/tool-use.html">Tool use</a></li></ul><h4>MCP</h4><ul><li><a href="../mcp/index.html">Overview</a></li><li><a href="../mcp/what-is-mcp.html">What is MCP</a></li><li><a href="../mcp/anatomy.html">Anatomy</a></li><li><a href="../mcp/transports.html">Transports</a></li><li><a href="../mcp/servers.html">Servers</a></li><li><a href="../mcp/clients.html">Clients</a></li><li><a href="../mcp/security.html">Security</a></li><li><a href="../mcp/directory.html">Directory</a></li></ul><h4>Plugins</h4><ul><li><a href="../plugins/index.html">Overview</a></li><li><a href="../plugins/vs-mcp.html">Plugins vs MCP</a></li><li><a href="../plugins/marketplace.html">Marketplace</a></li></ul><h4>Claude Code</h4><ul><li><a href="../claude-code/index.html">Overview</a></li><li><a href="../claude-code/settings.html">Settings</a></li><li><a href="../claude-code/permissions.html">Permissions</a></li><li><a href="../claude-code/hooks.html">Hooks</a></li><li><a href="../claude-code/skills.html">Skills</a></li><li><a href="../claude-code/memory.html">Memory</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/index.html">Overview</a></li><li><a href="../patterns/react-loop.html">ReAct loop</a></li><li><a href="../patterns/plan-execute.html">Plan-execute</a></li><li><a href="../patterns/multi-agent.html">Multi-agent</a></li><li><a href="../patterns/evaluation.html">Evaluation</a></li><li><a href="../patterns/prompt-caching.html">Prompt caching</a></li></ul><h4>Autonomous</h4><ul><li><a href="../autonomous/index.html">Overview</a></li><li><a href="../autonomous/headless.html">Headless</a></li><li><a href="../autonomous/scheduling.html">Scheduling</a></li><li><a href="../autonomous/self-monitoring.html">Self-monitoring</a></li><li><a href="../autonomous/safety.html">Safety</a></li></ul><h4>Build Guides</h4><ul><li><a href="../build/index.html">Overview</a></li><li><a href="../build/first-agent.html">First agent (60 min)</a></li><li><a href="../build/voice-agent.html">Voice agent</a></li><li><a href="../build/research-agent.html">Research agent</a></li></ul><h4>Tools</h4><ul><li><a href="../tools/browser-automation.html">Browser automation</a></li><li><a href="../tools/desktop-control.html">Desktop control</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Framework</a><span class="sep">›</span><span>Claude</span><span class="sep">›</span><span>Prompting for agents</span></div><h1 class="title" style="font-size:clamp(32px,4.5vw,42px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">Prompting for agents</h1><div class="article-meta"><span>📖 6 min read</span><span>Updated 2026-04-18</span></div>
-<p class="lede">Prompting an agent isn't the same as prompting a chatbot. The agent has to make decisions, call tools, recover from errors, and stop when done. The prompt needs to tell it how.</p>
+<p class="lede">Prompting an agent is different from prompting a chatbot. A chatbot just has to answer; an agent has to <em>decide</em>, call tools, read the results, recover from errors, and stop when done. Your prompt isn't just instructions, it's the agent's entire operating manual. Get the shape right and the agent runs itself. Get it wrong and it'll either loop forever or give up at step 2. This page is the shape.</p>
 
-<h2>The four sections every agent prompt needs</h2>
+<h2>The shift in mindset.</h2>
+<p>When you prompt a chatbot, you're asking one question and getting one answer. The prompt can be loose, even lazy, because the human is in the loop to correct course.</p>
 
-<h3>1. Role and goal</h3>
-<p>Tell the agent what it is and what it's trying to achieve.</p>
+<p>When you prompt an agent, the human isn't in the loop anymore. The prompt has to anticipate: what tools will the model reach for? What if one of them fails? When does the task count as done? What format does the final answer need to be in? Every ambiguity becomes a bug at 3am. The prompt is the contract.</p>
+
+<h2>The four sections every agent prompt needs.</h2>
+
+<div class="sketch" data-viewbox="0 0 900 320" id="dg-prompt-sections">
+  <svg></svg>
+  <div class="sketch-caption">~ four sections, every agent prompt ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-prompt-sections');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.table(svg, rc, {
+    x: 20, y: 30,
+    cols: [
+      { title: 'Section',       w: 210 },
+      { title: 'What it tells the agent',          w: 320 },
+      { title: 'What breaks without it',           w: 350 }
+    ],
+    rows: [
+      ['1. Role + goal',        'what you are, what you are doing',    'aimless behavior, wrong tools picked'],
+      ['2. Rules + constraints','what you must / must not do',         'agent does correct-but-unwanted things'],
+      ['3. Tool-use guidance',  'when to use which tool, error handling','loops, tool confusion, no recovery'],
+      ['4. Output format',      'exact shape of final answer',         'downstream parsers break silently']
+    ]
+  });
+});
+</script>
+
+<h3>1. Role and goal.</h3>
+<p>Open with what the agent is and what it's trying to accomplish. Specific beats generic.</p>
+
 <pre><code>You are a research assistant. Your goal is to answer the user's question
 using web search and return a concise, sourced summary.</code></pre>
 
-<h3>2. Rules and constraints</h3>
-<p>What it must do, what it must not do, how to format output.</p>
+<p>That's better than "help the user find information." Specific is kind to the model; it narrows the space of plausible behaviors.</p>
+
+<h3>2. Rules and constraints.</h3>
+<p>What the agent must always do, what it must never do, and any non-obvious edge cases.</p>
+
 <pre><code>Rules:
 - Always cite sources with URLs
 - Never speculate beyond what sources say
 - If sources conflict, surface the disagreement, don't hide it
 - Stop after 3 search rounds even if you want more data</code></pre>
 
-<h3>3. Tool-use guidance</h3>
-<p>Tell it how to use each tool, when to use which, and how to handle errors.</p>
+<p>Rules should resolve the small ambiguities that come up at runtime. "What if sources disagree?" is exactly the kind of thing you want answered in advance.</p>
+
+<h3>3. Tool-use guidance.</h3>
+<p>For each tool, say when to use it and when not to, and describe your error-recovery policy.</p>
+
 <pre><code>You have two tools:
 - web_search: use for finding new information
 - fetch_url: use to read a specific page the user references
 
-If a tool returns an error, try once more with a reformulated input.
-If it errors twice, surface the failure to the user, don't hide it.</code></pre>
+If a tool returns an error:
+- Retry once with a reformulated input
+- If it errors twice, surface the failure to the user; don't hide it</code></pre>
 
-<h3>4. Output format</h3>
-<p>Describe exactly what the final response should look like. For agents, be strict, the output will be parsed or acted on.</p>
+<p>Without this, the model invents its own error-recovery behavior. Sometimes that's fine. More often it hammers a failing endpoint fifty times.</p>
 
-<h2>XML tags for structure</h2>
-<p>Claude responds well to XML-tagged sections. They help the model locate parts of the prompt and produce structured outputs.</p>
+<h3>4. Output format.</h3>
+<p>Describe exactly what the final answer should look like. If any code downstream is going to parse the output, be obsessive about this.</p>
+
+<pre><code>Return your final answer as a JSON object:
+{
+  "summary": "(200 words max)",
+  "key_claims": [ { "claim": "...", "source_url": "..." }, ... ],
+  "confidence": "high" | "medium" | "low"
+}</code></pre>
+
+<h2>Structure the prompt with XML tags.</h2>
+<p>Claude responds really well to XML-tagged sections. They help the model find specific parts of the prompt and produce outputs that match. This isn't just stylistic, it measurably improves consistency.</p>
+
 <pre><code>&lt;task&gt;Summarize the article at the URL below.&lt;/task&gt;
+
 &lt;url&gt;https://example.com/article&lt;/url&gt;
+
 &lt;constraints&gt;
 - 200 words max
 - Include the 3 key claims with source quotes
-&lt;/constraints&gt;</code></pre>
+- Flag any statements that seem unverifiable
+&lt;/constraints&gt;
 
-<h2>Reasoning scaffolds</h2>
-<p>For complex tasks, explicitly tell the model to think before acting:</p>
+&lt;output_format&gt;
+Markdown. H2 for the main summary, bullet list for claims.
+&lt;/output_format&gt;</code></pre>
+
+<p>The tags give the model landmarks. It knows "the task is in &lt;task&gt;" and "the constraints are in &lt;constraints&gt;." Output quality goes up; drift goes down.</p>
+
+<h2>Reasoning scaffolds. Force the model to think, not just react.</h2>
+<p>For anything complicated, explicitly tell the model to reason before it calls a tool, and after it sees the result. This works even without <a href="extended-thinking.html">extended thinking</a> mode turned on, the reasoning just shows up in the main output instead.</p>
+
 <pre><code>Before calling any tool:
 1. Identify what's needed to complete the task
 2. Decide which tool to call and with what arguments
@@ -267,31 +328,63 @@ If it errors twice, surface the failure to the user, don't hide it.</code></pre>
 After each tool call:
 1. Compare the result to what you expected
 2. Decide whether to continue or change approach</code></pre>
-<p>This works even without extended thinking enabled, the model will produce the reasoning in the main output.</p>
 
-<h2>Error recovery</h2>
-<p>Agents fail. Tools error. Give the model a playbook:</p>
-<ul>
-  <li><strong>Bounded retries.</strong> "Retry once with different arguments."</li>
-  <li><strong>Fallback tools.</strong> "If web_search fails, try fetch_url directly."</li>
-  <li><strong>Escalation.</strong> "If you can't make progress, state what you need from the user."</li>
-  <li><strong>Explicit stop conditions.</strong> "After 5 tool calls without useful results, stop and report."</li>
-</ul>
+<p>This simple scaffold prevents a lot of the "agent got confused and called the wrong tool" failures. The model spending 30 tokens on "what do I actually need?" saves you from 10 bad tool calls.</p>
+
+<h2>Error recovery, made explicit.</h2>
+<p>Agents fail. Tools error. Networks are flaky. Without a plan for this, your agent either gives up too early or burns budget hammering a failing endpoint.</p>
+
+<div class="sketch" data-viewbox="0 0 900 290" id="dg-error-recovery">
+  <svg></svg>
+  <div class="sketch-caption">~ four error-recovery patterns ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-error-recovery');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.bars(svg, rc, {
+    x: 30, y: 30, w: 840, barH: 36, gap: 18, labelW: 230,
+    items: [
+      { label: 'Bounded retries',        value: 90, note: 'retry once with different args — then stop' },
+      { label: 'Fallback tools',         value: 75, note: '"if X fails, try Y"' },
+      { label: 'Explicit stop conditions', value: 95, note: '"after 5 unhelpful results, stop"' },
+      { label: 'Escalation to human',    value: 80, note: '"state what you\'d need from the user"' }
+    ]
+  });
+});
+</script>
 
 <div class="callout warning">
-  <strong>Watch out:</strong> Unbounded retry loops are the #1 way an agent burns money and does nothing. Always set a hard limit.
+  <strong>The #1 way agents burn money.</strong> Unbounded retry loops. Agent calls failing tool, gets error, calls same tool, gets same error, repeat. In 30 minutes you've spent $20 and made no progress. Every single tool call chain needs a hard cap.
 </div>
 
-<h2>Output format matters more than you think</h2>
-<p>If downstream code parses the agent's output, be obsessive about the format. Model output drift is real. Put the format spec near the end of the prompt (it's the last thing the model considers) and use structure like JSON schemas when possible.</p>
+<h2>Format spec goes near the end.</h2>
+<p>Something weird but true: Claude pays more attention to the last part of the prompt. If you care about output format, put the format spec after the rules and the tool guidance, not at the beginning. The model remembers the last instructions best, and format drift usually comes from the instructions being far from the output.</p>
 
-<h2>Anti-patterns</h2>
+<h2>The five anti-patterns that will bite you.</h2>
+
 <ul>
-  <li><strong>Vague goals.</strong> "Help the user" → "Answer the user's question in 200 words using the provided tools."</li>
-  <li><strong>No stop conditions.</strong> Agents will loop forever if you let them.</li>
-  <li><strong>Conflicting rules.</strong> Model will pick one arbitrarily. Resolve conflicts in the prompt, not in the model's head.</li>
-  <li><strong>Too many tools.</strong> Don't give an agent 20 tools when 4 will do. More tools = more confusion.</li>
+  <li><strong>Vague goals.</strong> "Help the user" has no edges. The model invents edges. They're probably not the edges you wanted. Write "Answer the user's question in 200 words using the provided tools" and the model has something to actually do.</li>
+  <li><strong>No stop conditions.</strong> Agents will loop forever if you let them. Always include an explicit stop: "after N tool calls," "when X is known," "when you've produced the final output." All three, ideally.</li>
+  <li><strong>Conflicting rules.</strong> If rule #1 says "always cite sources" and rule #5 says "keep responses under 50 words," sometimes those conflict. The model will pick one arbitrarily. Resolve the conflict in the prompt, not in the model's head.</li>
+  <li><strong>Too many tools.</strong> More tools ≠ more powerful. After about 15 tools, accuracy drops fast. The model gets overwhelmed picking the right one. Give it 5 tools that cover 95% of cases; route weird edge cases to a sub-agent.</li>
+  <li><strong>Examples in the wrong place.</strong> If you show the model examples of good output, put them LATE in the prompt (near the format spec). Examples up-front tell the model what to do; examples at the end tell it what "done" looks like. Both matter, and the positioning changes the result.</li>
 </ul>
+
+<h2>A quick checklist before you ship any agent prompt.</h2>
+<ol>
+  <li>Role and goal stated in one sentence at the top?</li>
+  <li>Rules numbered, non-conflicting, concrete?</li>
+  <li>Each tool has a description, a "when to use" condition, and an error-handling rule?</li>
+  <li>Explicit stop conditions present, with a max-turn cap?</li>
+  <li>Output format specified near the end of the prompt?</li>
+  <li>At least one worked example of good output?</li>
+</ol>
+
+<p>Every yes is one less 3am debugging session.</p>
 <div class="prev-next"><a href="overview.html" class="prev"><div class="label">← Previous</div><div class="title">Claude overview</div></a><a href="extended-thinking.html" class="next"><div class="label">Next →</div><div class="title">Extended thinking</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../framework/index.html">Framework</a></p>
 </div></footer><script>
