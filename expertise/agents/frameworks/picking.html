@@ -219,43 +219,95 @@
 <a href="../../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="../foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="../foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="../foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="../loops/react.html">ReAct</a></li><li><a href="../loops/tool-use.html">Tool use</a></li><li><a href="../loops/planning.html">Planning loops</a></li><li><a href="../loops/reflection.html">Reflection</a></li><li><a href="../loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="../tools/tool-design.html">Tool design</a></li><li><a href="../tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="../tools/error-handling.html">Tool error handling</a></li><li><a href="../tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="../tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="../memory/short-term.html">Short-term memory</a></li><li><a href="../memory/long-term.html">Long-term memory</a></li><li><a href="../memory/episodic.html">Episodic memory</a></li><li><a href="../memory/procedural.html">Procedural memory</a></li><li><a href="../memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="../multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="../multi/peer-agents.html">Peer agents</a></li><li><a href="../multi/debate.html">Debate + consensus</a></li><li><a href="../multi/handoffs.html">Agent handoffs</a></li><li><a href="../multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="../eval/why-eval-agents.html">Why eval agents</a></li><li><a href="../eval/task-completion.html">Task completion</a></li><li><a href="../eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="../eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="../prod/observability.html">Observability + tracing</a></li><li><a href="../prod/cost-control.html">Cost control</a></li><li><a href="../prod/latency.html">Latency optimization</a></li><li><a href="../prod/safety.html">Safety + guardrails</a></li><li><a href="../prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/research-agent.html">Research agent</a></li><li><a href="../patterns/coding-agent.html">Coding agent</a></li><li><a href="../patterns/customer-support.html">Customer support agent</a></li><li><a href="../patterns/data-analyst.html">Data analyst agent</a></li><li><a href="../patterns/browser-agent.html">Browser agent</a></li><li><a href="../patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="../frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="../frameworks/langgraph.html">LangGraph</a></li><li><a href="../frameworks/crewai.html">CrewAI</a></li><li><a href="../frameworks/autogen.html">AutoGen</a></li><li><a href="../frameworks/picking.html" class="active">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>Picking a framework</span></div><h1 class="title">Picking a framework</h1><div class="article-meta"><span>📖 3 min read</span><span>Updated 2026-04-19</span></div>
-<p class="lede">There are a dozen agent frameworks and the list grows monthly. Instead of comparing feature matrices, use this decision tree.</p>
+<p class="lede">There are a dozen agent frameworks and the list grows every month. Feature matrices are exhausting and usually useless. Instead, answer four questions about your use case. The answers almost pick the framework for you.</p>
 
-<h2>Decision tree</h2>
+<h2>The four questions</h2>
+<div class="sketch" data-viewbox="0 0 900 320"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 320);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Pick the framework by answering these');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Question', w: 280},
+    {title: 'What it determines', w: 520}
+  ], rows: [
+    ['Do you need a framework at all?', 'Often no. Raw API + short loop is fine for simple agents.'],
+    ['Are you all-in on Claude?', 'If yes, Claude Agent SDK is the starting point.'],
+    ['Multi-model or multi-agent?', 'LangGraph for provider-agnostic + graph logic.'],
+    ['Prototyping or shipping?', 'Prototype: CrewAI. Ship: LangGraph or Claude SDK.']
+  ]});
+});
+</script>
 
-<h3>Do you need a framework at all?</h3>
-<p>For a simple ReAct agent with 3-5 tools, raw LLM API + a short Python loop might be simplest. A framework adds abstraction that may be more complexity than value for simple agents.</p>
+<h2>Question 1: Do you need a framework at all?</h2>
+<p>For a simple ReAct agent with 3–5 tools, you probably don't. The loop is ~50 lines of Python around a tool-use API. Framework adds abstraction that may be more complexity than value.</p>
+<p><strong>Rule of thumb:</strong> start without a framework. Adopt one when you hit real pain the framework solves, not before.</p>
 
-<p>Start without a framework. Adopt one when you hit real pain that the framework solves.</p>
+<h2>Question 2: Are you all-in on Claude?</h2>
+<p>If yes, <strong>Claude Agent SDK</strong> is the default. Anthropic-native, strong MCP integration, behavior parity with Claude Code, maintained by the people who made the model. You get battle-tested orchestration without re-inventing it.</p>
 
-<h3>Are you all-in on Claude?</h3>
-<p>Yes → Claude Agent SDK. Strong MCP integration, behavior parity with Claude Code, Anthropic-native.</p>
+<h2>Question 3: Do you need multi-model flexibility?</h2>
+<p>Want to mix Claude, GPT, Gemini in the same system? <strong>LangGraph</strong>. Most provider-agnostic of the mature frameworks. Biggest ecosystem. Best observability tooling (via LangSmith).</p>
 
-<h3>Do you need multi-model flexibility?</h3>
-<p>Yes → LangGraph. Most provider-agnostic and has mature tooling.</p>
+<h2>Question 4: Explicitly multi-agent? Prototype or ship?</h2>
+<ul>
+<li><strong>Prototype a multi-agent idea fast</strong>: CrewAI. Up and running in an afternoon.</li>
+<li><strong>Production multi-agent with strict orchestration</strong>: LangGraph's state machines.</li>
+<li><strong>Conversation-shaped problem (debate, negotiation, co-coding)</strong>: AutoGen.</li>
+<li><strong>Single-agent on Claude</strong>: Claude Agent SDK.</li>
+</ul>
 
-<h3>Is your problem explicitly multi-agent?</h3>
-<p>Yes, role-based agents → CrewAI (simpler) or AutoGen (more flexible)<br>
-Yes, graph-based flow → LangGraph</p>
+<h2>Head-to-head at a glance</h2>
+<div class="sketch" data-viewbox="0 0 900 300"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 300);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Where each framework wins');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Framework', w: 200},
+    {title: 'Sweet spot', w: 600}
+  ], rows: [
+    ['Claude Agent SDK', 'Claude + production + MCP; fast start'],
+    ['LangGraph', 'Multi-model + production + complex branching'],
+    ['CrewAI', 'Multi-agent prototype + role-based decomposition'],
+    ['AutoGen', 'Conversation-shaped problems + code-heavy agents'],
+    ['Raw API + loop', 'Simple ReAct + full control + no framework lock-in']
+  ]});
+});
+</script>
 
-<h3>Are you prototyping vs shipping?</h3>
-<p>Prototyping → CrewAI or a simple direct-API approach<br>
-Shipping to production → LangGraph, Claude Agent SDK, or your own framework on raw API</p>
-
-<h3>What's your team's existing stack?</h3>
-<p>Already deep in LangChain → LangGraph (natural evolution)<br>
-Python data science team → AutoGen fits well<br>
-Greenfield → Claude Agent SDK or DIY</p>
-
-<h2>The recommendation I actually make</h2>
-<p>For 80% of production use cases: start with Claude Agent SDK if you're on Claude, or raw OpenAI/Anthropic API with your own small orchestrator. Add a framework only when you hit limits.</p>
-
-<p>LangGraph is the most "production-ready" of the established frameworks for multi-model use.</p>
-
-<p>CrewAI is the fastest way to prototype multi-agent ideas.</p>
+<h2>The recommendation</h2>
+<p>For 80% of production use cases:</p>
+<ul>
+<li><strong>On Claude</strong>: start with Claude Agent SDK.</li>
+<li><strong>Multi-model</strong>: start with raw API + small orchestrator, graduate to LangGraph when complexity demands.</li>
+<li><strong>Multi-agent prototype</strong>: CrewAI.</li>
+<li><strong>Multi-agent production</strong>: LangGraph.</li>
+</ul>
+<p>This is where most teams end up after evaluating honestly.</p>
 
 <h2>The "don't lock in" rule</h2>
-<p>Build your agent logic behind your own interface so you can swap frameworks later. Frameworks change, models change, patterns change. The business logic you own. Abstract the framework.</p>
+<p>Whatever you pick, build your agent's business logic behind your own interface. Frameworks change quickly. Models change. Patterns change. The business logic, your tools, your prompts, your eval set, is what you own. Abstract the framework; treat it as replaceable scaffolding.</p>
+
+<h2>Common mistakes when picking</h2>
+<ul>
+<li><strong>Picking by popularity.</strong> GitHub stars don't correlate with fit.</li>
+<li><strong>Feature-list shopping.</strong> You won't use most features. Pick based on your core need.</li>
+<li><strong>Picking for flexibility you don't need.</strong> Generic + configurable = more complexity.</li>
+<li><strong>Not prototyping first.</strong> The only way to know if a framework fits is to build with it for a day.</li>
+<li><strong>Locking in early.</strong> Your abstractions on top of the framework are what matter; those portable.</li>
+</ul>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Answer the four questions for your use case. The answer probably names your framework.</li>
+<li>Prototype a minimal agent in your top choice in one sitting. If it feels wrong, try another.</li>
+<li>Read the individual framework pages (<a href="claude-agent-sdk.html">Claude Agent SDK</a>, <a href="langgraph.html">LangGraph</a>, <a href="crewai.html">CrewAI</a>, <a href="autogen.html">AutoGen</a>) for deeper notes.</li>
+</ul>
 <div class="prev-next"><a href="autogen.html" class="prev"><div class="label">← Previous</div><div class="title">AutoGen</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

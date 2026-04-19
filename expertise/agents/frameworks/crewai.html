@@ -219,38 +219,79 @@
 <a href="../../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="../foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="../foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="../foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="../loops/react.html">ReAct</a></li><li><a href="../loops/tool-use.html">Tool use</a></li><li><a href="../loops/planning.html">Planning loops</a></li><li><a href="../loops/reflection.html">Reflection</a></li><li><a href="../loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="../tools/tool-design.html">Tool design</a></li><li><a href="../tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="../tools/error-handling.html">Tool error handling</a></li><li><a href="../tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="../tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="../memory/short-term.html">Short-term memory</a></li><li><a href="../memory/long-term.html">Long-term memory</a></li><li><a href="../memory/episodic.html">Episodic memory</a></li><li><a href="../memory/procedural.html">Procedural memory</a></li><li><a href="../memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="../multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="../multi/peer-agents.html">Peer agents</a></li><li><a href="../multi/debate.html">Debate + consensus</a></li><li><a href="../multi/handoffs.html">Agent handoffs</a></li><li><a href="../multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="../eval/why-eval-agents.html">Why eval agents</a></li><li><a href="../eval/task-completion.html">Task completion</a></li><li><a href="../eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="../eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="../prod/observability.html">Observability + tracing</a></li><li><a href="../prod/cost-control.html">Cost control</a></li><li><a href="../prod/latency.html">Latency optimization</a></li><li><a href="../prod/safety.html">Safety + guardrails</a></li><li><a href="../prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/research-agent.html">Research agent</a></li><li><a href="../patterns/coding-agent.html">Coding agent</a></li><li><a href="../patterns/customer-support.html">Customer support agent</a></li><li><a href="../patterns/data-analyst.html">Data analyst agent</a></li><li><a href="../patterns/browser-agent.html">Browser agent</a></li><li><a href="../patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="../frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="../frameworks/langgraph.html">LangGraph</a></li><li><a href="../frameworks/crewai.html" class="active">CrewAI</a></li><li><a href="../frameworks/autogen.html">AutoGen</a></li><li><a href="../frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>CrewAI</span></div><h1 class="title">CrewAI</h1><div class="article-meta"><span>📖 2 min read</span><span>Updated 2026-04-19</span></div>
-<p class="lede">CrewAI is a popular framework for multi-agent systems. You define a "crew" of agents, each with a role, tools, and backstory. You give them a task. They collaborate to solve it.</p>
+<p class="lede">CrewAI is a popular framework for multi-agent systems built around the metaphor of a crew: you define agents with roles, goals, and backstories, give them tasks, and they collaborate. It's the fastest way to prototype a multi-agent idea. The role metaphor is the signature feature and also the main source of debate: it helps or hurts depending on your use case.</p>
 
 <h2>Core concepts</h2>
-<ul>
-<li><strong>Agent</strong>, a role with goals, backstory, and tools</li>
-<li><strong>Task</strong>, a unit of work assigned to agents</li>
-<li><strong>Crew</strong>, a group of agents working together</li>
-<li><strong>Process</strong>, how tasks are executed (sequential, hierarchical)</li>
-</ul>
-
-<h2>When CrewAI shines</h2>
-<ul>
-<li>Prototyping multi-agent systems fast</li>
-<li>Role-based agent teams (researcher + writer + reviewer)</li>
-<li>Tasks that benefit from specialization</li>
-</ul>
-
-<h2>When it doesn't</h2>
-<ul>
-<li>Single-agent tasks (overhead without benefit)</li>
-<li>Production systems needing tight control over cost and latency</li>
-<li>When the role-playing metaphor doesn't fit your problem</li>
-</ul>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'CrewAI\'s vocabulary');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Concept', w: 180},
+    {title: 'What it is', w: 620}
+  ], rows: [
+    ['Agent', 'A role with goal, backstory, and tools'],
+    ['Task', 'A unit of work assigned to agents'],
+    ['Crew', 'A group of agents working together'],
+    ['Process', 'How tasks execute: sequential or hierarchical']
+  ]});
+});
+</script>
 
 <h2>The role metaphor</h2>
-<p>CrewAI's central idea is treating agents as characters with backstories. This can help the LLM produce more in-character outputs, but can also add cost (longer prompts) without clear benefit. Measure impact on your use case.</p>
+<p>CrewAI's core idea: each agent is a character. "You are a senior market researcher with 15 years of experience. You are thorough and skeptical." This can make LLM outputs more in-character and more focused. It can also inflate prompts without clear benefit. Measure on your specific use case. Generic role prompts (generic "researcher") rarely help. Specific, grounded ones ("you're a quantitative analyst focused on B2B SaaS pricing") sometimes do.</p>
+
+<h2>Where CrewAI shines</h2>
+<ul>
+<li><strong>Fast prototyping.</strong> From zero to a working multi-agent demo in an afternoon.</li>
+<li><strong>Role-based decompositions.</strong> Researcher + writer + reviewer. Planner + executor + critic. Works well when roles map cleanly to parts of the problem.</li>
+<li><strong>Demo-quality outputs.</strong> The crew format is easy to explain to stakeholders.</li>
+</ul>
+
+<h2>Where it doesn't fit</h2>
+<ul>
+<li><strong>Single-agent tasks.</strong> Pure overhead.</li>
+<li><strong>Production systems at scale.</strong> Cost and latency can spike; observability is less mature than LangGraph.</li>
+<li><strong>Problems that aren't role-shaped.</strong> If your agents aren't naturally different roles, forcing the metaphor adds friction.</li>
+</ul>
+
+<h2>A concrete worked example: market research crew</h2>
+<pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
+Crew:
+  - Researcher: "find facts, cite sources"
+  - Analyst: "interpret what the facts mean"
+  - Writer: "produce the final 1-pager"
+
+Tasks (sequential):
+  1. Research → find 10 recent trends (Researcher)
+  2. Analyze → identify the 3 most important (Analyst)
+  3. Write → produce the brief (Writer)</pre>
+<p>Each agent gets its own prompt tuned to its role. The process runs sequentially. The crew produces a research brief. Three roles took about 30 lines of config.</p>
 
 <h2>Production considerations</h2>
 <ul>
-<li>Observability is less mature than LangGraph</li>
-<li>Cost can be high with many agents spawned per task</li>
-<li>Good for prototypes; evaluate carefully for production at scale</li>
+<li><strong>Observability</strong> is less mature than LangGraph. You'll want to instrument tracing yourself or via a third-party provider.</li>
+<li><strong>Cost</strong> can balloon with many agents per task. Each agent is a full LLM context. Measure before scaling.</li>
+<li><strong>Determinism</strong> is weaker than orchestrated frameworks because agents exchange free-form text.</li>
+<li><strong>Good for prototypes</strong>, evaluate carefully for production at scale.</li>
+</ul>
+
+<h2>Pitfalls</h2>
+<ul>
+<li><strong>Over-styled backstories.</strong> Generic role flavor doesn't improve outputs; specific grounded context does.</li>
+<li><strong>Too many agents.</strong> More agents = more cost, not always better results.</li>
+<li><strong>Ignoring the hierarchical process option.</strong> For complex tasks, hierarchical often beats sequential.</li>
+<li><strong>Deploying prototypes as-is.</strong> Prototype-ready doesn't mean production-ready; add budgets, timeouts, tracing.</li>
+</ul>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Use CrewAI to test whether multi-agent actually helps your task. If yes, the framework earned its place. If no, drop back to single-agent.</li>
+<li>Read <a href="picking.html">picking a framework</a> for head-to-head tradeoffs.</li>
+<li>Read <a href="../multi/orchestrator-worker.html">orchestrator-worker</a>; most crews are orchestrator-worker in disguise.</li>
 </ul>
 <div class="prev-next"><a href="langgraph.html" class="prev"><div class="label">← Previous</div><div class="title">LangGraph</div></a><a href="autogen.html" class="next"><div class="label">Next →</div><div class="title">AutoGen</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>

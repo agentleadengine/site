@@ -219,39 +219,79 @@
 <a href="../../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="../foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="../foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="../foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="../loops/react.html">ReAct</a></li><li><a href="../loops/tool-use.html">Tool use</a></li><li><a href="../loops/planning.html">Planning loops</a></li><li><a href="../loops/reflection.html">Reflection</a></li><li><a href="../loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="../tools/tool-design.html">Tool design</a></li><li><a href="../tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="../tools/error-handling.html">Tool error handling</a></li><li><a href="../tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="../tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="../memory/short-term.html">Short-term memory</a></li><li><a href="../memory/long-term.html">Long-term memory</a></li><li><a href="../memory/episodic.html">Episodic memory</a></li><li><a href="../memory/procedural.html">Procedural memory</a></li><li><a href="../memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="../multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="../multi/peer-agents.html">Peer agents</a></li><li><a href="../multi/debate.html">Debate + consensus</a></li><li><a href="../multi/handoffs.html">Agent handoffs</a></li><li><a href="../multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="../eval/why-eval-agents.html">Why eval agents</a></li><li><a href="../eval/task-completion.html">Task completion</a></li><li><a href="../eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="../eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="../prod/observability.html">Observability + tracing</a></li><li><a href="../prod/cost-control.html">Cost control</a></li><li><a href="../prod/latency.html">Latency optimization</a></li><li><a href="../prod/safety.html">Safety + guardrails</a></li><li><a href="../prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/research-agent.html">Research agent</a></li><li><a href="../patterns/coding-agent.html">Coding agent</a></li><li><a href="../patterns/customer-support.html">Customer support agent</a></li><li><a href="../patterns/data-analyst.html">Data analyst agent</a></li><li><a href="../patterns/browser-agent.html">Browser agent</a></li><li><a href="../patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="../frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="../frameworks/langgraph.html">LangGraph</a></li><li><a href="../frameworks/crewai.html">CrewAI</a></li><li><a href="../frameworks/autogen.html" class="active">AutoGen</a></li><li><a href="../frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>AutoGen</span></div><h1 class="title">AutoGen</h1><div class="article-meta"><span>📖 2 min read</span><span>Updated 2026-04-19</span></div>
-<p class="lede">AutoGen is Microsoft's multi-agent framework, centered on agents that communicate via chat. Define agents, they send messages to each other, problems get solved through conversation. Research-flavored but increasingly production-ready.</p>
+<p class="lede">AutoGen is Microsoft's multi-agent framework built around the metaphor of a conversation: define agents, they send messages to each other, problems get solved through the exchange. It started research-flavored and is increasingly production-ready. It fits particularly well when your problem genuinely looks like "agents talking," and less well when it doesn't.</p>
 
 <h2>Core concepts</h2>
-<ul>
-<li><strong>ConversableAgent</strong>, agents that can send and receive messages</li>
-<li><strong>UserProxyAgent</strong>, agent that can execute code and call tools on behalf of the conversation</li>
-<li><strong>GroupChat</strong>, multiple agents in a shared chat with a designated manager</li>
-</ul>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'AutoGen\'s building blocks');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Concept', w: 220},
+    {title: 'What it is', w: 580}
+  ], rows: [
+    ['ConversableAgent', 'Agent that sends + receives messages'],
+    ['UserProxyAgent', 'Agent that can execute code / tools on the conversation\'s behalf'],
+    ['GroupChat', 'Multiple agents sharing a chat with a chosen manager'],
+    ['Manager', 'Orchestrator in a group chat (who speaks next?)']
+  ]});
+});
+</script>
 
 <h2>Strengths</h2>
 <ul>
-<li>Elegant for problems that fit the "agents talking" metaphor</li>
-<li>Strong code execution support</li>
-<li>Built-in patterns for various multi-agent shapes</li>
-<li>Good for research and experimentation</li>
+<li><strong>Elegant for conversation-shaped problems.</strong> Debate, negotiation, multi-character simulations.</li>
+<li><strong>Strong code execution support.</strong> UserProxyAgent runs Python natively, very good for coding and data-analysis setups.</li>
+<li><strong>Built-in multi-agent patterns.</strong> Group chat, two-agent, hierarchical.</li>
+<li><strong>Research-friendly.</strong> Good for experimenting with how agents coordinate.</li>
 </ul>
 
 <h2>Weaknesses</h2>
 <ul>
-<li>Steeper learning curve than CrewAI</li>
-<li>Chat-message paradigm can be inefficient for simple workflows</li>
-<li>Less opinionated than some alternatives</li>
+<li>Steeper learning curve than CrewAI.</li>
+<li>Chat-message paradigm is inefficient for simple sequential workflows.</li>
+<li>Less opinionated; you make more decisions up front.</li>
+<li>Production observability requires glue to external tools.</li>
 </ul>
 
-<h2>When to pick AutoGen</h2>
+<h2>When AutoGen is the right pick</h2>
 <ul>
-<li>Research settings exploring multi-agent interaction</li>
-<li>Problems genuinely structured as agent-to-agent conversation</li>
-<li>Teams with Python + Microsoft tooling fit</li>
+<li>Research settings exploring multi-agent dynamics.</li>
+<li>Problems genuinely structured as agent-to-agent conversation (debates, negotiations, narrative generation).</li>
+<li>Code-execution heavy agents (UserProxyAgent is genuinely excellent at running Python).</li>
+<li>Teams comfortable with Python + Microsoft ecosystem tooling.</li>
+</ul>
+
+<h2>When to pick something else</h2>
+<ul>
+<li>Single-agent tasks. Overhead without benefit.</li>
+<li>Strict orchestration flows. LangGraph's state machines are cleaner.</li>
+<li>Production customer-facing agents where observability and SLAs matter. You'll wind up building a lot of instrumentation.</li>
 </ul>
 
 <h2>AutoGen Studio</h2>
-<p>Microsoft offers AutoGen Studio, a UI for building and debugging agent configurations. Useful for non-programmers building agent workflows.</p>
+<p>Microsoft offers AutoGen Studio, a UI for building and debugging agent configurations. Useful for non-programmers prototyping agent workflows, and helpful even for engineers when visualizing agent conversations in a group chat.</p>
+
+<h2>A good fit: a research + coding duo</h2>
+<p>Two agents: a "researcher" who searches and reads documents, and a "coder" (UserProxyAgent) who writes and runs analysis code. They pass findings back and forth until the user's question is answered. AutoGen's chat paradigm fits this naturally: each agent's message is the other's input. Minimal scaffolding.</p>
+
+<h2>Pitfalls</h2>
+<ul>
+<li><strong>Forcing chat where it doesn't fit.</strong> Simple sequential tasks become harder, not easier.</li>
+<li><strong>Runaway group chat.</strong> Manager picks the wrong speaker; the conversation loops. Set explicit turn limits.</li>
+<li><strong>Code execution surface.</strong> UserProxyAgent can execute arbitrary code. Sandbox it.</li>
+<li><strong>Prototype-to-prod gap.</strong> Less mature tracing than LangGraph; plan instrumentation early.</li>
+</ul>
+
+<h2>What to do with this</h2>
+<ul>
+<li>If your problem naturally looks like a conversation between roles, AutoGen will feel natural.</li>
+<li>If it doesn't, try CrewAI or LangGraph instead.</li>
+<li>Read <a href="picking.html">picking a framework</a> for the full comparison.</li>
+</ul>
 <div class="prev-next"><a href="crewai.html" class="prev"><div class="label">← Previous</div><div class="title">CrewAI</div></a><a href="picking.html" class="next"><div class="label">Next →</div><div class="title">Picking a framework</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

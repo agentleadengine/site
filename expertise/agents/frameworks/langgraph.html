@@ -219,38 +219,73 @@
 <a href="../../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="../foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="../foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="../foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="../loops/react.html">ReAct</a></li><li><a href="../loops/tool-use.html">Tool use</a></li><li><a href="../loops/planning.html">Planning loops</a></li><li><a href="../loops/reflection.html">Reflection</a></li><li><a href="../loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="../tools/tool-design.html">Tool design</a></li><li><a href="../tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="../tools/error-handling.html">Tool error handling</a></li><li><a href="../tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="../tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="../memory/short-term.html">Short-term memory</a></li><li><a href="../memory/long-term.html">Long-term memory</a></li><li><a href="../memory/episodic.html">Episodic memory</a></li><li><a href="../memory/procedural.html">Procedural memory</a></li><li><a href="../memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="../multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="../multi/peer-agents.html">Peer agents</a></li><li><a href="../multi/debate.html">Debate + consensus</a></li><li><a href="../multi/handoffs.html">Agent handoffs</a></li><li><a href="../multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="../eval/why-eval-agents.html">Why eval agents</a></li><li><a href="../eval/task-completion.html">Task completion</a></li><li><a href="../eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="../eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="../prod/observability.html">Observability + tracing</a></li><li><a href="../prod/cost-control.html">Cost control</a></li><li><a href="../prod/latency.html">Latency optimization</a></li><li><a href="../prod/safety.html">Safety + guardrails</a></li><li><a href="../prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/research-agent.html">Research agent</a></li><li><a href="../patterns/coding-agent.html">Coding agent</a></li><li><a href="../patterns/customer-support.html">Customer support agent</a></li><li><a href="../patterns/data-analyst.html">Data analyst agent</a></li><li><a href="../patterns/browser-agent.html">Browser agent</a></li><li><a href="../patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="../frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="../frameworks/langgraph.html" class="active">LangGraph</a></li><li><a href="../frameworks/crewai.html">CrewAI</a></li><li><a href="../frameworks/autogen.html">AutoGen</a></li><li><a href="../frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>LangGraph</span></div><h1 class="title">LangGraph</h1><div class="article-meta"><span>📖 3 min read</span><span>Updated 2026-04-19</span></div>
-<p class="lede">LangGraph is LangChain's successor framework for building stateful, multi-actor LLM applications. You define agent logic as a directed graph: nodes are steps (LLM calls, tool calls, logic), edges route based on state. More explicit than chain-style frameworks.</p>
+<p class="lede">LangGraph is LangChain's successor framework for stateful, multi-actor LLM applications. You model agent logic as a graph: nodes are steps (LLM call, tool call, logic, custom code), edges route based on the current state. Compared to the old chain-style LangChain, it's much better at branching, loops, and multi-agent coordination. It's the most provider-agnostic mature framework.</p>
 
 <h2>Why graph-based</h2>
-<p>LangChain's older chain-based approach couldn't easily express branching, loops, and multi-agent coordination. LangGraph solves this: explicit nodes and edges with conditional transitions.</p>
+<p>Old LangChain was built around linear chains. They worked for pipelines but choked on branching logic, loops, and multi-agent handoff. Graph-based lets you express: "after this LLM call, if state.X is Y go to node A, else go to node B." Explicit, testable, loopable. It's more verbose, and that verbosity pays off when your agent logic gets complex.</p>
 
-<h2>What it provides</h2>
-<ul>
-<li>State machines for agent workflows</li>
-<li>Built-in multi-agent patterns</li>
-<li>Checkpointing (save/resume agent state)</li>
-<li>Human-in-the-loop support</li>
-<li>Streaming</li>
-<li>Strong observability via LangSmith</li>
-</ul>
+<h2>What LangGraph provides</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Features you\'ll use');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Feature', w: 240},
+    {title: 'What it\'s for', w: 560}
+  ], rows: [
+    ['State-machine modeling', 'Explicit nodes + conditional edges'],
+    ['Multi-agent patterns', 'Orchestrator-worker, debate, handoffs built-in'],
+    ['Checkpointing', 'Save / resume agent state across sessions'],
+    ['Human-in-the-loop', 'Pause for approval, resume from checkpoint'],
+    ['Streaming', 'Token-level + step-level'],
+    ['LangSmith integration', 'Tracing + eval tooling']
+  ]});
+});
+</script>
 
-<h2>When to use</h2>
+<h2>When LangGraph is the right call</h2>
 <ul>
-<li>Complex agent workflows with branching logic</li>
-<li>Multi-agent systems</li>
-<li>Long-running agents that need to pause/resume</li>
-<li>Teams already using LangChain</li>
+<li>Your agent has real branching logic (more than linear steps).</li>
+<li>Multi-agent coordination.</li>
+<li>Long-running agents that need pause/resume.</li>
+<li>You're already in the LangChain ecosystem.</li>
+<li>Multi-model: you want to mix Claude, GPT, Gemini.</li>
 </ul>
 
 <h2>When it's overkill</h2>
 <ul>
-<li>Simple ReAct loops (raw API + small wrapper is cleaner)</li>
-<li>Small projects that don't need the abstraction</li>
-<li>Teams uncomfortable with the LangChain ecosystem's complexity</li>
+<li>Simple ReAct loops. A raw API + 50-line Python wrapper is cleaner.</li>
+<li>Small projects where the graph abstraction is bigger than the problem.</li>
+<li>Teams allergic to LangChain's complexity (it's legit).</li>
 </ul>
 
-<h2>Criticism</h2>
-<p>LangChain has a reputation for abstraction overhead. LangGraph addresses some of this but retains some of the complexity. Evaluate against raw API approaches before adopting.</p>
+<h2>The critique you'll hear</h2>
+<p>LangChain accumulated a reputation for over-abstraction: too many layers, too many integrations, hard to debug. LangGraph addresses some of this by making the state machine explicit, but it inherits some of the ecosystem's baggage. Before adopting, ask: "Could I write this in ~200 lines on raw API with a simple loop?" If yes, that's often cleaner.</p>
+
+<h2>A good fit: a long-running research agent</h2>
+<p>A research agent that takes 10 minutes to run, needs to pause for user feedback mid-run, and coordinates three sub-agents fits LangGraph very well. Checkpointing lets the agent pause and resume without re-running 5 minutes of search. The state machine makes the handoffs explicit. The observability via LangSmith shows you the whole trace.</p>
+<p>Same agent written on raw API would be more code and harder to debug.</p>
+
+<h2>A bad fit: a simple Q&amp;A agent with 3 tools</h2>
+<p>LangGraph's abstraction is overhead. A 50-line loop over the OpenAI or Anthropic tool-use API does the same thing with less surface area. The value of the framework comes in when complexity grows.</p>
+
+<h2>Pitfalls</h2>
+<ul>
+<li><strong>Using LangGraph for simple tasks.</strong> The abstraction costs you more than it saves.</li>
+<li><strong>Fighting the state model.</strong> If your agent logic doesn't fit a state machine naturally, a different framework might fit better.</li>
+<li><strong>LangChain-ecosystem bloat.</strong> Pulling in 20 LangChain integrations you don't need.</li>
+<li><strong>Observability without eval.</strong> LangSmith is great but only if you use it.</li>
+</ul>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Prototype on raw API first. Adopt LangGraph when you hit branching, multi-agent, or checkpointing needs.</li>
+<li>Read <a href="picking.html">picking a framework</a> for the side-by-side comparison.</li>
+<li>Pair with the <a href="../eval/regression.html">regression testing</a> flow since LangSmith integrates well there.</li>
+</ul>
 <div class="prev-next"><a href="claude-agent-sdk.html" class="prev"><div class="label">← Previous</div><div class="title">Claude Agent SDK</div></a><a href="crewai.html" class="next"><div class="label">Next →</div><div class="title">CrewAI</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
