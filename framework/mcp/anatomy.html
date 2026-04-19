@@ -10,10 +10,11 @@
 <meta property="og:title" content="Anatomy of an MCP | Samuel Ochoa">
 <meta property="og:description" content="The five primitives of MCP: tools, resources, prompts, servers, clients.">
 <meta property="og:site_name" content="Samuel Ochoa">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Kalam:wght@400;700&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../styles.css">
 <link rel="icon" type="image/png" href="../../logo.png">
 
+<script defer src="../../js/sketch.js"></script>
 </head>
 <body><nav class="topbar"><div class="topbar-inner">
 <a href="../../index.html" class="logo"><img class="brand-logo" src="../../logo.png" alt="Samuel Ochoa"></a>
@@ -324,18 +325,23 @@
 <h2>How the five pieces actually connect.</h2>
 <p>Here's the traffic pattern, at the level that will stick in your head:</p>
 
-<pre><code>┌──────────────┐   MCP    ┌──────────────┐
-│   CLIENT     │◄────────►│   SERVER     │
-│ (Claude Code)│          │  (Gmail MCP) │
-└──────┬───────┘          └──────────────┘
-       │
-       │ tool calls + results
-       │
-       ▼
-┌──────────────┐
-│    MODEL     │
-│  (Claude)    │
-└──────────────┘</code></pre>
+<div class="sketch" data-viewbox="0 0 920 340">
+  <svg></svg>
+  <div class="sketch-caption">~ model ↔ client ↔ server ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var svg = document.querySelector('.sketch svg');
+  if (!svg || svg.dataset.drawn) return;
+  svg.dataset.drawn = '1';
+  var rc = sketch.rc(svg);
+  sketch.box(svg, rc, { x: 40,  y: 90, w: 240, h: 140, title: 'Model',  sub: '(Claude)',      dim: '240 × 140' });
+  sketch.box(svg, rc, { x: 340, y: 90, w: 240, h: 140, title: 'Client', sub: '(Claude Code)', dim: '240 × 140' });
+  sketch.box(svg, rc, { x: 640, y: 90, w: 240, h: 140, title: 'Server', sub: '(Gmail MCP)',   dim: '240 × 140' });
+  sketch.arrow(svg, rc, { x1: 280, x2: 340, y: 160, label: 'tool calls' });
+  sketch.arrow(svg, rc, { x1: 580, x2: 640, y: 160, label: 'MCP' });
+});
+</script>
 
 <p>Notice something important: the model never talks to the server directly. The client is always the middleman. This is intentional and it's one of the most important design choices in MCP.</p>
 

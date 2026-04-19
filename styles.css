@@ -1,6 +1,44 @@
 /* samuelochoa.com — stylesheet */
 
 /* ============================================================
+   SKETCH DIAGRAMS (Blueprint × Purple Marker on Cream)
+   Every page can drop a <div class="sketch" data-viewbox="...">
+   and call sketch.box/arrow/etc. after the sketch:ready event.
+   ============================================================ */
+.sketch {
+    position: relative;
+    margin: 36px auto;
+    max-width: 940px;
+    padding: 28px 20px;
+    border-radius: 18px;
+    background: #faf7f2;
+    background-image:
+        linear-gradient(rgba(74,0,224,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(74,0,224,0.08) 1px, transparent 1px);
+    background-size: 24px 24px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+}
+.sketch-svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 960px;
+    margin: 0 auto;
+}
+.sketch-svg text {
+    fill: #1d1d23;
+}
+.sketch-caption {
+    text-align: center;
+    font-family: 'Caveat', 'Kalam', cursive;
+    color: #8b5cf6;
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 8px;
+    letter-spacing: 0.02em;
+}
+
+/* ============================================================
    RESET + BASE
    ============================================================ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
