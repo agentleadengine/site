@@ -219,82 +219,151 @@
 <a href="../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../what-is-autonomous-ai.html">What is autonomous AI</a></li><li><a href="../the-autonomy-spectrum.html">The autonomy spectrum</a></li><li><a href="../glossary.html">Glossary</a></li></ul><h4>Claude</h4><ul><li><a href="../claude/overview.html">Overview</a></li><li><a href="../claude/prompting-for-agents.html">Prompting for agents</a></li><li><a href="../claude/extended-thinking.html">Extended thinking</a></li><li><a href="../claude/tool-use.html">Tool use</a></li></ul><h4>MCP</h4><ul><li><a href="../mcp/index.html">Overview</a></li><li><a href="../mcp/what-is-mcp.html">What is MCP</a></li><li><a href="../mcp/anatomy.html">Anatomy</a></li><li><a href="../mcp/transports.html">Transports</a></li><li><a href="../mcp/servers.html">Servers</a></li><li><a href="../mcp/clients.html">Clients</a></li><li><a href="../mcp/security.html">Security</a></li><li><a href="../mcp/directory.html">Directory</a></li></ul><h4>Plugins</h4><ul><li><a href="../plugins/index.html">Overview</a></li><li><a href="../plugins/vs-mcp.html">Plugins vs MCP</a></li><li><a href="../plugins/marketplace.html">Marketplace</a></li></ul><h4>Claude Code</h4><ul><li><a href="../claude-code/index.html">Overview</a></li><li><a href="../claude-code/settings.html">Settings</a></li><li><a href="../claude-code/permissions.html">Permissions</a></li><li><a href="../claude-code/hooks.html">Hooks</a></li><li><a href="../claude-code/skills.html">Skills</a></li><li><a href="../claude-code/memory.html">Memory</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/index.html">Overview</a></li><li><a href="../patterns/react-loop.html">ReAct loop</a></li><li><a href="../patterns/plan-execute.html">Plan-execute</a></li><li><a href="../patterns/multi-agent.html">Multi-agent</a></li><li><a href="../patterns/evaluation.html">Evaluation</a></li><li><a href="../patterns/prompt-caching.html">Prompt caching</a></li></ul><h4>Autonomous</h4><ul><li><a href="../autonomous/index.html">Overview</a></li><li><a href="../autonomous/headless.html">Headless</a></li><li><a href="../autonomous/scheduling.html">Scheduling</a></li><li><a href="../autonomous/self-monitoring.html">Self-monitoring</a></li><li><a href="../autonomous/safety.html">Safety</a></li></ul><h4>Build Guides</h4><ul><li><a href="../build/index.html">Overview</a></li><li><a href="../build/first-agent.html">First agent (60 min)</a></li><li><a href="../build/voice-agent.html" class="active">Voice agent</a></li><li><a href="../build/research-agent.html">Research agent</a></li></ul><h4>Tools</h4><ul><li><a href="../tools/browser-automation.html">Browser automation</a></li><li><a href="../tools/desktop-control.html">Desktop control</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Framework</a><span class="sep">›</span><a href="../build/index.html">Build</a><span class="sep">›</span><span>Build a voice agent</span></div><h1 class="title" style="font-size:clamp(32px,4.5vw,42px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">Build a voice agent</h1><div class="article-meta"><span>📖 6 min read</span><span>Updated 2026-04-18</span></div>
-<p class="lede">A voice agent is an agent that talks. Phone calls, voice chat, voice notes. The architecture is standard; the interesting parts are latency and barge-in.</p>
+<p class="lede">A voice agent is an AI that talks with someone on the phone (or in any voice channel). The architecture is surprisingly standard; every voice agent looks like the same pipeline. The interesting parts — what makes one feel natural and another feel robotic — are latency, barge-in, and how you handle the gaps. This guide walks through the full stack.</p>
 
-<h2>The pipeline</h2>
-<pre><code>Caller audio → STT → text → LLM → text → TTS → audio back to caller</code></pre>
-<p>Each hop adds latency. Under ~1.5 seconds end-to-end feels natural. Over 3 seconds and the caller hangs up.</p>
+<h2>The pipeline.</h2>
 
-<h2>Architecture at a glance</h2>
+<div class="sketch" data-viewbox="0 0 900 280" id="dg-voice-pipeline">
+  <svg></svg>
+  <div class="sketch-caption">~ voice agent pipeline ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-voice-pipeline');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.numberedSteps(svg, rc, {
+    direction: 'h', x: 30, y: 100, w: 860,
+    items: [
+      { title: 'Caller speaks', sub: 'telephony layer' },
+      { title: 'STT',           sub: 'audio → text' },
+      { title: 'Claude',        sub: 'text → reply' },
+      { title: 'TTS',           sub: 'text → audio' },
+      { title: 'Caller hears',  sub: 'streamed back' }
+    ]
+  });
+});
+</script>
+
+<p>Each hop adds latency. The big rule: under ~1.5 seconds end-to-end feels natural. Over 3 seconds, the caller thinks the line dropped and hangs up. Everything in this guide is about keeping that budget.</p>
+
+<h2>Five pieces you'll glue together.</h2>
+
 <ol>
-  <li><strong>Telephony layer.</strong> Accepts inbound calls, streams audio. Twilio Voice, Vonage, LiveKit.</li>
-  <li><strong>STT.</strong> Streaming speech-to-text. Deepgram, AssemblyAI, Whisper (for batch).</li>
-  <li><strong>LLM.</strong> Claude handles the conversation. Extended thinking OFF (too slow).</li>
-  <li><strong>TTS.</strong> ElevenLabs, Cartesia, OpenAI TTS. Streaming synthesis is essential.</li>
-  <li><strong>Orchestrator.</strong> Glues it all together. Handles barge-in, tool calls, state.</li>
+  <li><strong>Telephony layer.</strong> Accepts inbound calls, streams audio bidirectionally. Twilio Voice, Vonage, or LiveKit are the usual choices.</li>
+  <li><strong>Speech-to-text (STT).</strong> Streaming — must emit text as the caller is still speaking. Deepgram, AssemblyAI, or streaming Whisper.</li>
+  <li><strong>LLM.</strong> Claude handles the conversation. Haiku or Sonnet here — Opus is too slow for real-time. Extended thinking OFF.</li>
+  <li><strong>Text-to-speech (TTS).</strong> Streaming is essential. ElevenLabs, Cartesia, or OpenAI TTS.</li>
+  <li><strong>Orchestrator.</strong> The glue layer you write. Handles barge-in, tool calls, state transitions.</li>
 </ol>
 
-<h2>Latency budget</h2>
-<p>Target: &lt;1.5s from end-of-caller-speech to start-of-agent-reply.</p>
-<ul>
-  <li>STT finalize: 200ms (streaming)</li>
-  <li>LLM first-token: 400, 700ms (prompt-cached, Haiku for speed)</li>
-  <li>TTS first-audio: 200, 400ms</li>
-  <li>Network + buffers: 100, 200ms</li>
-</ul>
-<p>Prompt caching is not optional here, it can cut LLM first-token by 40%.</p>
+<h2>The latency budget, broken down.</h2>
+<p>Target: under 1.5 seconds from when the caller stops speaking to when the agent starts replying. Here's how that budget gets spent:</p>
 
-<h2>State machine</h2>
-<p>Voice agents are state machines. States include:</p>
-<ul>
-  <li><strong>Idle</strong>, greeting, waiting for caller</li>
-  <li><strong>Listening</strong>, caller speaking, STT running</li>
-  <li><strong>Thinking</strong>. LLM generating response, tools may be called</li>
-  <li><strong>Speaking</strong>. TTS streaming audio back</li>
-  <li><strong>Transferring</strong>, handing off to a human</li>
-</ul>
-<p>Transitions are driven by: silence detection, LLM output, tool results, caller hang-up.</p>
+<div class="sketch" data-viewbox="0 0 900 270" id="dg-voice-latency">
+  <svg></svg>
+  <div class="sketch-caption">~ 1,500ms budget, where it goes ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-voice-latency');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.bars(svg, rc, {
+    x: 30, y: 30, w: 840, barH: 34, gap: 16, labelW: 260,
+    items: [
+      { label: 'STT finalize',         value: 13, note: '~200ms (streaming)' },
+      { label: 'Network + buffers',    value: 13, note: '~200ms' },
+      { label: 'TTS first audio',      value: 27, note: '~400ms' },
+      { label: 'LLM first token',      value: 47, note: '~700ms (cached, Haiku)' }
+    ]
+  });
+});
+</script>
 
-<h2>Barge-in</h2>
-<p>If the caller interrupts while the agent is speaking, the agent must stop immediately. Implementation:</p>
-<ul>
-  <li>Monitor caller audio level during Speaking state</li>
-  <li>If caller speaks for &gt;300ms, abort the TTS stream</li>
-  <li>Transition back to Listening; preserve partial agent utterance in the context</li>
-</ul>
+<p>That's the budget tight against reality. Prompt caching isn't optional — it cuts LLM first-token by about 40% on long system prompts. Without caching you're 400ms over budget before you start.</p>
 
-<h2>Tool use in voice agents</h2>
-<p>Slow tools ruin voice. Two tactics:</p>
+<h2>The agent is a state machine.</h2>
+<p>Voice agents live in discrete states. Most of the hard bugs come from sloppy state transitions.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260" id="dg-voice-states">
+  <svg></svg>
+  <div class="sketch-caption">~ five states, driven by events ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-voice-states');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.table(svg, rc, {
+    x: 20, y: 30,
+    cols: [
+      { title: 'State',      w: 170 },
+      { title: 'What\'s happening',        w: 300 },
+      { title: 'Exit event',               w: 350 }
+    ],
+    rows: [
+      ['Idle',         'greeting played, waiting',               'caller speaks → Listening'],
+      ['Listening',    'caller speaking, STT streaming',         'silence detected → Thinking'],
+      ['Thinking',     'LLM generating response, tools maybe',   'first token streamed → Speaking'],
+      ['Speaking',     'TTS streaming audio back',               'done OR caller barges in → Listening'],
+      ['Transferring', 'handoff to a human',                     'human picks up → off the agent']
+    ]
+  });
+});
+</script>
+
+<h2>Barge-in. Why you must always do it.</h2>
+<p>A voice agent that won't shut up when the caller tries to interrupt is the single most aggravating UX in the world. Every voice agent must implement barge-in.</p>
+
+<p>Mechanics: while in the Speaking state, keep monitoring the caller's audio level. If the caller speaks for more than about 300ms, abort the TTS stream immediately and transition back to Listening. Preserve what the agent had said so far in the conversation context — the model can reference it when it speaks again.</p>
+
+<p>If you skip barge-in, your agent is the phone-tree person who won't stop talking. Callers hate it. Hang-up rate goes up. Don't skip barge-in.</p>
+
+<h2>Tool calls without killing the latency budget.</h2>
+<p>Slow tools ruin voice. A 3-second database lookup is a hang-up. Two tactics:</p>
+
 <ol>
-  <li><strong>Pre-fetch data.</strong> When the caller first connects, fetch likely-needed data (caller profile, recent interactions) in parallel with the greeting.</li>
-  <li><strong>Filler speech during long tool calls.</strong> "Let me look that up for you...", buys 2, 3 seconds while the tool runs.</li>
+  <li><strong>Pre-fetch on connect.</strong> When the caller first connects, fetch the data you'll probably need (caller profile, recent support tickets, account status) in parallel with the greeting. By the time they ask, you have it.</li>
+  <li><strong>Filler speech during long tool calls.</strong> "One moment while I look that up for you..." buys you 2–3 seconds while the tool runs. Pre-record these fillers so they don't themselves incur TTS latency.</li>
 </ol>
 
-<h2>Safety</h2>
-<p>Voice agents sound authoritative. That's dangerous, callers trust what they hear. Must-haves:</p>
+<h2>Safety. Voice agents sound authoritative. That's dangerous.</h2>
+<p>Callers believe what they hear. A voice agent that confidently quotes a wrong price is much worse than a chat agent saying the same thing, because callers don't fact-check voice in real time. Minimum safety must-haves:</p>
+
 <ul>
-  <li>Disclose it's an AI in the opening greeting</li>
-  <li>Never quote prices, promise commitments, or diagnose without handoff</li>
-  <li>Have a clear "transfer to human" path on any ambiguity</li>
-  <li>Recording + transcription for every call for later review</li>
+  <li><strong>Disclose it's an AI in the opening greeting.</strong> "Hi, I'm the AI assistant for..." is enough. Don't pretend to be human.</li>
+  <li><strong>Never quote prices, make commitments, or give medical/legal/financial advice.</strong> Transfer to a human for any of those.</li>
+  <li><strong>Always have a 'transfer to human' path.</strong> And advertise it. "If you'd like to speak to a person, just say 'representative.'"</li>
+  <li><strong>Record and transcribe every call</strong> for later review. Log calls anywhere someone might want to audit behavior.</li>
 </ul>
 
-<h2>Evaluating a voice agent</h2>
+<h2>How to evaluate a voice agent.</h2>
+
 <ul>
-  <li>Task success rate (did the caller accomplish their goal?)</li>
-  <li>Avg call duration (too long = painful)</li>
-  <li>Transfer rate (too high = agent not useful; too low = maybe missing real handoffs)</li>
-  <li>Caller satisfaction (post-call survey or sentiment in transcript)</li>
-  <li>Tool call latency distribution</li>
+  <li><strong>Task success rate.</strong> Did the caller actually accomplish what they called for?</li>
+  <li><strong>Average call duration.</strong> Too long = painful. Compare to human baseline.</li>
+  <li><strong>Transfer rate.</strong> Too high = the agent isn't useful. Too low = maybe it's failing to transfer when it should.</li>
+  <li><strong>Caller satisfaction.</strong> A quick post-call survey ("press 1 if this helped") or sentiment analysis of the transcript.</li>
+  <li><strong>Tool-call latency distribution.</strong> P50 and p95. Long-tail latency kills user experience.</li>
 </ul>
 
-<h2>Common pitfalls</h2>
+<h2>Common pitfalls.</h2>
+
 <ul>
-  <li><strong>Too robotic.</strong> Use natural TTS voices. Vary cadence. Add disfluencies ("Hmm...") sparingly.</li>
-  <li><strong>Won't shut up.</strong> Always implement barge-in. Always.</li>
-  <li><strong>Loses context.</strong> Keep conversation history in memory; fetch caller history on connect.</li>
-  <li><strong>Over-promises.</strong> "I'll get that done for you" when the agent can't actually do it. Constrain the system prompt.</li>
+  <li><strong>Too robotic.</strong> Use natural TTS voices. Vary cadence. Sparing disfluencies ("um", "let me see") make it feel real.</li>
+  <li><strong>Won't shut up.</strong> Always implement barge-in. Mentioned three times for a reason.</li>
+  <li><strong>Loses context.</strong> Keep conversation history in memory across the call; fetch caller history on connect.</li>
+  <li><strong>Over-promises.</strong> "I'll take care of that for you" when the agent actually can't. Tight system prompt about what it can and can't commit to.</li>
 </ul>
+
+<p>A good voice agent feels like talking to a competent human. A bad one feels like talking to a menu tree that learned to talk. The difference isn't the model; it's the latency budget, the state machine, and the discipline about what it'll commit to.</p>
 <div class="prev-next"><a href="first-agent.html" class="prev"><div class="label">← Previous</div><div class="title">First agent in 60 minutes</div></a><a href="research-agent.html" class="next"><div class="label">Next →</div><div class="title">Research agent</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../framework/index.html">Framework</a></p>
 </div></footer><script>
