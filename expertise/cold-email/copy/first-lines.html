@@ -225,6 +225,25 @@
 <p>A good first line is impossible for the recipient to ignore because it's clearly about them specifically. It references something that could only apply to this one prospect: their recent post, their role change, their company news, a specific detail.</p>
 
 <h2>Sources of specificity</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Where a genuine first line comes from');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Source', w: 240},
+    {title: 'Example', w: 560}
+  ], rows: [
+    ['Recent post / interview', '"Loved your take on X in [publication]"'],
+    ['Specific hire / launch', '"Saw you hired [name] for Y role"'],
+    ['Mutual connection', '"[Name] suggested I reach out..."'],
+    ['Product-specific detail', 'Something only someone who used it would notice'],
+    ['Company news', 'A thoughtful reaction to a real event']
+  ]});
+});
+</script>
 
 <h3>Their LinkedIn activity</h3>
 <p>"Saw your post yesterday about [specific topic]"<br>

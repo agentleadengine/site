@@ -222,6 +222,23 @@
 <p class="lede">Every effective cold email has six components in a specific order. Miss one and conversion drops. Master the shape and copy becomes iteration, not reinvention.</p>
 
 <h2>The six parts</h2>
+<div class="sketch" data-viewbox="0 0 900 320"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 320);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Cold email anatomy');
+  sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 40, layers: [
+    {label: 'Subject', sub: 'earn the open'},
+    {label: 'First line (personal)', sub: 'prove you did research'},
+    {label: 'Pitch', sub: 'what you offer + why them'},
+    {label: 'Proof point', sub: 'credibility / result'},
+    {label: 'CTA', sub: 'one specific ask'},
+    {label: 'Signature', sub: 'minimal, human'}
+  ]});
+});
+</script>
 <ol>
 <li><strong>Subject line</strong>, 3-5 words, lowercase, feels personal. Single job: get the reply.</li>
 <li><strong>First line</strong>, specific to this person. The make-or-break.</li>

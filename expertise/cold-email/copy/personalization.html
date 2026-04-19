@@ -222,6 +222,23 @@
 <p class="lede">Personalization used to mean "Hi [First Name]." Modern cold email uses enriched data, signal scraping, and AI to generate custom first lines at scale. Done right, every email feels hand-written even at 1000 sends per week.</p>
 
 <h2>The three tiers</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Three tiers of personalization');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Tier', w: 240},
+    {title: 'What it means', w: 560}
+  ], rows: [
+    ['Merge fields only', 'First name + company; bare minimum'],
+    ['Segment-level', 'Copy tuned to persona or industry'],
+    ['True 1:1', 'Line written specifically for this person']
+  ]});
+});
+</script>
 
 <h3>Tier 1: Token replacement</h3>
 <p>Basic merge fields: first name, company, role, industry. Bare minimum. Doesn't actually read as personal.</p>
