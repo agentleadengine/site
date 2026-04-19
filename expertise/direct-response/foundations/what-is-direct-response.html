@@ -225,6 +225,31 @@
 <p>The tight working definition: a direct-response ad is one that asks the reader to <em>do something specific, right now, that can be measured</em>. Call this number. Fill this form. Send back this card. Click this button. If you can't measure the response, you can't improve the ad, and you can't know whether it worked.</p>
 
 <h2>Direct response vs brand advertising</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Direct response vs brand');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Direct response', items: [
+      'Asks for action now',
+      'Measurable per dollar',
+      'Strong headlines + offers',
+      'Short feedback loops',
+      'You know if it worked in hours'
+    ]},
+    right: {title: 'Brand', items: [
+      'Builds awareness + affinity',
+      'Measured in surveys, sentiment',
+      'Tone + aesthetics matter',
+      'Long feedback loops',
+      'You know if it worked in quarters'
+    ]}
+  });
+});
+</script>
 <table style="width:100%; border-collapse:collapse; margin:20px 0;">
  <tr style="background:#f5f5f7;"><th style="padding:12px; text-align:left; border:1px solid #e5e5ea;">Brand</th><th style="padding:12px; text-align:left; border:1px solid #e5e5ea;">Direct response</th></tr>
  <tr><td style="padding:12px; border:1px solid #e5e5ea;">Awareness, sentiment, impressions</td><td style="padding:12px; border:1px solid #e5e5ea;">Leads, sales, trackable outcomes</td></tr>

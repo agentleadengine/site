@@ -222,6 +222,24 @@
 <p class="lede">Nearly everything useful I know about direct response traces back, in one form or another, to four people I've studied closely. I mention them once here and then mostly let the work speak for itself through the rest of this section. If you want to go to the source, start with them.</p>
 
 <h2>Who they are</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'The four horsemen of direct response');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Who', w: 220},
+    {title: 'What they\'re known for', w: 580}
+  ], rows: [
+    ['Claude Hopkins', 'Scientific Advertising; tested everything'],
+    ['Gary Halbert', 'The Boron Letters; master of voice + urgency'],
+    ['Dan Kennedy', 'No B.S. marketing; offer-first thinking'],
+    ['Eugene Schwartz', 'Breakthrough Advertising; awareness + sophistication']
+  ]});
+});
+</script>
 
 <h3>Claude Hopkins (1866, 1932)</h3>
 <p>The scientist. Wrote <em>Scientific Advertising</em> in 1923, arguably the most influential marketing book ever written. The core move: treating advertising as a measurable science using keyed coupons to track exactly which ad, which headline, which newspaper produced which orders. Everything I know about testing comes from his lineage. <strong>Read:</strong> <em>Scientific Advertising</em> (free, ~90 pages, and worth rereading annually).</p>

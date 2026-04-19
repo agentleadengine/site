@@ -225,6 +225,25 @@
 <p>Before scientific advertising became a discipline, advertising was art, big creative agencies, clever slogans, no accountability. The first generation of direct-response testers changed that with <strong>keyed coupons</strong>: little codes printed on each ad, so they could trace which newspaper, which city, which headline produced which number of orders. For the first time, an advertiser could say: "this ad produced 412 orders at a CPA of $2.18; this one produced 67 at $11.40." From there, you just run more of what works.</p>
 
 <h2>The principles (still valid in 2026)</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Hopkins principles that still work');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Principle', w: 260},
+    {title: 'Modern equivalent', w: 540}
+  ], rows: [
+    ['Test everything', 'A/B testing, multivariate, holdouts'],
+    ['Track every response', 'UTMs, attribution, conversion pixels'],
+    ['Headline = 80% of the work', 'Still true for ads + subject lines'],
+    ['Specific claims beat generic', 'Numbers + proof, not adjectives'],
+    ['Sell the offer, not the product', 'Irresistible-offer framework']
+  ]});
+});
+</script>
 
 <h3>1. Test, always</h3>
 <p>The one true rule. You don't know which of two headlines will win; run both and find out. You don't know whether coupon X or coupon Y pulls better; run both and find out. The act of testing is what separates practitioners from amateurs.</p>
