@@ -222,6 +222,21 @@
 <p class="lede">Testing without measurement is guessing with ceremony. Bad measurement is worse than no measurement, it gives you false confidence in false conclusions. Get the measurement right and testing compounds into serious operational advantage. This page: the numbers that matter, how to track them, and how to read them without fooling yourself.</p>
 
 <h2>The metrics hierarchy</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Metrics hierarchy: optimize the bottom');
+  sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 40, layers: [
+    {label: 'CTR / engagement', sub: 'vanity at the top'},
+    {label: 'CPL / lead volume', sub: 'cost per lead'},
+    {label: 'CVR / sales volume', sub: 'leads → customers'},
+    {label: 'CAC / ROAS / LTV', sub: 'the metric that matters'}
+  ]});
+});
+</script>
 
 <h3>Revenue metrics (the truth)</h3>
 <ul>

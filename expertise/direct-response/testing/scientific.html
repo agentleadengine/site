@@ -232,6 +232,21 @@
 <p>All of these are reasons to test more, not less. The operators who overcome them build an unfair advantage.</p>
 
 <h2>The method, what he actually did</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Hopkins\' scientific method, modernized');
+  sketch.numberedSteps(svg, rc, {direction: 'h', x: 30, y: 80, w: 840, items: [
+    {title: 'Hypothesis', sub: 'explicit prediction'},
+    {title: 'Design test', sub: 'isolate one variable'},
+    {title: 'Run to significance', sub: 'don\'t peek early'},
+    {title: 'Keep the winner', sub: 'it becomes control'}
+  ]});
+});
+</script>
 <p>The early direct marketers ran keyed coupons. A unique code or address per ad variant, so he could count exactly how many orders came from each. Headlines, newspapers, cities, offer structures: everything was a test.</p>
 <ul>
  <li>Two headlines for the same product? Run both. Whichever pulled better, scale.</li>
