@@ -265,6 +265,25 @@
 <p>Track hard bounce rate per campaign. Above 3% = list quality problem. Above 5% = actively damaging your reputation. Stop and fix.</p>
 
 <h2>Key metrics and thresholds</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Deliverability metrics + healthy ranges');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Metric', w: 220},
+    {title: 'Healthy range', w: 580}
+  ], rows: [
+    ['Bounce rate', '< 3%'],
+    ['Spam complaint rate', '< 0.1%'],
+    ['Reply rate (cold)', '3–8% typical'],
+    ['Unsub rate', '< 0.5%'],
+    ['Inbox placement (via seeds)', '> 80% is good']
+  ]});
+});
+</script>
 
 <h3>Spam rate (Gmail Postmaster)</h3>
 <ul>

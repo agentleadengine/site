@@ -228,6 +228,23 @@
 <p>This happens to every team that doesn't separate sending domains. Don't be them.</p>
 
 <h2>The domain architecture</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Split sending + main domain');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Domain type', w: 260},
+    {title: 'Use for', w: 540}
+  ], rows: [
+    ['Main brand domain', 'Transactional, customer email, brand'],
+    ['Cold sending domains (look-alikes)', 'Outbound sequences; isolated reputation'],
+    ['Per-rep subdomains', 'Scale without cross-contamination']
+  ]});
+});
+</script>
 
 <h3>Primary domain</h3>
 <p>Your brand: <code>yourcompany.com</code>. Used for:</p>

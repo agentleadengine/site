@@ -222,6 +222,25 @@
 <p class="lede">IP reputation is a per-IP score that email providers maintain. It influences whether messages from that IP get inbox placement, promotions placement, or spam folder. Understanding shared vs dedicated IPs and how reputation builds changes how you architect sending.</p>
 
 <h2>How IP reputation is built</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'What shapes IP reputation');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Signal', w: 240},
+    {title: 'Effect', w: 560}
+  ], rows: [
+    ['Bounce rate', 'High bounce = bad reputation fast'],
+    ['Spam complaints', 'The biggest negative signal'],
+    ['Send volume spikes', 'Sudden ramp looks like spam'],
+    ['Engagement (opens, replies)', 'Positive signal'],
+    ['Unsubscribe rate', 'Normal if < 0.5%']
+  ]});
+});
+</script>
 <p>Gmail, Outlook, and others track every sending IP's:</p>
 <ul>
   <li>Volume over time (sudden spikes look spammy)</li>

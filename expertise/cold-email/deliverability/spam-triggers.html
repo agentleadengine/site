@@ -222,6 +222,25 @@
 <p class="lede">Deliverability isn't only about infrastructure. Email content itself triggers filters. A well-authenticated, warmed, reputation-clean sender can still land in spam because of content patterns that match spam fingerprints. The safer your content, the better your placement.</p>
 
 <h2>The two filter types</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Avoid these trigger categories');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Trigger', w: 240},
+    {title: 'Examples', w: 560}
+  ], rows: [
+    ['Hype phrases', 'Free!, guarantee, limited time, act now'],
+    ['Money signals', '$$$, make money, earn cash'],
+    ['Excess punctuation', '!!! or ALL CAPS'],
+    ['Image-only emails', 'No text, just an image'],
+    ['Too many links', '4+ links in a short email']
+  ]});
+});
+</script>
 
 <h3>Bayesian / ML filters</h3>
 <p>Look at the whole email and score likelihood of spam based on patterns learned from billions of examples. The more spam-like your content, the higher the score.</p>

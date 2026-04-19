@@ -233,6 +233,21 @@
 <p>A naive team thinks their campaign produces 2% reply rate. In reality it's 2% reply rate on the 30% that actually reached the inbox. The underlying offer may produce 6% on the full audience.</p>
 
 <h2>The four layers of deliverability</h2>
+<div class="sketch" data-viewbox="0 0 900 300"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 300);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Four layers between you and the inbox');
+  sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 54, layers: [
+    {label: '1. Technical (DNS: SPF, DKIM, DMARC)', sub: 'authentication'},
+    {label: '2. Reputation (IP + domain)', sub: 'history + trust'},
+    {label: '3. Content (copy + structure)', sub: 'spam triggers'},
+    {label: '4. Engagement (opens, replies, not-spam)', sub: 'behavioral signal'}
+  ]});
+});
+</script>
 
 <h3>1. Technical setup</h3>
 <p>DNS records (SPF, DKIM, DMARC). Sending domains separated from your primary domain. Proper MX and reverse DNS.</p>
