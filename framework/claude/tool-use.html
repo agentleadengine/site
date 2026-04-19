@@ -219,67 +219,162 @@
 <a href="../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../what-is-autonomous-ai.html">What is autonomous AI</a></li><li><a href="../the-autonomy-spectrum.html">The autonomy spectrum</a></li><li><a href="../glossary.html">Glossary</a></li></ul><h4>Claude</h4><ul><li><a href="../claude/overview.html">Overview</a></li><li><a href="../claude/prompting-for-agents.html">Prompting for agents</a></li><li><a href="../claude/extended-thinking.html">Extended thinking</a></li><li><a href="../claude/tool-use.html" class="active">Tool use</a></li></ul><h4>MCP</h4><ul><li><a href="../mcp/index.html">Overview</a></li><li><a href="../mcp/what-is-mcp.html">What is MCP</a></li><li><a href="../mcp/anatomy.html">Anatomy</a></li><li><a href="../mcp/transports.html">Transports</a></li><li><a href="../mcp/servers.html">Servers</a></li><li><a href="../mcp/clients.html">Clients</a></li><li><a href="../mcp/security.html">Security</a></li><li><a href="../mcp/directory.html">Directory</a></li></ul><h4>Plugins</h4><ul><li><a href="../plugins/index.html">Overview</a></li><li><a href="../plugins/vs-mcp.html">Plugins vs MCP</a></li><li><a href="../plugins/marketplace.html">Marketplace</a></li></ul><h4>Claude Code</h4><ul><li><a href="../claude-code/index.html">Overview</a></li><li><a href="../claude-code/settings.html">Settings</a></li><li><a href="../claude-code/permissions.html">Permissions</a></li><li><a href="../claude-code/hooks.html">Hooks</a></li><li><a href="../claude-code/skills.html">Skills</a></li><li><a href="../claude-code/memory.html">Memory</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/index.html">Overview</a></li><li><a href="../patterns/react-loop.html">ReAct loop</a></li><li><a href="../patterns/plan-execute.html">Plan-execute</a></li><li><a href="../patterns/multi-agent.html">Multi-agent</a></li><li><a href="../patterns/evaluation.html">Evaluation</a></li><li><a href="../patterns/prompt-caching.html">Prompt caching</a></li></ul><h4>Autonomous</h4><ul><li><a href="../autonomous/index.html">Overview</a></li><li><a href="../autonomous/headless.html">Headless</a></li><li><a href="../autonomous/scheduling.html">Scheduling</a></li><li><a href="../autonomous/self-monitoring.html">Self-monitoring</a></li><li><a href="../autonomous/safety.html">Safety</a></li></ul><h4>Build Guides</h4><ul><li><a href="../build/index.html">Overview</a></li><li><a href="../build/first-agent.html">First agent (60 min)</a></li><li><a href="../build/voice-agent.html">Voice agent</a></li><li><a href="../build/research-agent.html">Research agent</a></li></ul><h4>Tools</h4><ul><li><a href="../tools/browser-automation.html">Browser automation</a></li><li><a href="../tools/desktop-control.html">Desktop control</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Framework</a><span class="sep">›</span><span>Claude</span><span class="sep">›</span><span>Tool use</span></div><h1 class="title" style="font-size:clamp(32px,4.5vw,42px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">Tool use</h1><div class="article-meta"><span>📖 5 min read</span><span>Updated 2026-04-18</span></div>
-<p class="lede">Tool use is how an agent acts. The model doesn't execute anything itself, it requests tool calls, the harness runs them, and the results become new input. Getting the mechanics right is half the battle.</p>
+<p class="lede">"Tool use" is the mechanism that lets an agent actually <em>do</em> things in the real world. The model never touches anything directly. It asks: "I'd like to call this tool with these arguments." Your harness runs the tool, hands back the result, and the model reads it. That back-and-forth is the whole game. Getting the details right here, how you describe tools, how you handle errors, how you structure results, is the single most leveraged thing you can do for agent reliability.</p>
 
-<h2>The contract</h2>
-<p>You define a tool with three things:</p>
+<h2>The contract. Three things that define a tool.</h2>
+<p>Every tool you expose to Claude is defined by three pieces. Get all three right and the model uses it well. Get one wrong and the tool becomes invisible, or worse, a source of bugs.</p>
+
 <ol>
-  <li><strong>Name</strong>, a short identifier (<code>web_search</code>, <code>read_file</code>).</li>
-  <li><strong>Description</strong>, what the tool does, when to use it, when not to.</li>
-  <li><strong>Input schema</strong>. JSON schema describing arguments.</li>
+  <li><strong>Name.</strong> A short, specific identifier like <code>web_search</code> or <code>read_file</code>. Matters less than you'd think.</li>
+  <li><strong>Description.</strong> Plain English. Says what the tool does, when to use it, and when not to. This is the single biggest lever on tool-use quality.</li>
+  <li><strong>Input schema.</strong> A JSON schema listing the arguments. Types, requireds, defaults, descriptions per field.</li>
 </ol>
-<p>The model decides when to call a tool based on the description. <strong>Description quality matters more than the name.</strong> A mediocre description = a tool the model won't use or will misuse.</p>
 
-<h2>The loop</h2>
-<pre><code>1. Send messages + tool definitions to the model
-2. Model responds with either:
-   - A final answer (done)
-   - A tool_use block (model wants to call a tool)
-3. Harness executes the tool, captures output
-4. Harness sends back a tool_result referencing the tool_use ID
-5. Model produces the next step (more tool calls or final answer)
-6. Repeat until final answer or max_turns reached</code></pre>
+<p>The model decides whether to call a tool based almost entirely on the description. A vague description ("helps with searching") produces a tool the model either ignores or misuses. A precise description ("searches the user's email inbox. Use when the question is about recent messages or a specific sender") produces a tool used correctly nearly every time. <strong>Description quality beats tool name, beats even having the right tools at all.</strong></p>
 
-<h2>Parallel tool calls</h2>
-<p>Modern Claude can request multiple tools in one turn. Your harness should execute them in parallel when possible:</p>
-<pre><code>// Model emits:
+<h2>How the loop runs. Turn by turn.</h2>
+
+<div class="sketch" data-viewbox="0 0 900 340" id="dg-tool-loop">
+  <svg></svg>
+  <div class="sketch-caption">~ how a tool-use turn actually plays out ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-tool-loop');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.numberedSteps(svg, rc, {
+    direction: 'v', x: 140, y: 30,
+    items: [
+      { title: 'Send messages + tool defs to model',  sub: 'prompt + list of available tools' },
+      { title: 'Model emits either: answer OR tool_use', sub: 'the fork in the road' },
+      { title: 'Harness runs the tool',               sub: 'parses args, executes, captures result' },
+      { title: 'Harness sends tool_result back',      sub: 'with the same tool_use_id' },
+      { title: 'Model reads result, decides next step', sub: 'more tool calls or final answer' }
+    ]
+  });
+});
+</script>
+
+<p>The loop is simple. It's your job to make sure each step is correct: the tool definitions are clear, the model's request is valid, the harness executes cleanly, and the result is readable. Fails at any stage and the whole thing stalls.</p>
+
+<h2>Parallel tool calls: huge latency win.</h2>
+<p>Modern Claude can request multiple tools in one turn. If your harness is set up to run them in parallel (not sequentially), you get massive latency wins on any task that needs multiple independent lookups.</p>
+
+<pre><code>// Model emits in one turn:
 [tool_use: search("MCP spec")]
 [tool_use: search("MCP vs API")]
 [tool_use: fetch_url("https://modelcontextprotocol.io")]
 
-// Harness runs all three concurrently,
-// returns all three results in the next turn.</code></pre>
-<p>Parallel execution cuts latency dramatically on multi-search or multi-read tasks. Don't serialize by default.</p>
+// Harness runs all three concurrently, returns all three
+// results in the next turn. 3x faster than sequential.</code></pre>
 
-<h2>Tool errors</h2>
-<p>Tools fail. The network times out. The file doesn't exist. Credentials expire. Your tool result should include error info in a shape the model can reason about:</p>
-<pre><code>{
+<p>Don't serialize tool calls by default. If your tools are independent (no side effects, no ordering dependencies), run them in parallel. The user-visible latency on multi-lookup tasks drops by 50-70%.</p>
+
+<h2>Error handling. Where most agent reliability comes from.</h2>
+<p>Tools fail. Network dies. Files don't exist. Credentials expire. The ONE THING that separates a flaky agent from a reliable one is how errors are reported back to the model. A bad error handler causes infinite loops; a good one causes graceful recovery.</p>
+
+<div class="sketch" data-viewbox="0 0 900 300" id="dg-error-format">
+  <svg></svg>
+  <div class="sketch-caption">~ bad error vs good error ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-error-format');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.compare(svg, rc, {
+    x: 30, y: 30, w: 840, h: 250,
+    left: {
+      title: 'Bad error',
+      items: [
+        'Raw stack trace',
+        'Generic "something went wrong"',
+        'No hint what to do next',
+        'Model just retries same bad call'
+      ]
+    },
+    right: {
+      title: 'Good error',
+      items: [
+        'Structured JSON with status, type, message',
+        'Specific: "file not found at /path"',
+        'Suggested next action',
+        'Model reads it, takes a smarter step'
+      ]
+    }
+  });
+});
+</script>
+
+<pre><code>// Bad (model just retries):
+"Error: ENOENT /path/to/file.txt"
+
+// Good (model can recover):
+{
   "status": "error",
   "error_type": "not_found",
   "message": "File /path/to/file.txt does not exist",
-  "suggestion": "Check the path; list the directory first."
+  "suggestion": "Check the path; list the directory first to see what's there."
 }</code></pre>
-<p>The model can read this and take a smarter next step (list the directory). If you return a raw stack trace, the model will often just retry the same bad call.</p>
 
-<h2>Input schemas that actually work</h2>
+<p>The model reads the "good" version and takes a smarter next step (list the directory). With the "bad" version, the model has no signal about what went wrong, so it just retries. This is the single cheapest reliability upgrade you can make to an agent.</p>
+
+<h2>Writing input schemas that actually work.</h2>
+
 <ul>
-  <li><strong>Required vs optional.</strong> Be strict about what's required. Models will hallucinate defaults otherwise.</li>
-  <li><strong>Enums over free strings.</strong> If there are 3 valid values, declare them. Prevents typos.</li>
-  <li><strong>Descriptions on every field.</strong> Same as the tool itself, descriptions drive behavior.</li>
-  <li><strong>Examples in the tool description.</strong> "Example call: search({query: 'prompt caching'})" helps a lot.</li>
+  <li><strong>Be strict about required vs optional.</strong> If a field is required, mark it required. Otherwise the model will hallucinate defaults that feel right but are wrong.</li>
+  <li><strong>Enums over free strings.</strong> If there are three valid values for a field, declare them as an enum. Prevents typos and wrong-variant calls.</li>
+  <li><strong>Descriptions on every field.</strong> Not just on the tool itself, on each argument. "query: the search query, plain English, not keywords" is much better than just "query: string."</li>
+  <li><strong>Include example calls in the tool description.</strong> "Example: search({query: 'prompt caching pricing'})" gives the model a pattern to copy. Huge help.</li>
+  <li><strong>Limit nesting.</strong> Deep nested JSON schemas confuse the model. Flat is better. Break complex inputs into multiple tools if needed.</li>
 </ul>
 
-<h2>Common failure modes</h2>
-<ul>
-  <li><strong>Infinite loops.</strong> Model keeps calling the same failing tool. Fix: add a retry cap, escalate the error after N tries.</li>
-  <li><strong>Tool hallucination.</strong> Model calls a tool that doesn't exist. Fix: keep your tool list short and clear.</li>
-  <li><strong>Missing required arg.</strong> Model skips a required field. Fix: validate in the harness, return a clear error back to the model.</li>
-  <li><strong>Wrong tool for the job.</strong> Model uses <code>fetch_url</code> for a query that needs <code>search</code>. Fix: sharpen descriptions, especially "when to use" and "when not to use."</li>
-</ul>
+<h2>The common failure modes, and how to fix each.</h2>
 
-<div class="callout insight">
-  <strong>Insight:</strong> Treat tool definitions like microservices. The description is the API docs. The input schema is the contract. Write them with the same care.
+<div class="sketch" data-viewbox="0 0 900 290" id="dg-tool-failures">
+  <svg></svg>
+  <div class="sketch-caption">~ four failures you WILL hit ~</div>
 </div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-tool-failures');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.table(svg, rc, {
+    x: 20, y: 30,
+    cols: [
+      { title: 'Failure',             w: 220 },
+      { title: 'What it looks like',  w: 310 },
+      { title: 'Fix',                 w: 350 }
+    ],
+    rows: [
+      ['Infinite loop',         'model calls same failing tool 50×',    'retry cap + escalate + good error message'],
+      ['Tool hallucination',    'model calls a tool that doesn\'t exist','keep the tool list short; return clear "unknown tool" error'],
+      ['Missing required arg',  'model skips a required field',          'validate in harness, return error describing what\'s missing'],
+      ['Wrong tool for the job','uses fetch_url when it should use search','sharpen descriptions — add "when NOT to use" clauses']
+    ]
+  });
+});
+</script>
+
+<p>Every one of these happens. The fixes are small and concrete. The pattern is: <em>the harness is not just a runner, it's a coach</em>. Clear errors, clear validation, clear retry policy — the agent gets noticeably smarter.</p>
+
+<h2>The mental model that makes this click.</h2>
+<p>Think of tool definitions as microservices. The description is the API doc. The input schema is the OpenAPI contract. The error handling is the status code + body. Write them with the same care you'd write a service other engineers would consume, because the model is exactly that: another engineer reading your API and deciding whether it fits their needs.</p>
+
+<p>Spend the time on descriptions. Spend the time on error messages. Spend the time on schema clarity. It's not glamorous. It's the difference between an agent that works and an agent that kind of works.</p>
+
+<h2>Pair this with MCP.</h2>
+<p>Everything on this page applies equally when the tools come from an <a href="../mcp/index.html">MCP server</a> instead of being defined directly in your code. MCP is, mechanically, a standardized way to deliver tool definitions and run tool calls. The description-quality principle, the error-handling principle, the parallel-execution principle, they all apply verbatim.</p>
+
+<p>If you're designing an MCP server, this page doubles as your design guide. The same tools-as-microservices framing applies.</p>
 <div class="prev-next"><a href="extended-thinking.html" class="prev"><div class="label">← Previous</div><div class="title">Extended thinking</div></a><a href="../mcp/index.html" class="next"><div class="label">Next →</div><div class="title">MCP overview</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../framework/index.html">Framework</a></p>
 </div></footer><script>
