@@ -219,47 +219,150 @@
 <a href="../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../what-is-autonomous-ai.html">What is autonomous AI</a></li><li><a href="../the-autonomy-spectrum.html">The autonomy spectrum</a></li><li><a href="../glossary.html">Glossary</a></li></ul><h4>Claude</h4><ul><li><a href="../claude/overview.html">Overview</a></li><li><a href="../claude/prompting-for-agents.html">Prompting for agents</a></li><li><a href="../claude/extended-thinking.html" class="active">Extended thinking</a></li><li><a href="../claude/tool-use.html">Tool use</a></li></ul><h4>MCP</h4><ul><li><a href="../mcp/index.html">Overview</a></li><li><a href="../mcp/what-is-mcp.html">What is MCP</a></li><li><a href="../mcp/anatomy.html">Anatomy</a></li><li><a href="../mcp/transports.html">Transports</a></li><li><a href="../mcp/servers.html">Servers</a></li><li><a href="../mcp/clients.html">Clients</a></li><li><a href="../mcp/security.html">Security</a></li><li><a href="../mcp/directory.html">Directory</a></li></ul><h4>Plugins</h4><ul><li><a href="../plugins/index.html">Overview</a></li><li><a href="../plugins/vs-mcp.html">Plugins vs MCP</a></li><li><a href="../plugins/marketplace.html">Marketplace</a></li></ul><h4>Claude Code</h4><ul><li><a href="../claude-code/index.html">Overview</a></li><li><a href="../claude-code/settings.html">Settings</a></li><li><a href="../claude-code/permissions.html">Permissions</a></li><li><a href="../claude-code/hooks.html">Hooks</a></li><li><a href="../claude-code/skills.html">Skills</a></li><li><a href="../claude-code/memory.html">Memory</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/index.html">Overview</a></li><li><a href="../patterns/react-loop.html">ReAct loop</a></li><li><a href="../patterns/plan-execute.html">Plan-execute</a></li><li><a href="../patterns/multi-agent.html">Multi-agent</a></li><li><a href="../patterns/evaluation.html">Evaluation</a></li><li><a href="../patterns/prompt-caching.html">Prompt caching</a></li></ul><h4>Autonomous</h4><ul><li><a href="../autonomous/index.html">Overview</a></li><li><a href="../autonomous/headless.html">Headless</a></li><li><a href="../autonomous/scheduling.html">Scheduling</a></li><li><a href="../autonomous/self-monitoring.html">Self-monitoring</a></li><li><a href="../autonomous/safety.html">Safety</a></li></ul><h4>Build Guides</h4><ul><li><a href="../build/index.html">Overview</a></li><li><a href="../build/first-agent.html">First agent (60 min)</a></li><li><a href="../build/voice-agent.html">Voice agent</a></li><li><a href="../build/research-agent.html">Research agent</a></li></ul><h4>Tools</h4><ul><li><a href="../tools/browser-automation.html">Browser automation</a></li><li><a href="../tools/desktop-control.html">Desktop control</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Framework</a><span class="sep">›</span><span>Claude</span><span class="sep">›</span><span>Extended thinking</span></div><h1 class="title" style="font-size:clamp(32px,4.5vw,42px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">Extended thinking</h1><div class="article-meta"><span>📖 4 min read</span><span>Updated 2026-04-18</span></div>
-<p class="lede">Extended thinking lets Claude reason internally before answering. More reasoning often means better answers on hard tasks, but not always, and not cheaply.</p>
+<p class="lede">Extended thinking is a mode that lets Claude reason privately before it answers. Imagine asking someone a hard question and they say "hold on, let me think about that" and then actually do, working through the problem quietly before saying anything out loud. That's what extended thinking is. It costs more. It takes longer. For hard problems, it's often worth it. For easy problems, it's a waste. This page is about when it helps, when it doesn't, and how to tune the dial.</p>
 
-<h2>What it is</h2>
-<p>An API feature where the model spends a configurable number of tokens "thinking" (producing internal reasoning) before generating its final response. The reasoning isn't shown to the user by default but counts toward the cost.</p>
-<p>You set a budget, e.g. 2,000 thinking tokens, and the model uses up to that amount, depending on task complexity.</p>
+<h2>What it actually is, mechanically.</h2>
+<p>When you make an API call with extended thinking on, you give Claude a "thinking budget" in tokens. The model uses up to that many tokens producing internal reasoning before writing its final answer. By default, you don't see that reasoning — it's hidden from the final output, but it shaped what came after.</p>
 
-<h2>When it helps</h2>
-<ul>
-  <li><strong>Multi-step reasoning.</strong> Math, logic puzzles, planning problems with multiple constraints.</li>
-  <li><strong>Complex tool-use decisions.</strong> When the next action isn't obvious.</li>
-  <li><strong>Ambiguous requests.</strong> When the model has to pick between multiple valid interpretations.</li>
-  <li><strong>Long-horizon planning.</strong> Breaking a big task into a sequence of smaller ones.</li>
-</ul>
+<p>The reasoning isn't free. Those thinking tokens count toward your bill, at the output rate (the expensive rate). A 2,000-token thinking budget plus a 500-token answer = 2,500 billable output tokens. That's why "just turn on extended thinking" isn't always the right answer — you're literally paying for the privilege.</p>
 
-<h2>When it doesn't help</h2>
-<ul>
-  <li><strong>Simple questions.</strong> "What's the capital of France?" gains nothing from 2,000 thinking tokens.</li>
-  <li><strong>Stylistic tasks.</strong> Writing a poem, rewording an email, reasoning isn't the bottleneck.</li>
-  <li><strong>Retrieval tasks.</strong> If the answer is in the context, the model doesn't need to reason its way there.</li>
-  <li><strong>Fast agents.</strong> Extended thinking adds latency. For interactive agents (voice, chat), the user-perceived slowdown is painful.</li>
-</ul>
+<h2>When extended thinking helps vs. when it's wasted.</h2>
 
-<h2>Cost tradeoffs</h2>
-<p>Thinking tokens are typically priced at the output rate (the expensive one). A 2k-token reasoning budget + 500-token response = 2,500 output tokens billed. At Sonnet-class pricing, that's ~1¢ per request. Multiply by millions and it adds up fast.</p>
-
-<div class="callout insight">
-  <strong>Insight:</strong> Use extended thinking adaptively. Simple user requests → no thinking. Complex planning steps → 1k, 2k thinking. Super-hard puzzles → 4k+.
+<div class="sketch" data-viewbox="0 0 900 340" id="dg-thinking-table">
+  <svg></svg>
+  <div class="sketch-caption">~ when it helps, when it doesn't ~</div>
 </div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-thinking-table');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.compare(svg, rc, {
+    x: 30, y: 30, w: 840, h: 290,
+    left: {
+      title: 'Waste of budget',
+      items: [
+        'Simple lookup ("capital of France?")',
+        'Stylistic tasks (poems, rewording)',
+        'Retrieval (answer is already in context)',
+        'Interactive chat where latency hurts',
+        'Voice agents where TTS is waiting'
+      ]
+    },
+    right: {
+      title: 'Worth every token',
+      items: [
+        'Multi-step reasoning (math, logic, planning)',
+        'Complex tool-use decisions',
+        'Ambiguous requests with multiple valid readings',
+        'Long-horizon planning (break down big task)',
+        'Code generation for non-trivial algorithms'
+      ]
+    }
+  });
+});
+</script>
 
-<h2>Budgeting in practice</h2>
-<p>Start at 1,024 tokens. Measure accuracy with vs without. If the lift is &lt;5% on your eval, turn it off. If it's 20%+, try doubling.</p>
+<p>The rule of thumb: if a smart human would pause and think for 30 seconds before answering, extended thinking probably helps. If they'd answer immediately, it probably doesn't.</p>
 
-<h2>Observable patterns</h2>
+<h2>The cost shape.</h2>
+<p>Thinking tokens are priced as output tokens, and output is roughly 5× the cost of input. A quick sanity-check on what a typical request looks like financially:</p>
+
+<div class="sketch" data-viewbox="0 0 900 240" id="dg-thinking-cost">
+  <svg></svg>
+  <div class="sketch-caption">~ token budget vs response quality ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-thinking-cost');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.bars(svg, rc, {
+    x: 30, y: 20, w: 840, barH: 30, gap: 14, labelW: 170,
+    items: [
+      { label: 'No thinking',          value: 50, note: 'baseline' },
+      { label: '1,024 tokens',         value: 85, note: 'biggest lift; best bang/buck' },
+      { label: '2,048 tokens',         value: 93, note: 'polish for hard tasks' },
+      { label: '4,096 tokens',         value: 97, note: 'diminishing returns' },
+      { label: '8,000+ tokens',        value: 98, note: 'rarely worth it' }
+    ]
+  });
+});
+</script>
+
+<p>Two things matter more than the raw number:</p>
+
 <ul>
-  <li><strong>Diminishing returns past ~4k tokens.</strong> Going from 0 → 1k gives the biggest lift. 1k → 4k adds polish. 4k+ rarely moves the needle.</li>
-  <li><strong>Task-dependent.</strong> Some tasks (math, coding) benefit more. Some (summarization) barely budge.</li>
-  <li><strong>Doesn't fix bad prompts.</strong> Extended thinking amplifies prompt quality, it doesn't replace it.</li>
+  <li><strong>The jump from 0 → 1,024 tokens is the biggest.</strong> That's where you go from "model guesses" to "model reasons." After that, more budget adds polish, not paradigm shifts.</li>
+  <li><strong>The curve flattens fast past 4,000 tokens.</strong> At 8k+ you're paying a lot for marginal gain. Only super-hard tasks (novel math, dense planning) benefit past 4k.</li>
 </ul>
 
-<h2>Combining with tool use</h2>
-<p>Extended thinking pairs well with tool-use: model reasons about what to call, calls it, then reasons about the result. On complex tool-use flows (agent picking between 5 tools), enabling thinking noticeably improves tool-selection accuracy.</p>
+<h2>How to tune the budget.</h2>
+<p>The right budget is discovered, not guessed. Here's the workflow:</p>
+
+<ol>
+  <li><strong>Start at 1,024 tokens.</strong> This is the "probably useful, probably not wasteful" default.</li>
+  <li><strong>Build a small eval set.</strong> 10–20 representative inputs with known good outputs. Measure accuracy both with and without thinking.</li>
+  <li><strong>Measure the lift.</strong> If thinking adds &lt;5%, turn it OFF. You're paying for nothing.</li>
+  <li><strong>If the lift is &gt;20%, try doubling.</strong> 1,024 → 2,048. Measure again. If it keeps lifting meaningfully, double again.</li>
+  <li><strong>Stop at the knee.</strong> When another doubling doesn't move the needle, you've found the budget. Stop there.</li>
+</ol>
+
+<p>This saves you from both overpaying (the "turn it up to 8k" default some people run) and underpaying (leaving a 20% accuracy lift on the table).</p>
+
+<h2>Use it adaptively, not globally.</h2>
+<p>The best production pattern isn't "thinking on for everything" or "thinking off for everything." It's <em>route-based</em>: different requests get different budgets.</p>
+
+<ul>
+  <li>User asks a simple question → no thinking</li>
+  <li>User asks for a plan → 2,000 thinking tokens</li>
+  <li>User asks a super-hard reasoning question → 4,000+ thinking tokens</li>
+  <li>Agent needs to pick between 10 tools → 1,500 thinking tokens on the selection step</li>
+</ul>
+
+<p>Classify the incoming request (you can even do this with a cheap model), then set the budget accordingly. Your average cost stays low, and the hard requests still get the reasoning budget they need.</p>
+
+<h2>Important truths about extended thinking.</h2>
+
+<div class="sketch" data-viewbox="0 0 900 240" id="dg-thinking-truths">
+  <svg></svg>
+  <div class="sketch-caption">~ three things that are always true ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-thinking-truths');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.table(svg, rc, {
+    x: 20, y: 30,
+    cols: [
+      { title: 'Truth',                   w: 260 },
+      { title: 'Why it matters',          w: 620 }
+    ],
+    rows: [
+      ['Diminishing returns past 4k',    'The 1k → 4k range is the sweet spot for 95% of tasks'],
+      ['Task-type dependent',            'Math/coding benefit a lot; summarization barely budges'],
+      ['Amplifies the prompt, not fixes', 'A bad prompt + thinking = a more elaborate bad answer']
+    ]
+  });
+});
+</script>
+
+<p>That last one is the one people miss. Extended thinking makes good prompts better and bad prompts more verbose. If your agent is failing with thinking OFF, thinking ON will not save you. Fix the prompt first.</p>
+
+<h2>Pairing extended thinking with tool use.</h2>
+<p>This is where extended thinking earns its keep in agentic work. The model reasons about which tool to call, calls it, then reasons about the result before the next call. For agents with more than a handful of tools, this measurably improves tool-selection accuracy. The model picks fewer wrong tools, fills in better arguments, and recovers from errors more gracefully.</p>
+
+<p>If you have a complex multi-tool agent and its tool selection is flaky, enabling thinking on the tool-selection step is one of the cheapest wins available. Try 1,500 tokens first. Measure.</p>
+
+<h2>The bottom line.</h2>
+<p>Extended thinking is a dial, not a switch. Start at 1,024. Measure. Adjust. Use adaptively per request. It's not free, but for the tasks where it helps, it's one of the highest-leverage knobs you can turn on an agent without changing your prompt or your model.</p>
 <div class="prev-next"><a href="prompting-for-agents.html" class="prev"><div class="label">← Previous</div><div class="title">Prompting for agents</div></a><a href="tool-use.html" class="next"><div class="label">Next →</div><div class="title">Tool use</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../framework/index.html">Framework</a></p>
 </div></footer><script>
