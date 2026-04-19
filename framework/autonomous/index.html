@@ -219,42 +219,118 @@
 <a href="../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../what-is-autonomous-ai.html">What is autonomous AI</a></li><li><a href="../the-autonomy-spectrum.html">The autonomy spectrum</a></li><li><a href="../glossary.html">Glossary</a></li></ul><h4>Claude</h4><ul><li><a href="../claude/overview.html">Overview</a></li><li><a href="../claude/prompting-for-agents.html">Prompting for agents</a></li><li><a href="../claude/extended-thinking.html">Extended thinking</a></li><li><a href="../claude/tool-use.html">Tool use</a></li></ul><h4>MCP</h4><ul><li><a href="../mcp/index.html">Overview</a></li><li><a href="../mcp/what-is-mcp.html">What is MCP</a></li><li><a href="../mcp/anatomy.html">Anatomy</a></li><li><a href="../mcp/transports.html">Transports</a></li><li><a href="../mcp/servers.html">Servers</a></li><li><a href="../mcp/clients.html">Clients</a></li><li><a href="../mcp/security.html">Security</a></li><li><a href="../mcp/directory.html">Directory</a></li></ul><h4>Plugins</h4><ul><li><a href="../plugins/index.html">Overview</a></li><li><a href="../plugins/vs-mcp.html">Plugins vs MCP</a></li><li><a href="../plugins/marketplace.html">Marketplace</a></li></ul><h4>Claude Code</h4><ul><li><a href="../claude-code/index.html">Overview</a></li><li><a href="../claude-code/settings.html">Settings</a></li><li><a href="../claude-code/permissions.html">Permissions</a></li><li><a href="../claude-code/hooks.html">Hooks</a></li><li><a href="../claude-code/skills.html">Skills</a></li><li><a href="../claude-code/memory.html">Memory</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/index.html">Overview</a></li><li><a href="../patterns/react-loop.html">ReAct loop</a></li><li><a href="../patterns/plan-execute.html">Plan-execute</a></li><li><a href="../patterns/multi-agent.html">Multi-agent</a></li><li><a href="../patterns/evaluation.html">Evaluation</a></li><li><a href="../patterns/prompt-caching.html">Prompt caching</a></li></ul><h4>Autonomous</h4><ul><li><a href="../autonomous/index.html" class="active">Overview</a></li><li><a href="../autonomous/headless.html">Headless</a></li><li><a href="../autonomous/scheduling.html">Scheduling</a></li><li><a href="../autonomous/self-monitoring.html">Self-monitoring</a></li><li><a href="../autonomous/safety.html">Safety</a></li></ul><h4>Build Guides</h4><ul><li><a href="../build/index.html">Overview</a></li><li><a href="../build/first-agent.html">First agent (60 min)</a></li><li><a href="../build/voice-agent.html">Voice agent</a></li><li><a href="../build/research-agent.html">Research agent</a></li></ul><h4>Tools</h4><ul><li><a href="../tools/browser-automation.html">Browser automation</a></li><li><a href="../tools/desktop-control.html">Desktop control</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Framework</a><span class="sep">›</span><a href="../autonomous/index.html">Autonomous</a><span class="sep">›</span><span>Going autonomous</span></div><h1 class="title" style="font-size:clamp(32px,4.5vw,42px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">Going autonomous</h1><div class="article-meta"><span>📖 3 min read</span><span>Updated 2026-04-18</span></div>
-<p class="lede">Fully autonomous means the agent runs without you. Not just "auto mode", actually unattended: on a schedule, in the background, handling its own errors, escalating only when it genuinely can't continue.</p>
+<p class="lede">"Going autonomous" means the agent doesn't need you in the room anymore. It starts itself on a schedule or an event. It does its work. It recovers from the ordinary errors on its own. It only bothers you when something genuinely requires human judgment. This section is about the ladder from "works when I run it" to "runs while I'm asleep", and the specific things you need in place at each rung.</p>
 
-<h2>The autonomy stack</h2>
-<p>To reach full autonomy, you need five layers working together:</p>
-<ol>
-  <li><strong>Model</strong>. Claude or equivalent, good enough to complete the task reliably</li>
-  <li><strong>Tools + MCPs</strong>, everything the agent needs to reach to do the work</li>
-  <li><strong>Harness</strong>. Claude Code or equivalent, running the loop</li>
-  <li><strong>Permissions</strong>, a carefully designed allow/deny list</li>
-  <li><strong>Scheduler / trigger</strong>, what starts the agent when a human isn't there</li>
-  <li><strong>Self-monitoring + safety</strong>, how the agent knows when to stop or escalate</li>
-</ol>
+<h2>Before you read this section.</h2>
+<p>You should already have a working Level 3 agent (see <a href="../the-autonomy-spectrum.html">the autonomy spectrum</a>). Meaning: an agent that does real work when a human runs it, with human-in-the-loop approvals for risky steps. If you haven't got that yet, the rest of this section is premature. Get Level 3 working on a task you care about, then come back.</p>
 
-<h2>The section</h2>
+<h2>What you actually need to go autonomous.</h2>
+<p>Going autonomous isn't one change. It's a stack of six layers working together. Missing any one of them and the whole thing falls over at 3am.</p>
+
+<div class="sketch" data-viewbox="0 0 900 420" id="dg-auto-stack">
+  <svg></svg>
+  <div class="sketch-caption">~ the six layers of a truly autonomous agent ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-auto-stack');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.stack(svg, rc, {
+    x: 110, y: 25, w: 680, layerH: 60,
+    layers: [
+      { label: '6. Safety net',        sub: 'kill switch, human escalation, budget caps',        color: '#fef3c7' },
+      { label: '5. Self-monitoring',   sub: 'the agent knows when to stop or ask for help',       color: '#fce7f3' },
+      { label: '4. Scheduler / trigger', sub: 'cron, event, webhook; what starts it with no human',  color: '#dbeafe' },
+      { label: '3. Permissions',       sub: 'tight allow list + deny list for destructive acts',  color: '#e9d5ff' },
+      { label: '2. Harness + tools',   sub: 'Claude Code, MCPs, hooks; the runtime',              color: '#ede9fe' },
+      { label: '1. Model',             sub: 'Claude, reliable enough for the task',               color: '#d1fae5' }
+    ]
+  });
+});
+</script>
+
+<p>Each layer assumes the one below it works. If the model is unreliable, nothing above matters. If the harness is flaky, scheduling it won't help. Build bottom-up; skip nothing.</p>
+
+<h2>What to read in this section.</h2>
+<p>These four pages each cover one layer (or one cluster). Read in order, they build on each other.</p>
+
 <ul class="hub-list">
-  <li><a href="headless.html"><span><span class="hub-title">Headless mode</span><span class="hub-desc">Running Claude Code without a terminal</span></span><span class="hub-arrow">→</span></a></li>
-  <li><a href="scheduling.html"><span><span class="hub-title">Scheduling</span><span class="hub-desc">Crons, triggers, event-driven agents</span></span><span class="hub-arrow">→</span></a></li>
-  <li><a href="self-monitoring.html"><span><span class="hub-title">Self-monitoring</span><span class="hub-desc">Agents watching themselves</span></span><span class="hub-arrow">→</span></a></li>
-  <li><a href="safety.html"><span><span class="hub-title">Safety boundaries</span><span class="hub-desc">Guardrails, kill switches, approvals</span></span><span class="hub-arrow">→</span></a></li>
+  <li><a href="headless.html"><span><span class="hub-title">Headless mode</span><span class="hub-desc">Running Claude Code without a terminal, the prerequisite for scheduling</span></span><span class="hub-arrow">→</span></a></li>
+  <li><a href="scheduling.html"><span><span class="hub-title">Scheduling &amp; triggers</span><span class="hub-desc">Crons, webhooks, event-driven. What starts the agent when you're not there.</span></span><span class="hub-arrow">→</span></a></li>
+  <li><a href="self-monitoring.html"><span><span class="hub-title">Self-monitoring</span><span class="hub-desc">How the agent knows it's going off the rails, and what to do about it</span></span><span class="hub-arrow">→</span></a></li>
+  <li><a href="safety.html"><span><span class="hub-title">Safety boundaries</span><span class="hub-desc">Kill switches, human escalation, budget caps, hard limits</span></span><span class="hub-arrow">→</span></a></li>
 </ul>
 
-<h2>Is autonomy worth it?</h2>
-<p>Not always. Autonomy is worth it when:</p>
-<ul>
-  <li>The task recurs frequently (daily/hourly), the cost of each human start-up adds up</li>
-  <li>The task happens outside business hours (after-hours monitoring, timezone coverage)</li>
-  <li>The task is well-defined and the failure modes are bounded</li>
-  <li>You trust the output enough that a post-hoc review is acceptable</li>
-</ul>
-<p>Autonomy is not worth it when:</p>
-<ul>
-  <li>The task runs once a quarter, just do it manually with a Level 3 agent</li>
-  <li>The failure modes include "sent the wrong thing to all customers"</li>
-  <li>Every output needs human judgment to be useful</li>
-  <li>You haven't yet run the task reliably in Level 3 (human-in-the-loop) mode. Get Level 3 right before graduating.</li>
-</ul>
+<h2>Is autonomy even worth it for your task?</h2>
+<p>Most tasks shouldn't be autonomous. Autonomy has real costs, infrastructure, monitoring, risk, and for many workflows a Level 3 agent with a human in the loop is a better solution. Here's the test.</p>
+
+<div class="sketch" data-viewbox="0 0 900 280" id="dg-worth-it">
+  <svg></svg>
+  <div class="sketch-caption">~ autonomy: worth it vs not ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-worth-it');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.compare(svg, rc, {
+    x: 30, y: 30, w: 840, h: 220,
+    left: {
+      title: 'Skip autonomy',
+      items: [
+        'Runs once a quarter',
+        '"Sent wrong thing to all customers" is a failure mode',
+        'Every output needs human judgment',
+        'You haven\'t run it reliably at Level 3 yet'
+      ]
+    },
+    right: {
+      title: 'Worth it',
+      items: [
+        'Runs daily or hourly',
+        'Happens after hours / across timezones',
+        'Well-defined, bounded failure modes',
+        'Post-hoc review is acceptable',
+        'You\'ve proved it at Level 3 for weeks'
+      ]
+    }
+  });
+});
+</script>
+
+<h2>The progression, in one picture.</h2>
+<p>Zoomed out, the journey from "first session" to "fully autonomous" looks like this:</p>
+
+<div class="sketch" data-viewbox="0 0 900 220" id="dg-progression">
+  <svg></svg>
+  <div class="sketch-caption">~ the progression that actually works ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-progression');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.numberedSteps(svg, rc, {
+    direction: 'h', x: 30, y: 80, w: 860,
+    items: [
+      { title: 'Manual',       sub: 'Level 3, human approves each step' },
+      { title: 'Auto mode',    sub: 'Level 4, within scope' },
+      { title: 'Headless run', sub: 'no terminal, scripted' },
+      { title: 'Scheduled',    sub: 'cron or event trigger' },
+      { title: 'Self-healing', sub: 'monitors, escalates, recovers' }
+    ]
+  });
+});
+</script>
+
+<p>Skip any step and you end up with the classic autonomy failure: the agent runs confidently for a day, then does something unexpected, and nobody was watching. The steps aren't optional. They're how you earn trust with an agent, the same way you earn trust with a new employee.</p>
 <div class="prev-next"><a href="../patterns/prompt-caching.html" class="prev"><div class="label">← Previous</div><div class="title">Prompt caching</div></a><a href="headless.html" class="next"><div class="label">Next →</div><div class="title">Headless mode</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../framework/index.html">Framework</a></p>
 </div></footer><script>
