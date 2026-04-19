@@ -228,6 +228,24 @@
   <li><strong>Generate.</strong> Concatenate the retrieved chunks with the user's question and send the combined prompt to an LLM.</li>
 </ol>
 
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Vanilla RAG in one picture');
+  sketch.box(svg, rc, {x: 40, y: 90, w: 180, h: 80, title: 'Your docs', sub: 'chunked + embedded'});
+  sketch.box(svg, rc, {x: 260, y: 90, w: 180, h: 80, title: 'Vector index', sub: 'searchable'});
+  sketch.box(svg, rc, {x: 480, y: 90, w: 180, h: 80, title: 'Retrieve', sub: 'top-k for query'});
+  sketch.box(svg, rc, {x: 700, y: 90, w: 180, h: 80, title: 'LLM', sub: 'answer with context'});
+  sketch.arrow(svg, rc, {x1: 220, x2: 260, y: 130, bidirectional: false, label: 'embed'});
+  sketch.arrow(svg, rc, {x1: 440, x2: 480, y: 130, bidirectional: false, label: 'search'});
+  sketch.arrow(svg, rc, {x1: 660, x2: 700, y: 130, bidirectional: false, label: 'paste'});
+  sketch.note(svg, 460, 210, 'offline: steps 1-2 | online: steps 3-4', {size: 13});
+});
+</script>
+
 <p>That's vanilla RAG. Everything in this section is what you do once you realize vanilla RAG produces a good demo and a mediocre product.</p>
 
 <h2>What RAG gives you</h2>

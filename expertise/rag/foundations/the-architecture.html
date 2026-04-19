@@ -222,6 +222,27 @@
 <p class="lede">A RAG system isn't one thing. It's a pipeline with 8-10 distinct stages, each of which has its own design space. Understanding the full map is how you move from "we're using RAG" to "we're making specific defensible choices at each layer." Here's the map I use.</p>
 
 <h2>The ten stages</h2>
+<div class="sketch" data-viewbox="0 0 900 420"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 420);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'The RAG stack, top to bottom');
+  sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 34, layers: [
+    {label: '1. Source integration', sub: 'connectors + auth'},
+    {label: '2. Parsing + extraction', sub: 'PDF, HTML, Word...'},
+    {label: '3. Cleaning + normalization', sub: 'boilerplate, dedup, encoding'},
+    {label: '4. Chunking', sub: 'split into retrievable units'},
+    {label: '5. Metadata enrichment', sub: 'source, tags, permissions'},
+    {label: '6. Embedding', sub: 'chunk → vector'},
+    {label: '7. Index storage', sub: 'vector DB'},
+    {label: '8. Retrieval', sub: 'dense + sparse + rerank'},
+    {label: '9. Generation', sub: 'LLM with context'},
+    {label: '10. Observability', sub: 'traces + feedback'}
+  ]});
+});
+</script>
 
 <h3>1. Source integration</h3>
 <p>Where documents come from. Confluence, Google Drive, Notion, S3, SharePoint, databases, APIs, websites, Slack. Every source has its own auth model, rate limits, and permission system. Ingestion connectors are often the biggest single engineering cost.</p>
