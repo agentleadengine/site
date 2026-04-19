@@ -181,22 +181,24 @@ What's left:
 
 ## 🎉 RAG EXPERTISE SECTION COMPLETE: 52 / 52 ✅
 
-RAG articles were already written at teaching depth. This pass added
-hand-drawn Blueprint × Purple Marker diagrams to every deep article:
+## 🎉 DIRECT-RESPONSE EXPERTISE SECTION COMPLETE: 44 / 44 ✅
 
-- `expertise/rag/foundations/` — 4/4 ✅
-- `expertise/rag/docs/` — 6/6 ✅
-- `expertise/rag/chunking/` — 6/6 ✅
-- `expertise/rag/embeddings/` — 5/5 ✅
-- `expertise/rag/vectors/` — 6/6 ✅
-- `expertise/rag/retrieval/` — 7/7 ✅
-- `expertise/rag/eval/` — 5/5 ✅
-- `expertise/rag/prod/` — 5/5 ✅
-- `expertise/rag/advanced/` — 6/6 ✅
-- `expertise/rag/cases/` — 5/5 ✅ (minus index.html + one article)
+DR articles were already at teaching depth. This pass added
+hand-drawn diagrams to every article:
 
-Running total: 196 / ~486 expertise deep articles.
-Next expertise section: `expertise/direct-response/` or other.
+- `expertise/direct-response/foundations/` — 4/4 ✅
+- `expertise/direct-response/market/` — 5/5 ✅
+- `expertise/direct-response/offer/` — 6/6 ✅
+- `expertise/direct-response/copy/` — 7/7 ✅
+- `expertise/direct-response/letters/` — 5/5 ✅
+- `expertise/direct-response/leads/` — 5/5 ✅
+- `expertise/direct-response/followup/` — 4/4 ✅
+- `expertise/direct-response/testing/` — 4/4 ✅
+- `expertise/direct-response/scaling/` — 4/4 ✅
+
+Running total: 240 / ~486 expertise deep articles.
+Next: paid-ads, cold-email, growth-marketing, email-marketing,
+cro, or business-management.
 
 ## Site status: 100% of everything above the article layer is done.
 
