@@ -219,32 +219,81 @@
 <a href="../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../what-is-autonomous-ai.html">What is autonomous AI</a></li><li><a href="../the-autonomy-spectrum.html">The autonomy spectrum</a></li><li><a href="../glossary.html">Glossary</a></li></ul><h4>Claude</h4><ul><li><a href="../claude/overview.html">Overview</a></li><li><a href="../claude/prompting-for-agents.html">Prompting for agents</a></li><li><a href="../claude/extended-thinking.html">Extended thinking</a></li><li><a href="../claude/tool-use.html">Tool use</a></li></ul><h4>MCP</h4><ul><li><a href="../mcp/index.html">Overview</a></li><li><a href="../mcp/what-is-mcp.html">What is MCP</a></li><li><a href="../mcp/anatomy.html">Anatomy</a></li><li><a href="../mcp/transports.html">Transports</a></li><li><a href="../mcp/servers.html">Servers</a></li><li><a href="../mcp/clients.html">Clients</a></li><li><a href="../mcp/security.html">Security</a></li><li><a href="../mcp/directory.html">Directory</a></li></ul><h4>Plugins</h4><ul><li><a href="../plugins/index.html">Overview</a></li><li><a href="../plugins/vs-mcp.html">Plugins vs MCP</a></li><li><a href="../plugins/marketplace.html">Marketplace</a></li></ul><h4>Claude Code</h4><ul><li><a href="../claude-code/index.html">Overview</a></li><li><a href="../claude-code/settings.html">Settings</a></li><li><a href="../claude-code/permissions.html">Permissions</a></li><li><a href="../claude-code/hooks.html">Hooks</a></li><li><a href="../claude-code/skills.html">Skills</a></li><li><a href="../claude-code/memory.html">Memory</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/index.html">Overview</a></li><li><a href="../patterns/react-loop.html">ReAct loop</a></li><li><a href="../patterns/plan-execute.html">Plan-execute</a></li><li><a href="../patterns/multi-agent.html">Multi-agent</a></li><li><a href="../patterns/evaluation.html">Evaluation</a></li><li><a href="../patterns/prompt-caching.html">Prompt caching</a></li></ul><h4>Autonomous</h4><ul><li><a href="../autonomous/index.html">Overview</a></li><li><a href="../autonomous/headless.html">Headless</a></li><li><a href="../autonomous/scheduling.html">Scheduling</a></li><li><a href="../autonomous/self-monitoring.html">Self-monitoring</a></li><li><a href="../autonomous/safety.html">Safety</a></li></ul><h4>Build Guides</h4><ul><li><a href="../build/index.html" class="active">Overview</a></li><li><a href="../build/first-agent.html">First agent (60 min)</a></li><li><a href="../build/voice-agent.html">Voice agent</a></li><li><a href="../build/research-agent.html">Research agent</a></li></ul><h4>Tools</h4><ul><li><a href="../tools/browser-automation.html">Browser automation</a></li><li><a href="../tools/desktop-control.html">Desktop control</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Framework</a><span class="sep">›</span><a href="../build/index.html">Build</a><span class="sep">›</span><span>Build guides</span></div><h1 class="title" style="font-size:clamp(32px,4.5vw,42px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">Build guides</h1><div class="article-meta"><span>📖 2 min read</span><span>Updated 2026-04-18</span></div>
-<p class="lede">Everything in the rest of the framework is theory. This section is practice. Pick a build guide, open a terminal, ship something.</p>
+<p class="lede">The rest of the framework is theory — what MCP is, how the agent loop works, how permissions should be designed. This section is theory's opposite. It's practice. Pick a build guide, open a terminal, and by the end you'll have a real working agent running on your machine. Three guides, three distinct agent shapes, each one teaching different parts of the stack.</p>
 
-<h2>Guides</h2>
+<h2>The three guides, and what each one teaches.</h2>
+
+<div class="sketch" data-viewbox="0 0 900 300" id="dg-build-guides">
+  <svg></svg>
+  <div class="sketch-caption">~ three guides, three agent shapes ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-build-guides');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.table(svg, rc, {
+    x: 20, y: 30,
+    cols: [
+      { title: 'Guide',                   w: 230 },
+      { title: 'What you build',          w: 340 },
+      { title: 'What you learn',          w: 310 }
+    ],
+    rows: [
+      ['First agent (60 min)', 'basic task-running agent from scratch',   'full stack: install, config, tools, skills, headless'],
+      ['Voice agent',          'agent that answers a phone call',         'STT → LLM → TTS pipelines; real-time loops'],
+      ['Research agent',       'multi-step web researcher',               'search + extract + synthesize; long-horizon ReAct']
+    ]
+  });
+});
+</script>
+
+<p>Start with <strong>First agent</strong> if you've never built one. The other two assume you've been through that one.</p>
+
+<h2>The three guides.</h2>
 <ul class="hub-list">
-  <li><a href="first-agent.html"><span><span class="hub-title">Your first autonomous agent in 60 minutes</span><span class="hub-desc">Install Claude Code, wire one MCP, write a skill, run it headless. Complete beginner path.</span></span><span class="hub-arrow">→</span></a></li>
-  <li><a href="voice-agent.html"><span><span class="hub-title">Voice agent</span><span class="hub-desc">STT → LLM → TTS. Build an agent that answers phone calls.</span></span><span class="hub-arrow">→</span></a></li>
-  <li><a href="research-agent.html"><span><span class="hub-title">Research agent</span><span class="hub-desc">Search, extract, synthesize, report. Multi-step reasoning over the web.</span></span><span class="hub-arrow">→</span></a></li>
+  <li><a href="first-agent.html"><span><span class="hub-title">Your first autonomous agent in 60 minutes</span><span class="hub-desc">Install Claude Code, wire one MCP, write a skill, run it headless. Complete beginner path, every step explained.</span></span><span class="hub-arrow">→</span></a></li>
+  <li><a href="voice-agent.html"><span><span class="hub-title">Voice agent</span><span class="hub-desc">Build an agent that answers phone calls. Speech-to-text in, Claude thinks, text-to-speech out. Surprisingly close to production-ready.</span></span><span class="hub-arrow">→</span></a></li>
+  <li><a href="research-agent.html"><span><span class="hub-title">Research agent</span><span class="hub-desc">Search, extract, synthesize, report. Multi-step reasoning over the live web. This is the classic ReAct agent, done right.</span></span><span class="hub-arrow">→</span></a></li>
 </ul>
 
-<h2>Prerequisites for every guide</h2>
+<h2>Prerequisites, the same for every guide.</h2>
 <ul>
-  <li>A Mac or Linux machine (Windows via WSL works)</li>
+  <li>A Mac or Linux machine (Windows via WSL works fine too)</li>
   <li>Node.js 18+ or Bun installed</li>
-  <li>An Anthropic API key</li>
-  <li>A text editor you're comfortable with</li>
+  <li>An <a href="https://console.anthropic.com" target="_blank" rel="noopener">Anthropic API key</a> (you'll get one by signing up; free trial credits are enough for all three guides)</li>
+  <li>A text editor you like (VS Code, Zed, vim, whatever)</li>
 </ul>
 
-<h2>Approach</h2>
-<p>Each guide follows the same shape:</p>
-<ol>
-  <li><strong>Goal</strong>, what you'll have at the end</li>
-  <li><strong>Architecture</strong>, the pieces and how they connect</li>
-  <li><strong>Step-by-step build</strong>, commands to run, files to create</li>
-  <li><strong>Testing</strong>, how to verify it works</li>
-  <li><strong>Next steps</strong>, what to add if you want to keep going</li>
-</ol>
+<h2>The shape every guide follows.</h2>
+
+<div class="sketch" data-viewbox="0 0 900 230" id="dg-build-shape">
+  <svg></svg>
+  <div class="sketch-caption">~ the five steps every guide walks through ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-build-shape');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.numberedSteps(svg, rc, {
+    direction: 'h', x: 30, y: 80, w: 860,
+    items: [
+      { title: 'Goal',          sub: 'what you\'ll have at the end' },
+      { title: 'Architecture',  sub: 'the pieces, connected' },
+      { title: 'Build',         sub: 'commands, files, explanations' },
+      { title: 'Test',          sub: 'verify it actually works' },
+      { title: 'Next',          sub: 'extensions if you want more' }
+    ]
+  });
+});
+</script>
+
+<p>Open a guide, follow the steps, run the commands. By the end you'll have a real agent doing real work. Not a demo. The code you write in these guides is the same code you'd ship.</p>
 <div class="prev-next"><a href="../autonomous/safety.html" class="prev"><div class="label">← Previous</div><div class="title">Safety boundaries</div></a><a href="first-agent.html" class="next"><div class="label">Next →</div><div class="title">First agent in 60 minutes</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../framework/index.html">Framework</a></p>
 </div></footer><script>
