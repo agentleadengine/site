@@ -219,59 +219,120 @@
 <a href="../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../what-is-autonomous-ai.html">What is autonomous AI</a></li><li><a href="../the-autonomy-spectrum.html">The autonomy spectrum</a></li><li><a href="../glossary.html">Glossary</a></li></ul><h4>Claude</h4><ul><li><a href="../claude/overview.html">Overview</a></li><li><a href="../claude/prompting-for-agents.html">Prompting for agents</a></li><li><a href="../claude/extended-thinking.html">Extended thinking</a></li><li><a href="../claude/tool-use.html">Tool use</a></li></ul><h4>MCP</h4><ul><li><a href="../mcp/index.html">Overview</a></li><li><a href="../mcp/what-is-mcp.html">What is MCP</a></li><li><a href="../mcp/anatomy.html">Anatomy</a></li><li><a href="../mcp/transports.html">Transports</a></li><li><a href="../mcp/servers.html">Servers</a></li><li><a href="../mcp/clients.html">Clients</a></li><li><a href="../mcp/security.html">Security</a></li><li><a href="../mcp/directory.html">Directory</a></li></ul><h4>Plugins</h4><ul><li><a href="../plugins/index.html">Overview</a></li><li><a href="../plugins/vs-mcp.html">Plugins vs MCP</a></li><li><a href="../plugins/marketplace.html" class="active">Marketplace</a></li></ul><h4>Claude Code</h4><ul><li><a href="../claude-code/index.html">Overview</a></li><li><a href="../claude-code/settings.html">Settings</a></li><li><a href="../claude-code/permissions.html">Permissions</a></li><li><a href="../claude-code/hooks.html">Hooks</a></li><li><a href="../claude-code/skills.html">Skills</a></li><li><a href="../claude-code/memory.html">Memory</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/index.html">Overview</a></li><li><a href="../patterns/react-loop.html">ReAct loop</a></li><li><a href="../patterns/plan-execute.html">Plan-execute</a></li><li><a href="../patterns/multi-agent.html">Multi-agent</a></li><li><a href="../patterns/evaluation.html">Evaluation</a></li><li><a href="../patterns/prompt-caching.html">Prompt caching</a></li></ul><h4>Autonomous</h4><ul><li><a href="../autonomous/index.html">Overview</a></li><li><a href="../autonomous/headless.html">Headless</a></li><li><a href="../autonomous/scheduling.html">Scheduling</a></li><li><a href="../autonomous/self-monitoring.html">Self-monitoring</a></li><li><a href="../autonomous/safety.html">Safety</a></li></ul><h4>Build Guides</h4><ul><li><a href="../build/index.html">Overview</a></li><li><a href="../build/first-agent.html">First agent (60 min)</a></li><li><a href="../build/voice-agent.html">Voice agent</a></li><li><a href="../build/research-agent.html">Research agent</a></li></ul><h4>Tools</h4><ul><li><a href="../tools/browser-automation.html">Browser automation</a></li><li><a href="../tools/desktop-control.html">Desktop control</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Framework</a><span class="sep">›</span><a href="../plugins/index.html">Plugins</a><span class="sep">›</span><span>Plugin marketplaces</span></div><h1 class="title" style="font-size:clamp(32px,4.5vw,42px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">Plugin marketplaces</h1><div class="article-meta"><span>📖 3 min read</span><span>Updated 2026-04-18</span></div>
-<p class="lede">Plugins live in marketplaces. As of 2026, the ecosystem is young but growing fast.</p>
+<p class="lede">Plugins live in marketplaces — curated places where you can find, install, and update them. As of 2026, the ecosystem is young, but there are already real options for finding quality plugins. This page is how to find them, how to vet them before you trust them with your data, and how to publish your own when you've built one worth sharing.</p>
 
-<h2>Official marketplaces</h2>
-<ul>
-  <li><strong>claude-plugins-official</strong>. Anthropic's curated set. High-quality, maintained. Start here.</li>
-  <li><strong>claude.ai directory</strong>, remote connectors (MCP servers hosted by service providers). Different surface but similar intent.</li>
-</ul>
+<h2>Where plugins live today.</h2>
 
-<h2>Community marketplaces</h2>
-<ul>
-  <li><strong>GitHub (topic: "claude-plugin")</strong>, browse and install directly from repositories.</li>
-  <li><strong>awesome-claude-code</strong>-style lists, community-curated on GitHub.</li>
-  <li><strong>mcp.so</strong>, primarily MCPs, some plugins too.</li>
-</ul>
+<div class="sketch" data-viewbox="0 0 900 290" id="dg-mkt-sources">
+  <svg></svg>
+  <div class="sketch-caption">~ where to find plugins ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-mkt-sources');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.table(svg, rc, {
+    x: 20, y: 30,
+    cols: [
+      { title: 'Source',                w: 260 },
+      { title: 'What\'s there',         w: 320 },
+      { title: 'Trust level',           w: 300 }
+    ],
+    rows: [
+      ['claude-plugins-official',  'Anthropic-curated first-party plugins',    'highest, start here'],
+      ['claude.ai directory',      'hosted connectors (remote MCPs)',          'high, service-provider signed'],
+      ['GitHub: "claude-plugin" topic', 'community plugins',                   'varies, must vet individually'],
+      ['awesome-claude-code lists','curated community collections',            'good for discovery'],
+      ['mcp.so',                   'primarily MCPs + some plugins',            'broad; vet as you go']
+    ]
+  });
+});
+</script>
 
-<h2>How to vet a plugin before installing</h2>
-<ol>
-  <li><strong>Check the source.</strong> Is the repo active? Multiple contributors? Real issues and PRs?</li>
-  <li><strong>Read the code.</strong> Especially the MCP servers and hooks. They run with your permissions.</li>
-  <li><strong>Review declared permissions.</strong> A plugin that claims to do X but requests shell access is suspicious.</li>
-  <li><strong>Look at the install count + issues.</strong> 0 installs = fresh. High install + open unresolved issues = bad sign.</li>
-  <li><strong>Check the license.</strong> MIT/Apache are fine; no-license = legally unclear.</li>
-</ol>
+<p>Start with the official marketplace. It's curated; quality is high; nothing there is going to wreck your setup. Once you have a feel for what a good plugin looks like, branch out to the community ecosystem.</p>
 
-<h2>Installing</h2>
-<p>From the marketplace:</p>
-<pre><code>/plugin install &lt;name&gt;@&lt;marketplace&gt;</code></pre>
-<p>From GitHub directly (Claude Code):</p>
+<h2>How to vet a plugin before you install it.</h2>
+<p>A plugin runs with your agent's permissions. That means it can touch your files, hit your APIs, and use your credentials. Installing one is a trust decision. Here's the checklist:</p>
+
+<div class="sketch" data-viewbox="0 0 900 330" id="dg-mkt-vet">
+  <svg></svg>
+  <div class="sketch-caption">~ five checks before installing ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-mkt-vet');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.table(svg, rc, {
+    x: 20, y: 30,
+    cols: [
+      { title: 'Check',                     w: 210 },
+      { title: 'What to look for',          w: 350 },
+      { title: 'Red flag',                  w: 320 }
+    ],
+    rows: [
+      ['Is the source active?',    'recent commits, real issues, multiple contributors', 'last commit > 6 months ago'],
+      ['Read the code',            'MCP server + hooks especially',          'obfuscated code; weird network calls'],
+      ['Declared permissions',     'only what the plugin obviously needs',   'plugin X claims to do Y but wants shell access'],
+      ['Install count + issues',   'lots of installs, few critical issues',  'high installs + many open security issues'],
+      ['License',                  'MIT / Apache / BSD',                      'no license = legally unclear, skip it']
+    ]
+  });
+});
+</script>
+
+<p>Most of these are fast checks. Ten minutes before installing a plugin saves you months of "why is my agent doing weird things?" later. Don't skip.</p>
+
+<h2>Installing.</h2>
+<p>From a marketplace:</p>
+
+<pre><code>/plugin install telegram@claude-plugins-official</code></pre>
+
+<p>Directly from a GitHub repo:</p>
+
 <pre><code>/plugin install github:user/repo</code></pre>
 
-<h2>Publishing your own</h2>
-<p>The high-level steps:</p>
+<p>Claude Code downloads the plugin, registers the MCP servers, makes the skills invokable, and wires up the hooks. Uninstall with <code>/plugin uninstall &lt;name&gt;</code> and everything gets reversed cleanly.</p>
+
+<h2>Publishing your own plugin.</h2>
+<p>If you've built a workflow you'd use across projects (or share with your team), package it as a plugin. The high-level steps:</p>
+
 <ol>
-  <li>Create a directory matching the plugin structure (manifest, servers, skills, hooks).</li>
-  <li>Write a manifest file declaring what's included.</li>
-  <li>Push to GitHub.</li>
-  <li>(Optional) Submit to the official marketplace for review.</li>
+  <li><strong>Create a directory</strong> with the plugin structure: manifest, MCP servers, skills, hooks, any assets.</li>
+  <li><strong>Write a manifest</strong> declaring everything included: name, version, dependencies, permissions requested.</li>
+  <li><strong>Push to GitHub</strong> with a clear README. Include install instructions.</li>
+  <li><strong>(Optional) Submit to the official marketplace.</strong> Anthropic reviews; if approved, your plugin shows up in <code>claude-plugins-official</code> for everyone.</li>
 </ol>
-<p>Conventions:</p>
+
+<h2>Conventions that make plugins trustworthy.</h2>
+<p>If you publish, follow these. They're not required, but they're how users decide whether to trust you.</p>
+
 <ul>
-  <li>Use semver for versions</li>
-  <li>Include a changelog</li>
-  <li>Document required environment variables clearly</li>
-  <li>Ship a minimal reproduction example</li>
-  <li>Sign your commits if possible (supply-chain trust)</li>
+  <li><strong>Semantic versioning.</strong> MAJOR.MINOR.PATCH. Don't break compat in minor releases.</li>
+  <li><strong>Include a changelog.</strong> Users need to know what changed when they update.</li>
+  <li><strong>Document required environment variables clearly.</strong> Nobody should have to read your source to figure out what API keys you need.</li>
+  <li><strong>Ship a minimal reproduction example.</strong> A 30-second "here's how it works when it works" is the fastest confidence-builder.</li>
+  <li><strong>Sign your commits if possible.</strong> Supply-chain trust matters for code that'll run with someone else's credentials.</li>
 </ul>
 
-<h2>Plugin hygiene</h2>
+<h2>Plugin hygiene once published.</h2>
+
 <ul>
-  <li><strong>Update regularly.</strong> Dependencies rot. MCPs shift.</li>
-  <li><strong>Deprecate cleanly.</strong> If you drop support, mark the repo and publish a final notice.</li>
-  <li><strong>Keep the deny-list sane.</strong> Plugins shouldn't request more permissions than they need.</li>
+  <li><strong>Update regularly.</strong> Dependencies rot. MCP protocol evolves. Old plugins break silently, which users hate.</li>
+  <li><strong>Deprecate cleanly.</strong> If you can't maintain it anymore, mark the repo deprecated, publish a final notice, and link to any fork continuing the work.</li>
+  <li><strong>Keep permissions tight.</strong> Requesting fewer permissions than you think you need is always the right default. Users trust minimal plugins more than maximal ones.</li>
+  <li><strong>Respond to security reports quickly.</strong> The response time to a CVE is part of your plugin's reputation. If someone files a security issue, treat it like an oncall page.</li>
 </ul>
+
+<h2>The ecosystem in context.</h2>
+<p>Plugins are where the agent ecosystem becomes a real marketplace — people building things for people, not just companies building things for themselves. Every plugin you install expands what your agent can do without you having to write a line of integration code. Every plugin you publish can save someone else the same work. That's the flywheel.</p>
+
+<p>If you're just starting, install a few from the official marketplace and see how they feel. If you find yourself wishing a plugin existed that doesn't, that's probably your first one to build.</p>
 <div class="prev-next"><a href="vs-mcp.html" class="prev"><div class="label">← Previous</div><div class="title">Plugins vs MCP</div></a><a href="../claude-code/index.html" class="next"><div class="label">Next →</div><div class="title">Claude Code overview</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../framework/index.html">Framework</a></p>
 </div></footer><script>
