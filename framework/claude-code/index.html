@@ -219,61 +219,108 @@
 <a href="../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../what-is-autonomous-ai.html">What is autonomous AI</a></li><li><a href="../the-autonomy-spectrum.html">The autonomy spectrum</a></li><li><a href="../glossary.html">Glossary</a></li></ul><h4>Claude</h4><ul><li><a href="../claude/overview.html">Overview</a></li><li><a href="../claude/prompting-for-agents.html">Prompting for agents</a></li><li><a href="../claude/extended-thinking.html">Extended thinking</a></li><li><a href="../claude/tool-use.html">Tool use</a></li></ul><h4>MCP</h4><ul><li><a href="../mcp/index.html">Overview</a></li><li><a href="../mcp/what-is-mcp.html">What is MCP</a></li><li><a href="../mcp/anatomy.html">Anatomy</a></li><li><a href="../mcp/transports.html">Transports</a></li><li><a href="../mcp/servers.html">Servers</a></li><li><a href="../mcp/clients.html">Clients</a></li><li><a href="../mcp/security.html">Security</a></li><li><a href="../mcp/directory.html">Directory</a></li></ul><h4>Plugins</h4><ul><li><a href="../plugins/index.html">Overview</a></li><li><a href="../plugins/vs-mcp.html">Plugins vs MCP</a></li><li><a href="../plugins/marketplace.html">Marketplace</a></li></ul><h4>Claude Code</h4><ul><li><a href="../claude-code/index.html" class="active">Overview</a></li><li><a href="../claude-code/settings.html">Settings</a></li><li><a href="../claude-code/permissions.html">Permissions</a></li><li><a href="../claude-code/hooks.html">Hooks</a></li><li><a href="../claude-code/skills.html">Skills</a></li><li><a href="../claude-code/memory.html">Memory</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/index.html">Overview</a></li><li><a href="../patterns/react-loop.html">ReAct loop</a></li><li><a href="../patterns/plan-execute.html">Plan-execute</a></li><li><a href="../patterns/multi-agent.html">Multi-agent</a></li><li><a href="../patterns/evaluation.html">Evaluation</a></li><li><a href="../patterns/prompt-caching.html">Prompt caching</a></li></ul><h4>Autonomous</h4><ul><li><a href="../autonomous/index.html">Overview</a></li><li><a href="../autonomous/headless.html">Headless</a></li><li><a href="../autonomous/scheduling.html">Scheduling</a></li><li><a href="../autonomous/self-monitoring.html">Self-monitoring</a></li><li><a href="../autonomous/safety.html">Safety</a></li></ul><h4>Build Guides</h4><ul><li><a href="../build/index.html">Overview</a></li><li><a href="../build/first-agent.html">First agent (60 min)</a></li><li><a href="../build/voice-agent.html">Voice agent</a></li><li><a href="../build/research-agent.html">Research agent</a></li></ul><h4>Tools</h4><ul><li><a href="../tools/browser-automation.html">Browser automation</a></li><li><a href="../tools/desktop-control.html">Desktop control</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Framework</a><span class="sep">›</span><a href="../claude-code/index.html">Claude Code</a><span class="sep">›</span><span>Claude Code, the agent harness</span></div><h1 class="title" style="font-size:clamp(32px,4.5vw,42px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">Claude Code, the agent harness</h1><div class="article-meta"><span>📖 4 min read</span><span>Updated 2026-04-18</span></div>
-<p class="lede">Claude Code is Anthropic's official CLI agent. Claude, packaged with a harness that handles tool use, MCP, permissions, hooks, skills, and memory. It's the canonical starting point for autonomous work.</p>
+<p class="lede">Claude Code is the program that makes Claude actually <em>do things</em>, not just talk about them. It's a terminal application. You run <code>claude</code> and you're in a live conversation where Claude can read files, run commands, install dependencies, hit APIs, open a browser, or use any MCP server you've connected. This page is about what Claude Code is, what it's made of, and why it's the default starting point if you want to build anything autonomous with Claude.</p>
 
-<h2>What it is, technically</h2>
-<p>A terminal application. You run <code>claude</code> in any directory; you get an interactive session with Claude (or automation-ready non-interactive mode). It has:</p>
+<h2>The simple explanation.</h2>
+<p>Claude the model is a brain in a jar, see <a href="../what-is-autonomous-ai.html">What is autonomous AI</a>. It can think, write, and plan, but on its own it can't touch anything outside the chat window. A <em>harness</em> is the program that gives the brain hands: it catches the model's requests to use tools, executes those requests, and hands back the results. Claude Code is Anthropic's official harness.</p>
+
+<p>If you use Claude.ai on the web, that's ALSO a harness, a simpler one, aimed at end users. Claude Code is the developer/power-user version: more tools, more configuration, more automation, full access to your file system and terminal.</p>
+
+<div class="sketch" data-viewbox="0 0 900 290" id="dg-cc-stack">
+  <svg></svg>
+  <div class="sketch-caption">~ what Claude Code is made of ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-cc-stack');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.stack(svg, rc, {
+    x: 120, y: 20, w: 660, layerH: 48,
+    layers: [
+      { label: 'Your project',   sub: 'CLAUDE.md, settings.json, hooks, skills', color: '#fef3c7' },
+      { label: 'Permissions',    sub: 'allow, ask, deny rules by tool', color: '#fce7f3' },
+      { label: 'Tools layer',    sub: 'Read, Write, Edit, Bash, Grep, + your MCP tools', color: '#dbeafe' },
+      { label: 'Claude Code',    sub: 'the harness: loop, state, UI, routing', color: '#e9d5ff' },
+      { label: 'Claude (model)', sub: 'the brain doing the thinking', color: '#d1fae5' }
+    ]
+  });
+});
+</script>
+
+<h2>What ships inside the box.</h2>
+<p>Claude Code is one install that gives you a <em>lot</em> at once. Here's what you actually get:</p>
+
 <ul>
-  <li>A permission system for tool use</li>
-  <li>Built-in tools (Read, Write, Edit, Bash, Glob, Grep, etc.)</li>
-  <li>MCP client support (configure servers, call their tools)</li>
-  <li>Hooks for event-driven automation</li>
-  <li>Skills (named, invokable prompts)</li>
-  <li>Persistent memory across sessions</li>
-  <li>Sub-agent delegation</li>
-  <li>Headless mode (for scripts, cron, CI)</li>
+  <li><strong>Core tools built in.</strong> Read, Write, Edit (for files), Bash (for shell commands), Glob (for finding files), Grep (for searching), plus web search, web fetch, and more. No configuration needed; they just exist.</li>
+  <li><strong>A proper permission system.</strong> Not a checkbox. You can say: "allow all reads, ask me before Bash commands, deny <code>rm -rf</code> outright." Precise enough to run a real agent without a human watching every step. See <a href="permissions.html">Permissions</a>.</li>
+  <li><strong>MCP client support.</strong> Any MCP server you configure is available to the model as tools. Install the Notion MCP and the agent can read your Notion in the same session.</li>
+  <li><strong>Hooks.</strong> Run your own code on key events (before a tool call, after a session ends, when Claude writes to a file). This is how you automate safety checks, test runs, or reports. See <a href="hooks.html">Hooks</a>.</li>
+  <li><strong>Skills.</strong> Pre-packaged instructions (like <code>/review</code> or <code>/commit</code>) that bundle a prompt plus the tools it needs. Reusable building blocks. See <a href="skills.html">Skills</a>.</li>
+  <li><strong>Persistent memory.</strong> A file-based memory system that survives across sessions. Good for building up who-the-user-is context over time. See <a href="memory.html">Memory</a>.</li>
+  <li><strong>Sub-agent delegation.</strong> You can spawn specialized helper agents for big tasks without polluting the main context window.</li>
+  <li><strong>Headless mode.</strong> Run Claude Code non-interactively, from a script, a cron job, or a CI pipeline. This is how you go from "I use it" to "it runs on its own."</li>
 </ul>
 
-<h2>Why it's the canonical harness</h2>
-<ul>
-  <li><strong>It's maintained by the model maker.</strong> Tool-use changes in Claude ship with matching harness changes.</li>
-  <li><strong>The permission model is real.</strong> Not a checkbox, a structured allow/deny system that plays well with autonomy.</li>
-  <li><strong>MCP is first-class.</strong> Add an MCP server, it just works.</li>
-  <li><strong>Hooks and skills are composable.</strong> You can build sophisticated workflows without leaving the harness.</li>
-  <li><strong>Open format.</strong> Configs are JSON files you can check into a repo.</li>
-</ul>
+<h2>Why this is the default starting point.</h2>
+<p>You could build your own agent harness from scratch. People do. But for almost everyone, Claude Code is the right starting place, for four reasons:</p>
 
-<h2>Install and first run</h2>
-<pre><code># Install
+<div class="sketch" data-viewbox="0 0 900 270" id="dg-cc-reasons">
+  <svg></svg>
+  <div class="sketch-caption">~ why Claude Code by default ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-cc-reasons');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.bars(svg, rc, {
+    x: 30, y: 20, w: 840, barH: 36, gap: 18, labelW: 260,
+    items: [
+      { label: 'Made by the model maker',   value: 95, note: 'model + harness ship together' },
+      { label: 'Permissions are first class',value: 90, note: 'real safety, not a toggle' },
+      { label: 'MCP support is native',      value: 88, note: 'any tool, one config line' },
+      { label: 'Config is plain JSON/MD',    value: 80, note: 'check into git, share freely' }
+    ]
+  });
+});
+</script>
+
+<p>Translation: you get all the power and none of the plumbing. Every update to Claude's tool-use behavior ships with Claude Code changes the same day. Every new MCP server works immediately. Every skill and hook you write is just a file you can share. If you need something weirder later, you can always graduate to a custom harness, but start here.</p>
+
+<h2>Install and first run, in 60 seconds.</h2>
+<pre><code># Install (requires Node.js)
 npm install -g @anthropic-ai/claude-code
-# (or equivalent for your package manager)
 
-# Run
+# Authenticate the first time
+claude
+
+# From then on, just run this from any project directory
 claude</code></pre>
-<p>First run prompts you to authenticate. After that, you're in.</p>
+<p>The first run prompts you to log in. After that, typing <code>claude</code> in any directory drops you into a session scoped to that directory. Read/Write/Edit work against that directory's files. Your hooks, skills, and settings are picked up automatically from <code>.claude/</code> if present.</p>
 
-<h2>The surface area of this section</h2>
-<ul>
-  <li><a href="settings.html">Settings</a>, the <code>settings.json</code> model</li>
-  <li><a href="permissions.html">Permissions</a>, allow/deny, auto mode</li>
-  <li><a href="hooks.html">Hooks</a>, event-driven automation</li>
-  <li><a href="skills.html">Skills</a>, named slash-commands</li>
-  <li><a href="memory.html">Memory</a>, persistent state</li>
-</ul>
+<h2>The rest of this section, in reading order.</h2>
+<ol>
+  <li><a href="settings.html">Settings</a>, the <code>settings.json</code> model and what you can configure</li>
+  <li><a href="permissions.html">Permissions</a>, the most important page here. How to set up allow/deny rules correctly.</li>
+  <li><a href="hooks.html">Hooks</a>, running your own code on agent events</li>
+  <li><a href="skills.html">Skills</a>, packaged prompts and slash commands</li>
+  <li><a href="memory.html">Memory</a>, persistent state across sessions</li>
+</ol>
 
-<h2>When to use Claude Code vs, a custom harness</h2>
-<p>Use Claude Code when:</p>
-<ul>
-  <li>You want to move fast</li>
-  <li>You're building personal productivity or internal tools</li>
-  <li>You benefit from the ecosystem (MCPs, skills, plugins)</li>
-</ul>
-<p>Build a custom harness when:</p>
-<ul>
-  <li>You're embedding an agent inside a product you ship (users don't have terminals)</li>
-  <li>You need tight control over every turn for evaluation purposes</li>
-  <li>You're bridging multiple model providers and want a vendor-neutral layer</li>
-</ul>
+<h2>When Claude Code is NOT the right choice.</h2>
+<p>Two legitimate reasons to not use Claude Code:</p>
+
+<ol>
+  <li><strong>You're embedding an agent inside a product end users interact with.</strong> Users don't have terminals. You need to wrap the agent in a web app, mobile app, or Slack bot. In this case, build a custom harness using the Anthropic SDK directly. Claude Code is for developer workflows; for user-facing products, you need more control over the UI.</li>
+  <li><strong>You're bridging multiple model providers for research or vendor-neutrality.</strong> Claude Code is Claude-specific. If you want one harness that can talk to GPT, Gemini, and Claude interchangeably (usually for evaluation research), build your own.</li>
+</ol>
+
+<p>Everyone else: start with Claude Code.</p>
 <div class="prev-next"><a href="../plugins/marketplace.html" class="prev"><div class="label">← Previous</div><div class="title">Plugin marketplaces</div></a><a href="settings.html" class="next"><div class="label">Next →</div><div class="title">Settings</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../framework/index.html">Framework</a></p>
 </div></footer><script>
