@@ -23,6 +23,28 @@
  * are available. Every diagram on every page uses the same visual grammar.
  */
 (function() {
+  // Inject sketch-wrapper CSS on load so diagrams look right even if the
+  // page's main stylesheet is cached, outdated, or fails to load.
+  (function injectCss() {
+    if (document.getElementById('sketch-css')) return;
+    const css = '' +
+      '.sketch{position:relative;margin:36px auto;max-width:940px;padding:28px 20px;' +
+        'border-radius:18px;background:#faf7f2;' +
+        'background-image:linear-gradient(rgba(74,0,224,0.08) 1px, transparent 1px),' +
+        'linear-gradient(90deg, rgba(74,0,224,0.08) 1px, transparent 1px);' +
+        'background-size:24px 24px;box-shadow:0 4px 20px rgba(0,0,0,0.04);' +
+        'box-sizing:border-box;}' +
+      '.sketch svg{display:block;width:100%;height:auto;max-width:960px;margin:0 auto;}' +
+      '.sketch svg text{fill:#1d1d23;}' +
+      '.sketch-caption{text-align:center;font-family:\'Caveat\',\'Kalam\',cursive;' +
+        'color:#8b5cf6;font-size:20px;font-weight:700;margin-top:8px;' +
+        'letter-spacing:0.02em;}';
+    const s = document.createElement('style');
+    s.id = 'sketch-css';
+    s.textContent = css;
+    (document.head || document.documentElement).appendChild(s);
+  })();
+
   const NS = 'http://www.w3.org/2000/svg';
   const COLORS = {
     stroke:     '#4a00e0',
