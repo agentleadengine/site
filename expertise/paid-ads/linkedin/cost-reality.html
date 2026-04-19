@@ -222,6 +222,21 @@
 <p class="lede">LinkedIn is expensive. CPCs routinely run 5-10x what you'd pay on Meta or Google for the same person. The question isn't whether it's expensive, it's whether the audience quality justifies the premium.</p>
 
 <h2>The CPC ranges</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Typical LinkedIn ad costs');
+  sketch.bars(svg, rc, {x: 40, y: 60, w: 820, labelW: 240, items: [
+    {label: 'CPC', value: 50, note: '$5–15 normal, up to $25+'},
+    {label: 'CPM', value: 55, note: '$30–80 per 1000'},
+    {label: 'Cost per lead', value: 70, note: '$50–200 typical'},
+    {label: 'CAC (B2B SaaS)', value: 90, note: '$500–5000+ depending on ACV'}
+  ]});
+});
+</script>
 <ul>
 <li>Broad targeting (large audience): $3-8 CPC</li>
 <li>Targeted mid-level professional: $8-15 CPC</li>

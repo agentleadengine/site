@@ -222,6 +222,25 @@
 <p class="lede">LinkedIn's targeting is its moat. Job title, company size, industry, seniority, skills, past employers, schools, all self-reported by professionals. No other platform has targeting this precise for B2B.</p>
 
 <h2>Targeting attributes</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'B2B targeting dimensions');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Attribute', w: 220},
+    {title: 'Example', w: 580}
+  ], rows: [
+    ['Job title + seniority', 'VP of Marketing, Director, Manager'],
+    ['Company name / size', 'Target specific named accounts'],
+    ['Industry + function', 'SaaS + Product management'],
+    ['Skills', 'Named skills on profile'],
+    ['Groups + interests', 'Professional community membership']
+  ]});
+});
+</script>
 <ul>
 <li><strong>Job Title</strong>: exact titles (fewer matches) or title categories (wider)</li>
 <li><strong>Job Function</strong>: broader, "Sales", "Marketing", "Engineering"</li>

@@ -222,6 +222,21 @@
 <p class="lede">Lead Gen Forms are forms that live on LinkedIn. When a user clicks, a form opens with fields pre-filled from their profile (name, title, company, email). Friction drops; conversion rates jump 2-5x over sending traffic to your landing page.</p>
 
 <h2>How they work</h2>
+<div class="sketch" data-viewbox="0 0 900 240"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 240);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'LinkedIn Lead Gen Form flow');
+  sketch.numberedSteps(svg, rc, {direction: 'h', x: 30, y: 80, w: 840, items: [
+    {title: 'User taps CTA', sub: 'on your ad'},
+    {title: 'Form auto-fills', sub: 'from LinkedIn profile'},
+    {title: 'User taps submit', sub: 'no typing needed'},
+    {title: 'Lead lands in CRM', sub: 'via integration'}
+  ]});
+});
+</script>
 <ol>
 <li>User sees ad in feed</li>
 <li>Clicks "Download", "Register", "Request"</li>
