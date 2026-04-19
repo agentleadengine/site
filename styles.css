@@ -182,17 +182,22 @@ nav.topbar .nav-has-submenu::before {
 nav.topbar .nav-group {
     position: relative;
 }
+/* Dropdown PANEL — the floating sheet that drops down from the nav.
+   Intentionally distinct from both the white nav above and the white
+   page below: tinted background, purple accent strip, heavier shadow,
+   clear top gap so it reads as its own surface. */
 nav.topbar .nav-submenu {
     position: absolute;
     top: 100%;
     left: 50%;
-    transform: translateX(-50%) translateY(8px);
-    min-width: 220px;
-    background: var(--white);
-    border: 1px solid var(--gray-100);
-    border-radius: 14px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.12);
-    padding: 10px;
+    transform: translateX(-50%) translateY(14px);
+    min-width: 260px;
+    background: #f4f4f7;
+    border: 1px solid #e5e5ea;
+    border-top: 3px solid var(--primary-purple);
+    border-radius: 16px;
+    box-shadow: 0 28px 64px -12px rgba(17, 17, 17, 0.24), 0 2px 8px rgba(17, 17, 17, 0.06);
+    padding: 14px;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.18s ease, transform 0.18s ease;
@@ -207,66 +212,109 @@ nav.topbar .nav-group.is-open > .nav-submenu {
     pointer-events: auto;
     transform: translateX(-50%) translateY(0);
 }
+
+/* Items inside a SIMPLE dropdown (Framework, Playbooks) —
+   white tiles on the tinted panel so each feels like a discrete module. */
 nav.topbar .nav-submenu a {
     display: block;
-    padding: 9px 14px;
-    font-size: 13px;
+    padding: 11px 16px;
+    font-size: 13.5px;
     font-weight: 600;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.01em;
     text-transform: none;
     color: var(--gray-900);
-    border-radius: 8px;
+    background: #ffffff;
+    border: 1px solid transparent;
+    border-radius: 10px;
     text-decoration: none;
     white-space: nowrap;
+    margin-bottom: 4px;
+    transition: all 0.15s ease;
 }
+nav.topbar .nav-submenu a:last-child { margin-bottom: 0; }
 nav.topbar .nav-submenu a::after { display: none; }
 nav.topbar .nav-submenu a:hover {
-    background: var(--gray-50, #f6f6f7);
-    color: var(--primary-purple);
+    background: var(--primary-purple);
+    color: #ffffff;
+    border-color: var(--primary-purple);
+    transform: translateX(2px);
 }
 
-/* Mega submenu (Expertise — multi-column brain map) */
+/* MEGA submenu (Expertise — brain map). Panel with card modules inside. */
 nav.topbar .nav-group-wide { position: static; }
 nav.topbar .nav-submenu-multi {
     left: 50%;
-    transform: translateX(-50%) translateY(8px);
+    transform: translateX(-50%) translateY(14px);
     display: grid;
-    grid-template-columns: repeat(5, minmax(170px, 1fr));
-    gap: 8px 18px;
-    min-width: min(1100px, calc(100vw - 48px));
-    padding: 20px 22px;
+    grid-template-columns: repeat(5, minmax(180px, 1fr));
+    gap: 14px;
+    min-width: min(1180px, calc(100vw - 48px));
+    padding: 20px;
 }
 nav.topbar .nav-group-wide:hover > .nav-submenu-multi,
 nav.topbar .nav-group-wide:focus-within > .nav-submenu-multi,
 nav.topbar .nav-group-wide.is-open > .nav-submenu-multi {
     transform: translateX(-50%) translateY(0);
 }
+
+/* Each COLUMN is its own card-module on the tinted panel. */
 nav.topbar .nav-col {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 0;
+    background: #ffffff;
+    border: 1px solid #e5e5ea;
+    border-radius: 12px;
+    padding: 14px 14px 12px;
+    transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
 }
+nav.topbar .nav-col:hover {
+    border-color: rgba(98, 0, 255, 0.35);
+    box-shadow: 0 10px 28px -8px rgba(98, 0, 255, 0.18);
+    transform: translateY(-2px);
+}
+
+/* Category HEADER — colored title like a module label, clearly above its items. */
 nav.topbar .nav-col-head {
     font-weight: 800 !important;
-    font-size: 11px !important;
-    letter-spacing: 0.12em !important;
+    font-size: 12px !important;
+    letter-spacing: 0.1em !important;
     text-transform: uppercase !important;
     color: var(--primary-purple) !important;
-    padding: 8px 10px 6px !important;
-    border-bottom: 1px solid var(--gray-100);
-    margin-bottom: 4px;
-    border-radius: 0;
+    padding: 6px 10px !important;
+    background: rgba(98, 0, 255, 0.08) !important;
+    border: none !important;
+    border-radius: 8px !important;
+    margin-bottom: 8px !important;
+    display: block;
+    white-space: nowrap !important;
+    transform: none !important;
 }
 nav.topbar .nav-col-head:hover {
-    background: transparent !important;
-    color: var(--primary-purple) !important;
-    text-decoration: underline;
+    background: var(--primary-purple) !important;
+    color: #ffffff !important;
+    transform: translateX(0) !important;
+    text-decoration: none;
 }
-nav.topbar .nav-col a {
+
+/* Items INSIDE a module — clearly subordinate to the header. */
+nav.topbar .nav-col a:not(.nav-col-head) {
     padding: 6px 10px;
     font-size: 12.5px;
     font-weight: 500;
-    color: var(--gray-700, #3f3f46);
+    letter-spacing: 0;
+    color: #525258;
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    margin: 0;
+    white-space: normal;
+    line-height: 1.35;
+}
+nav.topbar .nav-col a:not(.nav-col-head):hover {
+    background: #f4f4f7;
+    color: var(--gray-900);
+    transform: none;
 }
 
 /* Hamburger (hidden on desktop) */
@@ -1102,13 +1150,14 @@ footer p { margin: 0; letter-spacing: 0.02em; }
         pointer-events: auto;
         box-shadow: none;
         border: none;
+        border-top: 3px solid var(--primary-purple);
         border-radius: 0;
-        background: #fafafa;
-        padding: 4px 0 10px;
+        background: #f4f4f7;
+        padding: 12px 16px 14px;
         min-width: 0;
         max-height: none;
         grid-template-columns: 1fr;
-        gap: 0;
+        gap: 10px;
     }
     nav.topbar .nav-group.is-open > .nav-submenu,
     nav.topbar .nav-group.is-open > .nav-submenu-multi {
@@ -1117,23 +1166,57 @@ footer p { margin: 0; letter-spacing: 0.02em; }
     nav.topbar .nav-submenu-multi { display: none; }
     nav.topbar .nav-group.is-open > .nav-submenu-multi { display: grid; }
 
+    /* Simple submenu items on mobile: white tiles on tinted panel */
     nav.topbar .nav-submenu a {
-        padding: 12px 36px;
-        font-size: 13px;
+        padding: 12px 16px;
+        font-size: 13.5px;
         white-space: normal;
-        border-radius: 0;
+        border-radius: 10px;
+        background: #ffffff;
+        border: 1px solid #e5e5ea;
+        margin-bottom: 6px;
+        display: block;
+        justify-content: flex-start;
     }
+    nav.topbar .nav-submenu a:hover,
+    nav.topbar .nav-submenu a:active {
+        transform: none;
+        background: var(--primary-purple);
+        color: #ffffff;
+        border-color: var(--primary-purple);
+    }
+
+    /* Mega menu columns on mobile: same card-module look */
     nav.topbar .nav-col {
-        margin-bottom: 4px;
+        margin-bottom: 0;
+        background: #ffffff;
+        border: 1px solid #e5e5ea;
+        border-radius: 12px;
+        padding: 12px;
+    }
+    nav.topbar .nav-col:hover {
+        transform: none;
+        box-shadow: none;
     }
     nav.topbar .nav-col-head {
-        padding: 14px 24px 6px !important;
-        font-size: 11px !important;
-        border-bottom: none;
-        background: transparent;
+        padding: 8px 12px !important;
+        font-size: 12px !important;
+        border-bottom: none !important;
+        background: rgba(98, 0, 255, 0.08) !important;
+        border-radius: 8px !important;
+        margin-bottom: 8px !important;
+        letter-spacing: 0.1em !important;
     }
-    nav.topbar .nav-col a {
-        padding: 8px 36px;
+    nav.topbar .nav-col a:not(.nav-col-head) {
+        padding: 9px 12px;
+        border: none;
+        background: transparent;
+        margin-bottom: 0;
+        border-radius: 6px;
+    }
+    nav.topbar .nav-col a:not(.nav-col-head):hover {
+        background: #f4f4f7;
+        color: var(--gray-900);
     }
 
     .framework-layout {
