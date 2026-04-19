@@ -222,6 +222,21 @@
 <p class="lede">A post-mortem asks why the failure happened. A pre-mortem asks why the failure <em>will</em> happen, before the project starts. The difference is whether the learning is free or expensive. Pre-mortems are one of the highest-leverage, lowest-cost tools in the operator toolkit. They take an hour. They save quarters.</p>
 
 <h2>The exercise</h2>
+<div class="sketch" data-viewbox="0 0 900 240"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 240);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Pre-mortem in four moves');
+  sketch.numberedSteps(svg, rc, {direction: 'h', x: 30, y: 80, w: 840, items: [
+    {title: 'Imagine failure', sub: '"It\'s 12 months from now and we failed"'},
+    {title: 'Each person writes', sub: 'why did we fail?'},
+    {title: 'Cluster causes', sub: 'group themes'},
+    {title: 'Mitigate top 3', sub: 'add to plan'}
+  ]});
+});
+</script>
 <p>Before you commit to a significant initiative, run a 60-minute meeting. Whiteboard at the front. The facilitator opens:</p>
 <blockquote style="border-left:3px solid var(--purple); padding-left:16px; margin:20px 0; color:var(--text-muted);">
 "It's 12 months from now. We launched this initiative. It failed completely. The board is asking what happened. Take 10 minutes, by yourself, and write down every reason you can imagine for why it failed."

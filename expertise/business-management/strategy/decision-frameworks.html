@@ -222,6 +222,27 @@
 <p class="lede">Most bad decisions aren't bad judgment, they're the right judgment applied to the wrong kind of decision. A reversible, cheap choice deserves a different process than an irreversible, expensive one. Knowing which framework to use is half the skill. Executing it is the other half.</p>
 
 <h2>The first question: Type 1 or Type 2?</h2>
+<div class="sketch" data-viewbox="0 0 900 240"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 240);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Type 1 vs Type 2 decisions');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 160,
+    left: {title: 'Type 1 (irreversible)', items: [
+      'One-way door',
+      'Spend days / weeks',
+      'Get it right',
+      'Big hires, M&A, strategy']}
+  , right: {title: 'Type 2 (reversible)', items: [
+      'Two-way door',
+      'Decide fast',
+      'Experiment cheaply',
+      'Most daily operational calls']}
+  });
+});
+</script>
 <p>Bezos's framing. Two categories:</p>
 <ul>
   <li><strong>Type 1, one-way door.</strong> Irreversible or nearly so. Hiring a senior exec. Selling the company. Signing a 5-year lease. Deliberate, analytical, high-conviction.</li>

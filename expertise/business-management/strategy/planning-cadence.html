@@ -222,6 +222,24 @@
 <p class="lede">The annual plan no one follows and the quarterly plan everyone ignores are the two most common artifacts of planning theater. A good planning cadence does exactly three things: sets direction, forces trade-offs, and generates the commitments the rest of the operating system runs on. Everything else is optional.</p>
 
 <h2>The three horizons</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Three planning horizons');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Horizon', w: 200},
+    {title: 'Content', w: 600}
+  ], rows: [
+    ['Annual', 'Strategic bets + big investments'],
+    ['Quarterly', 'OKRs + roadmap'],
+    ['Weekly', 'Execution + metrics review'],
+    ['Daily', 'Stand-ups + unblocks']
+  ]});
+});
+</script>
 <ul>
   <li><strong>Annual</strong>, the direction, the bets, the budget envelope. Updated once a year; revisited midyear.</li>
   <li><strong>Quarterly</strong>. <a href="okrs.html">OKRs</a>, headcount, major initiatives. Updated every 90 days.</li>

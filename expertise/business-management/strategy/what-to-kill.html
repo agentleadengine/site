@@ -231,6 +231,24 @@
 </ul>
 
 <h2>The kill criteria, set them in advance</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Kill criteria worth setting in advance');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Signal', w: 240},
+    {title: 'Kill threshold', w: 560}
+  ], rows: [
+    ['Growth rate', 'Below X% WoW for 2 quarters'],
+    ['CAC vs target', '> 2× planned CAC'],
+    ['Retention', '< 50% of healthy benchmark'],
+    ['Team energy', 'Best people asking to leave']
+  ]});
+});
+</script>
 <p>The single most effective move: <strong>write kill criteria before you launch.</strong> "This initiative will be killed if, by month 6, we haven't hit X or Y." Then when month 6 arrives, the decision has been made. You're just executing on it.</p>
 
 <blockquote style="border-left:3px solid var(--purple); padding-left:16px; margin:20px 0; color:var(--text-muted);">
