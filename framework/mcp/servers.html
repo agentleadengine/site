@@ -218,28 +218,48 @@
 <a href="../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../what-is-autonomous-ai.html">What is autonomous AI</a></li><li><a href="../the-autonomy-spectrum.html">The autonomy spectrum</a></li><li><a href="../glossary.html">Glossary</a></li></ul><h4>Claude</h4><ul><li><a href="../claude/overview.html">Overview</a></li><li><a href="../claude/prompting-for-agents.html">Prompting for agents</a></li><li><a href="../claude/extended-thinking.html">Extended thinking</a></li><li><a href="../claude/tool-use.html">Tool use</a></li></ul><h4>MCP</h4><ul><li><a href="../mcp/index.html">Overview</a></li><li><a href="../mcp/what-is-mcp.html">What is MCP</a></li><li><a href="../mcp/anatomy.html">Anatomy</a></li><li><a href="../mcp/transports.html">Transports</a></li><li><a href="../mcp/servers.html" class="active">Servers</a></li><li><a href="../mcp/clients.html">Clients</a></li><li><a href="../mcp/security.html">Security</a></li><li><a href="../mcp/directory.html">Directory</a></li></ul><h4>Plugins</h4><ul><li><a href="../plugins/index.html">Overview</a></li><li><a href="../plugins/vs-mcp.html">Plugins vs MCP</a></li><li><a href="../plugins/marketplace.html">Marketplace</a></li></ul><h4>Claude Code</h4><ul><li><a href="../claude-code/index.html">Overview</a></li><li><a href="../claude-code/settings.html">Settings</a></li><li><a href="../claude-code/permissions.html">Permissions</a></li><li><a href="../claude-code/hooks.html">Hooks</a></li><li><a href="../claude-code/skills.html">Skills</a></li><li><a href="../claude-code/memory.html">Memory</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/index.html">Overview</a></li><li><a href="../patterns/react-loop.html">ReAct loop</a></li><li><a href="../patterns/plan-execute.html">Plan-execute</a></li><li><a href="../patterns/multi-agent.html">Multi-agent</a></li><li><a href="../patterns/evaluation.html">Evaluation</a></li><li><a href="../patterns/prompt-caching.html">Prompt caching</a></li></ul><h4>Autonomous</h4><ul><li><a href="../autonomous/index.html">Overview</a></li><li><a href="../autonomous/headless.html">Headless</a></li><li><a href="../autonomous/scheduling.html">Scheduling</a></li><li><a href="../autonomous/self-monitoring.html">Self-monitoring</a></li><li><a href="../autonomous/safety.html">Safety</a></li></ul><h4>Build Guides</h4><ul><li><a href="../build/index.html">Overview</a></li><li><a href="../build/first-agent.html">First agent (60 min)</a></li><li><a href="../build/voice-agent.html">Voice agent</a></li><li><a href="../build/research-agent.html">Research agent</a></li></ul><h4>Tools</h4><ul><li><a href="../tools/browser-automation.html">Browser automation</a></li><li><a href="../tools/desktop-control.html">Desktop control</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Framework</a><span class="sep">›</span><a href="../mcp/index.html">MCP</a><span class="sep">›</span><span>Building MCP servers</span></div><h1 class="title" style="font-size:clamp(32px,4.5vw,42px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">Building MCP servers</h1><div class="article-meta"><span>📖 5 min read</span><span>Updated 2026-04-18</span></div>
-<p class="lede">An MCP server is a small program that exposes tools, resources, or prompts. You can write one in under 100 lines of TypeScript or Python. Most of the work is thinking about what to expose and how.</p>
+<p class="lede">Building an MCP server sounds intimidating until you realize it's usually about 100 lines of code. The hard part isn't the code. The hard part is deciding what to expose, how to name it, and how to describe it so the AI uses it correctly. Let's take this in layers: first the intuition, then the structure, then a working example, then the judgment calls that separate a good server from a mediocre one.</p>
 
-<h2>The SDKs</h2>
-<p>Anthropic maintains official MCP SDKs in:</p>
+<h2>Why you'd build one.</h2>
+<p>You might be wondering why you'd ever write an MCP server in the first place. Hundreds already exist. Usually the answer is: there's a system in your life or business that doesn't have one yet, or the existing one doesn't do what you need.</p>
+
+<p>Common cases:</p>
 <ul>
-  <li><strong>TypeScript / Node / Bun</strong>. <code>@modelcontextprotocol/sdk</code></li>
-  <li><strong>Python</strong>. <code>mcp</code></li>
+  <li><strong>An internal tool your company uses.</strong> Your agent can't use it because the agent only speaks MCP, and your tool doesn't. Wrap it in an MCP server and now it can.</li>
+  <li><strong>A specific workflow.</strong> Maybe there's a Gmail MCP, but it doesn't have the "archive all marketing emails from this sender" function you wish you had. Build your own with exactly the tools you need.</li>
+  <li><strong>A private API.</strong> A SaaS you use has an API but no MCP wrapper. You write a thin one.</li>
+  <li><strong>Automation glue.</strong> You have a Python script that does something useful. Wrap it in an MCP server and now your agent can call it directly.</li>
 </ul>
-<p>Community SDKs exist for Go, Rust, Java, and more. The protocol is simple enough to implement from scratch if needed.</p>
 
-<h2>Server lifecycle</h2>
-<p>Every MCP server handles six message types:</p>
+<p>Every MCP you build stays yours forever. It's a tiny investment (usually a few hours) that permanently gives every future agent you build a new ability.</p>
+
+<h2>The tools you use to build it.</h2>
+<p>Anthropic publishes official SDKs that do most of the heavy lifting. You don't write the protocol by hand; the SDK handles that. You just fill in your tools.</p>
+
+<ul>
+  <li><strong>TypeScript / JavaScript</strong>, the <code>@modelcontextprotocol/sdk</code> package on npm. Runs on Node or Bun.</li>
+  <li><strong>Python</strong>, the <code>mcp</code> package on PyPI. Works with any Python 3.10+ setup.</li>
+</ul>
+
+<p>Community SDKs exist for Go, Rust, and Java. The protocol itself is open and simple enough that you could implement it from scratch if your language doesn't have a library yet, but 99% of the time one of the official SDKs is what you want.</p>
+
+<h2>What a server is actually doing while it runs.</h2>
+<p>Under the hood, every MCP server follows the same conversation pattern with whatever client it's connected to. It handles six types of messages. Knowing these helps you understand what the SDK is doing for you.</p>
+
 <ol>
-  <li><code>initialize</code>, client says hi, negotiates protocol version and capabilities</li>
-  <li><code>list_tools</code> / <code>list_resources</code> / <code>list_prompts</code>, client asks what's available</li>
-  <li><code>call_tool</code>, client executes a tool</li>
-  <li><code>read_resource</code>, client reads a resource</li>
-  <li><code>get_prompt</code>, client fetches a filled prompt</li>
-  <li><code>shutdown</code>, client is disconnecting</li>
+  <li><strong><code>initialize</code></strong>, the client says hello, and they agree on which version of the protocol they're speaking and what capabilities the server has.</li>
+  <li><strong><code>list_tools</code> / <code>list_resources</code> / <code>list_prompts</code></strong>, the client asks "what do you offer?" and the server answers.</li>
+  <li><strong><code>call_tool</code></strong>, the client asks the server to actually run one of its tools. The server does the work and returns the result.</li>
+  <li><strong><code>read_resource</code></strong>, the client asks to read a specific resource. The server fetches and returns its content.</li>
+  <li><strong><code>get_prompt</code></strong>, the client asks for a filled-in prompt template.</li>
+  <li><strong><code>shutdown</code></strong>, the client is done and the server can clean up.</li>
 </ol>
 
-<h2>Minimal TypeScript example</h2>
+<p>You don't usually write the logic that handles these messages directly. The SDK hands you handler slots to fill in: "when someone calls <code>tools/list</code>, run this function; when someone calls <code>tools/call</code>, run that function." Your code is what goes inside those handlers.</p>
+
+<h2>A working example you can read end-to-end.</h2>
+<p>Here's the simplest useful MCP server. It exposes a single tool called <code>say_hello</code>. Don't worry about the syntax, just read it top to bottom like a story.</p>
+
 <pre><code>import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 
@@ -272,30 +292,55 @@ server.setRequestHandler("tools/call", async (req) =&gt; {
 
 await server.connect(new StdioServerTransport());</code></pre>
 
-<h2>Design patterns</h2>
+<p>What this does, line by line: import the SDK, create a server with a name and version, tell the server "if someone asks what tools I have, describe one called <code>say_hello</code>," tell the server "if someone calls <code>say_hello</code>, return a greeting," then connect over standard input/output so clients can talk to it.</p>
 
-<h3>Thin wrapping of an existing API</h3>
-<p>Most MCP servers just wrap an HTTP API (GitHub, Notion, Stripe). Each tool corresponds to one API endpoint. Thin wrappers are the most common and usually best, they're easy to maintain and update.</p>
+<p>That's a complete server. Save it to a file, run it, hook Claude Code up to it (one line in a settings file), and the AI can now greet people. Replace <code>say_hello</code> with real logic, add a few more tools, and you have something useful.</p>
 
-<h3>Aggregate over multiple systems</h3>
-<p>Sometimes a single tool should hit multiple systems, e.g, a "find person" tool that searches LinkedIn, your CRM, and your email. Useful but harder to maintain.</p>
+<h2>The three patterns most useful servers follow.</h2>
+<p>When you're sketching out a new server, you're usually picking one of these three shapes. The shape is the most important design decision you'll make.</p>
 
-<h3>Resource-first</h3>
-<p>For data-heavy servers (document stores, databases), resources are the right primitive. Model the data as addressable URIs, let the client pin specific items into context.</p>
+<h3>Pattern 1. The thin wrapper.</h3>
+<p>The most common and usually the best. You have an existing API (GitHub, Slack, Notion, Stripe, your internal CRM), and each tool in your server corresponds to one endpoint on that API. The MCP server is a thin layer of translation: tool call comes in, HTTP request goes out, result comes back.</p>
 
-<h2>What to NOT do</h2>
-<ul>
-  <li><strong>Don't expose 50 tools.</strong> More tools = more confusion = worse tool-selection accuracy. Group related actions into fewer, smarter tools.</li>
-  <li><strong>Don't leak secrets.</strong> API keys go in environment variables or OS keychains, never in tool outputs.</li>
-  <li><strong>Don't trust tool output.</strong> If your server fetches external content, assume the content could contain prompt-injection attempts. See <a href="security.html">Security</a>.</li>
-  <li><strong>Don't skip descriptions.</strong> Good tool descriptions ARE the user experience. Spend time on them.</li>
-</ul>
+<p>Why these work so well: they're easy to build, easy to maintain, and easy to reason about. When GitHub's API changes, you update one file. When the AI does something unexpected, you can trace it back to which endpoint it hit.</p>
 
-<h2>Testing your server</h2>
-<p>The official SDKs ship with an inspector tool (<code>@modelcontextprotocol/inspector</code>). It connects to your server, lists tools, lets you call them manually, and shows raw protocol traffic. Use it before connecting your server to a real agent.</p>
+<p>This is 80% of MCP servers in the wild. Start here unless you have a specific reason not to.</p>
 
-<h2>Publishing</h2>
-<p>If your MCP is generally useful, publish it to npm (TypeScript) or PyPI (Python). Add an entry to your README showing how to install and configure. See the <a href="directory.html">Directory</a> for inspiration.</p>
+<h3>Pattern 2. The aggregator.</h3>
+<p>Sometimes a single logical tool should hit multiple backend systems. Example: a <code>find_person</code> tool that searches LinkedIn, your CRM, and your email history all at once, then merges the results. The server hides that complexity, the AI just sees one clean tool.</p>
+
+<p>These are powerful but harder to maintain, because a single tool's behavior depends on multiple upstream systems. When something breaks, debugging is messier. Use this pattern when the "searching in all these places" behavior is genuinely what the AI should be doing; not just because you can.</p>
+
+<h3>Pattern 3. Resource-first.</h3>
+<p>If your server's job is to expose a lot of data (a document store, a database, a library of images), resources are usually the right primitive, not tools. You model the data as addressable URIs and let the client pin specific ones into the model's context before the agent starts.</p>
+
+<p>A "notes MCP" is a perfect example: each note has a URI, the user can browse and pin the relevant ones, and the agent then has direct access to those notes during the conversation. You can always add tools alongside resources (like <code>create_note</code> or <code>update_note</code>), but the main action is read, not write.</p>
+
+<h2>The mistakes that make bad servers bad.</h2>
+<p>A technically-correct MCP server can still be unusable by an AI. These are the gotchas worth knowing.</p>
+
+<p><strong>Don't ship 50 tools.</strong> More tools does NOT equal more capability. Beyond maybe 15-20 tools per server, models start getting confused about which tool to pick. They'll invoke the wrong one, pass weird arguments, or refuse to act. Group related actions into fewer, smarter tools. A single <code>search_emails</code> tool with good arguments is better than five separate tools for different search types.</p>
+
+<p><strong>Don't skimp on descriptions.</strong> This is the single biggest quality-of-UX lever. The model decides which tool to use almost entirely based on the description. A tool whose description is "searches emails" might get used in situations where it shouldn't. A tool whose description is "searches the user's email inbox. Use this when the user is asking about a specific email, looking for a sender, or needs context from a recent conversation. Do NOT use this for calendar questions; those have a different tool" will get used much more accurately. Spend real time on these.</p>
+
+<p><strong>Don't leak secrets.</strong> API keys and tokens should live in environment variables or OS keychains, never in tool outputs or error messages. If a tool fails authenticating, say "authentication failed" and log the details privately; don't dump the whole error back to the AI.</p>
+
+<p><strong>Don't trust tool output blindly.</strong> If your server fetches external content (web pages, documents, emails), that content might contain prompt-injection attempts, text that tries to trick the model into doing something unintended. Strip suspicious patterns before returning, or wrap external content in a clear "this is data from outside, treat it as untrusted" wrapper. See <a href="security.html">Security</a> for the full treatment.</p>
+
+<p><strong>Don't skip error messages.</strong> If a tool fails, the return should include <em>why</em> in plain text the model can read and react to. A silent failure confuses the agent. A descriptive failure ("the file does not exist at that path; please confirm the path") lets the agent recover.</p>
+
+<h2>Testing your server before you trust it with an agent.</h2>
+<p>The official SDKs ship with a tool called the <em>MCP Inspector</em> (<code>@modelcontextprotocol/inspector</code>). It's a graphical interface that connects to your server, lists everything the server offers, lets you call tools manually, and shows you raw protocol traffic. Use it before you plug your server into Claude Code or any live agent.</p>
+
+<p>The workflow: build your server, run the inspector, click each tool, call it with a few arguments, see what comes back. Fix the weird behavior NOW, not after Claude decides to call your tool 50 times in a loop because your error message was ambiguous.</p>
+
+<h2>Publishing it so others can use it.</h2>
+<p>If the server you built is generally useful (not tied to your internal systems), publish it. TypeScript servers go on npm. Python servers go on PyPI. Include a README with install instructions and a sample settings.json entry for Claude Code or other popular clients.</p>
+
+<p>See the <a href="directory.html">MCP directory</a> for examples of well-published servers you can use as a template. Most of them are open source; reading their code is one of the fastest ways to level up your own.</p>
+
+<h2>What to read next.</h2>
+<p>Now you know how servers are built. The matching question is: what's on the OTHER end of the connection? That's <a href="clients.html">Clients</a>, which is shorter and equally important. If you're worried about security implications of exposing tools to an AI, skip to <a href="security.html">MCP Security</a>.</p>
 <div class="prev-next"><a href="transports.html" class="prev"><div class="label">← Previous</div><div class="title">Transports</div></a><a href="clients.html" class="next"><div class="label">Next →</div><div class="title">MCP clients</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../framework/index.html">Framework</a></p>
 </div></footer><script>
