@@ -219,76 +219,163 @@
 <a href="../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../what-is-autonomous-ai.html">What is autonomous AI</a></li><li><a href="../the-autonomy-spectrum.html">The autonomy spectrum</a></li><li><a href="../glossary.html">Glossary</a></li></ul><h4>Claude</h4><ul><li><a href="../claude/overview.html">Overview</a></li><li><a href="../claude/prompting-for-agents.html">Prompting for agents</a></li><li><a href="../claude/extended-thinking.html">Extended thinking</a></li><li><a href="../claude/tool-use.html">Tool use</a></li></ul><h4>MCP</h4><ul><li><a href="../mcp/index.html">Overview</a></li><li><a href="../mcp/what-is-mcp.html">What is MCP</a></li><li><a href="../mcp/anatomy.html">Anatomy</a></li><li><a href="../mcp/transports.html">Transports</a></li><li><a href="../mcp/servers.html">Servers</a></li><li><a href="../mcp/clients.html">Clients</a></li><li><a href="../mcp/security.html">Security</a></li><li><a href="../mcp/directory.html">Directory</a></li></ul><h4>Plugins</h4><ul><li><a href="../plugins/index.html">Overview</a></li><li><a href="../plugins/vs-mcp.html">Plugins vs MCP</a></li><li><a href="../plugins/marketplace.html">Marketplace</a></li></ul><h4>Claude Code</h4><ul><li><a href="../claude-code/index.html">Overview</a></li><li><a href="../claude-code/settings.html">Settings</a></li><li><a href="../claude-code/permissions.html">Permissions</a></li><li><a href="../claude-code/hooks.html">Hooks</a></li><li><a href="../claude-code/skills.html">Skills</a></li><li><a href="../claude-code/memory.html">Memory</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/index.html">Overview</a></li><li><a href="../patterns/react-loop.html">ReAct loop</a></li><li><a href="../patterns/plan-execute.html">Plan-execute</a></li><li><a href="../patterns/multi-agent.html">Multi-agent</a></li><li><a href="../patterns/evaluation.html">Evaluation</a></li><li><a href="../patterns/prompt-caching.html">Prompt caching</a></li></ul><h4>Autonomous</h4><ul><li><a href="../autonomous/index.html">Overview</a></li><li><a href="../autonomous/headless.html">Headless</a></li><li><a href="../autonomous/scheduling.html">Scheduling</a></li><li><a href="../autonomous/self-monitoring.html" class="active">Self-monitoring</a></li><li><a href="../autonomous/safety.html">Safety</a></li></ul><h4>Build Guides</h4><ul><li><a href="../build/index.html">Overview</a></li><li><a href="../build/first-agent.html">First agent (60 min)</a></li><li><a href="../build/voice-agent.html">Voice agent</a></li><li><a href="../build/research-agent.html">Research agent</a></li></ul><h4>Tools</h4><ul><li><a href="../tools/browser-automation.html">Browser automation</a></li><li><a href="../tools/desktop-control.html">Desktop control</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Framework</a><span class="sep">›</span><a href="../autonomous/index.html">Autonomous</a><span class="sep">›</span><span>Self-monitoring</span></div><h1 class="title" style="font-size:clamp(32px,4.5vw,42px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">Self-monitoring</h1><div class="article-meta"><span>📖 5 min read</span><span>Updated 2026-04-18</span></div>
-<p class="lede">An autonomous agent is running without you. How do you know it's still working? The answer: the agent tells you. Self-monitoring is what separates "running" from "reliable."</p>
+<p class="lede">Your autonomous agent is running somewhere without you. How do you actually know it's still doing its job? The answer is that it tells you — and the way it tells you is the difference between "the agent works" and "the agent worked until that Thursday four weeks ago and nobody noticed." Self-monitoring is what turns an agent from a demo into a reliable piece of infrastructure.</p>
 
-<h2>What to monitor</h2>
-<ul>
-  <li><strong>Is it running?</strong> Heartbeat pings from each run</li>
-  <li><strong>Is it finishing?</strong> Duration per run, if it drifts, something's wrong</li>
-  <li><strong>Is it succeeding?</strong> Per-run success/failure flag</li>
-  <li><strong>Is it doing quality work?</strong> Output quality score (eval every Nth run)</li>
-  <li><strong>Is it spending too much?</strong> Tokens + $ per run</li>
-  <li><strong>Is it safe?</strong> Tool calls vs deny list; any flagged outputs</li>
-</ul>
+<h2>The six things you need to know about a running agent.</h2>
 
-<h2>Three layers of monitoring</h2>
+<div class="sketch" data-viewbox="0 0 900 320" id="dg-sm-what">
+  <svg></svg>
+  <div class="sketch-caption">~ the six questions to track ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-sm-what');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.table(svg, rc, {
+    x: 20, y: 30,
+    cols: [
+      { title: 'Question',             w: 250 },
+      { title: 'Signal to track',      w: 320 },
+      { title: 'What bad looks like',  w: 310 }
+    ],
+    rows: [
+      ['Is it running at all?',     'heartbeat per run',                    'no ping for >N hours'],
+      ['Is it finishing?',          'duration per run',                     '3× longer than baseline'],
+      ['Is it succeeding?',         'success/failure flag',                 'success rate dropping'],
+      ['Is the work any good?',     'output quality score (sampled)',       'quality score drifting down'],
+      ['Is it spending sanely?',    'tokens + \$ per run',                  'cost per run climbing'],
+      ['Is it safe?',               'deny-list hits + flagged outputs',     'any hit on the never-list']
+    ]
+  });
+});
+</script>
 
-<h3>1. Liveness</h3>
-<p>Does the agent run at all? Use a dead-man's switch, every run pings a service. If pings stop, you get alerted.</p>
-<pre><code># At end of successful run
+<p>All six matter. You can skip any one and it'll be fine — until one day it won't. The agents that run reliably for a year are the ones where all six signals are tracked from day one.</p>
+
+<h2>The three layers of monitoring.</h2>
+<p>Think of it as three checks, in order of how cheap and how noisy they are.</p>
+
+<div class="sketch" data-viewbox="0 0 900 280" id="dg-sm-layers">
+  <svg></svg>
+  <div class="sketch-caption">~ three layers: liveness → correctness → quality ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-sm-layers');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.stack(svg, rc, {
+    x: 110, y: 25, w: 680, layerH: 70,
+    layers: [
+      { label: '3. Quality',      sub: 'is the output any good? — LLM-as-judge, sampled',      color: '#fef3c7' },
+      { label: '2. Correctness',  sub: 'did it do the right thing? — per-run check',           color: '#fce7f3' },
+      { label: '1. Liveness',     sub: 'is it running? — dead-man\'s-switch heartbeat',        color: '#d1fae5' }
+    ]
+  });
+});
+</script>
+
+<h3>Layer 1. Liveness.</h3>
+<p>Is the agent running at all? Every successful run pings a dead-man's-switch service. If the pings stop, the service alerts you. Cheap to set up (one curl call), saves you from the worst failure mode (total silence).</p>
+
+<pre><code># At the end of a successful run:
 curl https://hc-ping.com/your-check-uuid</code></pre>
-<p>Services: Healthchecks.io, BetterUptime, Dead Man's Snitch.</p>
 
-<h3>2. Correctness</h3>
-<p>Did the agent do what it was supposed to? Define a correctness check. For a reporting agent: "Report was generated and posted to #reports channel." Run the check after each run. Log result.</p>
+<p>Services: Healthchecks.io, BetterUptime, Dead Man's Snitch. Any of them takes five minutes to wire up. No excuse not to.</p>
 
-<h3>3. Quality</h3>
-<p>Is the output actually good, or is the agent producing garbage? This is harder. Run a lightweight eval on a sample of outputs (every 10th run, or random sampling). Use LLM-as-judge with a rubric.</p>
+<h3>Layer 2. Correctness.</h3>
+<p>Did the agent actually do its job? For a reporting agent: did the report get posted to the right Slack channel? For an email agent: did the draft appear in drafts? Define a concrete check, run it after each run, log the result.</p>
 
-<h2>Self-reporting patterns</h2>
+<p>The check itself can be as simple as "does the file exist at this path and was it updated in the last hour?" Not hard. Still needs to be written and wired in.</p>
 
-<h3>Daily digest</h3>
-<p>End of each day, the agent summarizes what it did, flagged issues, and notable outputs. Sent to you via email or Slack.</p>
+<h3>Layer 3. Quality.</h3>
+<p>Harder. The output exists, it went to the right place, but is it GOOD? Is the report actually accurate? Is the summary actually useful? Two ways to check:</p>
 
-<h3>Anomaly flagging</h3>
-<p>If something is far from baseline (3× longer run time, 5× more tool calls, output size way off), the agent stops and notifies you.</p>
-
-<h3>Confidence scores</h3>
-<p>Agent rates its own confidence per task. Low-confidence outputs get flagged for human review instead of shipping.</p>
-
-<h2>When to auto-restart</h2>
 <ul>
-  <li><strong>Transient failures</strong> (network, rate limits), yes, with exponential backoff, max 3 retries</li>
-  <li><strong>Tool errors</strong>, depends. Retry once with different args; then escalate.</li>
-  <li><strong>Model errors (overload, 500s)</strong>, retry with backoff; fall back to cheaper model if needed</li>
-  <li><strong>Policy violations (denied tool)</strong>, don't retry. Log and escalate.</li>
+  <li><strong>Sample with LLM-as-judge.</strong> Every 10th run (or random sample), ping an LLM with the output and a rubric. Get a quality score. Track over time.</li>
+  <li><strong>Human spot-check.</strong> Weekly, a person reads 2-3 outputs at random and scores them. Expensive but catches drift that LLM-as-judge misses.</li>
 </ul>
 
-<h2>Escalation ladder</h2>
-<p>When the agent can't proceed, what happens?</p>
+<p>Both. Neither one alone is enough.</p>
+
+<h2>Three self-reporting patterns.</h2>
+
+<h3>Daily digest.</h3>
+<p>At the end of every day, the agent summarizes what it did: how many runs, what was unusual, any failures, the most interesting outputs. Gets sent to Slack or email. Five-minute read for you. Good for anything that runs frequently.</p>
+
+<h3>Anomaly flagging.</h3>
+<p>The agent compares each run to baseline (computed from the last 30 days): if this run took 3× longer, hit 5× more tool calls, or produced an output that's way off typical size, it stops and pings you. Auto-adjusts as normal behavior evolves. Catches "something's weird" cases without you having to watch.</p>
+
+<h3>Confidence scores.</h3>
+<p>The agent rates its own confidence in each output. High confidence → ship it. Low confidence → flag for human review before shipping. You set the threshold based on how much risk you're willing to accept. Beautiful compromise between full auto and total babysitting.</p>
+
+<h2>When to auto-restart, when not to.</h2>
+
+<div class="sketch" data-viewbox="0 0 900 300" id="dg-sm-retry">
+  <svg></svg>
+  <div class="sketch-caption">~ when to retry, when to escalate ~</div>
+</div>
+<script>
+document.addEventListener('sketch:ready', function() {
+  var wrap = document.getElementById('dg-sm-retry');
+  if (!wrap || wrap.dataset.drawn) return;
+  wrap.dataset.drawn = '1';
+  var svg = wrap.querySelector('svg');
+  var rc = sketch.rc(svg);
+  sketch.table(svg, rc, {
+    x: 20, y: 30,
+    cols: [
+      { title: 'Failure type',              w: 260 },
+      { title: 'Auto-retry?',               w: 220 },
+      { title: 'How',                       w: 300 }
+    ],
+    rows: [
+      ['Transient (network, rate limits)',  'yes',              'exponential backoff, max 3 retries'],
+      ['Tool error with clear fix',         'once, then escalate', 'retry once with different args'],
+      ['Model overload / 500s',             'yes',              'backoff + fallback to cheaper model'],
+      ['Policy violation (denied call)',    'NO',               'log loudly; escalate to human'],
+      ['Unexpected exception',              'NO',               'snapshot state; page the owner']
+    ]
+  });
+});
+</script>
+
+<h2>The escalation ladder.</h2>
+<p>When the agent hits a wall, it shouldn't just stop. It should walk down a ladder of fallbacks, in order. Each rung is cheaper than the one below but sometimes fails:</p>
+
 <ol>
-  <li><strong>Retry</strong>, same task, slight variation</li>
-  <li><strong>Fallback</strong>, simpler version of the task</li>
-  <li><strong>Pause</strong>, stop this run, wait for next cycle</li>
-  <li><strong>Notify</strong>, send a message to human; include context</li>
-  <li><strong>Disable</strong>, turn off future runs until human resets</li>
+  <li><strong>Retry.</strong> Same task, maybe slight variation. Transient failures usually clear on their own.</li>
+  <li><strong>Fallback.</strong> A simpler version of the task (e.g., skip the detail analysis, just produce the summary).</li>
+  <li><strong>Pause.</strong> Stop this run, don't try again until the next scheduled window.</li>
+  <li><strong>Notify.</strong> Send a structured message to a human. Include what was attempted, why it failed, what context would help.</li>
+  <li><strong>Disable.</strong> Turn off future runs until a human resets the agent.</li>
 </ol>
 
-<h2>Useful signals to track per-run</h2>
+<p>The agent tries rung 1 first. If that fails, rung 2. And so on. By the time it's paging you (rung 4), the other rungs have been tried. Your pages are rare, and each one matters.</p>
+
+<h2>The signals to capture on every run.</h2>
+<p>Each run emits a structured log record. At minimum:</p>
+
 <ul>
-  <li>Start time + duration</li>
+  <li>Start time, duration, end time</li>
   <li>Turn count</li>
-  <li>Tokens in / out / cached</li>
-  <li>Cost in $</li>
-  <li>Tool call count (per tool)</li>
-  <li>Errors encountered</li>
-  <li>Output size</li>
-  <li>Exit reason: completed / max-turns / error / escalated</li>
+  <li>Tokens: input, output, cached</li>
+  <li>Cost in dollars</li>
+  <li>Tool-call count, per tool</li>
+  <li>Errors encountered (if any)</li>
+  <li>Output size (length of response, files written, etc.)</li>
+  <li>Exit reason: <code>completed</code>, <code>max-turns</code>, <code>error</code>, <code>escalated</code></li>
 </ul>
-<p>Stored as JSON lines in a log file, you can grep for patterns after the fact.</p>
+
+<p>Store as JSON lines in a log file (or a log service). You can grep for patterns later, which is how you find the slow creep that would otherwise take you three months to notice.</p>
 
 <div class="callout insight">
-  <strong>The agent is a system.</strong> Treat its observability like you would a production service. Latency. Error rate. Cost. Quality. You need all four.
+  <strong>Your agent is a system, treat it like one.</strong> Observability isn't optional for production software, and it shouldn't be optional for production agents. You need latency, error rate, cost, and quality, all four, tracked over time. The teams whose agents run reliably for years invest in monitoring from week one, not the week after the first incident.
 </div>
 <div class="prev-next"><a href="scheduling.html" class="prev"><div class="label">← Previous</div><div class="title">Scheduling</div></a><a href="safety.html" class="next"><div class="label">Next →</div><div class="title">Safety boundaries</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../framework/index.html">Framework</a></p>
