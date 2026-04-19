@@ -37,6 +37,11 @@
 .gloss-card-topic { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #666; margin: 2px 0 6px 0; }
 .gloss-card-summary { font-size: 13px; color: #666; line-height: 1.5; }
 .gloss-count { color: #666; font-size: 14px; margin-bottom: 12px; }
+
+.gloss-section-head { font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em; color: #4a00e0; font-weight: 800; margin: 32px 0 8px 0; }
+.gloss-explain, .gloss-why { font-size: 16px; line-height: 1.75; color: #2a2a30; margin: 0 0 8px 0; }
+.gloss-example { font-size: 15px; line-height: 1.7; color: #3f3f46; background: #f7f5ff; border-left: 3px solid #4a00e0; padding: 14px 18px; border-radius: 6px; margin: 0 0 8px 0; white-space: pre-line; }
+
 </style>
 <link rel="icon" type="image/png" href="../logo.png">
 
@@ -247,10 +252,19 @@
 </div></nav><div class="gloss-layout">
 <a href="index.html" style="color:#4a00e0; text-decoration: none; font-size: 14px;">← Glossary</a>
 <span class="gloss-topic" style="margin-top: 24px;">Marketing</span>
-<h1 class="gloss-term">Incrementality Testing</h1>
-<p class="gloss-def">Testing whether a marketing channel or tactic actually causes conversions or just captures them.</p>
-<p class="gloss-detail">Classic method: geo holdout. Some conversions would happen anyway; incrementality measures the real lift.</p>
-<div class="gloss-related"><h4>Related terms</h4><a href="attribution.html">Attribution</a><a href="mer.html">MER</a></div>
+<h1 class="gloss-term">Incrementality</h1>
+<p class="gloss-def">Did this marketing actually cause the sale? Or would the customer have bought anyway?</p>
+
+<h3 class="gloss-section-head">Explained simply.</h3>
+<p class="gloss-explain">Incrementality asks the counterfactual question: if we hadn't run this campaign, would these sales still have happened? Because a lot of what attribution calls 'conversions' would've happened anyway. Retargeting ads 'attributed' to a sale that was already going to close are a classic case. You're just getting credit for inevitability.</p>
+
+<h3 class="gloss-section-head">An example.</h3>
+<div class="gloss-example">Turn off brand search ads for two weeks. If revenue from branded terms drops 5%, that's the incremental contribution. The other 95% would have happened organically (customers typing your name into Google). You just saved 95% of that ad spend.</div>
+
+<h3 class="gloss-section-head">Why it matters.</h3>
+<p class="gloss-why">Incrementality is the honest question. Attribution often credits channels that aren't actually driving anything. Geo-holdout tests, randomized experiments, and MMM are ways to measure it. The truth is usually: you can cut 20-40% of ad spend without losing revenue.</p>
+
+<div class="gloss-related"><h4>Related terms</h4><a href="attribution.html">Attribution</a><a href="mmm.html">Mmm</a><a href="roas.html">Roas</a></div>
 </div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a></p>
 </div></footer><script>

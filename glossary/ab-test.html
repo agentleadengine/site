@@ -37,6 +37,11 @@
 .gloss-card-topic { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #666; margin: 2px 0 6px 0; }
 .gloss-card-summary { font-size: 13px; color: #666; line-height: 1.5; }
 .gloss-count { color: #666; font-size: 14px; margin-bottom: 12px; }
+
+.gloss-section-head { font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em; color: #4a00e0; font-weight: 800; margin: 32px 0 8px 0; }
+.gloss-explain, .gloss-why { font-size: 16px; line-height: 1.75; color: #2a2a30; margin: 0 0 8px 0; }
+.gloss-example { font-size: 15px; line-height: 1.7; color: #3f3f46; background: #f7f5ff; border-left: 3px solid #4a00e0; padding: 14px 18px; border-radius: 6px; margin: 0 0 8px 0; white-space: pre-line; }
+
 </style>
 <link rel="icon" type="image/png" href="../logo.png">
 
@@ -248,9 +253,18 @@
 <a href="index.html" style="color:#4a00e0; text-decoration: none; font-size: 14px;">← Glossary</a>
 <span class="gloss-topic" style="margin-top: 24px;">Marketing</span>
 <h1 class="gloss-term">A/B Test</h1>
-<p class="gloss-def">Comparing two variants (A and B) to determine which performs better.</p>
-<p class="gloss-detail">Requires statistical significance. Small differences need large samples.</p>
-<div class="gloss-related"><h4>Related terms</h4><a href="cro.html">CRO</a></div>
+<p class="gloss-def">A controlled experiment: half the visitors see A, half see B, measure which wins.</p>
+
+<h3 class="gloss-section-head">Explained simply.</h3>
+<p class="gloss-explain">A/B testing (also called split testing) is how you know if a change actually worked. You randomly split traffic: 50% see the original (A), 50% see the variant (B). Same period, same audience, different experience. Whichever has the higher conversion rate (above a statistical threshold) wins. Without this, you're guessing.</p>
+
+<h3 class="gloss-section-head">An example.</h3>
+<div class="gloss-example">Test: current button text 'Sign Up' (A) vs new text 'Start Free Trial' (B). Run for two weeks. A converts at 4.2%, B at 5.1%. B wins by 21%; that's significant over enough visitors. Ship B as the new default. Design the next test.</div>
+
+<h3 class="gloss-section-head">Why it matters.</h3>
+<p class="gloss-why">Intuition about what will convert is usually wrong. A/B testing replaces opinion with evidence. But: you need enough traffic to reach statistical significance (usually thousands of visitors per variant), and you can only test so many things at once. Prioritize tests by potential impact.</p>
+
+<div class="gloss-related"><h4>Related terms</h4><a href="cro.html">Cro</a><a href="conversion-rate.html">Conversion Rate</a></div>
 </div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a></p>
 </div></footer><script>

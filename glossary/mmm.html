@@ -37,6 +37,11 @@
 .gloss-card-topic { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #666; margin: 2px 0 6px 0; }
 .gloss-card-summary { font-size: 13px; color: #666; line-height: 1.5; }
 .gloss-count { color: #666; font-size: 14px; margin-bottom: 12px; }
+
+.gloss-section-head { font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em; color: #4a00e0; font-weight: 800; margin: 32px 0 8px 0; }
+.gloss-explain, .gloss-why { font-size: 16px; line-height: 1.75; color: #2a2a30; margin: 0 0 8px 0; }
+.gloss-example { font-size: 15px; line-height: 1.7; color: #3f3f46; background: #f7f5ff; border-left: 3px solid #4a00e0; padding: 14px 18px; border-radius: 6px; margin: 0 0 8px 0; white-space: pre-line; }
+
 </style>
 <link rel="icon" type="image/png" href="../logo.png">
 
@@ -247,10 +252,19 @@
 </div></nav><div class="gloss-layout">
 <a href="index.html" style="color:#4a00e0; text-decoration: none; font-size: 14px;">← Glossary</a>
 <span class="gloss-topic" style="margin-top: 24px;">Marketing</span>
-<h1 class="gloss-term">Marketing Mix Modeling</h1>
-<p class="gloss-def">Statistical modeling of total marketing spend vs total revenue to estimate each channel's contribution.</p>
-<p class="gloss-detail">Privacy-safe alternative to user-level attribution. Requires scale and time-series data.</p>
-<div class="gloss-related"><h4>Related terms</h4><a href="attribution.html">Attribution</a><a href="incrementality.html">Incrementality Testing</a></div>
+<h1 class="gloss-term">MMM (Marketing Mix Modeling)</h1>
+<p class="gloss-def">A statistical technique to measure the impact of each marketing channel on revenue, without cookies.</p>
+
+<h3 class="gloss-section-head">Explained simply.</h3>
+<p class="gloss-explain">MMM uses historical data, typically weekly or monthly spend and revenue, to statistically tease out how much each channel contributed. It doesn't rely on user tracking (which breaks in a privacy-focused world). Outputs: contribution curves, saturation points, and cross-channel effects. Good MMM tells you how much more revenue you'd get from an extra $100k in each channel.</p>
+
+<h3 class="gloss-section-head">An example.</h3>
+<div class="gloss-example">MMM reveals: Facebook saturates around $50k/week (diminishing returns past that), Google still has room up to $100k/week, and podcast ads take 6 weeks to show impact. You rebalance spend based on the curves, not on last-touch attribution.</div>
+
+<h3 class="gloss-section-head">Why it matters.</h3>
+<p class="gloss-why">In a cookie-less, privacy-first world, click-level attribution is dying. MMM is making a comeback. It's expensive to do well (usually needs a data science team or an agency), but for businesses with real spend it's worth it.</p>
+
+<div class="gloss-related"><h4>Related terms</h4><a href="attribution.html">Attribution</a><a href="mer.html">Mer</a><a href="incrementality.html">Incrementality</a></div>
 </div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a></p>
 </div></footer><script>

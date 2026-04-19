@@ -37,6 +37,11 @@
 .gloss-card-topic { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #666; margin: 2px 0 6px 0; }
 .gloss-card-summary { font-size: 13px; color: #666; line-height: 1.5; }
 .gloss-count { color: #666; font-size: 14px; margin-bottom: 12px; }
+
+.gloss-section-head { font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em; color: #4a00e0; font-weight: 800; margin: 32px 0 8px 0; }
+.gloss-explain, .gloss-why { font-size: 16px; line-height: 1.75; color: #2a2a30; margin: 0 0 8px 0; }
+.gloss-example { font-size: 15px; line-height: 1.7; color: #3f3f46; background: #f7f5ff; border-left: 3px solid #4a00e0; padding: 14px 18px; border-radius: 6px; margin: 0 0 8px 0; white-space: pre-line; }
+
 </style>
 <link rel="icon" type="image/png" href="../logo.png">
 
@@ -248,9 +253,18 @@
 <a href="index.html" style="color:#4a00e0; text-decoration: none; font-size: 14px;">← Glossary</a>
 <span class="gloss-topic" style="margin-top: 24px;">Marketing</span>
 <h1 class="gloss-term">Attribution</h1>
-<p class="gloss-def">Determining which marketing touchpoints get credit for a conversion.</p>
-<p class="gloss-detail">Post iOS 14 and cookie deprecation, attribution is noisier. Most advertisers use a mix of platform attribution + MER + incrementality tests.</p>
-<div class="gloss-related"><h4>Related terms</h4><a href="mer.html">MER</a><a href="incrementality.html">Incrementality Testing</a><a href="mmm.html">Marketing Mix Modeling</a></div>
+<p class="gloss-def">The act of deciding which channel/touchpoint deserves credit for a conversion.</p>
+
+<h3 class="gloss-section-head">Explained simply.</h3>
+<p class="gloss-explain">A customer sees your Facebook ad, searches Google, clicks an organic result, reads a blog, gets a retargeting ad, and finally buys. Which channel deserves credit? That's the attribution problem. Common models: first-touch (FB ad gets credit), last-touch (retargeting gets credit), linear (all equal), time-decay, position-based, and data-driven. Every model is wrong in some way.</p>
+
+<h3 class="gloss-section-head">An example.</h3>
+<div class="gloss-example">Revenue of $1M. Last-touch attribution: Facebook 20%, Google ads 35%, email 25%, organic 20%. First-touch shows a totally different story: organic 40%, FB 30%, email 15%, Google 15%. Same data, different slicing. Reality is somewhere in between.</div>
+
+<h3 class="gloss-section-head">Why it matters.</h3>
+<p class="gloss-why">Attribution tells you where to invest. Under-investing in early-funnel channels (because last-touch undercounts them) is the most common attribution mistake. Cross-check attribution models; use MER as the reality check; don't bet the business on one dashboard's view.</p>
+
+<div class="gloss-related"><h4>Related terms</h4><a href="mer.html">Mer</a><a href="roas.html">Roas</a><a href="mmm.html">Mmm</a><a href="incrementality.html">Incrementality</a></div>
 </div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a></p>
 </div></footer><script>

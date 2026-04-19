@@ -37,6 +37,11 @@
 .gloss-card-topic { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #666; margin: 2px 0 6px 0; }
 .gloss-card-summary { font-size: 13px; color: #666; line-height: 1.5; }
 .gloss-count { color: #666; font-size: 14px; margin-bottom: 12px; }
+
+.gloss-section-head { font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em; color: #4a00e0; font-weight: 800; margin: 32px 0 8px 0; }
+.gloss-explain, .gloss-why { font-size: 16px; line-height: 1.75; color: #2a2a30; margin: 0 0 8px 0; }
+.gloss-example { font-size: 15px; line-height: 1.7; color: #3f3f46; background: #f7f5ff; border-left: 3px solid #4a00e0; padding: 14px 18px; border-radius: 6px; margin: 0 0 8px 0; white-space: pre-line; }
+
 </style>
 <link rel="icon" type="image/png" href="../logo.png">
 
@@ -247,10 +252,19 @@
 </div></nav><div class="gloss-layout">
 <a href="index.html" style="color:#4a00e0; text-decoration: none; font-size: 14px;">← Glossary</a>
 <span class="gloss-topic" style="margin-top: 24px;">Business</span>
-<h1 class="gloss-term">NRR</h1>
-<p class="gloss-def">Net Revenue Retention. Revenue from existing customers this period ÷ their revenue last period.</p>
-<p class="gloss-detail">>100% means you're growing revenue from existing customers faster than churn. Elite SaaS is 120%+.</p>
-<div class="gloss-related"><h4>Related terms</h4><a href="churn.html">Churn</a></div>
+<h1 class="gloss-term">NRR (Net Revenue Retention)</h1>
+<p class="gloss-def">How much recurring revenue you keep from existing customers over a year, accounting for expansion AND churn.</p>
+
+<h3 class="gloss-section-head">Explained simply.</h3>
+<p class="gloss-explain">NRR = (starting revenue + expansions - churns - downgrades) / starting revenue. Over 100% means your existing customer base grew revenue even without new customers, they upgraded faster than they canceled. This is the holy grail of SaaS metrics. NRR > 120% means you could stop acquiring customers and still grow.</p>
+
+<h3 class="gloss-section-head">An example.</h3>
+<div class="gloss-example">Start year with $10M ARR. Existing customers expand to $12M, but some churn to $11M by year-end. NRR = $11M / $10M = 110%. Best SaaS companies are 130-150% NRR. Under 100% means your bucket is leaking faster than customers are topping it up.</div>
+
+<h3 class="gloss-section-head">Why it matters.</h3>
+<p class="gloss-why">NRR is the single most important metric for long-term SaaS health. High NRR compounds: even mediocre acquisition plus great NRR produces huge businesses. Low NRR means you're stuck on an acquisition treadmill forever.</p>
+
+<div class="gloss-related"><h4>Related terms</h4><a href="arr.html">Arr</a><a href="mrr.html">Mrr</a><a href="churn.html">Churn</a><a href="retention.html">Retention</a></div>
 </div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a></p>
 </div></footer><script>
