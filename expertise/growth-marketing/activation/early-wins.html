@@ -236,7 +236,44 @@ window.addEventListener('sketch:ready', function(){
     ['Analytics', 'First dashboard populated with live data']
   ]});
 });
-</script><ul><li>Sending the first message</li><li>Creating the first project</li><li>Getting the first response</li><li>Seeing first data</li><li>Completing first task</li></ul><h2>Design for</h2><p>Build onboarding around achieving multiple small wins in the first session, not one big win at the end.</p><h2>Celebrating wins</h2><p>Acknowledge wins: confetti, notification, progress bar. Minor dopamine hits reinforce.</p><h2>Avoid fake wins</h2><p>Don't congratulate users for achievements that aren't real. Users feel condescension.</p><div class="prev-next"></div></div></div><footer><div class="container">
+</script><ul><li>Sending the first message</li><li>Creating the first project</li><li>Getting the first response</li><li>Seeing first data</li><li>Completing first task</li></ul><h2>Design for</h2><p>Build onboarding around achieving multiple small wins in the first session, not one big win at the end.</p><h2>Celebrating wins</h2><p>Acknowledge wins: confetti, notification, progress bar. Minor dopamine hits reinforce.</p><h2>Avoid fake wins</h2><p>Don't congratulate users for achievements that aren't real. Users feel condescension.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'One big win vs multiple early wins');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'One big win at the end', items: [
+      '45 min of setup before anything',
+      'Single "aha" moment at the end',
+      'Users lose momentum mid-flow',
+      'Drop-off at step 4 of 6',
+      'Activation rate: 22%'
+    ]},
+    right: {title: 'Multiple early wins', items: [
+      'Win 1 (first 30s): see a result',
+      'Win 2 (first 2 min): complete a task',
+      'Win 3 (first 5 min): save an artifact',
+      'Dopamine compounds through the flow',
+      'Activation rate: 58%'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Design onboarding around 3-5 small wins in the first session, one big win at the end loses users mid-flow</li>
+<li>Celebrate real wins with subtle UI feedback (progress bar, confetti, notification), skip fake celebrations users see through</li>
+<li>Sequence wins from easiest to most meaningful, the first 30 seconds must produce visible progress or users bounce</li>
+<li>Measure completion rate per win, not just final activation, reveals where in the flow you're losing people</li>
+<li>Pre-populate data where possible, a user's "first project" created with sample content feels like a win in 30 seconds</li>
+</ul>
+
+<div class="prev-next"></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

@@ -236,7 +236,35 @@ window.addEventListener('sketch:ready', function(){
     ['Slack', '2000 messages sent by a team']
   ]});
 });
-</script><ul><li>Facebook: adding 7 friends in 10 days</li><li>Slack: sending 2,000 messages in a team</li><li>Dropbox: installing on 2+ devices</li><li>Twitter: following 30 people</li></ul><h2>How to find yours</h2><p>Analyze retention by early actions. What did retained users do in week 1 that churned users didn't?</p><h2>Then</h2><p>Design onboarding to get new users to that action as fast as possible.</p><h2>Common mistake</h2><p>Making the aha moment too hard to reach. Shorten the path relentlessly.</p><div class="prev-next"></div></div></div><footer><div class="container">
+</script><ul><li>Facebook: adding 7 friends in 10 days</li><li>Slack: sending 2,000 messages in a team</li><li>Dropbox: installing on 2+ devices</li><li>Twitter: following 30 people</li></ul><h2>How to find yours</h2><p>Analyze retention by early actions. What did retained users do in week 1 that churned users didn't?</p><h2>Then</h2><p>Design onboarding to get new users to that action as fast as possible.</p><h2>Common mistake</h2><p>Making the aha moment too hard to reach. Shorten the path relentlessly.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Finding your aha moment, cohort reverse-engineering');
+  sketch.numberedSteps(svg, rc, {x: 40, y: 60, w: 820, stepH: 34, items: [
+    'Segment users into retained (30-day active) vs churned (never returned)',
+    'Compare first-week actions across both cohorts',
+    'Find actions that retained users did but churned users did not',
+    'Test correlation: did doing action X predict retention?',
+    'Redesign onboarding to force action X as fast as possible'
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Find your aha moment through retention cohort analysis, not product instinct, the data says things your team won't</li>
+<li>Target one specific action as the aha, not a vague "experience the value", measurable > aspirational</li>
+<li>Rebuild onboarding around that single action, every step that doesn't move users toward aha should be cut or deferred</li>
+<li>Measure % reaching aha within the first session, week, and month, and optimize relentlessly</li>
+<li>Re-derive the aha every 12 months, product changes shift which action correlates with retention, last year's aha may have moved</li>
+</ul>
+
+<div class="prev-next"></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

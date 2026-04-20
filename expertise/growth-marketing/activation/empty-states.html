@@ -241,7 +241,44 @@ window.addEventListener('sketch:ready', function(){
 });
 </script>
 
-<h2>Weak empty state</h2><p>'No items yet' with a shrug icon. Doesn't help.</p><h2>Strong empty state</h2><ul><li>Clear explanation of what goes here</li><li>One clear action button</li><li>Optional: example or template</li><li>Optional: brief why this matters</li></ul><h2>Common opportunity</h2><p>Every table, list, or dashboard has an empty state. Most are 'no data' placeholder. Each is an activation opportunity.</p><h2>Measure</h2><p>Click-through rate on empty-state CTAs. Optimize the ones users hit most.</p><div class="prev-next"></div></div></div><footer><div class="container">
+<h2>Weak empty state</h2><p>'No items yet' with a shrug icon. Doesn't help.</p><h2>Strong empty state</h2><ul><li>Clear explanation of what goes here</li><li>One clear action button</li><li>Optional: example or template</li><li>Optional: brief why this matters</li></ul><h2>Common opportunity</h2><p>Every table, list, or dashboard has an empty state. Most are 'no data' placeholder. Each is an activation opportunity.</p><h2>Measure</h2><p>Click-through rate on empty-state CTAs. Optimize the ones users hit most.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Weak empty state vs activating empty state');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Weak (activation leak)', items: [
+      '"No items yet" + shrug icon',
+      'No path forward',
+      'User closes tab',
+      'Feels like broken product',
+      'CTR on this screen: 5%'
+    ]},
+    right: {title: 'Activating (drives aha)', items: [
+      'One-sentence explanation of what belongs here',
+      'Primary CTA in product voice',
+      'Optional template or sample data',
+      'Contextual link to docs / video',
+      'CTR on this screen: 40-60%'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Audit every table, list, and dashboard in your product for empty states, each one is an activation opportunity</li>
+<li>Design each empty state with a single clear CTA, multiple CTAs in an empty state split attention and drop conversion</li>
+<li>Offer a template or sample row, "pre-filled example" CTAs often convert 2-3x higher than "create from scratch"</li>
+<li>Measure empty-state CTR separately from in-product CTR, they're different metrics and the empty-state is the activation funnel</li>
+<li>Review empty states quarterly, product adds new surfaces and new empty states that tend to start ugly and stay ugly</li>
+</ul>
+
+<div class="prev-next"></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

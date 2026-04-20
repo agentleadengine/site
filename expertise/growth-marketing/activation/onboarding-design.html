@@ -236,7 +236,44 @@ window.addEventListener('sketch:ready', function(){
     ['Get to aha fast', 'Cut anything delaying']
   ]});
 });
-</script><ul><li>Get to value in first session</li><li>Progressive disclosure (don't show everything)</li><li>One focused action per step</li><li>Celebrate progress</li></ul><h2>Common patterns</h2><ul><li>Empty-state CTAs pushing to aha</li><li>In-product guided tours (used sparingly)</li><li>Pre-populated templates</li><li>First-task wizards</li></ul><h2>Measurement</h2><ul><li>% reaching aha moment within X days</li><li>% completing onboarding checklist</li><li>Time from signup to first value</li></ul><h2>Avoid</h2><ul><li>Tutorial walls that block product use</li><li>Video-only onboarding for tools (show, don't tell)</li><li>Asking for everything upfront</li></ul><div class="prev-next"></div></div></div><footer><div class="container">
+</script><ul><li>Get to value in first session</li><li>Progressive disclosure (don't show everything)</li><li>One focused action per step</li><li>Celebrate progress</li></ul><h2>Common patterns</h2><ul><li>Empty-state CTAs pushing to aha</li><li>In-product guided tours (used sparingly)</li><li>Pre-populated templates</li><li>First-task wizards</li></ul><h2>Measurement</h2><ul><li>% reaching aha moment within X days</li><li>% completing onboarding checklist</li><li>Time from signup to first value</li></ul><h2>Avoid</h2><ul><li>Tutorial walls that block product use</li><li>Video-only onboarding for tools (show, don't tell)</li><li>Asking for everything upfront</li></ul>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Tutorial wall vs progressive onboarding');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Tutorial wall (blocks usage)', items: [
+      '10-step wizard before product access',
+      'Video tour users skip',
+      'Long modal preventing action',
+      'One-shot "setup" with no skip',
+      'Users bounce mid-flow'
+    ]},
+    right: {title: 'Progressive onboarding', items: [
+      'Empty-state CTAs inside the product',
+      'Contextual hints when needed',
+      'Checklist visible, dismissable',
+      'Action-first, explanation after',
+      'Users complete value in session 1'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Ditch the tutorial wall, progressive in-product onboarding beats upfront tours on every activation metric that matters</li>
+<li>Use empty-state CTAs instead of modal tours, users learn by doing, not by watching</li>
+<li>Make onboarding skippable for experienced users, forced flows punish the users most likely to convert</li>
+<li>Show a progress checklist, but don't gate the product behind it, visibility drives completion without blocking value</li>
+<li>Ask for the minimum info needed at each step, deferred fields at signup convert 30-50% more users than front-loaded forms</li>
+</ul>
+
+<div class="prev-next"></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){
