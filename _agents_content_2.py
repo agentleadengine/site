@@ -24,10 +24,10 @@ write_page("memory/short-term", "Short-term memory",
 <h2>The long-session problem</h2>
 <p>After 20-30 tool calls, a session's context can balloon to 50K+ tokens. Problems:</p>
 <ul>
-<li><strong>"Lost in the middle"</strong> — the model under-attends to middle sections of long context</li>
-<li><strong>Cost</strong> — every LLM call pays for the full context</li>
-<li><strong>Latency</strong> — longer context = slower inference</li>
-<li><strong>Quality decay</strong> — models' reasoning degrades with very long contexts</li>
+<li><strong>"Lost in the middle"</strong> - the model under-attends to middle sections of long context</li>
+<li><strong>Cost</strong> - every LLM call pays for the full context</li>
+<li><strong>Latency</strong> - longer context = slower inference</li>
+<li><strong>Quality decay</strong> - models' reasoning degrades with very long contexts</li>
 </ul>
 
 <h2>Strategies</h2>
@@ -176,7 +176,7 @@ write_page("memory/procedural", "Procedural memory",
     "Procedural memory is how-to knowledge: skills and routines the agent has learned and can reuse.",
     reading_time=2,
     body_html="""
-<p class="lede">Procedural memory is the agent's how-to knowledge. Not facts, not episodes — skills. "How I usually handle this kind of task." "The recipe that worked last time." Agents that build up procedural memory get better at recurring tasks over time.</p>
+<p class="lede">Procedural memory is the agent's how-to knowledge. Not facts, not episodes - skills. "How I usually handle this kind of task." "The recipe that worked last time." Agents that build up procedural memory get better at recurring tasks over time.</p>
 
 <h2>What qualifies</h2>
 <ul>
@@ -279,10 +279,10 @@ write_page("memory/memory-systems", "Memory system design",
 <h2>Tools for memory</h2>
 <p>Expose memory operations as tools the LLM can call:</p>
 <ul>
-<li><code>remember(fact)</code> — write to long-term</li>
-<li><code>recall(topic)</code> — semantic retrieval</li>
-<li><code>forget(fact_id)</code> — delete</li>
-<li><code>list_procedures()</code> — browse procedure library</li>
+<li><code>remember(fact)</code> - write to long-term</li>
+<li><code>recall(topic)</code> - semantic retrieval</li>
+<li><code>forget(fact_id)</code> - delete</li>
+<li><code>list_procedures()</code> - browse procedure library</li>
 </ul>
 
 <p>The LLM uses these as first-class citizens alongside its other tools.</p>
@@ -437,7 +437,7 @@ write_page("multi/debate", "Debate + consensus",
 </ul>
 
 <h2>Practical adoption</h2>
-<p>Use debate sparingly — for high-stakes decisions or fact-checking. Every LLM call with debate costs 3-5x single-turn. But for tasks where accuracy matters more than cost, it's worth the premium.</p>
+<p>Use debate sparingly - for high-stakes decisions or fact-checking. Every LLM call with debate costs 3-5x single-turn. But for tasks where accuracy matters more than cost, it's worth the premium.</p>
 """,
     prev=("Peer agents", "peer-agents.html"),
     nxt=("Agent handoffs", "handoffs.html"))
@@ -586,7 +586,7 @@ write_page("eval/why-eval-agents", "Why eval agents",
 <p>Automated evals scale. LLM-as-judge works for many dimensions. Human review catches what automation misses. Real agent programs run both.</p>
 
 <h2>The regression problem</h2>
-<p>Change your system prompt, switch models, update a tool description — all can regress agent quality. Without an eval suite, you don't know until users complain.</p>
+<p>Change your system prompt, switch models, update a tool description - all can regress agent quality. Without an eval suite, you don't know until users complain.</p>
 
 <p>Run the eval on every meaningful change. Ship only if quality holds.</p>
 """,
@@ -598,7 +598,7 @@ write_page("eval/task-completion", "Task completion",
     "The most important agent metric. Did it do what was asked? Here's how to measure it.",
     reading_time=2,
     body_html="""
-<p class="lede">Task completion is the primary agent metric. Forget trajectory, forget cost — did the agent achieve the user's goal? If not, nothing else matters. Measuring task completion reliably is harder than it sounds.</p>
+<p class="lede">Task completion is the primary agent metric. Forget trajectory, forget cost - did the agent achieve the user's goal? If not, nothing else matters. Measuring task completion reliably is harder than it sounds.</p>
 
 <h2>Grading approaches</h2>
 
@@ -623,7 +623,7 @@ write_page("eval/task-completion", "Task completion",
 </ul>
 
 <h2>Verifier design</h2>
-<p>For each eval case, the verifier should check the actual outcome, not just the agent's claim. Agent says "I deleted the file" — verifier checks the file is actually gone.</p>
+<p>For each eval case, the verifier should check the actual outcome, not just the agent's claim. Agent says "I deleted the file" - verifier checks the file is actually gone.</p>
 
 <h2>Run multiple times</h2>
 <p>Agents are non-deterministic. Run each eval case 3-5 times. If it passes 5/5 you have high confidence. 3/5 is a reliability problem.</p>
@@ -633,7 +633,7 @@ write_page("eval/task-completion", "Task completion",
 
 
 write_page("eval/trajectory-eval", "Trajectory evaluation",
-    "Beyond whether the agent got the right answer — did it get there the right way?",
+    "Beyond whether the agent got the right answer - did it get there the right way?",
     reading_time=3,
     body_html="""
 <p class="lede">Trajectory evaluation looks at how the agent got to its answer, not just whether it got there. Two agents with the same final answer can differ by 10x in cost, or produce the answer via completely different reasoning paths.</p>

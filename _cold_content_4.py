@@ -23,7 +23,7 @@ write_cold_page(
 <li><strong>One variable at a time.</strong> Test subject OR first line OR CTA, never all three.</li>
 <li><strong>Sample size:</strong> minimum 500 per variant for reply-rate tests, 1000+ for positive reply rate (much rarer event).</li>
 <li><strong>Duration:</strong> minimum 7 days to capture day-of-week variation.</li>
-<li><strong>Statistical significance:</strong> use a calculator (AB Test Guide, Optimizely) — don't eyeball.</li>
+<li><strong>Statistical significance:</strong> use a calculator (AB Test Guide, Optimizely) - don't eyeball.</li>
 </ul>
 
 <h2>The split</h2>
@@ -52,7 +52,7 @@ write_cold_page(
 
 <p>Overall reply rate includes "unsubscribe," "wrong person," "not interested." These aren't conversions. Positive reply rate (interested, want to talk, send me more info) is the metric that correlates to pipeline.</p>
 
-<p>Track both — overall reply rate tells you about deliverability and subject line effectiveness, positive reply rate tells you about offer/copy quality.</p>
+<p>Track both - overall reply rate tells you about deliverability and subject line effectiveness, positive reply rate tells you about offer/copy quality.</p>
 
 <h2>Common testing mistakes</h2>
 
@@ -72,7 +72,7 @@ write_cold_page(
 <p>Launching a new campaign without a control to compare against. You can't tell if it's working compared to what.</p>
 
 <h2>Related</h2>
-<p>Covered in more depth on <a href="{DR_LINK}/testing/scientific.html">scientific testing</a> in the direct response section — the same principles apply to cold email, VSLs, landing pages, and ads.</p>
+<p>Covered in more depth on <a href="{DR_LINK}/testing/scientific.html">scientific testing</a> in the direct response section - the same principles apply to cold email, VSLs, landing pages, and ads.</p>
 """,
     prev=("Sequence length", "../sequences/length.html"),
     nxt=("What to test", "what-to-test.html"),
@@ -96,10 +96,10 @@ write_cold_page(
 <p>The make-or-break for reply rate. A truly personal first line vs a generic one can 2-3x replies.</p>
 
 <h3>Offer / angle</h3>
-<p>The specific angle you're pitching. Same product, different framing can double positive reply rate. E.g., "help your AEs ramp faster" vs "improve forecast accuracy" — different buyers care about different problems.</p>
+<p>The specific angle you're pitching. Same product, different framing can double positive reply rate. E.g., "help your AEs ramp faster" vs "improve forecast accuracy" - different buyers care about different problems.</p>
 
 <h3>Sender identity</h3>
-<p>Who the email is "from." Founder vs SDR vs fictional-persona email can shift reply rates. Test this cautiously — sender reputation builds slowly.</p>
+<p>Who the email is "from." Founder vs SDR vs fictional-persona email can shift reply rates. Test this cautiously - sender reputation builds slowly.</p>
 
 <h2>Tier 2: medium impact (5-20%)</h2>
 
@@ -130,7 +130,7 @@ write_cold_page(
 <p>"Hey [name]" vs "Hi [name]" vs "[name],". Rarely meaningful differences.</p>
 
 <h3>Formatting</h3>
-<p>Plain text vs minimal HTML. Plain text wins for cold — but the margin is small.</p>
+<p>Plain text vs minimal HTML. Plain text wins for cold - but the margin is small.</p>
 
 <h2>Don't bother testing</h2>
 
@@ -183,7 +183,7 @@ write_cold_page(
     description="Overall reply rate lies. Positive reply rate is the metric that correlates to pipeline.",
     reading_time=3,
     body_html="""
-<p class="lede">Cold email tools show you reply rate. That number includes unsubscribes, OOO replies, wrong-person responses, and "not interested." It's directional but misleading. Positive reply rate — replies that indicate interest — is the metric that actually predicts meetings and pipeline.</p>
+<p class="lede">Cold email tools show you reply rate. That number includes unsubscribes, OOO replies, wrong-person responses, and "not interested." It's directional but misleading. Positive reply rate - replies that indicate interest - is the metric that actually predicts meetings and pipeline.</p>
 
 <h2>The reply taxonomy</h2>
 
@@ -229,7 +229,7 @@ write_cold_page(
 <li>Campaign B: 18% overall reply rate, 1.5% positive</li>
 </ul>
 
-<p>Campaign B looks better on the dashboard. Campaign A actually produces more pipeline — because the replies it generates are more likely to be interested buyers. Campaign B is probably generating lots of "remove me" and "wrong person" noise.</p>
+<p>Campaign B looks better on the dashboard. Campaign A actually produces more pipeline - because the replies it generates are more likely to be interested buyers. Campaign B is probably generating lots of "remove me" and "wrong person" noise.</p>
 
 <p>Always optimize for positive reply rate, not total reply rate.</p>
 
@@ -305,12 +305,12 @@ write_cold_page(
 <h2>The weekly loop</h2>
 
 <ol>
-<li><strong>Monday — measure.</strong> Pull last week's numbers: sends, opens, replies, positive replies, meetings.</li>
-<li><strong>Monday — read.</strong> Read every positive reply and objection. Extract patterns.</li>
-<li><strong>Monday — decide.</strong> What's the one thing you'll change this week? (One variable.)</li>
-<li><strong>Tuesday — ship.</strong> Launch the new variant.</li>
-<li><strong>Friday — checkpoint.</strong> Early signal: is the new variant materially different, or same as control?</li>
-<li><strong>Next Monday — call it.</strong> Winner, loser, inconclusive. Roll forward.</li>
+<li><strong>Monday - measure.</strong> Pull last week's numbers: sends, opens, replies, positive replies, meetings.</li>
+<li><strong>Monday - read.</strong> Read every positive reply and objection. Extract patterns.</li>
+<li><strong>Monday - decide.</strong> What's the one thing you'll change this week? (One variable.)</li>
+<li><strong>Tuesday - ship.</strong> Launch the new variant.</li>
+<li><strong>Friday - checkpoint.</strong> Early signal: is the new variant materially different, or same as control?</li>
+<li><strong>Next Monday - call it.</strong> Winner, loser, inconclusive. Roll forward.</li>
 </ol>
 
 <p>15-30 minutes per week. Compound effect over 12 weeks is dramatic.</p>
@@ -376,7 +376,7 @@ What I rolled forward: [did challenger become new control?]
 What I learned: [one-sentence takeaway]</pre>
 </div>
 
-<p>After 6 months you have an experimental archive specific to your audience. It's worth more than any playbook — it's the ground truth of what actually works for your segment.</p>
+<p>After 6 months you have an experimental archive specific to your audience. It's worth more than any playbook - it's the ground truth of what actually works for your segment.</p>
 
 <h2>The honest truth about iteration</h2>
 
@@ -399,7 +399,7 @@ write_cold_page(
     description="Cold email for B2B SaaS. ICP, sequences, offers, and what's different about tech buyers.",
     reading_time=4,
     body_html="""
-<p class="lede">B2B SaaS outbound is the most-run cold email play in the world, which means targets are the most jaded. What works: tight ICP, signal-triggered timing, and a pitch that acknowledges you're not special — you just solve a specific thing specifically well.</p>
+<p class="lede">B2B SaaS outbound is the most-run cold email play in the world, which means targets are the most jaded. What works: tight ICP, signal-triggered timing, and a pitch that acknowledges you're not special - you just solve a specific thing specifically well.</p>
 
 <h2>The ICP</h2>
 
@@ -410,7 +410,7 @@ write_cold_page(
 <li>Specific vertical if you go niche</li>
 </ul>
 
-<p>Avoid: "B2B SaaS, 50-500 employees" — too broad. Better: "B2B SaaS companies 50-200 people, who raised Series A-B in last 18 months, with AEs but no dedicated RevOps."</p>
+<p>Avoid: "B2B SaaS, 50-500 employees" - too broad. Better: "B2B SaaS companies 50-200 people, who raised Series A-B in last 18 months, with AEs but no dedicated RevOps."</p>
 
 <h2>Best signals</h2>
 
@@ -522,8 +522,8 @@ write_cold_page(
 <ul>
 <li>"Teardown" (audit of their current ads / emails / site)</li>
 <li>"Benchmark report" for their segment</li>
-<li>"Strategy memo" — 2-3 pages of specific recommendations</li>
-<li>"Sample deliverable" — show what working with you looks like</li>
+<li>"Strategy memo" - 2-3 pages of specific recommendations</li>
+<li>"Sample deliverable" - show what working with you looks like</li>
 </ul>
 
 <div class="prompt-box">
@@ -533,7 +533,7 @@ write_cold_page(
 
 [first line: specific thing you noticed about their work]
 
-We work exclusively with [narrow niche] on [specific service]. Usually on the problem where [specific pain] — which you might be hitting given [trigger].
+We work exclusively with [narrow niche] on [specific service]. Usually on the problem where [specific pain] - which you might be hitting given [trigger].
 
 Happy to send a 3-slide teardown of what I'd do first. No call needed unless it's useful.
 
@@ -575,9 +575,9 @@ Sam</pre>
 <h2>What fails</h2>
 
 <ul>
-<li>"We help businesses grow" — generic, nobody cares</li>
-<li>"Check out our case studies" — nobody clicks your link</li>
-<li>"Let's schedule a 30-minute discovery call" — high friction</li>
+<li>"We help businesses grow" - generic, nobody cares</li>
+<li>"Check out our case studies" - nobody clicks your link</li>
+<li>"Let's schedule a 30-minute discovery call" - high friction</li>
 <li>Pitching service menu rather than one specific problem</li>
 <li>Not showing vertical-specific knowledge in first email</li>
 </ul>
@@ -616,7 +616,7 @@ write_cold_page(
 <ul>
 <li>Can't send 1000/day without destroying your time or reputation</li>
 <li>Replies land in your personal inbox; you own handling them</li>
-<li>Your domain and email are used for everything else — can't burn it</li>
+<li>Your domain and email are used for everything else - can't burn it</li>
 <li>Takes real time per prospect</li>
 </ul>
 
@@ -648,7 +648,7 @@ Founder, [Company]</pre>
 <p>Lean into the founder identity:</p>
 <ul>
 <li>"Sam, Founder & CEO"</li>
-<li>"Sam — Founder, [Company]"</li>
+<li>"Sam - Founder, [Company]"</li>
 </ul>
 
 <p>The title is the proof. Sending from founder@company.com or sam@company.com (not sales@) reinforces it.</p>
@@ -659,7 +659,7 @@ Founder, [Company]</pre>
 
 <ul>
 <li>"I hand-send about 10 of these a week."</li>
-<li>"Not something I do at scale — but your [specific trigger] made me want to reach out."</li>
+<li>"Not something I do at scale - but your [specific trigger] made me want to reach out."</li>
 </ul>
 
 <p>Honest version: if you're sending 50-100/week personally, it's still rare by cold email standards. The framing is truthful and stands out.</p>
@@ -703,7 +703,7 @@ Founder, [Company]</pre>
 <h2>Common mistakes</h2>
 
 <ul>
-<li>Pitching "as the founder" but using an automation tool without personalization — looks fake</li>
+<li>Pitching "as the founder" but using an automation tool without personalization - looks fake</li>
 <li>Using founder email then handing to junior rep for first call</li>
 <li>Not responding personally to replies (spoils the whole dynamic)</li>
 <li>Treating it like SDR volume play (doesn't scale)</li>
@@ -743,7 +743,7 @@ write_cold_page(
 <li>Conversion meetings → opportunities: 30-50%</li>
 </ul>
 
-<p>SDRs spend most of their day on list research, reply handling, and meeting booking — not on writing emails. Writing is a once-a-week batched task.</p>
+<p>SDRs spend most of their day on list research, reply handling, and meeting booking - not on writing emails. Writing is a once-a-week batched task.</p>
 
 <h2>The ownership model</h2>
 
@@ -837,7 +837,7 @@ write_cold_page(
     description="Cold email for link building. Different audience (marketers, editors, writers), different pitch patterns.",
     reading_time=4,
     body_html="""
-<p class="lede">Link building via cold email is a specialized subset of outbound. The target is other content creators, editors, and marketing ops. The offer isn't a sales call — it's a link placement, guest post, or content swap. Different playbook, same fundamentals.</p>
+<p class="lede">Link building via cold email is a specialized subset of outbound. The target is other content creators, editors, and marketing ops. The offer isn't a sales call - it's a link placement, guest post, or content swap. Different playbook, same fundamentals.</p>
 
 <h2>The audience</h2>
 
@@ -890,7 +890,7 @@ Your resource page at [URL] links to [broken URL] for [topic]. Link's dead (404 
 
 I wrote an updated piece on [same topic] that might work as a replacement: [URL]. [One-sentence why it's a better fit than the dead link.]
 
-Not pushy — just noticed it while researching [their space]. Thought you'd want to know.
+Not pushy - just noticed it while researching [their space]. Thought you'd want to know.
 
 Sam</pre>
 </div>
@@ -898,7 +898,7 @@ Sam</pre>
 <h2>What kills link building pitches</h2>
 
 <ul>
-<li>"I read your article and loved it" — sycophantic opening, nobody believes it</li>
+<li>"I read your article and loved it" - sycophantic opening, nobody believes it</li>
 <li>Generic praise of their site</li>
 <li>No specific URL referenced</li>
 <li>Asking for "thoughts" or "feedback" (cover for asking for a link)</li>
@@ -948,7 +948,7 @@ write_cold_page(
     description="Cold email for recruiting. Reaching passive candidates with messaging that respects their time.",
     reading_time=4,
     body_html="""
-<p class="lede">Recruiting outreach is cold email for talent. Target: passive candidates who aren't actively job hunting but might consider a move for the right opportunity. The playbook is different from sales cold email — different tone, different offer, different cadence.</p>
+<p class="lede">Recruiting outreach is cold email for talent. Target: passive candidates who aren't actively job hunting but might consider a move for the right opportunity. The playbook is different from sales cold email - different tone, different offer, different cadence.</p>
 
 <h2>The audience</h2>
 
@@ -1006,7 +1006,7 @@ Sam</pre>
 
 <h2>Sequence for passive candidates</h2>
 
-<p>Shorter than sales sequences — 3 touches max:</p>
+<p>Shorter than sales sequences - 3 touches max:</p>
 
 <ul>
 <li><strong>Email 1:</strong> The pitch</li>

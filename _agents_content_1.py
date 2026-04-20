@@ -44,22 +44,22 @@ write_page("foundations/what-is-an-agent", "What is an AI agent?",
 
 <h2>The three components</h2>
 <ol>
-<li><strong>The LLM</strong> — the reasoning engine. Takes context, decides what to do next.</li>
-<li><strong>Tools</strong> — functions the LLM can call. Search the web, query a database, send an email, run code.</li>
-<li><strong>The loop</strong> — orchestration that runs until the task is complete or a stop condition fires.</li>
+<li><strong>The LLM</strong> - the reasoning engine. Takes context, decides what to do next.</li>
+<li><strong>Tools</strong> - functions the LLM can call. Search the web, query a database, send an email, run code.</li>
+<li><strong>The loop</strong> - orchestration that runs until the task is complete or a stop condition fires.</li>
 </ol>
 
 <h2>Why this is different from a normal LLM call</h2>
 <p>A normal LLM call: prompt in, answer out. One shot. The LLM does what it can with the context it has.</p>
-<p>An agent: prompt in, but the LLM can reach out for information, take actions, and incorporate results before responding. It can decide "I don't know this — let me search," execute the search, read the results, and respond. The agent can take many reasoning and action steps, not just one.</p>
+<p>An agent: prompt in, but the LLM can reach out for information, take actions, and incorporate results before responding. It can decide "I don't know this - let me search," execute the search, read the results, and respond. The agent can take many reasoning and action steps, not just one.</p>
 
 <h2>The spectrum of autonomy</h2>
 <ul>
-<li><strong>Prompt + single tool</strong> — minimal agent behavior, one tool call per request</li>
-<li><strong>ReAct-style loops</strong> — multi-step reasoning and tool use until answer is reached</li>
-<li><strong>Planning agents</strong> — form a plan first, then execute steps</li>
-<li><strong>Multi-agent systems</strong> — multiple specialized agents coordinating</li>
-<li><strong>Fully autonomous</strong> — agents with long-running tasks, self-correction, persistent memory</li>
+<li><strong>Prompt + single tool</strong> - minimal agent behavior, one tool call per request</li>
+<li><strong>ReAct-style loops</strong> - multi-step reasoning and tool use until answer is reached</li>
+<li><strong>Planning agents</strong> - form a plan first, then execute steps</li>
+<li><strong>Multi-agent systems</strong> - multiple specialized agents coordinating</li>
+<li><strong>Fully autonomous</strong> - agents with long-running tasks, self-correction, persistent memory</li>
 </ul>
 
 <p>Most production agents sit in the middle: structured loops with bounded autonomy.</p>
@@ -74,10 +74,10 @@ write_page("foundations/what-is-an-agent", "What is an AI agent?",
 
 <h2>What agents don't magically fix</h2>
 <ul>
-<li>Bad prompts — agents amplify prompt quality, they don't replace it</li>
-<li>Bad tools — agents can only do what tools allow</li>
-<li>Bad reasoning — if the base model reasons poorly, loops don't help</li>
-<li>Bad data — garbage inputs produce garbage agent traces</li>
+<li>Bad prompts - agents amplify prompt quality, they don't replace it</li>
+<li>Bad tools - agents can only do what tools allow</li>
+<li>Bad reasoning - if the base model reasons poorly, loops don't help</li>
+<li>Bad data - garbage inputs produce garbage agent traces</li>
 </ul>
 """,
     prev=("Overview", "../index.html"), nxt=("Agent vs workflow", "agent-vs-workflow.html"))
@@ -87,7 +87,7 @@ write_page("foundations/agent-vs-workflow", "Agent vs workflow",
     "Not every AI system needs agentic behavior. Here's how to choose between a deterministic workflow and an agent.",
     reading_time=4,
     body_html="""
-<p class="lede">Many projects that use "agents" don't need them. A deterministic workflow — a fixed sequence of LLM calls and function calls — is simpler, more reliable, and usually cheaper. The question isn't "should I use AI" but "should this be agentic."</p>
+<p class="lede">Many projects that use "agents" don't need them. A deterministic workflow - a fixed sequence of LLM calls and function calls - is simpler, more reliable, and usually cheaper. The question isn't "should I use AI" but "should this be agentic."</p>
 
 <h2>When a workflow is enough</h2>
 <p>A workflow is a known sequence of steps. "Extract entities, then summarize, then categorize, then send notification." The steps don't change based on results. An LLM runs each step, but flow is hardcoded.</p>
@@ -116,7 +116,7 @@ write_page("foundations/agent-vs-workflow", "Agent vs workflow",
 <p>Example: a deterministic email ingestion pipeline calls an agent to classify and act on "complex" emails that don't match known categories. Workflow + agent hybrid.</p>
 
 <h2>Anti-pattern: everything as agent</h2>
-<p>Wrapping deterministic logic in an agent adds cost, latency, and failure modes without benefit. If your agent's "reasoning" is always "call tool X, then call tool Y, then respond" — you have a workflow, just an expensive one.</p>
+<p>Wrapping deterministic logic in an agent adds cost, latency, and failure modes without benefit. If your agent's "reasoning" is always "call tool X, then call tool Y, then respond" - you have a workflow, just an expensive one.</p>
 
 <h2>Test: can you draw the flowchart?</h2>
 <p>If the steps and their order are fixed and you can draw the flowchart in advance: workflow. If the flowchart has decision points the LLM must make at runtime based on information it doesn't have yet: agent.</p>
@@ -167,18 +167,18 @@ write_page("foundations/architecture", "The agent architecture map",
 
 <h2>The layers</h2>
 <ol>
-<li><strong>User interface</strong> — where the agent's invoked (chat, API, CLI, batch)</li>
-<li><strong>Input processing</strong> — validation, authentication, session state</li>
-<li><strong>Prompt assembly</strong> — system prompt, user prompt, context, memory</li>
-<li><strong>LLM inference</strong> — the reasoning model call</li>
-<li><strong>Tool registry</strong> — the functions the LLM can call, with descriptions</li>
-<li><strong>Tool execution</strong> — calling the tool, handling errors, timeouts</li>
-<li><strong>Memory</strong> — short-term (session), long-term (persistent facts)</li>
-<li><strong>Orchestration</strong> — the loop that drives reasoning until a stop condition</li>
-<li><strong>Safety + guardrails</strong> — prompt injection defenses, content filters, rate limits</li>
-<li><strong>Observability</strong> — tracing every step for debugging and eval</li>
-<li><strong>Cost + latency control</strong> — budgets, timeouts, caching</li>
-<li><strong>Output formatting</strong> — structured output, streaming, finalizing response</li>
+<li><strong>User interface</strong> - where the agent's invoked (chat, API, CLI, batch)</li>
+<li><strong>Input processing</strong> - validation, authentication, session state</li>
+<li><strong>Prompt assembly</strong> - system prompt, user prompt, context, memory</li>
+<li><strong>LLM inference</strong> - the reasoning model call</li>
+<li><strong>Tool registry</strong> - the functions the LLM can call, with descriptions</li>
+<li><strong>Tool execution</strong> - calling the tool, handling errors, timeouts</li>
+<li><strong>Memory</strong> - short-term (session), long-term (persistent facts)</li>
+<li><strong>Orchestration</strong> - the loop that drives reasoning until a stop condition</li>
+<li><strong>Safety + guardrails</strong> - prompt injection defenses, content filters, rate limits</li>
+<li><strong>Observability</strong> - tracing every step for debugging and eval</li>
+<li><strong>Cost + latency control</strong> - budgets, timeouts, caching</li>
+<li><strong>Output formatting</strong> - structured output, streaming, finalizing response</li>
 </ol>
 
 <h2>The flow</h2>
@@ -196,12 +196,12 @@ write_page("foundations/architecture", "The agent architecture map",
 
 <h2>Where things break</h2>
 <ul>
-<li><strong>Prompt assembly</strong> — context too long, too short, stale memory</li>
-<li><strong>Tool descriptions</strong> — LLM calls wrong tools with wrong args</li>
-<li><strong>Tool execution</strong> — slow APIs, rate limits, error responses</li>
-<li><strong>Infinite loops</strong> — agent keeps trying, never reaches stop</li>
-<li><strong>Hallucination in tool args</strong> — LLM invents parameter values</li>
-<li><strong>Runaway cost</strong> — long sessions, no budget enforcement</li>
+<li><strong>Prompt assembly</strong> - context too long, too short, stale memory</li>
+<li><strong>Tool descriptions</strong> - LLM calls wrong tools with wrong args</li>
+<li><strong>Tool execution</strong> - slow APIs, rate limits, error responses</li>
+<li><strong>Infinite loops</strong> - agent keeps trying, never reaches stop</li>
+<li><strong>Hallucination in tool args</strong> - LLM invents parameter values</li>
+<li><strong>Runaway cost</strong> - long sessions, no budget enforcement</li>
 </ul>
 
 <h2>The minimum viable production agent</h2>
@@ -217,7 +217,7 @@ write_page("foundations/architecture", "The agent architecture map",
 <li>Eval set of at least 30 test cases</li>
 </ul>
 
-<p>Missing any of these and your agent will fail in production. Not immediately — silently, over time, in ways that are hard to diagnose without the missing piece.</p>
+<p>Missing any of these and your agent will fail in production. Not immediately - silently, over time, in ways that are hard to diagnose without the missing piece.</p>
 """,
     prev=("When not to use agents", "when-not-to-use.html"),
     nxt=("ReAct", "../loops/react.html"))
@@ -261,17 +261,17 @@ Thought: I have enough. Final answer: ...
 
 <h2>Common failure modes</h2>
 <ul>
-<li><strong>Tool hallucination</strong> — LLM calls a tool that doesn't exist or with wrong args</li>
-<li><strong>Premature answer</strong> — agent stops exploring when it should keep going</li>
-<li><strong>Infinite loop</strong> — agent repeats the same reasoning + action forever</li>
-<li><strong>Lost-in-context</strong> — after many steps, the context is long and the model starts forgetting earlier reasoning</li>
+<li><strong>Tool hallucination</strong> - LLM calls a tool that doesn't exist or with wrong args</li>
+<li><strong>Premature answer</strong> - agent stops exploring when it should keep going</li>
+<li><strong>Infinite loop</strong> - agent repeats the same reasoning + action forever</li>
+<li><strong>Lost-in-context</strong> - after many steps, the context is long and the model starts forgetting earlier reasoning</li>
 </ul>
 
 <h2>Variants</h2>
 <ul>
-<li><strong>Plan-then-execute</strong> — agent plans full sequence first, then executes. Works for tasks with known structure.</li>
-<li><strong>Reflection</strong> — agent reviews its own trace and critiques itself before continuing. Higher quality, higher cost.</li>
-<li><strong>Multi-agent ReAct</strong> — agents call other agents as tools.</li>
+<li><strong>Plan-then-execute</strong> - agent plans full sequence first, then executes. Works for tasks with known structure.</li>
+<li><strong>Reflection</strong> - agent reviews its own trace and critiques itself before continuing. Higher quality, higher cost.</li>
+<li><strong>Multi-agent ReAct</strong> - agents call other agents as tools.</li>
 </ul>
 
 <h2>When ReAct is the wrong shape</h2>
@@ -285,14 +285,14 @@ write_page("loops/tool-use", "Tool use",
     "Tool use is the agent's ability to take actions in the world. Here's how modern tool-calling APIs work and what to watch out for.",
     reading_time=4,
     body_html="""
-<p class="lede">Tool use is how agents affect anything outside their own reasoning. A tool is a function — with a name, description, parameter schema — that the LLM can request to call. The orchestrator executes it and returns the result.</p>
+<p class="lede">Tool use is how agents affect anything outside their own reasoning. A tool is a function - with a name, description, parameter schema - that the LLM can request to call. The orchestrator executes it and returns the result.</p>
 
 <h2>Modern tool-use APIs</h2>
 <p>Every major LLM provider offers native tool-use support:</p>
 <ul>
-<li><strong>Anthropic Claude</strong> — tools defined in API call, model emits structured tool_use blocks</li>
-<li><strong>OpenAI</strong> — function calling, now "tools" with JSON schema</li>
-<li><strong>Google Gemini</strong> — function calling with FunctionDeclaration objects</li>
+<li><strong>Anthropic Claude</strong> - tools defined in API call, model emits structured tool_use blocks</li>
+<li><strong>OpenAI</strong> - function calling, now "tools" with JSON schema</li>
+<li><strong>Google Gemini</strong> - function calling with FunctionDeclaration objects</li>
 </ul>
 
 <p>All three follow the same basic shape: you provide tool definitions, the model returns structured tool calls, your code executes them and feeds results back.</p>
@@ -562,11 +562,11 @@ write_page("tools/tool-descriptions", "Tool descriptions matter",
 
 <h2>What a good description includes</h2>
 <ol>
-<li><strong>What the tool does</strong> — one sentence, active voice</li>
-<li><strong>When to use it</strong> — the scenarios this is the right choice</li>
-<li><strong>When NOT to use it</strong> — common misapplications</li>
-<li><strong>What it returns</strong> — shape + meaning of the result</li>
-<li><strong>Constraints or limits</strong> — rate limits, size limits, latency</li>
+<li><strong>What the tool does</strong> - one sentence, active voice</li>
+<li><strong>When to use it</strong> - the scenarios this is the right choice</li>
+<li><strong>When NOT to use it</strong> - common misapplications</li>
+<li><strong>What it returns</strong> - shape + meaning of the result</li>
+<li><strong>Constraints or limits</strong> - rate limits, size limits, latency</li>
 </ol>
 
 <h2>Example: weak description</h2>
@@ -649,7 +649,7 @@ write_page("tools/error-handling", "Tool error handling",
 <p>Every tool call should have a timeout. If a tool hangs, the whole agent session hangs. Set aggressive timeouts (5-30 seconds) and return a timeout error the LLM can handle.</p>
 
 <h2>Error message quality</h2>
-<p>Cryptic errors waste LLM context. "Error 4040" is useless. "File not found at path /foo/bar.txt — check the path or list the directory first" is actionable.</p>
+<p>Cryptic errors waste LLM context. "Error 4040" is useless. "File not found at path /foo/bar.txt - check the path or list the directory first" is actionable.</p>
 
 <h2>The silent-failure disaster</h2>
 <p>Worst case: tool fails, returns empty or null result, LLM assumes success, produces wrong final answer. Always fail loudly. "I couldn't find X" beats "here's what I didn't find and made up."</p>
@@ -670,9 +670,9 @@ write_page("tools/parallel-tools", "Parallel tool calls",
 <h2>When parallel makes sense</h2>
 <p>When tool calls are independent: don't depend on each other's results.</p>
 <ul>
-<li>"Search for X, search for Y, search for Z" — three independent searches</li>
-<li>"Look up user info AND their order history AND their support tickets" — independent queries</li>
-<li>"Check availability at 3 different providers" — independent checks</li>
+<li>"Search for X, search for Y, search for Z" - three independent searches</li>
+<li>"Look up user info AND their order history AND their support tickets" - independent queries</li>
+<li>"Check availability at 3 different providers" - independent checks</li>
 </ul>
 
 <h2>When NOT parallel</h2>
@@ -699,7 +699,7 @@ async def execute_tool_calls(calls):
 </pre>
 
 <h2>Cost doesn't change</h2>
-<p>Parallel calls don't cost more than sequential — same number of tool invocations. Sometimes cost is slightly lower because the orchestrator only sends one LLM prompt back with batched results.</p>
+<p>Parallel calls don't cost more than sequential - same number of tool invocations. Sometimes cost is slightly lower because the orchestrator only sends one LLM prompt back with batched results.</p>
 
 <h2>Error handling in parallel</h2>
 <p>If one of three parallel calls fails, do you wait for the others? Fail fast? Return partial results?</p>
@@ -760,7 +760,7 @@ tool_limits = {
 </pre>
 
 <h2>Observability of budget usage</h2>
-<p>Log every session's final budget consumption. Alert on sessions that hit budget ceilings frequently — signal of bad prompts, buggy tools, or adversarial users.</p>
+<p>Log every session's final budget consumption. Alert on sessions that hit budget ceilings frequently - signal of bad prompts, buggy tools, or adversarial users.</p>
 """,
     prev=("Parallel tool calls", "parallel-tools.html"),
     nxt=("Short-term memory", "../memory/short-term.html"))

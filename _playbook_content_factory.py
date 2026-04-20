@@ -29,7 +29,7 @@ def generate_modules(spec):
     modules = []
 
     # ============================================================
-    # MODULE 1 — Why Claude
+    # MODULE 1 - Why Claude
     # ============================================================
     m1 = f"""
 <p>Before you write a single prompt, understand what Claude is actually good at for {profession_lower}s and where it falls short. Skipping this module costs you a week of bad outputs while you figure out why the model keeps producing generic, vanilla marketing.</p>
@@ -54,10 +54,10 @@ def generate_modules(spec):
 <h2>Why it beats your current options</h2>
 <p>You probably already tried:</p>
 <ul>
-<li>Writing marketing yourself — takes hours, never gets done</li>
-<li>Paying a marketing agency — $1500-5000/month for generic copy</li>
-<li>Using templates from your brokerage/platform — every other {profession_lower} has the same ones</li>
-<li>Hiring a VA — quality varies, training takes forever</li>
+<li>Writing marketing yourself - takes hours, never gets done</li>
+<li>Paying a marketing agency - $1500-5000/month for generic copy</li>
+<li>Using templates from your brokerage/platform - every other {profession_lower} has the same ones</li>
+<li>Hiring a VA - quality varies, training takes forever</li>
 </ul>
 
 <p>Claude compresses "write my own content" from three hours to fifteen minutes. That's the arbitrage.</p>
@@ -73,7 +73,7 @@ def generate_modules(spec):
 <p>For a {profession_lower} producing a blog post a week, a dozen social posts, and a monthly newsletter, Claude pays for itself several times over on day one.</p>
 
 <h2>The mindset shift</h2>
-<p>Think of Claude as a senior marketing associate who works at any speed, never gets tired, has read every book on marketing — but has never sold a [thing your profession sells]. They produce great first drafts if briefed well. Their drafts are never final. You're the editor, expert, and compliance backstop.</p>
+<p>Think of Claude as a senior marketing associate who works at any speed, never gets tired, has read every book on marketing - but has never sold a [thing your profession sells]. They produce great first drafts if briefed well. Their drafts are never final. You're the editor, expert, and compliance backstop.</p>
 
 <div class="callout">
 <div class="callout-title">The rule</div>
@@ -105,7 +105,7 @@ def generate_modules(spec):
     })
 
     # ============================================================
-    # MODULE 2 — Setting up
+    # MODULE 2 - Setting up
     # ============================================================
     m2 = f"""
 <p>Ten minutes of setup now saves six months of mediocre outputs. Give Claude the context it needs about you, your market, and your voice.</p>
@@ -200,7 +200,7 @@ Ready?</pre>
     })
 
     # ============================================================
-    # MODULE 3 — The 10 prompt patterns
+    # MODULE 3 - The 10 prompt patterns
     # ============================================================
     m3 = f"""
 <p>Ninety percent of effective prompts are variations of ten patterns. Learn these once; reuse them forever.</p>
@@ -304,13 +304,13 @@ Return flags + revised version.
     })
 
     # ============================================================
-    # MODULES 4-13 — profession-specific (supplied in spec)
+    # MODULES 4-13 - profession-specific (supplied in spec)
     # ============================================================
     for m in spec.get('custom_modules', []):
         modules.append(m)
 
     # ============================================================
-    # MODULE 14 — weekly system
+    # MODULE 14 - weekly system
     # ============================================================
     m14 = f"""
 <p>Every module so far is individually useful. The real win is tying them into a weekly rhythm.</p>
@@ -318,13 +318,13 @@ Return flags + revised version.
 <h2>The 2-hour weekly block</h2>
 <p>One 2-hour block per week, same time every week:</p>
 
-<h3>0:00-0:15 — Review</h3>
+<h3>0:00-0:15 - Review</h3>
 <ul>
 <li>Last week's numbers: engagement, replies, leads, clients booked</li>
 <li>What worked, what didn't (one sentence each)</li>
 </ul>
 
-<h3>0:15-0:45 — Create content</h3>
+<h3>0:15-0:45 - Create content</h3>
 <p>One asset per week, rotating:</p>
 <ul>
 <li>Week 1: Social posts for the week</li>
@@ -333,20 +333,20 @@ Return flags + revised version.
 <li>Week 4: Monthly newsletter</li>
 </ul>
 
-<h3>0:45-1:15 — Prospecting + follow-up</h3>
+<h3>0:45-1:15 - Prospecting + follow-up</h3>
 <ul>
 <li>Send this week's outreach</li>
 <li>Reply to warm conversations</li>
 <li>Update CRM</li>
 </ul>
 
-<h3>1:15-1:30 — Review responses + referrals</h3>
+<h3>1:15-1:30 - Review responses + referrals</h3>
 <ul>
 <li>Respond to any new reviews</li>
 <li>Make 1-2 referral asks</li>
 </ul>
 
-<h3>1:30-2:00 — Schedule + publish</h3>
+<h3>1:30-2:00 - Schedule + publish</h3>
 <ul>
 <li>Schedule all content via Buffer/Later/Meta Business Suite</li>
 <li>Queue emails</li>
@@ -400,7 +400,7 @@ Practical.</pre></div>
     })
 
     # ============================================================
-    # MODULE 15 — compliance (profession-specific)
+    # MODULE 15 - compliance (profession-specific)
     # ============================================================
     compliance_html = "\n".join([f"<li>{c}</li>" for c in compliance])
     m15 = f"""
@@ -444,7 +444,7 @@ Flag every:
 - Superlative
 - Specific numeric claim
 - Competitor comparison
-- Urgency claim — is it real?
+- Urgency claim - is it real?
 - Missing disclaimer
 - Implied endorsement
 - Claim about outcomes that vary
@@ -458,14 +458,14 @@ Jurisdiction: [state]
 <h2>Record-keeping</h2>
 <p>Keep every marketing piece for 3-5 years:</p>
 <ul>
-<li>/Marketing Archive /[Year] /[Month] — every published piece</li>
+<li>/Marketing Archive /[Year] /[Month] - every published piece</li>
 <li>Include any compliance approval emails</li>
 <li>Include date and platform published</li>
 </ul>
 
 <div class="callout">
 <div class="callout-title">The rule</div>
-<p>If you wouldn't want a regulator, your brokerage compliance officer, and a skeptical client all reading this piece — rewrite it until you would.</p>
+<p>If you wouldn't want a regulator, your brokerage compliance officer, and a skeptical client all reading this piece - rewrite it until you would.</p>
 </div>
 
 <h2>This week's task</h2>
@@ -511,16 +511,16 @@ def std_landing(profession, short, tagline):
 
 <h2>The order to do them in</h2>
 <ol>
-<li><a href="module-01.html">Module 1</a> — Why Claude for {short} marketing</li>
-<li><a href="module-02.html">Module 2</a> — Setting up Claude (do this once)</li>
-<li><a href="module-03.html">Module 3</a> — The 10 prompt patterns</li>
-<li>Modules 4-13 — pick whatever asset you need this week</li>
-<li><a href="module-14.html">Module 14</a> — The weekly marketing system</li>
-<li><a href="module-15.html">Module 15</a> — Compliance checklist</li>
+<li><a href="module-01.html">Module 1</a> - Why Claude for {short} marketing</li>
+<li><a href="module-02.html">Module 2</a> - Setting up Claude (do this once)</li>
+<li><a href="module-03.html">Module 3</a> - The 10 prompt patterns</li>
+<li>Modules 4-13 - pick whatever asset you need this week</li>
+<li><a href="module-14.html">Module 14</a> - The weekly marketing system</li>
+<li><a href="module-15.html">Module 15</a> - Compliance checklist</li>
 </ol>
 
 <h2>Your progress is saved</h2>
-<p>The sidebar tracks completed modules. Stored in your browser — no account needed.</p>
+<p>The sidebar tracks completed modules. Stored in your browser - no account needed.</p>
 
 <p style="margin-top:48px;"><a href="module-01.html" style="display:inline-block;background:#4a00e0;color:#fff;padding:14px 28px;border-radius:8px;text-decoration:none;font-weight:600;font-size:15px;">Start Module 1 →</a></p>
 """

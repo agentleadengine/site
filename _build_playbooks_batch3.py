@@ -73,14 +73,14 @@ build(
         ],
         'review_platforms': ['Clutch', 'Google Business Profile', 'G2', 'LinkedIn recommendations', 'DesignRush'],
         'newsletter_topic_examples': [
-            'Monthly — one specific win or insight from current campaigns',
+            'Monthly - one specific win or insight from current campaigns',
             'Seasonal market shifts and implications',
             'Platform change reactions (algo updates, etc.)',
             'Tactical breakdowns of trending strategies',
         ],
         'ad_platforms': [
-            'LinkedIn — high-intent B2B decision-maker targeting',
-            'Google Search — high-intent keywords for agency services',
+            'LinkedIn - high-intent B2B decision-maker targeting',
+            'Google Search - high-intent keywords for agency services',
             'Podcast host-read sponsorships',
             'Industry publication placements',
         ],
@@ -154,7 +154,7 @@ build(
             'Customer spotlights',
         ],
         'ad_platforms': [
-            'Meta (Facebook + Instagram) — core DTC channel',
+            'Meta (Facebook + Instagram) - core DTC channel',
             'TikTok Ads',
             'Google Shopping + Performance Max',
             'YouTube Shorts',
@@ -230,8 +230,8 @@ build(
             'Release notes for power users',
         ],
         'ad_platforms': [
-            'LinkedIn — job title + company targeting',
-            'Google Search — high-intent category keywords',
+            'LinkedIn - job title + company targeting',
+            'Google Search - high-intent category keywords',
             'Reddit + niche community ads',
             'Podcast host-read',
             'Sponsorships of target-audience newsletters',
@@ -308,7 +308,7 @@ build(
         'ad_platforms': [
             'Other podcasts (cross-promotion)',
             'YouTube Ads pre-roll',
-            'Meta — lookalike of current subscribers',
+            'Meta - lookalike of current subscribers',
             'Newsletter sponsorship swaps',
         ],
         'client_ed_docs': [

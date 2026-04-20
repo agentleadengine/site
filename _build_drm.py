@@ -172,7 +172,7 @@ def write_drm_page(slug, title, description, body_html, reading_time=None, prev=
         pn_html = "".join(pn)
 
     html = (
-        head(f"{title} — Samuel Ochoa", description, rel_root=rel_root) +
+        head(f"{title} - Samuel Ochoa", description, rel_root=rel_root) +
         topbar("expertise", rel_root=rel_root) +
         '<div class="framework-layout">' +
         sidebar_html(active_slug) +

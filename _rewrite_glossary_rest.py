@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Rewrite the remaining 77 glossary entries (DR + Business + Marketing + Sales + SEO)
 at the same teaching depth used for the AI glossary:
-- def        — plain-English one-sentence answer
-- explain    — paragraph that builds intuition
-- example    — concrete, real scenario
-- why        — why it matters / what to do with this
+- def        - plain-English one-sentence answer
+- explain    - paragraph that builds intuition
+- example    - concrete, real scenario
+- why        - why it matters / what to do with this
 
 Uses the same .gloss-section-head / .gloss-explain / .gloss-example / .gloss-why
 markup and CSS as the AI rewrite.
@@ -931,7 +931,7 @@ TERMS = {
         "example": (
             "SaaS funnel: 10,000 visit the site. 500 sign up for the free trial. 100 become paying "
             "customers. 80 stay after 3 months. Stage conversions: 5%, 20%, 80%. The biggest leak is "
-            "visit-to-trial (only 5%)—that's where to spend your CRO effort."
+            "visit-to-trial (only 5%)-that's where to spend your CRO effort."
         ),
         "why": (
             "Every marketing decision happens inside a funnel. Knowing where your funnel leaks tells "

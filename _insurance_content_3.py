@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Insurance playbook content — Part 3: Modules 11-15 + Prompt Library."""
+"""Insurance playbook content - Part 3: Modules 11-15 + Prompt Library."""
 from _build_insurance import write_playbook_page
 
 
 # ============================================================
-# MODULE 11 — Newsletter
+# MODULE 11 - Newsletter
 # ============================================================
 
 m11 = """
@@ -39,13 +39,13 @@ m11 = """
 <pre>Write a monthly newsletter email for my [insurance line] clients.
 
 Audience: my existing clients and warm leads who opted in.
-Topic this month: [pick one — a recent event, change, question, or insight]
+Topic this month: [pick one - a recent event, change, question, or insight]
 
 Structure:
 - Subject line: 5-7 words, feels like a personal note
 - Open: one sentence that sounds like me writing to a friend
-- Main section (250-400 words): the "one big thing" — explain it clearly, use a specific example, end with what it means for them
-- "Quick hits" section (3-5 bullets, 1-2 sentences each): small, useful items — a policy deadline, a reminder, a resource, a link
+- Main section (250-400 words): the "one big thing" - explain it clearly, use a specific example, end with what it means for them
+- "Quick hits" section (3-5 bullets, 1-2 sentences each): small, useful items - a policy deadline, a reminder, a resource, a link
 - Close: 1-2 sentences, warm, maybe a personal note about what's going on in my world
 
 Tone: a letter from a knowledgeable friend, not a broadcast. Use "you" a lot. Use "I" or "we" naturally.
@@ -72,10 +72,10 @@ Rules:
 - Mix of: educational, seasonal, personal-reflection, practical-reminder
 
 Format:
-Month — Primary topic — Why this month — One angle for the main section
+Month - Primary topic - Why this month - One angle for the main section
 
 Example:
-September — Medicare Open Enrollment prep — 30 days out, people start thinking about it — angle: "what to actually review in your current plan before October 15"
+September - Medicare Open Enrollment prep - 30 days out, people start thinking about it - angle: "what to actually review in your current plan before October 15"
 
 Give me 12 months with specific angles, not generic themes.</pre>
 </div>
@@ -88,11 +88,11 @@ Give me 12 months with specific angles, not generic themes.</pre>
 <button class="copy-btn">Copy</button>
 <pre>Take the newsletter below and produce:
 
-1. A blog post version (800-1200 words — expand on the main section with more depth, add H2s)
+1. A blog post version (800-1200 words - expand on the main section with more depth, add H2s)
 2. Three social posts based on the core insight (Facebook, LinkedIn, Instagram caption)
 3. A 60-second video script based on the main section
 
-Each version should be adapted to the channel's conventions (short-form for social, scannable for blog, spoken-word for video) — not just copy-pasted.
+Each version should be adapted to the channel's conventions (short-form for social, scannable for blog, spoken-word for video) - not just copy-pasted.
 
 [Paste your newsletter]</pre>
 </div>
@@ -150,7 +150,7 @@ Examples of the style I like:
 <li><strong>Your CRM (HubSpot, Salesforce, AgencyZoom):</strong> often has email built in. Use if it works.</li>
 </ul>
 
-<p>Avoid MailChimp and Constant Contact for insurance newsletters — they're dated and deliverability is mediocre.</p>
+<p>Avoid MailChimp and Constant Contact for insurance newsletters - they're dated and deliverability is mediocre.</p>
 
 <h2>This week's task</h2>
 <div class="checklist">
@@ -183,7 +183,7 @@ write_playbook_page(
 
 
 # ============================================================
-# MODULE 12 — Ads
+# MODULE 12 - Ads
 # ============================================================
 
 m12 = """
@@ -198,11 +198,11 @@ m12 = """
 <li>Set a daily budget you can afford to lose (don't bet the farm on week 1)</li>
 </ul>
 
-<h2>Facebook ads — local insurance angle</h2>
+<h2>Facebook ads - local insurance angle</h2>
 <p>Facebook/Meta is still the dominant platform for Medicare, life, and final expense. Older audiences, highly targetable, visual-first.</p>
 
 <div class="prompt-box">
-<div class="prompt-box-label">Facebook ad copy — Medicare</div>
+<div class="prompt-box-label">Facebook ad copy - Medicare</div>
 <button class="copy-btn">Copy</button>
 <pre>Write 5 Facebook ad copy variants for a Medicare prospecting campaign.
 
@@ -222,7 +222,7 @@ Vary the hook angle:
 4. Story-led (opens with a scenario)
 5. Direct-value-led (leads with the specific offer)
 
-CMS compliance requirements — MUST include in each:
+CMS compliance requirements - MUST include in each:
 - "Not affiliated with any government agency"
 - Plan disclaimer appropriate for Medicare lead generation
 - No specific plan names, carrier names, or guaranteed benefits
@@ -238,7 +238,7 @@ Keep it warm, local, and honest.</pre>
 </div>
 
 <div class="prompt-box">
-<div class="prompt-box-label">Facebook ad copy — Life / Final Expense</div>
+<div class="prompt-box-label">Facebook ad copy - Life / Final Expense</div>
 <button class="copy-btn">Copy</button>
 <pre>Write 5 Facebook ad variants for final expense insurance.
 
@@ -252,7 +252,7 @@ Each variant:
 
 Hook angles (one per variant):
 1. Specific pain: "Funeral costs average $X in [state]..."
-2. Protection framing: "Not about you — about not leaving this for your kids"
+2. Protection framing: "Not about you - about not leaving this for your kids"
 3. Misconception bust: "Most people think they can't qualify..."
 4. Simple process: "Rate in 10 minutes, no medical exam..."
 5. Straight offer: "Locked rates for life, here's how to check yours"
@@ -267,12 +267,12 @@ Keep tone respectful, not morbid or fear-mongering. The audience has thought abo
 </div>
 
 <div class="prompt-box">
-<div class="prompt-box-label">Facebook ad copy — P&amp;C / Home + Auto</div>
+<div class="prompt-box-label">Facebook ad copy - P&amp;C / Home + Auto</div>
 <button class="copy-btn">Copy</button>
 <pre>Write 5 Facebook ad variants for a home + auto bundle review campaign.
 
 Target: 30-55 year old homeowners in [state/city].
-Offer: a 10-minute policy review — send your dec page, we compare to 6 carriers, you see if you can save.
+Offer: a 10-minute policy review - send your dec page, we compare to 6 carriers, you see if you can save.
 
 Variants should hit different angles:
 1. Rate-increase pain (insurance costs are up everywhere)
@@ -295,7 +295,7 @@ Do NOT:
 Include small trust signal in each (e.g., "Licensed in [state]" or similar).</pre>
 </div>
 
-<h2>Google Ads — search intent</h2>
+<h2>Google Ads - search intent</h2>
 <p>Google Ads work differently: people are searching, not scrolling. Copy is much shorter. Intent is higher.</p>
 
 <div class="prompt-box">
@@ -391,7 +391,7 @@ Each variation should be structured so I can A/B test against the current winner
 
 <div class="callout warning">
 <div class="callout-title">Medicare especially</div>
-<p>Meta and Google both have specific requirements for Medicare marketing. CMS requires specific disclaimers. Your IMO or carrier may have an "approved copy" process — use it. Running non-compliant ads can get your ad account shut down or lead to state-level action.</p>
+<p>Meta and Google both have specific requirements for Medicare marketing. CMS requires specific disclaimers. Your IMO or carrier may have an "approved copy" process - use it. Running non-compliant ads can get your ad account shut down or lead to state-level action.</p>
 </div>
 
 <h2>This week's task</h2>
@@ -427,17 +427,17 @@ write_playbook_page(
     slug="module-12",
     title="Facebook + Google ads",
     tag="Module 12",
-    subtitle="Ad copy that converts for Medicare, life, and P&C — plus the tracking and compliance specifics that prevent shut-downs.",
+    subtitle="Ad copy that converts for Medicare, life, and P&C - plus the tracking and compliance specifics that prevent shut-downs.",
     body_html=m12,
 )
 
 
 # ============================================================
-# MODULE 13 — Client education
+# MODULE 13 - Client education
 # ============================================================
 
 m13 = """
-<p>The educational materials you hand clients during and after the sale do two jobs: they help the client remember what they bought, and they generate referrals. Most agents hand clients the carrier brochure and hope for the best. Claude can help you produce your own — branded, plain-language, way more useful — in an hour.</p>
+<p>The educational materials you hand clients during and after the sale do two jobs: they help the client remember what they bought, and they generate referrals. Most agents hand clients the carrier brochure and hope for the best. Claude can help you produce your own - branded, plain-language, way more useful - in an hour.</p>
 
 <h2>What to build</h2>
 <ul>
@@ -476,14 +476,14 @@ Topic: [Medicare, Life Insurance, Home Insurance, etc.]</pre>
 <button class="copy-btn">Copy</button>
 <pre>Write a 1-page "what you actually bought" summary a client can keep.
 
-Client situation (anonymized): [type of policy, general benefit structure — DO NOT include client-specific details with PHI]
+Client situation (anonymized): [type of policy, general benefit structure - DO NOT include client-specific details with PHI]
 
 Structure:
 1. The one-sentence "what this is" (plain language)
-2. "What this policy does for you" — 3-4 bullet points
-3. "What it does NOT cover" — 3-4 bullet points (so they're not surprised)
-4. "What you should do with this" — where to keep it, who to tell about it, when to review
-5. "When to call me" — specific triggers (life events, changes in health/job/family)
+2. "What this policy does for you" - 3-4 bullet points
+3. "What it does NOT cover" - 3-4 bullet points (so they're not surprised)
+4. "What you should do with this" - where to keep it, who to tell about it, when to review
+5. "When to call me" - specific triggers (life events, changes in health/job/family)
 6. Space for: policy number, carrier, effective date, renewal/review date, my contact info
 
 Tone: clear, respectful, like I'm sitting across the table from them.
@@ -502,7 +502,7 @@ Structure:
 - "Before anything, take a breath" opener (especially for life insurance / disability / major claims)
 - Step 1: What to do immediately
 - Step 2: Documents/info you'll need
-- Step 3: How to contact the carrier (the process, not specific phone numbers — those go in customization)
+- Step 3: How to contact the carrier (the process, not specific phone numbers - those go in customization)
 - Step 4: How to contact me (I should be in the loop, even if the claim goes direct to carrier)
 - What NOT to do (common mistakes that slow down claims)
 - Typical timeline for this type of claim
@@ -627,7 +627,7 @@ write_playbook_page(
 
 
 # ============================================================
-# MODULE 14 — The weekly marketing system
+# MODULE 14 - The weekly marketing system
 # ============================================================
 
 m14 = """
@@ -636,14 +636,14 @@ m14 = """
 <h2>The 2-hour weekly block</h2>
 <p>One 2-hour block per week. Same time every week. Phone off, calendar blocked, door closed. Here's what fits in those 2 hours.</p>
 
-<h3>0:00-0:15 — Reset + review</h3>
+<h3>0:00-0:15 - Reset + review</h3>
 <ul>
 <li>Review last week's performance: social engagement, email replies, ad metrics, booked meetings</li>
 <li>Note what worked and what didn't (one sentence each)</li>
 <li>Pull up your content calendar</li>
 </ul>
 
-<h3>0:15-0:45 — Create the week's content</h3>
+<h3>0:15-0:45 - Create the week's content</h3>
 <p>Run one prompt, one asset per week:</p>
 <ul>
 <li>Week 1: Social posts for the week (Module 5)</li>
@@ -654,21 +654,21 @@ m14 = """
 
 <p>Rotate through the 4-week cycle. End of the month, you have: 28 social posts, 4 blog posts, 4 video batches, 1 newsletter. More content than most agencies produce for clients.</p>
 
-<h3>0:45-1:15 — Prospecting + follow-up</h3>
+<h3>0:45-1:15 - Prospecting + follow-up</h3>
 <ul>
 <li>Send this week's prospecting emails (Module 4)</li>
 <li>Check reply queue, reply to anyone warm</li>
 <li>Update CRM with any new leads, wins, losses</li>
 </ul>
 
-<h3>1:15-1:30 — Review responses + referrals</h3>
+<h3>1:15-1:30 - Review responses + referrals</h3>
 <ul>
 <li>Respond to any new Google/Facebook reviews (Module 10)</li>
 <li>Look at the client list: who should I ask for a referral this week? (Module 9)</li>
 <li>Send 1-2 warm referral asks or follow-ups</li>
 </ul>
 
-<h3>1:30-2:00 — Schedule + publish</h3>
+<h3>1:30-2:00 - Schedule + publish</h3>
 <ul>
 <li>Schedule all content through Buffer, Later, Meta Business Suite, or your preferred scheduler</li>
 <li>Queue any emails/newsletter in your email tool</li>
@@ -694,7 +694,7 @@ m14 = """
 <li>Update your Claude context and voice samples with new examples</li>
 <li>Review compliance approvals, update templates</li>
 <li>Set quarterly goals for lead flow and conversion</li>
-<li>Read the top 3 pieces of content in your space — what's changed, what's new</li>
+<li>Read the top 3 pieces of content in your space - what's changed, what's new</li>
 </ul>
 
 <h2>The prompts that run your week</h2>
@@ -793,7 +793,7 @@ write_playbook_page(
 
 
 # ============================================================
-# MODULE 15 — Compliance
+# MODULE 15 - Compliance
 # ============================================================
 
 m15 = """
@@ -829,7 +829,7 @@ m15 = """
 
 <div class="callout warning">
 <div class="callout-title">Always required in Medicare marketing</div>
-<p>"Not affiliated with any government agency" or equivalent, "We do not offer every plan available in your area" disclaimer, Medicare.gov / 1-800-MEDICARE reference, TTY number for hearing-impaired where applicable. CMS updates requirements annually — check current year's guidance.</p>
+<p>"Not affiliated with any government agency" or equivalent, "We do not offer every plan available in your area" disclaimer, Medicare.gov / 1-800-MEDICARE reference, TTY number for hearing-impaired where applicable. CMS updates requirements annually - check current year's guidance.</p>
 </div>
 
 <h3>Medicare-specific don'ts</h3>
@@ -854,7 +854,7 @@ m15 = """
 <li>No claims of lowest rate without evidence</li>
 <li>No implied endorsement by carrier</li>
 <li>Rate quotes: always subject to underwriting, binding</li>
-<li>State-specific required disclosures (differs widely — Texas has windstorm specific language, Florida has hurricane specific, etc.)</li>
+<li>State-specific required disclosures (differs widely - Texas has windstorm specific language, Florida has hurricane specific, etc.)</li>
 </ul>
 
 <h2>The pre-publish checklist</h2>
@@ -913,7 +913,7 @@ Flag every instance of:
 - Superlatives (best, cheapest, lowest, top-rated, guaranteed)
 - Specific numeric claims (rates, savings percentages, returns)
 - Competitor comparisons by name
-- Urgency claims ("act now", "limited time", "only X left") — note whether real
+- Urgency claims ("act now", "limited time", "only X left") - note whether real
 - Missing required disclaimers for this line
 - Implied endorsements (government, carrier, professional body)
 - Claims about products varying by policy (coverage amounts, premiums, benefits)
@@ -933,7 +933,7 @@ Jurisdiction: [state(s)]
 <p>Most states require keeping marketing materials for 3-5 years. Set up a simple folder structure:</p>
 
 <ul>
-<li>/Marketing Archive /2026 /[Month] — drop every published piece here</li>
+<li>/Marketing Archive /2026 /[Month] - drop every published piece here</li>
 <li>Include the carrier/compliance approval email for anything reviewed</li>
 <li>Include dates published and where</li>
 </ul>
@@ -941,11 +941,11 @@ Jurisdiction: [state(s)]
 <p>If a state DOI ever asks, you have the trail.</p>
 
 <h2>When in doubt, ask</h2>
-<p>Claude cannot replace your compliance desk, your carrier's review process, or your own licensed judgment. When a piece feels edgy, it probably is. When it feels fine but you're not sure — run it by compliance. The 2 days of delay is always worth it.</p>
+<p>Claude cannot replace your compliance desk, your carrier's review process, or your own licensed judgment. When a piece feels edgy, it probably is. When it feels fine but you're not sure - run it by compliance. The 2 days of delay is always worth it.</p>
 
 <div class="callout">
 <div class="callout-title">The rule</div>
-<p>If you wouldn't want a state DOI examiner, your carrier's compliance officer, and a skeptical prospect all reading this piece — rewrite it until you would.</p>
+<p>If you wouldn't want a state DOI examiner, your carrier's compliance officer, and a skeptical prospect all reading this piece - rewrite it until you would.</p>
 </div>
 
 <h2>This week's task</h2>
@@ -979,7 +979,7 @@ write_playbook_page(
 
 
 # ============================================================
-# PROMPT LIBRARY — searchable index
+# PROMPT LIBRARY - searchable index
 # ============================================================
 
 PROMPTS = [
@@ -1254,7 +1254,7 @@ Each 80-180 words. Hook in first line. Plain language. End with question or CTA.
 
 Number with day-of-week."""},
     {"id": "p21", "title": "Common mistake post", "module": "Module 5", "tags": ["social", "content", "all-lines"],
-     "desc": "\"Most people think X. It's actually Y.\" — one of the highest-engagement post patterns.",
+     "desc": "\"Most people think X. It's actually Y.\" - one of the highest-engagement post patterns.",
      "prompt": """Write a "common mistake" FB post about [topic].
 
 - Line 1: hook stating the mistake
@@ -1674,7 +1674,7 @@ From me personally. Hand-written feel."""},
 - Mix: question, observation, detail, news, promise, personal
 
 Avoid: "[Month] Newsletter," "[Agency] Update," generic teasers."""},
-    {"id": "p55", "title": "Facebook ad — Medicare", "module": "Module 12", "tags": ["ads", "medicare", "facebook"],
+    {"id": "p55", "title": "Facebook ad - Medicare", "module": "Module 12", "tags": ["ads", "medicare", "facebook"],
      "desc": "Five FB ad variants with CMS compliance for Medicare campaigns.",
      "prompt": """5 FB ad variants for Medicare in [state], 63-68.
 
@@ -1694,7 +1694,7 @@ CMS compliance in each:
 - No "free" without actual no-cost
 
 No fear tactics, fake urgency, over-emoji."""},
-    {"id": "p56", "title": "Facebook ad — Life / Final Expense", "module": "Module 12", "tags": ["ads", "life", "facebook"],
+    {"id": "p56", "title": "Facebook ad - Life / Final Expense", "module": "Module 12", "tags": ["ads", "life", "facebook"],
      "desc": "Five FB ad variants for final expense with appropriate disclaimers.",
      "prompt": """5 FB ad variants for final expense, 55-75 in [state].
 
@@ -1703,7 +1703,7 @@ Offer: 10-min rate check, no exam.
 Angles: specific pain, protection framing, misconception, simple process, direct offer.
 
 No specific premium quotes. Include "Subject to underwriting." Respectful tone, not fear-mongering."""},
-    {"id": "p57", "title": "Facebook ad — P&C bundle", "module": "Module 12", "tags": ["ads", "pnc", "facebook"],
+    {"id": "p57", "title": "Facebook ad - P&C bundle", "module": "Module 12", "tags": ["ads", "pnc", "facebook"],
      "desc": "Home + auto bundle ad variants with coverage-gap angles.",
      "prompt": """5 FB ad variants for home + auto bundle, 30-55 homeowners in [state/city].
 

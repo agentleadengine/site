@@ -25,19 +25,19 @@ def middle_modules(spec):
     out = []
 
     # ============================================================
-    # Module 4 — Prospecting emails
+    # Module 4 - Prospecting emails
     # ============================================================
     m4 = f"""
 <p>Prospecting emails are the workhorse of modern marketing. Done right, they produce real conversations at the cost of time. Done wrong, they land in spam and never get opened.</p>
 
 <h2>The anatomy</h2>
 <ol>
-<li><strong>Subject line</strong> — 3-5 words, lowercase, personal</li>
-<li><strong>First line</strong> — specific to this person</li>
-<li><strong>The bridge</strong> — connects their situation to your relevance</li>
-<li><strong>The pitch</strong> — one specific angle, 2-3 sentences</li>
-<li><strong>Proof</strong> — one specific result or detail</li>
-<li><strong>The ask</strong> — clear specific next step</li>
+<li><strong>Subject line</strong> - 3-5 words, lowercase, personal</li>
+<li><strong>First line</strong> - specific to this person</li>
+<li><strong>The bridge</strong> - connects their situation to your relevance</li>
+<li><strong>The pitch</strong> - one specific angle, 2-3 sentences</li>
+<li><strong>Proof</strong> - one specific result or detail</li>
+<li><strong>The ask</strong> - clear specific next step</li>
 </ol>
 
 <h2>Target length: 70-110 words total.</h2>
@@ -106,7 +106,7 @@ PROSPECTS:
                 "subtitle": "Cold email that doesn't look like cold email.", "body": m4})
 
     # ============================================================
-    # Module 5 — Social media
+    # Module 5 - Social media
     # ============================================================
     social_topics = '\n'.join([f"<li>{t}</li>" for t in spec['social_topic_examples']])
     m5 = f"""
@@ -197,7 +197,7 @@ Adapt each to channel conventions.</pre>
                 "subtitle": "Posts that build an audience, not recycled graphics nobody engages with.", "body": m5})
 
     # ============================================================
-    # Module 6 — Blog + SEO
+    # Module 6 - Blog + SEO
     # ============================================================
     blog_topics = '\n'.join([f"<li>{t}</li>" for t in spec['blog_topic_examples']])
     m6 = f"""
@@ -296,7 +296,7 @@ Each: title, primary local keyword, why it wins locally.</pre>
                 "subtitle": "Blog content that ranks locally and brings leads for years.", "body": m6})
 
     # ============================================================
-    # Module 7 — Video scripts
+    # Module 7 - Video scripts
     # ============================================================
     video_topics = '\n'.join([f"<li>{t}</li>" for t in spec['video_topic_examples']])
     m7 = f"""
@@ -304,10 +304,10 @@ Each: title, primary local keyword, why it wins locally.</pre>
 
 <h2>Types of video to make</h2>
 <ul>
-<li><strong>Explainer (60-90s)</strong> — one concept, post to YouTube / embed on blog</li>
-<li><strong>FAQ shorts (30-60s)</strong> — for Reels / TikTok / Shorts</li>
-<li><strong>Personal intro (90s)</strong> — for website, email signature, LinkedIn</li>
-<li><strong>Case study (2-3 min)</strong> — anonymized client story</li>
+<li><strong>Explainer (60-90s)</strong> - one concept, post to YouTube / embed on blog</li>
+<li><strong>FAQ shorts (30-60s)</strong> - for Reels / TikTok / Shorts</li>
+<li><strong>Personal intro (90s)</strong> - for website, email signature, LinkedIn</li>
+<li><strong>Case study (2-3 min)</strong> - anonymized client story</li>
 </ul>
 
 <h2>Topic ideas for your practice</h2>
@@ -375,10 +375,10 @@ Warm, not corny. Contractions. Short sentences.</pre>
                 "subtitle": "Scripts for explainers, shorts, intros, case studies.", "body": m7})
 
     # ============================================================
-    # Module 8 — Direct mail
+    # Module 8 - Direct mail
     # ============================================================
     m8 = f"""
-<p>Direct mail isn't dead — it's that everyone else quit. For {short}, {spec['direct_mail_use']}, it still works.</p>
+<p>Direct mail isn't dead - it's that everyone else quit. For {short}, {spec['direct_mail_use']}, it still works.</p>
 
 <h2>When to use direct mail</h2>
 <ul>
@@ -391,10 +391,10 @@ Warm, not corny. Contractions. Short sentences.</pre>
 
 <h2>Format options</h2>
 <ul>
-<li><strong>Standard postcard (4x6, 6x9)</strong> — cheapest, limited copy</li>
-<li><strong>Oversized postcard (6x11, 9x12)</strong> — more visible, more copy room</li>
-<li><strong>Sales letter (1-2 page letter in #10 envelope)</strong> — classic direct response</li>
-<li><strong>Lumpy mail (padded envelope with small item)</strong> — expensive, unbeatable open rate</li>
+<li><strong>Standard postcard (4x6, 6x9)</strong> - cheapest, limited copy</li>
+<li><strong>Oversized postcard (6x11, 9x12)</strong> - more visible, more copy room</li>
+<li><strong>Sales letter (1-2 page letter in #10 envelope)</strong> - classic direct response</li>
+<li><strong>Lumpy mail (padded envelope with small item)</strong> - expensive, unbeatable open rate</li>
 </ul>
 
 <h2>Postcard copy</h2>
@@ -410,7 +410,7 @@ Offer: [specific]
 Front: 1 headline + 1 supporting line. Under 15 words.
 
 Back: 4-6 short sections
-1. Short opening — why you're mailing them
+1. Short opening - why you're mailing them
 2. The problem you solve
 3. What's different about you
 4. One specific local detail
@@ -467,7 +467,7 @@ Structure:
                 "subtitle": "Postcards and sales letters that still work in {short}.", "body": m8})
 
     # ============================================================
-    # Module 9 — Referrals
+    # Module 9 - Referrals
     # ============================================================
     referral_triggers = '\n'.join([f"<li>{t}</li>" for t in spec['referral_triggers']])
     m9 = f"""
@@ -515,7 +515,7 @@ Under 200 words total.</pre>
 </div>
 
 <h2>Referral partner outreach</h2>
-<p>The highest-leverage referral source isn't existing clients — it's other professionals who serve your same clients.</p>
+<p>The highest-leverage referral source isn't existing clients - it's other professionals who serve your same clients.</p>
 
 <div class="prompt-box">
 <div class="prompt-box-label">Partner outreach</div>
@@ -547,7 +547,7 @@ Under 150 words. Peer-to-peer, not pitch.</pre>
                 "subtitle": "Scripts and systems that turn referral generation into a weekly habit.", "body": m9})
 
     # ============================================================
-    # Module 10 — Reviews
+    # Module 10 - Reviews
     # ============================================================
     review_platforms = '\n'.join([f"<li>{p}</li>" for p in spec['review_platforms']])
     m10 = f"""
@@ -632,7 +632,7 @@ Do NOT: offer incentive, specify 5 stars, pressure.</pre>
                 "subtitle": "Response templates for every star rating. Reputation work that prospects watch.", "body": m10})
 
     # ============================================================
-    # Module 11 — Newsletter
+    # Module 11 - Newsletter
     # ============================================================
     newsletter_topics = '\n'.join([f"<li>{t}</li>" for t in spec['newsletter_topic_examples']])
     m11 = f"""
@@ -683,13 +683,13 @@ From me personally. Hand-written feel.</pre>
 
 <h2>Tools</h2>
 <ul>
-<li>ConvertKit / Kit — creators</li>
-<li>MailerLite — free tier, simple</li>
-<li>Beehiiv — newsletter-first</li>
-<li>ActiveCampaign — more complex automation</li>
+<li>ConvertKit / Kit - creators</li>
+<li>MailerLite - free tier, simple</li>
+<li>Beehiiv - newsletter-first</li>
+<li>ActiveCampaign - more complex automation</li>
 </ul>
 
-<p>Avoid MailChimp and Constant Contact for cold/warm lists — dated, mediocre deliverability.</p>
+<p>Avoid MailChimp and Constant Contact for cold/warm lists - dated, mediocre deliverability.</p>
 
 <h2>This week's task</h2>
 <div class="checklist">
@@ -702,7 +702,7 @@ From me personally. Hand-written feel.</pre>
                 "subtitle": "Monthly email that keeps you top-of-mind. 30-minute task, not 3 hours.", "body": m11})
 
     # ============================================================
-    # Module 12 — Ads
+    # Module 12 - Ads
     # ============================================================
     ad_platforms = '\n'.join([f"<li>{p}</li>" for p in spec['ad_platforms']])
     m12 = f"""
@@ -806,7 +806,7 @@ Goal: [book call / get quote / download].
                 "subtitle": "Ad copy that converts plus the tracking that prevents wasted spend.", "body": m12})
 
     # ============================================================
-    # Module 13 — Client education materials
+    # Module 13 - Client education materials
     # ============================================================
     client_ed_list = '\n'.join([f"<li>{d}</li>" for d in spec['client_ed_docs']])
     m13 = f"""

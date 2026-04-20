@@ -7,7 +7,7 @@ Strategy (pure CSS/JS, no HTML content rewrites needed):
 - Show the 15 modules as a 2-col card grid (not a plain list)
 - Inject a prominent "Start Module 1" CTA right under the hero
 - Collapse the long intro prose (h2 + following until next h2) behind
-  a single "Read the full intro" toggle — text is still there, just out
+  a single "Read the full intro" toggle - text is still there, just out
   of the way
 
 Applies to: playbooks/<pro>/index.html (15 files)

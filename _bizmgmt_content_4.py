@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Business Management content — Leadership + Risk (7 pages)."""
+"""Business Management content - Leadership + Risk (7 pages)."""
 from _build_bizmgmt import write_bm_page
 
 
@@ -10,7 +10,7 @@ from _build_bizmgmt import write_bm_page
 write_bm_page(
     slug="leadership/memo-culture",
     title="Memo culture",
-    description="The default mode of most companies is verbal decisions made in meetings that nobody writes down. The alternative — memo culture — forces clearer thinking, better decisions, and a durable record of why.",
+    description="The default mode of most companies is verbal decisions made in meetings that nobody writes down. The alternative - memo culture - forces clearer thinking, better decisions, and a durable record of why.",
     reading_time=6,
     body_html="""
 <p class="lede">The default mode of most companies is verbal decisions made in meetings that nobody writes down. Six months later nobody remembers what was decided, why, or who decided it. Memo culture is the alternative: written thinking precedes important decisions, and the writing itself becomes the record. It's slower up front. It compounds.</p>
@@ -26,22 +26,22 @@ write_bm_page(
 
 <h2>The standard memo structure</h2>
 <ol>
-  <li><strong>Context</strong> — what's the situation, why now?</li>
-  <li><strong>Problem / opportunity</strong> — what are we trying to decide?</li>
-  <li><strong>Options considered</strong> — at least 2, usually 3</li>
+  <li><strong>Context</strong> - what's the situation, why now?</li>
+  <li><strong>Problem / opportunity</strong> - what are we trying to decide?</li>
+  <li><strong>Options considered</strong> - at least 2, usually 3</li>
   <li><strong>Recommendation</strong> + reasoning</li>
-  <li><strong>What we'd need to believe</strong> — assumptions that, if wrong, change the recommendation</li>
+  <li><strong>What we'd need to believe</strong> - assumptions that, if wrong, change the recommendation</li>
   <li><strong>Risks + open questions</strong></li>
-  <li><strong>Appendix</strong> — data, detail, supporting analysis</li>
+  <li><strong>Appendix</strong> - data, detail, supporting analysis</li>
 </ol>
-<p>Length: 1–6 pages. If it's under 1 page, it's an email. If it's over 6, it's two memos.</p>
+<p>Length: 1-6 pages. If it's under 1 page, it's an email. If it's over 6, it's two memos.</p>
 
 <h2>The meeting format</h2>
 <p>The canonical memo-driven meeting:</p>
 <ol>
-  <li><strong>Memo circulated</strong> 24 hours in advance (or read silently for first 15 minutes of meeting — the Amazon model)</li>
+  <li><strong>Memo circulated</strong> 24 hours in advance (or read silently for first 15 minutes of meeting - the Amazon model)</li>
   <li><strong>Silent read</strong> + note-taking</li>
-  <li><strong>Discussion</strong> — every attendee has context, so discussion goes to substance immediately</li>
+  <li><strong>Discussion</strong> - every attendee has context, so discussion goes to substance immediately</li>
   <li><strong>Decision</strong> recorded in <a href="../operating-systems/decision-logs.html">decision log</a></li>
 </ol>
 <p>The first time you run this, it feels slow. By meeting three, you wonder how you ever made decisions any other way.</p>
@@ -52,13 +52,13 @@ write_bm_page(
 <p>Proposing a specific decision. Uses the structure above. Most common.</p>
 
 <h3>Strategy memo</h3>
-<p>Laying out a strategic thesis. Typically longer (5–15 pages). Context + thesis + implications + bets + risks.</p>
+<p>Laying out a strategic thesis. Typically longer (5-15 pages). Context + thesis + implications + bets + risks.</p>
 
 <h3>Post-mortem memo</h3>
 <p>After an incident, launch, or killed project. What happened, what we learned, what we'll do differently.</p>
 
 <h3>FAQ memo</h3>
-<p>Anticipates questions before they're asked. Useful for product launches, pricing changes, or org changes. "Frequently asked questions" format, but written adversarially — what's the hardest thing someone could ask?</p>
+<p>Anticipates questions before they're asked. Useful for product launches, pricing changes, or org changes. "Frequently asked questions" format, but written adversarially - what's the hardest thing someone could ask?</p>
 
 <h3>6-pager / narrative memo</h3>
 <p>Amazon's ritual. 6-page maximum. No bullets. Full sentences and paragraphs. Surprisingly hard to write, which is the point.</p>
@@ -77,21 +77,21 @@ write_bm_page(
   <li>Decisions get better because the decider sees the reasoning, not just the ask</li>
   <li>Remote/async work becomes feasible because decisions don't require everyone in a room</li>
   <li>Onboarding gets cheaper because a new hire can read the last 20 memos and know what was decided and why</li>
-  <li>Reversing decisions gets honest — you can read the original assumptions and see whether they held</li>
+  <li>Reversing decisions gets honest - you can read the original assumptions and see whether they held</li>
 </ul>
 
 <h2>What memo culture costs</h2>
 <ul>
-  <li>Time to write. A good memo takes 4–8 hours.</li>
+  <li>Time to write. A good memo takes 4-8 hours.</li>
   <li>Resistance from people who "think better verbally" (usually they think less clearly but faster)</li>
-  <li>Discipline to enforce — if half the team writes memos and half doesn't, you don't have memo culture</li>
+  <li>Discipline to enforce - if half the team writes memos and half doesn't, you don't have memo culture</li>
 </ul>
 
 <h2>What good looks like</h2>
 <ul>
   <li>Every meeting with &gt; 3 attendees + a decision has a pre-read</li>
   <li>Memos are archived somewhere searchable (Notion, Google Drive, dedicated memo system)</li>
-  <li>Senior leaders write their own memos — don't delegate the thinking</li>
+  <li>Senior leaders write their own memos - don't delegate the thinking</li>
   <li>Reading memos is a protected activity (calendar blocks, not "catch up in between meetings")</li>
 </ul>
 
@@ -108,12 +108,12 @@ write_bm_page(
     description="The reason most teams tolerate mediocrity is that feedback is expensive to give. Radical candor is the discipline of caring enough about someone to tell them the truth.",
     reading_time=6,
     body_html="""
-<p class="lede">The reason most teams tolerate mediocrity is that feedback is expensive to give. It's socially uncomfortable. It risks the relationship. And the alternative — saying nothing — is painless in the short term. Radical candor, coined by Kim Scott, is the discipline of being willing to pay the short-term cost because the long-term cost of not is much higher.</p>
+<p class="lede">The reason most teams tolerate mediocrity is that feedback is expensive to give. It's socially uncomfortable. It risks the relationship. And the alternative - saying nothing - is painless in the short term. Radical candor, coined by Kim Scott, is the discipline of being willing to pay the short-term cost because the long-term cost of not is much higher.</p>
 
 <h2>The two axes</h2>
 <ul>
-  <li><strong>Care personally</strong> — do you genuinely care about this person's success, growth, and well-being?</li>
-  <li><strong>Challenge directly</strong> — are you willing to tell them hard truths they don't want to hear?</li>
+  <li><strong>Care personally</strong> - do you genuinely care about this person's success, growth, and well-being?</li>
+  <li><strong>Challenge directly</strong> - are you willing to tell them hard truths they don't want to hear?</li>
 </ul>
 <p>The 2x2:</p>
 <pre style="background:#f5f5f7; padding:16px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:12px;">
@@ -131,7 +131,7 @@ write_bm_page(
 <h2>The four quadrants, named</h2>
 
 <h3>Ruinous Empathy</h3>
-<p>You care about the person but won't tell them the truth. Most common quadrant. Looks kind. Actually cruel — the person never gets to fix the problem, and eventually gets fired for something they didn't know was a problem.</p>
+<p>You care about the person but won't tell them the truth. Most common quadrant. Looks kind. Actually cruel - the person never gets to fix the problem, and eventually gets fired for something they didn't know was a problem.</p>
 
 <h3>Manipulative Insincerity</h3>
 <p>Low care, low candor. Says what will land well. Politician mode. The worst quadrant because nothing you say can be trusted.</p>
@@ -170,7 +170,7 @@ write_bm_page(
 
 <h2>The solicit-give-receive flow</h2>
 <ol>
-  <li><strong>Solicit first.</strong> Ask for feedback on yourself before giving feedback to others. "What could I do better?" — then genuinely consider the answer. Builds the credibility to give feedback back.</li>
+  <li><strong>Solicit first.</strong> Ask for feedback on yourself before giving feedback to others. "What could I do better?" - then genuinely consider the answer. Builds the credibility to give feedback back.</li>
   <li><strong>Give.</strong> Specific, behavioral, caring, timely.</li>
   <li><strong>Receive.</strong> When feedback comes back, thank the person, don't defend. Model what you expect.</li>
 </ol>
@@ -203,10 +203,10 @@ write_bm_page(
 write_bm_page(
     slug="leadership/accountability",
     title="Accountability without micromanagement",
-    description="Most managers oscillate between over-involvement and abandonment. Good accountability is neither — it's a structured agreement about what, when, and how, with the manager stepping in only when the system signals trouble.",
+    description="Most managers oscillate between over-involvement and abandonment. Good accountability is neither - it's a structured agreement about what, when, and how, with the manager stepping in only when the system signals trouble.",
     reading_time=6,
     body_html="""
-<p class="lede">Most managers oscillate between two failure modes: over-involvement (checking constantly, approving everything, re-doing work) and abandonment (delegating and disappearing, surprised when things go wrong). Good accountability is neither. It's a structured agreement about what, when, and how — with the manager stepping in only when the system signals trouble.</p>
+<p class="lede">Most managers oscillate between two failure modes: over-involvement (checking constantly, approving everything, re-doing work) and abandonment (delegating and disappearing, surprised when things go wrong). Good accountability is neither. It's a structured agreement about what, when, and how - with the manager stepping in only when the system signals trouble.</p>
 
 <h2>The accountability equation</h2>
 <p>For any piece of work, four things must be clear:</p>
@@ -225,10 +225,10 @@ write_bm_page(
 <h2>Milestones, not final dates</h2>
 <p>"Deliver Q2 plan by June 30" is useless. By June 29 you'll find out it didn't happen. Break it:</p>
 <ul>
-  <li>Week 1 — draft v1 with 3 candidate approaches</li>
-  <li>Week 2 — stakeholder review + feedback</li>
-  <li>Week 4 — v2 with recommended approach</li>
-  <li>Week 6 — board review version</li>
+  <li>Week 1 - draft v1 with 3 candidate approaches</li>
+  <li>Week 2 - stakeholder review + feedback</li>
+  <li>Week 4 - v2 with recommended approach</li>
+  <li>Week 6 - board review version</li>
 </ul>
 <p>Each milestone is a decision point. If milestone 2 is off-track, you know 5 weeks earlier than you otherwise would.</p>
 
@@ -252,14 +252,14 @@ write_bm_page(
 - Any customer-facing issue during beta<br>
 - Any budget overrun &gt; 10%<br>
 - Any scope change from the original spec<br><br>
-Anything else — handle it.
+Anything else - handle it.
 </blockquote>
 
 <h2>The manager's job, with this in place</h2>
 <ol>
   <li>Help set the outcome and milestones clearly at kickoff</li>
   <li>Review the weekly update; intervene only if a milestone is at risk</li>
-  <li>Respond fast when an escalation comes — operator needs a yes/no quickly</li>
+  <li>Respond fast when an escalation comes - operator needs a yes/no quickly</li>
   <li>Remove blockers the operator can't remove themselves</li>
   <li>Evaluate performance against the outcome, not the activity</li>
 </ol>
@@ -270,7 +270,7 @@ Anything else — handle it.
   <li><strong>Step in</strong>: repeated missed milestones, a critical stakeholder in distress, a decision about to be made that has irreversible consequences</li>
   <li><strong>Stay out</strong>: the operator's approach differs from yours but is still on track, small mistakes the operator can learn from, decisions that can be reversed</li>
 </ul>
-<p>The cost of intervening too early is real — you teach the operator that you don't trust them, and that any setback brings you in. They stop trying to solve hard things.</p>
+<p>The cost of intervening too early is real - you teach the operator that you don't trust them, and that any setback brings you in. They stop trying to solve hard things.</p>
 
 <h2>What good looks like</h2>
 <ul>
@@ -298,11 +298,11 @@ write_bm_page(
 
 <h2>The components</h2>
 <ul>
-  <li><strong>Base salary</strong> — predictable, non-negotiable-after-sign cash</li>
-  <li><strong>Variable / bonus</strong> — performance-tied cash</li>
-  <li><strong>Equity</strong> — stock options, RSUs, or profit sharing</li>
-  <li><strong>Benefits</strong> — health, retirement match, PTO, other non-cash value</li>
-  <li><strong>Non-monetary</strong> — remote flexibility, title, ownership, growth path</li>
+  <li><strong>Base salary</strong> - predictable, non-negotiable-after-sign cash</li>
+  <li><strong>Variable / bonus</strong> - performance-tied cash</li>
+  <li><strong>Equity</strong> - stock options, RSUs, or profit sharing</li>
+  <li><strong>Benefits</strong> - health, retirement match, PTO, other non-cash value</li>
+  <li><strong>Non-monetary</strong> - remote flexibility, title, ownership, growth path</li>
 </ul>
 <p>Total compensation = all of the above. Candidates evaluate the full package. Compete on total comp, not on base.</p>
 
@@ -313,7 +313,7 @@ write_bm_page(
 <ul>
   <li>Individual contributor track: L3 (early career) → L4 (mid) → L5 (senior) → L6 (staff) → L7 (principal)</li>
   <li>Manager track: M3 (manager) → M4 (senior manager) → M5 (director) → M6 (VP)</li>
-  <li>Each level has a written description of expectations — scope, autonomy, impact</li>
+  <li>Each level has a written description of expectations - scope, autonomy, impact</li>
 </ul>
 
 <h3>2. Set bands by level</h3>
@@ -325,44 +325,44 @@ write_bm_page(
   <li>Third-party benchmarks (Pave, Radford, Mercer, Option Impact for equity)</li>
   <li>Your actual offer acceptance / decline data</li>
 </ul>
-<p>Target a market position: typically 50th–75th percentile of your comp market. Above 75th is expensive; below 50th means you lose candidates.</p>
+<p>Target a market position: typically 50th-75th percentile of your comp market. Above 75th is expensive; below 50th means you lose candidates.</p>
 
 <h3>4. Document the philosophy</h3>
 <p>Write a one-page compensation philosophy. Answers: what percentile do we target? How do we weight cash vs equity? How much variable comp do we use? How do we handle raises? Publish it internally.</p>
 
-<h2>Variable comp — the dangerous lever</h2>
+<h2>Variable comp - the dangerous lever</h2>
 <p>Variable compensation motivates whatever you measure. Pick wrong and people optimize for the wrong thing. Rules:</p>
 <ul>
-  <li><strong>Sales roles</strong> — variable comp should be meaningful (40–60% of OTE) and tied to closed revenue, not activities</li>
-  <li><strong>Customer success</strong> — lean variable (10–20%) tied to retention + expansion</li>
-  <li><strong>Engineers / PMs / designers</strong> — usually not variable, or minimal (5–10% company bonus). Variable comp in product teams tends to drive the wrong incentives</li>
-  <li><strong>Executives</strong> — typically 20–40% tied to company-level outcomes (revenue, profitability)</li>
+  <li><strong>Sales roles</strong> - variable comp should be meaningful (40-60% of OTE) and tied to closed revenue, not activities</li>
+  <li><strong>Customer success</strong> - lean variable (10-20%) tied to retention + expansion</li>
+  <li><strong>Engineers / PMs / designers</strong> - usually not variable, or minimal (5-10% company bonus). Variable comp in product teams tends to drive the wrong incentives</li>
+  <li><strong>Executives</strong> - typically 20-40% tied to company-level outcomes (revenue, profitability)</li>
 </ul>
 <p>Whatever the comp plan rewards is what you'll get. If you reward bookings, you'll get bookings, even if they're bad deals.</p>
 
-<h2>Equity — the long tail</h2>
+<h2>Equity - the long tail</h2>
 <ul>
-  <li><strong>Early stage</strong> — equity is usually the largest component of long-term value. Be generous with early hires; small equity differences compound massively</li>
-  <li><strong>Refresh grants</strong> — after 2–3 years, initial grants are vesting out. Refresh grants keep people engaged. Budget for this</li>
-  <li><strong>Vesting cliff</strong> — 1-year cliff is industry standard. Accelerate for terminations without cause, not for voluntary departures</li>
-  <li><strong>Secondary opportunities</strong> — at later stages, allowing modest secondary sales reduces pressure to leave for liquidity</li>
+  <li><strong>Early stage</strong> - equity is usually the largest component of long-term value. Be generous with early hires; small equity differences compound massively</li>
+  <li><strong>Refresh grants</strong> - after 2-3 years, initial grants are vesting out. Refresh grants keep people engaged. Budget for this</li>
+  <li><strong>Vesting cliff</strong> - 1-year cliff is industry standard. Accelerate for terminations without cause, not for voluntary departures</li>
+  <li><strong>Secondary opportunities</strong> - at later stages, allowing modest secondary sales reduces pressure to leave for liquidity</li>
 </ul>
 
 <h2>Raise cadence</h2>
 <p>Raises happen on a schedule, not on who asks loudest:</p>
 <ul>
-  <li><strong>Annual</strong> — cost-of-living adjustments for all, tied to market data</li>
-  <li><strong>Merit</strong> — performance-tied increases, concentrated in top performers (top 20% get 50% of the merit pool)</li>
-  <li><strong>Promotion</strong> — when someone levels up, a compensation increase follows immediately, not at the next review</li>
-  <li><strong>Out-of-cycle</strong> — when someone's comp has fallen significantly out of market (e.g., market moved, they've been underleveled) — fix it, don't wait</li>
+  <li><strong>Annual</strong> - cost-of-living adjustments for all, tied to market data</li>
+  <li><strong>Merit</strong> - performance-tied increases, concentrated in top performers (top 20% get 50% of the merit pool)</li>
+  <li><strong>Promotion</strong> - when someone levels up, a compensation increase follows immediately, not at the next review</li>
+  <li><strong>Out-of-cycle</strong> - when someone's comp has fallen significantly out of market (e.g., market moved, they've been underleveled) - fix it, don't wait</li>
 </ul>
 
 <h2>The transparency question</h2>
 <p>How transparent should compensation be?</p>
 <ul>
-  <li><strong>Fully transparent</strong> — publish individual comp to the whole company (rare; requires extraordinary culture)</li>
-  <li><strong>Structurally transparent</strong> — publish bands, levels, philosophy; individual comp is private (most common good answer)</li>
-  <li><strong>Opaque</strong> — nothing published (causes resentment; employees compare notes anyway)</li>
+  <li><strong>Fully transparent</strong> - publish individual comp to the whole company (rare; requires extraordinary culture)</li>
+  <li><strong>Structurally transparent</strong> - publish bands, levels, philosophy; individual comp is private (most common good answer)</li>
+  <li><strong>Opaque</strong> - nothing published (causes resentment; employees compare notes anyway)</li>
 </ul>
 <p>Structurally transparent is the right answer for most companies. People need to know the system is fair; they don't need to know what their neighbor makes.</p>
 
@@ -373,7 +373,7 @@ write_bm_page(
   <li>Are people who joined more recently paid more than tenured people at the same level? (The "tenure tax")</li>
   <li>Are people who negotiated hard paid more than people who didn't, at the same level?</li>
 </ul>
-<p>Unexplained inequities get fixed. Not "noted for next cycle" — fixed.</p>
+<p>Unexplained inequities get fixed. Not "noted for next cycle" - fixed.</p>
 
 <h2>What good looks like</h2>
 <ul>
@@ -398,13 +398,13 @@ write_bm_page(
 write_bm_page(
     slug="risk/risk-management",
     title="Risk management basics",
-    description="Risk management is the practice of identifying what could break the business and deciding — explicitly — how much of each risk you're willing to carry. Most companies do it implicitly, and badly.",
+    description="Risk management is the practice of identifying what could break the business and deciding - explicitly - how much of each risk you're willing to carry. Most companies do it implicitly, and badly.",
     reading_time=7,
     body_html="""
-<p class="lede">Risk management is the practice of identifying what could break the business and deciding — explicitly — how much of each risk you're willing to carry. Most companies do it implicitly, and badly. They discover a risk only when it materializes. Good operators keep a living risk register and revisit it every quarter.</p>
+<p class="lede">Risk management is the practice of identifying what could break the business and deciding - explicitly - how much of each risk you're willing to carry. Most companies do it implicitly, and badly. They discover a risk only when it materializes. Good operators keep a living risk register and revisit it every quarter.</p>
 
 <h2>The risk register</h2>
-<p>A simple table, maintained by whoever owns risk (COO, CFO, Head of Ops — someone senior, not a committee):</p>
+<p>A simple table, maintained by whoever owns risk (COO, CFO, Head of Ops - someone senior, not a committee):</p>
 <pre style="background:#f5f5f7; padding:16px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:12px; overflow-x:auto;">
 Risk              | Likelihood | Impact | Score | Owner | Mitigation            | Status
 ------------------|------------|--------|-------|-------|-----------------------|--------
@@ -415,7 +415,7 @@ departs           |            |        |       |       |                       
 Data breach       |   Low      | Critical|  9   |  CTO  | SOC 2, pen test       | Active
 Regulatory change |   Medium   | Medium |  6    |  COO  | Monitor, counsel      | Active
 </pre>
-<p>Likelihood (1–4), Impact (1–4), Score = product. Scores &gt; 8 demand quarterly review. Scores &gt; 12 demand monthly.</p>
+<p>Likelihood (1-4), Impact (1-4), Score = product. Scores &gt; 8 demand quarterly review. Scores &gt; 12 demand monthly.</p>
 
 <h2>Categories to scan</h2>
 
@@ -473,10 +473,10 @@ Regulatory change |   Medium   | Medium |  6    |  COO  | Monitor, counsel      
 <h2>The four responses to risk</h2>
 <p>For each risk, pick one:</p>
 <ol>
-  <li><strong>Accept</strong> — the risk is low enough or the mitigation too expensive. Document the acceptance.</li>
-  <li><strong>Avoid</strong> — don't do the thing that creates the risk. Exit the line of business, drop the vendor.</li>
-  <li><strong>Mitigate</strong> — reduce the likelihood or impact. Invest in controls, backup plans, insurance.</li>
-  <li><strong>Transfer</strong> — shift the risk to someone else. Insurance, contracts with indemnification, escrow.</li>
+  <li><strong>Accept</strong> - the risk is low enough or the mitigation too expensive. Document the acceptance.</li>
+  <li><strong>Avoid</strong> - don't do the thing that creates the risk. Exit the line of business, drop the vendor.</li>
+  <li><strong>Mitigate</strong> - reduce the likelihood or impact. Invest in controls, backup plans, insurance.</li>
+  <li><strong>Transfer</strong> - shift the risk to someone else. Insurance, contracts with indemnification, escrow.</li>
 </ol>
 <p>The act of classifying forces explicitness. "We chose to accept this risk" is a very different artifact than "we never talked about it."</p>
 
@@ -496,18 +496,18 @@ Any two simultaneously → escalate to CEO for intervention.
 <h2>Scenario planning</h2>
 <p>Annually, run three scenarios:</p>
 <ul>
-  <li><strong>Base case</strong> — expected plan</li>
-  <li><strong>Downside</strong> — revenue down 20%, top customer gone, key hire slipped 6 months</li>
-  <li><strong>Black swan</strong> — business-defining event (lawsuit, recession, market collapse)</li>
+  <li><strong>Base case</strong> - expected plan</li>
+  <li><strong>Downside</strong> - revenue down 20%, top customer gone, key hire slipped 6 months</li>
+  <li><strong>Black swan</strong> - business-defining event (lawsuit, recession, market collapse)</li>
 </ul>
 <p>For each scenario: what actions do we take? At what trigger? By whom? Writing this down now beats improvising when the scenario hits.</p>
 
 <h2>The risk committee</h2>
-<p>Quarterly, the top 3–5 leaders review the risk register. 90 minutes. Format:</p>
+<p>Quarterly, the top 3-5 leaders review the risk register. 90 minutes. Format:</p>
 <ol>
   <li>New risks added this quarter</li>
   <li>Risks whose score changed</li>
-  <li>Top 5 active risks — status of mitigation</li>
+  <li>Top 5 active risks - status of mitigation</li>
   <li>Any incidents since last review + what they teach</li>
 </ol>
 <p>The quarterly ritual is what makes risk management a discipline instead of a one-time exercise.</p>
@@ -534,9 +534,9 @@ write_bm_page(
     description="Your data and IP are probably your most valuable assets and your most poorly protected ones. A few hours of deliberate work at the right moments prevents years of pain later.",
     reading_time=7,
     body_html="""
-<p class="lede">Your data and IP are probably your most valuable assets and — in most small companies — your most poorly protected ones. A few hours of deliberate work at the right moments prevents years of pain later. The things to get right aren't complicated. They're just easy to defer until after something bad happens.</p>
+<p class="lede">Your data and IP are probably your most valuable assets and - in most small companies - your most poorly protected ones. A few hours of deliberate work at the right moments prevents years of pain later. The things to get right aren't complicated. They're just easy to defer until after something bad happens.</p>
 
-<h2>IP — what you actually own</h2>
+<h2>IP - what you actually own</h2>
 <p>In a normal company, your IP includes:</p>
 <ul>
   <li>Source code</li>
@@ -560,7 +560,7 @@ write_bm_page(
 <p>The IP assignment founders sign at company formation. Critical for fundraising and acquisition.</p>
 
 <h3>4. NDAs</h3>
-<p>Standard mutual NDA for customer/partner conversations. Asymmetric NDAs where appropriate. Don't be shy about asking — anyone who refuses to sign a standard NDA is telling you something.</p>
+<p>Standard mutual NDA for customer/partner conversations. Asymmetric NDAs where appropriate. Don't be shy about asking - anyone who refuses to sign a standard NDA is telling you something.</p>
 
 <h3>5. Non-compete / non-solicit</h3>
 <p>Varies wildly by state + country (California invalid; other states enforce). Know what's enforceable and structure accordingly.</p>
@@ -573,46 +573,46 @@ write_bm_page(
   <li>Monitor for infringement; the law protects what you actively defend</li>
 </ul>
 
-<h2>Data protection — the separate problem</h2>
+<h2>Data protection - the separate problem</h2>
 <p>IP is "what you create." Data is "what you collect." Both need protection but with different frameworks.</p>
 
 <h3>Classify your data</h3>
 <p>Not all data is equally sensitive:</p>
 <ul>
-  <li><strong>Public</strong> — marketing site, published content</li>
-  <li><strong>Internal</strong> — company data not public but not sensitive if leaked</li>
-  <li><strong>Confidential</strong> — business-sensitive (financial, strategy, salaries)</li>
-  <li><strong>Restricted</strong> — customer PII, security keys, payment data</li>
+  <li><strong>Public</strong> - marketing site, published content</li>
+  <li><strong>Internal</strong> - company data not public but not sensitive if leaked</li>
+  <li><strong>Confidential</strong> - business-sensitive (financial, strategy, salaries)</li>
+  <li><strong>Restricted</strong> - customer PII, security keys, payment data</li>
 </ul>
 <p>Each tier gets progressively tighter access controls.</p>
 
 <h3>Access controls</h3>
 <ul>
-  <li><strong>Least privilege</strong> — default to no access; grant access per role</li>
-  <li><strong>SSO everywhere</strong> — single sign-on with MFA enforced</li>
-  <li><strong>Offboarding checklist</strong> — within 1 business day of termination, all access revoked</li>
-  <li><strong>Quarterly access review</strong> — each system's admin reviews who has access</li>
+  <li><strong>Least privilege</strong> - default to no access; grant access per role</li>
+  <li><strong>SSO everywhere</strong> - single sign-on with MFA enforced</li>
+  <li><strong>Offboarding checklist</strong> - within 1 business day of termination, all access revoked</li>
+  <li><strong>Quarterly access review</strong> - each system's admin reviews who has access</li>
 </ul>
 
 <h3>Encryption</h3>
 <ul>
-  <li>At rest — databases, file storage, backups</li>
-  <li>In transit — TLS everywhere, never plaintext</li>
-  <li>Key management — not stored in the same place as the data</li>
+  <li>At rest - databases, file storage, backups</li>
+  <li>In transit - TLS everywhere, never plaintext</li>
+  <li>Key management - not stored in the same place as the data</li>
 </ul>
 
 <h3>Backups</h3>
-<p>3-2-1 rule: 3 copies, 2 different media types, 1 offsite. Test restores quarterly — a backup you can't restore from isn't a backup.</p>
+<p>3-2-1 rule: 3 copies, 2 different media types, 1 offsite. Test restores quarterly - a backup you can't restore from isn't a backup.</p>
 
 <h2>Compliance frameworks</h2>
 <p>If you sell to enterprises or handle regulated data:</p>
 <ul>
-  <li><strong>SOC 2 Type II</strong> — standard for B2B SaaS selling mid-market+</li>
-  <li><strong>ISO 27001</strong> — international alternative</li>
-  <li><strong>HIPAA</strong> — if you touch healthcare PHI</li>
-  <li><strong>PCI DSS</strong> — if you handle card data</li>
-  <li><strong>GDPR</strong> — if you have EU customers/users</li>
-  <li><strong>CCPA / CPRA</strong> — California consumer data</li>
+  <li><strong>SOC 2 Type II</strong> - standard for B2B SaaS selling mid-market+</li>
+  <li><strong>ISO 27001</strong> - international alternative</li>
+  <li><strong>HIPAA</strong> - if you touch healthcare PHI</li>
+  <li><strong>PCI DSS</strong> - if you handle card data</li>
+  <li><strong>GDPR</strong> - if you have EU customers/users</li>
+  <li><strong>CCPA / CPRA</strong> - California consumer data</li>
 </ul>
 <p>Start the compliance work 6 months before you need the certification. The readiness work itself surfaces risks.</p>
 
@@ -625,7 +625,7 @@ write_bm_page(
   <li>What's the legal / PR playbook?</li>
   <li>Who notifies customers, and when?</li>
 </ul>
-<p>Then run a tabletop exercise — simulate an incident and walk through the plan. The first time you execute it should not be in production.</p>
+<p>Then run a tabletop exercise - simulate an incident and walk through the plan. The first time you execute it should not be in production.</p>
 
 <h2>Regulatory notification windows</h2>
 <p>GDPR: 72 hours to notify authorities after discovery. CCPA: "without unreasonable delay." State breach laws vary. Know the clocks before you need them.</p>
@@ -652,7 +652,7 @@ write_bm_page(
     description="Insurance is the part of the business most operators ignore until they're in a situation where they wish they hadn't. A few standard policies prevent nearly all catastrophic outcomes.",
     reading_time=6,
     body_html="""
-<p class="lede">Insurance is the part of the business most operators ignore until they're in a situation where they wish they hadn't. Insurance isn't about expecting to collect — it's about ensuring that one bad event doesn't end the company. A few standard policies prevent nearly all catastrophic outcomes. Get them in place early; adjust limits as the company grows.</p>
+<p class="lede">Insurance is the part of the business most operators ignore until they're in a situation where they wish they hadn't. Insurance isn't about expecting to collect - it's about ensuring that one bad event doesn't end the company. A few standard policies prevent nearly all catastrophic outcomes. Get them in place early; adjust limits as the company grows.</p>
 
 <h2>The essential policies</h2>
 
@@ -660,16 +660,16 @@ write_bm_page(
 <p>Covers bodily injury and property damage claims. Customer slips in your office. Visitor gets injured. Someone sues claiming your booth at a conference damaged their equipment. Usually $1M per occurrence / $2M aggregate is the starting point.</p>
 
 <h3>Professional Liability / E&amp;O (Errors &amp; Omissions)</h3>
-<p>Critical for anyone who provides a service, software, or advice. Covers claims that your product or service failed to perform, caused financial loss, or had errors. A customer claims your software caused them to lose money — E&amp;O covers the defense and potential settlement. $1M–$5M depending on customer profile.</p>
+<p>Critical for anyone who provides a service, software, or advice. Covers claims that your product or service failed to perform, caused financial loss, or had errors. A customer claims your software caused them to lose money - E&amp;O covers the defense and potential settlement. $1M-$5M depending on customer profile.</p>
 
 <h3>Cyber / Data Breach</h3>
-<p>Covers costs of a data breach: forensics, customer notification, credit monitoring, regulatory fines, business interruption, ransomware recovery. If you store any customer data, this is non-optional. $1M–$10M+ depending on data volume and sensitivity. Be very careful about exclusions — many policies exclude social engineering or nation-state attacks.</p>
+<p>Covers costs of a data breach: forensics, customer notification, credit monitoring, regulatory fines, business interruption, ransomware recovery. If you store any customer data, this is non-optional. $1M-$10M+ depending on data volume and sensitivity. Be very careful about exclusions - many policies exclude social engineering or nation-state attacks.</p>
 
 <h3>Directors &amp; Officers (D&amp;O)</h3>
 <p>Protects directors and officers personally from claims by shareholders, employees, or regulators. Required before raising institutional capital. Becomes more important as the board grows. Without D&amp;O, you cannot recruit experienced board members.</p>
 
 <h3>Employment Practices Liability (EPLI)</h3>
-<p>Covers employment-related claims: wrongful termination, discrimination, harassment, wage/hour disputes. Claims frequency is higher than most operators expect — across a company's life, statistically one of these claims is almost guaranteed. Critical once you're over ~25 employees.</p>
+<p>Covers employment-related claims: wrongful termination, discrimination, harassment, wage/hour disputes. Claims frequency is higher than most operators expect - across a company's life, statistically one of these claims is almost guaranteed. Critical once you're over ~25 employees.</p>
 
 <h3>Workers' Comp</h3>
 <p>Mandatory in most states. Covers injuries that happen during work. Usually cheap; administrated through payroll.</p>
@@ -688,23 +688,23 @@ write_bm_page(
 
 <h2>What drives premium</h2>
 <ul>
-  <li><strong>Industry</strong> — high-risk industries (construction, healthcare, crypto) pay more</li>
-  <li><strong>Revenue size</strong> — larger = higher premium (more exposure)</li>
-  <li><strong>Claim history</strong> — past claims raise premiums</li>
-  <li><strong>Controls</strong> — security posture for cyber; HR practices for EPLI</li>
-  <li><strong>Deductible</strong> — higher deductible, lower premium</li>
-  <li><strong>Limits</strong> — higher coverage, higher premium</li>
+  <li><strong>Industry</strong> - high-risk industries (construction, healthcare, crypto) pay more</li>
+  <li><strong>Revenue size</strong> - larger = higher premium (more exposure)</li>
+  <li><strong>Claim history</strong> - past claims raise premiums</li>
+  <li><strong>Controls</strong> - security posture for cyber; HR practices for EPLI</li>
+  <li><strong>Deductible</strong> - higher deductible, lower premium</li>
+  <li><strong>Limits</strong> - higher coverage, higher premium</li>
 </ul>
 
-<h2>Reading a policy — what to check</h2>
+<h2>Reading a policy - what to check</h2>
 <ol>
-  <li><strong>Named insured</strong> — is the legal entity name correct? Subsidiaries included?</li>
-  <li><strong>Limits</strong> — per-occurrence and aggregate. Is the aggregate enough for multiple claims in a year?</li>
-  <li><strong>Deductible / retention</strong> — what you pay before coverage kicks in</li>
-  <li><strong>Territory</strong> — coverage worldwide or US-only?</li>
-  <li><strong>Exclusions</strong> — read these. Often buried. Common exclusions: war, nuclear, intentional acts, pollution, prior acts</li>
-  <li><strong>Claims-made vs. occurrence</strong> — claims-made policies only cover claims filed while the policy is active; need tail coverage when you switch insurers</li>
-  <li><strong>Notification requirements</strong> — how fast must you notify of a potential claim? Missing the window voids coverage</li>
+  <li><strong>Named insured</strong> - is the legal entity name correct? Subsidiaries included?</li>
+  <li><strong>Limits</strong> - per-occurrence and aggregate. Is the aggregate enough for multiple claims in a year?</li>
+  <li><strong>Deductible / retention</strong> - what you pay before coverage kicks in</li>
+  <li><strong>Territory</strong> - coverage worldwide or US-only?</li>
+  <li><strong>Exclusions</strong> - read these. Often buried. Common exclusions: war, nuclear, intentional acts, pollution, prior acts</li>
+  <li><strong>Claims-made vs. occurrence</strong> - claims-made policies only cover claims filed while the policy is active; need tail coverage when you switch insurers</li>
+  <li><strong>Notification requirements</strong> - how fast must you notify of a potential claim? Missing the window voids coverage</li>
 </ol>
 
 <h2>Working with a broker</h2>
@@ -715,15 +715,15 @@ write_bm_page(
   <li>Advocates for you if a claim happens</li>
   <li>Reviews your coverage annually as the business changes</li>
 </ul>
-<p>Interview 2–3 brokers. Pick one who specializes in your industry + stage. Broker commissions are paid by carriers; you don't pay the broker directly.</p>
+<p>Interview 2-3 brokers. Pick one who specializes in your industry + stage. Broker commissions are paid by carriers; you don't pay the broker directly.</p>
 
 <h2>Claims process</h2>
 <p>If something happens:</p>
 <ol>
   <li>Document immediately (photos, logs, witnesses)</li>
-  <li>Notify the broker within 24–48 hours</li>
+  <li>Notify the broker within 24-48 hours</li>
   <li>Don't admit fault or settle anything without the broker's knowledge</li>
-  <li>Preserve evidence — for cyber claims, don't wipe/rebuild systems until forensics team examines</li>
+  <li>Preserve evidence - for cyber claims, don't wipe/rebuild systems until forensics team examines</li>
 </ol>
 
 <h2>Annual review</h2>
@@ -751,4 +751,4 @@ write_bm_page(
     nxt=None,
 )
 
-print("\n✓ Leadership + Risk (7 pages) — Business Management complete")
+print("\n✓ Leadership + Risk (7 pages) - Business Management complete")

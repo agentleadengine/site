@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Builder for comparison pages — 'X vs Y' content for SEO."""
+"""Builder for comparison pages - 'X vs Y' content for SEO."""
 from pathlib import Path
 
 SITE = Path(__file__).parent

@@ -6,12 +6,12 @@ from pathlib import Path
 ROOT = Path("/Users/ble/Desktop/sams site")
 
 # Replacements for em-dashes and en-dashes
-# Common patterns: " — ", "—", " – ", "–"
+# Common patterns: " - ", "-", " - ", "-"
 EM_REPLACEMENTS = [
-    (" — ", ", "),
-    (" – ", ", "),
-    ("—", ", "),
-    ("–", ", "),
+    (" - ", ", "),
+    (" - ", ", "),
+    ("-", ", "),
+    ("-", ", "),
 ]
 
 # Replacements for banned phrases (case-insensitive where appropriate)

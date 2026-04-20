@@ -236,7 +236,7 @@ COMPARISONS = [
        ("Ecosystem", "Growing", "Largest in B2B SaaS")],
       p("Smaller teams, want marketing+sales+service in one, budget sensitive."),
       p("Enterprise scale, need deep customization, integrations with industry tools."),
-      p("HubSpot until you feel its limits. Salesforce when you need enterprise flexibility — but brace for ops cost.")),
+      p("HubSpot until you feel its limits. Salesforce when you need enterprise flexibility - but brace for ops cost.")),
 
     C("klaviyo-vs-mailchimp", "Klaviyo", "Mailchimp", "Email Marketing",
       "DTC-focused vs general-purpose email marketing.",
@@ -692,7 +692,7 @@ COMPARISONS = [
 
     C("medium-vs-substack", "Medium", "Substack", "Publishing",
       "Platform with algorithm vs owned-audience newsletter.",
-      "Medium offers algorithmic distribution but you don't own the audience. Substack is newsletter-first — your audience is yours via email.",
+      "Medium offers algorithmic distribution but you don't own the audience. Substack is newsletter-first - your audience is yours via email.",
       [("Audience ownership", "Limited (Medium's readers)", "You own the list"),
        ("Distribution", "Algorithmic boost possible", "Email + Substack network"),
        ("Monetization", "Partner Program", "Direct subscriptions")],

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generic playbook builder — reuses the insurance playbook's interactive shell
+"""Generic playbook builder - reuses the insurance playbook's interactive shell
 for any profession's 17-module Claude playbook."""
 from pathlib import Path
 from _build_insurance import PLAYBOOK_CSS, PLAYBOOK_JS, FONTS
@@ -11,7 +11,7 @@ LINKEDIN = "https://www.linkedin.com/in/samuelochoa"
 
 def build_playbook(slug_dir, profession_name, hero_subtitle, modules_data, landing_body, extra_breadcrumb_label=None):
     """
-    slug_dir: e.g., "real-estate" — the dir under /playbooks/
+    slug_dir: e.g., "real-estate" - the dir under /playbooks/
     profession_name: e.g., "The Real Estate Agent's Claude Playbook"
     hero_subtitle: copy for the landing hero
     modules_data: list of dicts: [{"slug":"module-01","title":"...","tag":"Module 1","subtitle":"...","body":"..."}]

@@ -10,13 +10,13 @@ from _build_rag import write_rag_page
 hub_body = """
 <p class="lede">RAG (Retrieval-Augmented Generation) is the discipline of grounding a language model's answers in your own data. Almost every production AI system I've worked on eventually converges to some version of RAG. It's the difference between a model that bluffs and a model that cites. Between a demo that looks good and a system that holds up under real traffic.</p>
 
-<p>This section is 56 pages on how to take a RAG system from "throwing docs into a vector database and hoping" all the way to production-grade retrieval. Rags to riches — from the naive v1 most teams ship and regret, to the layered, evaluated, observable systems that actually work at scale.</p>
+<p>This section is 56 pages on how to take a RAG system from "throwing docs into a vector database and hoping" all the way to production-grade retrieval. Rags to riches - from the naive v1 most teams ship and regret, to the layered, evaluated, observable systems that actually work at scale.</p>
 
 <h2>The ten sections</h2>
 
 <div class="cards" style="margin-top:32px;">
   <a href="foundations/what-is-rag.html" class="card"><h3>Foundations</h3><p>What RAG is, why it beats fine-tuning for most use cases, the architecture map, and when to skip it entirely.</p></a>
-  <a href="docs/ingestion-pipeline.html" class="card"><h3>Documents + Ingestion</h3><p>PDFs, HTML, tables, figures, OCR, metadata — the unglamorous 80% of every real RAG system.</p></a>
+  <a href="docs/ingestion-pipeline.html" class="card"><h3>Documents + Ingestion</h3><p>PDFs, HTML, tables, figures, OCR, metadata - the unglamorous 80% of every real RAG system.</p></a>
   <a href="chunking/why-chunking.html" class="card"><h3>Chunking</h3><p>Fixed-size, semantic, recursive, structure-aware. The single most under-thought part of most RAG stacks.</p></a>
   <a href="embeddings/what-are-embeddings.html" class="card"><h3>Embeddings</h3><p>Picking models, closed vs open, dimensions, MRL, fine-tuning. Where your retrieval ceiling is actually set.</p></a>
   <a href="vectors/overview.html" class="card"><h3>Vector Stores</h3><p>HNSW, IVF, PQ, hybrid indexes, metadata filtering, cost. The infrastructure layer.</p></a>
@@ -30,7 +30,7 @@ hub_body = """
 <h2 style="margin-top:56px;">How to read this</h2>
 <p>If you're new to RAG, start at <a href="foundations/what-is-rag.html">Foundations</a> and go section by section. If you've already shipped a v1 and it underwhelms in production, skip to <a href="retrieval/reranking.html">Reranking</a> and <a href="eval/why-eval.html">Evaluation</a>. Those are the two places where most naive RAG systems leave the most value on the floor.</p>
 
-<p>The thread running through all of it: RAG isn't one thing. It's a pipeline with a dozen independent decisions, and the quality of your system is the product of all of them — not the max.</p>
+<p>The thread running through all of it: RAG isn't one thing. It's a pipeline with a dozen independent decisions, and the quality of your system is the product of all of them - not the max.</p>
 """
 
 write_rag_page(
@@ -54,7 +54,7 @@ write_rag_page(
     description="Retrieval-Augmented Generation (RAG) is the architectural pattern that lets an LLM answer questions using your data. Here's what it actually is and what it isn't.",
     reading_time=5,
     body_html="""
-<p class="lede">RAG is short for Retrieval-Augmented Generation. At its simplest: before you ask the language model a question, you retrieve relevant context from your own data and paste it into the prompt. The model then answers using that context. It's three moves — embed, retrieve, generate — dressed up with pipelines, metadata, and increasingly sophisticated orchestration on top.</p>
+<p class="lede">RAG is short for Retrieval-Augmented Generation. At its simplest: before you ask the language model a question, you retrieve relevant context from your own data and paste it into the prompt. The model then answers using that context. It's three moves - embed, retrieve, generate - dressed up with pipelines, metadata, and increasingly sophisticated orchestration on top.</p>
 
 <h2>The three-step loop</h2>
 <ol>
@@ -79,18 +79,18 @@ write_rag_page(
 <ul>
   <li><strong>Reasoning you don't already have.</strong> RAG can't teach a model to solve a problem it didn't learn in pretraining. It only makes facts available.</li>
   <li><strong>Style or tone changes.</strong> Those come from fine-tuning or prompting, not retrieval.</li>
-  <li><strong>Magical "search your docs" quality.</strong> Retrieval quality is capped by chunking, embedding, and reranking choices — and vanilla setups leave most of that ceiling unclaimed.</li>
+  <li><strong>Magical "search your docs" quality.</strong> Retrieval quality is capped by chunking, embedding, and reranking choices - and vanilla setups leave most of that ceiling unclaimed.</li>
   <li><strong>Guaranteed factuality.</strong> The model can still hallucinate over retrieved context if the context is noisy, contradictory, or incomplete.</li>
 </ul>
 
 <h2>The surface is small. The depth is enormous.</h2>
 <p>A naive RAG system fits on one whiteboard. But each of those three steps has its own sub-discipline:</p>
 <ul>
-  <li>Before embedding, you have to parse documents — which for PDFs alone is a category of software.</li>
+  <li>Before embedding, you have to parse documents - which for PDFs alone is a category of software.</li>
   <li>Chunking strategies affect retrieval quality as much as model choice.</li>
   <li>Vector indexes have failure modes that don't show up until 10M+ documents.</li>
   <li>Retrieval itself is a stack of techniques (dense, sparse, hybrid, rerank, query rewriting) where each layer compounds on the last.</li>
-  <li>Evaluation is its own rabbit hole — "is my RAG better?" is genuinely hard to answer.</li>
+  <li>Evaluation is its own rabbit hole - "is my RAG better?" is genuinely hard to answer.</li>
   <li>Production concerns (latency, cost, observability, security) transform the system once it leaves the notebook.</li>
 </ul>
 <p>The reason I wrote 56 pages on this topic is that every one of those layers matters, and most teams under-invest in all of them.</p>
@@ -113,7 +113,7 @@ write_rag_page(
     description="Fine-tuning teaches a model new behaviors. RAG gives a model new facts. Most of what teams think they want from fine-tuning is actually a RAG problem.",
     reading_time=5,
     body_html="""
-<p class="lede">Every time a team says "we want to fine-tune a model on our company docs," I ask one question: do you want to change how the model behaves, or do you want to make facts available to it? If it's the second one — and it almost always is — you want RAG, not fine-tuning. This is the most common architectural mistake I see in AI projects.</p>
+<p class="lede">Every time a team says "we want to fine-tune a model on our company docs," I ask one question: do you want to change how the model behaves, or do you want to make facts available to it? If it's the second one - and it almost always is - you want RAG, not fine-tuning. This is the most common architectural mistake I see in AI projects.</p>
 
 <h2>The clean split</h2>
 
@@ -144,16 +144,16 @@ write_rag_page(
 </ul>
 
 <h2>The economics are not close</h2>
-<p>Fine-tuning a serious model costs anywhere from a few hundred to tens of thousands of dollars per run. Updating a RAG index costs pennies. When your knowledge base changes — which it does constantly — the RAG system is updated in seconds. The fine-tuned model is a stale artifact until the next training run.</p>
+<p>Fine-tuning a serious model costs anywhere from a few hundred to tens of thousands of dollars per run. Updating a RAG index costs pennies. When your knowledge base changes - which it does constantly - the RAG system is updated in seconds. The fine-tuned model is a stale artifact until the next training run.</p>
 
 <p>For any system where facts update more than once a quarter, RAG wins on cost alone.</p>
 
 <h2>The failure mode nobody warns you about</h2>
 <p>Fine-tuning on factual data teaches the model to produce <em>tokens that look like your data</em>. Not to reason about it. The model will confidently invent answers that sound like your docs but contradict them. This is especially bad with small datasets, where the model memorizes surface patterns without generalizing.</p>
 
-<p>I've seen teams fine-tune on internal wikis and get a model that hallucinates internal wiki content — which is worse than useless. RAG, done well, doesn't have this failure mode because the actual source text is in the prompt at generation time.</p>
+<p>I've seen teams fine-tune on internal wikis and get a model that hallucinates internal wiki content - which is worse than useless. RAG, done well, doesn't have this failure mode because the actual source text is in the prompt at generation time.</p>
 
-<h2>The hybrid pattern — when it pays</h2>
+<h2>The hybrid pattern - when it pays</h2>
 <p>The right hybrid: fine-tune a smaller/cheaper model on the <em>shape</em> of responses you want (format, style, common patterns), then use RAG to inject the specific facts at inference time. You get the efficiency of a smaller model, the consistency of fine-tuning, and the factuality of RAG.</p>
 
 <p>This is the architecture most serious production systems converge on. Not "RAG or fine-tuning" but "fine-tuning for behavior, RAG for facts."</p>
@@ -204,7 +204,7 @@ write_rag_page(
 <p>Attaching structured data to each chunk: source URL, document type, author, timestamp, tags, permissions. This is what lets you filter, sort, and scope retrieval later.</p>
 
 <h3>6. Embedding</h3>
-<p>Converting each chunk into a vector using an embedding model. The model choice sets a ceiling on retrieval quality — and costs compound across every reindex.</p>
+<p>Converting each chunk into a vector using an embedding model. The model choice sets a ceiling on retrieval quality - and costs compound across every reindex.</p>
 
 <h3>7. Index storage</h3>
 <p>Storing vectors in a searchable index. Pinecone, Weaviate, Qdrant, Chroma, pgvector, Milvus, FAISS. Each has different performance characteristics at scale.</p>
@@ -242,7 +242,7 @@ write_rag_page(
 <strong>Observability:</strong> logging, alerting, feedback loops, human review?
 </blockquote>
 
-<p>Ten questions. Most teams have answers for 3-4. The rest becomes "we'll figure that out later" — and "later" is when the system breaks in production.</p>
+<p>Ten questions. Most teams have answers for 3-4. The rest becomes "we'll figure that out later" - and "later" is when the system breaks in production.</p>
 
 <h2>The common anti-architecture</h2>
 <p>A surprising number of production RAG systems look like this:</p>
@@ -254,7 +254,7 @@ write_rag_page(
   <li>Top-10 retrieval passed to GPT-4</li>
   <li>No eval, no observability, no reranker</li>
 </ul>
-<p>It's the default path, and it's not terrible — but it's also the system that will plateau at "okay" and never get to "good." Everything in this section is the work of getting past that plateau.</p>
+<p>It's the default path, and it's not terrible - but it's also the system that will plateau at "okay" and never get to "good." Everything in this section is the work of getting past that plateau.</p>
 
 <p style="margin-top:40px;">Next: <a href="when-not-to-use.html">When not to use RAG</a>.</p>
 """,
@@ -287,10 +287,10 @@ write_rag_page(
 <p>For "analyze this contract" or "review this codebase file," long-context inference outperforms chunked retrieval.</p>
 
 <h2>When precision matters more than recall</h2>
-<p>RAG is optimistic retrieval: fetch the most likely documents and let the model figure it out. For legal discovery, compliance auditing, or anything where a missed document is a lawsuit, you want exhaustive search with human review — not approximate vector similarity. Traditional keyword search with Boolean operators and proper workflows beats RAG in these cases.</p>
+<p>RAG is optimistic retrieval: fetch the most likely documents and let the model figure it out. For legal discovery, compliance auditing, or anything where a missed document is a lawsuit, you want exhaustive search with human review - not approximate vector similarity. Traditional keyword search with Boolean operators and proper workflows beats RAG in these cases.</p>
 
 <h2>When the task is structured data, not unstructured text</h2>
-<p>If your "documents" are rows in a database, you don't want vector retrieval — you want SQL. An LLM with structured tool access and a well-defined query interface beats RAG for any task where the underlying data is tabular and queryable.</p>
+<p>If your "documents" are rows in a database, you don't want vector retrieval - you want SQL. An LLM with structured tool access and a well-defined query interface beats RAG for any task where the underlying data is tabular and queryable.</p>
 
 <p>Text-to-SQL or tool-calling agents are the right pattern here. RAG over a database export is usually worse than querying the database directly.</p>
 
@@ -336,7 +336,7 @@ write_rag_page(
     description="Ingestion is 80% of a real RAG system. Here's the pipeline pattern I use and the stages that matter most.",
     reading_time=6,
     body_html="""
-<p class="lede">Ingestion is the unsexy 80% of any production RAG system. Demos skip it. Real systems live and die by it. If your ingestion is broken, no amount of retrieval sophistication saves you — you're doing advanced reasoning on garbage.</p>
+<p class="lede">Ingestion is the unsexy 80% of any production RAG system. Demos skip it. Real systems live and die by it. If your ingestion is broken, no amount of retrieval sophistication saves you - you're doing advanced reasoning on garbage.</p>
 
 <h2>The canonical pipeline</h2>
 <ol>
@@ -358,7 +358,7 @@ write_rag_page(
 <p>Simplest. Rebuild the entire index from scratch on a schedule. Safe, easy to reason about. Expensive and slow for large corpora. Okay up to ~100K documents or whenever the corpus fits in a nightly rebuild window.</p>
 
 <h3>Delta sync</h3>
-<p>Only re-ingest documents that changed since the last sync. Requires reliable change detection — last-modified timestamps, content hashes, or a change log from the source system. Most common pattern at medium scale.</p>
+<p>Only re-ingest documents that changed since the last sync. Requires reliable change detection - last-modified timestamps, content hashes, or a change log from the source system. Most common pattern at medium scale.</p>
 
 <h3>Event-driven</h3>
 <p>Source system emits events (webhook, message queue, CDC stream) that trigger per-document updates. Near-real-time. Most complex to operate. Required when freshness matters in minutes rather than hours.</p>
@@ -409,11 +409,11 @@ write_rag_page(
   <li>Embedding model version (so you know when to reindex)</li>
 </ul>
 
-<p>Without this metadata, your RAG system can't produce real citations, and it can't recover from bad chunks — you can't find and fix what you can't trace.</p>
+<p>Without this metadata, your RAG system can't produce real citations, and it can't recover from bad chunks - you can't find and fix what you can't trace.</p>
 
 <h2>Tools I actually use</h2>
 <ul>
-  <li><strong>Unstructured.io</strong> — polymorphic document parser, handles most file types reasonably</li>
+  <li><strong>Unstructured.io</strong> - polymorphic document parser, handles most file types reasonably</li>
   <li><strong>LlamaIndex</strong> for high-level pipeline orchestration</li>
   <li><strong>Temporal</strong> or <strong>Airflow</strong> for production workflow scheduling</li>
   <li><strong>Celery</strong> or <strong>SQS</strong> for job queues at smaller scale</li>
@@ -421,7 +421,7 @@ write_rag_page(
 </ul>
 
 <h2>The build-vs-buy trap</h2>
-<p>Commercial "RAG-as-a-service" ingestion tools (Vectara, Superlinked, etc.) save time on the happy path and cost you when your data has edge cases — which it will. For a serious system, expect to own the ingestion pipeline end-to-end. The question isn't whether to build, it's whether to build now or after you've outgrown a vendor.</p>
+<p>Commercial "RAG-as-a-service" ingestion tools (Vectara, Superlinked, etc.) save time on the happy path and cost you when your data has edge cases - which it will. For a serious system, expect to own the ingestion pipeline end-to-end. The question isn't whether to build, it's whether to build now or after you've outgrown a vendor.</p>
 
 <p style="margin-top:40px;">Next: <a href="parsing-pdfs.html">Parsing PDFs</a>.</p>
 """,
@@ -436,7 +436,7 @@ write_rag_page(
     description="PDFs are where RAG projects go to die. Here's what works, what doesn't, and the specific libraries I reach for in each situation.",
     reading_time=6,
     body_html="""
-<p class="lede">PDFs are where the "we'll just parse the docs" plan meets reality. PDF is not a document format — it's a visual layout format that happens to contain text. Every serious RAG project eventually has a PDF problem. Here's how I think about it.</p>
+<p class="lede">PDFs are where the "we'll just parse the docs" plan meets reality. PDF is not a document format - it's a visual layout format that happens to contain text. Every serious RAG project eventually has a PDF problem. Here's how I think about it.</p>
 
 <h2>The three kinds of PDFs</h2>
 
@@ -481,7 +481,7 @@ write_rag_page(
 <h2>The gotchas that cost days</h2>
 
 <h3>Reading order</h3>
-<p>PDFs don't store reading order — they store visual positions. A two-column PDF parsed naively produces "column 1 line 1, column 2 line 1, column 1 line 2, column 2 line 2..." which is nonsense. Always check that your parser reorders text correctly on multi-column layouts.</p>
+<p>PDFs don't store reading order - they store visual positions. A two-column PDF parsed naively produces "column 1 line 1, column 2 line 1, column 1 line 2, column 2 line 2..." which is nonsense. Always check that your parser reorders text correctly on multi-column layouts.</p>
 
 <h3>Headers and footers</h3>
 <p>Page numbers, running headers, and footer boilerplate get concatenated into your content unless you strip them. Most retrieval failures traced to "why does it think the answer is on page 47" come from headers polluting chunks.</p>
@@ -501,7 +501,7 @@ write_rag_page(
 <p>PDF text often has hyphens at line breaks that become mid-word hyphens after extraction ("im-\\nportant" becomes "im-portant"). Always post-process to rejoin these.</p>
 
 <h3>Ligatures and special characters</h3>
-<p>"ﬁ" and "ﬂ" ligatures, Greek letters in math, non-breaking spaces — all of these break tokenization and retrieval if not normalized.</p>
+<p>"ﬁ" and "ﬂ" ligatures, Greek letters in math, non-breaking spaces - all of these break tokenization and retrieval if not normalized.</p>
 
 <h2>The ground-truth test</h2>
 <p>For any significant PDF corpus, take 10 random documents and spot-check the parsed output against the original. Look specifically for:</p>
@@ -512,7 +512,7 @@ write_rag_page(
   <li>Is boilerplate removed?</li>
   <li>Are figures at least referenced?</li>
 </ul>
-<p>If fewer than 8 of 10 pass, your parser is wrong for this corpus. Don't embed bad text — garbage-in compounds through the rest of the pipeline.</p>
+<p>If fewer than 8 of 10 pass, your parser is wrong for this corpus. Don't embed bad text - garbage-in compounds through the rest of the pipeline.</p>
 
 <h2>The commercial reality</h2>
 <p>For any serious business-critical RAG system, I recommend budgeting for LLM-based parsing or a commercial service on difficult documents. Over a full corpus, paying $0.05-0.20/page for quality parsing is often cheaper than debugging retrieval failures caused by bad text extraction.</p>
@@ -552,19 +552,19 @@ write_rag_page(
 <h2>The library landscape</h2>
 
 <h3>Readability / trafilatura</h3>
-<p>Python libraries that heuristically extract "main content" from HTML. Trafilatura is my default — best signal-to-noise ratio on general-purpose web content. Handles blog posts, news articles, documentation pages well.</p>
+<p>Python libraries that heuristically extract "main content" from HTML. Trafilatura is my default - best signal-to-noise ratio on general-purpose web content. Handles blog posts, news articles, documentation pages well.</p>
 
 <h3>Readability.js / Mozilla Readability</h3>
 <p>The algorithm that powers browser reader modes. Good baseline. Works well for article-style content.</p>
 
 <h3>BeautifulSoup / lxml</h3>
-<p>Low-level HTML parsers. Use when you know the structure and can write specific selectors (e.g., "every .docs-content div"). Precise but brittle — breaks when sites redesign.</p>
+<p>Low-level HTML parsers. Use when you know the structure and can write specific selectors (e.g., "every .docs-content div"). Precise but brittle - breaks when sites redesign.</p>
 
 <h3>Jina Reader / Diffbot / Firecrawl</h3>
 <p>Managed services that return clean markdown from URLs. Jina Reader is free for light use, Firecrawl is the commercial leader for RAG-oriented scraping. Worth it when you have many sources and don't want to maintain extraction logic.</p>
 
 <h3>html-to-text / html-to-markdown</h3>
-<p>Naive converters. Avoid for RAG — they preserve all the junk.</p>
+<p>Naive converters. Avoid for RAG - they preserve all the junk.</p>
 
 <h2>HTML → Markdown is usually the right format</h2>
 <p>For RAG, convert HTML to Markdown rather than plaintext. Markdown preserves structure (headings, lists, code, links) in a format that chunking and embeddings both handle well. Plain text loses everything.</p>
@@ -666,11 +666,11 @@ write_rag_page(
 
 <h2>Table extraction tools</h2>
 <ul>
-  <li><strong>Camelot / Tabula</strong> — classic Python table extractors. Good on bordered tables in simple PDFs.</li>
-  <li><strong>pdfplumber</strong> — built-in table detection, solid for clean tables.</li>
-  <li><strong>Docling</strong> — strong table detection including nested and multi-header tables.</li>
-  <li><strong>Azure Document Intelligence, AWS Textract</strong> — commercial OCR with excellent table support.</li>
-  <li><strong>LLM vision models</strong> (GPT-4V, Claude, Gemini) — highest quality on complex or messy tables. Expensive.</li>
+  <li><strong>Camelot / Tabula</strong> - classic Python table extractors. Good on bordered tables in simple PDFs.</li>
+  <li><strong>pdfplumber</strong> - built-in table detection, solid for clean tables.</li>
+  <li><strong>Docling</strong> - strong table detection including nested and multi-header tables.</li>
+  <li><strong>Azure Document Intelligence, AWS Textract</strong> - commercial OCR with excellent table support.</li>
+  <li><strong>LLM vision models</strong> (GPT-4V, Claude, Gemini) - highest quality on complex or messy tables. Expensive.</li>
 </ul>
 
 <h2>Figures and images</h2>
@@ -682,7 +682,7 @@ write_rag_page(
 <p>Pass the figure image through a vision model to generate a text description. Embed the description. Expensive at scale but captures visual content. Use for technical diagrams, charts, and anything where the image carries real information.</p>
 
 <h3>The retrieve-adjacent-text approach</h3>
-<p>When a figure is retrieved, also pull the paragraphs immediately before and after it. Figures rarely stand alone — the surrounding text usually explains what the figure shows.</p>
+<p>When a figure is retrieved, also pull the paragraphs immediately before and after it. Figures rarely stand alone - the surrounding text usually explains what the figure shows.</p>
 
 <h3>The multimodal retrieval approach</h3>
 <p>Use a multimodal embedding model (CLIP, Jina Multimodal, Voyage-Multimodal) to embed both images and text into a shared vector space. Retrieval can return images when queries match visual content. Emerging pattern. Works well for product catalogs, image-heavy documentation, medical imaging.</p>
@@ -712,7 +712,7 @@ write_rag_page(
     description="OCR is necessary, imperfect, and cost-sensitive. Here's how to handle scanned PDFs, images, and handwritten content in a RAG pipeline.",
     reading_time=5,
     body_html="""
-<p class="lede">Scanned documents are a fact of life in enterprise RAG — legal contracts, old manuals, medical records, government filings. Optical Character Recognition (OCR) is the bridge from pixels to text. It's imperfect, it's slow, and the quality differences between tools are enormous. Here's how I handle it.</p>
+<p class="lede">Scanned documents are a fact of life in enterprise RAG - legal contracts, old manuals, medical records, government filings. Optical Character Recognition (OCR) is the bridge from pixels to text. It's imperfect, it's slow, and the quality differences between tools are enormous. Here's how I handle it.</p>
 
 <h2>Detecting what needs OCR</h2>
 <p>First move: detect whether a document has a usable text layer before running OCR. Running OCR on a clean digital PDF is expensive, slow, and often produces worse text than the embedded text layer.</p>
@@ -859,10 +859,10 @@ write_rag_page(
 <h2>Where metadata comes from</h2>
 
 <h3>From the source system</h3>
-<p>Confluence gives you author, labels, space, creation date. Drive gives you owner, sharing settings, MIME type. APIs usually return more metadata than you think — capture it all, decide what to use later.</p>
+<p>Confluence gives you author, labels, space, creation date. Drive gives you owner, sharing settings, MIME type. APIs usually return more metadata than you think - capture it all, decide what to use later.</p>
 
 <h3>From the document itself</h3>
-<p>Title from the first heading. Author from a byline. Date from a publication header. Section hierarchy from structure-aware parsing. Take metadata from inside the document wherever possible — it's often more accurate than the source system's metadata.</p>
+<p>Title from the first heading. Author from a byline. Date from a publication header. Section hierarchy from structure-aware parsing. Take metadata from inside the document wherever possible - it's often more accurate than the source system's metadata.</p>
 
 <h3>Inferred via LLM or NER</h3>
 <p>Run an LLM or a named-entity recognizer over each chunk to extract:</p>
@@ -892,7 +892,7 @@ write_rag_page(
 <p>Vector DBs handle metadata filtering in one of two ways:</p>
 
 <h3>Pre-filter</h3>
-<p>Narrow the candidate set to matching metadata first, then search. Exact — returns only documents matching the filter. Slow when filters are selective.</p>
+<p>Narrow the candidate set to matching metadata first, then search. Exact - returns only documents matching the filter. Slow when filters are selective.</p>
 
 <h3>Post-filter</h3>
 <p>Do vector search first, then filter results. Fast but may return fewer-than-k results if matches are rare.</p>
@@ -990,7 +990,7 @@ write_rag_page(
 </ul>
 
 <h2>The chunking-for-query principle</h2>
-<p>Chunks should look like the retrievable unit of a question, not the unit of a document. If users ask "what's our refund policy?" the right chunk is the refund policy paragraph — not arbitrarily chunked 1000-character slices of a policy document.</p>
+<p>Chunks should look like the retrievable unit of a question, not the unit of a document. If users ask "what's our refund policy?" the right chunk is the refund policy paragraph - not arbitrarily chunked 1000-character slices of a policy document.</p>
 
 <p>This means chunking strategy depends on the <em>queries</em> you expect, not just the documents you have. For many corpora, semantic or structure-aware chunking beats fixed-size because it produces chunks that look more like complete thoughts.</p>
 
@@ -1112,7 +1112,7 @@ write_rag_page(
   <li>Split the document into candidate boundaries (sentences or paragraphs)</li>
   <li>Embed each candidate</li>
   <li>Measure the similarity between adjacent candidates</li>
-  <li>When similarity drops below a threshold, you've hit a topic boundary — start a new chunk</li>
+  <li>When similarity drops below a threshold, you've hit a topic boundary - start a new chunk</li>
 </ol>
 
 <p>The output: variable-length chunks that each cover a single topic or subtopic.</p>
@@ -1147,13 +1147,13 @@ write_rag_page(
 <h2>When it's overkill</h2>
 <ul>
   <li>Short documents where one or two chunks cover the whole thing anyway</li>
-  <li>Highly structured content (docs with clear headings) — use structure-aware chunking instead</li>
+  <li>Highly structured content (docs with clear headings) - use structure-aware chunking instead</li>
   <li>Very homogeneous content (FAQs, product catalog entries) where topic boundaries are already obvious from structure</li>
   <li>When embedding costs matter and the corpus is large</li>
 </ul>
 
 <h2>The cost</h2>
-<p>Semantic chunking requires embedding every sentence or window during ingestion — often 5-20x more embedding calls than you'd need for retrieval alone. For a 100M-token corpus, this is a material cost.</p>
+<p>Semantic chunking requires embedding every sentence or window during ingestion - often 5-20x more embedding calls than you'd need for retrieval alone. For a 100M-token corpus, this is a material cost.</p>
 
 <p>Mitigation: use a cheap embedding model for chunking (text-embedding-3-small, open-source models) and a better one for the retrieval index. The chunking-time embeddings don't have to match your retrieval embeddings.</p>
 
@@ -1240,7 +1240,7 @@ write_rag_page(
 <ol>
   <li>Parse the document into structural elements (headings, paragraphs, lists, tables)</li>
   <li>Apply recursive chunking within each structural element</li>
-  <li>Respect element boundaries — never merge a heading into a paragraph, never split a table across chunks</li>
+  <li>Respect element boundaries - never merge a heading into a paragraph, never split a table across chunks</li>
 </ol>
 <p>This combines recursive chunking's simplicity with structure-aware chunking's semantic respect. See <a href="structure-aware.html">structure-aware chunking</a>.</p>
 
@@ -1268,7 +1268,7 @@ write_rag_page(
 <p class="lede">Structure-aware chunking uses the document's own organization as the chunk boundary: headings, sections, lists, tables. For any corpus that has real structure (technical docs, wikis, legal documents, Markdown, HTML), this is the highest-performing chunking strategy. It's also the most underused.</p>
 
 <h2>The core idea</h2>
-<p>Authors already decided where ideas begin and end — that's what headings and paragraphs are. Respect their decisions.</p>
+<p>Authors already decided where ideas begin and end - that's what headings and paragraphs are. Respect their decisions.</p>
 
 <p>Chunk boundaries come from:</p>
 <ul>
@@ -1297,7 +1297,7 @@ write_rag_page(
 [actual chunk content...]
 </pre>
 
-<p>The LLM and embedding model both benefit from knowing where a chunk sits in the document hierarchy. Without this, a chunk about "rate limits" could be about API rate limits, OAuth token rate limits, or webhook rate limits — all of which might exist in the same document.</p>
+<p>The LLM and embedding model both benefit from knowing where a chunk sits in the document hierarchy. Without this, a chunk about "rate limits" could be about API rate limits, OAuth token rate limits, or webhook rate limits - all of which might exist in the same document.</p>
 
 <h2>Element-type-specific rules</h2>
 
@@ -1330,7 +1330,7 @@ write_rag_page(
 <p>HTML is Markdown's messy cousin. Parse into DOM, identify content containers, extract hierarchical sections from heading tags. Convert to Markdown for downstream processing, then chunk as Markdown.</p>
 
 <h2>The PDF case</h2>
-<p>PDFs don't have guaranteed structure, but good parsers (Docling, Unstructured, Llamaparse) return typed elements with heading levels inferred from font size, style, and position. Quality of structure-aware chunking depends heavily on parser quality — see <a href="../docs/parsing-pdfs.html">parsing PDFs</a>.</p>
+<p>PDFs don't have guaranteed structure, but good parsers (Docling, Unstructured, Llamaparse) return typed elements with heading levels inferred from font size, style, and position. Quality of structure-aware chunking depends heavily on parser quality - see <a href="../docs/parsing-pdfs.html">parsing PDFs</a>.</p>
 
 <h2>Why it outperforms fixed-size</h2>
 <ul>
@@ -1355,7 +1355,7 @@ write_rag_page(
   <li>Homogeneous corpora (all blog posts of similar length and shape)</li>
 </ul>
 
-<p>For everything else — documentation, knowledge bases, reports, books, technical manuals — structure-aware chunking is worth the extra engineering.</p>
+<p>For everything else - documentation, knowledge bases, reports, books, technical manuals - structure-aware chunking is worth the extra engineering.</p>
 
 <p style="margin-top:40px;">Next: <a href="chunking-code.html">Chunking code</a>.</p>
 """,
@@ -1413,7 +1413,7 @@ write_rag_page(
 <p>Split by class or function. For large classes, one chunk per method with class signature prepended as context.</p>
 
 <h3>Monolithic function (rare but real)</h3>
-<p>If a single function exceeds chunk size, split by logical blocks (while respecting brace matching). This is a code smell anyway — surface it in documentation.</p>
+<p>If a single function exceeds chunk size, split by logical blocks (while respecting brace matching). This is a code smell anyway - surface it in documentation.</p>
 
 <h2>Context enrichment</h2>
 <p>Each code chunk benefits from surrounding context:</p>

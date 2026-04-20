@@ -13,7 +13,7 @@ PAGES = {
     "google/overview": p("Google Ads overview",
         "Google Ads has Search, Shopping, Display, YouTube, and Performance Max. Here's what each is for.",
         """
-<p class="lede">Google Ads isn't one product — it's a collection of properties under one billing system: Search, Shopping, Display, Video (YouTube), Discovery, and Performance Max. Each has different intent and different best-fit products.</p>
+<p class="lede">Google Ads isn't one product - it's a collection of properties under one billing system: Search, Shopping, Display, Video (YouTube), Discovery, and Performance Max. Each has different intent and different best-fit products.</p>
 
 <h2>The properties</h2>
 <ul>
@@ -53,7 +53,7 @@ PAGES = {
 <p class="lede">Google Search, Display, and Performance Max are often confused. Each works for specific situations and fails in others.</p>
 
 <h2>Search</h2>
-<p>User types a query; your text ad appears. High intent — they're actively looking.</p>
+<p>User types a query; your text ad appears. High intent - they're actively looking.</p>
 <ul>
 <li>Best for: direct response, lead gen, services, B2B</li>
 <li>Cost: higher CPC (competitive keywords hit $50-100+)</li>
@@ -65,7 +65,7 @@ PAGES = {
 <ul>
 <li>Best for: retargeting, brand awareness, cheap reach</li>
 <li>Cost: very low CPMs ($1-5)</li>
-<li>Conversion rate: very low — usually just supports other channels</li>
+<li>Conversion rate: very low - usually just supports other channels</li>
 </ul>
 
 <h2>Performance Max (Pmax)</h2>
@@ -93,14 +93,14 @@ PAGES = {
     "google/keyword-research": p("Keyword research",
         "Finding the keywords that actually produce revenue, not just traffic.",
         """
-<p class="lede">Keyword research for paid is different from SEO keyword research. You're not optimizing for volume — you're finding intent-matched queries where you can profitably buy clicks.</p>
+<p class="lede">Keyword research for paid is different from SEO keyword research. You're not optimizing for volume - you're finding intent-matched queries where you can profitably buy clicks.</p>
 
 <h2>The intent hierarchy</h2>
 <ul>
-<li><strong>Transactional</strong>: "buy X", "X near me", "hire X consultant" — highest value</li>
-<li><strong>Commercial</strong>: "best X for Y", "X vs Y" — evaluation stage</li>
-<li><strong>Informational</strong>: "what is X", "how does X work" — mostly SEO, expensive paid</li>
-<li><strong>Brand</strong>: your brand name or competitors' — cheap, highest conversion</li>
+<li><strong>Transactional</strong>: "buy X", "X near me", "hire X consultant" - highest value</li>
+<li><strong>Commercial</strong>: "best X for Y", "X vs Y" - evaluation stage</li>
+<li><strong>Informational</strong>: "what is X", "how does X work" - mostly SEO, expensive paid</li>
+<li><strong>Brand</strong>: your brand name or competitors' - cheap, highest conversion</li>
 </ul>
 
 <p>Focus paid budget on transactional and commercial. Informational is for content/SEO.</p>
@@ -108,8 +108,8 @@ PAGES = {
 <h2>Tools</h2>
 <ul>
 <li>Google Keyword Planner (free, built into Google Ads)</li>
-<li>Ahrefs, Semrush — for competitive research</li>
-<li>Search term report from your own campaigns — best source</li>
+<li>Ahrefs, Semrush - for competitive research</li>
+<li>Search term report from your own campaigns - best source</li>
 </ul>
 
 <h2>The competitor angle</h2>
@@ -141,21 +141,21 @@ PAGES = {
 
 <h3>Exact match</h3>
 <p>Search must match your keyword or a close variant. Most control, least volume.</p>
-<p>Keyword: [red running shoes] → matches "red running shoes", "running shoes red" — similar intent.</p>
+<p>Keyword: [red running shoes] → matches "red running shoes", "running shoes red" - similar intent.</p>
 
 <h3>Phrase match</h3>
 <p>Search must include your phrase (or close variant) as a subset. Medium control.</p>
-<p>Keyword: "red running shoes" → matches "buy red running shoes", "red running shoes for marathon" — phrase in there.</p>
+<p>Keyword: "red running shoes" → matches "buy red running shoes", "red running shoes for marathon" - phrase in there.</p>
 
 <h3>Broad match</h3>
 <p>Search includes anything Google thinks is related. Widest reach, least control. Modern broad match uses AI to find related intent.</p>
-<p>Keyword: red running shoes → matches "running gear", "jogging footwear", "athletic shoes red" — loosely related.</p>
+<p>Keyword: red running shoes → matches "running gear", "jogging footwear", "athletic shoes red" - loosely related.</p>
 
 <h2>When to use each</h2>
 <ul>
 <li><strong>Exact</strong>: tightly-proven high-intent keywords. Scales slowly but predictably.</li>
 <li><strong>Phrase</strong>: extended reach with some control. Often the sweet spot.</li>
-<li><strong>Broad</strong>: exploration; finding new queries. Always pair with smart bidding (Target CPA or ROAS) — without it, broad is chaos.</li>
+<li><strong>Broad</strong>: exploration; finding new queries. Always pair with smart bidding (Target CPA or ROAS) - without it, broad is chaos.</li>
 </ul>
 
 <h2>The modern recommendation</h2>
@@ -292,7 +292,7 @@ PAGES = {
     "google/bidding": p("Google Ads bidding strategies",
         "Manual, Maximize Conversions, Target CPA, Target ROAS. Here's which bidding strategy for which situation.",
         """
-<p class="lede">Google offers a dozen bidding strategies. They fall into two camps: manual (you control bids) and smart/automated (algorithm controls bids based on goals). Modern best practice is automated — but only when you have the right data.</p>
+<p class="lede">Google offers a dozen bidding strategies. They fall into two camps: manual (you control bids) and smart/automated (algorithm controls bids based on goals). Modern best practice is automated - but only when you have the right data.</p>
 
 <h2>Automated strategies</h2>
 
@@ -564,7 +564,7 @@ PAGES = {
     "tiktok/ugc-production": p("TikTok UGC production",
         "Sourcing, directing, and managing UGC creators for TikTok ads at scale.",
         """
-<p class="lede">Most TikTok ad success comes from UGC — creator-shot content that looks native. Building a UGC production pipeline is how serious advertisers compound creative output.</p>
+<p class="lede">Most TikTok ad success comes from UGC - creator-shot content that looks native. Building a UGC production pipeline is how serious advertisers compound creative output.</p>
 
 <h2>The UGC sources</h2>
 
@@ -595,7 +595,7 @@ PAGES = {
 </ul>
 
 <h2>Iteration with creators</h2>
-<p>First video is rarely perfect. Pattern: one revision round, specific feedback. Don't micromanage — the whole point is their native style.</p>
+<p>First video is rarely perfect. Pattern: one revision round, specific feedback. Don't micromanage - the whole point is their native style.</p>
 
 <h2>Variations from one creator</h2>
 <p>Ask for 3-5 variations of the same core message:</p>
@@ -615,7 +615,7 @@ PAGES = {
 </ul>
 
 <h2>Volume targets</h2>
-<p>To run TikTok seriously, you need 5-20 new creatives per week. Build the pipeline — it's not optional.</p>
+<p>To run TikTok seriously, you need 5-20 new creatives per week. Build the pipeline - it's not optional.</p>
 """,
         prev=("Spark Ads", "spark-ads.html"),
         nxt=("When TikTok works", "when-tiktok-works.html")),
@@ -744,12 +744,12 @@ PAGES = {
     "linkedin/b2b-targeting": p("LinkedIn B2B targeting",
         "LinkedIn's targeting is more precise than any other platform. Here's how to use it.",
         """
-<p class="lede">LinkedIn's targeting is its moat. Job title, company size, industry, seniority, skills, past employers, schools — all self-reported by professionals. No other platform has targeting this precise for B2B.</p>
+<p class="lede">LinkedIn's targeting is its moat. Job title, company size, industry, seniority, skills, past employers, schools - all self-reported by professionals. No other platform has targeting this precise for B2B.</p>
 
 <h2>Targeting attributes</h2>
 <ul>
 <li><strong>Job Title</strong>: exact titles (fewer matches) or title categories (wider)</li>
-<li><strong>Job Function</strong>: broader — "Sales", "Marketing", "Engineering"</li>
+<li><strong>Job Function</strong>: broader - "Sales", "Marketing", "Engineering"</li>
 <li><strong>Seniority</strong>: Entry, Senior, Manager, Director, VP, C-suite, Owner</li>
 <li><strong>Company Size</strong>: by employee count</li>
 <li><strong>Industry</strong>: from LinkedIn's taxonomy</li>
@@ -838,7 +838,7 @@ PAGES = {
 </ul>
 
 <h2>Lead Gen Forms</h2>
-<p>Form-fill inside LinkedIn — pre-populated with the user's profile data. Very low friction.</p>
+<p>Form-fill inside LinkedIn - pre-populated with the user's profile data. Very low friction.</p>
 <ul>
 <li><strong>Best for</strong>: webinar signups, whitepaper downloads, demo requests</li>
 <li><strong>Conversion advantage</strong>: 2-5x website form conversion</li>
@@ -886,7 +886,7 @@ PAGES = {
     "linkedin/cost-reality": p("LinkedIn Ads cost reality",
         "LinkedIn CPCs are $5-30. Here's how to make the math work and when it doesn't.",
         """
-<p class="lede">LinkedIn is expensive. CPCs routinely run 5-10x what you'd pay on Meta or Google for the same person. The question isn't whether it's expensive — it's whether the audience quality justifies the premium.</p>
+<p class="lede">LinkedIn is expensive. CPCs routinely run 5-10x what you'd pay on Meta or Google for the same person. The question isn't whether it's expensive - it's whether the audience quality justifies the premium.</p>
 
 <h2>The CPC ranges</h2>
 <ul>
@@ -927,7 +927,7 @@ PAGES = {
 
 <h3>Raise LTV</h3>
 <ul>
-<li>Don't just count first-year revenue — multi-year value supports higher CAC</li>
+<li>Don't just count first-year revenue - multi-year value supports higher CAC</li>
 <li>Referral + expansion revenue</li>
 </ul>
 
@@ -969,7 +969,7 @@ PAGES = {
 <li>Webinar registrations</li>
 <li>Demo requests</li>
 <li>Newsletter subscriptions</li>
-<li>Trial signups (partial — LinkedIn form captures lead, then you send setup email)</li>
+<li>Trial signups (partial - LinkedIn form captures lead, then you send setup email)</li>
 </ul>
 
 <h2>Integration with CRM</h2>
@@ -988,7 +988,7 @@ PAGES = {
 <ul>
 <li>Qualify in the form (add a "what's your team size" custom question)</li>
 <li>Follow up fast and filter by responsiveness</li>
-<li>Score by role — intern filling out a VP's form is a pattern</li>
+<li>Score by role - intern filling out a VP's form is a pattern</li>
 </ul>
 
 <h2>The conversion math</h2>
@@ -1185,7 +1185,7 @@ PAGES = {
 <p>Design so users who skip have still absorbed the core message. First 5 seconds state: who it's for + what the product is + what it does.</p>
 
 <h2>Production values</h2>
-<p>YouTube tolerates (and sometimes prefers) higher production quality than TikTok. Talking-head with good lighting beats shaky phone video on YouTube (unlike TikTok). But don't overdo it — authentic beats over-produced.</p>
+<p>YouTube tolerates (and sometimes prefers) higher production quality than TikTok. Talking-head with good lighting beats shaky phone video on YouTube (unlike TikTok). But don't overdo it - authentic beats over-produced.</p>
 
 <h2>Testing variations</h2>
 <p>Like Meta: multiple creatives testing different hooks. 5-10 variants per campaign.</p>
@@ -1199,7 +1199,7 @@ PAGES = {
 <li>No CTA</li>
 <li>Repurposed horizontal TV ad that doesn't fit the YouTube context</li>
 <li>Brand logo for first 3 seconds (waste of hook opportunity)</li>
-<li>Over-long — 30-45s is the sweet spot for most performance goals</li>
+<li>Over-long - 30-45s is the sweet spot for most performance goals</li>
 </ul>
 """,
         prev=("YouTube ad formats", "formats.html"),
@@ -1248,7 +1248,7 @@ PAGES = {
 </ul>
 
 <h2>Custom Intent</h2>
-<p>Based on search terms — "target people who recently searched for X on Google". Powerful for capturing intent.</p>
+<p>Based on search terms - "target people who recently searched for X on Google". Powerful for capturing intent.</p>
 
 <h2>Remarketing video viewers</h2>
 <p>Create remarketing lists based on video engagement:</p>
@@ -1333,7 +1333,7 @@ PAGES = {
 
 <h2>Budget allocation</h2>
 <p>For most DTC: 60-70% Meta, 20-30% YouTube, rest testing new channels.</p>
-<p>For enterprise B2B: flip — YouTube content campaigns + LinkedIn, less Meta.</p>
+<p>For enterprise B2B: flip - YouTube content campaigns + LinkedIn, less Meta.</p>
 
 <h2>The attribution comparison</h2>
 <p>YouTube has better attribution because it's in the Google ecosystem (same GA4 tracking). Meta's attribution is more noise post-iOS 14. Take both with a grain of salt; compare to blended metrics.</p>
@@ -1345,7 +1345,7 @@ PAGES = {
     "creative/hook-patterns": p("Hook patterns for paid ads",
         "The first 3 seconds decide everything. Here are the hook patterns that consistently work.",
         """
-<p class="lede">On Meta, TikTok, YouTube, everywhere — the first 3 seconds decide whether anyone watches the rest. Hook patterns are the proven openings that earn the next 27 seconds.</p>
+<p class="lede">On Meta, TikTok, YouTube, everywhere - the first 3 seconds decide whether anyone watches the rest. Hook patterns are the proven openings that earn the next 27 seconds.</p>
 
 <h2>The 10 hook patterns</h2>
 
@@ -1408,7 +1408,7 @@ PAGES = {
     "creative/ugc-vs-produced": p("UGC vs produced creative",
         "User-generated-style content has taken over paid ads. Here's when produced still wins.",
         """
-<p class="lede">UGC (user-generated content) style ads have largely replaced produced ads in most performance channels. Authentic beats polished. But it's not absolute — produced content still wins in specific contexts.</p>
+<p class="lede">UGC (user-generated content) style ads have largely replaced produced ads in most performance channels. Authentic beats polished. But it's not absolute - produced content still wins in specific contexts.</p>
 
 <h2>UGC characteristics</h2>
 <ul>
@@ -1450,10 +1450,10 @@ PAGES = {
 </ul>
 
 <h2>The hybrid approach</h2>
-<p>Many brands do both — UGC for performance, produced for brand. Budget allocation: ~70% UGC, ~30% produced for most DTC. Flip for luxury or B2B.</p>
+<p>Many brands do both - UGC for performance, produced for brand. Budget allocation: ~70% UGC, ~30% produced for most DTC. Flip for luxury or B2B.</p>
 
 <h2>The "UGC-style" loop</h2>
-<p>Some brands produce "UGC-style" content — professionally-shot but designed to look native. This can work but often falls in an uncanny valley where viewers sense it's not quite real.</p>
+<p>Some brands produce "UGC-style" content - professionally-shot but designed to look native. This can work but often falls in an uncanny valley where viewers sense it's not quite real.</p>
 
 <h2>Cost comparison</h2>
 <ul>
@@ -1463,7 +1463,7 @@ PAGES = {
 <p>UGC lets you test 100 variations for the cost of one produced piece.</p>
 
 <h2>The quality bar is shifting</h2>
-<p>UGC quality is rising. Creators know what works. The best UGC is nearly as polished as produced — but the casual feel is maintained. Find creators who understand the medium.</p>
+<p>UGC quality is rising. Creators know what works. The best UGC is nearly as polished as produced - but the casual feel is maintained. Find creators who understand the medium.</p>
 """,
         prev=("Hook patterns", "hook-patterns.html"),
         nxt=("Creative volume", "creative-volume.html")),
@@ -1488,7 +1488,7 @@ PAGES = {
 <li><strong>YouTube</strong>: 2-5 new creatives per week (longer form)</li>
 <li><strong>LinkedIn</strong>: 2-5 per week</li>
 </ul>
-<p>Scaling accounts go higher — 50+ per week at enterprise scale.</p>
+<p>Scaling accounts go higher - 50+ per week at enterprise scale.</p>
 
 <h2>The production pipeline</h2>
 
@@ -1551,7 +1551,7 @@ PAGES = {
     "creative/ad-copy": p("Ad copy for paid",
         "Short copy, specific claims, clear CTA. Ad copy rules for every major platform.",
         """
-<p class="lede">Paid ad copy is short, specific, and action-oriented. It's direct response compressed into 50-150 words. Each element — hook, body, CTA — does a specific job.</p>
+<p class="lede">Paid ad copy is short, specific, and action-oriented. It's direct response compressed into 50-150 words. Each element - hook, body, CTA - does a specific job.</p>
 
 <h2>The structure</h2>
 <ol>
@@ -1607,7 +1607,7 @@ PAGES = {
 </ul>
 
 <h2>The P.S. move</h2>
-<p>On longer-form platforms (Meta body, LinkedIn Sponsored), add a "P.S." at the end. Proven to lift CTR — it's the second-most-read line.</p>
+<p>On longer-form platforms (Meta body, LinkedIn Sponsored), add a "P.S." at the end. Proven to lift CTR - it's the second-most-read line.</p>
 
 <h2>Testing copy</h2>
 <p>Hold creative constant, test 3-5 copy variations. Each tests a different angle (price, outcome, pain, story).</p>
@@ -1700,7 +1700,7 @@ PAGES = {
     "creative/creative-fatigue": p("Creative fatigue",
         "Every ad dies. Creative fatigue is when yours stops working. Here's how to manage it.",
         """
-<p class="lede">Creative fatigue is inevitable. The same ad, shown to the same audience, stops working over time. The question isn't whether — it's when and how fast. Managing fatigue is the difference between a winning account and a plateauing one.</p>
+<p class="lede">Creative fatigue is inevitable. The same ad, shown to the same audience, stops working over time. The question isn't whether - it's when and how fast. Managing fatigue is the difference between a winning account and a plateauing one.</p>
 
 <h2>Symptoms of fatigue</h2>
 <ul>
@@ -1719,7 +1719,7 @@ PAGES = {
 <li>Week 4+: noticeable decline</li>
 <li>Week 6+: meaningful underperformance</li>
 </ul>
-<p>TikTok fatigue is much faster — days to a week.</p>
+<p>TikTok fatigue is much faster - days to a week.</p>
 
 <h2>What causes fatigue</h2>
 <ul>
@@ -1752,7 +1752,7 @@ PAGES = {
 <li>Kill the fatigued ad</li>
 </ol>
 
-<h2>Sometimes creative isn't fatigued — the platform is</h2>
+<h2>Sometimes creative isn't fatigued - the platform is</h2>
 <p>If all your ads decline simultaneously, it's likely a platform-level issue (Meta algorithm update, seasonal shift). Don't panic-replace creative; diagnose platform first.</p>
 
 <h2>The winner's ceiling</h2>
@@ -1877,7 +1877,7 @@ PAGES = {
 <p>MER, ROAS overall, not per-channel. Accept that platform-specific numbers are directional.</p>
 
 <h3>Incrementality testing</h3>
-<p>Holdout tests — turn a channel off and measure revenue change. Truer than platform reports.</p>
+<p>Holdout tests - turn a channel off and measure revenue change. Truer than platform reports.</p>
 
 <h3>Marketing Mix Modeling</h3>
 <p>Statistical modeling of total spend vs total revenue. Doesn't need user-level tracking.</p>
@@ -1972,7 +1972,7 @@ MER = 3.0x
 <pre style="background:#f5f5f7; padding:14px; border-radius:6px;">
 Blended CAC = Total Ad Spend / New Customers (same period)
 </pre>
-<p>Same idea — blend across channels for truth.</p>
+<p>Same idea - blend across channels for truth.</p>
 
 <h2>Target MER by business stage</h2>
 <ul>
@@ -2013,7 +2013,7 @@ Blended CAC = Total Ad Spend / New Customers (same period)
     "measurement/incrementality": p("Incrementality testing",
         "Platform reports over-claim. Incrementality tests show the real impact of ad spend.",
         """
-<p class="lede">Meta says it drove 1,000 conversions. But how many would have happened anyway? Incrementality testing measures the real lift your ads create — the conversions that wouldn't have happened without them. It's the closest thing to truth in ad measurement.</p>
+<p class="lede">Meta says it drove 1,000 conversions. But how many would have happened anyway? Incrementality testing measures the real lift your ads create - the conversions that wouldn't have happened without them. It's the closest thing to truth in ad measurement.</p>
 
 <h2>The simple test: geo holdout</h2>
 <ol>
@@ -2051,7 +2051,7 @@ Blended CAC = Total Ad Spend / New Customers (same period)
 </ul>
 
 <h2>Cost of testing</h2>
-<p>You "waste" ad dollars in holdout periods. The learning is worth it — accurate measurement changes budget allocation.</p>
+<p>You "waste" ad dollars in holdout periods. The learning is worth it - accurate measurement changes budget allocation.</p>
 
 <h2>The realpolitik</h2>
 <p>Many platforms and agencies resist incrementality testing because it reveals they over-claim. Do the tests anyway. The results inform where to invest next dollar.</p>
@@ -2209,7 +2209,7 @@ Blended CAC = Total Ad Spend / New Customers (same period)
 <li>MER yesterday</li>
 <li>Anomalies (channel up/down more than 30% vs 7-day average)</li>
 </ul>
-<p>Goal: catch problems early. Not comprehensive — early warning.</p>
+<p>Goal: catch problems early. Not comprehensive - early warning.</p>
 
 <h2>The weekly dashboard</h2>
 <p>Review every Monday:</p>
@@ -2245,10 +2245,10 @@ Blended CAC = Total Ad Spend / New Customers (same period)
 
 <h2>What not to dashboard</h2>
 <ul>
-<li>Vanity metrics (impressions, reach — unless explicitly optimizing for them)</li>
+<li>Vanity metrics (impressions, reach - unless explicitly optimizing for them)</li>
 <li>Platform-reported numbers without blended context</li>
 <li>Per-ad metrics at the daily level (too noisy)</li>
-<li>Too many metrics — pick the 5-10 that drive decisions</li>
+<li>Too many metrics - pick the 5-10 that drive decisions</li>
 </ul>
 
 <h2>The action orientation</h2>

@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Insurance playbook content — Part 2: Modules 6-10."""
+"""Insurance playbook content - Part 2: Modules 6-10."""
 from _build_insurance import write_playbook_page
 
 
 # ============================================================
-# MODULE 6 — Blog posts + SEO
+# MODULE 6 - Blog posts + SEO
 # ============================================================
 
 m6 = """
@@ -49,7 +49,7 @@ For each group, suggest 3 blog post titles that could serve that intent cluster.
 <button class="copy-btn">Copy</button>
 <pre>Write an outline for a blog post titled "[your title]".
 
-Audience: [specific — "40-60 year old parents in [state] who have term life coming up for renewal"]
+Audience: [specific - "40-60 year old parents in [state] who have term life coming up for renewal"]
 Search intent: [informational / comparison / transactional]
 Primary keyword: [the main phrase from keyword research]
 Secondary keywords: [3-5 related phrases]
@@ -64,7 +64,7 @@ Outline structure:
 Notes on angle:
 - Where a specific number, local detail, or personal experience would strengthen a section, flag it with "[INSERT: ...]" so I can add it
 - Anticipate the 3 objections or follow-up questions a reader would have and make sure the outline covers them
-- Think about what a competitor article is missing — that's where we win
+- Think about what a competitor article is missing - that's where we win
 
 Just the outline, not the full post yet.</pre>
 </div>
@@ -76,7 +76,7 @@ Just the outline, not the full post yet.</pre>
 <button class="copy-btn">Copy</button>
 <pre>Using the outline above, write the full blog post.
 
-Length: 1200-1800 words (whatever the topic actually needs — don't pad)
+Length: 1200-1800 words (whatever the topic actually needs - don't pad)
 Voice: [see voice samples; plainspoken, no fluff]
 Formatting:
 - Short paragraphs (2-4 sentences)
@@ -124,7 +124,7 @@ At the end, flag:
 </div>
 <div class="checklist-item">
 <input type="checkbox" id="m6-seo-6" data-key="m6-seo-6">
-<label for="m6-seo-6">One external link to an authoritative source (CMS, NAIC, state DOI, carrier — not a competitor)</label>
+<label for="m6-seo-6">One external link to an authoritative source (CMS, NAIC, state DOI, carrier - not a competitor)</label>
 </div>
 <div class="checklist-item">
 <input type="checkbox" id="m6-seo-7" data-key="m6-seo-7">
@@ -132,7 +132,7 @@ At the end, flag:
 </div>
 <div class="checklist-item">
 <input type="checkbox" id="m6-seo-8" data-key="m6-seo-8">
-<label for="m6-seo-8">Schema markup (use Yoast, Rank Math, or equivalent — "Article" or "LocalBusiness" schema)</label>
+<label for="m6-seo-8">Schema markup (use Yoast, Rank Math, or equivalent - "Article" or "LocalBusiness" schema)</label>
 </div>
 </div>
 
@@ -153,7 +153,7 @@ Give me 3 options for title and 3 for description so I can choose.
 </div>
 
 <h2>Local SEO: the thing insurance agents win at</h2>
-<p>Unlike big insurance companies with national authority, you have one advantage: local intent. Write for your city, your county, your state. Every blog post should mention your location specifically — in the title when relevant, in the body, in the CTA, in the author bio.</p>
+<p>Unlike big insurance companies with national authority, you have one advantage: local intent. Write for your city, your county, your state. Every blog post should mention your location specifically - in the title when relevant, in the body, in the CTA, in the author bio.</p>
 
 <div class="prompt-box">
 <div class="prompt-box-label">Local content angle finder</div>
@@ -232,7 +232,7 @@ write_playbook_page(
 
 
 # ============================================================
-# MODULE 7 — Video scripts
+# MODULE 7 - Video scripts
 # ============================================================
 
 m7 = """
@@ -258,14 +258,14 @@ m7 = """
 Topic: [e.g., "How Medicare Advantage and Medicare Supplement actually differ"]
 
 Format:
-[0-5s] Hook — one sentence that earns the next 85 seconds
+[0-5s] Hook - one sentence that earns the next 85 seconds
 [5-15s] Set up the problem or question
-[15-50s] The main content — 2-3 key points
+[15-50s] The main content - 2-3 key points
 [50-75s] What this means for the viewer
-[75-90s] Soft CTA — "If you want to talk through your specific situation, link in bio / DM me / book a call"
+[75-90s] Soft CTA - "If you want to talk through your specific situation, link in bio / DM me / book a call"
 
 Constraints:
-- First-person, conversational — like I'm explaining to a friend
+- First-person, conversational - like I'm explaining to a friend
 - Sentences short enough to say in one breath
 - No insurance jargon without an instant plain-language translation
 - Specific over general (use numbers, scenarios, named situations)
@@ -284,7 +284,7 @@ Format the script with timestamps and any suggested B-roll or on-screen text in 
 
 Each script:
 - 30-60 seconds (roughly 70-140 spoken words)
-- Hook in first 3 seconds — just the question, posed as the viewer would ask it
+- Hook in first 3 seconds - just the question, posed as the viewer would ask it
 - Answer in plain language
 - One specific concrete example or number
 - Close with "Follow for more / DM if this applies to you"
@@ -312,9 +312,9 @@ My details (from context above): [name, lines, state, specialty, years, why I do
 Structure:
 [0-10s] Who I am, what I do (one sentence each)
 [10-25s] The specific type of client I help best
-[25-50s] Why I got into this — the moment, person, or reason that actually matters to me
+[25-50s] Why I got into this - the moment, person, or reason that actually matters to me
 [50-75s] How I work differently (the one or two things that separate me)
-[75-90s] How to connect — specific next step
+[75-90s] How to connect - specific next step
 
 Tone: warm but not corny. Don't sound scripted. Contractions. Short sentences.
 
@@ -347,10 +347,10 @@ Do NOT:
 - Promise similar results for everyone
 - Include testimonial quotes unless I paste them in
 
-Include: a disclaimer line at the end — "Every situation is different. If you want to talk through yours, [contact info]."</pre>
+Include: a disclaimer line at the end - "Every situation is different. If you want to talk through yours, [contact info]."</pre>
 </div>
 
-<h2>Loom for prospects — the highest-converting video you'll make</h2>
+<h2>Loom for prospects - the highest-converting video you'll make</h2>
 <p>A personalized video for a specific prospect. Huge response rates. Not scripted word-for-word, but worth having a structure.</p>
 
 <div class="prompt-box">
@@ -367,7 +367,7 @@ About the prospect:
 1. Open with their name + one specific detail about their situation (5 seconds)
 2. What I noticed that made me reach out (15 seconds)
 3. The thing I think they might not have considered (30 seconds)
-4. Not a pitch — an offer to be useful (20 seconds)
+4. Not a pitch - an offer to be useful (20 seconds)
 5. Specific next step (15 seconds, low-friction)
 
 Also give me the 6-line email I'd send with the video embedded.</pre>
@@ -428,11 +428,11 @@ write_playbook_page(
 
 
 # ============================================================
-# MODULE 8 — Direct mail
+# MODULE 8 - Direct mail
 # ============================================================
 
 m8 = """
-<p>Direct mail isn't dead — it's just that everyone else gave up on it, which is exactly why it works again. For Medicare, final expense, and local P&amp;C, a well-designed postcard or letter still produces leads when email and ads don't. Claude makes the copy part easy.</p>
+<p>Direct mail isn't dead - it's just that everyone else gave up on it, which is exactly why it works again. For Medicare, final expense, and local P&amp;C, a well-designed postcard or letter still produces leads when email and ads don't. Claude makes the copy part easy.</p>
 
 <h2>When direct mail is worth running</h2>
 <ul>
@@ -467,7 +467,7 @@ Required elements:
 Front should stop them from throwing it away in 2 seconds.
 
 Back sections:
-1. Short opening — acknowledge they're getting a ton of Medicare mail
+1. Short opening - acknowledge they're getting a ton of Medicare mail
 2. The problem with most of it (generic, pushes one plan)
 3. What's different about me (shop multiple carriers, explain tradeoffs)
 4. One specific local detail (e.g., "in [county], the top 3 MA plans vary wildly in Rx coverage")
@@ -521,7 +521,7 @@ Each teaser:
 
 Examples of the style I'm going for:
 - "A note about your Medicare options"
-- "[Name], please open — not another marketing piece"
+- "[Name], please open - not another marketing piece"
 - "Regarding your October renewal"
 - "[County] homeowners: specific question inside"
 
@@ -536,11 +536,11 @@ Give me 5 distinct angles.</pre>
 <button class="copy-btn">Copy</button>
 <pre>Give me 5 different CTAs for a direct mail piece, each with a slightly different framing:
 
-1. "Call now" style — urgency-forward
-2. "Request the free [resource]" style — lead magnet
-3. "Get your personalized [thing]" style — benefit-forward
-4. "Reply card" style — for a letter with a BRE
-5. "Visit [URL] and answer 3 questions" style — website intent
+1. "Call now" style - urgency-forward
+2. "Request the free [resource]" style - lead magnet
+3. "Get your personalized [thing]" style - benefit-forward
+4. "Reply card" style - for a letter with a BRE
+5. "Visit [URL] and answer 3 questions" style - website intent
 
 Each should include a clear phone number placeholder and URL placeholder. Tone: neighborly, not pushy.</pre>
 </div>
@@ -554,7 +554,7 @@ Each should include a clear phone number placeholder and URL placeholder. Tone: 
 
 <div class="callout warning">
 <div class="callout-title">Medicare</div>
-<p>CMS mandates specific disclaimers on every marketing piece. Every state DOI has its own rules. Your carrier's compliance team will review pieces before you mail — use that process, don't skip it.</p>
+<p>CMS mandates specific disclaimers on every marketing piece. Every state DOI has its own rules. Your carrier's compliance team will review pieces before you mail - use that process, don't skip it.</p>
 </div>
 
 <div class="callout warning">
@@ -591,20 +591,20 @@ write_playbook_page(
     slug="module-08",
     title="Direct mail",
     tag="Module 8",
-    subtitle="Postcards, sales letters, and envelope teasers that actually get opened. Direct response still works — especially because everyone else quit.",
+    subtitle="Postcards, sales letters, and envelope teasers that actually get opened. Direct response still works - especially because everyone else quit.",
     body_html=m8,
 )
 
 
 # ============================================================
-# MODULE 9 — Referral requests
+# MODULE 9 - Referral requests
 # ============================================================
 
 m9 = """
-<p>Referrals are the highest-margin business you'll ever write. They close faster, cost nothing to acquire, and retain better. Most agents are terrible at asking for them — not because they don't know they should, but because they don't know exactly what to say and when. This module fixes that.</p>
+<p>Referrals are the highest-margin business you'll ever write. They close faster, cost nothing to acquire, and retain better. Most agents are terrible at asking for them - not because they don't know they should, but because they don't know exactly what to say and when. This module fixes that.</p>
 
 <h2>The psychology of a good referral ask</h2>
-<p>Bad referral asks feel awkward because they put the client on the spot with a vague request. "Do you know anyone who needs insurance?" — impossible to answer. The brain shuts down.</p>
+<p>Bad referral asks feel awkward because they put the client on the spot with a vague request. "Do you know anyone who needs insurance?" - impossible to answer. The brain shuts down.</p>
 
 <p>Good referral asks do three things:</p>
 <ol>
@@ -632,14 +632,14 @@ m9 = """
 <pre>Write me a 4-5 sentence referral ask I can use verbally (phone or in-person) with a client right after a positive interaction.
 
 Details:
-- I help [specific niche — e.g., "retiring teachers with Medicare decisions" or "small business owners with key-person life"]
+- I help [specific niche - e.g., "retiring teachers with Medicare decisions" or "small business owners with key-person life"]
 - The moment: [e.g., we just completed their annual review, or we just paid out a claim]
 
 The ask should:
 - Start with gratitude for the current client moment (specific, not generic)
 - Name exactly the type of person I can help
 - Give them a specific person or situation to think of ("a friend whose spouse is turning 65," "another business owner in your network")
-- Make the handoff easy — ask for permission to reach out, not for them to do the selling
+- Make the handoff easy - ask for permission to reach out, not for them to do the selling
 - Feel natural, not scripted
 
 Write 2 versions with slightly different framings so I can pick what feels right.</pre>
@@ -650,7 +650,7 @@ Write 2 versions with slightly different framings so I can pick what feels right
 <div class="prompt-box">
 <div class="prompt-box-label">Warm intro email to client</div>
 <button class="copy-btn">Copy</button>
-<pre>My client [Client First Name] said I could reach out to [Prospect First Name], a [relationship — friend, family, colleague].
+<pre>My client [Client First Name] said I could reach out to [Prospect First Name], a [relationship - friend, family, colleague].
 
 Write a short email for me to send to [Client First Name] confirming the handoff and giving them a template to forward.
 
@@ -659,7 +659,7 @@ Section 1 (to my client):
 - Confirm I'll reach out in the next day or two
 - Offer them a forward-able intro
 
-Section 2 (for them to forward — a separate block they can copy):
+Section 2 (for them to forward - a separate block they can copy):
 - Short, from them to their friend
 - Says why they thought of them (one sentence)
 - Introduces me in one sentence
@@ -682,7 +682,7 @@ Structure:
 - First line: name the referrer and the specific reason they thought of this person
 - 2-3 sentences: what I do, briefly
 - 1-2 sentences: no pressure, just want to say hi and see if there's a fit
-- Soft CTA: offer a 15-minute call — make two specific times available
+- Soft CTA: offer a 15-minute call - make two specific times available
 
 80-120 words. Tone: warm, casual, zero pressure. This is a warm intro, not a cold pitch.</pre>
 </div>
@@ -699,14 +699,14 @@ Structure:
 - One line about what made the connection feel right
 - Reference something specific about my client (not generic "you're such a good client")
 - Note that the meeting with [Prospect] went well OR is scheduled
-- No gifts or incentives mentioned (many states restrict gifting for referrals — I'll send separately if compliant)
+- No gifts or incentives mentioned (many states restrict gifting for referrals - I'll send separately if compliant)
 - Close with something warm
 
 This goes on actual paper in the mail. Feels personal, not corporate.</pre>
 </div>
 
 <h2>The referral partner outreach (other professionals)</h2>
-<p>The highest-leverage referral source isn't existing clients — it's other professionals who work with your ideal clients: CPAs, estate attorneys, financial advisors, real estate agents, HR consultants, benefit brokers. Claude can help script those outreaches.</p>
+<p>The highest-leverage referral source isn't existing clients - it's other professionals who work with your ideal clients: CPAs, estate attorneys, financial advisors, real estate agents, HR consultants, benefit brokers. Claude can help script those outreaches.</p>
 
 <div class="prompt-box">
 <div class="prompt-box-label">Referral partner outreach</div>
@@ -743,7 +743,7 @@ Columns I need:
 - Outcome (policy written, no policy, still working)
 - Next touch date (if still working)
 
-Also give me a 3-sentence description of a weekly 15-minute routine to keep this system alive — when to review it, what to act on.</pre>
+Also give me a 3-sentence description of a weekly 15-minute routine to keep this system alive - when to review it, what to act on.</pre>
 </div>
 
 <h2>Compliance notes</h2>
@@ -783,11 +783,11 @@ write_playbook_page(
 
 
 # ============================================================
-# MODULE 10 — Review responses
+# MODULE 10 - Review responses
 # ============================================================
 
 m10 = """
-<p>Online reviews are the modern referral. Before a prospect calls you, they Google you. If they find 3 Google reviews and one of them is a complaint with no response, you lose them before the first call. Responding to every review — positive, neutral, or negative — is one of the highest-leverage reputation moves you can make. Claude makes it a 30-second task.</p>
+<p>Online reviews are the modern referral. Before a prospect calls you, they Google you. If they find 3 Google reviews and one of them is a complaint with no response, you lose them before the first call. Responding to every review - positive, neutral, or negative - is one of the highest-leverage reputation moves you can make. Claude makes it a 30-second task.</p>
 
 <h2>Where reviews matter</h2>
 <ul>
@@ -804,7 +804,7 @@ m10 = """
 <div class="prompt-box">
 <div class="prompt-box-label">5-star response</div>
 <button class="copy-btn">Copy</button>
-<pre>The review below is 5 stars from a client who I [specific interaction detail — e.g., helped with Medicare enrollment / placed a life policy after a chronic condition / handled a claim].
+<pre>The review below is 5 stars from a client who I [specific interaction detail - e.g., helped with Medicare enrollment / placed a life policy after a chronic condition / handled a claim].
 
 Write a 3-5 sentence response that:
 - Thanks them by name (or first name only)
@@ -848,7 +848,7 @@ REVIEW:
 
 Write a public response that:
 - Acknowledges their frustration without arguing facts
-- Does NOT reveal any PHI or client-specific details (HIPAA/state privacy) — even if they revealed them in their review, I should NOT confirm them
+- Does NOT reveal any PHI or client-specific details (HIPAA/state privacy) - even if they revealed them in their review, I should NOT confirm them
 - States briefly what I would try to do to resolve it (if applicable)
 - Invites them to contact me directly at [phone or email] so we can address it privately
 - Does not include superlatives, defensiveness, or apology-spirals
@@ -862,7 +862,7 @@ REVIEW:
 
 <div class="callout warning">
 <div class="callout-title">HIPAA and state privacy</div>
-<p>Never confirm a review writer is actually a client. Never acknowledge specific health conditions, claims, policies, or personal details they mentioned — even to defend yourself. Doing so can be a HIPAA violation or state privacy violation. Keep your public response general. Move specifics to a private conversation.</p>
+<p>Never confirm a review writer is actually a client. Never acknowledge specific health conditions, claims, policies, or personal details they mentioned - even to defend yourself. Doing so can be a HIPAA violation or state privacy violation. Keep your public response general. Move specifics to a private conversation.</p>
 </div>
 
 <h2>When the review is clearly fake or from a non-client</h2>
@@ -890,7 +890,7 @@ Sound like someone who's genuinely puzzled, not defensive.</pre>
 <button class="copy-btn">Copy</button>
 <pre>Write a short email (80-120 words) asking a client to leave a Google review.
 
-Context: [what we just did for them — specific]
+Context: [what we just did for them - specific]
 
 Structure:
 - Open with a reference to our specific recent interaction

@@ -1269,7 +1269,7 @@ footer p { margin: 0; letter-spacing: 0.02em; }
         transition: transform 0.2s ease;
     }
     nav.topbar .nav-group.is-open .nav-has-submenu::after {
-        content: '−';
+        content: '-';
     }
     /* Mobile dropdown panels: static accordion layout */
     nav.topbar .nav-submenu {

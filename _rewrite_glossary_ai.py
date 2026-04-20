@@ -2,17 +2,17 @@
 """Rewrite AI glossary entries with plain-English, thorough explanations.
 
 Template for each term:
-- def        — one-sentence plain-English answer to "what is this?"
-- explain    — a paragraph that builds intuition from zero (no jargon,
+- def        - one-sentence plain-English answer to "what is this?"
+- explain    - a paragraph that builds intuition from zero (no jargon,
                or jargon explicitly introduced)
-- example    — concrete, everyday scenario
-- why        — why it matters / what you do with this knowledge
+- example    - concrete, everyday scenario
+- why        - why it matters / what you do with this knowledge
 
 The site's existing .gloss-def/.gloss-detail slots become:
 - .gloss-def (the simple definition)
-- .gloss-explain (new — the build-intuition paragraph)
-- .gloss-example (new — boxed example)
-- .gloss-why (new — why-it-matters)
+- .gloss-explain (new - the build-intuition paragraph)
+- .gloss-example (new - boxed example)
+- .gloss-why (new - why-it-matters)
 
 Writes back by finding the existing .gloss-topic…related block and
 swapping the inner content.
@@ -25,7 +25,7 @@ GLOSSARY = ROOT / "glossary"
 
 # ---------------------------------------------------------------------------
 # Content. Each entry: { term, topic, def, explain, example, why, related[] }
-# Written at roughly a 5th–6th grade reading level: plain language, clear
+# Written at roughly a 5th-6th grade reading level: plain language, clear
 # analogies, no "leveraging synergies" language. Thorough without being
 # condescending.
 # ---------------------------------------------------------------------------
@@ -48,7 +48,7 @@ TERMS = {
             "question plus Claude's answer all have to fit inside the context window. "
             "If you then paste ANOTHER 50-page PDF, the first one might start getting "
             "squeezed out. Ask about page 3 of the first PDF later and Claude might not "
-            "remember it — not because it was a bad model, but because the page is no "
+            "remember it - not because it was a bad model, but because the page is no "
             "longer in its hands."
         ),
         "why": (
@@ -74,7 +74,7 @@ TERMS = {
         ),
         "example": (
             "The sentence 'Claude is an AI assistant' is about 6 tokens. A 10-page document "
-            "is about 3,000–5,000 tokens. This whole glossary entry is about 400 tokens."
+            "is about 3,000-5,000 tokens. This whole glossary entry is about 400 tokens."
         ),
         "why": (
             "You pay per token. Context windows are measured in tokens. Every API bill is a "
@@ -168,7 +168,7 @@ TERMS = {
             "internal docs, last week's emails, or a PDF you just got. RAG solves this in three "
             "steps: (1) store your documents in a searchable index; (2) when a question comes in, "
             "find the most relevant snippets; (3) paste those snippets into the AI's prompt along "
-            "with the question. Now the AI is 'open-book' — it can quote from your library."
+            "with the question. Now the AI is 'open-book' - it can quote from your library."
         ),
         "example": (
             "You build a customer support bot for your SaaS. You load all 500 help-center articles "
@@ -235,7 +235,7 @@ TERMS = {
         "explain": (
             "A 300-page manual won't fit in a prompt, and even if it did, asking the model to "
             "reason over it all at once gives bad answers. Chunking is the practice of splitting "
-            "documents into smaller, self-contained pieces (usually 200–800 words each) before "
+            "documents into smaller, self-contained pieces (usually 200-800 words each) before "
             "you store them. Each chunk gets its own embedding. When a question comes in, you "
             "retrieve the best matching CHUNKS, not whole documents."
         ),
@@ -243,7 +243,7 @@ TERMS = {
             "You have a 50-page employee handbook. You chunk it into 150 pieces, one per section. "
             "When someone asks 'how many sick days do I get?', RAG retrieves the 3 chunks that "
             "mention sick leave, pastes them into the prompt, and the AI answers using just those "
-            "3 paragraphs — not all 50 pages."
+            "3 paragraphs - not all 50 pages."
         ),
         "why": (
             "Bad chunking is the single biggest reason RAG systems give bad answers. Chunks too "
@@ -267,7 +267,7 @@ TERMS = {
         "example": (
             "A product search: the user types 'gift for someone who loves coffee'. Keyword "
             "search returns nothing useful. Semantic search returns espresso machines, coffee "
-            "subscription boxes, and artisan mug sets — because those products are semantically "
+            "subscription boxes, and artisan mug sets - because those products are semantically "
             "close to 'coffee gift'."
         ),
         "why": (
@@ -294,7 +294,7 @@ TERMS = {
         ),
         "why": (
             "The best modern RAG systems don't use semantic search alone. They combine BM25 (for "
-            "exact-term precision) with semantic search (for meaning) — this is called 'hybrid "
+            "exact-term precision) with semantic search (for meaning) - this is called 'hybrid "
             "search.' BM25 catches the things semantic search misses, like proper names, codes, "
             "and exact phrases."
         ),
@@ -305,22 +305,22 @@ TERMS = {
         "topic": "AI",
         "def": "A second pass that reorders search results by how well they actually answer the question.",
         "explain": (
-            "The first step of RAG retrieval casts a wide net — pulls back maybe 20–50 "
+            "The first step of RAG retrieval casts a wide net - pulls back maybe 20-50 "
             "potentially-relevant chunks, fast. Reranking is a smarter-but-slower second pass: "
             "a specialized model reads the query AND each candidate chunk together, then scores "
-            "how well that chunk actually answers the query. The top 3–5 get passed to the LLM. "
+            "how well that chunk actually answers the query. The top 3-5 get passed to the LLM. "
             "This two-step approach gets much better results than either step alone."
         ),
         "example": (
             "You ask your company bot 'how do I request time off?'. Initial retrieval returns 20 "
             "HR docs. A reranker reads all 20 against your question and promotes the PTO-request "
-            "policy page to #1 — even though the retrieval step had it at #7 based on embedding "
+            "policy page to #1 - even though the retrieval step had it at #7 based on embedding "
             "similarity alone."
         ),
         "why": (
             "Reranking is the single fastest way to improve a mediocre RAG system. Cohere, Voyage "
             "AI, and others sell rerankers as standalone APIs. Adding a reranker usually gives a "
-            "10–30% boost in answer quality."
+            "10-30% boost in answer quality."
         ),
         "related": ["rag", "semantic-search", "retrieval"],
     },
@@ -344,7 +344,7 @@ TERMS = {
         ),
         "why": (
             "Prompt engineering is the cheapest lever you have. Before you fine-tune, before you "
-            "build agents, before you add RAG — try rewriting the prompt. A better prompt often "
+            "build agents, before you add RAG - try rewriting the prompt. A better prompt often "
             "closes 80% of the quality gap."
         ),
         "related": ["system-prompt", "few-shot", "zero-shot"],
@@ -377,7 +377,7 @@ TERMS = {
         "topic": "AI",
         "def": "Teaching the AI a task by showing it a handful of examples, right in the prompt.",
         "explain": (
-            "Instead of describing what you want, you SHOW the AI what you want. You put 2–5 "
+            "Instead of describing what you want, you SHOW the AI what you want. You put 2-5 "
             "examples of the input-output pattern at the start of your prompt, then ask it to "
             "continue the pattern for a new input. The model picks up the shape, style, and rules "
             "from your examples without any training."
@@ -394,7 +394,7 @@ TERMS = {
         ),
         "why": (
             "Few-shot is a superpower for edge cases and domain-specific outputs. When a plain "
-            "description isn't enough, examples fix it fast. No code, no training — just add a "
+            "description isn't enough, examples fix it fast. No code, no training - just add a "
             "few sample inputs and outputs to the prompt."
         ),
         "related": ["zero-shot", "prompt-engineering", "system-prompt"],
@@ -406,7 +406,7 @@ TERMS = {
         "explain": (
             "Zero-shot means zero examples in the prompt. You rely entirely on the model's training "
             "to understand the task from your description alone. Modern LLMs are strong zero-shot "
-            "learners — they can usually figure out 'classify this as spam/not-spam' or 'translate "
+            "learners - they can usually figure out 'classify this as spam/not-spam' or 'translate "
             "to Spanish' with no examples, because those tasks were well-represented in training."
         ),
         "example": (
@@ -428,7 +428,7 @@ TERMS = {
             "You take a base model (like GPT or Claude or Llama) that already knows language and "
             "you show it hundreds or thousands of examples of YOUR task. The model's internal "
             "weights shift slightly to get better at that specific kind of input. Done right, "
-            "fine-tuning produces a model that's genuinely better at your niche — faster, cheaper "
+            "fine-tuning produces a model that's genuinely better at your niche - faster, cheaper "
             "per call, and more consistent than prompt tricks alone."
         ),
         "example": (
@@ -450,7 +450,7 @@ TERMS = {
         "def": "A very large, general-purpose model trained on broad data. The base layer that specific applications build on.",
         "explain": (
             "Foundation models are the big ones: GPT-5, Claude Opus, Gemini, Llama. They cost "
-            "hundreds of millions to train. They're designed to be broadly capable — handling "
+            "hundreds of millions to train. They're designed to be broadly capable - handling "
             "writing, code, math, reasoning, and more. Everything downstream (fine-tuned models, "
             "agents, RAG pipelines, ChatGPT itself) is built on top of a foundation model. The "
             "term 'foundation' is literal: without them, nothing else in the AI product layer exists."
@@ -462,7 +462,7 @@ TERMS = {
         ),
         "why": (
             "Picking the right foundation model is the single biggest product decision you'll make. "
-            "The rest — prompts, tools, UI — can be rebuilt. The model choice determines what's even "
+            "The rest - prompts, tools, UI - can be rebuilt. The model choice determines what's even "
             "possible."
         ),
         "related": ["llm", "fine-tuning", "transformer"],
@@ -474,10 +474,10 @@ TERMS = {
         "explain": (
             "The transformer is a blueprint for a type of neural network, introduced by Google in "
             "a 2017 paper titled 'Attention Is All You Need.' Its key insight was the attention "
-            "mechanism — a way for the model to weigh which parts of the input matter most for each "
+            "mechanism - a way for the model to weigh which parts of the input matter most for each "
             "word it's generating. Before transformers, AI read text word-by-word, losing track of "
-            "long-range context. Transformers can see the whole input at once. Every major LLM — "
-            "GPT, Claude, Gemini — is a transformer."
+            "long-range context. Transformers can see the whole input at once. Every major LLM - "
+            "GPT, Claude, Gemini - is a transformer."
         ),
         "example": (
             "When the model reads 'The bank of the river was muddy', the transformer's attention "
@@ -511,7 +511,7 @@ TERMS = {
             "noun to describe."
         ),
         "why": (
-            "Attention is what makes LLMs feel smart. It's also why they're slow and expensive — "
+            "Attention is what makes LLMs feel smart. It's also why they're slow and expensive - "
             "comparing every word to every other word is computationally heavy. Most performance "
             "research on LLMs is really about making attention cheaper."
         ),
@@ -525,13 +525,13 @@ TERMS = {
             "LLMs are trained to produce plausible-sounding text, not true text. Usually those "
             "overlap. Sometimes they don't. When the model generates a fact, citation, name, or "
             "statistic that sounds right but isn't real, that's a hallucination. The model isn't "
-            "lying on purpose — it's doing what it was trained to do (predict the next likely word), "
+            "lying on purpose - it's doing what it was trained to do (predict the next likely word), "
             "and the most likely next word happens to be wrong. The dangerous part is that "
             "hallucinations read with the same tone of confidence as correct answers."
         ),
         "example": (
             "Ask a model for a legal citation and it might produce 'Smith v. Jones, 2019, 447 F.3d "
-            "221' — which is formatted correctly, spelled like real case law, and completely "
+            "221' - which is formatted correctly, spelled like real case law, and completely "
             "invented. Lawyers have been fined for filing briefs with hallucinated citations."
         ),
         "why": (
@@ -549,7 +549,7 @@ TERMS = {
         "explain": (
             "Grounding is the opposite of hallucination. Instead of letting the model answer from "
             "its training memory (which might be stale or wrong), you force it to answer ONLY using "
-            "sources you provide — documents, database rows, search results. The model is instructed "
+            "sources you provide - documents, database rows, search results. The model is instructed "
             "to cite or refuse. A well-grounded system is much harder to catch in a lie because every "
             "claim traces back to a source."
         ),
@@ -557,7 +557,7 @@ TERMS = {
             "A grounded customer support bot is told: 'Answer only using the help articles I'm pasting "
             "below. If the answer isn't in them, say \"I don't have that info\" and offer to hand off "
             "to a human.' Now if a user asks something off-topic, the bot honestly says it doesn't "
-            "know — instead of making something up."
+            "know - instead of making something up."
         ),
         "why": (
             "Grounding is what turns an AI from a plausibly-wrong chatbot into a reliable production "
@@ -573,7 +573,7 @@ TERMS = {
         "explain": (
             "An LLM on its own can only output text. It can't actually send an email, query a "
             "database, or check a calendar. Tool use is the mechanism by which the model says "
-            "'I want to use tool X with these arguments' — and your code runs the tool and gives "
+            "'I want to use tool X with these arguments' - and your code runs the tool and gives "
             "the result back. The model then reads the result and decides what to do next. With "
             "tools, an LLM stops being a chat partner and becomes something much more capable."
         ),
@@ -636,7 +636,7 @@ TERMS = {
         "why": (
             "ReAct is the most common pattern under the hood of agentic systems. Claude's agent "
             "harness, LangChain's AgentExecutor, and most open-source agents implement some flavor "
-            "of ReAct. Knowing the pattern helps you debug when your agent misbehaves — usually "
+            "of ReAct. Knowing the pattern helps you debug when your agent misbehaves - usually "
             "it's because the thought→action linkage broke somewhere."
         ),
         "related": ["agent", "tool-use", "function-calling"],

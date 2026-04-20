@@ -18,7 +18,7 @@ BM_SIDEBAR = [
         ("operating-systems/decision-logs", "Decision logs"),
     ]),
     ("People + Hiring", [
-        ("people/hiring-signal-vs-noise", "Hiring — signal vs noise"),
+        ("people/hiring-signal-vs-noise", "Hiring - signal vs noise"),
         ("people/role-scorecard", "The role scorecard"),
         ("people/onboarding", "Onboarding that compounds"),
         ("people/one-on-ones", "One-on-ones"),
@@ -163,7 +163,7 @@ def write_bm_page(slug, title, description, body_html, reading_time=None, prev=N
         pn_html = "".join(pn)
 
     html = (
-        head(f"{title} — Samuel Ochoa", description, rel_root=rel_root) +
+        head(f"{title} - Samuel Ochoa", description, rel_root=rel_root) +
         topbar("expertise", rel_root=rel_root) +
         '<div class="framework-layout">' +
         sidebar_html(active_slug) +

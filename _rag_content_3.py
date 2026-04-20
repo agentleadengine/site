@@ -194,7 +194,7 @@ write_rag_page(
   <li>Graph maintenance is complex when documents update</li>
   <li>Over-engineered for simple Q&amp;A</li>
   <li>Community summaries can drift from actual document content</li>
-  <li>Most teams don't need it — vanilla RAG is sufficient</li>
+  <li>Most teams don't need it - vanilla RAG is sufficient</li>
 </ul>
 
 <h2>Cost structure</h2>
@@ -256,7 +256,7 @@ write_rag_page(
     description="Adaptive RAG routes different query types to different retrieval strategies. Here's the taxonomy of strategies and how to classify queries.",
     reading_time=4,
     body_html="""
-<p class="lede">Not every query needs the same retrieval strategy. Adaptive RAG classifies incoming queries and routes them to the most suitable approach — simple retrieval, hybrid, multi-query, agentic, or no retrieval at all. It's how production systems balance cost, latency, and quality.</p>
+<p class="lede">Not every query needs the same retrieval strategy. Adaptive RAG classifies incoming queries and routes them to the most suitable approach - simple retrieval, hybrid, multi-query, agentic, or no retrieval at all. It's how production systems balance cost, latency, and quality.</p>
 
 <h2>The core idea</h2>
 <p>A classifier sits between the user and the retrieval pipeline. It looks at the query and decides:</p>
@@ -273,28 +273,28 @@ write_rag_page(
 <h2>Query types and their strategies</h2>
 
 <h3>Trivial / greeting</h3>
-<p>"Hi", "thanks", "can you help me?" — no retrieval, respond directly.</p>
+<p>"Hi", "thanks", "can you help me?" - no retrieval, respond directly.</p>
 
 <h3>Common knowledge</h3>
-<p>"What's the capital of France?" — no retrieval, LLM answers from pretraining.</p>
+<p>"What's the capital of France?" - no retrieval, LLM answers from pretraining.</p>
 
 <h3>Simple factual</h3>
-<p>"What's the refund window?" — single-hop dense retrieval or hybrid.</p>
+<p>"What's the refund window?" - single-hop dense retrieval or hybrid.</p>
 
 <h3>Multi-entity</h3>
-<p>"Compare products A and B" — multi-query with one retrieval per entity.</p>
+<p>"Compare products A and B" - multi-query with one retrieval per entity.</p>
 
 <h3>Multi-hop reasoning</h3>
-<p>"Who manages the team that shipped X?" — agentic RAG with iterative retrieval.</p>
+<p>"Who manages the team that shipped X?" - agentic RAG with iterative retrieval.</p>
 
 <h3>Corpus-wide synthesis</h3>
-<p>"What are the main themes in our 2023 customer feedback?" — GraphRAG or summarization over retrieved sets.</p>
+<p>"What are the main themes in our 2023 customer feedback?" - GraphRAG or summarization over retrieved sets.</p>
 
 <h3>Structured query</h3>
-<p>"How many customers signed up last month?" — text-to-SQL, not vector retrieval.</p>
+<p>"How many customers signed up last month?" - text-to-SQL, not vector retrieval.</p>
 
 <h3>Out-of-scope</h3>
-<p>Query unrelated to your domain — decline or deflect.</p>
+<p>Query unrelated to your domain - decline or deflect.</p>
 
 <h2>Classifier options</h2>
 
@@ -393,7 +393,7 @@ write_rag_page(
     description="Corrective RAG evaluates retrieval quality and recovers from bad retrievals with alternate strategies. Here's the pattern.",
     reading_time=4,
     body_html="""
-<p class="lede">Corrective RAG (CRAG) adds a quality-check step between retrieval and generation. If retrieved documents are judged insufficient or irrelevant, the system triggers a fallback strategy — typically a web search, query rewriting, or different retrieval approach. It's a practical pattern for handling retrieval failures gracefully.</p>
+<p class="lede">Corrective RAG (CRAG) adds a quality-check step between retrieval and generation. If retrieved documents are judged insufficient or irrelevant, the system triggers a fallback strategy - typically a web search, query rewriting, or different retrieval approach. It's a practical pattern for handling retrieval failures gracefully.</p>
 
 <h2>The core flow</h2>
 <pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
@@ -410,7 +410,7 @@ write_rag_page(
 </pre>
 
 <h2>The evaluator</h2>
-<p>The key component is the retrieval evaluator — a model (small classifier, LLM with a prompt, or score-based heuristic) that judges whether retrieval gave enough to answer.</p>
+<p>The key component is the retrieval evaluator - a model (small classifier, LLM with a prompt, or score-based heuristic) that judges whether retrieval gave enough to answer.</p>
 
 <h3>LLM-based evaluator</h3>
 <pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:12px;">
@@ -591,7 +591,7 @@ refunds are processed within 5-7 business days [doc1].
 <h2>Weaknesses</h2>
 <ul>
   <li>Multiple LLM calls per query (retrieval decision, relevance judgment, self-critique)</li>
-  <li>Complexity compounds — more moving parts, more debugging</li>
+  <li>Complexity compounds - more moving parts, more debugging</li>
   <li>The pure Self-RAG paper approach requires custom training most teams skip</li>
   <li>Can over-think simple queries</li>
 </ul>
@@ -772,7 +772,7 @@ write_rag_page(
     description="Without evaluation, RAG silently rots. Here's why measurement is the difference between a system that stays good and one that degrades invisibly.",
     reading_time=4,
     body_html="""
-<p class="lede">A RAG system without evaluation is a system that silently degrades. Models change. Corpora grow. Users' queries evolve. Without measurement, "our RAG is pretty good" becomes "our RAG used to be pretty good" — and nobody knows when it happened. Evaluation is how you turn RAG from a project into an engineering discipline.</p>
+<p class="lede">A RAG system without evaluation is a system that silently degrades. Models change. Corpora grow. Users' queries evolve. Without measurement, "our RAG is pretty good" becomes "our RAG used to be pretty good" - and nobody knows when it happened. Evaluation is how you turn RAG from a project into an engineering discipline.</p>
 
 <h2>What breaks without evaluation</h2>
 
@@ -861,9 +861,9 @@ write_rag_page(
 <h2>The cost of not evaluating</h2>
 <p>I've seen production RAG systems where:</p>
 <ul>
-  <li>A new embedding model dropped retrieval quality 15% — noticed 3 months later</li>
-  <li>A chunking change broke PDFs — users complained for weeks before anyone connected it</li>
-  <li>An LLM upgrade improved latency but hurt grounding — metrics showed it immediately, but no one was watching</li>
+  <li>A new embedding model dropped retrieval quality 15% - noticed 3 months later</li>
+  <li>A chunking change broke PDFs - users complained for weeks before anyone connected it</li>
+  <li>An LLM upgrade improved latency but hurt grounding - metrics showed it immediately, but no one was watching</li>
 </ul>
 
 <p>In each case, eval was the difference between catching it in a day and catching it in months.</p>
@@ -893,7 +893,7 @@ write_rag_page(
     description="Hit rate, MRR, recall, NDCG. Which metrics actually tell you something about retrieval quality, and how to interpret them.",
     reading_time=4,
     body_html="""
-<p class="lede">Retrieval metrics measure whether your system found the right chunks. They don't tell you if the generator used them well — that's a separate measurement — but they tell you the upstream quality gate. If retrieval metrics are bad, nothing downstream can save you.</p>
+<p class="lede">Retrieval metrics measure whether your system found the right chunks. They don't tell you if the generator used them well - that's a separate measurement - but they tell you the upstream quality gate. If retrieval metrics are bad, nothing downstream can save you.</p>
 
 <h2>Hit rate @ k</h2>
 <p>Simplest metric: did the relevant chunk appear anywhere in the top-k results?</p>
@@ -1001,7 +1001,7 @@ NDCG@k = DCG@k / ideal_DCG@k
 <p>On 100-query eval sets, a 2% change in hit rate is ~2 queries. Could be noise. Use larger eval sets or statistical tests to confirm real improvements.</p>
 
 <h3>Average masks variance</h3>
-<p>Average hit rate of 70% could be "every query has 70% chance" or "70% of queries always succeed, 30% always fail." The latter is worse — you have systematic blind spots. Look at the distribution, not just the mean.</p>
+<p>Average hit rate of 70% could be "every query has 70% chance" or "70% of queries always succeed, 30% always fail." The latter is worse - you have systematic blind spots. Look at the distribution, not just the mean.</p>
 
 <h2>Per-segment metrics</h2>
 <p>Aggregate metrics hide problems. Split by:</p>
@@ -1147,7 +1147,7 @@ composite = α × faithfulness + β × relevance + γ × correctness
 <p>Both parts of the pipeline are broken. Debug retrieval first (is it returning usable chunks?), then generation.</p>
 
 <h3>High on both, low correctness</h3>
-<p>The answer is faithful to retrieved context and relevant to the question, but still wrong. Probably means the retrieved context itself is wrong — you have bad data in your corpus.</p>
+<p>The answer is faithful to retrieved context and relevant to the question, but still wrong. Probably means the retrieved context itself is wrong - you have bad data in your corpus.</p>
 
 <h2>Measuring during production</h2>
 <p>Offline eval sets are limited. In production, sample a percentage of real queries for offline evaluation:</p>
@@ -1210,7 +1210,7 @@ write_rag_page(
 <h3>Weaknesses</h3>
 <ul>
   <li>Relies heavily on LLM-as-judge, which has variance</li>
-  <li>Default prompts may not fit your domain — often need customization</li>
+  <li>Default prompts may not fit your domain - often need customization</li>
   <li>Can be slow for large eval sets</li>
 </ul>
 
@@ -1295,7 +1295,7 @@ write_rag_page(
 </ul>
 
 <h2>The build-vs-buy question</h2>
-<p>A simple RAG eval (hit rate @ k, answer correctness via LLM judge) is ~100 lines of Python. You can build it. For most teams, the question isn't build vs buy — it's: do I want to maintain this, or do I want to use a framework that has already thought about edge cases, parallelization, result visualization, and integration with my tracing?</p>
+<p>A simple RAG eval (hit rate @ k, answer correctness via LLM judge) is ~100 lines of Python. You can build it. For most teams, the question isn't build vs buy - it's: do I want to maintain this, or do I want to use a framework that has already thought about edge cases, parallelization, result visualization, and integration with my tracing?</p>
 
 <p>Frameworks save time. Building your own gives you flexibility. Both are valid choices.</p>
 
@@ -1323,7 +1323,7 @@ write_rag_page(
     description="Without eval data, you can't improve. Here's how I build an eval set from scratch that covers real queries and catches regressions.",
     reading_time=5,
     body_html="""
-<p class="lede">An evaluation set is the foundation of disciplined RAG development. It's also the part teams most often cut corners on. Here's how I actually build eval datasets that produce usable signal — including the shortcuts that work and the ones that don't.</p>
+<p class="lede">An evaluation set is the foundation of disciplined RAG development. It's also the part teams most often cut corners on. Here's how I actually build eval datasets that produce usable signal - including the shortcuts that work and the ones that don't.</p>
 
 <h2>The essential properties</h2>
 <ol>
@@ -1422,7 +1422,7 @@ write_rag_page(
   <li>Queries where the correct answer is "I don't know"</li>
 </ul>
 
-<p>These queries should return empty results or refusal — not hallucinated answers.</p>
+<p>These queries should return empty results or refusal - not hallucinated answers.</p>
 
 <h2>The labeling tool</h2>
 <p>For more than a few dozen queries, manual labeling gets tedious. Options:</p>
@@ -1662,7 +1662,7 @@ write_rag_page(
   <li>Hit rate: 20-40% for conversational interfaces, higher for FAQ-style</li>
   <li>Savings: 30-150ms + embedding API cost per hit</li>
   <li>TTL: long (7-30 days), invalidate on model version change</li>
-  <li>Storage: small — 4-12 KB per cached embedding</li>
+  <li>Storage: small - 4-12 KB per cached embedding</li>
 </ul>
 
 <h3>Layer 2: Retrieval result cache</h3>
@@ -1671,7 +1671,7 @@ write_rag_page(
   <li>Hit rate: 10-30%</li>
   <li>Savings: embedding time + vector DB query time</li>
   <li>TTL: shorter, invalidate when index updates</li>
-  <li>Storage: moderate — top-k chunk IDs per query</li>
+  <li>Storage: moderate - top-k chunk IDs per query</li>
 </ul>
 
 <h3>Layer 3: Reranked result cache</h3>
@@ -1688,7 +1688,7 @@ write_rag_page(
   <li>Hit rate: 5-20% (varies hugely by use case)</li>
   <li>Savings: entire LLM generation cost (the biggest single cost)</li>
   <li>TTL: hours to days, depends on content freshness requirements</li>
-  <li>Storage: moderate — full answer text per query</li>
+  <li>Storage: moderate - full answer text per query</li>
 </ul>
 
 <h3>Layer 5: Prompt cache (LLM provider feature)</h3>
@@ -1819,7 +1819,7 @@ write_rag_page(
     description="Without observability, RAG bugs are invisible. Here's what to log, what to track, and how to debug production RAG issues.",
     reading_time=5,
     body_html="""
-<p class="lede">RAG pipelines have many stages, each of which can fail independently or in subtle ways. Without observability, you find out quality is bad because users complain — and you can't tell which stage is responsible. Observability is what turns RAG from a black box into a debuggable system.</p>
+<p class="lede">RAG pipelines have many stages, each of which can fail independently or in subtle ways. Without observability, you find out quality is bad because users complain - and you can't tell which stage is responsible. Observability is what turns RAG from a black box into a debuggable system.</p>
 
 <h2>What to log per query</h2>
 
@@ -1989,7 +1989,7 @@ Total: 1513ms
 <p>Alerts should be actionable. "Retrieval is slow" → specific runbook for investigation.</p>
 
 <h2>The production vs offline gap</h2>
-<p>Offline eval tests a fixed query set. Production has distribution drift, new user patterns, edge cases your eval doesn't cover. Observability closes the gap — real user data flowing back into the eval set keeps tests grounded.</p>
+<p>Offline eval tests a fixed query set. Production has distribution drift, new user patterns, edge cases your eval doesn't cover. Observability closes the gap - real user data flowing back into the eval set keeps tests grounded.</p>
 
 <p>The loop: production → observability → sample queries for labeling → eval set expansion → next iteration.</p>
 
@@ -2065,7 +2065,7 @@ Total:                                          ~$0.015 per query
 <h2>The optimization frontier</h2>
 
 <h3>Model routing</h3>
-<p>Use cheap models where possible. Classify queries — 70% can use gpt-4o-mini or haiku. Saves 80-90% on those queries.</p>
+<p>Use cheap models where possible. Classify queries - 70% can use gpt-4o-mini or haiku. Saves 80-90% on those queries.</p>
 
 <h3>Context trimming</h3>
 <p>Every 100 input tokens saved is money. Trim retrieved chunks before sending. Reduce top-k. Use shorter prompts.</p>
@@ -2125,7 +2125,7 @@ Total:                                          ~$0.015 per query
 <p>Changing embedding models means re-embedding everything. Budget accordingly.</p>
 
 <h3>Experimentation</h3>
-<p>Running evals, A/B tests, debugging production issues — each involves LLM calls. Can be 10-20% of operational spend.</p>
+<p>Running evals, A/B tests, debugging production issues - each involves LLM calls. Can be 10-20% of operational spend.</p>
 
 <h3>Development</h3>
 <p>Your engineers testing changes. Often more expensive than production if not monitored.</p>
@@ -2210,7 +2210,7 @@ write_rag_page(
 <h2>Defense: prompt injection</h2>
 
 <h3>Input sanitization (limited)</h3>
-<p>Strip instruction-like patterns from retrieved content before inserting into prompts. Not reliable — attackers will find ways around heuristic filters.</p>
+<p>Strip instruction-like patterns from retrieved content before inserting into prompts. Not reliable - attackers will find ways around heuristic filters.</p>
 
 <h3>Structural prompt design</h3>
 <p>Clearly delineate retrieved content from instructions:</p>
@@ -2485,7 +2485,7 @@ USER: [question]
 <p>This loop is how customer support RAG gets better over time. Without it, quality stagnates.</p>
 
 <h2>The content governance challenge</h2>
-<p>The AI is only as good as the knowledge base. If docs are stale, incomplete, or contradictory, users get bad answers. Customer support RAG creates organizational pressure to improve documentation — which is usually a feature, not a bug.</p>
+<p>The AI is only as good as the knowledge base. If docs are stale, incomplete, or contradictory, users get bad answers. Customer support RAG creates organizational pressure to improve documentation - which is usually a feature, not a bug.</p>
 
 <h2>Common mistakes</h2>
 <ul>
@@ -2509,7 +2509,7 @@ write_rag_page(
     description="Internal knowledge bases (Confluence, Notion, Google Drive) are the most common enterprise RAG use case. Here's what's different.",
     reading_time=5,
     body_html="""
-<p class="lede">Internal knowledge RAG gives employees a natural-language interface to company docs — wiki, Drive, Confluence, Notion, Slack. It's the most common enterprise RAG use case and one of the hardest to get right because of access control, data freshness, and content heterogeneity.</p>
+<p class="lede">Internal knowledge RAG gives employees a natural-language interface to company docs - wiki, Drive, Confluence, Notion, Slack. It's the most common enterprise RAG use case and one of the hardest to get right because of access control, data freshness, and content heterogeneity.</p>
 
 <h2>The content sources</h2>
 <p>Typical enterprise corpus:</p>
@@ -2809,7 +2809,7 @@ write_rag_page(
 
 <h2>Security considerations</h2>
 <ul>
-  <li>Don't expose secrets (API keys, credentials in code — filter at ingestion)</li>
+  <li>Don't expose secrets (API keys, credentials in code - filter at ingestion)</li>
   <li>Access control per repo (not everyone should see all code)</li>
   <li>Don't send proprietary code to external LLM APIs without the right agreement</li>
 </ul>
@@ -2848,7 +2848,7 @@ write_rag_page(
     description="Legal and compliance RAG have uniquely strict requirements around accuracy, citation, and auditability. Here's what changes.",
     reading_time=5,
     body_html="""
-<p class="lede">Legal and compliance RAG are the strictest RAG use cases. Hallucinations aren't just embarrassing — they're legal exposure. Citations aren't optional — they're required by procedure. The bar for quality is higher, and the acceptable failure modes are narrower.</p>
+<p class="lede">Legal and compliance RAG are the strictest RAG use cases. Hallucinations aren't just embarrassing - they're legal exposure. Citations aren't optional - they're required by procedure. The bar for quality is higher, and the acceptable failure modes are narrower.</p>
 
 <h2>What makes it different</h2>
 <ul>
@@ -3003,7 +3003,7 @@ write_rag_page(
   <li>Enterprise security and compliance</li>
 </ul>
 
-<p>For internal legal RAG, borrow these patterns. Don't ship a naive vector RAG over legal documents and call it done — the quality bar is categorically higher.</p>
+<p>For internal legal RAG, borrow these patterns. Don't ship a naive vector RAG over legal documents and call it done - the quality bar is categorically higher.</p>
 
 <p style="margin-top:40px;">Next: <a href="multi-tenant.html">Multi-tenant RAG</a>.</p>
 """,
@@ -3018,7 +3018,7 @@ write_rag_page(
     description="Multi-tenant RAG serves many customers with different data, permissions, and scaling needs from one system. Here's the architecture.",
     reading_time=5,
     body_html="""
-<p class="lede">Multi-tenant RAG is what B2B SaaS companies build: one RAG system serving many customer organizations, each with their own documents, users, and permissions. The requirements are strict — no data can cross tenant boundaries, even in retrieval candidates — and the scaling profile is different from single-tenant systems.</p>
+<p class="lede">Multi-tenant RAG is what B2B SaaS companies build: one RAG system serving many customer organizations, each with their own documents, users, and permissions. The requirements are strict - no data can cross tenant boundaries, even in retrieval candidates - and the scaling profile is different from single-tenant systems.</p>
 
 <h2>The core requirement</h2>
 <p>Absolute tenant isolation:</p>
@@ -3207,7 +3207,7 @@ from authentication.
 <p>Feeds into pricing decisions and lets you identify unprofitable tenants.</p>
 
 <h2>Closing thought</h2>
-<p>Multi-tenant RAG has all the challenges of single-tenant RAG plus isolation, scaling, and operational multi-tenancy concerns. The isolation concerns aren't optional — one leak is a reputational catastrophe. Build with isolation as a first-class property, not an afterthought.</p>
+<p>Multi-tenant RAG has all the challenges of single-tenant RAG plus isolation, scaling, and operational multi-tenancy concerns. The isolation concerns aren't optional - one leak is a reputational catastrophe. Build with isolation as a first-class property, not an afterthought.</p>
 
 <p style="margin-top:40px;">Back to the <a href="../index.html">RAGS to Riches overview</a>.</p>
 """,

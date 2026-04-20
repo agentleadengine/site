@@ -75,7 +75,7 @@ def q(title, desc, intro, sections):
 
 PAGES = {
     "index": {'title': 'Email Marketing', 'description': 'A 35-page reference on modern email marketing: deliverability, automations, broadcasts, commerce, SaaS, testing.',
-              'body': """<p class="lede">Email is the highest-ROI marketing channel still. Not because it's new or exciting, but because it's owned — your list is your asset, independent of platform algorithms. This section: how to build, send, and optimize email that actually gets opened, read, and converts.</p>
+              'body': """<p class="lede">Email is the highest-ROI marketing channel still. Not because it's new or exciting, but because it's owned - your list is your asset, independent of platform algorithms. This section: how to build, send, and optimize email that actually gets opened, read, and converts.</p>
 
 <div class="cards" style="margin-top:32px;">
 <a href="foundations/why-email.html" class="card"><h3>Foundations</h3><p>Why email, owned vs rented, KPIs.</p></a>
@@ -94,7 +94,7 @@ PAGES = {
         "Email has been declared dead every year since 1998. Every year it produces more revenue per dollar than any other marketing channel. The reasons are structural.",
         [("You own it", "Your email list is an owned asset. Platform algorithms can't throttle it. You decide what to send and when."),
          ("Intent of opening", "Inbox is a personal space. Users who open have some level of intent."),
-         ("Measurable", "Opens, clicks, conversions — all trackable."),
+         ("Measurable", "Opens, clicks, conversions - all trackable."),
          ("High ROI", "Average: $36-42 in revenue per $1 spent, depending on industry and report."),
          ("Compounds", "List grows over time; each subscriber is durable until they unsubscribe.")]),
 
@@ -183,7 +183,7 @@ PAGES = {
 
     "deliverability/monitoring": q("Monitoring placement",
         "Inbox placement isn't automatic. Monitor where your emails actually land.",
-        "Your email tool reports 'delivered' — but delivered could mean inbox or spam folder. Monitor actual placement.",
+        "Your email tool reports 'delivered' - but delivered could mean inbox or spam folder. Monitor actual placement.",
         [("Tools", ["Google Postmaster Tools", "Glock Apps inbox placement tests", "Seed addresses (inbox accounts you check manually)"]),
          ("Signals to watch", ["Inbox placement rate", "Gmail spam folder rate", "Junk folder at Outlook"]),
          ("Actions", ["Placement below 90%? Fix before scaling", "Sudden drop? Investigate recent sends", "Quarterly audit"])]),
@@ -207,7 +207,7 @@ PAGES = {
     "automations/win-back": q("Win-back",
         "Re-engaging inactive subscribers before they're gone for good.",
         "Inactive subscribers (60-180 days no engagement) get a win-back campaign. Either re-engage or suppress.",
-        [("Typical sequence", ["Email 1: 'We miss you' + value reminder", "Email 2: specific offer or incentive", "Email 3: 'Last email' — explicit choice to stay"]),
+        [("Typical sequence", ["Email 1: 'We miss you' + value reminder", "Email 2: specific offer or incentive", "Email 3: 'Last email' - explicit choice to stay"]),
          ("Measurement", "% re-engage within 14 days. Those who don't get suppressed to protect deliverability."),
          ("Don't over-invest", "Most win-back attempts fail. That's fine. Cleaning the list is the other goal.")]),
 
@@ -253,7 +253,7 @@ PAGES = {
         "Sending relevant emails to relevant subscribers improves every metric.",
         "Segmentation splits your list by attributes or behavior so you send different content to different people. Relevance drives engagement.",
         [("Common segments", ["By signup source", "By engagement level", "By past purchase", "By geographic", "By product category interest"]),
-         ("Behavioral segments", "Users who clicked X topic, bought Y product, visited Z page — more relevant than demographic segments."),
+         ("Behavioral segments", "Users who clicked X topic, bought Y product, visited Z page - more relevant than demographic segments."),
          ("Start simple", "3-5 segments is enough. Don't build 20 and get lost in management.")]),
 
     # COMMERCE (3)
@@ -282,7 +282,7 @@ PAGES = {
     "saas/onboarding": q("SaaS onboarding emails",
         "The email sequence for new SaaS users drives activation and retention.",
         "SaaS onboarding emails supplement in-app onboarding. They bring users back and drive feature adoption.",
-        [("Triggers", ["Day 1: welcome + getting started", "Day 3: if not activated — help", "Day 7: feature education", "Day 14: case study / social proof", "Day 21: upgrade nudge (if freemium/trial)"]),
+        [("Triggers", ["Day 1: welcome + getting started", "Day 3: if not activated - help", "Day 7: feature education", "Day 14: case study / social proof", "Day 21: upgrade nudge (if freemium/trial)"]),
          ("Tone", "Helpful, not salesy. New users want help."),
          ("Personalize", "Different emails for users who activated vs didn't.")]),
 
@@ -301,7 +301,7 @@ PAGES = {
 
     "saas/churn-prevention": q("Churn prevention emails",
         "Emails to users showing churn signals, to prevent cancellation.",
-        "Users don't just churn — they show signals first: decreased usage, failed logins, support tickets. Email reaches out before cancel.",
+        "Users don't just churn - they show signals first: decreased usage, failed logins, support tickets. Email reaches out before cancel.",
         [("Triggers", ["Haven't logged in 14 days", "Feature usage dropped 50%+", "Downgrade or cancel attempt"]),
          ("Tactics", ["'We noticed you haven't been back' outreach", "Offer help / demo", "Case study of success", "Specific save offer for downgraders"]),
          ("Measurement", "% of at-risk users retained.")]),

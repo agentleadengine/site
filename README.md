@@ -1,11 +1,11 @@
-# samuelochoa.com — Personal Brand Site
+# samuelochoa.com - Personal Brand Site
 
 Single-page personal site positioning you as an **AI researcher & entrepreneur**. Matches Agent Lead Engine's purple accent colors for visual consistency.
 
 ## What's in here
 
-- `index.html` — the entire site (HTML + CSS inline, no build step)
-- `README.md` — this file
+- `index.html` - the entire site (HTML + CSS inline, no build step)
+- `README.md` - this file
 
 ## To preview locally
 

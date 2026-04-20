@@ -88,11 +88,11 @@ PAGES = {
         [("The CRO loop", ["Research: find the problems", "Hypothesize: what to change", "Test: A/B the change", "Measure: did it move the metric?", "Learn and iterate"]),
          ("What counts as conversion", ["Purchase", "Signup", "Demo booking", "Add-to-cart", "Email capture"]),
          ("The compound effect", "Small lifts compound. 5% lift every quarter → 22% annual, 85% over 3 years."),
-         ("Not just for e-commerce", "SaaS signup conversion, B2B lead form completion, content site subscription — all benefit from CRO.")]),
+         ("Not just for e-commerce", "SaaS signup conversion, B2B lead form completion, content site subscription - all benefit from CRO.")]),
 
     "foundations/when-to-do-cro": q("When to do CRO",
         "CRO requires traffic. Here's the minimum scale where it's worth the effort.",
-        "CRO experiments require statistical significance — meaning enough visitors to detect differences. Below a certain scale, it's too slow to be worth doing.",
+        "CRO experiments require statistical significance - meaning enough visitors to detect differences. Below a certain scale, it's too slow to be worth doing.",
         [("Minimum traffic", "10K unique visitors/month per tested page, roughly. Lower scale = longer tests = less learning."),
          ("When to prioritize", ["High traffic, low conversion (CRO wins big)", "High-spend paid ads (every conversion matters)", "Stable product (testing isn't chasing a moving target)"]),
          ("When to delay", ["Pre-product-market-fit (fix the product first)", "Very low traffic", "Radical site redesign planned anyway"])]),
@@ -110,7 +110,7 @@ PAGES = {
         "CRO starts with data. Before testing, look at funnels: where do users enter, where do they drop, where do they convert?",
         [("What to look at", ["Top entry pages", "Page-by-page bounce rates", "Funnel drop-offs", "Conversion rates by segment (new vs returning, mobile vs desktop, channel)", "Search terms if on-site search"]),
          ("Tools", ["Google Analytics 4", "Mixpanel / Amplitude for product analytics", "Custom dashboards (Looker, etc.)"]),
-         ("Output", "Ranked list of pages and flows with highest leverage — where a conversion improvement moves the needle most.")]),
+         ("Output", "Ranked list of pages and flows with highest leverage - where a conversion improvement moves the needle most.")]),
 
     "research/heatmaps-recordings": q("Heatmaps + session recordings",
         "Heatmaps show where users click. Session recordings show what they do. Both reveal issues data alone misses.",
@@ -141,7 +141,7 @@ PAGES = {
         "Usability testing has users attempt tasks on your site, narrating thoughts. Uncovers confusion, friction, mental-model mismatches.",
         [("Method", "Give user a specific task ('find a product for X and buy it'), have them narrate, observe and note."),
          ("Sample size", "5 users reveals 80% of usability issues (Nielsen research)."),
-         ("Tools", ["UserTesting, Usertesting.com, Maze, Userlytics — moderated or unmoderated"]),
+         ("Tools", ["UserTesting, Usertesting.com, Maze, Userlytics - moderated or unmoderated"]),
          ("ROI", "Few hours of testing often reveals glaring issues you'd never catch yourself.")]),
 
     # FRAMEWORKS (4)
@@ -234,7 +234,7 @@ PAGES = {
         "Checkout is the highest-value CRO surface in e-commerce. Every friction point leaks revenue.",
         [("Best practices", ["Guest checkout option", "Minimal required fields", "Multiple payment methods", "Visible shipping costs early", "Clear pricing breakdown", "Trust signals (SSL, badges)", "Progress indicator"]),
          ("Common issues", ["Surprise shipping cost at end (top cart abandonment reason)", "Mandatory account creation", "Too many form fields", "No express checkout (Apple Pay, Shop Pay)"]),
-         ("Checkout length", "3 steps is common. Long single-page or longer multi-step both work — test.")]),
+         ("Checkout length", "3 steps is common. Long single-page or longer multi-step both work - test.")]),
 
     "conversion/cart-abandonment": q("Cart abandonment",
         "60-80% of carts are abandoned. Recovery is huge revenue opportunity.",
@@ -264,7 +264,7 @@ PAGES = {
         "A/B testing splits traffic between control (A) and variant (B), measures outcomes, picks winner.",
         [("Prerequisites", ["Clear hypothesis", "Single variable changed", "Minimum sample size calculated", "Primary metric defined"]),
          ("Setup", ["50/50 traffic split", "Random assignment", "Both variants tracked identically", "Run until statistical significance"]),
-         ("Post-launch", "Don't peek early — wait for statistical significance before declaring winner.")]),
+         ("Post-launch", "Don't peek early - wait for statistical significance before declaring winner.")]),
 
     "testing/sample-size": q("Sample size",
         "Tests need enough data for statistical significance. Below that, you're looking at noise.",
@@ -328,7 +328,7 @@ PAGES = {
 
     "tools/vwo": q("VWO",
         "A popular full-stack CRO platform.",
-        "VWO offers A/B testing, heatmaps, session recordings, surveys, and more — integrated in one platform.",
+        "VWO offers A/B testing, heatmaps, session recordings, surveys, and more - integrated in one platform.",
         [("Strengths", ["All-in-one (testing + analytics + research)", "Visual editor for non-devs", "Good analytics", "Reasonable pricing"]),
          ("Weaknesses", ["Enterprise tier gets expensive", "UI can be overwhelming"])]),
 

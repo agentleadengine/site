@@ -38,7 +38,7 @@ for html in ROOT.rglob("*.html"):
                 return url.replace('&display=',
                     '&family=Kalam:wght@400;700&family=Caveat:wght@500;700&display=')
             if url.endswith('"') or url.endswith("'"):
-                # URL inside a quoted attribute — insert before closing quote
+                # URL inside a quoted attribute - insert before closing quote
                 q = url[-1]
                 return url[:-1] + '&family=Kalam:wght@400;700&family=Caveat:wght@500;700' + q
             return url + '&family=Kalam:wght@400;700&family=Caveat:wght@500;700'

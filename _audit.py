@@ -90,7 +90,7 @@ for p in pages:
             banned_content[phrase].append(p)
 
     # Em-dashes (user hates them)
-    if '—' in text or '–' in text:
+    if '-' in text or '-' in text:
         emdash_pages.append(p)
 
     # Link checks
@@ -115,7 +115,7 @@ for p in pages:
 
 # ============ REPORT ============
 print("=" * 70)
-print(f"FULL SITE AUDIT — {total_pages} HTML pages")
+print(f"FULL SITE AUDIT - {total_pages} HTML pages")
 print("=" * 70)
 print(f"Links checked:  {total_links_checked:,}")
 print(f"Assets checked: {total_assets_checked:,}")
@@ -131,7 +131,7 @@ print(f"Pages with duplicate init script: {len(duplicate_script)}")
 print(f"Empty/tiny pages:         {len(empty_pages)}")
 
 print("\n--- CONTENT HYGIENE ---")
-print(f"Pages containing em-dash (— or –): {len(emdash_pages)}")
+print(f"Pages containing em-dash (- or -): {len(emdash_pages)}")
 for phrase in BANNED:
     hits = banned_content[phrase]
     print(f"Pages containing banned phrase {phrase!r}: {len(hits)}")
@@ -168,7 +168,7 @@ if broken_assets:
 def show_samples(label, lst, n=6):
     if not lst:
         return
-    print(f"\n{label} — samples:")
+    print(f"\n{label} - samples:")
     for p in lst[:n]:
         print(f"  {p.relative_to(ROOT)}")
 

@@ -25,7 +25,7 @@ ESSAYS = [
 
 <h2>The second-order effect</h2>
 
-<p>Writing also changes what you remember. Not just what you captured — what you carry. I used to think of my best ideas as reliably accessible. I could almost always produce them on demand. But I've now watched enough of my own unwritten ideas decay to know they aren't.</p>
+<p>Writing also changes what you remember. Not just what you captured - what you carry. I used to think of my best ideas as reliably accessible. I could almost always produce them on demand. But I've now watched enough of my own unwritten ideas decay to know they aren't.</p>
 
 <p>An idea you can access today, you probably can't access in six months. Unless you wrote it down.</p>
 
@@ -68,13 +68,13 @@ ESSAYS = [
 
 <h2>The decision spike</h2>
 
-<p>Most people I know who've built successful things have a similar trajectory: a long period of average progress, then a decision point, then a sharp rise. The average progress is execution. The sharp rise isn't — it's the compound effect of picking something with actual leverage.</p>
+<p>Most people I know who've built successful things have a similar trajectory: a long period of average progress, then a decision point, then a sharp rise. The average progress is execution. The sharp rise isn't - it's the compound effect of picking something with actual leverage.</p>
 
 <p>If you look only at the sharp rise, you see extraordinary execution. If you look at the decision point, you see a different story entirely.</p>
 
 <h2>What this changes</h2>
 
-<p>Once I accepted this, I started spending more time on decisions and less on execution. Not because execution doesn't matter — it does — but because my execution was already pretty good, and my decision-making was pretty bad.</p>
+<p>Once I accepted this, I started spending more time on decisions and less on execution. Not because execution doesn't matter - it does - but because my execution was already pretty good, and my decision-making was pretty bad.</p>
 
 <p>For most ambitious people, this is the asymmetry. You've been rewarded your whole life for good execution. You're good at it. It feels productive.</p>
 
@@ -87,7 +87,7 @@ ESSAYS = [
 
 <p>The people most willing to give you unfiltered, hard-to-hear feedback are usually people who don't actually know your situation well. They have strong opinions. They're confident. They're often wrong.</p>
 
-<p>The people most qualified to give you feedback — the ones who deeply understand your context, your constraints, your history — are usually the most reluctant. They're reluctant because they <em>understand</em>. They know how much their words would weigh.</p>
+<p>The people most qualified to give you feedback - the ones who deeply understand your context, your constraints, your history - are usually the most reluctant. They're reluctant because they <em>understand</em>. They know how much their words would weigh.</p>
 
 <h2>The implication</h2>
 
@@ -103,7 +103,7 @@ ESSAYS = [
 
 <p>The best diagnostic: did the feedback surprise you?</p>
 
-<p>Feedback that matches your internal model too closely is probably confirmation. Feedback that contradicts your model in unexpected ways — not in predictable contrarian ways, but in ways you can't quite dismiss — is usually where the signal is.</p>"""),
+<p>Feedback that matches your internal model too closely is probably confirmation. Feedback that contradicts your model in unexpected ways - not in predictable contrarian ways, but in ways you can't quite dismiss - is usually where the signal is.</p>"""),
 
     E("why-most-meetings-fail", "Why most meetings fail",
       "Meetings don't fail because they're meetings. They fail because they're held without the preconditions that make them useful.",
@@ -139,13 +139,13 @@ ESSAYS = [
       "Career", "2026-03-04",
       """<p>In financial compound interest, the magic happens because your returns earn returns. You don't have to do anything once the principal is in place. Time does the work.</p>
 
-<p>Reputation works the same way. Every time you do what you said, deliver clean work, return a favor, you're not just building reputation — you're growing the pool of people who can vouch for you to other people. And those other people become vouchers themselves.</p>
+<p>Reputation works the same way. Every time you do what you said, deliver clean work, return a favor, you're not just building reputation - you're growing the pool of people who can vouch for you to other people. And those other people become vouchers themselves.</p>
 
 <p>The function is exponential.</p>
 
 <h2>The rare-event model</h2>
 
-<p>What doesn't grow exponentially is damage. A reputation takes 5 years to build and 5 minutes to break. This is because vouchers only transmit positive signals by default. Negative signals get transmitted on rare events — when the voucher has to actively warn someone.</p>
+<p>What doesn't grow exponentially is damage. A reputation takes 5 years to build and 5 minutes to break. This is because vouchers only transmit positive signals by default. Negative signals get transmitted on rare events - when the voucher has to actively warn someone.</p>
 
 <p>Those rare events tend to be triggered by specific betrayals: broken commitments, dishonesty, being caught in a lie, public rudeness.</p>
 
@@ -172,7 +172,7 @@ ESSAYS = [
 
 <h2>Why specificity wins</h2>
 
-<p>A specific claim is verifiable. A generic one isn't. Readers don't consciously verify — they don't contact the company and ask about the 70 clients. But their brain registers that the claim <em>could</em> be verified. A generic claim can't be verified; there's no specific thing to check.</p>
+<p>A specific claim is verifiable. A generic one isn't. Readers don't consciously verify - they don't contact the company and ask about the 70 clients. But their brain registers that the claim <em>could</em> be verified. A generic claim can't be verified; there's no specific thing to check.</p>
 
 <p>That verifiability-in-principle translates directly to credibility. Specific = plausibly true. Generic = could be anything.</p>
 
@@ -213,7 +213,7 @@ ESSAYS = [
 <li>You've been saying "I should hire for this" for 90+ days</li>
 </ul>
 
-<p>Here the damage isn't direct cost — it's opportunity cost. Everything downstream of the bottleneck stalls.</p>
+<p>Here the damage isn't direct cost - it's opportunity cost. Everything downstream of the bottleneck stalls.</p>
 
 <h2>The threshold</h2>
 
@@ -232,11 +232,11 @@ ESSAYS = [
 
 <p>Once you know a framework, every problem starts looking like it fits. Maslow's hierarchy, SWOT, BCG matrix, AIDA, Five Whys, Jobs to be Done, whatever. Once the framework is in your head, you unconsciously map situations into it.</p>
 
-<p>Usually they fit — kind of. Close enough that you feel like you've understood. But "close enough" hides the mismatch. The part of the situation that doesn't fit the framework is often where the interesting insight is.</p>
+<p>Usually they fit - kind of. Close enough that you feel like you've understood. But "close enough" hides the mismatch. The part of the situation that doesn't fit the framework is often where the interesting insight is.</p>
 
 <h2>What to do instead</h2>
 
-<p>Use frameworks as prompts, not verdicts. Apply them, then check for what doesn't fit. The residue — the facts the framework couldn't absorb — is usually where the learning is.</p>
+<p>Use frameworks as prompts, not verdicts. Apply them, then check for what doesn't fit. The residue - the facts the framework couldn't absorb - is usually where the learning is.</p>
 
 <p>Frameworks are scaffolding for thought. They should be noticeably less intelligent than the thinker using them. When a framework starts producing insights you didn't work for, that's your signal to be skeptical.</p>"""),
 
@@ -291,9 +291,9 @@ ESSAYS = [
       "AI", "2026-01-20",
       """<p>The "AI will replace knowledge workers" framing is too broad to be useful. A more useful framing: AI is replacing specific sub-tasks, fast.</p>
 
-<p>Drafting, summarizing, researching, basic coding, scheduling, data entry, first-pass analysis, initial outreach — all of these are now 5-10x faster than they were three years ago. If your job is 80% these tasks, you're about to have a very strange decade.</p>
+<p>Drafting, summarizing, researching, basic coding, scheduling, data entry, first-pass analysis, initial outreach - all of these are now 5-10x faster than they were three years ago. If your job is 80% these tasks, you're about to have a very strange decade.</p>
 
-<p>If your job is 20% these tasks and 80% judgment calls, strategic decisions, human relationships, original creative work — AI is about to make you dramatically more productive without threatening you.</p>
+<p>If your job is 20% these tasks and 80% judgment calls, strategic decisions, human relationships, original creative work - AI is about to make you dramatically more productive without threatening you.</p>
 
 <h2>The skew matters</h2>
 
@@ -303,7 +303,7 @@ ESSAYS = [
 
 <h2>What to do</h2>
 
-<p>Audit your week. What percentage of what you did could a capable AI have done? Be honest. If it's over 50%, you have a timing problem — not necessarily a career problem, but a timing problem about what you're spending today on.</p>
+<p>Audit your week. What percentage of what you did could a capable AI have done? Be honest. If it's over 50%, you have a timing problem - not necessarily a career problem, but a timing problem about what you're spending today on.</p>
 
 <p>The people who'll do well aren't the ones who ignore AI. They're the ones who use it to compress their replaceable tasks and spend the freed hours on things that compound.</p>"""),
 
@@ -449,7 +449,7 @@ ESSAYS = [
 
 <h2>The exercise</h2>
 
-<p>For any meaningful decision, force yourself to assign a probability. Write it down. Then — separately — list what would have to be true for the opposite to be the case.</p>
+<p>For any meaningful decision, force yourself to assign a probability. Write it down. Then - separately - list what would have to be true for the opposite to be the case.</p>
 
 <p>If you confidently assigned 95%, and the opposite list has even one plausible item you hadn't deeply examined, your 95% was wrong. You meant 80%.</p>
 
@@ -475,7 +475,7 @@ ESSAYS = [
 <ol>
 <li>What skills have you genuinely invested in for years?</li>
 <li>Which ones do you keep coming back to even when nobody's paying you?</li>
-<li>Where do they intersect — what could only you produce given that combination?</li>
+<li>Where do they intersect - what could only you produce given that combination?</li>
 </ol>
 
 <p>The answer to #3 is your career, if you're willing to see it. Most people aren't, because the combination feels less prestigious than any single top-tier skill would. The combination also happens to be more durable.</p>"""),
@@ -529,7 +529,7 @@ ESSAYS = [
 
 <h2>The math nobody does</h2>
 
-<p>Teams that schedule for 100% utilization ship more work volume, lower quality. Teams that schedule for 70% utilization ship less volume, much higher quality. Over a year, the 70% team's output is worth more — because the work is better and the rework is less.</p>
+<p>Teams that schedule for 100% utilization ship more work volume, lower quality. Teams that schedule for 70% utilization ship less volume, much higher quality. Over a year, the 70% team's output is worth more - because the work is better and the rework is less.</p>
 
 <p>Most teams don't do this math. They see 70% utilization as "unproductive" instead of "investing in quality."</p>
 

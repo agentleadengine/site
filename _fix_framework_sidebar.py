@@ -34,7 +34,7 @@ fixed = 0
 scanned = 0
 for page in FRAMEWORK.rglob("*.html"):
     rel = page.relative_to(ROOT)
-    # framework/<section>/<file>.html — len(parts) == 3
+    # framework/<section>/<file>.html - len(parts) == 3
     if len(rel.parts) != 3:
         continue
     scanned += 1

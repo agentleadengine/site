@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Writing/essays section — standalone posts."""
+"""Writing/essays section - standalone posts."""
 from pathlib import Path
 
 SITE = Path(__file__).parent

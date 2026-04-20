@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Insurance playbook content — Part 1: Landing + Modules 1-5."""
+"""Insurance playbook content - Part 1: Landing + Modules 1-5."""
 from _build_insurance import write_playbook_page
 
 
@@ -32,20 +32,20 @@ index_body = """
 
 <h2>The order to do them in</h2>
 <ol>
-<li><strong><a href="module-01.html">Module 1</a></strong> — Why Claude for insurance marketing (5 min read)</li>
-<li><strong><a href="module-02.html">Module 2</a></strong> — Setting up Claude (10 min — do this once)</li>
-<li><strong><a href="module-03.html">Module 3</a></strong> — The 10 prompt patterns (15 min — you'll reuse these forever)</li>
-<li>Modules 4-13 — Pick the asset type you need this week. Do them in any order.</li>
-<li><strong><a href="module-14.html">Module 14</a></strong> — The weekly marketing system (30 min — your new rhythm)</li>
-<li><strong><a href="module-15.html">Module 15</a></strong> — Compliance checklist (read once, refer always)</li>
+<li><strong><a href="module-01.html">Module 1</a></strong> - Why Claude for insurance marketing (5 min read)</li>
+<li><strong><a href="module-02.html">Module 2</a></strong> - Setting up Claude (10 min - do this once)</li>
+<li><strong><a href="module-03.html">Module 3</a></strong> - The 10 prompt patterns (15 min - you'll reuse these forever)</li>
+<li>Modules 4-13 - Pick the asset type you need this week. Do them in any order.</li>
+<li><strong><a href="module-14.html">Module 14</a></strong> - The weekly marketing system (30 min - your new rhythm)</li>
+<li><strong><a href="module-15.html">Module 15</a></strong> - Compliance checklist (read once, refer always)</li>
 </ol>
 
 <h2>Your progress is saved</h2>
-<p>The sidebar tracks which modules you've completed. Your progress lives in your browser — no account needed. Hit "Mark module complete" at the end of each one. If you come back later, the sidebar remembers where you were.</p>
+<p>The sidebar tracks which modules you've completed. Your progress lives in your browser - no account needed. Hit "Mark module complete" at the end of each one. If you come back later, the sidebar remembers where you were.</p>
 
 <div class="callout success">
 <div class="callout-title">The honest take</div>
-<p>Claude won't replace your judgment, your relationships, or your license. It will do the part of marketing you hate — the blank page, the formatting, the first draft — in a fraction of the time. The time you save goes into conversations with actual humans, which is where policies actually get sold.</p>
+<p>Claude won't replace your judgment, your relationships, or your license. It will do the part of marketing you hate - the blank page, the formatting, the first draft - in a fraction of the time. The time you save goes into conversations with actual humans, which is where policies actually get sold.</p>
 </div>
 
 <h2>What you'll be able to do in an hour</h2>
@@ -59,7 +59,7 @@ index_body = """
 <li>Write your monthly newsletter</li>
 </ul>
 
-<p>If any single one of those takes you more than 20 minutes today, this playbook pays for itself (which is free — so call it pure upside).</p>
+<p>If any single one of those takes you more than 20 minutes today, this playbook pays for itself (which is free - so call it pure upside).</p>
 
 <p style="margin-top:48px;"><a href="module-01.html" style="display:inline-block;background:#4a00e0;color:#fff;padding:14px 28px;border-radius:8px;text-decoration:none;font-weight:600;font-size:15px;">Start Module 1 →</a></p>
 """
@@ -75,7 +75,7 @@ write_playbook_page(
 
 
 # ============================================================
-# MODULE 1 — Why Claude
+# MODULE 1 - Why Claude
 # ============================================================
 
 m1 = """
@@ -86,7 +86,7 @@ m1 = """
 <li><strong>First drafts.</strong> Emails, blog posts, ad copy, scripts, newsletter sections. It goes from blank page to working draft in 60 seconds.</li>
 <li><strong>Rewriting.</strong> Take your rough voice memo or bullet list, turn it into polished copy.</li>
 <li><strong>Variations.</strong> One email, ten subject line tests. One post, five platform-specific versions.</li>
-<li><strong>Compliance-aware language.</strong> Claude knows what FINRA, CMS, and state DOIs tend to flag — if you tell it what line you're writing for.</li>
+<li><strong>Compliance-aware language.</strong> Claude knows what FINRA, CMS, and state DOIs tend to flag - if you tell it what line you're writing for.</li>
 <li><strong>Translating jargon into plain English.</strong> You explain IUL to the model, it writes the version your 62-year-old client understands.</li>
 <li><strong>Rewriting carrier material.</strong> Take a dense carrier one-pager, produce something your client can actually read.</li>
 </ul>
@@ -103,10 +103,10 @@ m1 = """
 <h2>Why it beats a "do it yourself" approach</h2>
 <p>You already know marketing matters. You've probably tried:</p>
 <ul>
-<li>Writing it yourself — takes hours, you push it off, it doesn't get done</li>
-<li>Paying an agency or freelancer — $1,500-5,000/month, they don't understand insurance, the copy is generic</li>
-<li>Using a pre-built content library from your IMO/FMO — every other agent has the same stuff</li>
-<li>Hiring a VA — quality varies wildly, training them takes forever</li>
+<li>Writing it yourself - takes hours, you push it off, it doesn't get done</li>
+<li>Paying an agency or freelancer - $1,500-5,000/month, they don't understand insurance, the copy is generic</li>
+<li>Using a pre-built content library from your IMO/FMO - every other agent has the same stuff</li>
+<li>Hiring a VA - quality varies wildly, training them takes forever</li>
 </ul>
 
 <p>Claude doesn't replace any of those fully, but it compresses "agent writing their own content" from three hours to fifteen minutes. That's the arbitrage.</p>
@@ -141,7 +141,7 @@ m1 = """
 </div>
 <div class="checklist-item">
 <input type="checkbox" id="m1-3" data-key="m1-3">
-<label for="m1-3">Identify the marketing task you hate most. Whatever comes to mind first — that's the one Claude will help with most.</label>
+<label for="m1-3">Identify the marketing task you hate most. Whatever comes to mind first - that's the one Claude will help with most.</label>
 </div>
 </div>
 """
@@ -156,7 +156,7 @@ write_playbook_page(
 
 
 # ============================================================
-# MODULE 2 — Setting up Claude
+# MODULE 2 - Setting up Claude
 # ============================================================
 
 m2 = """
@@ -217,7 +217,7 @@ Ready?</pre>
 <p>That context is a force multiplier. Paste it at the top of any new conversation and every output is better.</p>
 
 <h2>Step 3: Save your voice samples</h2>
-<p>Claude writes generically until it sees how you write. Grab three things you've actually written — an old email to a client, a Facebook post, a voicemail transcript — and keep them in a note. At the start of any "write for me" prompt, paste one or two as voice samples.</p>
+<p>Claude writes generically until it sees how you write. Grab three things you've actually written - an old email to a client, a Facebook post, a voicemail transcript - and keep them in a note. At the start of any "write for me" prompt, paste one or two as voice samples.</p>
 
 <div class="prompt-box">
 <div class="prompt-box-label">Voice sample primer</div>
@@ -290,7 +290,7 @@ write_playbook_page(
 
 
 # ============================================================
-# MODULE 3 — The 10 prompt patterns
+# MODULE 3 - The 10 prompt patterns
 # ============================================================
 
 m3 = """
@@ -339,7 +339,7 @@ I'll pick one and we'll write from there.</pre>
 - Clearer to a [audience description]
 - Shorter by about [%]
 - In my voice (see samples above)
-- Free of jargon — anything a non-insurance-person wouldn't get, translate
+- Free of jargon - anything a non-insurance-person wouldn't get, translate
 
 Preserve the substance. Don't add claims I didn't make.
 
@@ -412,12 +412,12 @@ For each, list the 3 things that would make them stop reading, push back, or fla
 - [What they're thinking about this week]
 - [Their prior experience with agents]
 
-I'm going to interview you about [topic: e.g., "how you think about life insurance for your kids"]. Answer in first person, with specific worries, phrases, and fears. Don't generalize — be specific to a real person in this situation.
+I'm going to interview you about [topic: e.g., "how you think about life insurance for your kids"]. Answer in first person, with specific worries, phrases, and fears. Don't generalize - be specific to a real person in this situation.
 
 Ready? First question: [your question]</pre>
 </div>
 
-<p>What comes back is raw material for every piece of copy you'll write for that persona — their actual language, their actual objections.</p>
+<p>What comes back is raw material for every piece of copy you'll write for that persona - their actual language, their actual objections.</p>
 
 <h2>Pattern 8: The Specific Translator</h2>
 <p>Abstract beats nothing, specific beats abstract. This pattern forces specificity.</p>
@@ -448,7 +448,7 @@ If I can't back up a specific claim, flag it and suggest a safer specific I coul
 Audience: [who you're writing for]
 Format: [Facebook post / blog intro / email subject line]
 
-Give me 10 hooks. Each one is just the first 15 words — the line that earns the next sentence. Different patterns:
+Give me 10 hooks. Each one is just the first 15 words - the line that earns the next sentence. Different patterns:
 - Contrarian statement
 - Specific number
 - Question the reader can't ignore
@@ -503,7 +503,7 @@ Return a list of flags with specific phrases to change. Then give me a revised v
 </div>
 <div class="checklist-item">
 <input type="checkbox" id="m3-2" data-key="m3-2">
-<label for="m3-2">Pattern 7 (persona interview) is the most underrated. Do it with your ideal client persona and save the output — you'll reference it all the time.</label>
+<label for="m3-2">Pattern 7 (persona interview) is the most underrated. Do it with your ideal client persona and save the output - you'll reference it all the time.</label>
 </div>
 <div class="checklist-item">
 <input type="checkbox" id="m3-3" data-key="m3-3">
@@ -522,7 +522,7 @@ write_playbook_page(
 
 
 # ============================================================
-# MODULE 4 — Prospecting emails
+# MODULE 4 - Prospecting emails
 # ============================================================
 
 m4 = """
@@ -530,12 +530,12 @@ m4 = """
 
 <h2>The anatomy of an insurance prospecting email</h2>
 <ol>
-<li><strong>Subject line</strong> — 3-5 words, lowercase, feels personal. Not "Protect Your Family With Our New Policy" — that's an ad.</li>
-<li><strong>First line</strong> — a specific reason you're reaching out to <em>this</em> person. This is the make-or-break line.</li>
-<li><strong>The pitch</strong> — 2-4 sentences naming the problem and hinting at your solution. Not a full pitch.</li>
-<li><strong>Proof</strong> — one specific case or detail that makes you credible.</li>
-<li><strong>The ask</strong> — a specific next step. Not "let me know if you're interested" — "15 minutes next Tuesday at 2pm?"</li>
-<li><strong>Signature</strong> — your name, title, maybe one line on what you do. Not a giant corporate sig with five links.</li>
+<li><strong>Subject line</strong> - 3-5 words, lowercase, feels personal. Not "Protect Your Family With Our New Policy" - that's an ad.</li>
+<li><strong>First line</strong> - a specific reason you're reaching out to <em>this</em> person. This is the make-or-break line.</li>
+<li><strong>The pitch</strong> - 2-4 sentences naming the problem and hinting at your solution. Not a full pitch.</li>
+<li><strong>Proof</strong> - one specific case or detail that makes you credible.</li>
+<li><strong>The ask</strong> - a specific next step. Not "let me know if you're interested" - "15 minutes next Tuesday at 2pm?"</li>
+<li><strong>Signature</strong> - your name, title, maybe one line on what you do. Not a giant corporate sig with five links.</li>
 </ol>
 
 <h2>Choose your insurance line</h2>
@@ -556,7 +556,7 @@ m4 = """
 <div class="prompt-box">
 <div class="prompt-box-label">Life prospecting email</div>
 <button class="copy-btn">Copy</button>
-<pre>Write a cold prospecting email to a homeowner, age 45-60, in [state]. They recently [had a kid / turned 50 / bought a home / got a raise / signed up for a life event newsletter — pick one trigger].
+<pre>Write a cold prospecting email to a homeowner, age 45-60, in [state]. They recently [had a kid / turned 50 / bought a home / got a raise / signed up for a life event newsletter - pick one trigger].
 
 Goal: book a 15-minute discovery call about life insurance options.
 
@@ -598,7 +598,7 @@ The email should:
 - CTA: two specific times
 - Under 100 words
 
-CMS compliance — this is a lead-generation email, not a marketing of a specific plan:
+CMS compliance - this is a lead-generation email, not a marketing of a specific plan:
 - Do NOT name specific plans or carriers
 - Do NOT make claims about specific benefits or premiums
 - Include "We do not offer every plan available in your area. Any information we provide is limited to those plans we do offer in your area. Please contact Medicare.gov or 1-800-MEDICARE to get information on all of your options."
@@ -643,7 +643,7 @@ Goal: quote their home and auto (bundle) and compare to their current carrier.
 Email should:
 - Subject: 4-5 words, about their new home (not "save money")
 - Open by acknowledging the move (without being creepy about the data)
-- Make one specific point about [state]-specific coverage people miss (e.g., "In Texas, most standard policies exclude foundation repair — did yours?")
+- Make one specific point about [state]-specific coverage people miss (e.g., "In Texas, most standard policies exclude foundation repair - did yours?")
 - Offer a 10-minute quote with their existing dec page
 - Under 80 words
 - CTA: send dec page or book 10 min
@@ -665,7 +665,7 @@ Goal: book a 15-minute call 60-90 days before renewal to review their program.
 
 Email should:
 - Subject: vertical-specific, 5-7 words
-- First line: one specific detail about their vertical's common coverage gap (research your vertical first — restaurant = assault &amp; battery, contractor = subcontractor exclusions, etc.)
+- First line: one specific detail about their vertical's common coverage gap (research your vertical first - restaurant = assault &amp; battery, contractor = subcontractor exclusions, etc.)
 - Position me as specialist in this vertical (I've placed X policies in this space)
 - Acknowledge their broker may be fine but a pre-renewal shop costs them nothing
 - CTA: 15 min, specific week
@@ -688,7 +688,7 @@ Do not disparage their current broker. Keep tone professional.</pre>
 - Email 2 (day 3): short nudge. Reference the first email. Add ONE new angle or data point. Under 50 words.
 - Email 3 (day 7): soft reframe. Acknowledge no reply is a reply. Offer a lower-friction ask (a 1-page PDF, not a call).
 - Email 4 (day 12): case study. Short story of a similar client outcome, anonymized. Under 100 words.
-- Email 5 (day 20): breakup. "Closing the loop — I'll stop reaching out. If [situation] changes, feel free to reply or call." Under 40 words.
+- Email 5 (day 20): breakup. "Closing the loop - I'll stop reaching out. If [situation] changes, feel free to reply or call." Under 40 words.
 
 Keep each email in the same tone as email 1. Vary opening lines. Don't repeat the same hook.</pre>
 </div>
@@ -699,7 +699,7 @@ Keep each email in the same tone as email 1. Vary opening lines. Don't repeat th
 <div class="prompt-box">
 <div class="prompt-box-label">Custom first line generator</div>
 <button class="copy-btn">Copy</button>
-<pre>I'll paste a list of prospects below with a short note about each (their situation, recent trigger, or something specific to them). For each, write ONE first line of a cold email — 12-20 words — that references something specific to them and doesn't sound templated.
+<pre>I'll paste a list of prospects below with a short note about each (their situation, recent trigger, or something specific to them). For each, write ONE first line of a cold email - 12-20 words - that references something specific to them and doesn't sound templated.
 
 Don't use:
 - "Hope you're well"
@@ -743,7 +743,7 @@ write_playbook_page(
 
 
 # ============================================================
-# MODULE 5 — Social media
+# MODULE 5 - Social media
 # ============================================================
 
 m5 = """
@@ -763,10 +763,10 @@ m5 = """
 <h2>The content mix</h2>
 <p>Over any 10 posts, aim for roughly:</p>
 <ul>
-<li><strong>6 educational</strong> — explainers, common mistakes, myth-busting, glossary</li>
-<li><strong>2 personal</strong> — your story, your why, your team, your community</li>
-<li><strong>1 social proof</strong> — testimonial, case study (anonymized), milestone</li>
-<li><strong>1 direct ask</strong> — "DM me if..." or "Reply with..." — the actual pitch</li>
+<li><strong>6 educational</strong> - explainers, common mistakes, myth-busting, glossary</li>
+<li><strong>2 personal</strong> - your story, your why, your team, your community</li>
+<li><strong>1 social proof</strong> - testimonial, case study (anonymized), milestone</li>
+<li><strong>1 direct ask</strong> - "DM me if..." or "Reply with..." - the actual pitch</li>
 </ul>
 
 <p>All sell. Not all "ask for the sale." Educational posts build trust; direct-ask posts harvest it. Six-to-one ratio.</p>
@@ -810,12 +810,12 @@ Number them 1-7 with day-of-week suggestions.</pre>
 <pre>Write a "common mistake" Facebook post about [topic in my line].
 
 Structure:
-- Line 1: hook — state the common mistake as a question or claim
+- Line 1: hook - state the common mistake as a question or claim
 - Lines 2-4: explain why most people believe it
 - Lines 5-8: the actual truth and why it matters
 - Last line: what to do instead, or a question
 
-130 words max. No emojis. End with "Reply or DM with questions — happy to explain for your specific situation" or similar.</pre>
+130 words max. No emojis. End with "Reply or DM with questions - happy to explain for your specific situation" or similar.</pre>
 </div>
 </div>
 </div>
@@ -827,7 +827,7 @@ Structure:
 <div class="prompt-box">
 <div class="prompt-box-label">Specific scenario post</div>
 <button class="copy-btn">Copy</button>
-<pre>Write a LinkedIn post about a specific client scenario in [line of business]. Anonymize the client — no real names or identifying details.
+<pre>Write a LinkedIn post about a specific client scenario in [line of business]. Anonymize the client - no real names or identifying details.
 
 Structure:
 - Line 1: "Had a call this week with [generic description]..."
@@ -894,7 +894,7 @@ Must NOT use:
 <button class="copy-btn">Copy</button>
 <pre>Write a direct-ask social post.
 
-The ask: [specific offer — e.g., "a 15-minute Medicare review before open enrollment closes," "a home/auto bundle quote," "free 'am I underinsured?' calculator"]
+The ask: [specific offer - e.g., "a 15-minute Medicare review before open enrollment closes," "a home/auto bundle quote," "free 'am I underinsured?' calculator"]
 
 Structure:
 - Line 1: specific situation the reader might be in
@@ -918,7 +918,7 @@ Structure:
 - Hook line (1 sentence that earns the scroll)
 - Context (2-3 sentences setting up the problem or observation)
 - The specific insight or lesson (body, 3-5 short paragraphs)
-- Concrete example (one named scenario — anonymized)
+- Concrete example (one named scenario - anonymized)
 - What this means for the reader
 - A question or CTA
 
@@ -937,7 +937,7 @@ Sound like a practitioner, not a content marketer. Not "thought leadership" lang
 <div class="prompt-box-label">One-to-many repurposer</div>
 <button class="copy-btn">Copy</button>
 <pre>I have one core insight to share this week:
-[paste the insight — 2-3 sentences]
+[paste the insight - 2-3 sentences]
 
 Turn it into:
 1. A Facebook post (120 words, warm tone)
@@ -948,7 +948,7 @@ Turn it into:
 6. A tweet (240 chars max)
 7. A text message to a specific prospect (60 words)
 
-Same insight, different delivery for each channel. Don't just rephrase — adapt the structure to each platform's conventions.</pre>
+Same insight, different delivery for each channel. Don't just rephrase - adapt the structure to each platform's conventions.</pre>
 </div>
 
 <h2>This week's task</h2>

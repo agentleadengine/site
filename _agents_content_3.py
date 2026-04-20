@@ -36,12 +36,12 @@ write_page("prod/observability", "Observability + tracing",
 
 <h2>Tools</h2>
 <ul>
-<li><strong>Langfuse</strong> — open-source LLM observability with tracing</li>
-<li><strong>LangSmith</strong> — LangChain's hosted tracing</li>
-<li><strong>Phoenix (Arize)</strong> — open-source, strong eval integration</li>
-<li><strong>Weights &amp; Biases Weave</strong> — W&amp;B's tracing</li>
-<li><strong>Helicone</strong> — LLM observability, focused on cost and latency</li>
-<li><strong>OpenTelemetry</strong> — general distributed tracing, integrates with above</li>
+<li><strong>Langfuse</strong> - open-source LLM observability with tracing</li>
+<li><strong>LangSmith</strong> - LangChain's hosted tracing</li>
+<li><strong>Phoenix (Arize)</strong> - open-source, strong eval integration</li>
+<li><strong>Weights &amp; Biases Weave</strong> - W&amp;B's tracing</li>
+<li><strong>Helicone</strong> - LLM observability, focused on cost and latency</li>
+<li><strong>OpenTelemetry</strong> - general distributed tracing, integrates with above</li>
 </ul>
 
 <h2>Sampling</h2>
@@ -191,15 +191,15 @@ write_page("prod/safety", "Safety + guardrails",
     "Agents with tool access can do real damage. Here's the safety stack for production agents.",
     reading_time=3,
     body_html="""
-<p class="lede">Agents that can send emails, write to databases, call external APIs, or move money can cause real harm. Safety isn't about LLM content filters — it's about what tools you expose and what happens when things go wrong.</p>
+<p class="lede">Agents that can send emails, write to databases, call external APIs, or move money can cause real harm. Safety isn't about LLM content filters - it's about what tools you expose and what happens when things go wrong.</p>
 
 <h2>The threat model</h2>
 <ul>
-<li><strong>Prompt injection</strong> — malicious text in retrieved content tries to hijack the agent</li>
-<li><strong>Unintended destructive actions</strong> — agent deletes, sends, or modifies when it shouldn't</li>
-<li><strong>Data exfiltration</strong> — agent leaks sensitive data via tool calls</li>
-<li><strong>Runaway behavior</strong> — agent loops, runs up cost or resource use</li>
-<li><strong>Escalation</strong> — agent gets tools it shouldn't have</li>
+<li><strong>Prompt injection</strong> - malicious text in retrieved content tries to hijack the agent</li>
+<li><strong>Unintended destructive actions</strong> - agent deletes, sends, or modifies when it shouldn't</li>
+<li><strong>Data exfiltration</strong> - agent leaks sensitive data via tool calls</li>
+<li><strong>Runaway behavior</strong> - agent loops, runs up cost or resource use</li>
+<li><strong>Escalation</strong> - agent gets tools it shouldn't have</li>
 </ul>
 
 <h2>Principle: least privilege</h2>
@@ -236,7 +236,7 @@ write_page("prod/safety", "Safety + guardrails",
 </ul>
 
 <h2>The blast radius</h2>
-<p>For each agent, ask: what's the worst thing this agent could do? If it's bad enough, either restrict tools or require human approval for those actions. For a customer-support agent, the worst outcome might be sending a wrong answer — annoying but bounded. For a billing agent, it's charging the wrong card — require confirmation.</p>
+<p>For each agent, ask: what's the worst thing this agent could do? If it's bad enough, either restrict tools or require human approval for those actions. For a customer-support agent, the worst outcome might be sending a wrong answer - annoying but bounded. For a billing agent, it's charging the wrong card - require confirmation.</p>
 
 <h2>Audit logs</h2>
 <p>Every destructive action logged, with: who (user), what agent, what action, what parameters, approved by (human or agent), timestamp. Required for compliance and for investigating incidents.</p>
@@ -282,7 +282,7 @@ write_page("prod/human-in-loop", "Human-in-the-loop",
 </ul>
 
 <h2>The confidence threshold</h2>
-<p>Agent can estimate its own confidence. Route high-confidence actions through automatically; queue low-confidence for review. Over time, track which actions were approved vs changed — calibrate the threshold.</p>
+<p>Agent can estimate its own confidence. Route high-confidence actions through automatically; queue low-confidence for review. Over time, track which actions were approved vs changed - calibrate the threshold.</p>
 
 <h2>Agent proposing vs executing</h2>
 <p>Strong pattern: agent always proposes, human clicks to execute. Keeps human as the actor of record. Lowers liability and improves trust.</p>
@@ -312,10 +312,10 @@ write_page("patterns/research-agent", "Research agent",
 
 <h2>Core tools</h2>
 <ul>
-<li><code>web_search(query)</code> — public web search</li>
-<li><code>read_url(url)</code> — fetch and parse a page</li>
-<li><code>search_internal(query)</code> — internal knowledge base</li>
-<li><code>summarize(text, focus)</code> — distill relevant info</li>
+<li><code>web_search(query)</code> - public web search</li>
+<li><code>read_url(url)</code> - fetch and parse a page</li>
+<li><code>search_internal(query)</code> - internal knowledge base</li>
+<li><code>summarize(text, focus)</code> - distill relevant info</li>
 </ul>
 
 <h2>Design choices</h2>
@@ -345,7 +345,7 @@ write_page("patterns/research-agent", "Research agent",
 
 
 write_page("patterns/coding-agent", "Coding agent",
-    "Coding agents write, modify, and test code. Claude Code, Cursor, Devin — the shape of modern software development.",
+    "Coding agents write, modify, and test code. Claude Code, Cursor, Devin - the shape of modern software development.",
     reading_time=3,
     body_html="""
 <p class="lede">Coding agents write code, run it, read errors, fix, iterate. The test suite is the verifier; the error trace is the feedback. Claude Code, Cursor, and tools like Devin are built on this pattern.</p>
@@ -366,13 +366,13 @@ write_page("patterns/coding-agent", "Coding agent",
 <ul>
 <li><code>read_file(path)</code></li>
 <li><code>write_file(path, contents)</code></li>
-<li><code>run_command(cmd)</code> — for tests, build, linters</li>
+<li><code>run_command(cmd)</code> - for tests, build, linters</li>
 <li><code>search_code(query)</code></li>
 <li><code>list_files(dir)</code></li>
 </ul>
 
 <h2>Why this works</h2>
-<p>Code has a natural verifier: compilers, test suites, linters. When the agent writes bad code, the feedback is unambiguous. The LLM uses the error message to plan the fix. Few domains have this tight feedback loop — it's why coding agents are ahead of other verticals.</p>
+<p>Code has a natural verifier: compilers, test suites, linters. When the agent writes bad code, the feedback is unambiguous. The LLM uses the error message to plan the fix. Few domains have this tight feedback loop - it's why coding agents are ahead of other verticals.</p>
 
 <h2>Context management</h2>
 <p>Codebases are too big to fit in context. Agent must:</p>
@@ -396,11 +396,11 @@ write_page("patterns/coding-agent", "Coding agent",
 
 <h2>Tools in the ecosystem</h2>
 <ul>
-<li>Claude Code — CLI-based coding agent</li>
-<li>Cursor / Windsurf — IDE-integrated</li>
-<li>Cognition Devin — more autonomous, session-based</li>
-<li>GitHub Copilot Workspace — task-level agent</li>
-<li>Aider, Continue, Cline — open-source variants</li>
+<li>Claude Code - CLI-based coding agent</li>
+<li>Cursor / Windsurf - IDE-integrated</li>
+<li>Cognition Devin - more autonomous, session-based</li>
+<li>GitHub Copilot Workspace - task-level agent</li>
+<li>Aider, Continue, Cline - open-source variants</li>
 </ul>
 """,
     prev=("Research agent", "research-agent.html"),
@@ -425,10 +425,10 @@ write_page("patterns/customer-support", "Customer support agent",
 
 <h2>Core tools</h2>
 <ul>
-<li><code>search_kb(query)</code> — the main retrieval tool</li>
-<li><code>get_user_context(user_id)</code> — user history, plan, tickets</li>
-<li><code>create_ticket(summary, priority)</code> — escalation</li>
-<li><code>send_reply(user_id, text)</code> — actually respond</li>
+<li><code>search_kb(query)</code> - the main retrieval tool</li>
+<li><code>get_user_context(user_id)</code> - user history, plan, tickets</li>
+<li><code>create_ticket(summary, priority)</code> - escalation</li>
+<li><code>send_reply(user_id, text)</code> - actually respond</li>
 </ul>
 
 <h2>Key design choices</h2>
@@ -459,7 +459,7 @@ write_page("patterns/customer-support", "Customer support agent",
 </ul>
 
 <h2>The trap: too eager to answer</h2>
-<p>Agent should say "I don't know — let me get a human" more readily than "here's my best guess." In support, confident wrong answers are worse than acknowledged gaps.</p>
+<p>Agent should say "I don't know - let me get a human" more readily than "here's my best guess." In support, confident wrong answers are worse than acknowledged gaps.</p>
 """,
     prev=("Coding agent", "coding-agent.html"),
     nxt=("Data analyst agent", "data-analyst.html"))
@@ -488,7 +488,7 @@ write_page("patterns/data-analyst", "Data analyst agent",
 <li><code>describe_table(table)</code></li>
 <li><code>run_query(sql)</code></li>
 <li><code>create_chart(data, type)</code></li>
-<li><code>explain_plan(sql)</code> — for expensive queries</li>
+<li><code>explain_plan(sql)</code> - for expensive queries</li>
 </ul>
 
 <h2>Why schema context matters</h2>
@@ -545,10 +545,10 @@ write_page("patterns/browser-agent", "Browser agent",
 
 <h2>Tooling</h2>
 <ul>
-<li><strong>Playwright / Puppeteer</strong> — headless browser automation</li>
-<li><strong>Claude Computer Use</strong> — Anthropic's vision-based browser control</li>
-<li><strong>OpenAI Operator</strong> — operator model with browser</li>
-<li><strong>browser-use, Skyvern, Browserbase</strong> — higher-level frameworks</li>
+<li><strong>Playwright / Puppeteer</strong> - headless browser automation</li>
+<li><strong>Claude Computer Use</strong> - Anthropic's vision-based browser control</li>
+<li><strong>OpenAI Operator</strong> - operator model with browser</li>
+<li><strong>browser-use, Skyvern, Browserbase</strong> - higher-level frameworks</li>
 </ul>
 
 <h2>Vision vs DOM</h2>
@@ -617,7 +617,7 @@ write_page("patterns/email-agent", "Email agent",
 <li><code>read_email(id)</code></li>
 <li><code>search_past_emails(query)</code></li>
 <li><code>draft_reply(id, text)</code></li>
-<li><code>send_email(draft_id)</code> — usually requires human confirmation</li>
+<li><code>send_email(draft_id)</code> - usually requires human confirmation</li>
 <li><code>schedule_send(draft_id, time)</code></li>
 <li><code>create_calendar_event(...)</code></li>
 </ul>
@@ -676,8 +676,8 @@ write_page("frameworks/claude-agent-sdk", "Claude Agent SDK",
 
 <h2>When it's not the right fit</h2>
 <ul>
-<li>Multi-model (GPT, Gemini in the same system) — use LangGraph or CrewAI</li>
-<li>Highly custom orchestration logic — build your own on raw API</li>
+<li>Multi-model (GPT, Gemini in the same system) - use LangGraph or CrewAI</li>
+<li>Highly custom orchestration logic - build your own on raw API</li>
 <li>Research settings where you want control over every step</li>
 </ul>
 
@@ -743,10 +743,10 @@ write_page("frameworks/crewai", "CrewAI",
 
 <h2>Core concepts</h2>
 <ul>
-<li><strong>Agent</strong> — a role with goals, backstory, and tools</li>
-<li><strong>Task</strong> — a unit of work assigned to agents</li>
-<li><strong>Crew</strong> — a group of agents working together</li>
-<li><strong>Process</strong> — how tasks are executed (sequential, hierarchical)</li>
+<li><strong>Agent</strong> - a role with goals, backstory, and tools</li>
+<li><strong>Task</strong> - a unit of work assigned to agents</li>
+<li><strong>Crew</strong> - a group of agents working together</li>
+<li><strong>Process</strong> - how tasks are executed (sequential, hierarchical)</li>
 </ul>
 
 <h2>When CrewAI shines</h2>
@@ -785,9 +785,9 @@ write_page("frameworks/autogen", "AutoGen",
 
 <h2>Core concepts</h2>
 <ul>
-<li><strong>ConversableAgent</strong> — agents that can send and receive messages</li>
-<li><strong>UserProxyAgent</strong> — agent that can execute code and call tools on behalf of the conversation</li>
-<li><strong>GroupChat</strong> — multiple agents in a shared chat with a designated manager</li>
+<li><strong>ConversableAgent</strong> - agents that can send and receive messages</li>
+<li><strong>UserProxyAgent</strong> - agent that can execute code and call tools on behalf of the conversation</li>
+<li><strong>GroupChat</strong> - multiple agents in a shared chat with a designated manager</li>
 </ul>
 
 <h2>Strengths</h2>

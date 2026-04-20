@@ -26,7 +26,7 @@ write_rag_page(
 <p>This geometry is how retrieval works: embed the user's query, find the nearest neighbors in your index, return those chunks.</p>
 
 <h2>How embedding models learn this</h2>
-<p>Embedding models are trained on massive pairs of related text — from semi-supervised scraping, from annotated datasets, or from contrastive learning objectives. The model is rewarded when its vectors for "similar" pairs are close and "dissimilar" pairs are far apart. Over billions of examples, it learns a space where semantic similarity maps to geometric proximity.</p>
+<p>Embedding models are trained on massive pairs of related text - from semi-supervised scraping, from annotated datasets, or from contrastive learning objectives. The model is rewarded when its vectors for "similar" pairs are close and "dissimilar" pairs are far apart. Over billions of examples, it learns a space where semantic similarity maps to geometric proximity.</p>
 
 <h2>What embeddings are good at</h2>
 <ul>
@@ -53,7 +53,7 @@ write_rag_page(
   <li><strong>Sparse embeddings</strong> (BM25, SPLADE): high-dimensional vectors with mostly zero values, where each dimension corresponds to a term or learned token. Good at exact matches and keyword-heavy queries.</li>
 </ul>
 
-<p>Modern RAG often combines both — see <a href="../retrieval/hybrid.html">hybrid retrieval</a>.</p>
+<p>Modern RAG often combines both - see <a href="../retrieval/hybrid.html">hybrid retrieval</a>.</p>
 
 <h2>The two things that matter for RAG</h2>
 <ol>
@@ -66,10 +66,10 @@ write_rag_page(
 <h2>What the numbers mean</h2>
 
 <h3>Dimensions</h3>
-<p>How many numbers per vector. More dimensions = more storage, more compute. The model designers pick this — you don't tune it (except via Matryoshka, see <a href="dimensions-cost.html">dimensions and cost</a>). Ranges from 384 (small models) to 3072+ (large).</p>
+<p>How many numbers per vector. More dimensions = more storage, more compute. The model designers pick this - you don't tune it (except via Matryoshka, see <a href="dimensions-cost.html">dimensions and cost</a>). Ranges from 384 (small models) to 3072+ (large).</p>
 
 <h3>Context length</h3>
-<p>Max tokens the model will embed at once. 512 is the old standard, 8192 is modern, and some models now go to 32K+. Longer context = can embed bigger chunks, but diminishing returns — an embedding is still one vector summarizing all tokens.</p>
+<p>Max tokens the model will embed at once. 512 is the old standard, 8192 is modern, and some models now go to 32K+. Longer context = can embed bigger chunks, but diminishing returns - an embedding is still one vector summarizing all tokens.</p>
 
 <h3>Similarity metric</h3>
 <ul>
@@ -328,7 +328,7 @@ write_rag_page(
 <p>Vector databases charge per stored dimension. Search latency also scales roughly with dimensions. The difference between picking a 768-dim and 3072-dim model is material.</p>
 
 <h2>The quality-vs-dim tradeoff</h2>
-<p>Higher dimensions generally capture more information, which means better retrieval quality. But the relationship is sub-linear — going from 768 to 1536 often gives only a few percent quality improvement. Going from 1536 to 3072 gives even less.</p>
+<p>Higher dimensions generally capture more information, which means better retrieval quality. But the relationship is sub-linear - going from 768 to 1536 often gives only a few percent quality improvement. Going from 1536 to 3072 gives even less.</p>
 
 <p>For cost-conscious deployments, the sweet spot is often 1024-1536 dimensions. Higher is usually not worth the cost.</p>
 
@@ -356,7 +356,7 @@ write_rag_page(
 <ul>
   <li><strong>float32 → float16</strong>: 50% storage savings, minimal quality loss</li>
   <li><strong>float32 → int8</strong>: 75% savings, 1-5% quality loss depending on model</li>
-  <li><strong>Binary quantization</strong>: 32x savings, 5-15% quality loss — works well with reranking to recover quality</li>
+  <li><strong>Binary quantization</strong>: 32x savings, 5-15% quality loss - works well with reranking to recover quality</li>
 </ul>
 
 <p>Some vector databases support native quantization (Qdrant's scalar and binary quantization, for example). At scale, the storage and speed wins are dramatic.</p>
@@ -378,7 +378,7 @@ write_rag_page(
 <p>Above 100M, dimensions and quantization strategy dominate your infrastructure bill.</p>
 
 <h2>The operational cost</h2>
-<p>Re-embedding 100M vectors is not free. If you pick a 3072-dim model and later want to change, budget days of compute time. Build your pipeline so you can swap models without full reindexes where possible — store raw chunks separately from their vectors, so you can re-embed without re-parsing.</p>
+<p>Re-embedding 100M vectors is not free. If you pick a 3072-dim model and later want to change, budget days of compute time. Build your pipeline so you can swap models without full reindexes where possible - store raw chunks separately from their vectors, so you can re-embed without re-parsing.</p>
 
 <p style="margin-top:40px;">Next: <a href="fine-tuning.html">Fine-tuning embeddings</a>.</p>
 """,
@@ -406,7 +406,7 @@ write_rag_page(
 
 <h2>When it isn't</h2>
 <ul>
-  <li>Small corpora (&lt; 10K documents) — not enough data to fine-tune effectively</li>
+  <li>Small corpora (&lt; 10K documents) - not enough data to fine-tune effectively</li>
   <li>General content where commercial models already perform well</li>
   <li>Early-stage projects before you have meaningful eval data</li>
   <li>Teams without ML ops capacity to maintain the fine-tuned model</li>
@@ -511,7 +511,7 @@ write_rag_page(
 </ol>
 
 <h2>Why you can't just use Postgres</h2>
-<p>You can, actually — pgvector is a perfectly good choice for many workloads. But dedicated vector databases offer:</p>
+<p>You can, actually - pgvector is a perfectly good choice for many workloads. But dedicated vector databases offer:</p>
 <ul>
   <li>Purpose-built ANN indexes (HNSW, IVF, PQ) optimized for high dimensions</li>
   <li>Specialized query planners for hybrid vector+metadata queries</li>
@@ -554,7 +554,7 @@ write_rag_page(
 <p>Open-source embedded vector DB built on Apache Arrow. Good for local-first and notebook workflows.</p>
 
 <h3>FAISS (not a database)</h3>
-<p>Facebook's library for vector similarity search. Not a database — no persistence, no filtering, no API. But the underlying algorithms of many vector DBs. Use directly for research, not production.</p>
+<p>Facebook's library for vector similarity search. Not a database - no persistence, no filtering, no API. But the underlying algorithms of many vector DBs. Use directly for research, not production.</p>
 
 <h2>Comparison dimensions</h2>
 
@@ -621,7 +621,7 @@ write_rag_page(
 <ul>
   <li>Memory-heavy: the graph structure significantly exceeds raw vector storage</li>
   <li>Index construction is slow and CPU-intensive</li>
-  <li>Deletion is awkward — usually lazy (mark as deleted, filter out at query)</li>
+  <li>Deletion is awkward - usually lazy (mark as deleted, filter out at query)</li>
 </ul>
 
 <h3>Key tuning parameters</h3>
@@ -672,7 +672,7 @@ write_rag_page(
 
 <h3>Weaknesses</h3>
 <ul>
-  <li>Lossy — introduces quantization error</li>
+  <li>Lossy - introduces quantization error</li>
   <li>Codebook training is one-time cost, doesn't adapt to new data well</li>
   <li>Recall gap from exact search</li>
 </ul>
@@ -732,8 +732,8 @@ write_rag_page(
 <h2>Why hybrid matters</h2>
 <p>Consider a user query: "error E-47 in the invoice processor"</p>
 <ul>
-  <li>Dense embedding sees "error ... invoice processor" — retrieves semantically similar documents about invoice errors in general</li>
-  <li>BM25 sees "E-47" as a specific term — retrieves documents actually mentioning E-47</li>
+  <li>Dense embedding sees "error ... invoice processor" - retrieves semantically similar documents about invoice errors in general</li>
+  <li>BM25 sees "E-47" as a specific term - retrieves documents actually mentioning E-47</li>
   <li>Hybrid gets both: documents about invoice errors, with a boost for those explicitly mentioning E-47</li>
 </ul>
 <p>The hybrid result is almost always more useful.</p>
@@ -804,7 +804,7 @@ final_score = α * dense_score + (1 - α) * sparse_score
 <p>Cost: roughly 2x retrieval latency (you run two searches), negligible extra storage (sparse indexes are small).</p>
 
 <h2>My default recommendation</h2>
-<p>Any production RAG system should use hybrid retrieval. Dense-only is a prototype-stage choice. The engineering cost is modest, the quality gain is real, and the failure modes are asymmetric — hybrid handles the edge cases (rare terms, IDs, codes) that pure dense can't.</p>
+<p>Any production RAG system should use hybrid retrieval. Dense-only is a prototype-stage choice. The engineering cost is modest, the quality gain is real, and the failure modes are asymmetric - hybrid handles the edge cases (rare terms, IDs, codes) that pure dense can't.</p>
 
 <p style="margin-top:40px;">Next: <a href="metadata-filtering.html">Metadata filtering</a>.</p>
 """,
@@ -849,7 +849,7 @@ top_k: 10
 <p>Do vector search first over all documents, then filter. Fast search, but may return fewer-than-k if filter is selective.</p>
 <ul>
   <li>Fast when filter is non-selective</li>
-  <li>Broken when filter is very selective — your top-10 vector results might all be filtered out, leaving empty results</li>
+  <li>Broken when filter is very selective - your top-10 vector results might all be filtered out, leaving empty results</li>
 </ul>
 
 <h3>Dynamic / hybrid</h3>
@@ -915,7 +915,7 @@ permissions: {$in: [user.roles]}
 <p>Filters to published_after: (today - 2 years). Older documents are still searchable if you remove the filter for broad queries.</p>
 
 <h3>Document type scoping</h3>
-<p>User asks "what's our refund policy" — filter to document_type = "policy".</p>
+<p>User asks "what's our refund policy" - filter to document_type = "policy".</p>
 
 <h3>Tenant + source</h3>
 <pre style="background:#f5f5f7; padding:12px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
@@ -970,7 +970,7 @@ write_rag_page(
 <p>For deterministic queries against an unchanged index, cache top-k results. Especially valuable for popular questions in customer-facing RAG.</p>
 
 <h3>7. Skip retrieval when possible</h3>
-<p>Use a lightweight classifier or the LLM itself to decide whether the query needs RAG. Trivial queries ("hi", "thanks", "can you help") don't require retrieval — serve them directly.</p>
+<p>Use a lightweight classifier or the LLM itself to decide whether the query needs RAG. Trivial queries ("hi", "thanks", "can you help") don't require retrieval - serve them directly.</p>
 
 <h3>8. Reduce top-k when possible</h3>
 <p>Passing top-5 instead of top-20 cuts reranker and generation costs. Only increase top-k when reranking proves top-5 isn't enough.</p>
@@ -1034,7 +1034,7 @@ write_rag_page(
 <h2>The quality-cost frontier</h2>
 <p>Every cost optimization has a quality cost. Maintain an eval set. Measure quality before and after each optimization. Ship only changes where the quality loss is acceptable.</p>
 
-<p>Without an eval set, cost optimization is gambling — you're reducing bills but also reducing quality invisibly.</p>
+<p>Without an eval set, cost optimization is gambling - you're reducing bills but also reducing quality invisibly.</p>
 
 <p style="margin-top:40px;">Next: <a href="choosing-a-db.html">Choosing a vector DB</a>.</p>
 """,
@@ -1110,9 +1110,9 @@ write_rag_page(
 
 <h3>Often oversold</h3>
 <ul>
-  <li>"Billions of vectors" — most teams never hit this scale</li>
-  <li>"Sub-millisecond latency" — end-to-end RAG latency is dominated by generation, not retrieval</li>
-  <li>"Serverless" — can be cost-effective, but some workloads don't benefit</li>
+  <li>"Billions of vectors" - most teams never hit this scale</li>
+  <li>"Sub-millisecond latency" - end-to-end RAG latency is dominated by generation, not retrieval</li>
+  <li>"Serverless" - can be cost-effective, but some workloads don't benefit</li>
 </ul>
 
 <h2>Cost comparison (2026 approximate)</h2>
@@ -1246,7 +1246,7 @@ write_rag_page(
 <p>Some systems retrieve with multiple query variations (the original query plus paraphrases, query decompositions, HyDE outputs) and union the results. See <a href="multi-query.html">multi-query + fusion</a>.</p>
 
 <h2>The common first mistake</h2>
-<p>Teams ship RAG v1 with top-5 vector search, no reranking, and wonder why quality is mediocre. The fix — top-50 retrieval with a reranker — is usually a 10-20% quality improvement for minimal additional latency.</p>
+<p>Teams ship RAG v1 with top-5 vector search, no reranking, and wonder why quality is mediocre. The fix - top-50 retrieval with a reranker - is usually a 10-20% quality improvement for minimal additional latency.</p>
 
 <p>Vector search is the foundation. Everything after it is where the quality wins come from.</p>
 
@@ -1322,7 +1322,7 @@ write_rag_page(
 <h2>BM25F and field-weighted search</h2>
 <p>BM25F extends BM25 to weight different fields differently. A match in the title might be worth 3x a match in the body. For documents with structure (title, abstract, body), this is valuable.</p>
 
-<p>Elasticsearch supports this via multi_match queries. Many vector DBs don't — another reason to consider ES/OS for structured text search.</p>
+<p>Elasticsearch supports this via multi_match queries. Many vector DBs don't - another reason to consider ES/OS for structured text search.</p>
 
 <h2>Learned sparse: SPLADE</h2>
 <p>A newer approach: use a transformer to learn sparse vector representations. Each token contributes to a high-dimensional sparse vector, with the model learning which tokens matter and expanding queries with learned synonyms.</p>
@@ -1478,7 +1478,7 @@ final = α × norm(dense_score) + (1-α) × norm(sparse_score)
 <h2>Metrics</h2>
 <p>Measure each retriever separately and the hybrid result. Hit rate@10 and MRR for each. Over time you'll build intuition for which query types need which retriever.</p>
 
-<p>Some queries do best on dense only. Some do best on sparse only. Hybrid averages them, which is usually — but not always — a win. Diagnostic data helps you decide when to override hybrid with a routing strategy.</p>
+<p>Some queries do best on dense only. Some do best on sparse only. Hybrid averages them, which is usually - but not always - a win. Diagnostic data helps you decide when to override hybrid with a routing strategy.</p>
 
 <p style="margin-top:40px;">Next: <a href="reranking.html">Reranking</a>.</p>
 """,
@@ -1496,7 +1496,7 @@ write_rag_page(
 <p class="lede">Reranking takes a retrieved candidate set and reorders it with a more accurate (but slower) model. It's the single most impactful addition you can make to a naive RAG system. Skipping it is the most common reason production RAG systems underperform their potential.</p>
 
 <h2>Why reranking exists</h2>
-<p>Initial retrieval (dense or hybrid) uses independent embeddings — one for the query, one for each document. The similarity score is a good approximation but not a deep match. A cross-encoder reranker considers query and document together, producing a much more accurate relevance score — at much higher cost per pair.</p>
+<p>Initial retrieval (dense or hybrid) uses independent embeddings - one for the query, one for each document. The similarity score is a good approximation but not a deep match. A cross-encoder reranker considers query and document together, producing a much more accurate relevance score - at much higher cost per pair.</p>
 
 <p>The pattern: retrieve cheaply, rerank precisely.</p>
 
@@ -1516,7 +1516,7 @@ write_rag_page(
 <p>Embed query and documents separately. Compare via cosine similarity. Fast at retrieval time because document embeddings are precomputed.</p>
 
 <h3>Cross-encoder (reranker)</h3>
-<p>Concatenate query + document, pass through a transformer, output a score. Much more accurate because the model can attend jointly to both. Cannot be precomputed — score must be computed at query time for each candidate.</p>
+<p>Concatenate query + document, pass through a transformer, output a score. Much more accurate because the model can attend jointly to both. Cannot be precomputed - score must be computed at query time for each candidate.</p>
 
 <h2>Reranker options</h2>
 
@@ -1734,9 +1734,9 @@ write_rag_page(
 <p class="lede">HyDE (Hypothetical Document Embeddings) is a retrieval technique with a counterintuitive core idea: generate a fake answer to the user's query with an LLM, embed that fake answer, and retrieve real documents similar to it. The LLM's hallucination serves as a better query representation than the original question. It works surprisingly well.</p>
 
 <h2>Why it works</h2>
-<p>Dense retrieval matches query embeddings to document embeddings. A short query is a weak representation — it matches <em>questions</em> better than <em>answers</em>. But your documents are answers. A hallucinated "answer-shaped" text is a stronger representation of what you're looking for, so it matches better.</p>
+<p>Dense retrieval matches query embeddings to document embeddings. A short query is a weak representation - it matches <em>questions</em> better than <em>answers</em>. But your documents are answers. A hallucinated "answer-shaped" text is a stronger representation of what you're looking for, so it matches better.</p>
 
-<p>The LLM's factual accuracy doesn't matter for retrieval — only its structural and vocabulary similarity to real documents.</p>
+<p>The LLM's factual accuracy doesn't matter for retrieval - only its structural and vocabulary similarity to real documents.</p>
 
 <h2>The flow</h2>
 <pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
@@ -1770,7 +1770,7 @@ write_rag_page(
 <h2>Cost and latency</h2>
 <p>HyDE adds one LLM call before retrieval. With a small fast model, this is 100-500ms. For real-time RAG, weigh the latency cost against quality gain.</p>
 
-<p>Mitigation: use the cheapest fast model (Haiku, GPT-4o-mini, Flash) for the hypothetical generation. Accuracy of the hallucination isn't critical — structural similarity is.</p>
+<p>Mitigation: use the cheapest fast model (Haiku, GPT-4o-mini, Flash) for the hypothetical generation. Accuracy of the hallucination isn't critical - structural similarity is.</p>
 
 <h2>Variants</h2>
 
@@ -1867,7 +1867,7 @@ write_rag_page(
 <p>Hypothetical answer passages. See <a href="hyde.html">HyDE</a>.</p>
 
 <h2>Fusion</h2>
-<p>Same as hybrid retrieval fusion — RRF is the default.</p>
+<p>Same as hybrid retrieval fusion - RRF is the default.</p>
 
 <pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
 For each document d:
@@ -1889,7 +1889,7 @@ Sort documents by rrf_score. Take top-K.
 <p>Robust improvement over single-query retrieval on queries with vocabulary mismatch.</p>
 
 <h2>Parallel vs sequential retrieval</h2>
-<p>All query variations can run in parallel. With async retrieval, total latency is (LLM variation generation) + (longest single retrieval) — not the sum.</p>
+<p>All query variations can run in parallel. With async retrieval, total latency is (LLM variation generation) + (longest single retrieval) - not the sum.</p>
 
 <p>With 4 variations and ~100ms each retrieval, parallel retrieval adds roughly 100ms total latency, not 400ms.</p>
 

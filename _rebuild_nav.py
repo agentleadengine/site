@@ -49,7 +49,7 @@ PLAYBOOKS = [
     ("Author", "playbooks/author/index.html"),
 ]
 
-# Expertise mega menu — each column is a category with its subpages.
+# Expertise mega menu - each column is a category with its subpages.
 EXPERTISE = [
     ("SEO", "expertise/seo/index.html", [
         ("Foundations", "expertise/seo/foundations/index.html"),
@@ -185,7 +185,7 @@ def build_nav(R: str) -> str:
         lines.append(f'<a href="{R}{href}">{label}</a>')
     lines.append('</div></div>')
 
-    # Expertise mega dropdown — 2-col: category list (left) + active cat's subpages (right).
+    # Expertise mega dropdown - 2-col: category list (left) + active cat's subpages (right).
     # Children hidden until user hovers a category (menu-inside-menu).
     lines.append('<div class="nav-group nav-group-wide">')
     lines.append(f'<a href="{R}expertise/index.html" class="nav-link nav-has-submenu">Expertise</a>')
@@ -239,8 +239,8 @@ NAV_SCRIPT = """<script>
   if (!bar || bar.dataset.navInit) return;
   bar.dataset.navInit = '1';
 
-  const OPEN_DELAY = 120;   // ms — hover intent
-  const CLOSE_DELAY = 450;  // ms — forgiving close
+  const OPEN_DELAY = 120;   // ms - hover intent
+  const CLOSE_DELAY = 450;  // ms - forgiving close
   const isMobile = () => window.matchMedia('(max-width: 960px)').matches;
 
   const hamb = bar.querySelector('.hamburger');

@@ -45,12 +45,12 @@ HUBS = {
     "agents": {
         "title": "AI Agents",
         "lede": (
-            "Agents are the productization of LLMs — the layer that turns 'interesting "
+            "Agents are the productization of LLMs - the layer that turns 'interesting "
             "chatbot' into 'software that actually does things for you.' This 90-page "
             "knowledge base covers the full stack: foundations (what makes an agent an "
             "agent), frameworks, the canonical patterns, tool use, memory, multi-agent "
             "orchestration, evaluation, and production deployment. It pairs naturally with "
-            "the Framework section on this site (which is Claude-specific) — this one is "
+            "the Framework section on this site (which is Claude-specific) - this one is "
             "more broadly about agents regardless of which model you use. If the future of "
             "software is 'it kind of runs itself,' this is where you learn to build it."
         ),
@@ -132,7 +132,7 @@ HUBS = {
         "sections": [
             ("Foundations", "the economics: CPM, CPC, CPA, ROAS, CAC, breakeven math"),
             ("Creative", "the 80% of paid that isn't targeting, it's the ad itself"),
-            ("Meta Ads", "Facebook and Instagram — still the biggest platform"),
+            ("Meta Ads", "Facebook and Instagram - still the biggest platform"),
             ("Google Ads", "search intent, shopping, Performance Max, the old reliable"),
             ("YouTube Ads", "video creative, skippable vs non, direct response on YT"),
             ("TikTok Ads", "organic-native creative, Spark Ads, the fastest-growing"),
@@ -154,7 +154,7 @@ HUBS = {
         "sections": [
             ("Foundations", "when cold email works, ethics, legal constraints"),
             ("Infrastructure", "sending domains, SPF/DKIM/DMARC, warmup, IP setup"),
-            ("Deliverability", "staying out of spam — the game inside the game"),
+            ("Deliverability", "staying out of spam - the game inside the game"),
             ("List Building", "ICP → data sources → verification → segmentation"),
             ("Copywriting", "subject lines, opens, replies, the few-word discipline"),
             ("Sequences", "cadence, number of touches, when to stop"),
@@ -166,8 +166,8 @@ HUBS = {
         "title": "Growth Marketing",
         "lede": (
             "Growth marketing is what you do when 'marketing' alone isn't enough. It "
-            "spans the entire customer journey — acquisition, activation, retention, "
-            "revenue, referral — and treats the whole funnel as one system to optimize. "
+            "spans the entire customer journey - acquisition, activation, retention, "
+            "revenue, referral - and treats the whole funnel as one system to optimize. "
             "It's more analytical than traditional marketing, more experimental, and more "
             "cross-functional. This 80-page section covers the mental model, the metrics, "
             "the experimentation practice, and the plays. For anyone who feels constrained "
@@ -177,7 +177,7 @@ HUBS = {
             ("Foundations", "the AARRR model, growth vs marketing, north-star metric"),
             ("Acquisition", "channels, CAC, scaling efficiently"),
             ("Activation", "turning signups into engaged users"),
-            ("Retention", "what keeps users coming back — the real growth lever"),
+            ("Retention", "what keeps users coming back - the real growth lever"),
             ("Revenue", "pricing, upsell, expansion"),
             ("Experiments", "A/B testing, growth experiments, prioritization"),
             ("Analytics", "tracking, attribution, building the data foundation"),
@@ -202,7 +202,7 @@ HUBS = {
             ("Deliverability", "domain auth, warmup, engagement signals, inbox placement"),
             ("Broadcasts", "newsletters, launches, one-off sends"),
             ("Automations", "welcome flows, abandonment, winback, lifecycle"),
-            ("Commerce", "abandoned cart, post-purchase, retention — ecommerce specifics"),
+            ("Commerce", "abandoned cart, post-purchase, retention - ecommerce specifics"),
             ("SaaS", "trial, onboarding, activation sequences"),
             ("Testing", "what to A/B, what not to, and how to know what moved the needle"),
             ("Tools", "ESPs compared, tech stack, integrations"),
@@ -266,7 +266,7 @@ def build_sections_diagram(hub_slug, sections):
     """Build the sketch.js table diagram showing subsections."""
     rows_js = []
     for name, desc in sections:
-        # JS string literal — escape quotes
+        # JS string literal - escape quotes
         name_js = name.replace("'", "\\'")
         desc_js = desc.replace("'", "\\'")
         rows_js.append(f"      ['{name_js}', '{desc_js}']")

@@ -43,7 +43,7 @@ scanned = 0
 
 for page in EXPERTISE.rglob("*.html"):
     rel = page.relative_to(ROOT)
-    # expertise/<section>/<subsection>/<file>.html — len(parts) == 4
+    # expertise/<section>/<subsection>/<file>.html - len(parts) == 4
     if len(rel.parts) != 4:
         continue
     scanned += 1

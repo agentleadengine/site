@@ -10,9 +10,9 @@ DR_LINK = "../../direct-response"
 # ============================================================
 
 hub_body = f"""
-<p class="lede">Cold email is the highest-leverage outbound channel in B2B. When it works, it produces predictable pipeline at a cost that beats paid ads and a velocity that beats content. When it breaks, it quietly damages your domain, your brand, and your future ability to send anything. Most teams run cold email badly. The ones who run it well treat it as a four-part discipline: deliverability, lists, copy, and sequences — each a craft of its own.</p>
+<p class="lede">Cold email is the highest-leverage outbound channel in B2B. When it works, it produces predictable pipeline at a cost that beats paid ads and a velocity that beats content. When it breaks, it quietly damages your domain, your brand, and your future ability to send anything. Most teams run cold email badly. The ones who run it well treat it as a four-part discipline: deliverability, lists, copy, and sequences - each a craft of its own.</p>
 
-<p>This section is 45 pages on running cold email the way it actually works in 2026. The copy sections connect directly to the <a href="{DR_LINK}/index.html">direct response section</a> — cold email is direct response applied to the inbox, and the classical copywriting principles still apply.</p>
+<p>This section is 45 pages on running cold email the way it actually works in 2026. The copy sections connect directly to the <a href="{DR_LINK}/index.html">direct response section</a> - cold email is direct response applied to the inbox, and the classical copywriting principles still apply.</p>
 
 <h2>The eight sections</h2>
 
@@ -223,7 +223,7 @@ write_cold_page(
 <h2>The "cold email is spam" argument</h2>
 <p>Some people argue any unsolicited commercial email is spam. This is a moral position, not a legal or technical one. Under US and most B2B-focused law, targeted compliant B2B outreach is legal and is not spam. Reasonable people disagree about the ethics. This section assumes you've made a judgment that compliant cold B2B outreach is acceptable, and focuses on doing it well.</p>
 
-<p>If you disagree with that premise, that's a valid position — but this section isn't for you. Warm outreach, content, and paid ads are alternate <a href="../../direct-response/leads/core-four.html">core four</a> channels that don't involve cold outreach.</p>
+<p>If you disagree with that premise, that's a valid position - but this section isn't for you. Warm outreach, content, and paid ads are alternate <a href="../../direct-response/leads/core-four.html">core four</a> channels that don't involve cold outreach.</p>
 
 <p style="margin-top:40px;">Next: <a href="legal.html">Legal landscape</a>.</p>
 """,
@@ -238,9 +238,9 @@ write_cold_page(
     description="CAN-SPAM, GDPR, CASL, PECR. Cold email is legal in most jurisdictions if you follow specific rules. Here's the short version for each.",
     reading_time=5,
     body_html="""
-<p class="lede">Cold email legality depends on where your recipient is located, not where you are. Each jurisdiction has its own rules. None of these are optional. I'm not a lawyer and this isn't legal advice — consult one for your specific situation — but here's the operator's summary of the landscape.</p>
+<p class="lede">Cold email legality depends on where your recipient is located, not where you are. Each jurisdiction has its own rules. None of these are optional. I'm not a lawyer and this isn't legal advice - consult one for your specific situation - but here's the operator's summary of the landscape.</p>
 
-<h2>United States — CAN-SPAM (2003)</h2>
+<h2>United States - CAN-SPAM (2003)</h2>
 
 <h3>What it allows</h3>
 <p>Commercial email without prior consent is legal as long as you comply with the requirements.</p>
@@ -259,7 +259,7 @@ write_cold_page(
 <h3>Penalties</h3>
 <p>Up to $51,744 per violation. FTC actively enforces. In practice, penalties hit spammers sending millions; targeted B2B cold rarely triggers FTC action unless combined with other violations.</p>
 
-<h2>Canada — CASL (2014)</h2>
+<h2>Canada - CASL (2014)</h2>
 <p>Strictest major commercial email law. Requires <strong>prior consent</strong> (express or implied) in most cases.</p>
 
 <h3>Implied consent</h3>
@@ -283,7 +283,7 @@ write_cold_page(
 <h3>Penalties</h3>
 <p>Up to $1M per violation for individuals, $10M for organizations. Private right of action available.</p>
 
-<h2>European Union — GDPR + ePrivacy Directive</h2>
+<h2>European Union - GDPR + ePrivacy Directive</h2>
 
 <h3>GDPR</h3>
 <p>Cold email to EU individuals requires a lawful basis for processing personal data. Options:</p>
@@ -295,7 +295,7 @@ write_cold_page(
 <h3>ePrivacy Directive (soft opt-in)</h3>
 <p>Unsolicited commercial email to individuals generally requires consent. Business-to-business allowances vary by member state:</p>
 <ul>
-  <li>Germany: strict — consent required even for B2B</li>
+  <li>Germany: strict - consent required even for B2B</li>
   <li>UK (under PECR): legitimate interest OK for B2B corporate addresses</li>
   <li>France, Italy, Spain, Netherlands: varying</li>
 </ul>
@@ -312,10 +312,10 @@ write_cold_page(
 <h3>Penalties</h3>
 <p>Up to 4% of global annual revenue or €20M. Enforcement varies by member state.</p>
 
-<h2>United Kingdom — PECR + UK GDPR</h2>
+<h2>United Kingdom - PECR + UK GDPR</h2>
 <p>Post-Brexit, similar to EU. B2B cold email to corporate subscribers (companies, partnerships) has "soft opt-in" basis. B2B to sole traders and non-corporate businesses is treated like consumer email (requires consent).</p>
 
-<h2>Australia — SPAM Act 2003</h2>
+<h2>Australia - SPAM Act 2003</h2>
 <p>Requires consent (express or inferred). Inferred consent available for business-relationship contexts. Strict unsubscribe requirements.</p>
 
 <h2>The operator's compliance checklist</h2>
@@ -337,7 +337,7 @@ write_cold_page(
 <p>Two acceptable patterns in cold B2B email:</p>
 
 <h3>Explicit unsubscribe link</h3>
-<p>"If you'd prefer I stop reaching out, unsubscribe here: [link]" — makes the email look like marketing, may hurt deliverability.</p>
+<p>"If you'd prefer I stop reaching out, unsubscribe here: [link]" - makes the email look like marketing, may hurt deliverability.</p>
 
 <h3>Plain-language opt-out</h3>
 <p>"If you're not the right person or prefer I don't reach out, just reply and let me know." Works in B2B, feels personal, doesn't trigger spam filters. Legally sufficient if you actually honor replies.</p>
@@ -345,7 +345,7 @@ write_cold_page(
 <p>The plain-language version is more common in modern B2B cold. The explicit link is safer legally. Many teams use the plain-language version plus a physical address in the signature to satisfy CAN-SPAM.</p>
 
 <h2>The "corporate subscriber" concept</h2>
-<p>Many B2B-friendly exemptions hinge on emailing a "corporate subscriber" — i.e., a role at a company rather than a person. The address info@, sales@, or role-based addresses at a company are generally safer than personal addresses (firstname.lastname@). In practice, most cold email tools target firstname.lastname@, and this is the grey area most B2B cold operates in.</p>
+<p>Many B2B-friendly exemptions hinge on emailing a "corporate subscriber" - i.e., a role at a company rather than a person. The address info@, sales@, or role-based addresses at a company are generally safer than personal addresses (firstname.lastname@). In practice, most cold email tools target firstname.lastname@, and this is the grey area most B2B cold operates in.</p>
 
 <h2>The reputation risk beyond legality</h2>
 <p>Even legal cold email can hurt your reputation if done carelessly. Legal compliance is the floor, not the ceiling. Respect recipients, stop when told, send less than you could, and prioritize quality of targeting over volume.</p>
@@ -360,7 +360,7 @@ write_cold_page(
 write_cold_page(
     slug="foundations/when-it-works",
     title="When cold email works",
-    description="Cold email isn't universal. Here's the fit test — when it's the right channel and when it isn't.",
+    description="Cold email isn't universal. Here's the fit test - when it's the right channel and when it isn't.",
     reading_time=4,
     body_html=f"""
 <p class="lede">Cold email works brilliantly for some businesses and fails reliably for others. The difference isn't tactics; it's fit. Before investing in infrastructure and list building, run the fit test.</p>
@@ -546,7 +546,7 @@ write_cold_page(
   <li>Eventually your sending domain is effectively dead</li>
 </ol>
 
-<p>This is why you can't "blast first, fix later." Once you've damaged a domain, recovery is painful — often cheaper to start over with new domains.</p>
+<p>This is why you can't "blast first, fix later." Once you've damaged a domain, recovery is painful - often cheaper to start over with new domains.</p>
 
 <h2>The build-it-right-the-first-time approach</h2>
 <p>The sequence that works:</p>
@@ -767,7 +767,7 @@ write_cold_page(
   <li>Completely unrelated names that look like spoofing</li>
   <li>Misspellings of your brand (looks deceptive)</li>
   <li>Hyphens and numbers that look spammy (<code>your-company-2026.com</code>)</li>
-  <li>Free domains (.tk, .ml etc.) — spam-tier from day one</li>
+  <li>Free domains (.tk, .ml etc.) - spam-tier from day one</li>
 </ul>
 
 <h2>The mailbox-per-domain ratio</h2>
@@ -896,7 +896,7 @@ write_cold_page(
   <li>Gradually increases volume day by day</li>
 </ol>
 
-<p>The whole process is invisible to you — you set it up, it runs for 2-4 weeks, your mailbox is ready.</p>
+<p>The whole process is invisible to you - you set it up, it runs for 2-4 weeks, your mailbox is ready.</p>
 
 <h2>The warming schedule</h2>
 <p>A reasonable ramp for a new Google Workspace mailbox:</p>
@@ -918,7 +918,7 @@ ramping up while warming continues in background.
 <p>Warming is 3-4 weeks of patience that saves 3-4 months of debugging.</p>
 
 <h2>Continuous warming</h2>
-<p>Warming isn't a one-time thing. Most cold email operators run warming continuously — even on production mailboxes — to offset the reputation hit of cold sending.</p>
+<p>Warming isn't a one-time thing. Most cold email operators run warming continuously - even on production mailboxes - to offset the reputation hit of cold sending.</p>
 
 <p>The pattern:</p>
 <ul>
@@ -930,7 +930,7 @@ ramping up while warming continues in background.
 <p>The warming helps neutralize the reputation pressure from cold sends.</p>
 
 <h2>The engagement signal</h2>
-<p>Warming isn't just about volume — it's about engagement. Email providers care about:</p>
+<p>Warming isn't just about volume - it's about engagement. Email providers care about:</p>
 <ul>
   <li>Emails that get opened</li>
   <li>Emails that get replied to</li>
@@ -984,9 +984,9 @@ ramping up while warming continues in background.
 <h2>The ongoing health check</h2>
 <p>After warming, spot-check mailbox health:</p>
 <ul>
-  <li>Send a test email from the mailbox to mail-tester.com — expect 9+/10</li>
-  <li>Send to a personal Gmail — check it lands in Primary</li>
-  <li>Check Postmaster Tools for the domain — green across spam rate, reputation, authentication</li>
+  <li>Send a test email from the mailbox to mail-tester.com - expect 9+/10</li>
+  <li>Send to a personal Gmail - check it lands in Primary</li>
+  <li>Check Postmaster Tools for the domain - green across spam rate, reputation, authentication</li>
   <li>If any of these degrade, investigate before scaling volume</li>
 </ul>
 
@@ -1054,7 +1054,7 @@ write_cold_page(
 
 <p>Cons:</p>
 <ul>
-  <li>Starts with zero reputation — must warm like a new mailbox</li>
+  <li>Starts with zero reputation - must warm like a new mailbox</li>
   <li>Requires sustained volume to maintain reputation (low volume = slow degradation)</li>
   <li>Higher cost</li>
   <li>More operational complexity</li>
@@ -1136,7 +1136,7 @@ write_cold_page(
 </ol>
 
 <h2>The alternative: retire bad infrastructure</h2>
-<p>If a domain or IP has been badly damaged, the fastest path forward is usually not to fix it — it's to switch to new infrastructure. Register a new domain, provision new mailboxes, warm them, resume.</p>
+<p>If a domain or IP has been badly damaged, the fastest path forward is usually not to fix it - it's to switch to new infrastructure. Register a new domain, provision new mailboxes, warm them, resume.</p>
 
 <p>This is why experienced operators always have a second set of domains ready. Infrastructure is disposable. Your offer, list, and copy are the durable assets.</p>
 
@@ -1252,7 +1252,7 @@ write_cold_page(
 <ul>
   <li>All caps</li>
   <li>Excessive punctuation</li>
-  <li>Emojis (mixed — some filter networks flag them)</li>
+  <li>Emojis (mixed - some filter networks flag them)</li>
   <li>Dollar signs</li>
   <li>Certain phrases ("free," "urgent," "limited offer")</li>
   <li>Too long (over 50 chars reduces open rate and can increase spam risk)</li>
@@ -1273,13 +1273,13 @@ write_cold_page(
 <h2>Spammy structures</h2>
 
 <h3>Footer boilerplate</h3>
-<p>Long legal disclaimers, unsubscribe instructions with multiple links, privacy policy boilerplate — mark emails as marketing-style. Keep footers brief: name, title, company, optional brief unsubscribe sentence.</p>
+<p>Long legal disclaimers, unsubscribe instructions with multiple links, privacy policy boilerplate - mark emails as marketing-style. Keep footers brief: name, title, company, optional brief unsubscribe sentence.</p>
 
 <h3>Identical messages at scale</h3>
 <p>Sending the exact same email to thousands of recipients pattern-matches spam. Use spintax (variable text) to ensure each message is slightly different, even for the same campaign.</p>
 
 <h3>Signature with too many links</h3>
-<p>Signatures with LinkedIn, Twitter, website, phone, calendar — looks corporate/marketing. Simpler signatures win.</p>
+<p>Signatures with LinkedIn, Twitter, website, phone, calendar - looks corporate/marketing. Simpler signatures win.</p>
 
 <h2>Testing your content</h2>
 
@@ -1362,7 +1362,7 @@ write_cold_page(
 <p>Automated version: services like GlockApps, MailReach, Gmass Inbox Inspector route test emails through real inboxes and report placement.</p>
 
 <h3>4. Blacklist monitoring</h3>
-<p>Tools like MXToolbox monitoring or Barracuda Reputation Checker alert you if your domain or sending IPs get listed. Respond immediately — delisting is slow.</p>
+<p>Tools like MXToolbox monitoring or Barracuda Reputation Checker alert you if your domain or sending IPs get listed. Respond immediately - delisting is slow.</p>
 
 <h3>5. Reply-rate monitoring per campaign</h3>
 <p>Your cold email tool (Instantly, Smartlead, Lemlist) tracks reply rates per campaign. Sudden drops signal deliverability problems, not copy problems.</p>
@@ -1691,7 +1691,7 @@ write_cold_page(
   <li>jordan.kim@sendingdomain.com</li>
 </ul>
 
-<p>These can all represent you, a team, or fictional personas — depending on your operation style.</p>
+<p>These can all represent you, a team, or fictional personas - depending on your operation style.</p>
 
 <h3>Personal vs persona</h3>
 <ul>
@@ -1700,7 +1700,7 @@ write_cold_page(
   <li><strong>Single identity across variants</strong>: all mailboxes are "Sam Ochoa" at different sending domains. Simplest honest approach.</li>
 </ul>
 
-<p>Most cold email operations use the third pattern — same sender identity across infrastructure variants. Recipients see one person even if the mail comes from different systems.</p>
+<p>Most cold email operations use the third pattern - same sender identity across infrastructure variants. Recipients see one person even if the mail comes from different systems.</p>
 
 <h2>Load balancing strategies</h2>
 
@@ -1830,7 +1830,7 @@ write_cold_page(
 <p>Comparable to Instantly's warming. Similar quality.</p>
 
 <h3>Lemlist (built-in)</h3>
-<p>Included. Good. Less aggressive warming ramp — better for higher-quality lower-volume campaigns.</p>
+<p>Included. Good. Less aggressive warming ramp - better for higher-quality lower-volume campaigns.</p>
 
 <h3>Mailwarm</h3>
 <p>Standalone, large network, dedicated warming. More expensive but often higher quality for advanced use cases.</p>
@@ -2087,50 +2087,50 @@ write_cold_page(
 
 <h3>Positive (the goal)</h3>
 <ul>
-  <li>"Sure, let's talk" — book the meeting</li>
-  <li>"Send more info" — respond with requested info and book</li>
-  <li>"What's available next week?" — propose specific times</li>
+  <li>"Sure, let's talk" - book the meeting</li>
+  <li>"Send more info" - respond with requested info and book</li>
+  <li>"What's available next week?" - propose specific times</li>
 </ul>
 
 <h3>Interested but not now</h3>
 <ul>
-  <li>"Not a priority this quarter" — schedule nurture for next quarter</li>
-  <li>"We're evaluating [competitor]" — follow up in 2-3 months</li>
-  <li>"Check back in 6 months" — literal follow-up reminder</li>
+  <li>"Not a priority this quarter" - schedule nurture for next quarter</li>
+  <li>"We're evaluating [competitor]" - follow up in 2-3 months</li>
+  <li>"Check back in 6 months" - literal follow-up reminder</li>
 </ul>
 
 <h3>Wrong person</h3>
 <ul>
-  <li>"You want to talk to [name]" — pivot to the referred person, reference the referrer</li>
-  <li>"I'm no longer at [company]" — update the record, find their replacement</li>
-  <li>"I handle X, not Y" — reconsider ICP targeting; maybe their actual role isn't what you thought</li>
+  <li>"You want to talk to [name]" - pivot to the referred person, reference the referrer</li>
+  <li>"I'm no longer at [company]" - update the record, find their replacement</li>
+  <li>"I handle X, not Y" - reconsider ICP targeting; maybe their actual role isn't what you thought</li>
 </ul>
 
 <h3>Objection</h3>
 <ul>
-  <li>"Too expensive" — hand-off to AE for a proper conversation</li>
-  <li>"We tried something like this" — address specifically</li>
-  <li>"We built it in-house" — qualify whether they'd consider an alternative</li>
+  <li>"Too expensive" - hand-off to AE for a proper conversation</li>
+  <li>"We tried something like this" - address specifically</li>
+  <li>"We built it in-house" - qualify whether they'd consider an alternative</li>
 </ul>
 
 <h3>Information request</h3>
 <ul>
-  <li>"Send pricing" — send pricing, propose a call</li>
-  <li>"Do you integrate with X?" — answer clearly, propose a call</li>
+  <li>"Send pricing" - send pricing, propose a call</li>
+  <li>"Do you integrate with X?" - answer clearly, propose a call</li>
 </ul>
 
 <h3>Not interested</h3>
 <ul>
-  <li>"Not interested" — move to DNC, stop sequence</li>
-  <li>"Remove me" — unsubscribe immediately</li>
-  <li>"Stop emailing me" — unsubscribe immediately, apologize briefly</li>
+  <li>"Not interested" - move to DNC, stop sequence</li>
+  <li>"Remove me" - unsubscribe immediately</li>
+  <li>"Stop emailing me" - unsubscribe immediately, apologize briefly</li>
 </ul>
 
 <h3>Ambiguous / auto-reply</h3>
 <ul>
-  <li>OOO / vacation reply — don't respond, let sequence continue</li>
-  <li>"I'll look into it" — treat as warm but low-urgency</li>
-  <li>"?" — clarify, don't assume</li>
+  <li>OOO / vacation reply - don't respond, let sequence continue</li>
+  <li>"I'll look into it" - treat as warm but low-urgency</li>
+  <li>"?" - clarify, don't assume</li>
 </ul>
 
 <h2>The response time matters</h2>
@@ -2170,7 +2170,7 @@ write_cold_page(
 
 <h3>Positive reply → book meeting</h3>
 <pre style="background:#f5f5f7; padding:12px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:12px;">
-"Great — here's my calendar: [link]. Tue 2pm, Wed 10am, and Thu
+"Great - here's my calendar: [link]. Tue 2pm, Wed 10am, and Thu
 3pm EST are open if any of those work for you. Or pick whatever
 fits your schedule. Quick 20-minute call, I'll come prepared with
 3 specific ideas for [their situation]."
@@ -2185,7 +2185,7 @@ caught off guard by my follow-up."
 
 <h3>Not now → reschedule</h3>
 <pre style="background:#f5f5f7; padding:12px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:12px;">
-"Understood — not the right quarter. Would it make sense to
+"Understood - not the right quarter. Would it make sense to
 reconnect in [specific future month]? I'll ping you then. If
 anything changes before that, feel free to reach out."
 </pre>
@@ -2221,7 +2221,7 @@ would it be worth a 15-min conversation?"
 <p>Log this. Use it to refine copy, targeting, and offer.</p>
 
 <h2>Reply rate vs positive reply rate</h2>
-<p>Your tool will show "reply rate" (any response, including negative and auto-replies). What matters is <em>positive reply rate</em> — qualified, intent-signaling responses.</p>
+<p>Your tool will show "reply rate" (any response, including negative and auto-replies). What matters is <em>positive reply rate</em> - qualified, intent-signaling responses.</p>
 
 <p>Typical distribution:</p>
 <ul>

@@ -112,7 +112,7 @@ PAGES = {
         [
             ("What it isn't", "Growth marketing isn't 'hacks' or viral schemes. It's disciplined experimentation across the full funnel."),
             ("The AARRR framework", ["Acquisition - how users find you", "Activation - first meaningful value", "Retention - users coming back", "Revenue - monetization", "Referral - users bringing others"]),
-            ("Why it matters", "Traditional marketing optimized top-of-funnel. Growth marketing optimizes end-to-end — a 10% lift in retention often beats a 50% lift in acquisition."),
+            ("Why it matters", "Traditional marketing optimized top-of-funnel. Growth marketing optimizes end-to-end - a 10% lift in retention often beats a 50% lift in acquisition."),
             ("Who does it", "Full-stack marketers, product managers, growth engineers. A hybrid role blending marketing, product, and data."),
         ]),
 
@@ -183,7 +183,7 @@ PAGES = {
         "Viral loops create compounding acquisition. Here's what makes them work.",
         "A viral loop: one user triggers more users to join. K-factor (invites × conversion rate) determines if it grows. K > 1 = true viral.",
         [
-            ("Types", ["Incentive-based (refer-a-friend rewards)", "Utility-based (Dropbox — need to share files)", "Social (WhatsApp — need the other person to receive)", "Content-based (Reddit posts drive more users)"]),
+            ("Types", ["Incentive-based (refer-a-friend rewards)", "Utility-based (Dropbox - need to share files)", "Social (WhatsApp - need the other person to receive)", "Content-based (Reddit posts drive more users)"]),
             ("Rarely K > 1", "Most products claiming virality have sub-1 K-factors. They still benefit (lower CAC) but don't grow on their own."),
             ("Building", ["Make sharing the natural path", "Reward both sides (sender + receiver)", "Shorten the cycle (time from invite to active)", "Track K-factor explicitly"]),
             ("Common failure", "Adding a referral program to a product nobody shares organically. Fix the product first."),
@@ -236,7 +236,7 @@ PAGES = {
         [
             ("Targets", ["SaaS consumer: under 5 minutes", "SaaS B2B: under 30 minutes for first aha", "Enterprise: first week if onboarding-assisted"]),
             ("Shortening TTV", ["Pre-fill or import data", "Offer templates/defaults", "Hide advanced features", "Reduce required setup"]),
-            ("Measurement", "Event tracking — timestamp signup, timestamp first-value event, measure the gap."),
+            ("Measurement", "Event tracking - timestamp signup, timestamp first-value event, measure the gap."),
             ("The friction audit", "Walk through onboarding as a new user. Every step that requires thinking or typing is potential removal."),
         ]),
 
@@ -255,7 +255,7 @@ PAGES = {
         "Early wins are the small moments of success a new user experiences in their first sessions. More early wins → higher retention.",
         [
             ("Examples", ["Sending the first message", "Creating the first project", "Getting the first response", "Seeing first data", "Completing first task"]),
-            ("Design for", "Build onboarding around achieving multiple small wins in the first session — not one big win at the end."),
+            ("Design for", "Build onboarding around achieving multiple small wins in the first session - not one big win at the end."),
             ("Celebrating wins", "Acknowledge wins: confetti, notification, progress bar. Minor dopamine hits reinforce."),
             ("Avoid fake wins", "Don't congratulate users for achievements that aren't real. Users feel condescension."),
         ]),
@@ -283,7 +283,7 @@ PAGES = {
 
     "retention/re-engagement": quick("Re-engagement",
         "Inactive users can often be re-activated. Here's when and how.",
-        "Users who go inactive haven't necessarily churned. Re-engagement campaigns can recover some — if done right.",
+        "Users who go inactive haven't necessarily churned. Re-engagement campaigns can recover some - if done right.",
         [
             ("Timing", "Sweet spot is usually 7-30 days of inactivity. Too soon feels intrusive; too late they've moved on."),
             ("Channels", ["Email (most common)", "Push notifications (app users)", "SMS (use rarely)", "Retargeting ads (for larger cohorts)"]),
@@ -421,7 +421,7 @@ PAGES = {
         "Classical A/B has confounds. Holdouts are cleaner: half the audience gets the feature/message, half doesn't. Compare.",
         [
             ("Examples", ["Geo holdout for paid ads", "User holdout for a retention email", "Feature holdout for rollouts"]),
-            ("Why better than A/B", "Can measure incrementality — what wouldn't have happened without the treatment."),
+            ("Why better than A/B", "Can measure incrementality - what wouldn't have happened without the treatment."),
             ("Cost", "Holdout group gets worse experience (no new feature). Minimize duration."),
         ]),
 
@@ -513,7 +513,7 @@ PAGES = {
         [
             ("Cold start", ["Pick a narrow niche", "Fake one side if needed (manual concierge, curated inventory)", "Grow one side first"]),
             ("Liquidity metrics", ["Match rate", "Time to match", "Supply/demand balance"]),
-            ("Network effects", "Each new user makes the product more valuable for others — the moat."),
+            ("Network effects", "Each new user makes the product more valuable for others - the moat."),
         ]),
 
     "plays/b2b-plg": quick("B2B product-led growth",

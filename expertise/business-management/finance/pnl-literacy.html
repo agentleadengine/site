@@ -247,9 +247,9 @@
   sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 40, layers: [
     {label: 'Revenue', sub: 'sales / ARR'},
     {label: 'COGS', sub: 'cost to deliver'},
-    {label: 'Gross profit', sub: 'rev − COGS'},
+    {label: 'Gross profit', sub: 'rev - COGS'},
     {label: 'Operating expenses', sub: 'S&M, R&D, G&A'},
-    {label: 'Operating income', sub: 'gross − opex'},
+    {label: 'Operating income', sub: 'gross - opex'},
     {label: 'Net income', sub: 'after tax + interest'}
   ]});
 });</script>
@@ -257,11 +257,11 @@
 <ul>
   <li><strong>Revenue</strong>, what customers paid you</li>
   <li><strong>Cost of Goods Sold (COGS)</strong>, what it cost to deliver what customers paid for</li>
-  <li><strong>Gross Profit</strong> = Revenue − COGS</li>
+  <li><strong>Gross Profit</strong> = Revenue - COGS</li>
   <li><strong>Operating Expenses (OpEx)</strong>, salaries, marketing, rent, software</li>
-  <li><strong>EBITDA</strong> = Gross Profit − OpEx</li>
+  <li><strong>EBITDA</strong> = Gross Profit - OpEx</li>
   <li><strong>Depreciation &amp; Amortization</strong>, non-cash, spreading past spend over time</li>
-  <li><strong>Operating Income</strong> = EBITDA − D&amp;A</li>
+  <li><strong>Operating Income</strong> = EBITDA - D&amp;A</li>
   <li><strong>Interest + Taxes</strong></li>
   <li><strong>Net Income</strong>, the bottom line</li>
 </ul>
@@ -319,9 +319,9 @@
   sketch.title(svg, 450, 30, 'P&L literacy, the 5 lines that matter most');
   sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 34, layers: [
     {label: 'Revenue', sub: 'top line, what customers paid'},
-    {label: 'Gross profit = Revenue − COGS', sub: 'margin on the core product'},
+    {label: 'Gross profit = Revenue - COGS', sub: 'margin on the core product'},
     {label: 'Operating expenses', sub: 'people + tools + marketing'},
-    {label: 'Operating income', sub: 'gross profit − opex, the business'},
+    {label: 'Operating income', sub: 'gross profit - opex, the business'},
     {label: 'Net income', sub: 'after interest + taxes, the bottom line'}
   ]});
 });</script>

@@ -19,12 +19,12 @@ write_cold_page(
 
 <h2>The six parts</h2>
 <ol>
-<li><strong>Subject line</strong> — 3-5 words, lowercase, feels personal. Single job: get the reply.</li>
-<li><strong>First line</strong> — specific to this person. The make-or-break.</li>
-<li><strong>The bridge</strong> — connects their situation to your relevance. 1-2 sentences.</li>
-<li><strong>The pitch</strong> — what you do, one specific angle. 2-3 sentences. Not full pitch.</li>
-<li><strong>Proof</strong> — one specific number, client, or outcome.</li>
-<li><strong>The ask</strong> — one clear next step. Specific time, specific action.</li>
+<li><strong>Subject line</strong> - 3-5 words, lowercase, feels personal. Single job: get the reply.</li>
+<li><strong>First line</strong> - specific to this person. The make-or-break.</li>
+<li><strong>The bridge</strong> - connects their situation to your relevance. 1-2 sentences.</li>
+<li><strong>The pitch</strong> - what you do, one specific angle. 2-3 sentences. Not full pitch.</li>
+<li><strong>Proof</strong> - one specific number, client, or outcome.</li>
+<li><strong>The ask</strong> - one clear next step. Specific time, specific action.</li>
 </ol>
 
 <h2>The 80-word target</h2>
@@ -54,9 +54,9 @@ Sam</pre>
 
 <h2>What to avoid</h2>
 <ul>
-<li>"Hope this email finds you well" — marks the email as templated</li>
-<li>"I wanted to reach out" — passive, self-referential</li>
-<li>"Take a look at our comprehensive suite" — brochure talk</li>
+<li>"Hope this email finds you well" - marks the email as templated</li>
+<li>"I wanted to reach out" - passive, self-referential</li>
+<li>"Take a look at our comprehensive suite" - brochure talk</li>
 <li>Multiple CTAs ("check out our site OR book a call OR download...")</li>
 <li>Heavy HTML formatting, images, long signatures</li>
 </ul>
@@ -111,12 +111,12 @@ write_cold_page(
 
 <h2>Patterns that fail</h2>
 <ul>
-<li>"Exclusive offer for [Company]" — marketing</li>
-<li>"Transform your pipeline" — ad</li>
-<li>"FREE [anything]" — spam filter bait</li>
-<li>"Last chance" — fake urgency</li>
-<li>"Are you struggling with X?" — leading</li>
-<li>"You won't believe this" — clickbait</li>
+<li>"Exclusive offer for [Company]" - marketing</li>
+<li>"Transform your pipeline" - ad</li>
+<li>"FREE [anything]" - spam filter bait</li>
+<li>"Last chance" - fake urgency</li>
+<li>"Are you struggling with X?" - leading</li>
+<li>"You won't believe this" - clickbait</li>
 </ul>
 
 <h2>Subject line generation</h2>
@@ -150,7 +150,7 @@ Just the subject lines, numbered.</pre>
 
 <p>With iOS 15+ inflating open rates through prefetching, treat opens as directional not absolute. Reply rate is the truer signal.</p>
 
-<p>Related: <a href="{DR_LINK}/copy/headlines.html">headlines in direct response</a> — the same principles scale from email subjects to landing pages.</p>
+<p>Related: <a href="{DR_LINK}/copy/headlines.html">headlines in direct response</a> - the same principles scale from email subjects to landing pages.</p>
 """,
     prev=("Cold email anatomy", "anatomy.html"),
     nxt=("First lines", "first-lines.html"),
@@ -172,11 +172,11 @@ write_cold_page(
 
 <h3>Their LinkedIn activity</h3>
 <p>"Saw your post yesterday about [specific topic]"<br>
-"Your comment on [X's] thread on [topic] — had been thinking the same thing"</p>
+"Your comment on [X's] thread on [topic] - had been thinking the same thing"</p>
 
 <h3>Their company news</h3>
-<p>"Just saw the Series B — congrats"<br>
-"Noticed you're hiring three AEs — usually means something specific about pipeline"</p>
+<p>"Just saw the Series B - congrats"<br>
+"Noticed you're hiring three AEs - usually means something specific about pipeline"</p>
 
 <h3>Their role change</h3>
 <p>"Saw you moved to [company] last month from [previous]"<br>
@@ -184,11 +184,11 @@ write_cold_page(
 
 <h3>Their content</h3>
 <p>"Read your piece on [topic] in [publication] last week"<br>
-"Your podcast episode on [specific ep] — the part about [X] stuck with me"</p>
+"Your podcast episode on [specific ep] - the part about [X] stuck with me"</p>
 
 <h3>Industry context specific to them</h3>
 <p>"Your vertical in [state] is getting hit hard this quarter with [specific change]"<br>
-"Restaurants in [city] are dealing with [specific issue] — wanted to run something by you"</p>
+"Restaurants in [city] are dealing with [specific issue] - wanted to run something by you"</p>
 
 <h2>What doesn't count as specific</h2>
 <ul>
@@ -249,9 +249,9 @@ write_cold_page(
 
 <h2>The 3-sentence structure</h2>
 <ol>
-<li><strong>The problem or observation</strong> — specific, relevant to them</li>
-<li><strong>What you do about it</strong> — one concrete angle, not generic claims</li>
-<li><strong>The mechanism</strong> — why your approach works (optional but strong)</li>
+<li><strong>The problem or observation</strong> - specific, relevant to them</li>
+<li><strong>What you do about it</strong> - one concrete angle, not generic claims</li>
+<li><strong>The mechanism</strong> - why your approach works (optional but strong)</li>
 </ol>
 
 <h2>Example (bad vs good)</h2>
@@ -315,7 +315,7 @@ Write 3 versions with different angles.</pre>
 <h2>The "one thing" test</h2>
 <p>Read your pitch back. If you can identify more than one benefit or feature, cut it until only one remains. Cold email is a single-angle medium. Broader sells go in the sales call.</p>
 
-<p>Related: <a href="{DR_LINK}/copy/formulas.html">AIDA, PAS, PASTOR</a> — pitch structure in longer-form direct response.</p>
+<p>Related: <a href="{DR_LINK}/copy/formulas.html">AIDA, PAS, PASTOR</a> - pitch structure in longer-form direct response.</p>
 """,
     prev=("First lines", "first-lines.html"),
     nxt=("CTAs for cold", "ctas.html"),
@@ -347,7 +347,7 @@ write_cold_page(
 <h3>Low friction (for cold audiences)</h3>
 <ul>
 <li>"Want me to send the 3-slide summary? No call needed."</li>
-<li>"Quick yes/no — should I share how [Client] handled it?"</li>
+<li>"Quick yes/no - should I share how [Client] handled it?"</li>
 <li>"Worth keeping in your back pocket for [specific future trigger]?"</li>
 </ul>
 
@@ -369,7 +369,7 @@ Better: "Tue 2pm or Thu 10am ET?"</p>
 <p>"15 minutes" converts better than "30 minutes" converts better than "a call." The implied commitment decides whether they reply.</p>
 
 <h3>Escape hatches</h3>
-<p>"Or I can send the summary — no call needed" tells the reader there's a lower-commitment path. Increases reply rate even from people who end up wanting the call.</p>
+<p>"Or I can send the summary - no call needed" tells the reader there's a lower-commitment path. Increases reply rate even from people who end up wanting the call.</p>
 
 <h3>One CTA only</h3>
 <p>Never "book a call OR download our guide OR connect on LinkedIn OR reply." Choose one primary action. Secondary options dilute.</p>
@@ -396,7 +396,7 @@ Better: "Tue 2pm or Thu 10am ET?"</p>
 <div class="prompt-box">
 <div class="prompt-box-label">CTA generator by sequence step</div>
 <button class="copy-btn">Copy</button>
-<pre>For a 5-touch cold email sequence to [role] about [topic], write 5 different CTAs — one per email.
+<pre>For a 5-touch cold email sequence to [role] about [topic], write 5 different CTAs - one per email.
 
 Constraints:
 - Email 1: direct call ask, specific times
@@ -417,7 +417,7 @@ Each under 30 words. No "circling back," no "touching base," no "reaching out ag
 
 <p>This balances personal tone with convenience. Jumping straight to calendar link in cold email 1 converts worse than proposing times.</p>
 
-<p>Related: <a href="{DR_LINK}/copy/ctas.html">CTAs in direct response</a> — the principles scale to landing pages, VSLs, and long-form.</p>
+<p>Related: <a href="{DR_LINK}/copy/ctas.html">CTAs in direct response</a> - the principles scale to landing pages, VSLs, and long-form.</p>
 """,
     prev=("The pitch", "the-pitch.html"),
     nxt=("Signatures", "signatures.html"),
@@ -456,13 +456,13 @@ Sam Ochoa
 
 <h2>What to leave out</h2>
 <ul>
-<li><strong>Logo</strong> — image in email = higher spam score. Text-only.</li>
-<li><strong>Banner ads</strong> — "Check out our latest webinar" below the signature = marketing flag.</li>
-<li><strong>Legal disclaimers</strong> — "This email is confidential..." — if required by your role, keep brief; it's a spam signal.</li>
-<li><strong>Phone number</strong> — most cold reply paths go through email, not phone. Add to follow-ups if useful.</li>
-<li><strong>Social icons</strong> — sophisticated LinkedIn icons, Twitter icons, etc. flag as marketing.</li>
-<li><strong>Quote of the day</strong> — no.</li>
-<li><strong>Award badges</strong> — no.</li>
+<li><strong>Logo</strong> - image in email = higher spam score. Text-only.</li>
+<li><strong>Banner ads</strong> - "Check out our latest webinar" below the signature = marketing flag.</li>
+<li><strong>Legal disclaimers</strong> - "This email is confidential..." - if required by your role, keep brief; it's a spam signal.</li>
+<li><strong>Phone number</strong> - most cold reply paths go through email, not phone. Add to follow-ups if useful.</li>
+<li><strong>Social icons</strong> - sophisticated LinkedIn icons, Twitter icons, etc. flag as marketing.</li>
+<li><strong>Quote of the day</strong> - no.</li>
+<li><strong>Award badges</strong> - no.</li>
 </ul>
 
 <h2>Progressive signatures across sequence</h2>
@@ -474,7 +474,7 @@ Sam Ochoa
 </ul>
 
 <h2>The "replying from phone" trick</h2>
-<p>"Sent from my phone — excuse brevity and typos" at the end of cold emails feels personal and explains casual tone. Do not overuse. Legitimate when you are on phone; fake when everyone does it.</p>
+<p>"Sent from my phone - excuse brevity and typos" at the end of cold emails feels personal and explains casual tone. Do not overuse. Legitimate when you are on phone; fake when everyone does it.</p>
 
 <h2>For regulated industries</h2>
 <p>Some industries require specific disclaimers in email (financial services, healthcare, legal). Keep them brief, use small grey text, and place after a line break:</p>
@@ -492,7 +492,7 @@ Licensed Agent | [Company]
 Securities offered through [Broker Dealer]. Member FINRA/SIPC.</pre>
 </div>
 
-<p>Where compliance requires more, work with your firm's compliance team — never trim legal requirements to optimize deliverability.</p>
+<p>Where compliance requires more, work with your firm's compliance team - never trim legal requirements to optimize deliverability.</p>
 
 <h2>The one-line description</h2>
 <p>Some operators add a single line of "what I do" under their title:</p>
@@ -551,7 +551,7 @@ write_cold_page(
 <div class="prompt-box">
 <div class="prompt-box-label">Clay AI column prompt</div>
 <button class="copy-btn">Copy</button>
-<pre>Given the following data about a prospect, write ONE first line of a cold email — 12-18 words — that references something specific and doesn't sound templated.
+<pre>Given the following data about a prospect, write ONE first line of a cold email - 12-18 words - that references something specific and doesn't sound templated.
 
 PROSPECT DATA:
 - Name: {{{{name}}}}
@@ -673,7 +673,7 @@ Generate:
 Constraints:
 - Same tone as email 1
 - Vary opening lines (no "bumping this up," "circling back," "touching base")
-- Each email is standalone-readable — don't require reading prior emails
+- Each email is standalone-readable - don't require reading prior emails
 - Progressive lowering of ask (call → content → binary yes/no)</pre>
 </div>
 
@@ -696,19 +696,19 @@ Constraints:
 
 <h2>The 5 email anatomy</h2>
 
-<h3>Email 1 — The pitch</h3>
+<h3>Email 1 - The pitch</h3>
 <p>80-100 words. First line specific. Pitch + proof + specific CTA.</p>
 
-<h3>Email 2 — The bump</h3>
+<h3>Email 2 - The bump</h3>
 <p>40-60 words. Reference email 1 casually. Add one angle or new data point. Same CTA or slightly simpler.</p>
 
-<h3>Email 3 — The reframe</h3>
+<h3>Email 3 - The reframe</h3>
 <p>60-80 words. Acknowledge no reply is common. Offer lower-friction alternative. "Want me to send the summary instead?"</p>
 
-<h3>Email 4 — The case study</h3>
+<h3>Email 4 - The case study</h3>
 <p>100-120 words. Specific anonymized client. Named outcome. CTA: "want the full writeup?"</p>
 
-<h3>Email 5 — The breakup</h3>
+<h3>Email 5 - The breakup</h3>
 <p>30-50 words. Closing loop. Clean exit. "If [trigger] changes, feel free to reply."</p>
 
 <h2>Breakup emails are gold</h2>
@@ -783,7 +783,7 @@ write_cold_page(
 </ul>
 
 <h2>The local-time trap</h2>
-<p>Sending from Pacific time to Eastern prospects at 8am PT = 11am ET. Late morning for the recipient — fine. Sending from Pacific at 8am ET = 5am PT. You're awake at 5am? It looks automated.</p>
+<p>Sending from Pacific time to Eastern prospects at 8am PT = 11am ET. Late morning for the recipient - fine. Sending from Pacific at 8am ET = 5am PT. You're awake at 5am? It looks automated.</p>
 
 <p>Good cold email tools (Instantly, Smartlead) support recipient-timezone sending. Use it. Every email hits at the recipient's 9am regardless of where you are.</p>
 
@@ -812,10 +812,10 @@ write_cold_page(
 
 <h2>Holidays and slow weeks</h2>
 <ul>
-<li><strong>US Thanksgiving week</strong> — skip Thursday and Friday</li>
-<li><strong>Christmas and New Year's</strong> — pause entire sequences from Dec 22 - Jan 2</li>
-<li><strong>July 4 week</strong> — lower volume, skip Friday</li>
-<li><strong>Last week of August</strong> — reduced engagement; lower volume</li>
+<li><strong>US Thanksgiving week</strong> - skip Thursday and Friday</li>
+<li><strong>Christmas and New Year's</strong> - pause entire sequences from Dec 22 - Jan 2</li>
+<li><strong>July 4 week</strong> - lower volume, skip Friday</li>
+<li><strong>Last week of August</strong> - reduced engagement; lower volume</li>
 </ul>
 
 <p>Emails sent in these periods either get buried or land when your prospect returns to a backed-up inbox. Pause, resume when attention returns.</p>
@@ -858,7 +858,7 @@ write_cold_page(
 <button class="copy-btn">Copy</button>
 <pre>Hey [first name],
 
-Closing the loop on this thread — sounds like now isn't the right time.
+Closing the loop on this thread - sounds like now isn't the right time.
 
 If [specific future trigger], feel free to reach out. I'll stop reaching out until then.
 
@@ -873,7 +873,7 @@ If [specific future trigger], feel free to reach out. I'll stop reaching out unt
 <button class="copy-btn">Copy</button>
 <pre>Hey [name],
 
-Last one — no reply usually means "not right now" or "not for me." Either is fine.
+Last one - no reply usually means "not right now" or "not for me." Either is fine.
 
 If [trigger: e.g., "pipeline pressure hits again next quarter"] becomes a priority, reply or call.
 
@@ -888,7 +888,7 @@ Sam</pre>
 <button class="copy-btn">Copy</button>
 <pre>Hey [name],
 
-Read between the lines you've gone quiet — makes sense if priorities shifted.
+Read between the lines you've gone quiet - makes sense if priorities shifted.
 
 Two options:
 - Want to pick this up in [month]? Reply "ping me" and I'll circle back then.
@@ -913,9 +913,9 @@ Sam</pre>
 <h2>What NOT to do in a breakup</h2>
 
 <h3>Don't guilt trip</h3>
-<p>"Sorry to keep bothering you" — don't.<br>
-"I feel like I've been a nuisance" — don't.<br>
-"I guess you're not interested" — don't.</p>
+<p>"Sorry to keep bothering you" - don't.<br>
+"I feel like I've been a nuisance" - don't.<br>
+"I guess you're not interested" - don't.</p>
 
 <p>Apologies and guilt make you sound weak and waste the prospect's time re-reassuring you.</p>
 
@@ -923,7 +923,7 @@ Sam</pre>
 <p>"If you're not the right person, who is?" on the breakup email reads as aggressive. Move that ask to email 3 or 4.</p>
 
 <h3>Don't beg</h3>
-<p>"If you could just give me 5 minutes" — no. The breakup is about your dignity as a sender, not their pity.</p>
+<p>"If you could just give me 5 minutes" - no. The breakup is about your dignity as a sender, not their pity.</p>
 
 <h3>Don't re-pitch</h3>
 <p>The breakup is not another chance to sell. If you haven't sold them in 4 emails, email 5 isn't the one that converts the pitch.</p>
@@ -947,7 +947,7 @@ Sam</pre>
 
 Sounds like timing isn't right.
 
-I'll put a reminder to reach out in [specific month — Q2, September, whenever makes sense].
+I'll put a reminder to reach out in [specific month - Q2, September, whenever makes sense].
 
 If something shifts before then, reply anytime.
 
@@ -984,7 +984,7 @@ write_cold_page(
 <ul>
 <li><strong>Day 0:</strong> Email 1 + LinkedIn connection request</li>
 <li><strong>Day 3:</strong> Email 2 (bump)</li>
-<li><strong>Day 5:</strong> If LinkedIn connection accepted, send LinkedIn message (NOT a pitch — a short "great to connect")</li>
+<li><strong>Day 5:</strong> If LinkedIn connection accepted, send LinkedIn message (NOT a pitch - a short "great to connect")</li>
 <li><strong>Day 8:</strong> Email 3 (reframe)</li>
 <li><strong>Day 10:</strong> Phone call attempt (voicemail if no answer)</li>
 <li><strong>Day 13:</strong> Email 4 (case study)</li>
@@ -1035,7 +1035,7 @@ Happy to dig in further if useful. Otherwise looking forward to seeing your work
 <div class="prompt-box">
 <div class="prompt-box-label">Cold voicemail</div>
 <button class="copy-btn">Copy</button>
-<pre>Hi [name], this is Sam from [company]. Trying to catch you before Friday on the [topic] thing I emailed about — the short version is [one sentence].
+<pre>Hi [name], this is Sam from [company]. Trying to catch you before Friday on the [topic] thing I emailed about - the short version is [one sentence].
 
 I'll follow up by email. If you want to cut the back-and-forth, my direct is [number]. Thanks [name].</pre>
 </div>
@@ -1050,7 +1050,7 @@ I'll follow up by email. If you want to cut the back-and-forth, my direct is [nu
 </ul>
 
 <h3>Second phone attempt</h3>
-<p>5-7 days after first. Different time of day. If still no answer, stop calling — you've left your mark.</p>
+<p>5-7 days after first. Different time of day. If still no answer, stop calling - you've left your mark.</p>
 
 <h2>The channel priority rules</h2>
 <ul>
@@ -1066,7 +1066,7 @@ I'll follow up by email. If you want to cut the back-and-forth, my direct is [nu
 <li><strong>Salesloft, Outreach:</strong> enterprise SDR orchestration. Email + phone + tasks.</li>
 <li><strong>Instantly, Smartlead:</strong> email-first but LinkedIn integrations improving.</li>
 <li><strong>Reply.io, Apollo:</strong> native multi-channel.</li>
-<li><strong>LinkedIn automation tools (Dux-Soup, Waalaxy):</strong> for the LinkedIn leg. Use carefully — LinkedIn aggressively limits automation.</li>
+<li><strong>LinkedIn automation tools (Dux-Soup, Waalaxy):</strong> for the LinkedIn leg. Use carefully - LinkedIn aggressively limits automation.</li>
 </ul>
 
 <h2>The compliance angle</h2>
@@ -1154,7 +1154,7 @@ write_cold_page(
 <p>Many deals close on re-engagement 8-12 months after first outreach.</p>
 
 <h2>The "never-ending sequence" anti-pattern</h2>
-<p>Some operators set up sequences that never end — automated bumps every 2 weeks forever. Don't.</p>
+<p>Some operators set up sequences that never end - automated bumps every 2 weeks forever. Don't.</p>
 
 <ul>
 <li>Annoyance compounds</li>

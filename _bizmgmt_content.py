@@ -8,7 +8,7 @@ def page(slug, title, desc, body, prev=None, nxt=None, rt=3):
 
 
 # ==================== HUB ====================
-hub_body_parts = ['<p class="lede">Business management — not theory, not MBA platitudes. The actual operating craft: how to build systems, hire well, read a P&L, make decisions under uncertainty, and run a team that ships.</p>']
+hub_body_parts = ['<p class="lede">Business management - not theory, not MBA platitudes. The actual operating craft: how to build systems, hire well, read a P&L, make decisions under uncertainty, and run a team that ships.</p>']
 hub_body_parts.append('<p style="color:var(--gray-500); font-size:14px;">40 pages · Approx. <strong>~20,000 words</strong> of operational craft.</p>')
 for section_title, items in BM_SIDEBAR:
     hub_body_parts.append(f'<h2>{section_title}</h2>')
@@ -17,8 +17,8 @@ for section_title, items in BM_SIDEBAR:
         if slug == "index": continue
         hub_body_parts.append(f'<li><a href="{slug}.html"><span><span class="hub-title">{label}</span></span><span class="hub-arrow">→</span></a></li>')
     hub_body_parts.append('</ul>')
-page("index", "Business Management — 40-Page Operator's Field Guide",
-     "Practical business management — designing operating systems, hiring, finance, strategy, sales, execution, leadership. 40 pages of operator-grade content.",
+page("index", "Business Management - 40-Page Operator's Field Guide",
+     "Practical business management - designing operating systems, hiring, finance, strategy, sales, execution, leadership. 40 pages of operator-grade content.",
      "\n".join(hub_body_parts), prev=None,
      nxt=("Designing the OS", "operating-systems/designing-the-os.html"), rt=2)
 
@@ -34,42 +34,42 @@ page("operating-systems/designing-the-os",
 <p class="lede">A business operating system (BOS) is the collection of recurring meetings, written documents, scorecards, and decision cadences that let a business run on rails instead of on heroics. Without one, every week is improvised. With one, the business compounds.</p>
 
 <h2>Why every real operator cares</h2>
-<p>The #1 reason founders hit a ceiling is they can't scale themselves. A personal brain isn't a system. An operating system is — and it's what lets the business grow past the founder's daily involvement.</p>
+<p>The #1 reason founders hit a ceiling is they can't scale themselves. A personal brain isn't a system. An operating system is - and it's what lets the business grow past the founder's daily involvement.</p>
 
 <h2>The five components</h2>
 <ol>
-  <li><strong>Meetings</strong> — the rhythm. Weekly, monthly, quarterly.</li>
-  <li><strong>Scorecards</strong> — the numbers that say how it's going.</li>
-  <li><strong>Accountability chart</strong> — who owns what.</li>
-  <li><strong>Documents</strong> — SOPs, wikis, decision logs.</li>
-  <li><strong>Decision protocols</strong> — how disagreements get resolved, how commitments get made.</li>
+  <li><strong>Meetings</strong> - the rhythm. Weekly, monthly, quarterly.</li>
+  <li><strong>Scorecards</strong> - the numbers that say how it's going.</li>
+  <li><strong>Accountability chart</strong> - who owns what.</li>
+  <li><strong>Documents</strong> - SOPs, wikis, decision logs.</li>
+  <li><strong>Decision protocols</strong> - how disagreements get resolved, how commitments get made.</li>
 </ol>
 <p>Miss any one and the others start leaking.</p>
 
 <h2>Meeting rhythm (the backbone)</h2>
 <ul>
-  <li><strong>Daily standup</strong> — 10 min, team-level. "What I did, what I'm doing, what's blocked."</li>
-  <li><strong>Weekly team meeting (L10 / WBR)</strong> — 60-90 min. Scorecard review, issue list, to-dos. See <a href="weekly-business-review.html">Weekly business review</a>.</li>
-  <li><strong>Biweekly 1:1s</strong> — manager + direct report, 30-45 min. Not status updates — growth, blockers, feedback.</li>
-  <li><strong>Monthly business review</strong> — leadership. KPIs vs. plan, budget, resource allocation.</li>
-  <li><strong>Quarterly planning</strong> — 1 day offsite. Set next quarter's rocks/OKRs.</li>
-  <li><strong>Annual planning</strong> — 2-3 days. Longer horizon, strategic bets.</li>
+  <li><strong>Daily standup</strong> - 10 min, team-level. "What I did, what I'm doing, what's blocked."</li>
+  <li><strong>Weekly team meeting (L10 / WBR)</strong> - 60-90 min. Scorecard review, issue list, to-dos. See <a href="weekly-business-review.html">Weekly business review</a>.</li>
+  <li><strong>Biweekly 1:1s</strong> - manager + direct report, 30-45 min. Not status updates - growth, blockers, feedback.</li>
+  <li><strong>Monthly business review</strong> - leadership. KPIs vs. plan, budget, resource allocation.</li>
+  <li><strong>Quarterly planning</strong> - 1 day offsite. Set next quarter's rocks/OKRs.</li>
+  <li><strong>Annual planning</strong> - 2-3 days. Longer horizon, strategic bets.</li>
 </ul>
 
 <h2>Scorecards (the nervous system)</h2>
-<p>Every seat has a scorecard. 5-7 measurable numbers per team that tell you if the work is working. Reviewed weekly. No discussion — just read the number. Green, yellow, red.</p>
+<p>Every seat has a scorecard. 5-7 measurable numbers per team that tell you if the work is working. Reviewed weekly. No discussion - just read the number. Green, yellow, red.</p>
 <p>Without scorecards, you argue about feelings. With them, you argue about reality.</p>
 
 <h2>Accountability chart (not an org chart)</h2>
-<p>An accountability chart is a clear mapping of <em>seats</em> to <em>functions</em>. Each seat has 3-7 "accountabilities" — the actual things that seat owns. One name per seat. One seat per function.</p>
+<p>An accountability chart is a clear mapping of <em>seats</em> to <em>functions</em>. Each seat has 3-7 "accountabilities" - the actual things that seat owns. One name per seat. One seat per function.</p>
 <p>Most orgs have 3 people all kind-of responsible for marketing, which means nobody is. The accountability chart forces clarity.</p>
 
 <h2>Documents (the institutional memory)</h2>
 <ul>
-  <li><strong>SOPs</strong> — how we do this (see <a href="sops.html">SOPs</a>)</li>
-  <li><strong>Decision logs</strong> — what we decided and why (see <a href="decision-logs.html">Decision logs</a>)</li>
-  <li><strong>Company wiki</strong> — policies, benefits, culture</li>
-  <li><strong>Strategic memo</strong> — annual refresh of "what are we doing and why"</li>
+  <li><strong>SOPs</strong> - how we do this (see <a href="sops.html">SOPs</a>)</li>
+  <li><strong>Decision logs</strong> - what we decided and why (see <a href="decision-logs.html">Decision logs</a>)</li>
+  <li><strong>Company wiki</strong> - policies, benefits, culture</li>
+  <li><strong>Strategic memo</strong> - annual refresh of "what are we doing and why"</li>
 </ul>
 
 <h2>Decision protocols</h2>
@@ -93,7 +93,7 @@ page("operating-systems/designing-the-os",
 <p>Trying to install the whole system at once collapses. Build it one layer at a time.</p>
 
 <h2>Frameworks that work</h2>
-<p>EOS/Traction, Scaling Up, Amazon's S-Team operating model, Bridgewater's principles — each is a published operating system. Pick one, modify, commit. Don't Frankenstein three of them.</p>
+<p>EOS/Traction, Scaling Up, Amazon's S-Team operating model, Bridgewater's principles - each is a published operating system. Pick one, modify, commit. Don't Frankenstein three of them.</p>
 ''', prev=("Business Management overview", "../index.html"),
      nxt=("Weekly business review", "weekly-business-review.html"), rt=4)
 
@@ -102,20 +102,20 @@ page("operating-systems/weekly-business-review",
      "The weekly business review (WBR)",
      "The single most important meeting in any operating system. What goes on the agenda, what stays off, and why skipping it silently breaks companies.",
      '''
-<p class="lede">The Weekly Business Review — also called the L10, the staff meeting, the WBR — is the heartbeat of a running business. 60-90 minutes a week. Same agenda. Same people. Non-negotiable. Every operator I respect runs one.</p>
+<p class="lede">The Weekly Business Review - also called the L10, the staff meeting, the WBR - is the heartbeat of a running business. 60-90 minutes a week. Same agenda. Same people. Non-negotiable. Every operator I respect runs one.</p>
 
 <h2>Why weekly</h2>
-<p>Monthly is too slow — problems compound for 30 days before they surface. Daily is too frequent — not enough changes day-to-day to warrant leadership time. Weekly is the right cadence: problems surface within a week, get addressed, status changes tracked.</p>
+<p>Monthly is too slow - problems compound for 30 days before they surface. Daily is too frequent - not enough changes day-to-day to warrant leadership time. Weekly is the right cadence: problems surface within a week, get addressed, status changes tracked.</p>
 
-<h2>The canonical agenda (EOS/L10 format — use it)</h2>
+<h2>The canonical agenda (EOS/L10 format - use it)</h2>
 <ul>
-  <li><strong>Segue</strong> (5 min) — quick personal + professional bests</li>
-  <li><strong>Scorecard review</strong> (5 min) — read the numbers, flag off-track</li>
-  <li><strong>Rock review</strong> (5 min) — quarterly priorities status: on track / off track</li>
-  <li><strong>Customer/employee headlines</strong> (5 min) — meaningful wins + issues</li>
-  <li><strong>To-do list review</strong> (5 min) — previous week's to-dos complete/not</li>
-  <li><strong>IDS (Identify, Discuss, Solve)</strong> (60 min) — the issue list, worked through one at a time</li>
-  <li><strong>Conclude</strong> (5 min) — recap, ratings, close</li>
+  <li><strong>Segue</strong> (5 min) - quick personal + professional bests</li>
+  <li><strong>Scorecard review</strong> (5 min) - read the numbers, flag off-track</li>
+  <li><strong>Rock review</strong> (5 min) - quarterly priorities status: on track / off track</li>
+  <li><strong>Customer/employee headlines</strong> (5 min) - meaningful wins + issues</li>
+  <li><strong>To-do list review</strong> (5 min) - previous week's to-dos complete/not</li>
+  <li><strong>IDS (Identify, Discuss, Solve)</strong> (60 min) - the issue list, worked through one at a time</li>
+  <li><strong>Conclude</strong> (5 min) - recap, ratings, close</li>
 </ul>
 <p>Total: 90 min. Hard stop.</p>
 
@@ -138,7 +138,7 @@ page("operating-systems/weekly-business-review",
 
 <h2>Anti-patterns</h2>
 <ul>
-  <li>Meeting canceled "because we're busy" — you're busy because meetings get canceled</li>
+  <li>Meeting canceled "because we're busy" - you're busy because meetings get canceled</li>
   <li>Status updates that no one reads beforehand</li>
   <li>Issue list that grows but never shrinks</li>
   <li>To-dos that roll over week after week (accountability break)</li>
@@ -176,16 +176,16 @@ page("operating-systems/weekly-business-review",
 
 page("operating-systems/meetings",
      "Meetings that don't waste time",
-     "Most meetings are broken. Here's the discipline that makes the few you keep actually productive — and the rest safely cancelable.",
+     "Most meetings are broken. Here's the discipline that makes the few you keep actually productive - and the rest safely cancelable.",
      '''
-<p class="lede">Most meetings shouldn't exist. Of the ones that should, most are run poorly. The art isn't "more meetings" or "no meetings" — it's knowing which need to happen, what makes them work, and killing the rest.</p>
+<p class="lede">Most meetings shouldn't exist. Of the ones that should, most are run poorly. The art isn't "more meetings" or "no meetings" - it's knowing which need to happen, what makes them work, and killing the rest.</p>
 
 <h2>The test: does this need to be a meeting?</h2>
 <p>Before scheduling anything, ask:</p>
 <ol>
   <li>Is this a decision that requires real-time debate? (Meeting yes.)</li>
-  <li>Does this need creative collaboration — whiteboard, brainstorm? (Meeting yes.)</li>
-  <li>Does this need high-bandwidth social connection — relationship, culture? (Meeting yes.)</li>
+  <li>Does this need creative collaboration - whiteboard, brainstorm? (Meeting yes.)</li>
+  <li>Does this need high-bandwidth social connection - relationship, culture? (Meeting yes.)</li>
   <li>Is this information that could be an email, memo, or doc? (Meeting NO.)</li>
   <li>Is this status updates? (Async in writing.)</li>
 </ol>
@@ -234,7 +234,7 @@ page("operating-systems/meetings",
 <p>No agenda, no meeting. If someone can't write a 3-line agenda, the meeting isn't ready to happen.</p>
 
 <h3>The pre-read</h3>
-<p>For decision/review meetings, required. Shared ≥24h before. First 5-15 min of the meeting is silent reading if the pre-read wasn't consumed. Forces prep or forces waiting — either way, nobody wings it.</p>
+<p>For decision/review meetings, required. Shared ≥24h before. First 5-15 min of the meeting is silent reading if the pre-read wasn't consumed. Forces prep or forces waiting - either way, nobody wings it.</p>
 
 <h3>Notes + action items</h3>
 <p>Every meeting ends with:</p>
@@ -277,15 +277,15 @@ page("operating-systems/sops",
      "SOPs that actually get used",
      "Standard Operating Procedures fail when they're written by people who don't do the work, stored where nobody looks, and updated never. Here's how to make them useful.",
      '''
-<p class="lede">SOPs — Standard Operating Procedures — are the documented "how we do this." They exist on paper at most businesses and in reality at few. The gap between the two is where quality, training time, and institutional knowledge all leak out.</p>
+<p class="lede">SOPs - Standard Operating Procedures - are the documented "how we do this." They exist on paper at most businesses and in reality at few. The gap between the two is where quality, training time, and institutional knowledge all leak out.</p>
 
 <h2>Why SOPs matter</h2>
 <ul>
-  <li><strong>Onboarding</strong> — new hires get up to speed on specific processes without hours of 1:1 time</li>
-  <li><strong>Consistency</strong> — the 100th customer gets the same quality as the 1st</li>
-  <li><strong>Delegation</strong> — you can hand work off without reinventing the explanation</li>
-  <li><strong>Quality control</strong> — deviations from SOP get noticed and investigated</li>
-  <li><strong>Company value</strong> — documented operations are worth more when you sell</li>
+  <li><strong>Onboarding</strong> - new hires get up to speed on specific processes without hours of 1:1 time</li>
+  <li><strong>Consistency</strong> - the 100th customer gets the same quality as the 1st</li>
+  <li><strong>Delegation</strong> - you can hand work off without reinventing the explanation</li>
+  <li><strong>Quality control</strong> - deviations from SOP get noticed and investigated</li>
+  <li><strong>Company value</strong> - documented operations are worth more when you sell</li>
 </ul>
 
 <h2>Why most SOPs fail</h2>
@@ -347,11 +347,11 @@ RELATED SOPs
 
 <h2>The adoption loop</h2>
 <ol>
-  <li><strong>Write it</strong> — the operator drafts, the manager reviews, one round of edits.</li>
-  <li><strong>Test it</strong> — someone else follows the SOP to complete the task. Notes every place they had to ask a question.</li>
-  <li><strong>Update based on test</strong> — fill in the gaps found.</li>
-  <li><strong>Publish</strong> — land in the wiki, link from relevant onboarding docs.</li>
-  <li><strong>Review quarterly</strong> — the owner confirms it's still accurate. If they can't, someone else inherits.</li>
+  <li><strong>Write it</strong> - the operator drafts, the manager reviews, one round of edits.</li>
+  <li><strong>Test it</strong> - someone else follows the SOP to complete the task. Notes every place they had to ask a question.</li>
+  <li><strong>Update based on test</strong> - fill in the gaps found.</li>
+  <li><strong>Publish</strong> - land in the wiki, link from relevant onboarding docs.</li>
+  <li><strong>Review quarterly</strong> - the owner confirms it's still accurate. If they can't, someone else inherits.</li>
 </ol>
 
 <h2>When to create an SOP</h2>
@@ -391,12 +391,12 @@ RELATED SOPs
 
 page("operating-systems/decision-logs",
      "Decision logs",
-     "Most companies forget why they made the decisions they made. Decision logs fix that — one line in a shared doc can save months of re-litigation.",
+     "Most companies forget why they made the decisions they made. Decision logs fix that - one line in a shared doc can save months of re-litigation.",
      '''
-<p class="lede">A decision log is a chronological record of significant decisions the business makes — what was decided, why, by whom, with what reasoning. Takes 2 minutes per decision to maintain. Saves months of rework, re-litigation, and "wait, why did we do it that way?" conversations.</p>
+<p class="lede">A decision log is a chronological record of significant decisions the business makes - what was decided, why, by whom, with what reasoning. Takes 2 minutes per decision to maintain. Saves months of rework, re-litigation, and "wait, why did we do it that way?" conversations.</p>
 
 <h2>Why decision logs matter</h2>
-<p>In a growing company, decisions happen faster than anyone can remember. Six months later, a new hire asks "why do we do X?" — and nobody remembers. The reasons get re-invented poorly, or the decision gets unmade and redone (usually worse).</p>
+<p>In a growing company, decisions happen faster than anyone can remember. Six months later, a new hire asks "why do we do X?" - and nobody remembers. The reasons get re-invented poorly, or the decision gets unmade and redone (usually worse).</p>
 <p>A decision log is institutional memory. It survives people leaving, meetings forgotten, context lost.</p>
 
 <h2>What belongs in a decision log</h2>
@@ -417,7 +417,7 @@ CONTEXT: [What prompted this]
 OPTIONS CONSIDERED:
   - A: [pros/cons]
   - B: [pros/cons]
-  - C: [chosen — why]
+  - C: [chosen - why]
 REASONING: [Why C over A and B]
 REVISIT: [When or under what conditions to re-evaluate, if applicable]</code></pre>
 <p>Total: 3-8 lines. Takes 2 minutes to fill in after a decision meeting.</p>
@@ -427,7 +427,7 @@ REVISIT: [When or under what conditions to re-evaluate, if applicable]</code></p
 <p>Not every decision needs to be visible to every employee. Scope the log to who needs to know.</p>
 
 <h2>Why the "reasoning" field is the magic</h2>
-<p>Future-you or a new team member will see the decision. They need to know <em>why</em>. Without reasoning, the decision is floating in the air — easy to question, easy to unmake.</p>
+<p>Future-you or a new team member will see the decision. They need to know <em>why</em>. Without reasoning, the decision is floating in the air - easy to question, easy to unmake.</p>
 <p>Good reasoning documents the constraints at the time:</p>
 <ul>
   <li>"We chose X because A, B, and C were true in Q2 2026."</li>
@@ -445,15 +445,15 @@ REVISIT: [When or under what conditions to re-evaluate, if applicable]</code></p
 <p>Calendar reminders on revisit dates mean decisions get re-evaluated, not just forgotten.</p>
 
 <h2>Who maintains it</h2>
-<p>An operations lead, EA, or founder's chief of staff. Low overhead — they attend meetings, take 2 minutes to log each major decision, keep the doc current.</p>
+<p>An operations lead, EA, or founder's chief of staff. Low overhead - they attend meetings, take 2 minutes to log each major decision, keep the doc current.</p>
 
 <h2>Common mistakes</h2>
 <ul>
-  <li>Logging every decision — too noisy. Stick to significant ones.</li>
-  <li>Writing only what was decided, not why — strips the utility.</li>
-  <li>Making it private to the CEO — defeats institutional memory.</li>
-  <li>Starting a log during a crisis — you need the discipline built before you need it.</li>
-  <li>Treating it as a historical record only — use it in decision meetings: "we decided X last quarter, why is this back up?"</li>
+  <li>Logging every decision - too noisy. Stick to significant ones.</li>
+  <li>Writing only what was decided, not why - strips the utility.</li>
+  <li>Making it private to the CEO - defeats institutional memory.</li>
+  <li>Starting a log during a crisis - you need the discipline built before you need it.</li>
+  <li>Treating it as a historical record only - use it in decision meetings: "we decided X last quarter, why is this back up?"</li>
 </ul>
 
 <h2>The related doc: assumption log</h2>
@@ -462,7 +462,7 @@ REVISIT: [When or under what conditions to re-evaluate, if applicable]</code></p
 <p>Review quarterly. When an assumption turns false, you know which decisions to revisit.</p>
 
 <h2>Decision velocity vs. quality</h2>
-<p>Companies often choose: move fast and decide poorly, or decide well and move slowly. A decision log lets you do both — because you can revisit and fix yesterday's mistakes instead of pretending they didn't happen.</p>
+<p>Companies often choose: move fast and decide poorly, or decide well and move slowly. A decision log lets you do both - because you can revisit and fix yesterday's mistakes instead of pretending they didn't happen.</p>
 
 <h2>What operators learn from keeping one</h2>
 <p>Six months into keeping a decision log, patterns emerge:</p>
@@ -473,7 +473,7 @@ REVISIT: [When or under what conditions to re-evaluate, if applicable]</code></p
 </ul>
 <p>This is the meta-skill: learning from your own decision history. Impossible without records.</p>
 ''', prev=("SOPs that get used", "sops.html"),
-     nxt=("Hiring — signal vs noise", "../people/hiring-signal-vs-noise.html"), rt=4)
+     nxt=("Hiring - signal vs noise", "../people/hiring-signal-vs-noise.html"), rt=4)
 
 
 # ============================================================
@@ -481,22 +481,22 @@ REVISIT: [When or under what conditions to re-evaluate, if applicable]</code></p
 # ============================================================
 
 page("people/hiring-signal-vs-noise",
-     "Hiring — signal vs noise",
+     "Hiring - signal vs noise",
      "Most hiring processes measure the wrong things. Here's the honest breakdown of what actually predicts performance and what doesn't.",
      '''
-<p class="lede">Hiring is the single highest-leverage activity in a company — and the one most managers do worst. The cost of a bad hire is 3-5x their salary when you count ramp, lost output, team drag, and eventual severance. Yet most interview processes measure charisma, not performance.</p>
+<p class="lede">Hiring is the single highest-leverage activity in a company - and the one most managers do worst. The cost of a bad hire is 3-5x their salary when you count ramp, lost output, team drag, and eventual severance. Yet most interview processes measure charisma, not performance.</p>
 
 <h2>What predicts job performance (validated research)</h2>
 <p>Meta-analyses of hiring-success predictors, ranked by correlation with actual performance:</p>
 <ul>
-  <li><strong>Work sample tests</strong> — having them do the actual job (r ≈ 0.54)</li>
-  <li><strong>Structured interviews</strong> — same questions, scored rubric (r ≈ 0.51)</li>
-  <li><strong>Cognitive ability tests</strong> — r ≈ 0.51</li>
-  <li><strong>Integrity tests</strong> — r ≈ 0.41</li>
-  <li><strong>Reference checks</strong> (done well) — r ≈ 0.26</li>
-  <li><strong>Years of experience</strong> — r ≈ 0.18 (weak)</li>
-  <li><strong>Unstructured interviews</strong> — r ≈ 0.14 (shockingly weak)</li>
-  <li><strong>Age</strong> — r ≈ 0.01 (no predictive value)</li>
+  <li><strong>Work sample tests</strong> - having them do the actual job (r ≈ 0.54)</li>
+  <li><strong>Structured interviews</strong> - same questions, scored rubric (r ≈ 0.51)</li>
+  <li><strong>Cognitive ability tests</strong> - r ≈ 0.51</li>
+  <li><strong>Integrity tests</strong> - r ≈ 0.41</li>
+  <li><strong>Reference checks</strong> (done well) - r ≈ 0.26</li>
+  <li><strong>Years of experience</strong> - r ≈ 0.18 (weak)</li>
+  <li><strong>Unstructured interviews</strong> - r ≈ 0.14 (shockingly weak)</li>
+  <li><strong>Age</strong> - r ≈ 0.01 (no predictive value)</li>
 </ul>
 <p>What most companies do: unstructured interviews + vibe. What they should do: work samples + structured interviews.</p>
 
@@ -512,7 +512,7 @@ page("people/hiring-signal-vs-noise",
 <p>Inbound only = slow + biased toward people who see your post. Best hires are often passive candidates sourced directly. Invest in sourcing, not just application review.</p>
 
 <h3>Stage 3: Screen (20-30 min)</h3>
-<p>Recruiter or hiring manager. Goals: confirm baseline fit, compensation alignment, motivation. Avoid elaborate questions — this is a filter, not an interview.</p>
+<p>Recruiter or hiring manager. Goals: confirm baseline fit, compensation alignment, motivation. Avoid elaborate questions - this is a filter, not an interview.</p>
 
 <h3>Stage 4: Hiring manager interview (45-60 min)</h3>
 <p>Structured. Same questions for every candidate. Scored rubric. Topics:</p>
@@ -523,10 +523,10 @@ page("people/hiring-signal-vs-noise",
 </ul>
 
 <h3>Stage 5: Work sample (60-120 min)</h3>
-<p>Paid — always. Something concrete they'd actually do in the job. Bonus: do it together so you see their working style, not just the output.</p>
+<p>Paid - always. Something concrete they'd actually do in the job. Bonus: do it together so you see their working style, not just the output.</p>
 
 <h3>Stage 6: Panel interviews (60 min each)</h3>
-<p>3-5 people from the team. Each person owns 1-2 specific dimensions. Post-interview, each writes their evaluation BEFORE talking to anyone else. Group discussion after — no anchoring.</p>
+<p>3-5 people from the team. Each person owns 1-2 specific dimensions. Post-interview, each writes their evaluation BEFORE talking to anyone else. Group discussion after - no anchoring.</p>
 
 <h3>Stage 7: References</h3>
 <p>Do them. Back-channel even more than front-channel. Ask specific questions: "On a scale of 1-10, where was [candidate] in your team?" "Would you hire them again?" "What was the hardest thing for them?"</p>
@@ -574,12 +574,12 @@ page("people/hiring-signal-vs-noise",
 
 page("people/role-scorecard",
      "The role scorecard",
-     "Before you post a job, write a scorecard. It's the highest-ROI document in hiring — and the cheapest to skip.",
+     "Before you post a job, write a scorecard. It's the highest-ROI document in hiring - and the cheapest to skip.",
      '''
-<p class="lede">A role scorecard is a 1-page document defining exactly what success in the seat looks like. Objective. Measurable. 3-5 outcomes. If you can't write one, you're not ready to hire — and anyone you hire will be set up to fail.</p>
+<p class="lede">A role scorecard is a 1-page document defining exactly what success in the seat looks like. Objective. Measurable. 3-5 outcomes. If you can't write one, you're not ready to hire - and anyone you hire will be set up to fail.</p>
 
 <h2>The core insight</h2>
-<p>Most job descriptions list responsibilities ("manage the team, drive results, own the pipeline"). Those are activities, not outcomes. Scorecards describe outcomes — what the person will have produced by month 12.</p>
+<p>Most job descriptions list responsibilities ("manage the team, drive results, own the pipeline"). Those are activities, not outcomes. Scorecards describe outcomes - what the person will have produced by month 12.</p>
 
 <h2>The template</h2>
 <pre><code>ROLE: [Title]
@@ -590,9 +590,9 @@ MISSION (1-2 sentences):
 Why this seat exists. What it's for.
 
 OUTCOMES (3-5, specific + measurable):
-1. [By when] — [what specifically, with number]
-2. [By when] — [what specifically, with number]
-3. [By when] — [what specifically, with number]
+1. [By when] - [what specifically, with number]
+2. [By when] - [what specifically, with number]
+3. [By when] - [what specifically, with number]
 4. (optional)
 5. (optional)
 
@@ -608,7 +608,7 @@ CULTURAL FIT (3-5):
 DEAL-BREAKERS:
 - [Things that would make us pass regardless of skill]</code></pre>
 
-<h2>Outcomes — the heart</h2>
+<h2>Outcomes - the heart</h2>
 
 <h3>Bad outcome</h3>
 <p>"Grow the sales team." (Not measurable. Not time-bound.)</p>
@@ -627,14 +627,14 @@ DEAL-BREAKERS:
 </ul>
 
 <h2>Competencies</h2>
-<p>Specific behaviors the person needs to demonstrate. Not skills/knowledge (those are trainable) — behavioral patterns.</p>
+<p>Specific behaviors the person needs to demonstrate. Not skills/knowledge (those are trainable) - behavioral patterns.</p>
 <ul>
   <li>"Moves fast under ambiguity"</li>
   <li>"Gives direct feedback, including upward"</li>
   <li>"Proactively documents decisions"</li>
-  <li>"Sees around corners — anticipates 2-3 moves ahead"</li>
+  <li>"Sees around corners - anticipates 2-3 moves ahead"</li>
 </ul>
-<p>During interviews, you're testing for these — not just for answers to skill questions.</p>
+<p>During interviews, you're testing for these - not just for answers to skill questions.</p>
 
 <h2>Cultural fit</h2>
 <p>Specific, not vague. "Must love dogs" isn't culture. "Must default to writing" (for a memo-culture company) or "must be comfortable with radical candor" are cultural fit filters.</p>
@@ -651,7 +651,7 @@ DEAL-BREAKERS:
 <h2>Process</h2>
 <ol>
   <li>Hiring manager drafts (15-30 min)</li>
-  <li>Team review (30 min) — does this match reality?</li>
+  <li>Team review (30 min) - does this match reality?</li>
   <li>CEO/exec review for senior roles</li>
   <li>Lock before posting</li>
 </ol>
@@ -662,7 +662,7 @@ DEAL-BREAKERS:
 <p>The outcomes become your sourcing filter. If the candidate's last role didn't hit similar outcomes, they probably can't hit yours.</p>
 
 <h3>In interviews</h3>
-<p>Every question maps to an outcome or competency. "Outcome 1 is $200K/month ARR by month 12 — walk me through how you'd approach the first 90 days."</p>
+<p>Every question maps to an outcome or competency. "Outcome 1 is $200K/month ARR by month 12 - walk me through how you'd approach the first 90 days."</p>
 
 <h3>In the offer</h3>
 <p>Share the scorecard with the finalist. "Here's exactly what success looks like. Any concerns before you sign?" Aligns expectations from day one.</p>
@@ -682,7 +682,7 @@ DEAL-BREAKERS:
 </ul>
 <p>Every reason is actually a benefit.</p>
 
-<h2>Real example — Sales Leader scorecard</h2>
+<h2>Real example - Sales Leader scorecard</h2>
 <pre><code>ROLE: Head of Sales
 REPORTS TO: CEO
 START: Q2 2026
@@ -690,16 +690,16 @@ START: Q2 2026
 MISSION: Build the sales org that takes us from $500K to $5M ARR in 18 months.
 
 OUTCOMES:
-1. By month 3 — hire + onboard 2 AEs with validated pipeline
-2. By month 6 — team runs at 80%+ quota attainment
-3. By month 9 — $1.5M ARR closed (from $500K baseline)
-4. By month 12 — sales org of 6 producing predictable $200K/mo
-5. By month 18 — $5M ARR, repeatable playbook, 2 managers coaching directly
+1. By month 3 - hire + onboard 2 AEs with validated pipeline
+2. By month 6 - team runs at 80%+ quota attainment
+3. By month 9 - $1.5M ARR closed (from $500K baseline)
+4. By month 12 - sales org of 6 producing predictable $200K/mo
+5. By month 18 - $5M ARR, repeatable playbook, 2 managers coaching directly
 
 COMPETENCIES:
 - Has built a sales team from &lt;5 to &gt;15 before
 - Comfortable running process + pipeline reviews weekly
-- Coaches reps directly — joins calls, runs role-plays
+- Coaches reps directly - joins calls, runs role-plays
 - Writes the playbook as the team scales
 - Data-literate; uses CRM pipeline data daily
 
@@ -710,7 +710,7 @@ FIT:
 DEAL-BREAKERS:
 - Won't relocate to NYC HQ
 - Doesn't want to be hands-on in first 90 days</code></pre>
-''', prev=("Hiring — signal vs noise", "hiring-signal-vs-noise.html"),
+''', prev=("Hiring - signal vs noise", "hiring-signal-vs-noise.html"),
      nxt=("Onboarding that compounds", "onboarding.html"), rt=5)
 
 
@@ -732,27 +732,27 @@ page("people/onboarding",
 
 <h2>The 30/60/90 framework</h2>
 
-<h3>First 30 days — context + relationships</h3>
+<h3>First 30 days - context + relationships</h3>
 <p>Goals:</p>
 <ul>
-  <li>Understand the business — products, customers, unit economics</li>
-  <li>Understand the team — who does what, how decisions flow</li>
+  <li>Understand the business - products, customers, unit economics</li>
+  <li>Understand the team - who does what, how decisions flow</li>
   <li>Build rapport with 10-15 key people across functions</li>
   <li>Read the essential docs (strategy memos, SOPs for their role, last few board decks)</li>
   <li>Produce one small, visible win (document something, fix something small, attend a customer call + write notes)</li>
 </ul>
 <p>What NOT to do: ship major features, make big bets, judge existing systems aloud.</p>
 
-<h3>60 days — scoped contribution</h3>
+<h3>60 days - scoped contribution</h3>
 <p>Goals:</p>
 <ul>
   <li>Own one meaningful project end-to-end</li>
-  <li>Contribute in their team meetings — have opinions, not just questions</li>
+  <li>Contribute in their team meetings - have opinions, not just questions</li>
   <li>Begin to push back on things they disagree with (but still learning the nuance)</li>
   <li>Have produced at least one artifact (doc, ship, deal, hire) they're proud of</li>
 </ul>
 
-<h3>90 days — operating at pace</h3>
+<h3>90 days - operating at pace</h3>
 <p>Goals:</p>
 <ul>
   <li>Running their full scope</li>
@@ -778,16 +778,16 @@ page("people/onboarding",
 
 <h3>Week 1 schedule</h3>
 <ul>
-  <li>Day 1 — HR, tools, manager kickoff, light reading</li>
-  <li>Day 2-3 — stakeholder meetings (5-10, 30 min each)</li>
-  <li>Day 4-5 — attend live team meetings, start reading docs, small first task</li>
+  <li>Day 1 - HR, tools, manager kickoff, light reading</li>
+  <li>Day 2-3 - stakeholder meetings (5-10, 30 min each)</li>
+  <li>Day 4-5 - attend live team meetings, start reading docs, small first task</li>
 </ul>
 
 <h3>Buddy + manager</h3>
-<p>Manager owns performance. Buddy owns daily navigation — answers "where's the deck template?" questions so the new hire doesn't feel like they're bothering the manager.</p>
+<p>Manager owns performance. Buddy owns daily navigation - answers "where's the deck template?" questions so the new hire doesn't feel like they're bothering the manager.</p>
 
 <h3>Reading lists</h3>
-<p>A curated list of 10-20 documents — key strategy memos, operating docs, customer case studies, org structure. Read in first 2 weeks. Prevents learning-by-ambush.</p>
+<p>A curated list of 10-20 documents - key strategy memos, operating docs, customer case studies, org structure. Read in first 2 weeks. Prevents learning-by-ambush.</p>
 
 <h3>Explicit 30/60/90 plan</h3>
 <p>Written. Signed off by manager + new hire. Revisited every 2 weeks. Clear what "on track" means.</p>
@@ -799,11 +799,11 @@ page("people/onboarding",
 <p>Fix: the scorecard from the hiring process IS their 90-day plan. Concrete outcomes, clear ownership.</p>
 
 <h3>Zero ramp-up structure</h3>
-<p>"Figure it out — we're busy." New hire spends 3 months lost, produces nothing, everyone blames them.</p>
+<p>"Figure it out - we're busy." New hire spends 3 months lost, produces nothing, everyone blames them.</p>
 <p>Fix: budget 5-10 hours of manager time for first 2 weeks. That investment pays back 100x.</p>
 
 <h3>Trial by fire as policy</h3>
-<p>Some cultures think "throw them in the deep end" is a feature. It's not. It filters for swimmers — who would've done fine with onboarding too — at the cost of talented people who needed just a little structure.</p>
+<p>Some cultures think "throw them in the deep end" is a feature. It's not. It filters for swimmers - who would've done fine with onboarding too - at the cost of talented people who needed just a little structure.</p>
 
 <h2>Onboarding + culture transmission</h2>
 <p>The first 30 days is when new hires encode the culture. What they see is what they'll do.</p>
@@ -822,7 +822,7 @@ page("people/onboarding",
   <li>What should we (manager + company) be doing differently?</li>
   <li>On the original scorecard, where are you?</li>
 </ul>
-<p>If clear gaps exist at 90 days, call them out. The 90-day mark is when mismatches are cheap to fix — and painful to ignore.</p>
+<p>If clear gaps exist at 90 days, call them out. The 90-day mark is when mismatches are cheap to fix - and painful to ignore.</p>
 
 <h2>What good onboarding produces</h2>
 <ul>
@@ -830,7 +830,7 @@ page("people/onboarding",
   <li>Higher retention (people who feel set up stay)</li>
   <li>Better cultural alignment</li>
   <li>Earlier identification of misfits (and clean exits when needed)</li>
-  <li>Trust — new hires see the company operate competently from day one</li>
+  <li>Trust - new hires see the company operate competently from day one</li>
 </ul>
 ''', prev=("The role scorecard", "role-scorecard.html"),
      nxt=("One-on-ones", "one-on-ones.html"), rt=5)
@@ -838,7 +838,7 @@ page("people/onboarding",
 
 page("people/one-on-ones",
      "One-on-ones done right",
-     "The most important manager meeting — and the one most managers run worst. What 1:1s are for, what they're not, and how to run one that changes the relationship.",
+     "The most important manager meeting - and the one most managers run worst. What 1:1s are for, what they're not, and how to run one that changes the relationship.",
      '''
 <p class="lede">One-on-ones between manager and direct report are the most important recurring meeting in management. They're also the most frequently misrun. Done well, they build trust, surface issues early, and accelerate the person's growth. Done as status updates, they waste an hour a week.</p>
 
@@ -856,7 +856,7 @@ page("people/one-on-ones",
   <li><strong>Surfacing blockers.</strong> What's hard right now? What can I help with?</li>
   <li><strong>Growth.</strong> Coaching, feedback, development.</li>
   <li><strong>Context transfer.</strong> What's the direct report missing that I know?</li>
-  <li><strong>Feedback — both directions.</strong> What should I be doing differently as your manager?</li>
+  <li><strong>Feedback - both directions.</strong> What should I be doing differently as your manager?</li>
   <li><strong>Career conversations.</strong> Where do you want to go? What's the path?</li>
 </ul>
 
@@ -918,12 +918,12 @@ page("people/one-on-ones",
 
 <h2>Red flags in 1:1s</h2>
 <ul>
-  <li>Consistently short — you're not going deep</li>
-  <li>Direct report brings no agenda — they don't feel ownership</li>
-  <li>Only status updates — the format has degenerated</li>
-  <li>Manager does most of the talking — reverse it</li>
-  <li>No feedback (either direction) — trust isn't there yet</li>
-  <li>Repeated cancellations — subtle disrespect</li>
+  <li>Consistently short - you're not going deep</li>
+  <li>Direct report brings no agenda - they don't feel ownership</li>
+  <li>Only status updates - the format has degenerated</li>
+  <li>Manager does most of the talking - reverse it</li>
+  <li>No feedback (either direction) - trust isn't there yet</li>
+  <li>Repeated cancellations - subtle disrespect</li>
 </ul>
 
 <h2>When the relationship is new (first 6-12 weeks)</h2>
@@ -944,13 +944,13 @@ page("people/one-on-ones",
 </ul>
 
 <h2>Feedback both directions</h2>
-<p>"Is there anything I should do differently as your manager?" — ask every meeting, or at least monthly. Expect the answer to be "no" the first few times. Build trust. They'll eventually tell you.</p>
+<p>"Is there anything I should do differently as your manager?" - ask every meeting, or at least monthly. Expect the answer to be "no" the first few times. Build trust. They'll eventually tell you.</p>
 <p>When they do, take it. Don't defend. Reflect. Come back next week with what you changed.</p>
 
 <h2>The payoff of doing 1:1s well</h2>
 <ul>
   <li>Retention goes up</li>
-  <li>Performance issues get caught early — cheap to fix</li>
+  <li>Performance issues get caught early - cheap to fix</li>
   <li>You see blind spots in the org</li>
   <li>Direct reports feel invested in</li>
   <li>Your reputation as a manager becomes an asset, not a liability</li>
@@ -963,7 +963,7 @@ page("people/performance-reviews",
      "Performance reviews that actually work",
      "Most performance reviews are surprise-filled, documentation-theater, and leave both parties worse off. Here's a system that doesn't.",
      '''
-<p class="lede">Traditional performance reviews — once a year, with surprises, anchored on a rating, delivered in dread — are a broken ritual. The fix isn't better review forms. It's real-time feedback all year, with reviews as a formal summary, not the only time honest conversations happen.</p>
+<p class="lede">Traditional performance reviews - once a year, with surprises, anchored on a rating, delivered in dread - are a broken ritual. The fix isn't better review forms. It's real-time feedback all year, with reviews as a formal summary, not the only time honest conversations happen.</p>
 
 <h2>The design principle</h2>
 <p>"No surprises" at the review. If there's something negative in the review, the person heard it in conversation months ago. If there's something positive, same. The review formalizes what's been discussed, doesn't introduce it.</p>
@@ -1016,7 +1016,7 @@ page("people/performance-reviews",
 </ul>
 
 <h3>3. Peer/cross-functional input</h3>
-<p>360-style feedback from 3-5 colleagues. Structured — "what does X do well? where could X improve?" — not open-ended.</p>
+<p>360-style feedback from 3-5 colleagues. Structured - "what does X do well? where could X improve?" - not open-ended.</p>
 
 <h3>4. Calibration meeting (peer managers)</h3>
 <p>Before sharing reviews with employees, managers sit together and calibrate. Is Joe's "exceeds expectations" the same as Maria's "exceeds"? Without calibration, ratings drift by manager, creating unfairness.</p>
@@ -1024,8 +1024,8 @@ page("people/performance-reviews",
 <h3>5. Review conversation (60-90 min)</h3>
 <p>Not a recitation. Discussion.</p>
 <ul>
-  <li>Open with the self-assessment — ask how they see their year</li>
-  <li>Share your view — acknowledge what aligns + diverges</li>
+  <li>Open with the self-assessment - ask how they see their year</li>
+  <li>Share your view - acknowledge what aligns + diverges</li>
   <li>Focus most time on 2-3 things: what they did best + what would help them grow most</li>
   <li>Discuss compensation if that's decided</li>
   <li>Co-author goals for next period</li>
@@ -1034,7 +1034,7 @@ page("people/performance-reviews",
 <h3>6. Written summary</h3>
 <p>You write it. Shared with the employee. Signed by both. Filed.</p>
 
-<h2>Ratings — use or skip?</h2>
+<h2>Ratings - use or skip?</h2>
 <p>Companies split on this. Arguments:</p>
 
 <h3>For ratings</h3>
@@ -1052,7 +1052,7 @@ page("people/performance-reviews",
   <li>Forced distributions (bell curves) breed politics</li>
   <li>Demoralizing for most employees (who rate themselves higher than the manager rates them)</li>
 </ul>
-<p>Middle path: use ratings for calibration + comp, but don't center the conversation on them. Ratings are the tax documents of performance reviews — necessary, not the point.</p>
+<p>Middle path: use ratings for calibration + comp, but don't center the conversation on them. Ratings are the tax documents of performance reviews - necessary, not the point.</p>
 
 <h2>Delivering hard feedback</h2>
 <ul>
@@ -1065,18 +1065,18 @@ page("people/performance-reviews",
 <h2>The compensation conversation</h2>
 <ul>
   <li>Clear on how comp is determined (market, performance, company performance)</li>
-  <li>Decided BEFORE the review — don't negotiate during</li>
+  <li>Decided BEFORE the review - don't negotiate during</li>
   <li>Delivered with honest context (why this raise, why not more, what would change it)</li>
 </ul>
 
 <h2>For poor performance</h2>
 <p>If someone is failing, the review isn't where you surface it. That conversation happened weeks or months ago. The review is the formal documentation.</p>
-<p>Performance improvement plans (PIPs) are legitimate tools — but only if the problem was raised real-time, the PIP has specific outcomes, and you're actually willing to support the person through it.</p>
+<p>Performance improvement plans (PIPs) are legitimate tools - but only if the problem was raised real-time, the PIP has specific outcomes, and you're actually willing to support the person through it.</p>
 
 <h2>For high performers</h2>
 <ul>
   <li>Recognize specific contributions</li>
-  <li>Don't neglect growth areas — A-players need coaching too</li>
+  <li>Don't neglect growth areas - A-players need coaching too</li>
   <li>Invest in career conversations: where do they want to go?</li>
   <li>Pay competitively + visibly (top performers always know their market rate)</li>
 </ul>
@@ -1085,16 +1085,16 @@ page("people/performance-reviews",
 <p>Upward reviews (360 or direct) where reports give honest input on their manager. Critical for catching toxic managers early + for manager development.</p>
 
 <h2>Real honest take</h2>
-<p>A performance review process is a reflection of a company's communication culture. If honest feedback happens all year, the review is a summary. If it doesn't, the review is where the feedback avoidance catches up — and it's ugly. Fix the year-round culture, not just the review forms.</p>
+<p>A performance review process is a reflection of a company's communication culture. If honest feedback happens all year, the review is a summary. If it doesn't, the review is where the feedback avoidance catches up - and it's ugly. Fix the year-round culture, not just the review forms.</p>
 ''', prev=("One-on-ones", "one-on-ones.html"),
      nxt=("Firing well", "firing-well.html"), rt=5)
 
 
 page("people/firing-well",
      "Firing well",
-     "Firing is the hardest skill in management. Avoiding it costs more than doing it. Here's how to do it with integrity — for the person, the team, and the company.",
+     "Firing is the hardest skill in management. Avoiding it costs more than doing it. Here's how to do it with integrity - for the person, the team, and the company.",
      '''
-<p class="lede">Firing is the hardest skill in management — and the one managers avoid longest. Every manager I know has a story about someone they should have let go 6 months earlier. Each delay costs the company real money, the team morale, and — perversely — the person being kept around, who misses the chance to find a better fit.</p>
+<p class="lede">Firing is the hardest skill in management - and the one managers avoid longest. Every manager I know has a story about someone they should have let go 6 months earlier. Each delay costs the company real money, the team morale, and - perversely - the person being kept around, who misses the chance to find a better fit.</p>
 
 <h2>Why firing is worth doing well</h2>
 <ul>
@@ -1113,10 +1113,10 @@ page("people/firing-well",
 <p>Someone violated policy, ethics, or safety. Often immediate termination for severe cases; progressive discipline for minor.</p>
 
 <h3>3. Layoff / restructuring</h3>
-<p>No performance issue — the role no longer exists or the business needs change. Fundamentally different from the above.</p>
+<p>No performance issue - the role no longer exists or the business needs change. Fundamentally different from the above.</p>
 
 <h3>4. Role mismatch / mutual</h3>
-<p>Neither pure performance nor pure role change — the person was a B+ at the role but a D at the role the role became. Often resolved by moving the person to a different role or amicable exit.</p>
+<p>Neither pure performance nor pure role change - the person was a B+ at the role but a D at the role the role became. Often resolved by moving the person to a different role or amicable exit.</p>
 
 <h2>The progressive framework (performance cases)</h2>
 
@@ -1137,7 +1137,7 @@ page("people/firing-well",
 <p>At PIP end, clear outcome:</p>
 <ul>
   <li>Performance has improved → close PIP, continue employment</li>
-  <li>Partially improved, trajectory positive → extend PIP (rarely — usually delaying the inevitable)</li>
+  <li>Partially improved, trajectory positive → extend PIP (rarely - usually delaying the inevitable)</li>
   <li>No improvement → termination</li>
 </ul>
 
@@ -1145,7 +1145,7 @@ page("people/firing-well",
 
 <h3>Timing</h3>
 <ul>
-  <li>Day: usually Tuesday-Thursday (not Monday — ruins their week; not Friday — leaves them alone all weekend)</li>
+  <li>Day: usually Tuesday-Thursday (not Monday - ruins their week; not Friday - leaves them alone all weekend)</li>
   <li>Time: morning or early afternoon</li>
   <li>Duration: 15-20 min</li>
   <li>Private space</li>
@@ -1157,7 +1157,7 @@ page("people/firing-well",
   <li>Open: "I have hard news. Your employment with [company] is ending today."</li>
   <li>Brief reasoning (not debate): "As we discussed in the PIP, [outcome] wasn't met. We've decided to end the employment."</li>
   <li>Logistics: last day, severance, benefits, return of equipment, references policy</li>
-  <li>Pause for their response — listen, don't argue</li>
+  <li>Pause for their response - listen, don't argue</li>
   <li>Don't apologize or over-explain</li>
   <li>Don't negotiate (if they push back)</li>
   <li>Wrap: "I'm sorry it didn't work out. I wish you the best."</li>
@@ -1173,7 +1173,7 @@ page("people/firing-well",
 </ul>
 
 <h2>Severance</h2>
-<p>Offer severance whenever possible — not legally required in most US states, but ethically + strategically sound.</p>
+<p>Offer severance whenever possible - not legally required in most US states, but ethically + strategically sound.</p>
 <ul>
   <li>Typical: 2 weeks per year of tenure, minimum 2 weeks, often capped</li>
   <li>Plus: health coverage extension (COBRA subsidy or similar)</li>
@@ -1211,7 +1211,7 @@ page("people/firing-well",
 
 <h2>What most managers learn after firing well for the first time</h2>
 <ul>
-  <li>The team's productivity goes up — noticeably</li>
+  <li>The team's productivity goes up - noticeably</li>
   <li>Other team members relax, because they see the standard is real</li>
   <li>The fired person often lands somewhere that suits them better</li>
   <li>You realize you should have done it 6 months earlier</li>

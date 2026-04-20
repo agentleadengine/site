@@ -83,7 +83,7 @@ write_cold_page(
 <h2>The trap: too narrow</h2>
 <p>"Chief Revenue Officers of Series B SaaS companies in North America, with 80-120 AEs, using Gong, who closed Q3 at 85-92% of plan." Maybe 50 people in the world. Can't scale, can't test properly.</p>
 
-<p>Test the ICP size: Apollo or Sales Navigator search for your criteria should return 5,000-50,000 matches. Below 5,000 is usually too narrow for cold email (warm outreach or events better). Above 50,000 is too broad — add qualifying filters.</p>
+<p>Test the ICP size: Apollo or Sales Navigator search for your criteria should return 5,000-50,000 matches. Below 5,000 is usually too narrow for cold email (warm outreach or events better). Above 50,000 is too broad - add qualifying filters.</p>
 
 <h2>Multiple ICPs</h2>
 <p>A maturing business has 2-4 ICPs, each with its own copy and campaign. Not one giant "everyone" ICP.</p>
@@ -171,7 +171,7 @@ write_cold_page(
 </ul>
 
 <h3>LinkedIn Sales Navigator</h3>
-<p>The most current and accurate source of job titles and company data — because people update their own LinkedIn. Not an email source by itself; pair with Evaboot or Wiza to extract emails.</p>
+<p>The most current and accurate source of job titles and company data - because people update their own LinkedIn. Not an email source by itself; pair with Evaboot or Wiza to extract emails.</p>
 <ul>
   <li>Strengths: freshest data, best role filtering, strong ICP definition via filters</li>
   <li>Weaknesses: no emails natively; must pair with email finder</li>
@@ -199,7 +199,7 @@ write_cold_page(
 </ul>
 
 <h3>Clay</h3>
-<p>Not a database per se — an enrichment platform that chains data sources. More on this in <a href="clay.html">Clay and enrichment</a>.</p>
+<p>Not a database per se - an enrichment platform that chains data sources. More on this in <a href="clay.html">Clay and enrichment</a>.</p>
 
 <h2>Database accuracy reality</h2>
 <p>No provider has 100% accurate data. Typical accuracy:</p>
@@ -269,7 +269,7 @@ write_cold_page(
   <li>Pull recent data (prefer "last updated" within 90 days if shown)</li>
   <li>Re-enrich before each major campaign</li>
   <li>Check LinkedIn directly for high-priority targets</li>
-  <li>Monitor bounce rates — sudden spike may signal stale data</li>
+  <li>Monitor bounce rates - sudden spike may signal stale data</li>
 </ul>
 
 <h2>Legal / ethical considerations</h2>
@@ -302,7 +302,7 @@ write_cold_page(
 <h2>What Clay is</h2>
 <p>Think of Clay as a spreadsheet-meets-programmable-data-pipeline. You start with a list of companies or people. Clay enriches each row by calling external providers, scraping web pages, running AI prompts, and combining results.</p>
 
-<p>Output: a fully enriched list with whatever fields you need — firmographics, tech stack, recent funding, LinkedIn activity, buying signals, AI-written first lines — all in a single table ready to push to your cold email tool.</p>
+<p>Output: a fully enriched list with whatever fields you need - firmographics, tech stack, recent funding, LinkedIn activity, buying signals, AI-written first lines - all in a single table ready to push to your cold email tool.</p>
 
 <h2>The core capabilities</h2>
 
@@ -312,7 +312,7 @@ write_cold_page(
 <p>Dramatically improves coverage vs single-provider workflows.</p>
 
 <h3>2. Multi-source enrichment</h3>
-<p>Connect Apollo, Clearbit, LinkedIn, ZoomInfo, Rocketreach, People Data Labs, Lusha — all in one pipeline. Pull different fields from different providers.</p>
+<p>Connect Apollo, Clearbit, LinkedIn, ZoomInfo, Rocketreach, People Data Labs, Lusha - all in one pipeline. Pull different fields from different providers.</p>
 
 <h3>3. Web scraping</h3>
 <p>Scrape company websites, job boards, news, SEC filings. Extract specific data points via CSS selectors or AI.</p>
@@ -339,7 +339,7 @@ write_cold_page(
 <p>Filter down to companies with active signals indicating pain. Much higher conversion than blanket ICP filters.</p>
 
 <h3>AI-generated personalization at scale</h3>
-<p>For each prospect, have an AI summarize something relevant — recent LinkedIn post, company news, job change — into a personalized first line. The cold email template includes <code>{{personalized_line}}</code>, Clay fills it per row.</p>
+<p>For each prospect, have an AI summarize something relevant - recent LinkedIn post, company news, job change - into a personalized first line. The cold email template includes <code>{{personalized_line}}</code>, Clay fills it per row.</p>
 
 <p>Result: each email has a genuinely personalized opening that would take 5 minutes of manual research to write, done at scale.</p>
 
@@ -414,7 +414,7 @@ write_cold_page(
 <p>Translated to outcomes: 20-50% higher positive reply rate from equivalent list sizes. That difference is the ROI on Clay.</p>
 
 <h2>The common mistake</h2>
-<p>Teams adopt Clay and over-enrich — every row has 30 columns of data, but the cold email only references 2 of them. The other 28 columns are waste.</p>
+<p>Teams adopt Clay and over-enrich - every row has 30 columns of data, but the cold email only references 2 of them. The other 28 columns are waste.</p>
 
 <p>Enrichment should be purposeful. Add a field only if:</p>
 <ul>
@@ -438,7 +438,7 @@ write_cold_page(
     description="Sending to unverified addresses destroys domain reputation fast. Here's how to verify, when, and how strict to be.",
     reading_time=4,
     body_html="""
-<p class="lede">Every email you send to a non-existent or invalid address is a hard bounce. Bounces are the #1 reputation destroyer in cold email. Email verification is the prerequisite to every send — and the step most teams skip when they're in a rush.</p>
+<p class="lede">Every email you send to a non-existent or invalid address is a hard bounce. Bounces are the #1 reputation destroyer in cold email. Email verification is the prerequisite to every send - and the step most teams skip when they're in a rush.</p>
 
 <h2>What email verification does</h2>
 <p>Checks whether an email address actually exists and will accept mail before you try to send. Methods:</p>
@@ -451,11 +451,11 @@ write_cold_page(
 
 <p>Output per address:</p>
 <ul>
-  <li>Valid — deliverable</li>
-  <li>Invalid — will bounce</li>
-  <li>Catch-all — domain accepts anything, uncertain</li>
-  <li>Risky — syntactically okay but flagged</li>
-  <li>Unknown — couldn't verify</li>
+  <li>Valid - deliverable</li>
+  <li>Invalid - will bounce</li>
+  <li>Catch-all - domain accepts anything, uncertain</li>
+  <li>Risky - syntactically okay but flagged</li>
+  <li>Unknown - couldn't verify</li>
 </ul>
 
 <h2>Why verification matters</h2>
@@ -533,7 +533,7 @@ write_cold_page(
 <p>Don't re-bounce. If an address bounced once, it stays invalid until you have reason to think it changed.</p>
 
 <h3>Remove role-based addresses if strict</h3>
-<p>info@, sales@, contact@ — these get more spam complaints than personal addresses. Include only if specifically targeting that role.</p>
+<p>info@, sales@, contact@ - these get more spam complaints than personal addresses. Include only if specifically targeting that role.</p>
 
 <h3>Remove irrelevant titles</h3>
 <p>If the title doesn't match your ICP, remove. Sending to "intern" or "analyst" when your ICP is "VP" wastes volume.</p>
@@ -568,10 +568,10 @@ write_cold_page(
 write_cold_page(
     slug="lists/intent-signals",
     title="Intent signals",
-    description="Most cold email goes to people who aren't thinking about your category. Intent signals help you find the few who are — and they convert 5-10x better.",
+    description="Most cold email goes to people who aren't thinking about your category. Intent signals help you find the few who are - and they convert 5-10x better.",
     reading_time=4,
     body_html="""
-<p class="lede">A cold list of 10,000 people in your ICP has maybe 200 people actively thinking about your category right now. The other 9,800 aren't wrong — they're just not in-market. Intent signals help you find the in-market 200 before the competition does. It's the highest-leverage targeting upgrade available.</p>
+<p class="lede">A cold list of 10,000 people in your ICP has maybe 200 people actively thinking about your category right now. The other 9,800 aren't wrong - they're just not in-market. Intent signals help you find the in-market 200 before the competition does. It's the highest-leverage targeting upgrade available.</p>
 
 <h2>What counts as intent</h2>
 <p>Any observable event that suggests a prospect is thinking about the problem you solve. Categories:</p>
@@ -599,7 +599,7 @@ write_cold_page(
 
 <h3>Content / research signals</h3>
 <ul>
-  <li>Looking at review sites (G2, Capterra) — Bombora, G2 data</li>
+  <li>Looking at review sites (G2, Capterra) - Bombora, G2 data</li>
   <li>Downloading research about your category</li>
   <li>Attending industry events / webinars</li>
 </ul>
@@ -692,7 +692,7 @@ write_cold_page(
 <p>Building "perfect" signal-triggered automations for 10 different signal types at once. Start with one or two that matter most. Scale from there.</p>
 
 <h3>Ignoring signals that don't fit tools</h3>
-<p>The best signal might not be in any commercial database — it might be a specific event in your industry. Build monitors (Google Alerts, RSS feeds, custom scrapers) for the signals no one else is watching.</p>
+<p>The best signal might not be in any commercial database - it might be a specific event in your industry. Build monitors (Google Alerts, RSS feeds, custom scrapers) for the signals no one else is watching.</p>
 
 <h2>The quality-over-quantity shift</h2>
 <p>Traditional cold email: 5,000 emails/week to a broad ICP.<br>
@@ -782,7 +782,7 @@ write_cold_page(
 <p>Running 10 campaigns is more work than running 1. Scaling tactics:</p>
 
 <h3>Shared spine, variable specifics</h3>
-<p>Use a base sequence template (3-5 touches, standard pacing). Variables: subject lines, first lines, pitch paragraphs — customized per segment.</p>
+<p>Use a base sequence template (3-5 touches, standard pacing). Variables: subject lines, first lines, pitch paragraphs - customized per segment.</p>
 
 <h3>Campaign templates</h3>
 <p>Once you've built one campaign for a segment, new campaigns for similar segments start from that template and modify.</p>

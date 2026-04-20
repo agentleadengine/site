@@ -8,7 +8,7 @@ top-to-bottom before starting.
 Rewrite every page on samuelochoa.com at **teaching depth** (not encyclopedia
 depth) with **hand-drawn Blueprint × Purple Marker diagrams** wherever a
 visual would help a reader understand faster. The user wants the site to be
-where people come to **actually learn** — not a check-box that shows topics
+where people come to **actually learn** - not a check-box that shows topics
 are covered.
 
 ## Voice rules (critical)
@@ -20,21 +20,21 @@ are covered.
 - Plain English, no unexplained jargon. When introducing a term, define it
   inline the first time.
 - Never condescending. Trust the reader; just explain the thing.
-- **No em-dashes** (user has strict preference — use commas instead)
+- **No em-dashes** (user has strict preference - use commas instead)
 - **No "serial entrepreneur" / "I run X" / "Yardi"** (user privacy rules)
-- Use `. ` (period + space) where other writers would use " — "
+- Use `. ` (period + space) where other writers would use " - "
 
 ## Target structure for each flagship page
 
-Most teaching pages are ~1,500–2,500 words, structured as:
+Most teaching pages are ~1,500-2,500 words, structured as:
 
-1. **Lede** (1 paragraph) — what is this, why does it matter, what you'll leave knowing
-2. **Mindset / setup** — intuition before mechanics
-3. **The core idea** — plain-English definition, usually with a diagram
-4. **Mechanics** — how it actually works, with ≥1 diagram
-5. **Worked example** — a specific scenario walked through end-to-end
-6. **Edge cases / pitfalls** — common failure modes + their fixes
-7. **What to do with this** — actionable next steps
+1. **Lede** (1 paragraph) - what is this, why does it matter, what you'll leave knowing
+2. **Mindset / setup** - intuition before mechanics
+3. **The core idea** - plain-English definition, usually with a diagram
+4. **Mechanics** - how it actually works, with ≥1 diagram
+5. **Worked example** - a specific scenario walked through end-to-end
+6. **Edge cases / pitfalls** - common failure modes + their fixes
+7. **What to do with this** - actionable next steps
 
 ## The diagram library (`js/sketch.js`)
 
@@ -44,25 +44,25 @@ can drop in a `<div class="sketch" data-viewbox="...">` and call the
 
 **Available primitives** (keep this list current):
 
-- `sketch.box(svg, rc, {x,y,w,h, title, sub, dim?})` — main rectangle node
-- `sketch.circle(svg, rc, {cx, cy, r, title, sub})` — circular node
-- `sketch.arrow(svg, rc, {x1, x2, y, label?, bidirectional?, color?})` — horizontal arrow
+- `sketch.box(svg, rc, {x,y,w,h, title, sub, dim?})` - main rectangle node
+- `sketch.circle(svg, rc, {cx, cy, r, title, sub})` - circular node
+- `sketch.arrow(svg, rc, {x1, x2, y, label?, bidirectional?, color?})` - horizontal arrow
   (supports `y1`/`y2` for diagonal; `bidirectional: false` for one-way)
-- `sketch.note(svg, x, y, text, {size, color})` — handwritten scribble
-- `sketch.crosshair(svg, x, y, color)` — blueprint corner mark
-- `sketch.stack(svg, rc, {x, y, w, layerH, layers: [{label, sub, color?}]})` — layered architecture
-- `sketch.numberedSteps(svg, rc, {direction: 'h'|'v', x, y, w, items: [{title, sub}]})` — numbered sequence
-- `sketch.bars(svg, rc, {x, y, w, labelW, items: [{label, value, note?, color?}]})` — horizontal bar chart
-- `sketch.compare(svg, rc, {x, y, w, h, left: {title, items}, right: {title, items}})` — two-column side-by-side
-- `sketch.table(svg, rc, {x, y, cols: [{title, w}], rows: [[...]]})` — hand-drawn table with purple header
-- `sketch.annotate(svg, rc, {fromX, fromY, toX, toY, text})` — curved dashed arrow with label
-- `sketch.venn(svg, rc, {x, y, sets: [{label, fill?}]})` — overlapping circles
+- `sketch.note(svg, x, y, text, {size, color})` - handwritten scribble
+- `sketch.crosshair(svg, x, y, color)` - blueprint corner mark
+- `sketch.stack(svg, rc, {x, y, w, layerH, layers: [{label, sub, color?}]})` - layered architecture
+- `sketch.numberedSteps(svg, rc, {direction: 'h'|'v', x, y, w, items: [{title, sub}]})` - numbered sequence
+- `sketch.bars(svg, rc, {x, y, w, labelW, items: [{label, value, note?, color?}]})` - horizontal bar chart
+- `sketch.compare(svg, rc, {x, y, w, h, left: {title, items}, right: {title, items}})` - two-column side-by-side
+- `sketch.table(svg, rc, {x, y, cols: [{title, w}], rows: [[...]]})` - hand-drawn table with purple header
+- `sketch.annotate(svg, rc, {fromX, fromY, toX, toY, text})` - curved dashed arrow with label
+- `sketch.venn(svg, rc, {x, y, sets: [{label, fill?}]})` - overlapping circles
 
 **Diagram coordinate conventions:**
-- ViewBox height usually 280–340; width 900 fits comfortably
+- ViewBox height usually 280-340; width 900 fits comfortably
 - Keep labels clear of boxes (see existing diagrams for spacing)
 - `sketch.arrow` without `bidirectional: false` puts arrowheads on BOTH ends
-- For curved loop-back arrows, use a raw SVG `<path>` with Q command — see
+- For curved loop-back arrows, use a raw SVG `<path>` with Q command - see
   `framework/what-is-autonomous-ai.html` for the pattern
 
 **Style notes:**
@@ -91,7 +91,7 @@ can drop in a `<div class="sketch" data-viewbox="...">` and call the
 - `framework/mcp/index.html` (+ hub-and-spoke)
 - `framework/mcp/what-is-mcp.html` (+ Model↔Client↔Server flow)
 - `framework/mcp/anatomy.html` (+ architecture diagram)
-- `framework/mcp/servers.html` — content rewritten, **NEEDS DIAGRAM STILL**
+- `framework/mcp/servers.html` - content rewritten, **NEEDS DIAGRAM STILL**
 - `framework/mcp/clients.html` (+ client-jobs steps, ecosystem table)
 - `framework/mcp/transports.html` (+ transport table, comparison bars)
 - `framework/mcp/security.html` (+ threat table, principles bars)
@@ -149,7 +149,7 @@ with multiple hand-drawn diagrams.
 Section-by-section: Foundations ✅, Claude ✅, MCP ✅, Claude Code ✅,
 Patterns ✅, Autonomous ✅, Build ✅, Plugins ✅, Tools ✅.
 
-## Remaining scope — beyond the framework + glossary
+## Remaining scope - beyond the framework + glossary
 
 What's left:
 
@@ -159,21 +159,21 @@ What's left:
 3. ~~89 expertise subsection index pages~~ ✅ DONE (2026-04-19). Every
    subsection now has a domain-specific intro. Generator:
    `_enrich_subsection_indexes.py` at repo root.
-4. **~486 expertise deep articles** — the big chunk (in progress).
+4. **~486 expertise deep articles** - the big chunk (in progress).
 
 ### Deep articles: completed subsections
 
-- `expertise/seo/foundations/` — 10/10 ✅ (2026-04-19)
-- `expertise/seo/keywords/` — 10/10 ✅ (2026-04-19)
-- `expertise/seo/on-page/` — 15/15 ✅ (2026-04-19)
-- `expertise/seo/technical/` — 15/15 ✅ (2026-04-19)
-- `expertise/seo/links/` — 10/10 ✅ (2026-04-19)
-- `expertise/seo/content/` — 10/10 ✅ (2026-04-19)
-- `expertise/seo/local/` — 8/8 ✅ (2026-04-19)
-- `expertise/seo/ecommerce/` — 7/7 ✅ (2026-04-19)
-- `expertise/seo/international/` — 5/5 ✅ (2026-04-19)
-- `expertise/seo/analytics/` — 8/8 ✅ (2026-04-19)
-- `expertise/seo/advanced/` — 2/2 ✅ (2026-04-19)
+- `expertise/seo/foundations/` - 10/10 ✅ (2026-04-19)
+- `expertise/seo/keywords/` - 10/10 ✅ (2026-04-19)
+- `expertise/seo/on-page/` - 15/15 ✅ (2026-04-19)
+- `expertise/seo/technical/` - 15/15 ✅ (2026-04-19)
+- `expertise/seo/links/` - 10/10 ✅ (2026-04-19)
+- `expertise/seo/content/` - 10/10 ✅ (2026-04-19)
+- `expertise/seo/local/` - 8/8 ✅ (2026-04-19)
+- `expertise/seo/ecommerce/` - 7/7 ✅ (2026-04-19)
+- `expertise/seo/international/` - 5/5 ✅ (2026-04-19)
+- `expertise/seo/analytics/` - 8/8 ✅ (2026-04-19)
+- `expertise/seo/advanced/` - 2/2 ✅ (2026-04-19)
 
 ## 🎉 SEO EXPERTISE SECTION COMPLETE: 100 / 100 ✅
 
@@ -186,15 +186,15 @@ What's left:
 DR articles were already at teaching depth. This pass added
 hand-drawn diagrams to every article:
 
-- `expertise/direct-response/foundations/` — 4/4 ✅
-- `expertise/direct-response/market/` — 5/5 ✅
-- `expertise/direct-response/offer/` — 6/6 ✅
-- `expertise/direct-response/copy/` — 7/7 ✅
-- `expertise/direct-response/letters/` — 5/5 ✅
-- `expertise/direct-response/leads/` — 5/5 ✅
-- `expertise/direct-response/followup/` — 4/4 ✅
-- `expertise/direct-response/testing/` — 4/4 ✅
-- `expertise/direct-response/scaling/` — 4/4 ✅
+- `expertise/direct-response/foundations/` - 4/4 ✅
+- `expertise/direct-response/market/` - 5/5 ✅
+- `expertise/direct-response/offer/` - 6/6 ✅
+- `expertise/direct-response/copy/` - 7/7 ✅
+- `expertise/direct-response/letters/` - 5/5 ✅
+- `expertise/direct-response/leads/` - 5/5 ✅
+- `expertise/direct-response/followup/` - 4/4 ✅
+- `expertise/direct-response/testing/` - 4/4 ✅
+- `expertise/direct-response/scaling/` - 4/4 ✅
 
 Running total: 240 / ~486 expertise deep articles.
 
@@ -230,7 +230,7 @@ this is roughly several sessions of focused work.
 
 ## After the framework
 
-- 79 remaining glossary terms (Direct Response, Marketing, Business, Sales, SEO) — use same 4-section template as the AI glossary (def / explain / example / why)
+- 79 remaining glossary terms (Direct Response, Marketing, Business, Sales, SEO) - use same 4-section template as the AI glossary (def / explain / example / why)
 - 10 expertise hub pages (SEO, Agents, RAG, Direct Response, etc.)
 - 89 expertise subsection index pages
 - ~800 expertise deep articles
@@ -252,7 +252,7 @@ Run `git log --oneline -20` to see the recent commit history.
 - Loves the iPad-drawn aesthetic
 - Got upset by a visual bug once; asks for fixes, not apologies
 - Responds well to specific file paths + clear status updates
-- Is in **auto mode** — minimize interruptions, keep going, commit often
+- Is in **auto mode** - minimize interruptions, keep going, commit often
 
 ## Typical commit message style
 
