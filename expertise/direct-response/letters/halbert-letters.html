@@ -344,6 +344,30 @@ window.addEventListener('sketch:ready', function(){
 </ul>
 <p>The changes are in format and surface; the deep structure is the same.</p>
 
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'The 40/40/20 rule, where results actually come from');
+  sketch.bars(svg, rc, {x: 40, y: 60, w: 820, labelW: 200, items: [
+    {label: 'List quality', value: 80, note: '40% of results, biggest lever'},
+    {label: 'Offer strength', value: 80, note: '40% of results, second lever'},
+    {label: 'Copy', value: 40, note: '20% of results, last to optimize'}
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Pick 3 classic letters (Halbert's coat-of-arms, Tova perfume, one from the free newsletter), copy them word-for-word by hand, the only way to internalize rhythm</li>
+<li>After copying, rewrite the same letter for your product, match the structure exactly, you're inheriting a control that ran for decades</li>
+<li>Apply the 40/40/20 rule, when results are weak, fix list first, then offer, only touch copy after both are tight</li>
+<li>Study the PS of every winning letter you encounter, the second peak of the piece is usually the most urgent, most specific call</li>
+<li>Print your copy and ask "would someone open this?", if it looks like junk mail, it gets thrown out, physical or digital</li>
+</ul>
+
 <p style="margin-top:40px;">Related: <a href="structure.html">Sales letter structure</a> · <a href="story-selling.html">Story selling</a> · <a href="../copy/bullets.html">Fascination bullets</a></p>
 <div class="prev-next"><a href="story-selling.html" class="prev"><div class="label">← Previous</div><div class="title">Story selling</div></a><a href="../followup/direct-mail.html" class="next"><div class="label">Next →</div><div class="title">Direct mail that still works</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>

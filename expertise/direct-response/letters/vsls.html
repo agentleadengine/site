@@ -346,6 +346,35 @@ window.addEventListener('sketch:ready', function(){
 </ol>
 <p>A mature VSL is usually on iteration 5+ before it hits its best conversion.</p>
 
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Diagnose VSL drop-offs by timestamp');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Retention drops at', w: 200},
+    {title: 'Likely cause', w: 300},
+    {title: 'Fix', w: 300}
+  ], rows: [
+    ['0:00-0:30', 'Hook failed, viewer bounces', 'Rewrite first 30 sec, sharper pattern interrupt'],
+    ['2:00-5:00', 'Problem feels generic or wrong', 'Specific scene, concrete sensory detail'],
+    ['7:00-15:00', 'Mechanism unclear or boring', 'Simplify the explanation, add proof mid-mechanism'],
+    ['22:00-28:00', 'Offer stack confusing', 'Walk each bonus with dollar value on screen']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Write the script word for word, 8,000-15,000 words for a 30-45 min VSL, no ad-libbing, every sentence must earn the next</li>
+<li>Build a new beat every 30-60 seconds, new claim, new story, new visual, monotony kills retention faster than bad copy</li>
+<li>Track the retention curve as a heat map, the first major drop is where to rewrite, not where the script felt weak to you</li>
+<li>Show face on camera, clear audio, captions for muted viewing, the production bar in 2026 means "natural + clean", not "studio"</li>
+<li>Plan to ship v1, then iterate 4-5 times over 60 days, mature VSLs 3-5x their initial conversion through disciplined iteration</li>
+</ul>
+
 <p style="margin-top:40px;">Related: <a href="structure.html">Sales letter structure</a> · <a href="long-form.html">Long form vs short form</a> · <a href="story-selling.html">Story selling</a></p>
 <div class="prev-next"><a href="long-form.html" class="prev"><div class="label">← Previous</div><div class="title">Long form vs short form</div></a><a href="story-selling.html" class="next"><div class="label">Next →</div><div class="title">Story selling</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>

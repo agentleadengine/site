@@ -363,6 +363,35 @@ window.addEventListener('sketch:ready', function(){
  <li>Where do they stop reading? (Critical friction, fix immediately)</li>
 </ul>
 
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Section emphasis by awareness stage');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Audience stage', w: 240},
+    {title: 'Heavy sections', w: 290},
+    {title: 'Light / skip', w: 270}
+  ], rows: [
+    ['Unaware / problem-aware', 'Lead, agitation, credibility', 'Price, guarantee (not yet)'],
+    ['Solution-aware', 'Mechanism reveal, proof', 'Problem setup (they know it)'],
+    ['Product-aware', 'Proof stack, bullets, FAQ', 'Lead, problem setup'],
+    ['Most aware', 'Offer, guarantee, CTA', 'Lead, agitation (wasted time)']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Map your current sales page against all 18 sections, any missing section is a conversion leak, don't ship without each one earning its place</li>
+<li>Write the sections in the order the reader encounters them, draft headline + lead first, only write the offer section last</li>
+<li>Segment the page by awareness stage if possible, route cold traffic to the full letter, warm traffic to a shorter variant that starts at section 8</li>
+<li>Put the PS to work, it's the second most-read element, never let it just say "see you inside", use it to restate the offer + deadline</li>
+<li>Watch 3 ICP prospects read the draft, mark where they skim, slow down, and stop, rewrite based on observed behavior, not guesses</li>
+</ul>
+
 <p style="margin-top:40px;">Related: <a href="long-form.html">Long form vs short form</a> · <a href="vsls.html">VSLs</a> · <a href="story-selling.html">Story selling</a> · <a href="halbert-letters.html">Classic sales letters</a></p>
 <div class="prev-next"><a href="../leads/paid-ads.html" class="prev"><div class="label">← Previous</div><div class="title">Paid ads</div></a><a href="long-form.html" class="next"><div class="label">Next →</div><div class="title">Long form vs short form</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>

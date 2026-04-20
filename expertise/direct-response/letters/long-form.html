@@ -328,6 +328,31 @@ window.addEventListener('sketch:ready', function(){
 <h3>Mismatching length to traffic</h3>
 <p>Sending cold paid traffic to 4-paragraph pages → low conversion. Sending hot email traffic to 6,000-word pages → wasted conversion (they'd buy in 500 words).</p>
 
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Length follows price + awareness');
+  sketch.bars(svg, rc, {x: 40, y: 60, w: 820, labelW: 280, items: [
+    {label: '$29 product, warm traffic', value: 15, note: '300-800 words'},
+    {label: '$200 course, mixed traffic', value: 30, note: '1,500-3,000 words'},
+    {label: '$2K program, cold paid', value: 70, note: '3,000-6,000 words'},
+    {label: '$10K+ service, cold', value: 95, note: '6,000+ or book-a-call'}
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Match length to the price point and awareness stage, don't default to long or short, the correct length is the length the decision requires</li>
+<li>For a stuck high-ticket page, try adding length, more proof, more mechanism, more objection handling, usually lifts conversion</li>
+<li>For a stuck low-ticket page, try cutting length, impulse purchases need momentum, not paragraphs</li>
+<li>Build hybrid pages (short hero + long below-fold) when traffic mixes cold and warm, serves both audiences without splitting campaigns</li>
+<li>Audit every section of long copy, if it's not doing specific work (agitation, proof, mechanism), it's padding, cut it ruthlessly</li>
+</ul>
+
 <p style="margin-top:40px;">Related: <a href="structure.html">Sales letter structure</a> · <a href="vsls.html">VSLs</a> · <a href="../market/awareness-stages.html">Awareness stages</a></p>
 <div class="prev-next"><a href="structure.html" class="prev"><div class="label">← Previous</div><div class="title">Sales letter structure</div></a><a href="vsls.html" class="next"><div class="label">Next →</div><div class="title">VSLs</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
