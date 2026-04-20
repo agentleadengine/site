@@ -288,6 +288,42 @@ window.addEventListener('sketch:ready', function(){
 <li>Creative becomes more important (targeting is less precise)</li>
 <li>Build relationships with customers for data-sharing consent</li>
 </ul>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Attribution then vs attribution now');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Pre-2020 (traceable)', items: [
+      '1:1 user tracking across apps',
+      '3rd party cookies + pixels everywhere',
+      'Platform-reported CAC ≈ actual',
+      'Granular multi-touch attribution',
+      'Budget allocated per campaign precisely'
+    ]},
+    right: {title: '2026 (modeled)', items: [
+      'iOS opt-outs + cookie deprecation',
+      'Platform data uses modeling, not measurement',
+      'Platform-reported CAC over-claims 30-50%',
+      'Blended MER + incrementality tests fill the gap',
+      'Budget allocated on portfolio, not per ad'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Stop treating platform-reported CAC as truth, it over-claims in most cases, use it for relative comparison only</li>
+<li>Shift to blended MER (total revenue / total spend) as your primary North Star, it's noisy but ground-truth</li>
+<li>Invest in first-party data (email list, CRM integration, post-purchase "how did you hear about us?"), it's the only data you truly own</li>
+<li>Run quarterly incrementality tests, pause a channel for 2 weeks and measure actual revenue drop, that's your real incremental value</li>
+<li>Accept that creative and offer now do more of the work than targeting, shift budget allocation to match</li>
+</ul>
+
 <div class="prev-next"><a href="../creative/hiring-creators.html" class="prev"><div class="label">← Previous</div><div class="title">Hiring creators</div></a><a href="platform-attribution.html" class="next"><div class="label">Next →</div><div class="title">Platform attribution</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

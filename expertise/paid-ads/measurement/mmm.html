@@ -290,6 +290,32 @@ window.addEventListener('sketch:ready', function(){
 <li>Platform attribution for tactical optimization (weekly, daily)</li>
 </ul>
 <p>Mature measurement uses all three.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Measurement stack, three layers that answer different questions');
+  sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 44, layers: [
+    {label: 'Platform attribution (daily)', sub: 'which creative, which campaign'},
+    {label: 'Blended MER (weekly)', sub: 'total revenue / total spend'},
+    {label: 'Incrementality lift tests (quarterly)', sub: 'real channel contribution'},
+    {label: 'MMM (annual strategic allocation)', sub: 'full portfolio optimization'}
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Don't touch MMM until you have 12+ months of historical spend data across 3+ channels, under that and the model produces noise</li>
+<li>Use MMM for strategic quarterly allocation (which channel gets what % of budget), not for weekly tactical decisions</li>
+<li>Validate MMM outputs against incrementality lift tests, they should broadly agree, if they diverge, trust the lift test</li>
+<li>At lower scale, skip MMM and rely on MER + quarterly lift tests, tooling and model complexity pay off only at $100K+/mo spend</li>
+<li>Layer all three methods (platform attribution + MER + MMM) rather than picking one, each answers a different question at its correct cadence</li>
+</ul>
+
 <div class="prev-next"><a href="incrementality.html" class="prev"><div class="label">← Previous</div><div class="title">Incrementality testing</div></a><a href="ltv-cac.html" class="next"><div class="label">Next →</div><div class="title">LTV:CAC</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

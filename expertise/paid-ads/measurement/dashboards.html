@@ -292,6 +292,36 @@ window.addEventListener('sketch:ready', function(){
 
 <h2>The action orientation</h2>
 <p>Every dashboard tile should answer: "what action would I take if this number moves?" If no action follows, drop the tile.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Dashboard that drives decisions, 8 tiles max');
+  sketch.numberedSteps(svg, rc, {x: 40, y: 60, w: 820, stepH: 28, items: [
+    'Blended MER (weekly + trend)',
+    'Total spend by channel (weekly)',
+    'New customer count (weekly)',
+    'CAC by channel (weekly)',
+    'LTV:CAC by channel (monthly)',
+    'Payback period by cohort (monthly)',
+    'Winning creatives this week (qualitative note)',
+    'Tests running + status (weekly)'
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Limit dashboards to 8-10 tiles max, dashboards with 30 tiles become ignored overnight, nobody reads them in practice</li>
+<li>Every tile must answer "what would I do if this moves?", tiles without a tied action are ornaments, cut them</li>
+<li>Show trend alongside the number, a CAC of $80 means nothing without context, "$80 up 14% WoW" drives action</li>
+<li>Separate weekly dashboards (tactical) from monthly dashboards (strategic), don't mix cadences on one view or both decisions get ignored</li>
+<li>Review dashboards with the team Monday morning, dashboards without a review ritual stop working inside 3 weeks</li>
+</ul>
+
 <div class="prev-next"><a href="ltv-cac.html" class="prev"><div class="label">← Previous</div><div class="title">LTV:CAC</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

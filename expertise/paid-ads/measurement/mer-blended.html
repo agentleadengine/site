@@ -292,6 +292,33 @@ Blended CAC = Total Ad Spend / New Customers (same period)
 <li>Attribution for complex multi-touch journeys</li>
 </ul>
 <p>MER is one number, not the whole story. But the one number that matters most.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'MER: the one number that\'s always honest');
+  sketch.numberedSteps(svg, rc, {x: 40, y: 60, w: 820, stepH: 34, items: [
+    'Total revenue this month: $500K (from accounting, not platforms)',
+    'Total ad spend this month: $150K (every channel, every pixel)',
+    'MER = $500K / $150K = 3.3x (blended, ground-truth)',
+    'If MER stays ≥ target, you\'re winning at portfolio level',
+    'If MER drops, dig into per-channel lift tests to find the leak'
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Make MER your North Star metric, review it weekly, all platform-reported numbers are directional support, MER is the truth</li>
+<li>Compute MER from source data (revenue from accounting, spend from each platform), never from platform dashboards alone</li>
+<li>Set a MER target based on gross margin and payback requirements, "what MER keeps the business healthy", that's your threshold</li>
+<li>Compare MER trend month over month, trends expose problems before any single metric does</li>
+<li>When MER declines, run per-channel incrementality tests to locate the leak, platform dashboards won't tell you which channel cooled off</li>
+</ul>
+
 <div class="prev-next"><a href="platform-attribution.html" class="prev"><div class="label">← Previous</div><div class="title">Platform attribution</div></a><a href="incrementality.html" class="next"><div class="label">Next →</div><div class="title">Incrementality testing</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

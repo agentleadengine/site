@@ -276,6 +276,33 @@ window.addEventListener('sketch:ready', function(){
 
 <h2>The realpolitik</h2>
 <p>Many platforms and agencies resist incrementality testing because it reveals they over-claim. Do the tests anyway. The results inform where to invest next dollar.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Channel-pause lift test, 4-week protocol');
+  sketch.numberedSteps(svg, rc, {x: 40, y: 60, w: 820, stepH: 34, items: [
+    'Week 1-2: baseline, all channels running as normal',
+    'Week 3-4: pause one channel completely (e.g., Meta retargeting)',
+    'Compare total blended revenue during pause vs baseline',
+    'The revenue delta is the channel\'s true incremental value',
+    'If drop < platform-reported contribution, channel was over-claiming'
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Run one channel-pause lift test per quarter, rotating which channel you pause, annual per-channel incrementality view is enough</li>
+<li>Budget for the temporary revenue dip during lift tests, the learning value outweighs the 2-week cost every time</li>
+<li>Prioritize testing channels that claim the highest ROAS, those are usually the most over-claimed and where you'll find the biggest misalignment</li>
+<li>Design clean tests, single channel off, everything else held steady, changing two things at once invalidates the learning</li>
+<li>Use lift-test results to re-weight budget, channels that showed less lift than platform-claimed deserve a proportionally smaller share</li>
+</ul>
+
 <div class="prev-next"><a href="mer-blended.html" class="prev"><div class="label">← Previous</div><div class="title">MER + blended metrics</div></a><a href="mmm.html" class="next"><div class="label">Next →</div><div class="title">Marketing mix modeling</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

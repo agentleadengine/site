@@ -304,6 +304,37 @@ window.addEventListener('sketch:ready', function(){
 <li>By cohort</li>
 </ul>
 <p>Often some segments are 1.5:1 while others are 8:1. Shifting budget into the 8:1 segments is where growth comes from.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'LTV:CAC segmented, blend hides what segments reveal');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Segment', w: 240},
+    {title: 'LTV : CAC', w: 200},
+    {title: 'Action', w: 340}
+  ], rows: [
+    ['Meta broad prospecting', '2.1 : 1', 'Marginal, fix creative before scaling'],
+    ['Google branded search', '8.5 : 1', 'Scale aggressively, under-invested'],
+    ['LinkedIn cold outreach', '1.3 : 1', 'Kill unless sales team disagrees'],
+    ['Meta retargeting', '4.2 : 1', 'Keep at 20% of budget'],
+    ['Blended (misleading)', '3.0 : 1', 'Looks fine, hides Google win + LI leak']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Never look at blended LTV:CAC alone, segment by channel, customer type, product, and cohort, the blend hides both the winners and the losers</li>
+<li>Shift budget from segments below 2:1 to segments above 4:1, that reallocation is usually where the next 2x of growth hides</li>
+<li>Use observed LTV (not modeled) until you have 18+ months of data, projected LTV is how bad economics get approved</li>
+<li>Review LTV:CAC by segment monthly, it's a lagging indicator but the monthly cadence catches shifts before they compound</li>
+<li>When a segment drops below target, dig into whether the CAC rose or the LTV fell, the fix is different depending on which side moved</li>
+</ul>
+
 <div class="prev-next"><a href="mmm.html" class="prev"><div class="label">← Previous</div><div class="title">Marketing mix modeling</div></a><a href="dashboards.html" class="next"><div class="label">Next →</div><div class="title">Dashboards that matter</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
