@@ -306,6 +306,35 @@ window.addEventListener('sketch:ready', function(){
 
 <h2>Scaling the WBR</h2>
 <p>Each team/department should run its own L10. The exec team runs an L10 above those. Issues that can't be solved at team-level roll up. Prevents the founder's calendar from becoming everyone's issue list.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Weekly business review (L10), 90-minute structure');
+  sketch.numberedSteps(svg, rc, {x: 40, y: 60, w: 820, stepH: 28, items: [
+    'Segue (5 min): personal + business best',
+    'Scorecard review (5 min): metrics on-track or off',
+    'Rocks review (5 min): quarterly goals status',
+    'Customer + team headlines (5 min): standing updates',
+    'To-do list review (5 min): last week commitments',
+    'IDS session (60 min): Identify, Discuss, Solve top issues',
+    'Conclude (5 min): recap, new to-dos, cascading messages'
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Run a weekly L10 at team + exec level, the cadence is where execution quality compounds</li>
+<li>Stick to 90 minutes, longer meetings lose discipline and shorter ones skip the IDS time that matters</li>
+<li>Review scorecard first, numbers set the tone and drive issue prioritization</li>
+<li>Spend 60 minutes on IDS (Identify Discuss Solve), this is where the meeting actually produces value</li>
+<li>Cascade decisions to teams the same day, L10 outcomes die if they stay in the meeting room</li>
+</ul>
+
 <div class="prev-next"><a href="designing-the-os.html" class="prev"><div class="label">← Previous</div><div class="title">Designing the OS</div></a><a href="meetings.html" class="next"><div class="label">Next →</div><div class="title">Meetings that don't waste time</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

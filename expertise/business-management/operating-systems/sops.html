@@ -349,6 +349,42 @@ RELATED SOPs
   <li>SOPs are drastically different from actual practice</li>
   <li>Nobody knows who owns updating them</li>
 </ul>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'SOPs that get used vs SOPs that rot');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Rots (nobody uses)', items: [
+      'Written once, never updated',
+      'No named owner',
+      'Lives in wiki nobody checks',
+      'Too abstract or too detailed',
+      'Procedure but no "why"'
+    ]},
+    right: {title: 'Lives (team uses)', items: [
+      'Named owner reviews quarterly',
+      'Embedded in actual workflow (tool, checklist)',
+      'Video walkthrough + written steps',
+      'Includes "why" alongside "what"',
+      'Updated when process changes'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Assign one owner per SOP, ownerless SOPs rot within 6 months of writing</li>
+<li>Embed SOPs in tools where the work happens, wiki SOPs nobody opens have zero impact</li>
+<li>Include video walkthroughs, watching beats reading for complex processes</li>
+<li>Review SOPs quarterly, stale SOPs teach wrong behavior and create failed handoffs</li>
+<li>Write "why" alongside "what", people follow procedures better when they understand the reasoning</li>
+</ul>
+
 <div class="prev-next"><a href="meetings.html" class="prev"><div class="label">← Previous</div><div class="title">Meetings that don't waste time</div></a><a href="decision-logs.html" class="next"><div class="label">Next →</div><div class="title">Decision logs</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

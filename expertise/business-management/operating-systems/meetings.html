@@ -329,6 +329,42 @@ window.addEventListener('sketch:ready', function(){
 
 <h2>The annual meeting audit</h2>
 <p>At year-end, tally: how many hours did this team spend in meetings this year? What was the output? Start the next year with a 30% budget cut on meeting time and see what happens. (Almost nothing breaks.)</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Meeting audit, which to keep vs cut');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Cut / async-ify', items: [
+      'Recurring status updates (use doc)',
+      'One-way information broadcasts',
+      'Recurring meetings with no agenda',
+      'Meetings with 10+ attendees',
+      'Meetings no one prepares for'
+    ]},
+    right: {title: 'Keep', items: [
+      'Decision meetings with DRI + alternatives',
+      '1:1s between manager + direct report',
+      'L10 team / exec meetings',
+      'Cross-functional alignment moments',
+      'Meetings producing specific decisions or artifacts'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Audit the team's recurring meetings annually, kill the ones that aren't producing decisions or artifacts</li>
+<li>Replace status meetings with async updates (Slack, docs, Notion), status is information not discussion</li>
+<li>Cap attendees, meetings of 10+ people are information broadcasts not decisions, split them</li>
+<li>Require a written agenda + pre-read for every recurring meeting, meetings without prep waste everyone's time</li>
+<li>End with clear decisions + owners + deadlines, meetings without artifacts are where decisions go to die</li>
+</ul>
+
 <div class="prev-next"><a href="weekly-business-review.html" class="prev"><div class="label">← Previous</div><div class="title">Weekly business review</div></a><a href="sops.html" class="next"><div class="label">Next →</div><div class="title">SOPs that get used</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

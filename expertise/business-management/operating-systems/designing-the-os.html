@@ -298,6 +298,34 @@ window.addEventListener('sketch:ready', function(){
 
 <h2>Frameworks that work</h2>
 <p>EOS/Traction, Scaling Up, Amazon's S-Team operating model, Bridgewater's principles, each is a published operating system. Pick one, modify, commit. Don't Frankenstein three of them.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Operating system core components');
+  sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 32, layers: [
+    {label: 'Planning cadence', sub: 'annual / quarterly / weekly rhythm'},
+    {label: 'Meeting structure', sub: 'L10s, standups, reviews'},
+    {label: 'Metrics + scorecards', sub: 'what the business measures'},
+    {label: 'Accountability system', sub: 'DRIs, commitments, reviews'},
+    {label: 'Decision framework', sub: 'how calls get made'},
+    {label: 'Documentation', sub: 'SOPs, decision logs, memos'}
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Pick one published OS (EOS, Scaling Up, Amazon-style) and implement it fully, Frankensteining produces no working system</li>
+<li>Start with meeting cadence + metrics scorecard, those are the visible scaffolding everything else hangs on</li>
+<li>Expect 6-12 months to fully adopt, teams that rush OS implementation half-adopt and blame the OS</li>
+<li>Review the OS annually at an offsite, systems drift and what worked last year may need tuning</li>
+<li>Don't change operating systems lightly, switching every year produces chaos not improvement</li>
+</ul>
+
 <div class="prev-next"><a href="../index.html" class="prev"><div class="label">← Previous</div><div class="title">Business Management overview</div></a><a href="weekly-business-review.html" class="next"><div class="label">Next →</div><div class="title">Weekly business review</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

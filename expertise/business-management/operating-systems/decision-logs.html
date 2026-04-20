@@ -318,6 +318,33 @@ REVISIT: [When or under what conditions to re-evaluate, if applicable]</code></p
   <li>Which "obvious" calls weren't obvious in hindsight</li>
 </ul>
 <p>This is the meta-skill: learning from your own decision history. Impossible without records.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Decision log template, 5 fields per entry');
+  sketch.numberedSteps(svg, rc, {x: 40, y: 60, w: 820, stepH: 30, items: [
+    'Decision + date + DRI',
+    'Options considered (with pros/cons each)',
+    'Reasoning + assumptions (the why)',
+    'Expected outcome + review date',
+    'Actual outcome when reviewed (closes the loop)'
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Start a decision log today, even if minimal, future-you needs this archive when team changes or strategy pivots</li>
+<li>Log only significant decisions (not every meeting outcome), the log loses value if it becomes a dump</li>
+<li>Review past decisions annually, patterns in "what we got right vs wrong" compound into better future decisions</li>
+<li>Capture the reasoning and assumptions, the "why" is often more useful than the "what" years later</li>
+<li>Close the loop with actual outcome review, decisions without review are data without learning</li>
+</ul>
+
 <div class="prev-next"><a href="sops.html" class="prev"><div class="label">← Previous</div><div class="title">SOPs that get used</div></a><a href="../people/hiring-signal-vs-noise.html" class="next"><div class="label">Next →</div><div class="title">Hiring, signal vs noise</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>
