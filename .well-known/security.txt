@@ -1,0 +1,4 @@
+Contact: https://www.linkedin.com/in/samuelochoa
+Expires: 2027-01-01T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://samuelochoa.com/.well-known/security.txt

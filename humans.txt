@@ -1,0 +1,13 @@
+/* TEAM */
+Author: Samuel Ochoa
+Site: https://samuelochoa.com/
+Contact: https://www.linkedin.com/in/samuelochoa
+Location: New York
+
+/* SITE */
+Last update: 2026-04-19
+Language: English
+Doctype: HTML5
+Standards: HTML5, CSS3, JSON-LD
+Components: None. Plain HTML, CSS, vanilla JS. rough.js for sketches.
+Software: Hand-written. Claude Code in the workflow.
