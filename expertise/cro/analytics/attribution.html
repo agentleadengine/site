@@ -237,7 +237,39 @@ window.addEventListener('sketch:ready', function(){
     ['Data-driven', 'ML-weighted (needs scale)']
   ]});
 });
-</script><ul><li>Last-click (simple, biased to bottom of funnel)</li><li>First-click (biased to top)</li><li>Linear (equal weight)</li><li>Data-driven (algorithmic)</li></ul><h2>CRO-specific concerns</h2><ul><li>Same-user multi-touch: which page gets credit?</li><li>Cross-device: hard to attribute</li><li>Delayed conversions: attribute to session or first-touch?</li></ul><h2>Pragmatic</h2><p>Use platform attribution for directional signal, test for specific optimization, holdouts for truth.</p></div></div><footer><div class="container">
+</script><ul><li>Last-click (simple, biased to bottom of funnel)</li><li>First-click (biased to top)</li><li>Linear (equal weight)</li><li>Data-driven (algorithmic)</li></ul><h2>CRO-specific concerns</h2><ul><li>Same-user multi-touch: which page gets credit?</li><li>Cross-device: hard to attribute</li><li>Delayed conversions: attribute to session or first-touch?</li></ul><h2>Pragmatic</h2><p>Use platform attribution for directional signal, test for specific optimization, holdouts for truth.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Attribution models for CRO, how they differ');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Model', w: 240},
+    {title: 'Best for', w: 260},
+    {title: 'Limitation', w: 300}
+  ], rows: [
+    ['Last-click', 'Simple campaigns, low-touch', 'Ignores all earlier touches'],
+    ['First-click', 'Brand discovery evaluation', 'Ignores closing touches'],
+    ['Linear', 'Multi-touch journeys', 'Treats all touches equally'],
+    ['Time-decay', 'Longer consideration cycles', 'Arbitrary decay curve'],
+    ['Data-driven / MMM', 'Mature programs', 'Requires scale + data pipeline']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Pick one attribution model for reporting, switching between models confuses stakeholders and hides trends</li>
+<li>Use last-click for tactical optimization, data-driven or MMM for strategic allocation</li>
+<li>Don't trust platform attribution as truth, it over-claims and is directional only</li>
+<li>Run quarterly holdout tests to validate attribution assumptions, models drift from reality over time</li>
+<li>Track blended MER alongside platform attribution, the gap tells you how much the models are over-claiming</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

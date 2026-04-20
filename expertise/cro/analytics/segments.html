@@ -237,7 +237,39 @@ window.addEventListener('sketch:ready', function(){
     ['Session duration', 'Engaged vs bouncing']
   ]});
 });
-</script><ul><li>New vs returning</li><li>Device (mobile, desktop, tablet)</li><li>Traffic source (paid, organic, email, direct)</li><li>Browser</li><li>Geographic</li><li>Landing page</li></ul><h2>Insights</h2><p>Often one segment has 5-10x conversion of another. Prioritize by segment size × conversion gap.</p><h2>Action</h2><p>Optimize worst-performing segment first if it's high-traffic. Or double down on best-performing for scale.</p></div></div><footer><div class="container">
+</script><ul><li>New vs returning</li><li>Device (mobile, desktop, tablet)</li><li>Traffic source (paid, organic, email, direct)</li><li>Browser</li><li>Geographic</li><li>Landing page</li></ul><h2>Insights</h2><p>Often one segment has 5-10x conversion of another. Prioritize by segment size × conversion gap.</p><h2>Action</h2><p>Optimize worst-performing segment first if it's high-traffic. Or double down on best-performing for scale.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Segment conversion reveals what blended hides');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Segment', w: 280},
+    {title: 'Conversion', w: 200},
+    {title: 'CRO action', w: 320}
+  ], rows: [
+    ['Desktop + branded search', '8.5%', 'Healthy, optimize for scale'],
+    ['Mobile + cold paid', '1.2%', 'Biggest opportunity, fix mobile flow'],
+    ['Tablet + organic', '4.2%', 'Medium, deprioritize'],
+    ['Return visitor', '12%', 'Different funnel, own optimization'],
+    ['Blended (misleading)', '3.8%', 'Hides mobile-paid disaster']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Segment conversion by traffic source + device + new/returning, blended hides specific leakage opportunities</li>
+<li>Fix the biggest weak segment first, 1.2% mobile-paid conversion is where most CRO gains will come from</li>
+<li>Build separate CRO roadmaps for major segments, what works for desktop branded-search doesn't on mobile cold-paid</li>
+<li>Track segment conversion trends over time, segments drift and yesterday's strong segment may be this year's decliner</li>
+<li>Don't optimize already-healthy segments unless they have massive traffic, returns on the weak segments are usually bigger</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

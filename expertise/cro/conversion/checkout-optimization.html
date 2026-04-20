@@ -242,7 +242,44 @@ window.addEventListener('sketch:ready', function(){
       'Pop-ups interrupting flow']}
   });
 });
-</script><ul><li>Guest checkout option</li><li>Minimal required fields</li><li>Multiple payment methods</li><li>Visible shipping costs early</li><li>Clear pricing breakdown</li><li>Trust signals (SSL, badges)</li><li>Progress indicator</li></ul><h2>Common issues</h2><ul><li>Surprise shipping cost at end (top cart abandonment reason)</li><li>Mandatory account creation</li><li>Too many form fields</li><li>No express checkout (Apple Pay, Shop Pay)</li></ul><h2>Checkout length</h2><p>3 steps is common. Long single-page or longer multi-step both work, test.</p></div></div><footer><div class="container">
+</script><ul><li>Guest checkout option</li><li>Minimal required fields</li><li>Multiple payment methods</li><li>Visible shipping costs early</li><li>Clear pricing breakdown</li><li>Trust signals (SSL, badges)</li><li>Progress indicator</li></ul><h2>Common issues</h2><ul><li>Surprise shipping cost at end (top cart abandonment reason)</li><li>Mandatory account creation</li><li>Too many form fields</li><li>No express checkout (Apple Pay, Shop Pay)</li></ul><h2>Checkout length</h2><p>3 steps is common. Long single-page or longer multi-step both work, test.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Single-page vs multi-step checkout');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Single-page checkout', items: [
+      'All fields visible at once',
+      'Less clicks to complete',
+      'Can feel overwhelming to some users',
+      'Better for returning customers',
+      'Test against multi-step'
+    ]},
+    right: {title: 'Multi-step checkout (3 steps)', items: [
+      'Email → Shipping → Payment',
+      'Feels lighter at each step',
+      'Email capture even if abandon later',
+      'Better for first-time buyers',
+      'Industry standard for e-commerce'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Default to 3-step multi-step checkout (email → shipping → payment), the email capture alone pays for the split</li>
+<li>Offer guest checkout, requiring account creation drops conversion 20-40% on new buyers</li>
+<li>Show progress indicators, visible progress lifts completion rate on multi-step flows</li>
+<li>Display trust signals at payment step (secure badge, guarantee, return policy), the payment step is where hesitation peaks</li>
+<li>Support wallets (Apple Pay, Google Pay, Shop Pay), one-click payment options can lift checkout conversion 15-30%</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

@@ -236,7 +236,35 @@ window.addEventListener('sketch:ready', function(){
     ['SMS recovery', 'If opted in; faster than email']
   ]});
 });
-</script><ul><li>Show shipping cost before checkout</li><li>Offer guest checkout</li><li>Reduce form fields</li><li>Multiple payment options</li></ul><h2>Recovery via email</h2><p>Sequence of 3 emails over 48-72 hours. Recovers 10-30% of abandoned carts.</p><h2>Recovery via retargeting ads</h2><p>Supplement email; reach users who didn't share email.</p><h2>SMS abandonment</h2><p>Higher open rates than email. Works well for cart abandonment specifically.</p></div></div><footer><div class="container">
+</script><ul><li>Show shipping cost before checkout</li><li>Offer guest checkout</li><li>Reduce form fields</li><li>Multiple payment options</li></ul><h2>Recovery via email</h2><p>Sequence of 3 emails over 48-72 hours. Recovers 10-30% of abandoned carts.</p><h2>Recovery via retargeting ads</h2><p>Supplement email; reach users who didn't share email.</p><h2>SMS abandonment</h2><p>Higher open rates than email. Works well for cart abandonment specifically.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Cart abandonment recovery, multi-channel stack');
+  sketch.numberedSteps(svg, rc, {x: 40, y: 60, w: 820, stepH: 30, items: [
+    'Hour 1: email reminder with cart image',
+    'Hour 24: email with FAQ or objection handling',
+    'Hour 48: SMS reminder (opt-in required)',
+    'Hour 72: retargeting ad on Meta / Google',
+    'Day 7: final email with discount (last resort)'
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Fix the cart-page friction first, abandonment is often a symptom of surprise fees or confusing checkout, not indecision</li>
+<li>Ship recovery email 1 within 1 hour, recovery rate drops sharply after 24 hours</li>
+<li>Save discount codes for email 3 or SMS touch 2, offering discounts too early trains buyers to abandon for discounts</li>
+<li>Add SMS to the recovery stack, SMS open rates of 90%+ make it the highest-converting single channel when opted-in</li>
+<li>Don't stack recovery over 3-4 touches, longer sequences drive unsubscribes without material additional recovery</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

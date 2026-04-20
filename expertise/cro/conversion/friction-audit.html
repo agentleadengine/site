@@ -237,7 +237,35 @@ window.addEventListener('sketch:ready', function(){
     ['Poor mobile UX', 'Test real devices']
   ]});
 });
-</script><ul><li>Requiring account before value</li><li>Credit card required for free trial</li><li>Long forms</li><li>Confusing navigation</li><li>Unclear pricing</li><li>Forced upsells</li></ul><h2>The user test</h2><p>Give someone unfamiliar your URL. Watch them try to sign up or buy. Every hesitation is friction.</p><h2>Prioritize by</h2><ul><li>Frequency (affects all users)</li><li>Severity (makes them leave entirely)</li><li>Fix cost (easy wins first)</li></ul></div></div><footer><div class="container">
+</script><ul><li>Requiring account before value</li><li>Credit card required for free trial</li><li>Long forms</li><li>Confusing navigation</li><li>Unclear pricing</li><li>Forced upsells</li></ul><h2>The user test</h2><p>Give someone unfamiliar your URL. Watch them try to sign up or buy. Every hesitation is friction.</p><h2>Prioritize by</h2><ul><li>Frequency (affects all users)</li><li>Severity (makes them leave entirely)</li><li>Fix cost (easy wins first)</li></ul>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Friction audit, score each step');
+  sketch.numberedSteps(svg, rc, {x: 40, y: 60, w: 820, stepH: 30, items: [
+    'Walk through every step as a new user',
+    'Note every friction: confusing copy, slow load, unclear next step',
+    'Score each: frequency (how many hit it) × severity (do they leave?)',
+    'Estimate fix cost (dev hours)',
+    'Ship fixes in priority: high-impact + low-cost first'
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Walk through your flow monthly as a new user, team members develop blind spots fast</li>
+<li>Score friction on frequency × severity, severity-only ranking misses high-frequency annoyances that compound</li>
+<li>Fix easy high-impact items first (copy edits, removed fields), save expensive fixes for after quick wins prove the hypothesis</li>
+<li>Test mobile separately from desktop, mobile friction is usually 2-3x worse and underinvested</li>
+<li>Re-audit quarterly, product ships add new friction as surely as removing old friction</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

@@ -233,7 +233,39 @@ window.addEventListener('sketch:ready', function(){
     {title: 'Fix + test', sub: 'iterate'}
   ]});
 });
-</script><p>Map the steps: visit → view product → add cart → checkout → purchase. Measure at each.</p><h2>Interpretation</h2><ul><li>Largest % drop = biggest opportunity</li><li>Compare segments (new vs returning, mobile vs desktop)</li><li>Track over time for trends</li></ul><h2>Actions</h2><p>Fix the biggest leak first. Moves the needle more than any other single CRO work.</p></div></div><footer><div class="container">
+</script><p>Map the steps: visit → view product → add cart → checkout → purchase. Measure at each.</p><h2>Interpretation</h2><ul><li>Largest % drop = biggest opportunity</li><li>Compare segments (new vs returning, mobile vs desktop)</li><li>Track over time for trends</li></ul><h2>Actions</h2><p>Fix the biggest leak first. Moves the needle more than any other single CRO work.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Find the biggest leak: traffic × drop-off');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Step', w: 220},
+    {title: 'Traffic', w: 180},
+    {title: 'Drop', w: 160},
+    {title: 'Leak priority', w: 240}
+  ], rows: [
+    ['Landing → product', '50,000', '45%', 'High, 22K leaks'],
+    ['Product → cart', '27,500', '60%', 'Biggest leak, 16K'],
+    ['Cart → checkout', '11,000', '30%', 'Medium, 3.3K'],
+    ['Checkout → purchase', '7,700', '10%', 'Low, 770']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Compute traffic × drop-off per step, fixing a 20% drop on 50K visits beats fixing 50% on 500 visits</li>
+<li>Segment the funnel by source + device, mobile checkout usually has 2-3x more leakage than desktop</li>
+<li>Fix the biggest leak first, shoring up small leaks while the primary is broken produces no measurable lift</li>
+<li>Review funnel performance weekly during active CRO cycles, weekly drift is often fixable before it compounds</li>
+<li>Document each leak's hypothesis + fix, compounding funnel knowledge is what separates 6-month operators from 2-month ones</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){
