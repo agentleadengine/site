@@ -235,7 +235,44 @@ window.addEventListener('sketch:ready', function(){
     ['Value-based', 'Unique value; biggest upside']
   ]});
 });
-</script><ul><li>Cost-plus (weak): cost + margin</li><li>Competitor-based (lazy): what others charge</li><li>Value-based (best): fraction of value delivered</li></ul><h2>Signals to raise price</h2><ul><li>Close rate above 50% (leaving money on table)</li><li>Low price sensitivity in sales objections</li><li>Meaningful LTV without equivalent CAC justification</li></ul><h2>Packaging</h2><ul><li>Good-better-best often outperforms single-price</li><li>Anchor with premium tier</li><li>Most customers pick middle (by design)</li></ul><h2>Testing</h2><p>A/B test price on signup page. Watch not just conversion but revenue per visitor.</p><div class="prev-next"></div></div></div><footer><div class="container">
+</script><ul><li>Cost-plus (weak): cost + margin</li><li>Competitor-based (lazy): what others charge</li><li>Value-based (best): fraction of value delivered</li></ul><h2>Signals to raise price</h2><ul><li>Close rate above 50% (leaving money on table)</li><li>Low price sensitivity in sales objections</li><li>Meaningful LTV without equivalent CAC justification</li></ul><h2>Packaging</h2><ul><li>Good-better-best often outperforms single-price</li><li>Anchor with premium tier</li><li>Most customers pick middle (by design)</li></ul><h2>Testing</h2><p>A/B test price on signup page. Watch not just conversion but revenue per visitor.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Underpriced vs right-priced, same product');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Underpriced (hiding)', items: [
+      '$19/mo, 8% free→paid conversion',
+      '500 paid users → $9,500/mo',
+      'Attracts price-sensitive cohort',
+      'Support-heavy customers',
+      'High churn from low commitment'
+    ]},
+    right: {title: 'Right-priced', items: [
+      '$49/mo, 5% free→paid conversion',
+      '500 paid users → $24,500/mo',
+      'Attracts serious-use cohort',
+      'Lower support burden per $',
+      'Lower churn from higher commitment'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Raise prices for new customers by 20-30% this quarter, most operators are underpriced 2-3x and don't realize it</li>
+<li>Watch revenue per visitor, not just conversion rate, a "worse" conversion at a higher price often makes more money</li>
+<li>Grandfather existing customers on price increases, switching them mid-relationship generates churn and complaints</li>
+<li>Run annual price reviews, markets shift and your value delivered has probably increased, the price should match</li>
+<li>Monitor close rate on qualified leads, above 50% means you're underpriced, below 15% means fix the offer before touching price</li>
+</ul>
+
+<div class="prev-next"></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

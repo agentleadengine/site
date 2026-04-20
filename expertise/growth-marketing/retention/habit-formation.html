@@ -233,7 +233,35 @@ window.addEventListener('sketch:ready', function(){
     {title: 'Investment', sub: 'user puts in; sets up next trigger'}
   ]});
 });
-</script><ul><li>Trigger (external or internal)</li><li>Action (minimal friction)</li><li>Variable reward</li><li>Investment (data, config, social)</li></ul><h2>Product examples</h2><ul><li>Duolingo: streak + notification</li><li>Instagram: scroll + variable content</li><li>Wordle: once per day ritual</li></ul><h2>Investment matters</h2><p>Users who invest (customize, add data, connect accounts) retain much better than users who passively consume.</p><h2>Ethical guardrails</h2><p>Habits that serve users win long-term. Dark-pattern habits generate churn and brand damage eventually.</p><div class="prev-next"></div></div></div><footer><div class="container">
+</script><ul><li>Trigger (external or internal)</li><li>Action (minimal friction)</li><li>Variable reward</li><li>Investment (data, config, social)</li></ul><h2>Product examples</h2><ul><li>Duolingo: streak + notification</li><li>Instagram: scroll + variable content</li><li>Wordle: once per day ritual</li></ul><h2>Investment matters</h2><p>Users who invest (customize, add data, connect accounts) retain much better than users who passively consume.</p><h2>Ethical guardrails</h2><p>Habits that serve users win long-term. Dark-pattern habits generate churn and brand damage eventually.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Habit loop, trigger → action → reward');
+  sketch.numberedSteps(svg, rc, {x: 40, y: 60, w: 820, stepH: 34, items: [
+    'Trigger: external cue (email, notification) or internal (routine, emotion)',
+    'Action: single clear action the user completes',
+    'Reward: variable, satisfying, proportional to effort',
+    'Investment: user puts something in (data, effort) that grows over time',
+    'Repeat: the investment makes next-loop easier, habit compounds'
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Design for triggers users already have (morning routine, end-of-day review), manufactured triggers produce fragile habits</li>
+<li>Make the core action as small as possible, high-friction actions break the habit loop</li>
+<li>Use variable rewards where ethically appropriate, fixed rewards lose stickiness faster than variable ones</li>
+<li>Build in investment loops (saved data, custom workflows, earned badges), investment makes the next-use easier and harder to leave</li>
+<li>Avoid dark-pattern habits, engagement that doesn't benefit the user generates churn when they realize it + brand damage long-term</li>
+</ul>
+
+<div class="prev-next"></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

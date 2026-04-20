@@ -236,7 +236,35 @@ window.addEventListener('sketch:ready', function(){
     ['Free → paid (freemium)', '2–5%']
   ]});
 });
-</script><ul><li>E-commerce: 2-4% typical, 5%+ strong</li><li>SaaS free trial: 15-25% to paid</li><li>B2B demo-to-customer: 15-30%</li></ul><h2>Levers</h2><ul><li>Landing page copy and design</li><li>Form length and friction</li><li>Pricing clarity</li><li>Social proof</li><li>Trust signals</li><li>CTA placement</li></ul><h2>Process</h2><p>A/B test continuously. Hypothesize → test → measure → keep winners.</p><h2>Avoid</h2><ul><li>Testing trivial changes (button color alone)</li><li>Testing without enough traffic</li><li>Over-optimizing at the cost of quality</li></ul><div class="prev-next"></div></div></div><footer><div class="container">
+</script><ul><li>E-commerce: 2-4% typical, 5%+ strong</li><li>SaaS free trial: 15-25% to paid</li><li>B2B demo-to-customer: 15-30%</li></ul><h2>Levers</h2><ul><li>Landing page copy and design</li><li>Form length and friction</li><li>Pricing clarity</li><li>Social proof</li><li>Trust signals</li><li>CTA placement</li></ul><h2>Process</h2><p>A/B test continuously. Hypothesize → test → measure → keep winners.</p><h2>Avoid</h2><ul><li>Testing trivial changes (button color alone)</li><li>Testing without enough traffic</li><li>Over-optimizing at the cost of quality</li></ul>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Conversion lift priority, by expected impact');
+  sketch.bars(svg, rc, {x: 40, y: 60, w: 820, labelW: 240, items: [
+    {label: 'Offer / pricing structure', value: 95, note: '30-100% potential lift'},
+    {label: 'Headline / hook', value: 70, note: '10-40% lift'},
+    {label: 'Social proof placement', value: 55, note: '10-25% lift'},
+    {label: 'Form fields (reduce)', value: 50, note: '5-30% lift'},
+    {label: 'Button color / microcopy', value: 15, note: '1-5% lift, skip early'}
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Test the offer before testing anything else, 30-100% lifts come from offer changes, not button colors</li>
+<li>Make sure you have the traffic to test, below 200 conversions per variant, results are noise</li>
+<li>Watch quality alongside conversion, a 20% lift in conversions with 10% worse retention is net negative</li>
+<li>Order tests by expected lift, if you can't predict a 10%+ lift, don't run the test</li>
+<li>Document winners in a rolling doc, compounding wins beat isolated big wins over 12 months</li>
+</ul>
+
+<div class="prev-next"></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

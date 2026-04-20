@@ -237,7 +237,38 @@ window.addEventListener('sketch:ready', function(){
     ['Cross-sell', 'Related product in same account']
   ]});
 });
-</script><ul><li>Usage expansion (more seats, more volume)</li><li>Tier upgrades</li><li>Additional products (cross-sell)</li><li>Price increases on renewal</li></ul><h2>Timing</h2><ul><li>Annual review for tier upgrades</li><li>Usage-triggered prompts when limits hit</li><li>Launch windows for new products</li></ul><h2>Process</h2><ul><li>Dedicated CS/AM role for expansion</li><li>Product-triggered in-app prompts</li><li>Usage-based pricing (auto-expansion)</li></ul><div class="prev-next"></div></div></div><footer><div class="container">
+</script><ul><li>Usage expansion (more seats, more volume)</li><li>Tier upgrades</li><li>Additional products (cross-sell)</li><li>Price increases on renewal</li></ul><h2>Timing</h2><ul><li>Annual review for tier upgrades</li><li>Usage-triggered prompts when limits hit</li><li>Launch windows for new products</li></ul><h2>Process</h2><ul><li>Dedicated CS/AM role for expansion</li><li>Product-triggered in-app prompts</li><li>Usage-based pricing (auto-expansion)</li></ul>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Net revenue retention targets by business type');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Business type', w: 240},
+    {title: 'Healthy NRR', w: 200},
+    {title: 'Top-tier NRR', w: 340}
+  ], rows: [
+    ['PLG B2B SaaS', '100%+', '120-140% (Slack, Datadog)'],
+    ['Sales-led B2B', '95-105%', '115-130% with strong CSM'],
+    ['Consumer subscription', '80-95%', '100%+ rare, usually shrinks'],
+    ['Usage-based SaaS', '110-130%', '150%+ (Snowflake, Stripe)']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Track NRR as aggressively as new-logo ARR, expansion in existing accounts is cheaper per dollar than new acquisition</li>
+<li>Build usage-based pricing where product fits, usage pricing auto-expands without sales involvement and produces best-in-class NRR</li>
+<li>Identify expansion triggers in-product (hit seat cap, 80% usage, team admin added) and automate the prompt</li>
+<li>Train CSMs on expansion, not just retention, a CSM who only saves at-risk accounts misses the growth in healthy ones</li>
+<li>Target 110%+ NRR for B2B SaaS, below 100% means you're running on a treadmill where churn requires equal new-logo acquisition to stay flat</li>
+</ul>
+
+<div class="prev-next"></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

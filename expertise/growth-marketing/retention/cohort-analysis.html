@@ -240,7 +240,44 @@ window.addEventListener('sketch:ready', function(){
       'Acquisition can\'t keep up']}
   });
 });
-</script><p>Sharp initial drop (users who never activate), then flatten into a retention plateau.</p><h2>Tools</h2><ul><li>Mixpanel, Amplitude cohort reports</li><li>Google Analytics 4 (basic)</li><li>Custom SQL for tailored views</li></ul><div class="prev-next"></div></div></div><footer><div class="container">
+</script><p>Sharp initial drop (users who never activate), then flatten into a retention plateau.</p><h2>Tools</h2><ul><li>Mixpanel, Amplitude cohort reports</li><li>Google Analytics 4 (basic)</li><li>Custom SQL for tailored views</li></ul>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Aggregate MAU vs cohort retention, different stories');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Aggregate MAU (misleading)', items: [
+      'MAU up 20% YoY',
+      'Looks healthy on dashboard',
+      'Hides declining retention of new cohorts',
+      'Masked by strong acquisition',
+      'Business quietly declining'
+    ]},
+    right: {title: 'Cohort curves (honest)', items: [
+      'Jan cohort retention at month 3: 48%',
+      'Jun cohort retention at month 3: 35%',
+      'Newer cohorts retaining worse',
+      'Product or positioning has drifted',
+      'Retention leak visible before MAU catches it'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Track retention by cohort, not aggregate MAU, aggregate numbers hide the decline that should alarm you</li>
+<li>Compare retention curves across 6-12 cohorts, if newer cohorts trend worse, your product or audience has drifted</li>
+<li>Look for the flattening point in each cohort, if a curve never flattens, that cohort has a PMF problem</li>
+<li>Benchmark against your category, 30% month-3 retention is weak for B2B SaaS but great for consumer social</li>
+<li>Review cohort analysis weekly, when a cohort's curve bends the wrong way, the root cause is usually still fixable</li>
+</ul>
+
+<div class="prev-next"></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

@@ -237,7 +237,44 @@ window.addEventListener('sketch:ready', function(){
 });
 </script>
 
-<h2>Non-programmatic</h2><p>Some products generate referrals organically (Slack, Dropbox). Most don't.</p><h2>Referral programs</h2><ul><li>Incentive both sides (referrer + referee)</li><li>Make referring easy</li><li>Time limits drive action</li><li>Track attribution</li></ul><h2>B2B referrals</h2><p>Ask explicitly after delivering value. Structured ask: 'who else do you know who has [X problem]?'</p><h2>Measurement</h2><ul><li>% new customers referred</li><li>CAC of referred vs other</li><li>LTV of referred vs other</li></ul><div class="prev-next"></div></div></div><footer><div class="container">
+<h2>Non-programmatic</h2><p>Some products generate referrals organically (Slack, Dropbox). Most don't.</p><h2>Referral programs</h2><ul><li>Incentive both sides (referrer + referee)</li><li>Make referring easy</li><li>Time limits drive action</li><li>Track attribution</li></ul><h2>B2B referrals</h2><p>Ask explicitly after delivering value. Structured ask: 'who else do you know who has [X problem]?'</p><h2>Measurement</h2><ul><li>% new customers referred</li><li>CAC of referred vs other</li><li>LTV of referred vs other</li></ul>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Bolted-on referral program vs built-in');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Bolted-on (rarely works)', items: [
+      '"Refer a friend for $10 credit"',
+      'Buried in settings menu',
+      'Users forget it exists',
+      '1-3% of users ever refer',
+      'Looks busy on dashboards, no real impact'
+    ]},
+    right: {title: 'Built into core flow', items: [
+      'Sharing is the natural path of using',
+      'Referral happens as part of value delivery',
+      'Both sides get real value (not token credit)',
+      '10-30% of users refer within 30 days',
+      'Referred users have higher LTV than paid'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Build referral into the core value delivery (shared docs, multi-user features), bolted-on "refer a friend" programs rarely move the needle</li>
+<li>Track referred-customer LTV separately, referred users typically have 2-3x the LTV of paid-acquired and different CAC economics</li>
+<li>Two-sided incentives beat one-sided, reward both the referrer and the new user, friction drops on both sides</li>
+<li>Monitor the K-factor explicitly, assumed virality without measurement almost always overestimates real contribution</li>
+<li>Don't oversize the reward, $50 for a referral that costs you $30 to acquire through paid is a structural loss, cap the spend</li>
+</ul>
+
+<div class="prev-next"></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

@@ -236,7 +236,38 @@ window.addEventListener('sketch:ready', function(){
     ['3+ months', 'Winback offer / discount']
   ]});
 });
-</script><p>Sweet spot is usually 7-30 days of inactivity. Too soon feels intrusive; too late they've moved on.</p><h2>Channels</h2><ul><li>Email (most common)</li><li>Push notifications (app users)</li><li>SMS (use rarely)</li><li>Retargeting ads (for larger cohorts)</li></ul><h2>Message patterns</h2><ul><li>What's new / what you missed</li><li>Specific new feature</li><li>Discount or promo (last resort)</li><li>Question to re-engage</li></ul><h2>Measure</h2><p>% re-engaged within 14 days. Don't just count opens.</p><div class="prev-next"></div></div></div><footer><div class="container">
+</script><p>Sweet spot is usually 7-30 days of inactivity. Too soon feels intrusive; too late they've moved on.</p><h2>Channels</h2><ul><li>Email (most common)</li><li>Push notifications (app users)</li><li>SMS (use rarely)</li><li>Retargeting ads (for larger cohorts)</li></ul><h2>Message patterns</h2><ul><li>What's new / what you missed</li><li>Specific new feature</li><li>Discount or promo (last resort)</li><li>Question to re-engage</li></ul><h2>Measure</h2><p>% re-engaged within 14 days. Don't just count opens.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Re-engagement windows, who\'s worth winning back');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Dormancy', w: 200},
+    {title: 'Re-engage?', w: 280},
+    {title: 'How', w: 320}
+  ], rows: [
+    ['< 14 days', 'Yes, high intent', 'Targeted email with their data'],
+    ['14-60 days', 'Yes, medium', 'Feature update + comeback offer'],
+    ['60-180 days', 'Maybe, segment', 'Major announcement + social proof'],
+    ['180+ days', 'Usually no', 'Remove from list, protect deliverability']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Segment dormant users by dormancy length, 14-day and 180-day dormancies need different messages and offers</li>
+<li>Measure true re-engagement (returned active, not just opened), "opens" from dormant users are a deliverability liability</li>
+<li>Remove users dormant for 180+ days from active campaigns, continuing to email them hurts deliverability and rarely converts</li>
+<li>Lead re-engagement with what's new since they left, generic "we miss you" reads as desperate and converts poorly</li>
+<li>Attach a re-engagement offer (discount, credit, feature access) to give dormant users a concrete reason to return</li>
+</ul>
+
+<div class="prev-next"></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

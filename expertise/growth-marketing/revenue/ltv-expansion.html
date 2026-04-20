@@ -233,7 +233,39 @@ window.addEventListener('sketch:ready', function(){
     {label: 'Lengthen lifespan', value: 55, note: 'loyalty programs'}
   ]});
 });
-</script><ul><li>Reduce churn</li><li>Increase purchase frequency</li><li>Increase average order value</li><li>Extend relationship duration</li><li>Add new products/services</li></ul><h2>Cohort analysis</h2><p>Measure LTV by cohort. Do newer cohorts show higher LTV? If not, retention work.</p><h2>LTV per segment</h2><p>Don't use blended LTV. Segment by channel, product, customer size. Some segments have 5x LTV of others.</p><div class="prev-next"></div></div></div><footer><div class="container">
+</script><ul><li>Reduce churn</li><li>Increase purchase frequency</li><li>Increase average order value</li><li>Extend relationship duration</li><li>Add new products/services</li></ul><h2>Cohort analysis</h2><p>Measure LTV by cohort. Do newer cohorts show higher LTV? If not, retention work.</p><h2>LTV per segment</h2><p>Don't use blended LTV. Segment by channel, product, customer size. Some segments have 5x LTV of others.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'LTV by segment hides what blended LTV reveals');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Segment', w: 280},
+    {title: 'LTV', w: 200},
+    {title: 'Action', w: 320}
+  ], rows: [
+    ['Enterprise (100+ seats)', '$48,000', 'Scale acquisition aggressively'],
+    ['Mid-market (20-100 seats)', '$12,000', 'Healthy, optimize expansion'],
+    ['SMB (1-20 seats)', '$2,400', 'Keep if margin-positive'],
+    ['Solo / free trial only', '$0', 'Filter out of paid acquisition'],
+    ['Blended (misleading)', '$8,500', 'Hides the 20x gap between segments']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Segment LTV by customer size, industry, and acquisition channel, blended LTV hides 5-10x gaps that should change your acquisition strategy</li>
+<li>Re-direct paid acquisition budget toward high-LTV segments, paying the same CAC for 5x LTV is the highest-leverage reallocation</li>
+<li>Measure observed LTV, not modeled, projected LTV is where bad unit economics hide until the model fails</li>
+<li>Review LTV by segment quarterly, segments drift and yesterday's high-LTV segment may be this year's decliner</li>
+<li>Don't optimize for LTV alone, retention + expansion are the two levers, pure retention can cap LTV at current spend per user</li>
+</ul>
+
+<div class="prev-next"></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){
