@@ -284,6 +284,34 @@ window.addEventListener('sketch:ready', function(){
 <li>Testing minor variations (button color, one word) instead of big angles</li>
 <li>Not documenting learnings (same bad creative re-made 6 months later)</li>
 </ul>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Creative test ladder, big levers first');
+  sketch.numberedSteps(svg, rc, {x: 40, y: 60, w: 820, stepH: 30, items: [
+    'Hook / angle (30-100% lift potential) — test first',
+    'Format (video vs static vs UGC) (20-60% lift)',
+    'Opening 3 seconds of video (10-40% lift)',
+    'CTA + offer copy in ad (5-20% lift)',
+    'Thumbnail / first frame (5-15% lift)',
+    'Button color, one-word tweaks (1-3% lift, skip)'
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Test big angles first (hook, format, UGC vs produced), don't waste testing budget on button colors until the big levers are optimized</li>
+<li>Run 3-5 variants per ad set, not 15, more variants means less data per variant and slower conclusions</li>
+<li>Wait for statistical significance before killing creative, "this one feels weak" is how operators cut eventual winners</li>
+<li>Document every test in a rolling doc (hypothesis, result, learning), otherwise the team re-tests the same bad creative every 6 months</li>
+<li>Ship new creative weekly regardless of how the current winners look, fatigue catches you silently and you find out 2 weeks too late</li>
+</ul>
+
 <div class="prev-next"><a href="audiences.html" class="prev"><div class="label">← Previous</div><div class="title">Audiences and targeting</div></a><a href="ios14-reality.html" class="next"><div class="label">Next →</div><div class="title">iOS 14+ reality</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

@@ -276,6 +276,37 @@ window.addEventListener('sketch:ready', function(){
 <li>Pick "Awareness" for a performance channel</li>
 <li>Mix objectives in one campaign (you can't)</li>
 </ul>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Pick the objective that matches your KPI');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Your KPI', w: 260},
+    {title: 'Right objective', w: 280},
+    {title: 'Wrong objective', w: 260}
+  ], rows: [
+    ['Online purchase', 'Sales / conversions', 'Traffic (cheap but wrong)'],
+    ['Lead for sales team', 'Leads / Lead gen forms', 'Engagement'],
+    ['App install', 'App promotion', 'Traffic'],
+    ['Brand recall for launch', 'Awareness / reach', 'Sales (too early in funnel)'],
+    ['Video views for funnel', 'Video views / awareness', 'Traffic']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Pick the objective that matches your actual business KPI, not the one that feels cheap, "Traffic" + "complaining about no conversions" is the most common Meta mistake</li>
+<li>Never mix objectives in a single campaign, Meta literally cannot optimize for both simultaneously</li>
+<li>Default to Sales/Conversions objective for any performance goal below the funnel, it's the one where the algorithm has the richest signal</li>
+<li>Use Advantage+ Shopping (ASC) only after a standard Sales campaign has produced a winning creative stack, new accounts should learn the fundamentals first</li>
+<li>When switching objectives mid-campaign, expect the learning phase to restart, budget for that reset before deciding</li>
+</ul>
+
 <div class="prev-next"><a href="account-structure.html" class="prev"><div class="label">← Previous</div><div class="title">Account structure</div></a><a href="audiences.html" class="next"><div class="label">Next →</div><div class="title">Audiences and targeting</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

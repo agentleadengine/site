@@ -277,6 +277,42 @@ window.addEventListener('sketch:ready', function(){
 
 <h2>Placements</h2>
 <p>Let Meta choose automatic placements 90% of the time. Manual placement selection usually limits the algorithm for no good reason.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Narrow vs broad targeting in 2026');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Narrow interest targeting (2018 playbook)', items: [
+      '"Women 25-34, interested in yoga + running"',
+      'High CPMs from compressed audience',
+      'Algorithm starved of signal to optimize',
+      'Creative tested on tiny pool, noisy results',
+      'Worked in 2018, underperforms in 2026'
+    ]},
+    right: {title: 'Broad + creative (2026 playbook)', items: [
+      '"Adults 25-54, country only"',
+      'Lower CPM, larger audience to learn on',
+      'Creative does the targeting',
+      'Algorithm finds buyers inside the pool',
+      'Top-performing accounts do this now'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Default to broad targeting + strong creative, the creative does the audience segmentation now that iOS 14 killed most precise targeting</li>
+<li>Use lookalikes based on purchasers (not leads) wherever possible, purchaser lookalikes convert 2-3x better than lead lookalikes</li>
+<li>Don't narrow by age and gender without real data supporting it, most advertisers over-narrow and miss 40% of their buyers</li>
+<li>Let Meta use automatic placements by default, manual placement selection limits the algorithm without adding signal</li>
+<li>Re-test your "audience assumptions" every quarter, last year's winning audience segment is often this year's decliner</li>
+</ul>
+
 <div class="prev-next"><a href="campaign-types.html" class="prev"><div class="label">← Previous</div><div class="title">Campaign types</div></a><a href="creative-testing.html" class="next"><div class="label">Next →</div><div class="title">Creative testing</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

@@ -275,6 +275,42 @@ Example: "Prospecting-Purchase-2026Q2" / "Broad-AllPlacements" / "Problem-UGC-Pa
 
 <h2>The 5/5/5 rule</h2>
 <p>Start simple: 5 campaigns max, 5 ad sets per campaign max, 5-10 creatives per ad set. If you have 50 ad sets, you have a complexity problem, not a scale problem.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Account structure, simple vs over-engineered');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Over-engineered (starves algorithm)', items: [
+      '50 ad sets, 5 creatives each',
+      'No ad set gets enough budget for learning',
+      'Signals fragmented across too many groups',
+      'Report reviews take 2 hours',
+      'CAC drifts, source of drift unknown'
+    ]},
+    right: {title: '5/5/5 (algorithm can learn)', items: [
+      '5 campaigns, 5 ad sets, 5-10 creatives',
+      'Each ad set gets real budget + data',
+      'Algorithm converges on winners',
+      'Report reviews take 15 min',
+      'Winners and losers are clearly separable'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Cap your account at 5/5/5 (campaigns/ad sets/creatives) until you've hit $10K+ monthly spend per campaign, complexity is the enemy of early learning</li>
+<li>Use the consistent naming convention from day one, retroactively renaming 200 ads is a day of pain, preventing it is 5 minutes of discipline</li>
+<li>One campaign = one objective, don't mix prospecting and retargeting in the same campaign, the algorithm optimizes differently</li>
+<li>Consolidate ad sets weekly, if two are targeting nearly the same audience, merge them so each gets enough signal</li>
+<li>Before adding a campaign, ask "does this deserve its own learning budget?", if not, fold it into an existing campaign as an ad set</li>
+</ul>
+
 <div class="prev-next"><a href="overview.html" class="prev"><div class="label">← Previous</div><div class="title">Meta Ads overview</div></a><a href="campaign-types.html" class="next"><div class="label">Next →</div><div class="title">Campaign types</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

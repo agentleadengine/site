@@ -279,6 +279,42 @@ window.addEventListener('sketch:ready', function(){
 
 <h2>Messenger/WhatsApp retargeting</h2>
 <p>For certain categories (support-heavy, high-consideration purchases), conversations in Messenger or WhatsApp convert higher than web. Test if applicable.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Retargeting budget split, right vs wrong');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Wrong split (starved prospecting)', items: [
+      'Retargeting: 60% of budget',
+      'Prospecting: 40%',
+      'Audience shrinks, frequency climbs',
+      'Reported ROAS looks great (over-claim)',
+      'Actual revenue plateaus, then drops'
+    ]},
+    right: {title: 'Right split (healthy funnel)', items: [
+      'Prospecting: 70-85% of budget',
+      'Retargeting: 15-30%',
+      'Fresh audience feeds retargeting pool',
+      'Total revenue compounds',
+      'Platform attribution over-claims less'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Keep retargeting at 15-30% of budget, pushing it higher shrinks your audience and inflates platform ROAS without adding real revenue</li>
+<li>Treat retargeting ROAS as over-claimed by 30-50%, most of those conversions would have happened anyway via organic or email</li>
+<li>Run periodic incrementality tests (pause retargeting for 2 weeks), measure the actual revenue drop, that's your true incremental value</li>
+<li>Segment retargeting by behavior (viewers vs add-to-cart vs initiate checkout), each gets a different ad + offer</li>
+<li>For high-consideration categories, test Messenger/WhatsApp conversational retargeting, can convert 2-3x higher than web retargeting</li>
+</ul>
+
 <div class="prev-next"><a href="scaling.html" class="prev"><div class="label">← Previous</div><div class="title">Scaling campaigns</div></a><a href="../google/overview.html" class="next"><div class="label">Next →</div><div class="title">Google Ads overview</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

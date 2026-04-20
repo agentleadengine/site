@@ -279,6 +279,42 @@ window.addEventListener('sketch:ready', function(){
 <li>First-party data compounds in value</li>
 <li>Blended measurement over platform-specific</li>
 </ul>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Pre-iOS 14 vs post, what changed');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Pre-iOS 14 (2019)', items: [
+      'Precise retargeting pixels',
+      'Narrow interest targeting worked',
+      'Platform attribution was trusted',
+      '1:1 user tracking across apps',
+      'CAC visibility per campaign'
+    ]},
+    right: {title: 'Post-iOS 14 (2026)', items: [
+      'CAPI + first-party data is table stakes',
+      'Broad + creative wins',
+      'Platform attribution over-claims',
+      'Modeled conversions, not measured',
+      'Blended CAC + incrementality tests'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Implement Conversions API (CAPI) if you haven't, it partially restores the signal lost from iOS 14 and is required for serious Meta campaigns</li>
+<li>Configure 8 Aggregated Event Measurement events in priority order, Purchase priority 1, rank the others by what you'd optimize for</li>
+<li>Never trust platform attribution as absolute truth, use it as a directional signal and validate with blended MER + incrementality tests</li>
+<li>Invest in first-party data (email list, post-purchase surveys, CRM integration), it's the moat that survives platform changes</li>
+<li>Shift the creative budget ratio, post-iOS creative is 60-70% of what determines success, targeting is 10-20%</li>
+</ul>
+
 <div class="prev-next"><a href="creative-testing.html" class="prev"><div class="label">← Previous</div><div class="title">Creative testing</div></a><a href="scaling.html" class="next"><div class="label">Next →</div><div class="title">Scaling campaigns</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

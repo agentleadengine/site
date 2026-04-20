@@ -278,6 +278,33 @@ window.addEventListener('sketch:ready', function(){
 <li>Image-only static creative</li>
 <li>Conversion events you haven't implemented yet</li>
 </ul>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Starter Meta setup, week 1');
+  sketch.numberedSteps(svg, rc, {x: 40, y: 60, w: 820, stepH: 34, items: [
+    'One prospecting campaign, purchase objective, broad targeting',
+    '5-10 creative variants: 3 hooks × 2-3 formats (UGC, static, short video)',
+    'Advantage+ placements, let Meta distribute',
+    'Minimum $50/day budget, algorithm needs data to train',
+    'Weekly creative refresh, retire losers, double down on winners'
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Start with one prospecting campaign, not ten, simple setups outperform complex ones in the first 90 days</li>
+<li>Default to broad targeting + strong creative, narrow interest targeting is a 2018 playbook Meta's algorithm doesn't reward anymore</li>
+<li>Ship 5-10 creative variants week 1, not one "hero" ad, the algorithm needs options to find what works</li>
+<li>Set purchase as the conversion event only after you've implemented and tested the pixel, optimizing on a broken event burns budget</li>
+<li>Budget at least $50/day to start, lower budgets starve the algorithm of signal and inflate CAC</li>
+</ul>
+
 <div class="prev-next"><a href="../foundations/when-to-run-paid.html" class="prev"><div class="label">← Previous</div><div class="title">When to run paid</div></a><a href="account-structure.html" class="next"><div class="label">Next →</div><div class="title">Account structure</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
