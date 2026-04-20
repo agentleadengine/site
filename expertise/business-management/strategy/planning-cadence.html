@@ -311,6 +311,33 @@ Q4 (Oct-Dec)
 </ul>
 
 <p style="margin-top:40px;">Related: <a href="okrs.html">OKRs without the cult</a> · <a href="what-to-kill.html">What to kill</a> · <a href="pre-mortems.html">Pre-mortems</a></p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Planning cadence, annual + quarterly + monthly');
+  sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 40, layers: [
+    {label: 'Annual (1-2 days offsite)', sub: 'vision + strategy + annual goals'},
+    {label: 'Quarterly (1 day)', sub: 'quarterly OKRs + roadmap refresh'},
+    {label: 'Monthly (2 hr)', sub: 'progress + course-correct'},
+    {label: 'Weekly L10 (90 min)', sub: 'execution + issue resolution'},
+    {label: 'Daily standup (optional, 15 min)', sub: 'blocker removal'}
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Protect the annual offsite on the calendar, skipping it compresses strategy into the Q1 quarterly and undermines the year</li>
+<li>Run quarterly planning with the output of the weekly reviews, not in isolation, it should roll up from ongoing operation</li>
+<li>Keep monthly check-ins short + action-oriented, monthly reviews that become mini-quarterly planning waste time</li>
+<li>Make each cadence a different conversation, annual = vision, quarterly = goals, monthly = progress, weekly = execution</li>
+<li>Cascade decisions same-day, planning outputs that take weeks to reach the team lose momentum + relevance</li>
+</ul>
+
 <div class="prev-next"><a href="okrs.html" class="prev"><div class="label">← Previous</div><div class="title">OKRs without the cult</div></a><a href="what-to-kill.html" class="next"><div class="label">Next →</div><div class="title">What to kill</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

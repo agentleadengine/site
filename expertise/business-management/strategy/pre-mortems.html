@@ -301,6 +301,33 @@ window.addEventListener('sketch:ready', function(){
 </ul>
 
 <p style="margin-top:40px;">Related: <a href="decision-frameworks.html">Decision frameworks</a> · <a href="what-to-kill.html">What to kill</a> · <a href="../risk/risk-management.html">Risk management</a></p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Pre-mortem, run before shipping, not after failing');
+  sketch.numberedSteps(svg, rc, {x: 40, y: 60, w: 820, stepH: 30, items: [
+    'Imagine it\'s 12 months from now and this initiative failed',
+    'Each participant writes 5-10 reasons why it failed (10 min silently)',
+    'Round-robin share, no debate during sharing',
+    'Cluster themes, rank by likelihood + impact',
+    'Build mitigation plans for top 3, ship with awareness not blindness'
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Run a pre-mortem before shipping any major initiative, the 60 minutes spent saves months of failed execution</li>
+<li>Ask participants to write silently first, verbal brainstorming gets dominated by loudest voices</li>
+<li>Include diverse perspectives (eng, design, sales, support), each function sees different failure modes</li>
+<li>Don't dismiss uncomfortable reasons, the reasons that sting are usually the real risks</li>
+<li>Document mitigation plans in the decision log, post-failure learnings compound when tied to the pre-mortem</li>
+</ul>
+
 <div class="prev-next"><a href="what-to-kill.html" class="prev"><div class="label">← Previous</div><div class="title">What to kill</div></a><a href="decision-frameworks.html" class="next"><div class="label">Next →</div><div class="title">Decision frameworks</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

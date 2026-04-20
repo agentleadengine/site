@@ -301,6 +301,42 @@ window.addEventListener('sketch:ready', function(){
 </ul>
 
 <p style="margin-top:40px;">Related: <a href="planning-cadence.html">Annual + quarterly planning</a> · <a href="what-to-kill.html">What to kill</a> · <a href="../operating-systems/weekly-business-review.html">Weekly business review</a></p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'OKRs done badly vs done well');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Bad OKRs (theater)', items: [
+      '20+ OKRs per team',
+      'Activities written as KRs',
+      'Everyone hits 100% (sandbagged)',
+      'Decoupled from weekly review',
+      'Fill a doc, change no behavior'
+    ]},
+    right: {title: 'Good OKRs (operating tool)', items: [
+      '3-5 OKRs per team max',
+      'Measurable outcomes (not activities)',
+      'Ambitious target, 70% hit = success',
+      'Reviewed weekly with scorecard',
+      'Drives what gets worked on'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Cap OKRs at 3-5 per team, more than that fragments focus and trains the team to ignore half</li>
+<li>Write KRs as measurable outcomes, activity-based KRs ("launch feature X") miss the point</li>
+<li>Aim for 70% achievement, hitting 100% means targets were sandbagged, missing 50% means disconnected from reality</li>
+<li>Review OKRs weekly in the business review, OKRs that aren't in weekly operating cadence become documents</li>
+<li>Kill OKRs if the whole system becomes theater, cargo-cult OKRs are worse than no system</li>
+</ul>
+
 <div class="prev-next"><a href="../finance/cash-flow.html" class="prev"><div class="label">← Previous</div><div class="title">Cash flow forecasting</div></a><a href="planning-cadence.html" class="next"><div class="label">Next →</div><div class="title">Annual + quarterly planning</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

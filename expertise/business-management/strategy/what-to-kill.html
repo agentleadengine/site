@@ -309,6 +309,33 @@ Any single one of these triggers the kill conversation. Two or three = automatic
 </ul>
 
 <p style="margin-top:40px;">Related: <a href="pre-mortems.html">Pre-mortems</a> · <a href="okrs.html">OKRs without the cult</a> · <a href="../operating-systems/decision-logs.html">Decision logs</a></p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'What to kill, the "would we start this today" test');
+  sketch.numberedSteps(svg, rc, {x: 40, y: 60, w: 820, stepH: 30, items: [
+    'List every product / feature / initiative / meeting',
+    'For each ask: "would we start this today if we were starting fresh?"',
+    'No → flag for kill / sunset',
+    'Maybe → needs specific criteria to justify keeping',
+    'Yes → invest more, these are the real bets'
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Run the kill audit quarterly, new initiatives accumulate and legacy initiatives rarely get questioned without a ritual</li>
+<li>Ask "would we start this today" for every recurring meeting, product feature, campaign, the no's usually dominate</li>
+<li>Kill loudly, communicate what you stopped and why, silent killing creates uncertainty</li>
+<li>Reallocate resources freed by killing, the point is focus not layoffs</li>
+<li>Accept sunk cost, the fact that you invested in something historically is not a reason to keep it now</li>
+</ul>
+
 <div class="prev-next"><a href="planning-cadence.html" class="prev"><div class="label">← Previous</div><div class="title">Annual + quarterly planning</div></a><a href="pre-mortems.html" class="next"><div class="label">Next →</div><div class="title">Pre-mortems</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

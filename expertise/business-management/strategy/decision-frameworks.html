@@ -316,6 +316,42 @@ Now: are we doing any of those?
 </ul>
 
 <p style="margin-top:40px;">Related: <a href="pre-mortems.html">Pre-mortems</a> · <a href="what-to-kill.html">What to kill</a> · <a href="../operating-systems/decision-logs.html">Decision logs</a></p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Reversible vs one-way-door decisions');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Type 1 (one-way door)', items: [
+      'Hard or impossible to reverse',
+      'Examples: acquisition, firing exec, pricing change',
+      'Slow down, gather more data',
+      'Bring more decision-makers in',
+      'Worth the analysis time'
+    ]},
+    right: {title: 'Type 2 (two-way door)', items: [
+      'Easy to reverse',
+      'Examples: marketing campaign, new vendor trial, feature toggle',
+      'Move fast, decide lightly',
+      'Single DRI authorizes',
+      'Cost of delay > cost of being wrong'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Classify every significant decision as Type 1 or Type 2 before deciding, they deserve different rigor</li>
+<li>Move fast on Type 2 decisions, bureaucracy on reversible decisions is the single biggest velocity tax</li>
+<li>Slow down on Type 1 decisions, the time spent on irreversible decisions is high-leverage investment</li>
+<li>Document decisions + expected outcomes for Type 1, the reasoning matters more when you can't undo</li>
+<li>Review classification after the fact, decisions you thought were Type 2 often turn out Type 1 in retrospect</li>
+</ul>
+
 <div class="prev-next"><a href="pre-mortems.html" class="prev"><div class="label">← Previous</div><div class="title">Pre-mortems</div></a><a href="../sales/funnel-math.html" class="next"><div class="label">Next →</div><div class="title">Funnel math that matters</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>
