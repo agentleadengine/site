@@ -308,6 +308,23 @@ window.addEventListener('sketch:ready', function(){
 </ul>
 
 <h2>The multi-tenant special case</h2>
+<div class="sketch" data-viewbox="0 0 900 240"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 240);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Multi-tenant filter patterns');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Pattern', w: 260},
+    {title: 'Tradeoff', w: 540}
+  ], rows: [
+    ['Filter on tenant_id', 'Simple; one leak if filter missing'],
+    ['Namespace per tenant', 'Physical separation; better perf'],
+    ['Collection per tenant', 'Maximum isolation; high overhead for many small tenants']
+  ]});
+});
+</script>
 <p>In multi-tenant RAG, tenant_id filter runs on every query. Options:</p>
 
 <h3>Single index, filter on tenant_id</h3>
@@ -349,7 +366,12 @@ tenant_id: "acme" AND source_system: {$in: ["confluence", "drive"]}
 
 <p>See <a href="../retrieval/reranking.html">reranking</a>.</p>
 
-<p style="margin-top:40px;">Next: <a href="cost-optimization.html">Cost optimization</a>.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>Index every metadata field you filter on. Un-indexed fields force full scans.</li>
+<li>For multi-tenant, use namespaces over filter-on-tenant-id where your DB supports it.</li>
+<li>Prefer a DB with dynamic pre/post-filter selection.</li>
+</ul>
 <div class="prev-next"><a href="hybrid-search.html" class="prev"><div class="label">← Previous</div><div class="title">Hybrid search</div></a><a href="cost-optimization.html" class="next"><div class="label">Next →</div><div class="title">Cost optimization</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

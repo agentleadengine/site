@@ -318,18 +318,35 @@ window.addEventListener('sketch:ready', function(){
 <p>Pinecone's namespaces are clean. Weaviate has per-tenant shards. For multi-tenant RAG, these features matter a lot. See <a href="../cases/multi-tenant.html">multi-tenant RAG</a>.</p>
 
 <h2>The decision framework</h2>
-<ol>
-  <li>Starting out, low volume: pgvector or Chroma. Cheap, simple.</li>
-  <li>Growing, managed preference: Pinecone. Fast to scale, costs predictable.</li>
-  <li>Growing, self-hosted preference: Qdrant or Weaviate. Full control.</li>
-  <li>Very large scale: Milvus or Vespa.</li>
-  <li>Need full-text + vectors in one system: Elasticsearch / OpenSearch / Vespa.</li>
-  <li>Already running Postgres heavily: pgvector, unless you hit limits.</li>
-</ol>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Vector DB by situation');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Situation', w: 320},
+    {title: 'Start with', w: 480}
+  ], rows: [
+    ['Starting out, low volume', 'pgvector or Chroma'],
+    ['Growing, managed preference', 'Pinecone'],
+    ['Growing, self-hosted', 'Qdrant or Weaviate'],
+    ['Very large scale (100M+)', 'Milvus or Vespa'],
+    ['Full-text + vectors one system', 'OpenSearch / Vespa'],
+    ['Already heavy on Postgres', 'pgvector until it breaks']
+  ]});
+});
+</script>
 
 <p>Most vector DB decisions are reversible with some migration effort. Don't over-optimize this choice early.</p>
 
-<p style="margin-top:40px;">Next: <a href="indexing-strategies.html">HNSW, IVF, PQ</a>.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>Pick by scale + ops preference, not by marketing. Migration later is possible.</li>
+<li>If you're unsure, pgvector on your existing Postgres is a great starting point.</li>
+<li>Read <a href="indexing-strategies.html">indexing strategies</a> to pick the algorithm inside the DB.</li>
+</ul>
 <div class="prev-next"><a href="../embeddings/fine-tuning.html" class="prev"><div class="label">← Previous</div><div class="title">Fine-tuning embeddings</div></a><a href="indexing-strategies.html" class="next"><div class="label">Next →</div><div class="title">HNSW, IVF, PQ</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

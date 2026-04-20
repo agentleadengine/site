@@ -281,6 +281,23 @@ final_score = α * dense_score + (1 - α) * sparse_score
 <p>A different approach: embed every token in queries and documents, match at the token level. Stronger for precise retrieval but more expensive to store and serve.</p>
 
 <h2>Implementation patterns</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Three hybrid architectures');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Pattern', w: 260},
+    {title: 'Tradeoff', w: 540}
+  ], rows: [
+    ['Single DB w/ native hybrid', 'Cleanest (Weaviate, Qdrant, OpenSearch)'],
+    ['Two DBs, fused at query', 'Max flexibility, more ops'],
+    ['Single DB, manual fusion', 'Works, less optimized']
+  ]});
+});
+</script>
 
 <h3>Single database that supports both</h3>
 <p>Weaviate, Qdrant, OpenSearch, Elasticsearch, Vespa, and Pinecone (with sparse vectors) all support hybrid natively. Cleanest architecture.</p>
@@ -313,7 +330,12 @@ final_score = α * dense_score + (1 - α) * sparse_score
 <h2>My default recommendation</h2>
 <p>Any production RAG system should use hybrid retrieval. Dense-only is a prototype-stage choice. The engineering cost is modest, the quality gain is real, and the failure modes are asymmetric, hybrid handles the edge cases (rare terms, IDs, codes) that pure dense can't.</p>
 
-<p style="margin-top:40px;">Next: <a href="metadata-filtering.html">Metadata filtering</a>.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>Use hybrid with RRF as your default. Dense-only is a prototype choice.</li>
+<li>Match top-k across retrievers before fusion; unbalanced top-k skews results.</li>
+<li>Always add a reranker on top of the fused results.</li>
+</ul>
 <div class="prev-next"><a href="indexing-strategies.html" class="prev"><div class="label">← Previous</div><div class="title">HNSW, IVF, PQ</div></a><a href="metadata-filtering.html" class="next"><div class="label">Next →</div><div class="title">Metadata filtering</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>
