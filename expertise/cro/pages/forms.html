@@ -233,7 +233,35 @@ window.addEventListener('sketch:ready', function(){
     {label: '10+ fields', value: 25, note: 'big drop-off'}
   ]});
 });
-</script><ul><li>Ask only what you need</li><li>One field per line (not cramped)</li><li>Inline validation</li><li>Clear error messages</li><li>Progress indicator for multi-step</li></ul><h2>Field count</h2><p>Each added field drops conversion 5-15%. Email-only is the baseline.</p><h2>Multi-step vs single</h2><p>For 5+ fields, multi-step usually converts better. Shorter perceived commitment at each step.</p><h2>Mobile</h2><p>Use appropriate input types (email, tel, number) to trigger right keyboard.</p></div></div><footer><div class="container">
+</script><ul><li>Ask only what you need</li><li>One field per line (not cramped)</li><li>Inline validation</li><li>Clear error messages</li><li>Progress indicator for multi-step</li></ul><h2>Field count</h2><p>Each added field drops conversion 5-15%. Email-only is the baseline.</p><h2>Multi-step vs single</h2><p>For 5+ fields, multi-step usually converts better. Shorter perceived commitment at each step.</p><h2>Mobile</h2><p>Use appropriate input types (email, tel, number) to trigger right keyboard.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Form friction per field, conversion drop');
+  sketch.bars(svg, rc, {x: 40, y: 60, w: 820, labelW: 260, items: [
+    {label: 'Email only', value: 95, note: 'baseline'},
+    {label: 'Email + first name', value: 80, note: '-10-15%'},
+    {label: 'Email + name + phone', value: 55, note: '-30-40%'},
+    {label: '6+ fields', value: 30, note: '-50-70%'},
+    {label: 'Multi-step (perceived lighter)', value: 70, note: 'splits friction perception'}
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Audit every form field, each drops conversion 5-15%, cut anything not needed for the next step</li>
+<li>Use mobile-optimized input types (email, tel, number), wrong keyboard types add friction users feel</li>
+<li>Test multi-step vs single-step forms, multi-step often wins because each step feels lighter than the total</li>
+<li>Show inline validation, users fill forms faster when they see errors at the field, not on submit</li>
+<li>Pre-fill where possible (returning user, URL params), reducing typing burden lifts conversion meaningfully</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

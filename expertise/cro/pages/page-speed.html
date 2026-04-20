@@ -236,7 +236,34 @@ window.addEventListener('sketch:ready', function(){
     ['TTFB', '< 800ms']
   ]});
 });
-</script><ul><li>Under 3 seconds load time</li><li>Under 1.5s First Contentful Paint</li><li>Under 2.5s Largest Contentful Paint</li><li>Core Web Vitals green</li></ul><h2>Common bottlenecks</h2><ul><li>Uncompressed images</li><li>Too many JS/CSS files</li><li>Slow server response</li><li>Third-party scripts</li></ul><h2>Tools</h2><ul><li>PageSpeed Insights (free)</li><li>GTmetrix</li><li>WebPageTest</li></ul><h2>Quick wins</h2><ul><li>Compress images</li><li>Lazy load below-fold content</li><li>Remove unused scripts</li><li>CDN</li></ul></div></div><footer><div class="container">
+</script><ul><li>Under 3 seconds load time</li><li>Under 1.5s First Contentful Paint</li><li>Under 2.5s Largest Contentful Paint</li><li>Core Web Vitals green</li></ul><h2>Common bottlenecks</h2><ul><li>Uncompressed images</li><li>Too many JS/CSS files</li><li>Slow server response</li><li>Third-party scripts</li></ul><h2>Tools</h2><ul><li>PageSpeed Insights (free)</li><li>GTmetrix</li><li>WebPageTest</li></ul><h2>Quick wins</h2><ul><li>Compress images</li><li>Lazy load below-fold content</li><li>Remove unused scripts</li><li>CDN</li></ul>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Page speed conversion impact');
+  sketch.bars(svg, rc, {x: 40, y: 60, w: 820, labelW: 260, items: [
+    {label: '< 2s LCP (excellent)', value: 95, note: 'baseline target'},
+    {label: '2-3s LCP', value: 75, note: '-7% conversion per second'},
+    {label: '3-5s LCP', value: 45, note: 'cold traffic especially punishes'},
+    {label: '5s+ LCP', value: 15, note: 'most mobile users bounce'}
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Target under 2s Largest Contentful Paint (LCP), every second above that drops mobile conversion 7-10%</li>
+<li>Optimize images first, they're usually the biggest LCP contributor and easiest to fix</li>
+<li>Audit third-party scripts quarterly, marketing tags + pixels accumulate and each one adds load time</li>
+<li>Lazy-load below-fold images and iframes, first paint is what decides whether users stay</li>
+<li>Test mobile speed specifically on 3G/4G emulation, desktop speed lies about real user experience</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){
