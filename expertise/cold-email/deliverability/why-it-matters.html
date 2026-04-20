@@ -343,6 +343,41 @@ window.addEventListener('sketch:ready', function(){
 
 <p>If any of these fail, you have a deliverability problem. Stop sending cold email until you fix it.</p>
 
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Open rate without inbox placement lies');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'High open rate, low inbox', items: [
+      'Platform reports 45% open rate',
+      'But 80% of "opens" are spam-box previews',
+      'True inbox placement: 25%',
+      'Reply rate: 0.5% (cratered)',
+      'Dashboard says "great", pipeline says "empty"'
+    ]},
+    right: {title: 'Honest inbox placement', items: [
+      'Platform reports 30% open rate',
+      'GlockApps test shows 90%+ inbox',
+      'Real eyes on every delivery',
+      'Reply rate: 4-8%',
+      'Dashboard honest, pipeline real'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Run weekly inbox placement tests with GlockApps or MailerMeter, open rate alone is not a deliverability signal</li>
+<li>Stop sending the moment inbox placement drops below 80%, continuing through degraded placement trains reputation algorithms against you</li>
+<li>Treat deliverability as a continuous metric, not a setup task, warming + DNS gets you to the starting line, monitoring keeps you there</li>
+<li>Investigate root cause when complaints rise (content? list? sending velocity?), bandaid fixes don't address the reputation decay</li>
+<li>Keep spare domains warmed and ready, when reputation damage is real, replacing infrastructure is faster than repairing it</li>
+</ul>
+
 <p style="margin-top:40px;">Next: <a href="dns.html">SPF, DKIM, DMARC</a>.</p>
 <div class="prev-next"><a href="../foundations/when-it-works.html" class="prev"><div class="label">← Previous</div><div class="title">When cold email works</div></a><a href="dns.html" class="next"><div class="label">Next →</div><div class="title">SPF, DKIM, DMARC</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>

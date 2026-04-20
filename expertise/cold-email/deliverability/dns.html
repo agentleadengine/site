@@ -346,6 +346,31 @@ v=DMARC1; p=none; rua=mailto:dmarc-reports@yourdomain.com; pct=100
 
 <p>Also check at Google Postmaster Tools (postmaster.google.com) after you've sent some volume. Provides spam rate, domain reputation, IP reputation, and authentication pass rates for Gmail specifically.</p>
 
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'The three DNS records that let you send');
+  sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 44, layers: [
+    {label: 'SPF', sub: 'which IPs can send as you'},
+    {label: 'DKIM', sub: 'cryptographic signature proving authenticity'},
+    {label: 'DMARC', sub: 'what receivers do when SPF/DKIM fail'},
+    {label: 'MX record', sub: 'where replies go'}
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Configure SPF + DKIM + DMARC on every sending domain before sending a single cold email, missing any one drops deliverability hard</li>
+<li>Test every domain at mail-tester.com, require a 9+/10 score before graduating to real sends</li>
+<li>Set DMARC to p=none initially (monitoring only), tighten to quarantine/reject only after 2-4 weeks of clean data</li>
+<li>Check Google Postmaster Tools weekly once you have send volume, it's the only direct window into Gmail's reputation judgment</li>
+<li>When DNS changes, wait 24-48 hours before resuming sends, propagation delays can produce fake authentication failures</li>
+</ul>
+
 <p style="margin-top:40px;">Next: <a href="sending-domains.html">Sending domain strategy</a>.</p>
 <div class="prev-next"><a href="why-it-matters.html" class="prev"><div class="label">← Previous</div><div class="title">Why deliverability is everything</div></a><a href="sending-domains.html" class="next"><div class="label">Next →</div><div class="title">Sending domain strategy</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>

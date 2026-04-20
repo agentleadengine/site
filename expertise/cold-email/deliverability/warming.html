@@ -355,6 +355,32 @@ ramping up while warming continues in background.
 
 <p>Warming puts you on the starting line. Continuous monitoring keeps you there.</p>
 
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Warming ramp, week by week');
+  sketch.numberedSteps(svg, rc, {x: 40, y: 60, w: 820, stepH: 30, items: [
+    'Week 1: 5-10 messages/day via warming tool (to warm inboxes only)',
+    'Week 2: 15-30 messages/day, still warming tool',
+    'Week 3: 40-80 messages/day mixed warming + low cold volume',
+    'Week 4+: 80-150 messages/day cold, warming continues in background',
+    'Never exceed 150 cold/day per inbox, reputation caps kick in'
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Budget a 3-4 week warming period before sending real cold volume, hot starts on new domains crash reputation within days</li>
+<li>Use a dedicated warming tool (Warmbox, Mailwarm, Instantly warmup), manual warming doesn't simulate realistic inbox behavior well enough</li>
+<li>Cap cold sends per inbox at 150/day max, reputation algorithms treat higher volumes as spam regardless of content quality</li>
+<li>Keep warming running continuously even after launch, ongoing warm activity reinforces reputation against cold-volume pressure</li>
+<li>If you pause sending for 2+ weeks, re-ramp with warming for 1-2 weeks before resuming full volume, reputation decays during dormancy</li>
+</ul>
+
 <p style="margin-top:40px;">Next: <a href="ip-reputation.html">IP reputation</a>.</p>
 <div class="prev-next"><a href="sending-domains.html" class="prev"><div class="label">← Previous</div><div class="title">Sending domain strategy</div></a><a href="ip-reputation.html" class="next"><div class="label">Next →</div><div class="title">IP reputation</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>

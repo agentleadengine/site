@@ -384,6 +384,33 @@ window.addEventListener('sketch:ready', function(){
 
 <p>Even this minimum catches the majority of deliverability emergencies before they become disasters.</p>
 
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Weekly deliverability monitor, 15 min cadence');
+  sketch.numberedSteps(svg, rc, {x: 40, y: 60, w: 820, stepH: 30, items: [
+    'Run GlockApps / MailerMeter inbox placement test (one per domain)',
+    'Check Google Postmaster Tools (spam rate, reputation)',
+    'Verify bounce rate < 3% across campaigns',
+    'Review complaint rate < 0.1%',
+    'Audit reply quality — positives, negatives, unsubscribes',
+    'Any red? Pause sends from that domain, investigate before resuming'
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Schedule the 15-minute weekly deliverability check as a recurring calendar block, skipping it catches problems 2-4 weeks late</li>
+<li>Set automated alerts in your sending tool for bounce rate, complaint rate, and reply rate breaching thresholds</li>
+<li>Run inbox placement tests from multiple providers (GlockApps + manual GMail/Outlook tests), single-source monitoring misses provider-specific issues</li>
+<li>When numbers drift, pause sends from the affected domain same-day, continuing to send through degradation compounds reputation damage</li>
+<li>Track the same metrics over rolling 30-day windows, single-day drops are noise, 5-day trending declines are a real problem</li>
+</ul>
+
 <p style="margin-top:40px;">Next: <a href="../infra/sending-tools.html">Sending tools</a>.</p>
 <div class="prev-next"><a href="spam-triggers.html" class="prev"><div class="label">← Previous</div><div class="title">Content that triggers spam filters</div></a><a href="../infra/sending-tools.html" class="next"><div class="label">Next →</div><div class="title">Sending tools</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>

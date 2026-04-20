@@ -373,6 +373,41 @@ window.addEventListener('sketch:ready', function(){
 
 <p>This is why experienced operators always have a second set of domains ready. Infrastructure is disposable. Your offer, list, and copy are the durable assets.</p>
 
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'What moves IP reputation up or down');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Kills reputation', items: [
+      'Spam complaints (>0.1%)',
+      'High bounce rate (>3%)',
+      'Engagement below threshold',
+      'Sending to dead addresses',
+      'Volume spikes or erratic patterns'
+    ]},
+    right: {title: 'Builds reputation', items: [
+      'Clean verified list (< 2% bounce)',
+      'Replies and forwards from recipients',
+      'Steady daily send volume',
+      'Low complaint rate (< 0.1%)',
+      'Authenticated sends (SPF/DKIM/DMARC)'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Verify every list against bounce-check services before sending, a 3%+ bounce rate trashes IP reputation fast</li>
+<li>Keep spam complaints under 0.1%, one complaint per 1,000 sends is the ceiling, above that reputation algorithms start throttling</li>
+<li>Maintain steady daily volume rather than spikes, erratic sending patterns look automated and trigger reputation dings</li>
+<li>Keep spare pre-warmed domains ready, when reputation damage is real, infrastructure replacement beats repair attempts</li>
+<li>Don't re-use burned domains hoping reputation will recover, once flagged, they rarely come back, retire and replace</li>
+</ul>
+
 <p style="margin-top:40px;">Next: <a href="spam-triggers.html">Content that triggers spam filters</a>.</p>
 <div class="prev-next"><a href="warming.html" class="prev"><div class="label">← Previous</div><div class="title">Inbox warming</div></a><a href="spam-triggers.html" class="next"><div class="label">Next →</div><div class="title">Content that triggers spam filters</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
