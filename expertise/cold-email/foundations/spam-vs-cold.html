@@ -319,6 +319,41 @@ window.addEventListener('sketch:ready', function(){
 
 <p>If you disagree with that premise, that's a valid position, but this section isn't for you. Warm outreach, content, and paid ads are alternate <a href="../../direct-response/leads/core-four.html">core four</a> channels that don't involve cold outreach.</p>
 
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Cold email vs spam, the practical distinction');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Spam (illegal + bad)', items: [
+      'Mass-blasted list of unverified addresses',
+      'No relevance to recipient',
+      'No unsubscribe mechanism',
+      'False sender identity',
+      'Drives everyone\'s deliverability down'
+    ]},
+    right: {title: 'Cold email (legal + respectful)', items: [
+      'Targeted ICP, role-matched',
+      'Relevant message to the business context',
+      'Clear unsubscribe, honored same-day',
+      'Truthful sender + company identity',
+      'Stops when recipient says stop'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Audit your outreach against the spam column, if any item applies, you're operating in the wrong category regardless of what you call it</li>
+<li>Include a truthful sender identity + clear unsubscribe path on every cold email, legal floor is not optional</li>
+<li>Stop emailing anyone who asks, same-day, "remove me" replies go to a permanent suppression list, not just your immediate send</li>
+<li>Respect the ethical disagreement, don't argue about whether cold email is okay, demonstrate the respectful version by how you operate</li>
+<li>If your domain's spam complaint rate exceeds 0.1%, you're closer to the spam column than you think, fix targeting before volume</li>
+</ul>
+
 <p style="margin-top:40px;">Next: <a href="legal.html">Legal landscape</a>.</p>
 <div class="prev-next"><a href="what-is-cold-email.html" class="prev"><div class="label">← Previous</div><div class="title">What is cold email?</div></a><a href="legal.html" class="next"><div class="label">Next →</div><div class="title">Legal landscape</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>

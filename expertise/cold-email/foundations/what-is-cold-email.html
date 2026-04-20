@@ -308,6 +308,33 @@ window.addEventListener('sketch:ready', function(){
 
 <p>Skip any one and the system underperforms. Skip two and it fails.</p>
 
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'The full stack, every layer must work');
+  sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 34, layers: [
+    {label: 'Infrastructure (domains, inboxes, warming)', sub: 'invisible foundation'},
+    {label: 'List + ICP (who you email)', sub: 'biggest lever'},
+    {label: 'Sequence design (cadence, touches)', sub: 'pacing'},
+    {label: 'Copy (subject line, first line, pitch, CTA)', sub: 'what lands'},
+    {label: 'Reply management + CRM', sub: 'convert to pipeline'},
+    {label: 'Measurement + iteration', sub: 'compound over time'}
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Treat cold email as a system of 6 layers, not a script, fixing copy while the infrastructure leaks is rearranging chairs</li>
+<li>Invest in the infrastructure layer first (domains, DNS, warming), deliverability problems kill every other layer invisibly</li>
+<li>Prioritize list quality over copy quality, a tight list with mediocre copy beats a broad list with perfect copy every time</li>
+<li>Budget 4-8 weeks from start to first meetings, teams expecting week-1 results quit before the system can ramp</li>
+<li>Build reply management and CRM sync from day one, replies without a qualified follow-up path are wasted meetings</li>
+</ul>
+
 <p style="margin-top:40px;">Next: <a href="spam-vs-cold.html">Cold email vs spam</a>.</p>
 <div class="prev-next"><a href="../index.html" class="prev"><div class="label">← Previous</div><div class="title">Overview</div></a><a href="spam-vs-cold.html" class="next"><div class="label">Next →</div><div class="title">Cold email vs spam</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>

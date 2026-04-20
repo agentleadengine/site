@@ -351,6 +351,36 @@ window.addEventListener('sketch:ready', function(){
 <h2>The reputation risk beyond legality</h2>
 <p>Even legal cold email can hurt your reputation if done carelessly. Legal compliance is the floor, not the ceiling. Respect recipients, stop when told, send less than you could, and prioritize quality of targeting over volume.</p>
 
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Regional rules, quick compliance map');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Region', w: 180},
+    {title: 'Rule', w: 360},
+    {title: 'Safe B2B approach', w: 260}
+  ], rows: [
+    ['USA', 'CAN-SPAM: opt-out model, identify sender', 'Physical address + unsub honored'],
+    ['Canada', 'CASL: opt-in required, strict', 'Need consent or existing relationship'],
+    ['EU/UK', 'GDPR + PECR: legitimate interest OK for B2B corporate', 'Corporate addresses (info@, role@)'],
+    ['Australia', 'Spam Act: consent required', 'Implied consent via public business role'],
+    ['Everywhere', 'Honor unsub same-day, truthful sender', 'Non-negotiable baseline']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Include a physical postal address + unsubscribe link in every cold email, non-negotiable under US CAN-SPAM and most international equivalents</li>
+<li>Honor unsubscribes same-day across every inbox and campaign you run, not just the specific send, anything else eventually hits a complaint</li>
+<li>For EU/UK recipients, prefer role-based or corporate addresses (info@, sales@) over personal, the legitimate-interest basis is safer</li>
+<li>For Canada + Australia, confirm consent basis before sending, CASL and the Spam Act are stricter than CAN-SPAM, don't assume US rules apply</li>
+<li>Treat legal compliance as the floor, not the target, careless legal-but-disrespectful outreach tanks reputation scores even within the law</li>
+</ul>
+
 <p style="margin-top:40px;">Next: <a href="when-it-works.html">When cold email works</a>.</p>
 <div class="prev-next"><a href="spam-vs-cold.html" class="prev"><div class="label">← Previous</div><div class="title">Cold email vs spam</div></a><a href="when-it-works.html" class="next"><div class="label">Next →</div><div class="title">When cold email works</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>

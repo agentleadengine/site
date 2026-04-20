@@ -327,6 +327,41 @@ window.addEventListener('sketch:ready', function(){
 
 <p>Budget 4-8 weeks from "let's start cold email" to "first meetings booked." Teams that expect week-1 results usually give up before the system ramps.</p>
 
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'When cold email fits, when it doesn\'t');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Cold email works for', items: [
+      'B2B, ACV $5K+',
+      'Named ICP (role + company size + signals)',
+      'Relevant pain you can name specifically',
+      'Budget for tooling ($300-1,500/mo minimum)',
+      'Sales-capable team to follow up on replies'
+    ]},
+    right: {title: 'Cold email is a bad fit for', items: [
+      'B2C / consumer products',
+      'Low ACV (under $500 deal)',
+      'No clearly-defined ICP',
+      'No tooling budget or technical setup',
+      'No human follow-up capacity'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Confirm ACV supports the channel before investing, under $500 ACV usually can't cover the $30-80 CPL cold email realistically produces</li>
+<li>Write the ICP on one page before sending the first email, if you can't define it, the list will be wrong and copy won't save it</li>
+<li>Budget 4-8 weeks from launch to first meetings, quitting in week 2 is the most common reason cold email "doesn't work" for a team</li>
+<li>Allocate $300-1,500/mo minimum for tooling (sending + verification + CRM), below that the quality floor is too low to produce results</li>
+<li>Pair cold email with immediate human follow-up, replies without a sales-capable responder become cold leads within 48 hours</li>
+</ul>
+
 <p style="margin-top:40px;">Next: <a href="../deliverability/why-it-matters.html">Why deliverability is everything</a>.</p>
 <div class="prev-next"><a href="legal.html" class="prev"><div class="label">← Previous</div><div class="title">Legal landscape</div></a><a href="../deliverability/why-it-matters.html" class="next"><div class="label">Next →</div><div class="title">Why deliverability is everything</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
