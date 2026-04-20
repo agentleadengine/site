@@ -232,6 +232,26 @@
 <p>From these you back out: how many qualified opps you need now, how many qualified opps you need to generate per week, and how many suspects/leads you need to feed qualification.</p>
 
 <h2>Stage definitions</h2>
+<div class="sketch" data-viewbox="0 0 900 300"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 300);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Pipeline stages + exit criteria');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Stage', w: 220},
+    {title: 'Exit criteria', w: 580}
+  ], rows: [
+    ['Prospect', 'Engaged + ICP match'],
+    ['Discovery', 'Pain + budget surfaced'],
+    ['Demo / Eval', 'Technical fit confirmed'],
+    ['Proposal', 'Pricing + timeline agreed'],
+    ['Negotiation', 'Terms being redlined'],
+    ['Closed Won / Lost', 'Signed or dead']
+  ]});
+});
+</script>
 <p>The most common pipeline failure: stages that mean different things to different reps. Each stage must have an <strong>exit criteria</strong>, a specific, verifiable condition that must be true to advance:</p>
 
 <blockquote style="border-left:3px solid var(--purple); padding-left:16px; margin:20px 0; color:var(--text-muted);">

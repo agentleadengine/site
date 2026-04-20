@@ -222,6 +222,24 @@
 <p class="lede">You can grow through the front door as fast as you want, if the back door is leaking, you're filling a bathtub without a plug. Churn is the second-most-important number in any recurring-revenue business after new bookings. And most teams don't diagnose it well enough to fix it.</p>
 
 <h2>The two churn numbers</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Churn dimensions to separate');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Distinction', w: 220},
+    {title: 'Definition', w: 580}
+  ], rows: [
+    ['Gross churn', 'Lost revenue, no upsell offset'],
+    ['Net churn', 'Gross churn minus expansion'],
+    ['Voluntary', 'Customer chose to leave'],
+    ['Involuntary', 'Payment failed, not a choice']
+  ]});
+});
+</script>
 <ul>
   <li><strong>Logo churn</strong>. % of customers who leave, regardless of size</li>
   <li><strong>Revenue churn</strong>. % of recurring revenue that leaves, weighted by contract value</li>

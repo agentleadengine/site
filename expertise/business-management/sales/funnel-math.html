@@ -234,6 +234,22 @@
 <p>Whatever you call them in your CRM, these are the 6 stages. Collapse adjacent stages if they're the same in your business, but don't add more.</p>
 
 <h2>The rates that matter</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Typical B2B SaaS funnel rates');
+  sketch.bars(svg, rc, {x: 40, y: 60, w: 820, labelW: 220, items: [
+    {label: 'MQL to SQL', value: 40, note: '~30–50%'},
+    {label: 'SQL to Opp', value: 60, note: '~50–70%'},
+    {label: 'Opp to Demo', value: 70, note: '~60–80%'},
+    {label: 'Demo to Proposal', value: 50, note: '~40–60%'},
+    {label: 'Proposal to Close', value: 35, note: '~25–40%'}
+  ]});
+});
+</script>
 <p>Five conversion rates, one per stage transition. This is your funnel:</p>
 <pre style="background:#f5f5f7; padding:16px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
 Suspect → Lead:        Top-of-funnel effectiveness
