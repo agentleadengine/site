@@ -364,6 +364,42 @@ window.addEventListener('sketch:ready', function(){
 
 <h2>Real honest take</h2>
 <p>A performance review process is a reflection of a company's communication culture. If honest feedback happens all year, the review is a summary. If it doesn't, the review is where the feedback avoidance catches up, and it's ugly. Fix the year-round culture, not just the review forms.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Performance review culture, surprise vs summary');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Surprise review (bad)', items: [
+      'Feedback saved up all year',
+      'First time hearing a concern at review',
+      'Defensiveness + emotional response',
+      'Trust damaged, not repaired',
+      'Best performers leave first'
+    ]},
+    right: {title: 'Summary review (healthy)', items: [
+      'Feedback ongoing year-round in 1:1s',
+      'Review summarizes known themes',
+      'Conversation about growth not surprises',
+      'Trust reinforced, growth clarified',
+      'Best performers accelerate'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Fix year-round feedback before fixing review forms, reviews are symptoms of communication culture</li>
+<li>Nothing in a review should be new information, saved-up feedback damages trust</li>
+<li>Separate compensation conversations from development conversations, the former shuts down listening</li>
+<li>Use self-reviews as the starting point, reports who can assess themselves accurately are the ones who grow</li>
+<li>Run reviews at the same time as everyone else's, drift across managers creates comp / promotion inequities</li>
+</ul>
+
 <div class="prev-next"><a href="one-on-ones.html" class="prev"><div class="label">← Previous</div><div class="title">One-on-ones</div></a><a href="firing-well.html" class="next"><div class="label">Next →</div><div class="title">Firing well</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

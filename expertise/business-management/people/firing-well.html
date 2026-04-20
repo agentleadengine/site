@@ -357,6 +357,33 @@ window.addEventListener('sketch:ready', function(){
   <li>You realize you should have done it 6 months earlier</li>
 </ul>
 <p>That last point is the one that every veteran manager agrees on.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Firing well, the principles');
+  sketch.numberedSteps(svg, rc, {x: 40, y: 60, w: 820, stepH: 30, items: [
+    'Early clarity: document performance concerns early',
+    'Clear PIP (if applicable) with specific outcomes + timeline',
+    'No surprises: concerns raised before the exit conversation',
+    'Plan the conversation: short, direct, respectful, offer support',
+    'Communicate to team same-day, transparently, without blame'
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Move faster on underperformance, veteran managers universally regret waiting too long, never too fast</li>
+<li>Document performance concerns early, surprise firings damage team trust more than the firing itself</li>
+<li>Plan the conversation script ahead, ad-hoc firing conversations become messy and legally risky</li>
+<li>Offer generous severance when possible, how you exit people becomes how current team expects to be treated</li>
+<li>Communicate to team same-day without blame, opacity + rumor damages more than the exit itself</li>
+</ul>
+
 <div class="prev-next"><a href="performance-reviews.html" class="prev"><div class="label">← Previous</div><div class="title">Performance reviews</div></a><a href="../finance/three-numbers.html" class="next"><div class="label">Next →</div><div class="title">The three numbers</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

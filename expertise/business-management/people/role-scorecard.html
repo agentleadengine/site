@@ -371,6 +371,32 @@ FIT:
 DEAL-BREAKERS:
 - Won't relocate to NYC HQ
 - Doesn't want to be hands-on in first 90 days</code></pre>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Role scorecard, 4 sections');
+  sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 40, layers: [
+    {label: 'Mission', sub: 'why this role exists'},
+    {label: 'Outcomes (3-5)', sub: 'specific measurable goals for first 12 mo'},
+    {label: 'Competencies', sub: 'skills + behaviors required'},
+    {label: 'Anti-patterns', sub: 'who this role is NOT for'}
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Write a scorecard before posting any job, hiring without one produces misaligned hires</li>
+<li>Define outcomes specifically, "grow revenue 30% in Q1" beats "drive revenue growth"</li>
+<li>Include anti-patterns, describing who the role isn't for filters applicants as well as selecting</li>
+<li>Use the scorecard in interviews, "which of these outcomes can you own in 90 days" is the sharpest question</li>
+<li>Review hires against scorecard at 90/180 days, hiring misses are easier to fix when the criteria are documented</li>
+</ul>
+
 <div class="prev-next"><a href="hiring-signal-vs-noise.html" class="prev"><div class="label">← Previous</div><div class="title">Hiring, signal vs noise</div></a><a href="onboarding.html" class="next"><div class="label">Next →</div><div class="title">Onboarding that compounds</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

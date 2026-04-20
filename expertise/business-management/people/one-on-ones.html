@@ -357,6 +357,42 @@ window.addEventListener('sketch:ready', function(){
   <li>Direct reports feel invested in</li>
   <li>Your reputation as a manager becomes an asset, not a liability</li>
 </ul>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Good 1:1 vs bad 1:1');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Bad 1:1 (manager-driven)', items: [
+      'Status updates on their tasks',
+      'Manager talks 80% of time',
+      'No agenda, skipped freely',
+      'No career or growth topics',
+      'Feels like a chore'
+    ]},
+    right: {title: 'Good 1:1 (report-driven)', items: [
+      'Report owns the agenda',
+      'Manager listens, asks questions',
+      'Recurring weekly, rarely skipped',
+      'Mix of tactical + career + feedback',
+      'Builds trust + career progression'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Make the report own the agenda, manager-driven 1:1s become status meetings not growth conversations</li>
+<li>Schedule weekly + protect the time, skipping 1:1s communicates they don't matter</li>
+<li>Mix tactical + career + feedback topics, pure tactical 1:1s miss the career-building value</li>
+<li>Take notes + follow up on commitments, 1:1s that don't produce artifacts fade into noise</li>
+<li>Solicit upward feedback, ask "what's one thing I could do differently", good managers grow from it</li>
+</ul>
+
 <div class="prev-next"><a href="onboarding.html" class="prev"><div class="label">← Previous</div><div class="title">Onboarding that compounds</div></a><a href="performance-reviews.html" class="next"><div class="label">Next →</div><div class="title">Performance reviews</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

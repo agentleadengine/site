@@ -350,6 +350,33 @@ window.addEventListener('sketch:ready', function(){
   <li>Earlier identification of misfits (and clean exits when needed)</li>
   <li>Trust, new hires see the company operate competently from day one</li>
 </ul>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Onboarding milestones, week by week');
+  sketch.numberedSteps(svg, rc, {x: 40, y: 60, w: 820, stepH: 30, items: [
+    'Week 1: setup + meet the team + context on business',
+    'Week 2-4: shadow + first small owned deliverable',
+    'Day 30: first real outcome shipped + feedback session',
+    'Day 60: owning a defined slice of the scorecard',
+    'Day 90: full ownership + manager review against scorecard'
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Treat onboarding as a 90-day product, not a first-week checklist, the compounding effect lives in weeks 4-12</li>
+<li>Set a concrete week-1 deliverable, new hires need early wins to build confidence and team trust</li>
+<li>Assign a peer buddy separate from the manager, non-hierarchical help accelerates integration</li>
+<li>Review against the scorecard at 30/60/90, misalignment is cheaper to fix at day 30 than day 120</li>
+<li>Collect new-hire feedback on onboarding, the experience teaches you what your company looks like to outsiders</li>
+</ul>
+
 <div class="prev-next"><a href="role-scorecard.html" class="prev"><div class="label">← Previous</div><div class="title">The role scorecard</div></a><a href="one-on-ones.html" class="next"><div class="label">Next →</div><div class="title">One-on-ones</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>
