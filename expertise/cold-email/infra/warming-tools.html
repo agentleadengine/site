@@ -388,6 +388,36 @@ window.addEventListener('sketch:ready', function(){
 
 <p>Warming is infrastructure, not a project. Think of it like continuous integration for your sender reputation.</p>
 
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Warming-tool comparison');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Tool', w: 200},
+    {title: 'Best fit', w: 340},
+    {title: 'Price tier', w: 240}
+  ], rows: [
+    ['Instantly warmup', 'Already using Instantly as sender', 'Included in plan'],
+    ['Mailwarm', 'Standalone, cross-tool compatibility', '$79/mailbox/mo'],
+    ['Warmbox', 'Specialist, high-quality conversations', '$15/mailbox/mo'],
+    ['Warmy / Lemwarm', 'Lemlist-native', 'Included in Lemlist'],
+    ['Manual warming', 'Not recommended', 'Time cost > tool cost']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Pick a warming tool that integrates with your sending tool where possible, disjointed stacks produce attribution and monitoring gaps</li>
+<li>Run warming continuously, not just during the initial 3-4 week ramp, ongoing warm activity reinforces reputation against cold-volume pressure</li>
+<li>Budget $15-80/mailbox/month for warming, the "cheap" option is skipping warming, but that cost shows up as kill deliverability</li>
+<li>Don't try to manual-warm, the engagement patterns needed (replies, forwards, opens at realistic rates) are impractical to simulate by hand</li>
+<li>Pause warming only if you pause sending for 2+ weeks, in which case re-ramp for 1-2 weeks before resuming full cold volume</li>
+</ul>
+
 <p style="margin-top:40px;">Next: <a href="crm-integration.html">CRM and data integration</a>.</p>
 <div class="prev-next"><a href="multi-inbox.html" class="prev"><div class="label">← Previous</div><div class="title">Multi-inbox rotation</div></a><a href="crm-integration.html" class="next"><div class="label">Next →</div><div class="title">CRM and data integration</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>

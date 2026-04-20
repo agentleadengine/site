@@ -347,6 +347,41 @@ window.addEventListener('sketch:ready', function(){
 
 <p>Review the ICP quarterly. Update based on actual data. The post-launch ICP is almost always different from the pre-launch hypothesis.</p>
 
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Vague ICP vs precise ICP, same market');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Vague ICP (burns budget)', items: [
+      '"SaaS companies"',
+      'Any role, any size',
+      'Any stage',
+      '50,000+ prospects in TAM',
+      '0.5% reply rate, noisy pipeline'
+    ]},
+    right: {title: 'Precise ICP (pipeline compounds)', items: [
+      '"Seed-to-Series A B2B SaaS in DevTools"',
+      'Head of Growth / VP Marketing / CEO',
+      '5-50 employees, $500K-$5M ARR',
+      '2,000-5,000 prospects in TAM',
+      '5-10% reply rate, clean pipeline'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Write your ICP with industry + company size + role + stage + funding, missing any dimension dilutes targeting to noise</li>
+<li>Cap the TAM between 2,000 and 5,000 prospects, broader than that can't be personalized, narrower than that caps revenue</li>
+<li>Build the ICP from existing customers, not aspirational ones, look at your top 10 by retention and reverse-engineer the common traits</li>
+<li>Re-derive the ICP every quarter from actual closed-won data, the post-launch ICP is almost always different from the pre-launch hypothesis</li>
+<li>When reply rate drops, the first place to look is the ICP, not the copy, wrong-audience problems hide as copy problems</li>
+</ul>
+
 <p style="margin-top:40px;">Next: <a href="databases.html">Lead databases</a>.</p>
 <div class="prev-next"><a href="../infra/reply-management.html" class="prev"><div class="label">← Previous</div><div class="title">Reply management</div></a><a href="databases.html" class="next"><div class="label">Next →</div><div class="title">Lead databases</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>

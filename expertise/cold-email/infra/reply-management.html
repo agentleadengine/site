@@ -393,6 +393,36 @@ would it be worth a 15-min conversation?"
 
 <p>Track positive reply rate specifically. It's the only number that correlates to pipeline.</p>
 
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Reply taxonomy, treat each type differently');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Reply type', w: 220},
+    {title: 'Frequency', w: 200},
+    {title: 'Response', w: 380}
+  ], rows: [
+    ['Positive (interest)', '5-15% of replies', 'AE follow-up within 1 hour, hot lead'],
+    ['Neutral (info request)', '10-20%', 'Answer question, nurture, re-pitch later'],
+    ['Negative (not now)', '20-30%', 'Schedule follow-up 60-90 days out'],
+    ['Unsubscribe / not me', '30-50%', 'Suppress immediately, update list'],
+    ['Auto-reply / bounce', 'Variable', 'Segment out, don\'t count as delivered']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Measure positive reply rate specifically, not total reply rate, total includes unsubscribes and auto-replies that don't drive pipeline</li>
+<li>Build routing rules for each reply type, positives → AE immediately, negatives → suppress, neutral → nurture sequence</li>
+<li>Respond to positive replies within 1 hour during business hours, cold leads cool fast, the first-hour reply wins disproportionately</li>
+<li>Use AI-assisted reply classification cautiously, it misses nuance on "interested but not now" replies that drive 60-day pipeline</li>
+<li>Audit 20 replies manually per week, automation drifts and only manual review catches patterns (new objections, ICP mismatch)</li>
+</ul>
+
 <p style="margin-top:40px;">Next: <a href="../lists/icp.html">Defining the ICP</a>.</p>
 <div class="prev-next"><a href="crm-integration.html" class="prev"><div class="label">← Previous</div><div class="title">CRM and data integration</div></a><a href="../lists/icp.html" class="next"><div class="label">Next →</div><div class="title">Defining the ICP</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>

@@ -371,6 +371,36 @@ window.addEventListener('sketch:ready', function(){
 
 <p>For heavy personalization: Lemlist. The personalization features justify the price premium.</p>
 
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Sending tool fit by team size + goal');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Tool', w: 200},
+    {title: 'Best for', w: 320},
+    {title: 'Watch out for', w: 260}
+  ], rows: [
+    ['Instantly', 'Solo, small team, deliverability-first', 'Less structured for large SDR team'],
+    ['Smartlead', 'Agency or multi-client setup', 'Less polished UI'],
+    ['Lemlist', 'Heavy personalization campaigns', 'Pricier, feature-overload'],
+    ['Salesloft / Outreach', 'SDR teams of 5+', 'Enterprise pricing, complexity'],
+    ['Apollo', 'Combined data + sending', 'Sending quality lags specialists']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Match the tool to team size and complexity, solo operators usually over-buy (Salesloft for 1 person) or under-buy (Gmail for 5 SDRs)</li>
+<li>Default to Instantly for most cold email operations under 10 people, the deliverability focus + price point fits the sweet spot</li>
+<li>Graduate to Salesloft / Outreach only when you have SDR team structure that benefits from CRM-tight workflow and reporting</li>
+<li>Test 2 tools side by side for 30 days before committing long-term, migration later is painful and tool lock-in is real</li>
+<li>Budget tool + mailboxes + warming as one infrastructure line, $300-1,500/mo for a serious cold email operation is realistic</li>
+</ul>
+
 <p style="margin-top:40px;">Next: <a href="multi-inbox.html">Multi-inbox rotation</a>.</p>
 <div class="prev-next"><a href="../deliverability/monitoring.html" class="prev"><div class="label">← Previous</div><div class="title">Monitoring inbox placement</div></a><a href="multi-inbox.html" class="next"><div class="label">Next →</div><div class="title">Multi-inbox rotation</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>

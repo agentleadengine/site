@@ -365,6 +365,35 @@ window.addEventListener('sketch:ready', function(){
 
 <p>Don't start with 10 campaigns on day 1. Start with 1. Grow.</p>
 
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Segmentation, when to split vs merge campaigns');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Signal', w: 280},
+    {title: 'Split into separate campaign?', w: 540}
+  ], rows: [
+    ['Different role (VP vs IC)', 'Yes — pain and language differ'],
+    ['Different company size (10 vs 1000)', 'Yes — pain + budget differ'],
+    ['Different industry', 'Usually yes — vocabulary + objections differ'],
+    ['Different geography', 'Sometimes — timezones, regulations'],
+    ['Same ICP, different source', 'No — merge unless performance diverges']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Split campaigns when the audience materially differs in role, size, or industry, one-size-fits-all copy dilutes conversion across every segment</li>
+<li>Start with 1-2 campaigns and grow to 5-8 as you prove angles, 10+ campaigns day one fragments attention and generates no learning</li>
+<li>Review per-segment reply rate monthly, if one segment is at 1% and another at 8%, reallocate time to the winning segment</li>
+<li>Merge segments when their reply rates and objections match, fewer, deeper campaigns beat many shallow ones</li>
+<li>Re-segment every 90 days based on what you've learned, the launch segmentation is almost always wrong after real data arrives</li>
+</ul>
+
 <p style="margin-top:40px;">Next: <a href="../copy/anatomy.html">Cold email anatomy</a>.</p>
 <div class="prev-next"><a href="intent-signals.html" class="prev"><div class="label">← Previous</div><div class="title">Intent signals</div></a><a href="../copy/anatomy.html" class="next"><div class="label">Next →</div><div class="title">Cold email anatomy</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>

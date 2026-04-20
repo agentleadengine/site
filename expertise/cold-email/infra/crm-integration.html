@@ -368,6 +368,32 @@ window.addEventListener('sketch:ready', function(){
 
 <p>These four integrations catch most of the operational pain.</p>
 
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Cold email → CRM sync, the 4 critical flows');
+  sketch.numberedSteps(svg, rc, {x: 40, y: 60, w: 820, stepH: 30, items: [
+    'Lead created in sending tool → CRM gets contact + campaign data',
+    'Positive reply → CRM creates opportunity + notifies AE',
+    'Negative/unsubscribe → CRM marks "do not contact", suppression list',
+    'Meeting booked via calendar link → CRM logs activity + owner',
+    'Without these 4, leads leak between tools and pipeline breaks'
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Build the 4 critical integrations before adding fancier ones, missing any of the four creates operational leaks that compound over time</li>
+<li>Test the sync end-to-end with 10 real leads before scaling, automation gaps are expensive to discover at 500+ leads/week</li>
+<li>Use a suppression list synced across all sending tools + CRM, a prospect unsubscribing in one campaign must stay out of all campaigns</li>
+<li>Pipe positive replies to an alert channel (Slack, email to AE) with <1 minute latency, cold replies go cold inside 48 hours</li>
+<li>Audit the data sync weekly in the first month, tools update APIs and integrations silently break, weekly review catches it fast</li>
+</ul>
+
 <p style="margin-top:40px;">Next: <a href="reply-management.html">Reply management</a>.</p>
 <div class="prev-next"><a href="warming-tools.html" class="prev"><div class="label">← Previous</div><div class="title">Warming tools</div></a><a href="reply-management.html" class="next"><div class="label">Next →</div><div class="title">Reply management</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>

@@ -366,6 +366,32 @@ window.addEventListener('sketch:ready', function(){
 
 <p>Anything else is cost without return.</p>
 
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Clay workflow, what it adds to a basic list');
+  sketch.numberedSteps(svg, rc, {x: 40, y: 60, w: 820, stepH: 30, items: [
+    'Input: list of companies from Apollo / LinkedIn Nav',
+    'Waterfall: email lookup across 5-10 sources, best hit wins',
+    'Enrichment: firmographics, hiring signals, tech stack',
+    'Personalization: AI-generated first lines using scraped data',
+    'Output: enriched list ready to ship into sending tool'
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Use Clay when you need enrichment + waterfall email logic + AI personalization in one place, the integration is where the value lives</li>
+<li>Start with a simple Clay table (company list + waterfall emails + 2 enrichment columns) before layering AI personalization, complexity kills early adoption</li>
+<li>Run verification in Clay before export, exporting unverified emails to your sending tool defeats the waterfall benefit</li>
+<li>Skip Clay if your list is < 500 prospects and your ICP is tight, manual research + a single data source is usually sufficient at that scale</li>
+<li>Budget 2-4 hours per week of Clay setup/maintenance initially, the tool rewards engineering discipline, not configure-once-forget</li>
+</ul>
+
 <p style="margin-top:40px;">Next: <a href="verification.html">Verification and hygiene</a>.</p>
 <div class="prev-next"><a href="databases.html" class="prev"><div class="label">← Previous</div><div class="title">Lead databases</div></a><a href="verification.html" class="next"><div class="label">Next →</div><div class="title">Verification + hygiene</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>

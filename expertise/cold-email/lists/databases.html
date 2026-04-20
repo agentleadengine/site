@@ -386,6 +386,36 @@ window.addEventListener('sketch:ready', function(){
 
 <p>This cost pays back many times over when the data is good. It's a complete write-off when the data is bad (bounces, wrong targets, no responses). Invest in data as seriously as you invest in copy.</p>
 
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Lead data source comparison');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Source', w: 200},
+    {title: 'Strengths', w: 300},
+    {title: 'Watch out for', w: 300}
+  ], rows: [
+    ['Apollo', 'Broad coverage, cheap', 'Email accuracy varies by segment'],
+    ['ZoomInfo', 'B2B enterprise, accurate', 'Expensive, contract lock-in'],
+    ['Clay', 'Enrichment + waterfall logic', 'Requires setup + patience'],
+    ['Cognism', 'EU data, phone numbers', 'Pricey, depth > breadth'],
+    ['LinkedIn Sales Nav', 'Freshest data, best for research', 'Manual export, no email']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Test 2-3 data sources against the same ICP segment, accuracy varies dramatically by vertical and region, one source is never best at everything</li>
+<li>Measure data source quality by bounce rate + reply rate, not by listed count, a 10K list at 8% bounce is worse than a 4K list at 1% bounce</li>
+<li>Budget $200-2,000/month for data at small operations, $20K+/year at enterprise, underbuying data rarely saves money on cold email</li>
+<li>Build a waterfall (Clay is the canonical tool), try Source A, fall back to Source B if no email, fall back to manual research, the compound hit rate matters</li>
+<li>Drop a data source the moment post-verification bounce rate stays above 3% for 2 consecutive weeks, no amount of warming fixes bad data</li>
+</ul>
+
 <p style="margin-top:40px;">Next: <a href="clay.html">Clay and enrichment</a>.</p>
 <div class="prev-next"><a href="icp.html" class="prev"><div class="label">← Previous</div><div class="title">Defining the ICP</div></a><a href="clay.html" class="next"><div class="label">Next →</div><div class="title">Clay and enrichment</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>

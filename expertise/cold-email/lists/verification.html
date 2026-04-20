@@ -357,6 +357,41 @@ window.addEventListener('sketch:ready', function(){
 
 <p>Over time you build intuition: "Apollo accuracy for X segment is poor," "Clay+LinkedIn for Y segment is excellent." Use the right source for each segment.</p>
 
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Verification math, why it pays back immediately');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Skip verification (cheap today)', items: [
+      '1,000 raw addresses',
+      '8% bounce rate = 80 bounces',
+      'Reputation damage = real',
+      'Domain needs 2 weeks to recover',
+      'Save $5, lose $500 in pipeline'
+    ]},
+    right: {title: 'Verify before sending (compound)', items: [
+      '1,000 raw → 920 verified',
+      'Under 1% bounce rate',
+      'Reputation stays clean',
+      'Send continues without interruption',
+      'Spend $5, protect $500+ pipeline'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Verify every list before it reaches your sending tool, 3%+ bounce rate damages reputation faster than any copy mistake</li>
+<li>Use two-stage verification for high-stakes lists (NeverBounce + ZeroBounce), one tool alone misses 10-20% of bad addresses</li>
+<li>Drop catch-all addresses from cold campaigns, they mostly don't deliver to a human and inflate bounce rate invisibly</li>
+<li>Track bounce rate per data source, not blended, unreliable sources should be dropped after 2 consecutive weeks of 3%+ bounces</li>
+<li>Re-verify lists that sat dormant more than 60 days, email addresses decay 20-30% per year from role changes alone</li>
+</ul>
+
 <p style="margin-top:40px;">Next: <a href="intent-signals.html">Intent signals</a>.</p>
 <div class="prev-next"><a href="clay.html" class="prev"><div class="label">← Previous</div><div class="title">Clay and enrichment</div></a><a href="intent-signals.html" class="next"><div class="label">Next →</div><div class="title">Intent signals</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
