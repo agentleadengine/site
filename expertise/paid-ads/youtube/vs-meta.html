@@ -302,6 +302,42 @@ window.addEventListener('sketch:ready', function(){
 
 <h2>The attribution comparison</h2>
 <p>YouTube has better attribution because it's in the Google ecosystem (same GA4 tracking). Meta's attribution is more noise post-iOS 14. Take both with a grain of salt; compare to blended metrics.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'YouTube vs Meta, structural trade-offs');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Meta strengths', items: [
+      'Lower CPMs',
+      'Shorter test cycles',
+      'Creative volume is cheap',
+      'UGC-friendly format',
+      'Broader audience reach'
+    ]},
+    right: {title: 'YouTube strengths', items: [
+      'Higher intent viewers (research-stage)',
+      'Better attribution (Google ecosystem)',
+      'Long-form storytelling supported',
+      'Brand-safer placements',
+      'Performs well for high-consideration'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>For most DTC, allocate 60-70% Meta + 20-30% YouTube + 10% testing new, Meta's creative economics + reach dominate the base</li>
+<li>For enterprise B2B, flip the ratio, YouTube content campaigns + LinkedIn produce quality leads Meta struggles to qualify</li>
+<li>Measure incrementality on both platforms separately, don't accept platform-reported ROAS as gospel, both over-claim in different ways</li>
+<li>Use YouTube to warm up expensive prospects that Meta reaches cheaply, YouTube's long-form format sells consideration Meta can't</li>
+<li>When a YouTube winner emerges, compress it to 30-60s and test it on Meta, some video concepts cross the format boundary cleanly</li>
+</ul>
+
 <div class="prev-next"><a href="targeting.html" class="prev"><div class="label">← Previous</div><div class="title">YouTube targeting</div></a><a href="../creative/hook-patterns.html" class="next"><div class="label">Next →</div><div class="title">Hook patterns</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

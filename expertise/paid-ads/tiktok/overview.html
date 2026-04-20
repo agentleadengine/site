@@ -290,6 +290,42 @@ window.addEventListener('sketch:ready', function(){
 <li>Advertisers without creative capacity</li>
 <li>High-consideration purchases ($1K+ consumer)</li>
 </ul>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'TikTok fit, quick diagnostic');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Fits TikTok', items: [
+      'Consumer product with visual appeal',
+      'Impulse or mid-consideration price',
+      'You can ship 5-20 new creatives/week',
+      'Organic community already exists on platform',
+      'Creator-led brand storytelling'
+    ]},
+    right: {title: 'Skip TikTok', items: [
+      'B2B enterprise or SaaS',
+      'Products needing 10+ min explanation',
+      'No creative production capacity',
+      '$1K+ consumer consideration',
+      'Hyper-niche trade audience'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Check for your category on TikTok organically before running ads, if no community exists, ads won't create one from scratch</li>
+<li>Budget creative production at 5-20 new pieces per week minimum, TikTok's algorithm demands fresh creative more than any other platform</li>
+<li>Never repurpose Meta creative to TikTok, it reads as "ad" instantly on a platform that rewards native-feeling content</li>
+<li>Start with $5-10K test budget over 3-4 weeks, below that you can't iterate enough to find the winning angle</li>
+<li>Use Spark Ads for amplified creator content rather than branded ads where possible, native creator tone consistently outperforms brand-voice</li>
+</ul>
+
 <div class="prev-next"><a href="../google/pmax.html" class="prev"><div class="label">← Previous</div><div class="title">Performance Max</div></a><a href="creative-first.html" class="next"><div class="label">Next →</div><div class="title">Creative-first approach</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

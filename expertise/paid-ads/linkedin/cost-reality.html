@@ -284,6 +284,42 @@ window.addEventListener('sketch:ready', function(){
 
 <h2>Alternative: Sales Navigator + cold email</h2>
 <p>For some B2B, using Sales Navigator for targeting + cold email or LinkedIn DM outreach (manual or automated) produces similar quality leads at a fraction of the cost. LinkedIn Ads is for when you need scale.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'LinkedIn vs cold email + Sales Nav, for B2B leads');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'LinkedIn Ads', items: [
+      '$150-300 CPL typical',
+      'Scales to hundreds/month',
+      '$3K/month minimum',
+      'Inbound-feel leads',
+      'Works when sales team is waiting'
+    ]},
+    right: {title: 'Sales Nav + cold email', items: [
+      '$30-80 CPL when done well',
+      'Caps at ~500 outreaches/week per rep',
+      'Lower fixed cost, higher time cost',
+      'Outbound-feel leads',
+      'Works when you have outbound capacity'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Under $3K/month, skip LinkedIn Ads entirely, use Sales Navigator + cold email instead, the CPL math is materially better</li>
+<li>Above $10K/month and below your ACV × 3% target CPL, LinkedIn Ads can scale where cold outreach bottlenecks</li>
+<li>Run Sales Nav + cold email first to validate the ICP and messaging, then graduate winning angles to LinkedIn Ads for scale</li>
+<li>Don't chase "cheap" LinkedIn impressions, the premium CPM is structural, pay it for quality or run on a cheaper platform</li>
+<li>Measure full-funnel: LinkedIn CPL is only half the story, lead → SQL → closed-won conversion determines if the channel earns its spend</li>
+</ul>
+
 <div class="prev-next"><a href="ad-formats.html" class="prev"><div class="label">← Previous</div><div class="title">Ad formats</div></a><a href="lead-gen-forms.html" class="next"><div class="label">Next →</div><div class="title">Lead gen forms</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

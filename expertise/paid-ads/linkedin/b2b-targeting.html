@@ -306,6 +306,42 @@ window.addEventListener('sketch:ready', function(){
 <li>Over-stacking filters (audience too small to deliver)</li>
 <li>Ignoring Company Size (tiny companies have different buyers)</li>
 </ul>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Vague vs precise LinkedIn targeting');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Vague (wasted spend)', items: [
+      'Target: "Decision makers"',
+      'Audience size: 80M+',
+      'CPM: $60 (high and scattered)',
+      'Mixed lead quality',
+      '$200 CPL, sales team refuses them'
+    ]},
+    right: {title: 'Precise (profitable)', items: [
+      'Target: VP of Marketing + Head of Marketing + Director of Marketing',
+      'Company size: 200-2000 employees',
+      'Industry: SaaS + B2B Services',
+      'Seniority: Director + VP',
+      '$150 CPL, sales team calls same-day'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Stack job titles + seniority + company size + industry, missing any one of the four dilutes targeting past the point of usefulness</li>
+<li>Include variant job titles ("Head of X" + "VP of X" + "Director of X"), single-title targeting misses 30-50% of your actual buyers</li>
+<li>Cap audience size between 50K and 500K, below that under-delivers, above that wastes on irrelevant impressions</li>
+<li>Layer job function + seniority as a catchall in parallel to exact titles, catches prospects whose titles don't match your title list</li>
+<li>Re-audit ICP targeting quarterly, company size and role patterns shift, last quarter's segment may have drifted out of ICP</li>
+</ul>
+
 <div class="prev-next"><a href="overview.html" class="prev"><div class="label">← Previous</div><div class="title">LinkedIn Ads overview</div></a><a href="ad-formats.html" class="next"><div class="label">Next →</div><div class="title">Ad formats</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

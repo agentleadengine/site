@@ -299,6 +299,37 @@ window.addEventListener('sketch:ready', function(){
 <li>Test Message Ads for high-ticket offers</li>
 <li>Carousel for nuanced messages</li>
 </ol>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'LinkedIn format by goal');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Goal', w: 240},
+    {title: 'Format', w: 260},
+    {title: 'Note', w: 300}
+  ], rows: [
+    ['Lead capture, low friction', 'Lead Gen Forms (Sponsored Content)', 'Form prefills on LinkedIn'],
+    ['Awareness + content distribution', 'Sponsored Content (image / video)', 'Standard workhorse'],
+    ['High-ticket direct pitch', 'Message Ads / Conversation Ads', 'Inbox placement, premium CPM'],
+    ['Multi-step narrative', 'Carousel', 'Explain + proof + CTA in swipes'],
+    ['Event / webinar promo', 'Event Ads', 'Built-in RSVP flow']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Default to Sponsored Content for most campaigns, it's the workhorse format and works across awareness + conversion goals</li>
+<li>Use Lead Gen Forms when the next step is "get a lead to sales", form prefill removes 80% of the friction a standard landing page adds</li>
+<li>Reserve Message Ads for high-ticket offers and existing-warm prospects, the premium CPM only pays off when ACV supports it</li>
+<li>Try Carousel when you have a 3-5 beat story (problem → mechanism → proof → offer → CTA), single-image can't carry nuanced B2B pitches</li>
+<li>Don't spread budget across 4 formats, pick one primary + one secondary test, fragmented formats means no single format gets enough data</li>
+</ul>
+
 <div class="prev-next"><a href="b2b-targeting.html" class="prev"><div class="label">← Previous</div><div class="title">B2B targeting</div></a><a href="cost-reality.html" class="next"><div class="label">Next →</div><div class="title">Cost reality</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

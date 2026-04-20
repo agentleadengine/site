@@ -289,6 +289,42 @@ window.addEventListener('sketch:ready', function(){
 <li>Make it longer than 30s without strong reason</li>
 <li>Run horizontal video</li>
 </ul>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Ad-looking vs native-looking, same product on TikTok');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Ad-looking (scrolled past)', items: [
+      'Polished studio production',
+      'Brand logo large in first 3s',
+      'Formal voiceover',
+      'Horizontal 16:9 video',
+      'CTR under 1%'
+    ]},
+    right: {title: 'Native-looking (watched + shared)', items: [
+      'Shot on phone, natural lighting',
+      'Creator voice, casual tone',
+      'Trend-aware audio / effects',
+      'Vertical 9:16 video',
+      'CTR 3-8% routinely'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Shoot everything vertically (9:16), anything else reads as ad the instant it appears and loses the first second</li>
+<li>Let the creator run the script, not the brand team, sophisticated creators know what TikTok rewards and what gets scrolled past</li>
+<li>Hide the brand until at least 3 seconds in, logo-first creative pattern-matches to "ad" and triggers the scroll reflex</li>
+<li>Use trending audio + effects where organically fitting, the algorithm amplifies trend-adjacent content in paid too, not just organic</li>
+<li>Cap most pieces at 30 seconds unless you have a strong narrative reason, TikTok is a pace medium, long ads pay a retention tax</li>
+</ul>
+
 <div class="prev-next"><a href="overview.html" class="prev"><div class="label">← Previous</div><div class="title">TikTok Ads overview</div></a><a href="spark-ads.html" class="next"><div class="label">Next →</div><div class="title">Spark Ads</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

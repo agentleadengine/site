@@ -293,6 +293,33 @@ window.addEventListener('sketch:ready', function(){
 <li>Brand logo for first 3 seconds (waste of hook opportunity)</li>
 <li>Over-long, 30-45s is the sweet spot for most performance goals</li>
 </ul>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Skippable In-Stream structure, 30-45 seconds');
+  sketch.numberedSteps(svg, rc, {x: 40, y: 60, w: 820, stepH: 34, items: [
+    '0-5s: Pattern interrupt + promise, earn the no-skip',
+    '5-15s: Problem agitation + hook, deepen the pain',
+    '15-25s: Mechanism / proof / demo',
+    '25-35s: Offer + risk reversal',
+    '35-45s: CTA + end card + URL overlay'
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Optimize the first 5 seconds ruthlessly, if you don't earn "keep watching" by second 5, the skip kills everything else</li>
+<li>Hide the brand logo until seconds 5-10, leading with brand pattern-matches to "ad" and triggers the skip reflex</li>
+<li>Keep performance videos at 30-45 seconds, longer isn't better on YouTube pre-roll, retention drops sharply after 45s</li>
+<li>Never repurpose horizontal TV ads directly, they look out of place in YouTube's feed and convert 2-3x worse than native-shot video</li>
+<li>End every skippable in-stream with an explicit CTA + URL overlay, viewers who watch to the end need a clear next action or the view wastes</li>
+</ul>
+
 <div class="prev-next"><a href="formats.html" class="prev"><div class="label">← Previous</div><div class="title">YouTube ad formats</div></a><a href="targeting.html" class="next"><div class="label">Next →</div><div class="title">YouTube targeting</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

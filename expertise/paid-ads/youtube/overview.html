@@ -286,6 +286,42 @@ window.addEventListener('sketch:ready', function(){
 <li>Low creative budget (video costs more than static)</li>
 <li>Hyper-niche B2B (LinkedIn better)</li>
 </ul>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'YouTube fit, what the channel rewards');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Fits YouTube', items: [
+      'Long-form video storytelling',
+      'Medium-to-high consideration',
+      'In-content placement (TrueView)',
+      'Brand-building + DR combined',
+      'Existing video asset to repurpose'
+    ]},
+    right: {title: 'Skip YouTube (for now)', items: [
+      'Purely urgent high-intent (use Search)',
+      'No video production budget',
+      'Hyper-niche B2B (use LinkedIn)',
+      'Cheap impulse purchase',
+      'Audience too fragmented'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Only run YouTube if you have the creative production budget, cheap production underperforms on a medium designed for polished video</li>
+<li>Use TrueView skippable in-stream as the DR default, viewers who stay past 5 seconds are self-qualifying into interest</li>
+<li>Pair YouTube with Search retargeting, video plants the message, Search captures the intent when the viewer comes back ready to buy</li>
+<li>Budget at least $100/day minimum to get meaningful data, video takes longer to optimize than static</li>
+<li>Track view-through conversions specifically, YouTube's value shows up in Search + Meta attribution later, not always in same-session conversion</li>
+</ul>
+
 <div class="prev-next"><a href="../linkedin/lead-gen-forms.html" class="prev"><div class="label">← Previous</div><div class="title">Lead gen forms</div></a><a href="formats.html" class="next"><div class="label">Next →</div><div class="title">YouTube ad formats</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

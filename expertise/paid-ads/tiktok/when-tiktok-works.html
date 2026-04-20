@@ -286,6 +286,33 @@ window.addEventListener('sketch:ready', function(){
 
 <h2>Start small</h2>
 <p>$5-10K total test budget over 3-4 weeks. Iterate creative. Measure positive signal. Scale only if proven.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'TikTok fit test, do this before spending');
+  sketch.numberedSteps(svg, rc, {x: 40, y: 60, w: 820, stepH: 34, items: [
+    'Search your category on TikTok, count organic pieces with 10K+ views',
+    '10+ organic wins = community exists, ads will likely work',
+    '1-10 = marginal, run $5K test cautiously',
+    '0 organic wins = skip TikTok, no community to tap',
+    'Check competitors too, if theirs work, yours probably can'
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Run the organic-community audit before running any ads, organic presence is the leading signal of whether paid TikTok will convert for you</li>
+<li>Budget a $5-10K test over 3-4 weeks, anything less doesn't give the algorithm enough data to train and you exit prematurely</li>
+<li>Watch for positive signals (CPM trending down, CTR above 2%, early CAC approaching target), scale only when 2+ signals are green</li>
+<li>Don't force TikTok for B2B or high-consideration purchases, the audience and medium don't match and budget burns faster than on Meta</li>
+<li>If you skip TikTok today, re-evaluate quarterly, the platform's demographics and ad quality shift rapidly and what didn't fit in Q1 might fit in Q4</li>
+</ul>
+
 <div class="prev-next"><a href="ugc-production.html" class="prev"><div class="label">← Previous</div><div class="title">UGC production</div></a><a href="../linkedin/overview.html" class="next"><div class="label">Next →</div><div class="title">LinkedIn Ads overview</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

@@ -289,6 +289,37 @@ window.addEventListener('sketch:ready', function(){
 
 <h2>Volume targets</h2>
 <p>To run TikTok seriously, you need 5-20 new creatives per week. Build the pipeline, it's not optional.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'TikTok UGC production economics');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Creator tier', w: 220},
+    {title: 'Cost per video', w: 220},
+    {title: 'Fit', w: 340}
+  ], rows: [
+    ['Micro (< 10K followers)', '$100-300', 'Early test, concept validation'],
+    ['Mid-tier creator', '$300-800', 'Working volume, 5-10/week sweet spot'],
+    ['Established creator', '$500-5000', 'Scaled brands, proven winners'],
+    ['Celebrity / top creator', '$10K+', 'Launch moments, flagship'],
+    ['In-house creator', 'Salary', 'At $50K+/mo creator spend']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Start with mid-tier creators ($300-800/video), they usually produce the best ROI, top creators cost more than they convert for most brands</li>
+<li>Build a bench of 3-5 creators minimum, single-creator dependency is fragile, diverse tones + faces reduce fatigue</li>
+<li>Provide hooks and outcome, let creators choose the execution, briefing them too tightly kills the native feel</li>
+<li>Budget 5-20 new pieces per week, TikTok fatigue cycles are 2-3 weeks, you need a refill pipeline or CAC spikes fast</li>
+<li>At $50K+/mo in creator spend, consider hiring 1-2 in-house creators, consistency + brand familiarity compound over time</li>
+</ul>
+
 <div class="prev-next"><a href="spark-ads.html" class="prev"><div class="label">← Previous</div><div class="title">Spark Ads</div></a><a href="when-tiktok-works.html" class="next"><div class="label">Next →</div><div class="title">When TikTok works</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

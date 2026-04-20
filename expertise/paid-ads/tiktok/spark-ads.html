@@ -284,6 +284,42 @@ window.addEventListener('sketch:ready', function(){
 <li>Ad requires specific claims creator can't make</li>
 <li>When branded messaging is non-negotiable</li>
 </ul>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Spark Ad vs standard branded ad, TikTok');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Standard branded ad', items: [
+      'Brand-uploaded creative',
+      'No creator handle attached',
+      'Reads as paid ad immediately',
+      'Lower engagement rate',
+      'No follower growth for brand'
+    ]},
+    right: {title: 'Spark Ad (amplified creator post)', items: [
+      'Creator\'s organic post promoted',
+      'Creator handle + native comments',
+      'Reads as content, not ad',
+      '2-3x engagement vs branded',
+      'Brand can gain followers through it'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Default to Spark Ads over standard branded ads, amplified creator posts outperform brand uploads 2-3x on engagement and conversion</li>
+<li>Secure Spark Ad permission in creator contracts upfront, asking retroactively loses the winning post's momentum</li>
+<li>Boost your organic-test winners that hit 10K+ views, if it worked organically it usually scales, if it didn't, Spark won't save it</li>
+<li>Skip Spark when brand messaging is non-negotiable, the whole mechanism breaks if you edit the creator's voice</li>
+<li>Track comment quality on Spark Ads, native reactions drive more social proof than any testimonial you can produce</li>
+</ul>
+
 <div class="prev-next"><a href="creative-first.html" class="prev"><div class="label">← Previous</div><div class="title">Creative-first approach</div></a><a href="ugc-production.html" class="next"><div class="label">Next →</div><div class="title">UGC production</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

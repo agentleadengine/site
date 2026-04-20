@@ -298,6 +298,33 @@ window.addEventListener('sketch:ready', function(){
 <li>Too narrow (audience too small to optimize)</li>
 <li>No exclusions (kids content, brand-unsafe)</li>
 </ul>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Targeting layers, stack them correctly');
+  sketch.numberedSteps(svg, rc, {x: 40, y: 60, w: 820, stepH: 30, items: [
+    'Audience signal: custom segments, in-market, affinity (who)',
+    'Content signal: placements, topics, keywords (where)',
+    'Always pair both: audience-only = wrong context, content-only = wrong viewer',
+    'Exclusions: kids content, brand-unsafe categories, competitor channels',
+    'Start broad, let the algorithm narrow, measure, re-target'
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Always combine audience signal with content signal, one without the other targets the wrong half of the buyer equation</li>
+<li>Start broad and let the algorithm narrow, narrowing manually too fast starves the algorithm of learning data</li>
+<li>Build exclusions upfront (kids content, brand-unsafe, competitor channels), placement quality matters for brand + efficiency</li>
+<li>Test custom intent audiences based on Search queries, high-intent searchers who also watch YouTube are a disproportionately profitable segment</li>
+<li>Re-evaluate targeting monthly, YouTube's audience segments shift, last month's lookalike might have drifted off-profile</li>
+</ul>
+
 <div class="prev-next"><a href="creative-patterns.html" class="prev"><div class="label">← Previous</div><div class="title">Creative patterns</div></a><a href="vs-meta.html" class="next"><div class="label">Next →</div><div class="title">YouTube vs Meta</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

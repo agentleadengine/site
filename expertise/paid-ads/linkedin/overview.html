@@ -302,6 +302,42 @@ window.addEventListener('sketch:ready', function(){
 <li>$100-200/day minimum</li>
 <li>2-4 weeks before judging</li>
 </ol>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'LinkedIn fit, who pays the premium CPM');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'LinkedIn makes sense', items: [
+      'B2B, ACV $10K+',
+      'Target role has rare job title',
+      'Sales team can follow up in days',
+      'Budget > $3K/month',
+      'Lead quality > lead volume'
+    ]},
+    right: {title: 'LinkedIn wastes money', items: [
+      'B2C or consumer products',
+      'Low-ACV SaaS ($50/mo)',
+      'No sales-led follow-up capacity',
+      'Budget under $3K/month',
+      'Volume-driven acquisition model'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Only run LinkedIn if your ACV supports it, sub-$5K annual deals rarely pencil out at LinkedIn's CPMs</li>
+<li>Install the LinkedIn Insight Tag before the first ad, pixel-based retargeting on LinkedIn is where the real performance lives</li>
+<li>Budget $3K/month minimum, below that you can't iterate enough to find the angle, save the budget for Meta or Google</li>
+<li>Define your ICP with role + company size + industry all three, missing any layer dilutes targeting to the point of waste</li>
+<li>Pair LinkedIn with sales-led follow-up within 48 hours, LinkedIn leads go cold fast without human follow-through</li>
+</ul>
+
 <div class="prev-next"><a href="../tiktok/when-tiktok-works.html" class="prev"><div class="label">← Previous</div><div class="title">When TikTok works</div></a><a href="b2b-targeting.html" class="next"><div class="label">Next →</div><div class="title">B2B targeting</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

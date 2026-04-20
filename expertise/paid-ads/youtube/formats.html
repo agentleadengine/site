@@ -305,6 +305,37 @@ window.addEventListener('sketch:ready', function(){
 <li>Huge launch → Masthead</li>
 <li>Short-form / younger → Shorts</li>
 </ul>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'YouTube format by goal');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Goal', w: 220},
+    {title: 'Format', w: 300},
+    {title: 'Why', w: 280}
+  ], rows: [
+    ['Conversions / leads', 'Skippable In-Stream (TrueView)', 'Self-qualified viewers, pay for attention'],
+    ['Brand reach', 'Bumpers + Non-Skippable', '6s + 15s memory anchors'],
+    ['Research-stage buyers', 'In-Feed (discovery)', 'They clicked in, high intent'],
+    ['Flagship launch', 'Masthead', 'Homepage dominance, expensive'],
+    ['Younger / mobile-first', 'Shorts', 'Short vertical, TikTok-style']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Default to Skippable In-Stream for conversion goals, the 5-second skip self-qualifies viewers and you only pay for attention</li>
+<li>Don't run Non-Skippable for DR, paying for forced views brings low-intent viewers, use Non-Skippable only for brand reach</li>
+<li>Use In-Feed ads for research-stage audiences, the click is intent, conversion rates are materially higher than in-stream</li>
+<li>Add YouTube Shorts when your creative library has vertical video, same asset can run on Shorts + TikTok with minor edits</li>
+<li>Combine formats across a campaign (Bumpers + Skippable + In-Feed), the multi-format exposure raises recall and conversion together</li>
+</ul>
+
 <div class="prev-next"><a href="overview.html" class="prev"><div class="label">← Previous</div><div class="title">YouTube Ads overview</div></a><a href="creative-patterns.html" class="next"><div class="label">Next →</div><div class="title">Creative patterns</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

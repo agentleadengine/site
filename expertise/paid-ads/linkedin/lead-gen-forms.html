@@ -296,6 +296,42 @@ window.addEventListener('sketch:ready', function(){
 <li>Cost per lead: $65-200</li>
 </ul>
 <p>Lead Gen Forms win on cost per lead but watch lead quality.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Lead Gen Forms vs landing page, same CPC');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Landing page', items: [
+      '$10 CPC',
+      'Click-to-lead: 10-25% (own page)',
+      'Cost per lead: $40-100',
+      'Lead quality: higher (active intent)',
+      'More friction = better qualification'
+    ]},
+    right: {title: 'Lead Gen Forms', items: [
+      '$10 CPC',
+      'Click-to-lead: 5-15% (prefilled form)',
+      'Cost per lead: $65-200',
+      'Lead quality: lower (low friction)',
+      'Need rigorous follow-up to convert'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Use Lead Gen Forms when your team follows up on leads within 24 hours, low-friction forms only convert when follow-up is fast</li>
+<li>Match the offer to the form format, a whitepaper or webinar signup fits Lead Gen Forms, a high-ticket demo usually needs a landing page</li>
+<li>Ask 3-5 fields maximum on the form, more than that eats the conversion advantage that Lead Gen Forms offer over landing pages</li>
+<li>Track lead-to-SQL conversion by source (form vs page) for 30 days, the lower CPL on forms often comes with lower quality and you need to know by how much</li>
+<li>Use Lead Gen Forms for top-of-funnel, landing pages for middle-and-bottom-funnel, the format matches the buyer's readiness level</li>
+</ul>
+
 <div class="prev-next"><a href="cost-reality.html" class="prev"><div class="label">← Previous</div><div class="title">Cost reality</div></a><a href="../youtube/overview.html" class="next"><div class="label">Next →</div><div class="title">YouTube Ads overview</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
