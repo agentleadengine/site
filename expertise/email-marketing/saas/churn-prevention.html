@@ -236,7 +236,38 @@ window.addEventListener('sketch:ready', function(){
     ['Key user left team', 'Reintro + workspace setup']
   ]});
 });
-</script><ul><li>Haven't logged in 14 days</li><li>Feature usage dropped 50%+</li><li>Downgrade or cancel attempt</li></ul><h2>Tactics</h2><ul><li>'We noticed you haven't been back' outreach</li><li>Offer help / demo</li><li>Case study of success</li><li>Specific save offer for downgraders</li></ul><h2>Measurement</h2><p>% of at-risk users retained.</p></div></div><footer><div class="container">
+</script><ul><li>Haven't logged in 14 days</li><li>Feature usage dropped 50%+</li><li>Downgrade or cancel attempt</li></ul><h2>Tactics</h2><ul><li>'We noticed you haven't been back' outreach</li><li>Offer help / demo</li><li>Case study of success</li><li>Specific save offer for downgraders</li></ul><h2>Measurement</h2><p>% of at-risk users retained.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Churn prevention signals and matched actions');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'At-risk signal', w: 280},
+    {title: 'Email action', w: 260},
+    {title: 'Success threshold', w: 260}
+  ]  , rows: [
+    ['Usage dropped 50% last 30 days', 'Check-in + value reminder', '30% re-engage'],
+    ['Payment failed', 'Payment recovery flow (3 emails)', '60% recover'],
+    ['Downgrade clicked', 'Save offer before downgrade', '25% stay at current tier'],
+    ['Cancel confirmed', 'Exit survey + win-back 60 days later', '5% return in 6 months']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Build the 4 critical at-risk email flows before broader churn optimization, they catch the biggest recoveries</li>
+<li>Trigger at-risk emails automatically from usage signals, manual detection misses most churns</li>
+<li>Include a human option in the save flow ("reply to get on a call"), high-value accounts warrant human intervention</li>
+<li>Track recovery rate per signal, different at-risk signals have different save potential and deserve different effort</li>
+<li>Run win-back 60-90 days after churn, some churners return after the circumstances that caused them to leave pass</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

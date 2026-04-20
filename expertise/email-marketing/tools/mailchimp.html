@@ -241,7 +241,44 @@ window.addEventListener('sketch:ready', function(){
 });
 </script>
 
-<h2>Strengths</h2><ul><li>Recognizable brand</li><li>Broad integrations</li><li>Free tier (with limits)</li></ul><h2>Weaknesses</h2><ul><li>Deliverability reputation has slipped</li><li>Pricier than alternatives at scale</li><li>Overcomplicated UI</li></ul><h2>Best for</h2><p>Very small businesses, simple newsletters. Migrate to specialist tools as you grow.</p></div></div><footer><div class="container">
+<h2>Strengths</h2><ul><li>Recognizable brand</li><li>Broad integrations</li><li>Free tier (with limits)</li></ul><h2>Weaknesses</h2><ul><li>Deliverability reputation has slipped</li><li>Pricier than alternatives at scale</li><li>Overcomplicated UI</li></ul><h2>Best for</h2><p>Very small businesses, simple newsletters. Migrate to specialist tools as you grow.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Mailchimp fit, early-stage vs growth');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Mailchimp fits', items: [
+      'Small business, under 5K subscribers',
+      'Simple broadcast + basic automation',
+      'All-in-one simplicity preferred',
+      'Low technical sophistication',
+      'Marketing + CRM in one tool'
+    ]},
+    right: {title: 'Outgrow Mailchimp when', items: [
+      'Over 10K engaged subscribers',
+      'Need advanced segmentation',
+      'Deliverability becomes a priority',
+      'Ecom or SaaS-specific features needed',
+      'Pricing exceeds specialist alternatives'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Start on Mailchimp only if you have no technical help, it's the easiest to set up alone</li>
+<li>Plan to migrate once you cross 5-10K engaged subscribers, specialist tools produce materially better results at scale</li>
+<li>Export your list monthly as a backup, regardless of tool, tool lock-in is real and migrations require clean exports</li>
+<li>Use Mailchimp for the basics (welcome + broadcast), don't over-invest in complex flows you'll rebuild elsewhere</li>
+<li>When migrating, keep both tools running 30 days in parallel, abrupt cutover creates deliverability and data gaps</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

@@ -233,7 +233,35 @@ window.addEventListener('sketch:ready', function(){
     {label: 'Send time / day', value: 20, note: 'marginal'}
   ]});
 });
-</script><ul><li>Subject lines (highest leverage)</li><li>From name</li><li>Send time</li><li>Email copy (length, tone)</li><li>CTA</li></ul><h2>Sample size</h2><p>Most email tools build in sample-size calculators. Rule of thumb: test needs 500+ recipients per variant for meaningful data.</p><h2>Single variable</h2><p>One test, one variable. Don't change multiple things at once.</p></div></div><footer><div class="container">
+</script><ul><li>Subject lines (highest leverage)</li><li>From name</li><li>Send time</li><li>Email copy (length, tone)</li><li>CTA</li></ul><h2>Sample size</h2><p>Most email tools build in sample-size calculators. Rule of thumb: test needs 500+ recipients per variant for meaningful data.</p><h2>Single variable</h2><p>One test, one variable. Don't change multiple things at once.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Email test priority, by expected impact');
+  sketch.bars(svg, rc, {x: 40, y: 60, w: 820, labelW: 260, items: [
+    {label: 'Subject line', value: 85, note: '5-20% open-rate swing'},
+    {label: 'From name', value: 70, note: '5-15% open-rate swing'},
+    {label: 'Offer / CTA / price', value: 90, note: '20-100% revenue swing'},
+    {label: 'Body copy structure', value: 55, note: '5-20% click swing'},
+    {label: 'Button color / microcopy', value: 15, note: '1-3% swing, skip early'}
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Test one variable at a time, multi-variable tests contaminate the learning and produce false attribution</li>
+<li>Test offer and subject line first, they produce the biggest revenue swings, button-color optimization is a distraction</li>
+<li>Require sample size before calling a winner, email A/B tests on 500 subscribers produce noise not signal</li>
+<li>Run tests for full send cycle, not just overnight, opens and clicks lag 48-72 hours on most B2B lists</li>
+<li>Document winners in a rolling doc, same bad subject line re-tested in 6 months is a preventable time tax</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

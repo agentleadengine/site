@@ -235,7 +235,39 @@ window.addEventListener('sketch:ready', function(){
     ['Unsub rate climbing', 'Cadence too aggressive']
   ]});
 });
-</script><ul><li>Declining engagement in new cohorts: acquisition quality dropping</li><li>Older cohorts more engaged: you're retaining the right users</li><li>All cohorts decaying the same: content problem</li></ul><h2>Action</h2><p>Adjust acquisition sources or content based on cohort differences.</p></div></div><footer><div class="container">
+</script><ul><li>Declining engagement in new cohorts: acquisition quality dropping</li><li>Older cohorts more engaged: you're retaining the right users</li><li>All cohorts decaying the same: content problem</li></ul><h2>Action</h2><p>Adjust acquisition sources or content based on cohort differences.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Email cohorts by signup source, what reveals');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Signup source', w: 240},
+    {title: 'Month-6 engagement', w: 200},
+    {title: 'Insight', w: 360}
+  ], rows: [
+    ['Content upgrade', '45%', 'High-intent, keep investing'],
+    ['Exit-intent popup', '22%', 'Lower quality, shorter nurture'],
+    ['Lead magnet (generic)', '15%', 'Diluting list, rethink magnet'],
+    ['Referral', '60%', 'Gold, build referral program'],
+    ['Paid ads', '28%', 'Compare CAC to retention-adjusted LTV']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Segment email cohorts by signup source, different sources produce vastly different retention and revenue profiles</li>
+<li>Re-weight list growth investment toward high-retention sources, acquisition cost alone misses the LTV picture</li>
+<li>Create signup-source-specific welcome sequences, referral subscribers need different onboarding than paid-ad leads</li>
+<li>Drop list-growth mechanisms that produce poor cohorts even if volume looks impressive</li>
+<li>Review cohort retention quarterly, source quality shifts over time and yesterday's best source may not be this year's</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

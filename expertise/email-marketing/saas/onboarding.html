@@ -236,7 +236,35 @@ window.addEventListener('sketch:ready', function(){
     ['Stuck at step X', 'Specific help for that step']
   ]});
 });
-</script><ul><li>Day 1: welcome + getting started</li><li>Day 3: if not activated, help</li><li>Day 7: feature education</li><li>Day 14: case study / social proof</li><li>Day 21: upgrade nudge (if freemium/trial)</li></ul><h2>Tone</h2><p>Helpful, not salesy. New users want help.</p><h2>Personalize</h2><p>Different emails for users who activated vs didn't.</p></div></div><footer><div class="container">
+</script><ul><li>Day 1: welcome + getting started</li><li>Day 3: if not activated, help</li><li>Day 7: feature education</li><li>Day 14: case study / social proof</li><li>Day 21: upgrade nudge (if freemium/trial)</li></ul><h2>Tone</h2><p>Helpful, not salesy. New users want help.</p><h2>Personalize</h2><p>Different emails for users who activated vs didn't.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'SaaS onboarding emails, behaviorally branched');
+  sketch.numberedSteps(svg, rc, {x: 40, y: 60, w: 820, stepH: 30, items: [
+    'Signup email: welcome + immediate first-step CTA',
+    'Day 1: check if user completed aha, branch based on activation',
+    'Activated users: feature expansion emails',
+    'Non-activated: friction-removal + help resources',
+    'Day 7+: trial conversion (for trials) or expansion (for paid)'
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Branch email flows on activation status, same flow for activated and stuck users wastes half the touches</li>
+<li>Send the first onboarding email within minutes of signup, interest peaks immediately and decays fast</li>
+<li>Focus early emails on reaching aha, not feature tours, completing the aha moment is the single retention predictor</li>
+<li>Include a "stuck? reply to this email" escape hatch, human response to stuck users has outsized impact on activation</li>
+<li>Measure % reaching aha within 7 days via email flows, it's a clean leading indicator of 30-day retention</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){
