@@ -253,7 +253,7 @@
   ], rows: [
     ['One tool, one job', 'search_web, not do_anything_with_web(action)'],
     ['Name like a beginner', 'search_internal_docs, not query_kb_v2'],
-    ['2–4 parameters', 'Split or default the rest'],
+    ['2-4 parameters', 'Split or default the rest'],
     ['Strong types', 'Enums + integers + schemas, not free-form strings'],
     ['Sensible defaults', 'Every optional param has a reasonable fallback'],
     ['Bounded output', 'Truncate long results, return what matters']
@@ -267,7 +267,7 @@
 <p>A new hire reading your tool list should understand what each one does from the name alone. <code>search_internal_docs</code> passes. <code>query_kb_v2</code> fails. The model reads the name first and pattern-matches; help it.</p>
 
 <h3>Keep parameter count low</h3>
-<p>2–4 parameters is the sweet spot. At 6+ parameters, the model starts missing required ones or hallucinating values. If you truly need more inputs, the tool should probably be split or should take a structured config object with defaults.</p>
+<p>2-4 parameters is the sweet spot. At 6+ parameters, the model starts missing required ones or hallucinating values. If you truly need more inputs, the tool should probably be split or should take a structured config object with defaults.</p>
 
 <h3>Strong types beat free-form strings</h3>
 <p>A <code>recency</code> parameter typed as <code>enum: ["day", "week", "month"]</code> can't be wrong. Typed as <code>string</code>, the model might pass "recent" or "1d" or "last week" and surprise you. Constrain the shape.</p>
@@ -354,10 +354,10 @@ find_deals_for(contact_id)    → list of deals</pre>
 <div class="further-reading">
 <h2>Further reading</h2>
 <ul>
-<li><span class="resource-meta">Docs</span><a href="https://docs.claude.com/en/docs/build-with-claude/tool-use/overview" target="_blank" rel="noopener nofollow">Claude — Tool use docs</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://platform.openai.com/docs/guides/function-calling" target="_blank" rel="noopener nofollow">OpenAI — Function calling</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://docs.claude.com/en/docs/build-with-claude/tool-use/overview" target="_blank" rel="noopener nofollow">Claude - Tool use docs</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://platform.openai.com/docs/guides/function-calling" target="_blank" rel="noopener nofollow">OpenAI - Function calling</a></li>
 <li><span class="resource-meta">Paper</span><a href="https://arxiv.org/abs/2302.04761" target="_blank" rel="noopener nofollow">Toolformer (paper)</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://gorilla.cs.berkeley.edu/" target="_blank" rel="noopener nofollow">Gorilla — LLM with tools</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://gorilla.cs.berkeley.edu/" target="_blank" rel="noopener nofollow">Gorilla - LLM with tools</a></li>
 </ul>
 </div>
 <div class="prev-next"><a href="../loops/self-correction.html" class="prev"><div class="label">← Previous</div><div class="title">Self-correction</div></a><a href="tool-descriptions.html" class="next"><div class="label">Next →</div><div class="title">Tool descriptions matter</div></a></div></div></div><footer><div class="container">
@@ -368,8 +368,8 @@ find_deals_for(contact_id)    → list of deals</pre>
   if (!bar || bar.dataset.navInit) return;
   bar.dataset.navInit = '1';
 
-  const OPEN_DELAY = 120;   // ms — hover intent
-  const CLOSE_DELAY = 450;  // ms — forgiving close
+  const OPEN_DELAY = 120;   // ms - hover intent
+  const CLOSE_DELAY = 450;  // ms - forgiving close
   const isMobile = () => window.matchMedia('(max-width: 960px)').matches;
 
   const hamb = bar.querySelector('.hamburger');

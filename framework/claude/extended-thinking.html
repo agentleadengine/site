@@ -238,9 +238,9 @@
 <p class="lede">Extended thinking is a mode that lets Claude reason privately before it answers. Imagine asking someone a hard question and they say "hold on, let me think about that" and then actually do, working through the problem quietly before saying anything out loud. That's what extended thinking is. It costs more. It takes longer. For hard problems, it's often worth it. For easy problems, it's a waste. This page is about when it helps, when it doesn't, and how to tune the dial.</p>
 
 <h2>What it actually is, mechanically.</h2>
-<p>When you make an API call with extended thinking on, you give Claude a "thinking budget" in tokens. The model uses up to that many tokens producing internal reasoning before writing its final answer. By default, you don't see that reasoning — it's hidden from the final output, but it shaped what came after.</p>
+<p>When you make an API call with extended thinking on, you give Claude a "thinking budget" in tokens. The model uses up to that many tokens producing internal reasoning before writing its final answer. By default, you don't see that reasoning - it's hidden from the final output, but it shaped what came after.</p>
 
-<p>The reasoning isn't free. Those thinking tokens count toward your bill, at the output rate (the expensive rate). A 2,000-token thinking budget plus a 500-token answer = 2,500 billable output tokens. That's why "just turn on extended thinking" isn't always the right answer — you're literally paying for the privilege.</p>
+<p>The reasoning isn't free. Those thinking tokens count toward your bill, at the output rate (the expensive rate). A 2,000-token thinking budget plus a 500-token answer = 2,500 billable output tokens. That's why "just turn on extended thinking" isn't always the right answer - you're literally paying for the privilege.</p>
 
 <h2>When extended thinking helps vs. when it's wasted.</h2>
 
@@ -322,7 +322,7 @@ document.addEventListener('sketch:ready', function() {
 
 <ol>
   <li><strong>Start at 1,024 tokens.</strong> This is the "probably useful, probably not wasteful" default.</li>
-  <li><strong>Build a small eval set.</strong> 10–20 representative inputs with known good outputs. Measure accuracy both with and without thinking.</li>
+  <li><strong>Build a small eval set.</strong> 10-20 representative inputs with known good outputs. Measure accuracy both with and without thinking.</li>
   <li><strong>Measure the lift.</strong> If thinking adds &lt;5%, turn it OFF. You're paying for nothing.</li>
   <li><strong>If the lift is &gt;20%, try doubling.</strong> 1,024 → 2,048. Measure again. If it keeps lifting meaningfully, double again.</li>
   <li><strong>Stop at the knee.</strong> When another doubling doesn't move the needle, you've found the budget. Stop there.</li>
@@ -383,18 +383,18 @@ document.addEventListener('sketch:ready', function() {
 <div class="further-reading">
 <h2>Further reading</h2>
 <ul>
-<li><span class="resource-meta">Docs</span><a href="https://docs.claude.com/en/docs/get-started" target="_blank" rel="noopener nofollow">Claude API — Getting started</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://docs.claude.com/en/docs/about-claude/overview" target="_blank" rel="noopener nofollow">Claude — Model overview</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://docs.claude.com/en/docs/build-with-claude/tool-use/overview" target="_blank" rel="noopener nofollow">Claude — Tool use</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://docs.claude.com/en/docs/build-with-claude/extended-thinking" target="_blank" rel="noopener nofollow">Claude — Extended thinking</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/overview" target="_blank" rel="noopener nofollow">Claude — Prompt engineering guide</a></li>
-<li><span class="resource-meta">Repo</span><a href="https://github.com/anthropics/anthropic-cookbook" target="_blank" rel="noopener nofollow">Anthropic Cookbook — Examples</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://docs.claude.com/en/docs/get-started" target="_blank" rel="noopener nofollow">Claude API - Getting started</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://docs.claude.com/en/docs/about-claude/overview" target="_blank" rel="noopener nofollow">Claude - Model overview</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://docs.claude.com/en/docs/build-with-claude/tool-use/overview" target="_blank" rel="noopener nofollow">Claude - Tool use</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://docs.claude.com/en/docs/build-with-claude/extended-thinking" target="_blank" rel="noopener nofollow">Claude - Extended thinking</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/overview" target="_blank" rel="noopener nofollow">Claude - Prompt engineering guide</a></li>
+<li><span class="resource-meta">Repo</span><a href="https://github.com/anthropics/anthropic-cookbook" target="_blank" rel="noopener nofollow">Anthropic Cookbook - Examples</a></li>
 </ul>
 <h3>Watch</h3>
 <div class="video-wrap">
-<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/bZQun8Y4L2A" title="Andrej Karpathy — State of GPT (Microsoft Build)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/bZQun8Y4L2A" title="Andrej Karpathy - State of GPT (Microsoft Build)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
-<p class="video-caption">Andrej Karpathy — State of GPT (Microsoft Build)</p>
+<p class="video-caption">Andrej Karpathy - State of GPT (Microsoft Build)</p>
 </div>
 <div class="prev-next"><a href="prompting-for-agents.html" class="prev"><div class="label">← Previous</div><div class="title">Prompting for agents</div></a><a href="tool-use.html" class="next"><div class="label">Next →</div><div class="title">Tool use</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../framework/index.html">Framework</a></p>
@@ -404,8 +404,8 @@ document.addEventListener('sketch:ready', function() {
   if (!bar || bar.dataset.navInit) return;
   bar.dataset.navInit = '1';
 
-  const OPEN_DELAY = 120;   // ms — hover intent
-  const CLOSE_DELAY = 450;  // ms — forgiving close
+  const OPEN_DELAY = 120;   // ms - hover intent
+  const CLOSE_DELAY = 450;  // ms - forgiving close
   const isMobile = () => window.matchMedia('(max-width: 960px)').matches;
 
   const hamb = bar.querySelector('.hamburger');

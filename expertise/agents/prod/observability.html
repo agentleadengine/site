@@ -292,7 +292,7 @@
     {title: 'Session type', w: 280},
     {title: 'Sample rate', w: 520}
   ], rows: [
-    ['Normal successful sessions', '1–5% (enough to baseline)'],
+    ['Normal successful sessions', '1-5% (enough to baseline)'],
     ['Errors / exceptions', '100% (you always want these)'],
     ['Budget-hit sessions', '100% (these indicate runaway or bad sizing)'],
     ['User-reported issues', '100% (trigger on a support webhook)'],
@@ -338,17 +338,17 @@
 <h2>What to do with this</h2>
 <ul>
 <li>Add per-session tracing to your agent this week if you don't have it. Start with Langfuse or Helicone; whichever takes the least config.</li>
-<li>Define 3–5 alerts on top of the trace data. Wire them to PagerDuty or Slack.</li>
+<li>Define 3-5 alerts on top of the trace data. Wire them to PagerDuty or Slack.</li>
 <li>Read <a href="cost-control.html">cost control</a> and <a href="latency.html">latency optimization</a> for the two dashboards observability enables.</li>
 </ul>
 <!-- further-reading -->
 <div class="further-reading">
 <h2>Further reading</h2>
 <ul>
-<li><span class="resource-meta">Blog</span><a href="https://hamel.dev/blog/posts/field-guide/" target="_blank" rel="noopener nofollow">Hamel Husain — LLMs in production</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://docs.smith.langchain.com/" target="_blank" rel="noopener nofollow">LangSmith — Observability</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://langfuse.com/docs" target="_blank" rel="noopener nofollow">Langfuse — Open source LLM observability</a></li>
-<li><span class="resource-meta">Repo</span><a href="https://github.com/traceloop/openllmetry" target="_blank" rel="noopener nofollow">OpenLLMetry — Telemetry</a></li>
+<li><span class="resource-meta">Blog</span><a href="https://hamel.dev/blog/posts/field-guide/" target="_blank" rel="noopener nofollow">Hamel Husain - LLMs in production</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://docs.smith.langchain.com/" target="_blank" rel="noopener nofollow">LangSmith - Observability</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://langfuse.com/docs" target="_blank" rel="noopener nofollow">Langfuse - Open source LLM observability</a></li>
+<li><span class="resource-meta">Repo</span><a href="https://github.com/traceloop/openllmetry" target="_blank" rel="noopener nofollow">OpenLLMetry - Telemetry</a></li>
 </ul>
 </div>
 <div class="prev-next"><a href="../eval/regression.html" class="prev"><div class="label">← Previous</div><div class="title">Regression testing</div></a><a href="cost-control.html" class="next"><div class="label">Next →</div><div class="title">Cost control</div></a></div></div></div><footer><div class="container">
@@ -359,8 +359,8 @@
   if (!bar || bar.dataset.navInit) return;
   bar.dataset.navInit = '1';
 
-  const OPEN_DELAY = 120;   // ms — hover intent
-  const CLOSE_DELAY = 450;  // ms — forgiving close
+  const OPEN_DELAY = 120;   // ms - hover intent
+  const CLOSE_DELAY = 450;  // ms - forgiving close
   const isMobile = () => window.matchMedia('(max-width: 960px)').matches;
 
   const hamb = bar.querySelector('.hamburger');

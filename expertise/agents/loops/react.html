@@ -254,7 +254,7 @@
   sketch.arrow(svg, rc, {x1: 480, x2: 540, y: 120, bidirectional: false});
   sketch.arrow(svg, rc, {x1: 630, x2: 150, y1: 160, y2: 230, bidirectional: false, label: 'back to thought'});
   sketch.box(svg, rc, {x: 60, y: 200, w: 180, h: 70, title: 'Done?', sub: 'yes → final answer'});
-  sketch.note(svg, 760, 110, 'loop 3–10×', {size: 14});
+  sketch.note(svg, 760, 110, 'loop 3-10×', {size: 14});
 });</script>
 
 <h2>What a trace actually looks like</h2>
@@ -279,7 +279,7 @@ Final answer: Apple (AAPL) is trading at $178.42, up 0.8% today.</pre>
     {title: 'Why it matters', w: 520}
   ], rows: [
     ['Model emits final answer', 'Normal success path. Model decides it\'s done.'],
-    ['Max step count hit', 'Hard cap at 10–30 steps. Prevents runaway.'],
+    ['Max step count hit', 'Hard cap at 10-30 steps. Prevents runaway.'],
     ['Cost cap hit', 'Stop at $0.50 per run. Prevents surprise bills.'],
     ['Timeout', '60 seconds max. User won\'t wait forever.'],
     ['Same-action loop detected', 'If model calls same tool with same args 3× → halt.']
@@ -326,8 +326,8 @@ Final answer: Apple (AAPL) is trading at $178.42, up 0.8% today.</pre>
 <ul>
 <li><span class="resource-meta">Paper</span><a href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener nofollow">ReAct (paper)</a></li>
 <li><span class="resource-meta">Paper</span><a href="https://arxiv.org/abs/2303.11366" target="_blank" rel="noopener nofollow">Reflexion (paper)</a></li>
-<li><span class="resource-meta">Blog</span><a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener nofollow">Anthropic — Building effective agents</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://langchain-ai.github.io/langgraph/concepts/agentic_concepts/" target="_blank" rel="noopener nofollow">LangGraph — Agent architectures</a></li>
+<li><span class="resource-meta">Blog</span><a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener nofollow">Anthropic - Building effective agents</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://langchain-ai.github.io/langgraph/concepts/agentic_concepts/" target="_blank" rel="noopener nofollow">LangGraph - Agent architectures</a></li>
 </ul>
 </div>
 <div class="prev-next"><a href="../foundations/architecture.html" class="prev"><div class="label">← Previous</div><div class="title">Architecture map</div></a><a href="tool-use.html" class="next"><div class="label">Next →</div><div class="title">Tool use</div></a></div></div></div><footer><div class="container">
@@ -338,8 +338,8 @@ Final answer: Apple (AAPL) is trading at $178.42, up 0.8% today.</pre>
   if (!bar || bar.dataset.navInit) return;
   bar.dataset.navInit = '1';
 
-  const OPEN_DELAY = 120;   // ms — hover intent
-  const CLOSE_DELAY = 450;  // ms — forgiving close
+  const OPEN_DELAY = 120;   // ms - hover intent
+  const CLOSE_DELAY = 450;  // ms - forgiving close
   const isMobile = () => window.matchMedia('(max-width: 960px)').matches;
 
   const hamb = bar.querySelector('.hamburger');

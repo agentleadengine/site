@@ -256,7 +256,7 @@
   sketch.arrow(svg, rc, {x1: 480, x2: 540, y: 120, bidirectional: false, label: 'fails'});
   sketch.arrow(svg, rc, {x1: 630, x2: 390, y1: 160, y2: 200, bidirectional: false});
   sketch.arrow(svg, rc, {x1: 390, x2: 390, y1: 200, y2: 160, bidirectional: false, label: 'retry'});
-  sketch.note(svg, 760, 110, 'stop after 3–5', {size: 13});
+  sketch.note(svg, 760, 110, 'stop after 3-5', {size: 13});
 });</script>
 
 <h2>The triggers</h2>
@@ -303,7 +303,7 @@
 <h2>Stop conditions</h2>
 <p>Self-correction can spiral. A model that can't fix a problem will iterate on the same wrong answer forever. Hard limits:</p>
 <ul>
-<li>Max 3–5 correction attempts per issue.</li>
+<li>Max 3-5 correction attempts per issue.</li>
 <li>If the new output is essentially the same as the old, stop, the model is stuck.</li>
 <li>Cost budget across the whole correction sequence.</li>
 <li>Escalate to a human or a stronger model after N failures.</li>
@@ -333,8 +333,8 @@
 <ul>
 <li><span class="resource-meta">Paper</span><a href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener nofollow">ReAct (paper)</a></li>
 <li><span class="resource-meta">Paper</span><a href="https://arxiv.org/abs/2303.11366" target="_blank" rel="noopener nofollow">Reflexion (paper)</a></li>
-<li><span class="resource-meta">Blog</span><a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener nofollow">Anthropic — Building effective agents</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://langchain-ai.github.io/langgraph/concepts/agentic_concepts/" target="_blank" rel="noopener nofollow">LangGraph — Agent architectures</a></li>
+<li><span class="resource-meta">Blog</span><a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener nofollow">Anthropic - Building effective agents</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://langchain-ai.github.io/langgraph/concepts/agentic_concepts/" target="_blank" rel="noopener nofollow">LangGraph - Agent architectures</a></li>
 </ul>
 </div>
 <div class="prev-next"><a href="reflection.html" class="prev"><div class="label">← Previous</div><div class="title">Reflection</div></a><a href="../tools/tool-design.html" class="next"><div class="label">Next →</div><div class="title">Tool design</div></a></div></div></div><footer><div class="container">
@@ -345,8 +345,8 @@
   if (!bar || bar.dataset.navInit) return;
   bar.dataset.navInit = '1';
 
-  const OPEN_DELAY = 120;   // ms — hover intent
-  const CLOSE_DELAY = 450;  // ms — forgiving close
+  const OPEN_DELAY = 120;   // ms - hover intent
+  const CLOSE_DELAY = 450;  // ms - forgiving close
   const isMobile = () => window.matchMedia('(max-width: 960px)').matches;
 
   const hamb = bar.querySelector('.hamburger');

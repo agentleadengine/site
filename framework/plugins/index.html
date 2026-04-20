@@ -235,7 +235,7 @@
 <a href="../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../what-is-autonomous-ai.html">What is autonomous AI</a></li><li><a href="../the-autonomy-spectrum.html">The autonomy spectrum</a></li><li><a href="../glossary.html">Glossary</a></li></ul><h4>Claude</h4><ul><li><a href="../claude/overview.html">Overview</a></li><li><a href="../claude/prompting-for-agents.html">Prompting for agents</a></li><li><a href="../claude/extended-thinking.html">Extended thinking</a></li><li><a href="../claude/tool-use.html">Tool use</a></li></ul><h4>MCP</h4><ul><li><a href="../mcp/index.html">Overview</a></li><li><a href="../mcp/what-is-mcp.html">What is MCP</a></li><li><a href="../mcp/anatomy.html">Anatomy</a></li><li><a href="../mcp/transports.html">Transports</a></li><li><a href="../mcp/servers.html">Servers</a></li><li><a href="../mcp/clients.html">Clients</a></li><li><a href="../mcp/security.html">Security</a></li><li><a href="../mcp/directory.html">Directory</a></li></ul><h4>Plugins</h4><ul><li><a href="../plugins/index.html" class="active">Overview</a></li><li><a href="../plugins/vs-mcp.html">Plugins vs MCP</a></li><li><a href="../plugins/marketplace.html">Marketplace</a></li></ul><h4>Claude Code</h4><ul><li><a href="../claude-code/index.html">Overview</a></li><li><a href="../claude-code/settings.html">Settings</a></li><li><a href="../claude-code/permissions.html">Permissions</a></li><li><a href="../claude-code/hooks.html">Hooks</a></li><li><a href="../claude-code/skills.html">Skills</a></li><li><a href="../claude-code/memory.html">Memory</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/index.html">Overview</a></li><li><a href="../patterns/react-loop.html">ReAct loop</a></li><li><a href="../patterns/plan-execute.html">Plan-execute</a></li><li><a href="../patterns/multi-agent.html">Multi-agent</a></li><li><a href="../patterns/evaluation.html">Evaluation</a></li><li><a href="../patterns/prompt-caching.html">Prompt caching</a></li></ul><h4>Autonomous</h4><ul><li><a href="../autonomous/index.html">Overview</a></li><li><a href="../autonomous/headless.html">Headless</a></li><li><a href="../autonomous/scheduling.html">Scheduling</a></li><li><a href="../autonomous/self-monitoring.html">Self-monitoring</a></li><li><a href="../autonomous/safety.html">Safety</a></li></ul><h4>Build Guides</h4><ul><li><a href="../build/index.html">Overview</a></li><li><a href="../build/first-agent.html">First agent (60 min)</a></li><li><a href="../build/voice-agent.html">Voice agent</a></li><li><a href="../build/research-agent.html">Research agent</a></li></ul><h4>Tools</h4><ul><li><a href="../tools/browser-automation.html">Browser automation</a></li><li><a href="../tools/desktop-control.html">Desktop control</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Framework</a><span class="sep">›</span><a href="../plugins/index.html">Plugins</a><span class="sep">›</span><span>Plugins</span></div><h1 class="title" style="font-size:clamp(32px,4.5vw,42px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">Plugins</h1><div class="article-meta"><span>📖 3 min read</span><span>Updated 2026-04-18</span></div>
-<p class="lede">"Plugin" means different things in different places. In the Claude Code world, a plugin is a packaged bundle — it can ship MCP servers, skills, hooks, and config all at once, installable in a single command. If MCPs and skills are Lego bricks, a plugin is a pre-assembled Lego set. Useful exactly where the glue between pieces is what someone else already figured out.</p>
+<p class="lede">"Plugin" means different things in different places. In the Claude Code world, a plugin is a packaged bundle - it can ship MCP servers, skills, hooks, and config all at once, installable in a single command. If MCPs and skills are Lego bricks, a plugin is a pre-assembled Lego set. Useful exactly where the glue between pieces is what someone else already figured out.</p>
 
 <h2>The idea, in one line.</h2>
 <p>A plugin is a coherent bundle of agent capabilities that travels together. You install it once and get everything at once. You uninstall it once and everything goes away cleanly.</p>
@@ -266,7 +266,7 @@ document.addEventListener('sketch:ready', function() {
 });
 </script>
 
-<p>Any combination of those pieces, shipped together as one unit. A plugin doesn't have to include all four layers — most ship just an MCP plus a skill or two. But the structure is there so complex bundles stay organized.</p>
+<p>Any combination of those pieces, shipped together as one unit. A plugin doesn't have to include all four layers - most ship just an MCP plus a skill or two. But the structure is there so complex bundles stay organized.</p>
 
 <h2>Why plugins exist at all.</h2>
 <p>MCPs and skills on their own are great. But if you're building something real, you usually need <em>several</em> pieces working together: a tool, a prompt that knows how to use that tool, a hook that logs or sanitizes outputs, maybe some config. Building all of that yourself every time is tedious. Plugins let someone else bundle it once, and everyone else installs it.</p>
@@ -321,7 +321,7 @@ document.addEventListener('sketch:ready', function() {
 
 <pre><code>/plugin install telegram@claude-plugins-official</code></pre>
 
-<p>What happens: the plugin is downloaded. Its MCP servers get registered in your config. Its skills become invokable via slash commands. Its hooks get wired up to the right events. Its defaults apply. Uninstalling is one command and reverses all of that cleanly — no leftover config to clean up.</p>
+<p>What happens: the plugin is downloaded. Its MCP servers get registered in your config. Its skills become invokable via slash commands. Its hooks get wired up to the right events. Its defaults apply. Uninstalling is one command and reverses all of that cleanly - no leftover config to clean up.</p>
 
 <h2>When to use a plugin vs. just an MCP.</h2>
 
@@ -330,14 +330,14 @@ document.addEventListener('sketch:ready', function() {
   <li><strong>A plugin:</strong> when you want a complete, ready-to-use integration. Tools + battle-tested prompts + sensible event handling, all in one.</li>
 </ul>
 
-<p>Beginner path: start with plugins from the official marketplace. Graduate to raw MCPs as you develop opinions about how you want things to work. Eventually, you might package your own plugins for patterns you've built — that's how the ecosystem grows.</p>
+<p>Beginner path: start with plugins from the official marketplace. Graduate to raw MCPs as you develop opinions about how you want things to work. Eventually, you might package your own plugins for patterns you've built - that's how the ecosystem grows.</p>
 <!-- further-reading -->
 <div class="further-reading">
 <h2>Further reading</h2>
 <ul>
-<li><span class="resource-meta">Docs</span><a href="https://docs.claude.com/en/docs/claude-code/plugins" target="_blank" rel="noopener nofollow">Claude Code plugins — Overview</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://docs.claude.com/en/docs/claude-code/plugins/marketplaces" target="_blank" rel="noopener nofollow">Claude Code — Marketplaces</a></li>
-<li><span class="resource-meta">Repo</span><a href="https://github.com/obra/superpowers" target="_blank" rel="noopener nofollow">Superpowers plugin — GitHub</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://docs.claude.com/en/docs/claude-code/plugins" target="_blank" rel="noopener nofollow">Claude Code plugins - Overview</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://docs.claude.com/en/docs/claude-code/plugins/marketplaces" target="_blank" rel="noopener nofollow">Claude Code - Marketplaces</a></li>
+<li><span class="resource-meta">Repo</span><a href="https://github.com/obra/superpowers" target="_blank" rel="noopener nofollow">Superpowers plugin - GitHub</a></li>
 </ul>
 </div>
 <div class="prev-next"><a href="../mcp/directory.html" class="prev"><div class="label">← Previous</div><div class="title">MCP directory</div></a><a href="vs-mcp.html" class="next"><div class="label">Next →</div><div class="title">Plugins vs MCP</div></a></div></div></div><footer><div class="container">
@@ -348,8 +348,8 @@ document.addEventListener('sketch:ready', function() {
   if (!bar || bar.dataset.navInit) return;
   bar.dataset.navInit = '1';
 
-  const OPEN_DELAY = 120;   // ms — hover intent
-  const CLOSE_DELAY = 450;  // ms — forgiving close
+  const OPEN_DELAY = 120;   // ms - hover intent
+  const CLOSE_DELAY = 450;  // ms - forgiving close
   const isMobile = () => window.matchMedia('(max-width: 960px)').matches;
 
   const hamb = bar.querySelector('.hamburger');

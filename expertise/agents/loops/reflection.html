@@ -235,7 +235,7 @@
 <a href="../../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>AI Agents (45 pages)</h4><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../foundations/what-is-an-agent.html">What is an AI agent?</a></li><li><a href="../foundations/agent-vs-workflow.html">Agent vs workflow</a></li><li><a href="../foundations/when-not-to-use.html">When not to use agents</a></li><li><a href="../foundations/architecture.html">The agent architecture map</a></li></ul><h4>Loops + Reasoning</h4><ul><li><a href="../loops/react.html">ReAct</a></li><li><a href="../loops/tool-use.html">Tool use</a></li><li><a href="../loops/planning.html">Planning loops</a></li><li><a href="../loops/reflection.html" class="active">Reflection</a></li><li><a href="../loops/self-correction.html">Self-correction</a></li></ul><h4>Tools + Actions</h4><ul><li><a href="../tools/tool-design.html">Tool design</a></li><li><a href="../tools/tool-descriptions.html">Tool descriptions matter</a></li><li><a href="../tools/error-handling.html">Tool error handling</a></li><li><a href="../tools/parallel-tools.html">Parallel tool calls</a></li><li><a href="../tools/tool-budgets.html">Tool budgets + limits</a></li></ul><h4>Memory</h4><ul><li><a href="../memory/short-term.html">Short-term memory</a></li><li><a href="../memory/long-term.html">Long-term memory</a></li><li><a href="../memory/episodic.html">Episodic memory</a></li><li><a href="../memory/procedural.html">Procedural memory</a></li><li><a href="../memory/memory-systems.html">Memory system design</a></li></ul><h4>Multi-agent</h4><ul><li><a href="../multi/orchestrator-worker.html">Orchestrator-worker</a></li><li><a href="../multi/peer-agents.html">Peer agents</a></li><li><a href="../multi/debate.html">Debate + consensus</a></li><li><a href="../multi/handoffs.html">Agent handoffs</a></li><li><a href="../multi/routing.html">Agent routing</a></li></ul><h4>Evaluation</h4><ul><li><a href="../eval/why-eval-agents.html">Why eval agents</a></li><li><a href="../eval/task-completion.html">Task completion</a></li><li><a href="../eval/trajectory-eval.html">Trajectory evaluation</a></li><li><a href="../eval/regression.html">Regression testing</a></li></ul><h4>Production</h4><ul><li><a href="../prod/observability.html">Observability + tracing</a></li><li><a href="../prod/cost-control.html">Cost control</a></li><li><a href="../prod/latency.html">Latency optimization</a></li><li><a href="../prod/safety.html">Safety + guardrails</a></li><li><a href="../prod/human-in-loop.html">Human-in-the-loop</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/research-agent.html">Research agent</a></li><li><a href="../patterns/coding-agent.html">Coding agent</a></li><li><a href="../patterns/customer-support.html">Customer support agent</a></li><li><a href="../patterns/data-analyst.html">Data analyst agent</a></li><li><a href="../patterns/browser-agent.html">Browser agent</a></li><li><a href="../patterns/email-agent.html">Email agent</a></li></ul><h4>Frameworks</h4><ul><li><a href="../frameworks/claude-agent-sdk.html">Claude Agent SDK</a></li><li><a href="../frameworks/langgraph.html">LangGraph</a></li><li><a href="../frameworks/crewai.html">CrewAI</a></li><li><a href="../frameworks/autogen.html">AutoGen</a></li><li><a href="../frameworks/picking.html">Picking a framework</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">AI Agents</a><span class="sep">›</span><span>Reflection</span></div><h1 class="title">Reflection</h1><div class="article-meta"><span>📖 3 min read</span><span>Updated 2026-04-19</span></div>
-<p class="lede">Reflection is the simplest quality boost you can add to an agent. The pattern: after the agent produces an answer, you run a second LLM call that critiques the answer. "Is this correct? Is anything missing? What would you change?" The agent reads the critique, revises, returns. That one extra step routinely buys 5–20% quality on hard tasks, at the cost of roughly doubling the spend. For anything where the answer matters more than the dollar, it's a cheap trade.</p>
+<p class="lede">Reflection is the simplest quality boost you can add to an agent. The pattern: after the agent produces an answer, you run a second LLM call that critiques the answer. "Is this correct? Is anything missing? What would you change?" The agent reads the critique, revises, returns. That one extra step routinely buys 5-20% quality on hard tasks, at the cost of roughly doubling the spend. For anything where the answer matters more than the dollar, it's a cheap trade.</p>
 
 <h2>The pattern</h2>
 <div class="sketch" data-viewbox="0 0 900 280"></div>
@@ -255,7 +255,7 @@
 <li><strong>Draft:</strong> the agent produces whatever it would normally produce.</li>
 <li><strong>Critique:</strong> a second LLM call gets the draft and a critique prompt. It lists problems.</li>
 <li><strong>Revise:</strong> a third LLM call takes the draft + critique and produces v2.</li>
-<li><strong>Stop</strong> (or loop 1–2 more times if the task is high-stakes).</li>
+<li><strong>Stop</strong> (or loop 1-2 more times if the task is high-stakes).</li>
 </ol>
 
 <h2>Why this works</h2>
@@ -311,7 +311,7 @@ def get_avg(nums: list[float]) -> float:
 <p>For real production code or published writing, pay for the separate critic. For internal tools, self-reflection is usually enough.</p>
 
 <h2>The empirical gain</h2>
-<p>Published benchmarks show reflection adds 5–20% quality depending on the task. The gains concentrate in:</p>
+<p>Published benchmarks show reflection adds 5-20% quality depending on the task. The gains concentrate in:</p>
 <ul>
 <li>Tasks with verifiable correctness (code, math) → biggest gains</li>
 <li>Tasks with multi-step reasoning → meaningful gains</li>
@@ -322,7 +322,7 @@ def get_avg(nums: list[float]) -> float:
 <h2>Stop conditions</h2>
 <p>Reflection can loop forever if you let it. Always cap:</p>
 <ul>
-<li>Max 2–3 reflection iterations. Diminishing returns after that.</li>
+<li>Max 2-3 reflection iterations. Diminishing returns after that.</li>
 <li>If the revision is essentially identical to the draft, stop. The model ran out of changes to make.</li>
 <li>If the critique says "no issues," stop.</li>
 </ul>
@@ -347,8 +347,8 @@ def get_avg(nums: list[float]) -> float:
 <ul>
 <li><span class="resource-meta">Paper</span><a href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener nofollow">ReAct (paper)</a></li>
 <li><span class="resource-meta">Paper</span><a href="https://arxiv.org/abs/2303.11366" target="_blank" rel="noopener nofollow">Reflexion (paper)</a></li>
-<li><span class="resource-meta">Blog</span><a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener nofollow">Anthropic — Building effective agents</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://langchain-ai.github.io/langgraph/concepts/agentic_concepts/" target="_blank" rel="noopener nofollow">LangGraph — Agent architectures</a></li>
+<li><span class="resource-meta">Blog</span><a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener nofollow">Anthropic - Building effective agents</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://langchain-ai.github.io/langgraph/concepts/agentic_concepts/" target="_blank" rel="noopener nofollow">LangGraph - Agent architectures</a></li>
 </ul>
 </div>
 <div class="prev-next"><a href="planning.html" class="prev"><div class="label">← Previous</div><div class="title">Planning loops</div></a><a href="self-correction.html" class="next"><div class="label">Next →</div><div class="title">Self-correction</div></a></div></div></div><footer><div class="container">
@@ -359,8 +359,8 @@ def get_avg(nums: list[float]) -> float:
   if (!bar || bar.dataset.navInit) return;
   bar.dataset.navInit = '1';
 
-  const OPEN_DELAY = 120;   // ms — hover intent
-  const CLOSE_DELAY = 450;  // ms — forgiving close
+  const OPEN_DELAY = 120;   // ms - hover intent
+  const CLOSE_DELAY = 450;  // ms - forgiving close
   const isMobile = () => window.matchMedia('(max-width: 960px)').matches;
 
   const hamb = bar.querySelector('.hamburger');

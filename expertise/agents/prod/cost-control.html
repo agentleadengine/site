@@ -264,12 +264,12 @@
     {title: 'Technique', w: 220},
     {title: 'Typical savings', w: 580}
   ], rows: [
-    ['Prompt caching', '30–90% on system-prompt tokens across multi-turn'],
-    ['Model routing', '50–80% by sending easy tasks to cheap model'],
-    ['Context trimming', '20–60% by summarizing stale turns'],
-    ['Tool output caps', '10–40% on turns after big tool results'],
+    ['Prompt caching', '30-90% on system-prompt tokens across multi-turn'],
+    ['Model routing', '50-80% by sending easy tasks to cheap model'],
+    ['Context trimming', '20-60% by summarizing stale turns'],
+    ['Tool output caps', '10-40% on turns after big tool results'],
     ['Per-session budget', 'Caps worst-case cost; doesn\'t reduce average'],
-    ['Tool result caching', '20–50% on repeat queries']
+    ['Tool result caching', '20-50% on repeat queries']
   ]});
 });</script>
 
@@ -277,10 +277,10 @@
 <p>Anthropic's Claude, Google's Gemini, and OpenAI all support caching stable parts of the prompt. Your system prompt is the same every turn; cache it. On Anthropic, a cached token is 10% of the normal input cost, and cache hits are typical on multi-turn sessions. For agents with a 2K-token system prompt and 15-turn sessions, this alone can cut your bill in half.</p>
 
 <h2>Model routing: cheap for easy, premium for hard</h2>
-<p>Not every task needs the flagship model. A lightweight classifier (or even a rule) decides: "This looks simple → cheap model. This looks complex → premium." Can cut costs 70–80% on query-heavy agents where most requests are easy. Build escalation too: cheap model tries first, escalates if stuck.</p>
+<p>Not every task needs the flagship model. A lightweight classifier (or even a rule) decides: "This looks simple → cheap model. This looks complex → premium." Can cut costs 70-80% on query-heavy agents where most requests are easy. Build escalation too: cheap model tries first, escalates if stuck.</p>
 
 <h2>Context trimming</h2>
-<p>A 20-turn agent session that sends 80K tokens every turn is mostly paying to resend old context. Summarize old turns into a few hundred tokens when context passes a threshold. Can drop per-turn cost 40–70% on long sessions.</p>
+<p>A 20-turn agent session that sends 80K tokens every turn is mostly paying to resend old context. Summarize old turns into a few hundred tokens when context passes a threshold. Can drop per-turn cost 40-70% on long sessions.</p>
 
 <h2>Tool output limits</h2>
 <p>A tool that returns 50K of text blows up the next LLM call. Cap every tool's output at a reasonable size (e.g., 4K tokens). If the agent needs more, it can call a follow-up tool with narrower scope.</p>
@@ -324,7 +324,7 @@
 <h2>Pitfalls</h2>
 <ul>
 <li><strong>No budget cap.</strong> One bug = one enormous bill.</li>
-<li><strong>Caching off.</strong> Leaving 40–50% savings on the table.</li>
+<li><strong>Caching off.</strong> Leaving 40-50% savings on the table.</li>
 <li><strong>Premium model for everything.</strong> Cost 5× what you needed.</li>
 <li><strong>No cost-per-outcome tracking.</strong> You're optimizing the wrong metric.</li>
 <li><strong>Silent quality drops when cutting costs.</strong> Always re-run eval after any cost optimization.</li>
@@ -341,10 +341,10 @@
 <div class="further-reading">
 <h2>Further reading</h2>
 <ul>
-<li><span class="resource-meta">Blog</span><a href="https://hamel.dev/blog/posts/field-guide/" target="_blank" rel="noopener nofollow">Hamel Husain — LLMs in production</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://docs.smith.langchain.com/" target="_blank" rel="noopener nofollow">LangSmith — Observability</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://langfuse.com/docs" target="_blank" rel="noopener nofollow">Langfuse — Open source LLM observability</a></li>
-<li><span class="resource-meta">Repo</span><a href="https://github.com/traceloop/openllmetry" target="_blank" rel="noopener nofollow">OpenLLMetry — Telemetry</a></li>
+<li><span class="resource-meta">Blog</span><a href="https://hamel.dev/blog/posts/field-guide/" target="_blank" rel="noopener nofollow">Hamel Husain - LLMs in production</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://docs.smith.langchain.com/" target="_blank" rel="noopener nofollow">LangSmith - Observability</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://langfuse.com/docs" target="_blank" rel="noopener nofollow">Langfuse - Open source LLM observability</a></li>
+<li><span class="resource-meta">Repo</span><a href="https://github.com/traceloop/openllmetry" target="_blank" rel="noopener nofollow">OpenLLMetry - Telemetry</a></li>
 </ul>
 </div>
 <div class="prev-next"><a href="observability.html" class="prev"><div class="label">← Previous</div><div class="title">Observability + tracing</div></a><a href="latency.html" class="next"><div class="label">Next →</div><div class="title">Latency optimization</div></a></div></div></div><footer><div class="container">
@@ -355,8 +355,8 @@
   if (!bar || bar.dataset.navInit) return;
   bar.dataset.navInit = '1';
 
-  const OPEN_DELAY = 120;   // ms — hover intent
-  const CLOSE_DELAY = 450;  // ms — forgiving close
+  const OPEN_DELAY = 120;   // ms - hover intent
+  const CLOSE_DELAY = 450;  // ms - forgiving close
   const isMobile = () => window.matchMedia('(max-width: 960px)').matches;
 
   const hamb = bar.querySelector('.hamburger');

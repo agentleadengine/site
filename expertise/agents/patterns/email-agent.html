@@ -258,14 +258,14 @@
 
 <h2>Core tools</h2>
 <ul>
-<li><code>list_inbox()</code> — recent messages with metadata.</li>
-<li><code>read_email(id)</code> — full body + attachments.</li>
-<li><code>search_past_emails(query)</code> — context from prior threads with the same person.</li>
-<li><code>draft_reply(id, text)</code> — prepare but don't send.</li>
-<li><code>send_email(draft_id)</code> — requires confirmation in most setups.</li>
-<li><code>schedule_send(draft_id, time)</code> — queue for later.</li>
-<li><code>create_calendar_event(...)</code> — for the scheduling pattern.</li>
-<li><code>archive_or_label(id, label)</code> — triage output.</li>
+<li><code>list_inbox()</code> - recent messages with metadata.</li>
+<li><code>read_email(id)</code> - full body + attachments.</li>
+<li><code>search_past_emails(query)</code> - context from prior threads with the same person.</li>
+<li><code>draft_reply(id, text)</code> - prepare but don't send.</li>
+<li><code>send_email(draft_id)</code> - requires confirmation in most setups.</li>
+<li><code>schedule_send(draft_id, time)</code> - queue for later.</li>
+<li><code>create_calendar_event(...)</code> - for the scheduling pattern.</li>
+<li><code>archive_or_label(id, label)</code> - triage output.</li>
 </ul>
 
 <h2>A worked example: triage + draft</h2>
@@ -336,9 +336,9 @@
 <div class="further-reading">
 <h2>Further reading</h2>
 <ul>
-<li><span class="resource-meta">Blog</span><a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener nofollow">Anthropic — Building effective agents</a></li>
+<li><span class="resource-meta">Blog</span><a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener nofollow">Anthropic - Building effective agents</a></li>
 <li><span class="resource-meta">Paper</span><a href="https://arxiv.org/abs/2305.04091" target="_blank" rel="noopener nofollow">Plan-and-Execute (paper)</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://langchain-ai.github.io/langgraph/tutorials/" target="_blank" rel="noopener nofollow">LangGraph — Prebuilt patterns</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://langchain-ai.github.io/langgraph/tutorials/" target="_blank" rel="noopener nofollow">LangGraph - Prebuilt patterns</a></li>
 </ul>
 </div>
 <div class="prev-next"><a href="browser-agent.html" class="prev"><div class="label">← Previous</div><div class="title">Browser agent</div></a><a href="../frameworks/claude-agent-sdk.html" class="next"><div class="label">Next →</div><div class="title">Claude Agent SDK</div></a></div></div></div><footer><div class="container">
@@ -349,8 +349,8 @@
   if (!bar || bar.dataset.navInit) return;
   bar.dataset.navInit = '1';
 
-  const OPEN_DELAY = 120;   // ms — hover intent
-  const CLOSE_DELAY = 450;  // ms — forgiving close
+  const OPEN_DELAY = 120;   // ms - hover intent
+  const CLOSE_DELAY = 450;  // ms - forgiving close
   const isMobile = () => window.matchMedia('(max-width: 960px)').matches;
 
   const hamb = bar.querySelector('.hamburger');

@@ -276,7 +276,7 @@ document.addEventListener('sketch:ready', function() {
 });
 </script>
 
-<p>DOM-aware is what you want 90% of the time. It's faster, cheaper, more reliable. Pixel-based is the escape hatch for when the target doesn't expose DOM (canvas apps, games, complex rendering). Hybrid setups use DOM by default and fall back to vision when DOM fails — that's what production systems end up with.</p>
+<p>DOM-aware is what you want 90% of the time. It's faster, cheaper, more reliable. Pixel-based is the escape hatch for when the target doesn't expose DOM (canvas apps, games, complex rendering). Hybrid setups use DOM by default and fall back to vision when DOM fails - that's what production systems end up with.</p>
 
 <h2>The Claude-in-Chrome pattern.</h2>
 <p>The most practical setup for most people: install a Claude Chrome extension. Claude Code (or Claude.ai) connects to it. The extension exposes tools for the agent: navigate, read page, find element by description, click, type, run JavaScript.</p>
@@ -284,10 +284,10 @@ document.addEventListener('sketch:ready', function() {
 <p>Why this setup wins for most use cases:</p>
 
 <ul>
-  <li>Uses <strong>your existing logged-in sessions</strong>. No OAuth dance, no "how do I authenticate to this internal tool" problem — you're already logged in.</li>
+  <li>Uses <strong>your existing logged-in sessions</strong>. No OAuth dance, no "how do I authenticate to this internal tool" problem - you're already logged in.</li>
   <li>DOM-aware, so element selection is structured and resilient to layout changes.</li>
   <li>Can run arbitrary JavaScript in the page context for anything the exposed tools don't cover.</li>
-  <li>No separate browser process — it's just another tab in the browser you already use.</li>
+  <li>No separate browser process - it's just another tab in the browser you already use.</li>
 </ul>
 
 <p>Limits: Chrome-only (for now). The extension has to be running. Some sites aggressively detect and block automation regardless of how polite you are.</p>
@@ -327,8 +327,8 @@ document.addEventListener('sketch:ready', function() {
 <ul>
   <li><strong>Dynamic class names.</strong> Modern frontends generate class names like <code>button_3xY9zA</code> that change every deploy. Don't select on those. Prefer semantic selectors: role, aria-label, visible text. "The button with text 'Submit'" beats ".btn-primary-ng23."</li>
   <li><strong>Iframes.</strong> A lot of content lives inside iframes. You have to explicitly switch into the frame to interact with its contents. Easy to forget, produces "element not found" errors that look random.</li>
-  <li><strong>Login walls + captchas.</strong> If the site requires a captcha, stop. Don't let the agent try to defeat it — it's against most sites' TOS and a bad signal about intent. Get human help for the login; then the agent reuses the session.</li>
-  <li><strong>Rate limiting + bot detection.</strong> Aggressive automation gets flagged. Slow down. Use a real browser fingerprint (the Chrome extension pattern helps here — you look like a human using Chrome). Don't hammer.</li>
+  <li><strong>Login walls + captchas.</strong> If the site requires a captcha, stop. Don't let the agent try to defeat it - it's against most sites' TOS and a bad signal about intent. Get human help for the login; then the agent reuses the session.</li>
+  <li><strong>Rate limiting + bot detection.</strong> Aggressive automation gets flagged. Slow down. Use a real browser fingerprint (the Chrome extension pattern helps here - you look like a human using Chrome). Don't hammer.</li>
 </ul>
 
 <h2>Safety. Browser automation is an attack surface.</h2>
@@ -367,13 +367,13 @@ document.addEventListener('sketch:ready', function() {
 <h2>When to NOT use browser automation.</h2>
 <p>If the target system has an API, use the API. Browser automation is slower, more fragile, more attack-prone, and more likely to break on the next UI update. Reach for browser automation when (and only when) there is no API, OR the API doesn't cover the specific thing you need.</p>
 
-<p>That said, browser automation is increasingly powerful. For a lot of internal tools, legacy admin panels, and small-business SaaS that doesn't prioritize API access, it's the only way. Knowing how to do it well turns agents from "can only use things with APIs" to "can do any task a human with a browser can do" — a big shift.</p>
+<p>That said, browser automation is increasingly powerful. For a lot of internal tools, legacy admin panels, and small-business SaaS that doesn't prioritize API access, it's the only way. Knowing how to do it well turns agents from "can only use things with APIs" to "can do any task a human with a browser can do" - a big shift.</p>
 <!-- further-reading -->
 <div class="further-reading">
 <h2>Further reading</h2>
 <ul>
-<li><span class="resource-meta">Docs</span><a href="https://docs.claude.com/en/docs/build-with-claude/tool-use/overview" target="_blank" rel="noopener nofollow">Claude API — Tool use</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://platform.openai.com/docs/guides/function-calling" target="_blank" rel="noopener nofollow">OpenAI — Function calling</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://docs.claude.com/en/docs/build-with-claude/tool-use/overview" target="_blank" rel="noopener nofollow">Claude API - Tool use</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://platform.openai.com/docs/guides/function-calling" target="_blank" rel="noopener nofollow">OpenAI - Function calling</a></li>
 <li><span class="resource-meta">Paper</span><a href="https://arxiv.org/abs/2302.04761" target="_blank" rel="noopener nofollow">Toolformer (paper)</a></li>
 </ul>
 </div>
@@ -385,8 +385,8 @@ document.addEventListener('sketch:ready', function() {
   if (!bar || bar.dataset.navInit) return;
   bar.dataset.navInit = '1';
 
-  const OPEN_DELAY = 120;   // ms — hover intent
-  const CLOSE_DELAY = 450;  // ms — forgiving close
+  const OPEN_DELAY = 120;   // ms - hover intent
+  const CLOSE_DELAY = 450;  // ms - forgiving close
   const isMobile = () => window.matchMedia('(max-width: 960px)').matches;
 
   const hamb = bar.querySelector('.hamburger');

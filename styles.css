@@ -1,4 +1,4 @@
-/* samuelochoa.com — stylesheet */
+/* samuelochoa.com - stylesheet */
 
 /* ============================================================
    SKETCH DIAGRAMS (Blueprint × Purple Marker on Cream)
@@ -220,7 +220,7 @@ nav.topbar .nav-has-submenu::before {
 nav.topbar .nav-group {
     position: relative;
 }
-/* Dropdown PANEL — the floating sheet that drops down from the nav.
+/* Dropdown PANEL - the floating sheet that drops down from the nav.
    Opens/closes exclusively via the .is-open class driven by JS (hover intent
    + close delay). Pure CSS :hover is intentionally NOT used so brief mouse
    drift doesn't dismiss the menu. */
@@ -258,7 +258,7 @@ nav.topbar .nav-group.is-open > .nav-submenu {
     transform: translateX(-50%) translateY(0);
 }
 
-/* Simple dropdown items (Framework, Playbooks) — white tiles on panel. */
+/* Simple dropdown items (Framework, Playbooks) - white tiles on panel. */
 nav.topbar .nav-submenu:not(.nav-mega) > a {
     display: block;
     padding: 11px 16px;
@@ -285,7 +285,7 @@ nav.topbar .nav-submenu:not(.nav-mega) > a:hover {
 }
 
 /* ============================================================
-   EXPERTISE MEGA — nested flyout ("menu inside of menu")
+   EXPERTISE MEGA - nested flyout ("menu inside of menu")
    Left: 10 category rows. Right: subpages of the *hovered* category.
    Sub-items are hidden until a category is hovered, so nothing is
    "directly visible" as a giant wall of links.
@@ -1311,7 +1311,7 @@ footer p { margin: 0; letter-spacing: 0.02em; }
         border-color: var(--primary-purple);
     }
 
-    /* Mega on mobile: flat accordion — cats stack, each with its subpages */
+    /* Mega on mobile: flat accordion - cats stack, each with its subpages */
     nav.topbar .nav-mega {
         display: block;
         grid-template-columns: 1fr;
@@ -1346,7 +1346,7 @@ footer p { margin: 0; letter-spacing: 0.02em; }
         color: #a1a1aa !important;
         transform: none !important;
     }
-    /* Hide the big content panel on mobile — keep menu simple */
+    /* Hide the big content panel on mobile - keep menu simple */
     nav.topbar .nav-mega-content { display: none; }
 
     .framework-layout {

@@ -249,7 +249,7 @@
     {title: 'When to use', w: 580}
   ], rows: [
     ['Binary (yes / no)', 'Task has a clear pass/fail: file created, test passes, correct number'],
-    ['Graded (1–5)', 'Task has degrees of correct: writing quality, helpfulness'],
+    ['Graded (1-5)', 'Task has degrees of correct: writing quality, helpfulness'],
     ['Ground-truth compare', 'You have a known-good answer to compare against'],
     ['LLM-as-judge', 'Open-ended outputs where no single right answer exists']
   ]});
@@ -287,7 +287,7 @@
 <p>That catches false successes ("I fixed it" but the test still fails), partial completion (fixed one test, broke another), and silent failures (agent never actually changed any code).</p>
 
 <h2>Non-determinism: always run multiple times</h2>
-<p>Agents are stochastic. The same eval case can pass once, fail twice, pass again. Single-run pass/fail is noisy. Always run each case 3–5 times:</p>
+<p>Agents are stochastic. The same eval case can pass once, fail twice, pass again. Single-run pass/fail is noisy. Always run each case 3-5 times:</p>
 <div class="sketch" data-viewbox="0 0 900 280"></div>
 <script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
@@ -320,7 +320,7 @@
 <h2>What to do with this</h2>
 <ul>
 <li>For every agent you care about, write a verifier that checks outcomes independently.</li>
-<li>Run each eval case 3–5 times. Report pass rate, not a single pass/fail.</li>
+<li>Run each eval case 3-5 times. Report pass rate, not a single pass/fail.</li>
 <li>Read <a href="trajectory-eval.html">trajectory evaluation</a> for the "how it got there" side.</li>
 <li>Read <a href="regression.html">regression testing</a> for turning this into a CI loop.</li>
 </ul>
@@ -328,10 +328,10 @@
 <div class="further-reading">
 <h2>Further reading</h2>
 <ul>
-<li><span class="resource-meta">Repo</span><a href="https://github.com/openai/evals" target="_blank" rel="noopener nofollow">OpenAI Evals — Framework</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://docs.smith.langchain.com/evaluation" target="_blank" rel="noopener nofollow">LangSmith — Evaluation docs</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://www.braintrust.dev/docs/guides/evals" target="_blank" rel="noopener nofollow">Braintrust — Eval platform</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://www.trulens.org/" target="_blank" rel="noopener nofollow">TruLens — Agent evaluation</a></li>
+<li><span class="resource-meta">Repo</span><a href="https://github.com/openai/evals" target="_blank" rel="noopener nofollow">OpenAI Evals - Framework</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://docs.smith.langchain.com/evaluation" target="_blank" rel="noopener nofollow">LangSmith - Evaluation docs</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://www.braintrust.dev/docs/guides/evals" target="_blank" rel="noopener nofollow">Braintrust - Eval platform</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://www.trulens.org/" target="_blank" rel="noopener nofollow">TruLens - Agent evaluation</a></li>
 <li><span class="resource-meta">Blog</span><a href="https://hamel.dev/blog/posts/evals/" target="_blank" rel="noopener nofollow">Eval-driven prompt engineering (Hamel Husain)</a></li>
 </ul>
 </div>
@@ -343,8 +343,8 @@
   if (!bar || bar.dataset.navInit) return;
   bar.dataset.navInit = '1';
 
-  const OPEN_DELAY = 120;   // ms — hover intent
-  const CLOSE_DELAY = 450;  // ms — forgiving close
+  const OPEN_DELAY = 120;   // ms - hover intent
+  const CLOSE_DELAY = 450;  // ms - forgiving close
   const isMobile = () => window.matchMedia('(max-width: 960px)').matches;
 
   const hamb = bar.querySelector('.hamburger');

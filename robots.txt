@@ -7,7 +7,7 @@ Disallow: /Test/
 Disallow: /samuelochoa/
 Crawl-delay: 1
 
-# Major search engines — no crawl delay
+# Major search engines - no crawl delay
 User-agent: Googlebot
 Allow: /
 
@@ -20,7 +20,7 @@ Allow: /
 User-agent: Applebot
 Allow: /
 
-# AI citation crawlers — allow so the site can be cited in AI answers.
+# AI citation crawlers - allow so the site can be cited in AI answers.
 User-agent: GPTBot
 Allow: /
 

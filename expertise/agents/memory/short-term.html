@@ -287,7 +287,7 @@
 <ul>
 <li>System prompt (tells the model who it is)</li>
 <li>Original user request (the goal)</li>
-<li>Last 2–3 turns (so replies feel connected)</li>
+<li>Last 2-3 turns (so replies feel connected)</li>
 <li>Ground-truth artifacts (the doc being edited, the current plan)</li>
 <li>Active tool call results still being reasoned over</li>
 </ul>
@@ -302,8 +302,8 @@
 <h2>A worked example: long research session</h2>
 <p>After 20 turns, the agent's context is 80K tokens. You can either pay 20× the cost per subsequent turn, or intervene. Here's the intervention:</p>
 <ol>
-<li><strong>Insert a summary turn.</strong> Replace turns 1–12 with: "Earlier in this session: user asked about X, I found sources A, B, C, key facts [list], decided to pursue angle Y."</li>
-<li><strong>Keep turns 13–20 in full.</strong> These are where the model is currently working.</li>
+<li><strong>Insert a summary turn.</strong> Replace turns 1-12 with: "Earlier in this session: user asked about X, I found sources A, B, C, key facts [list], decided to pursue angle Y."</li>
+<li><strong>Keep turns 13-20 in full.</strong> These are where the model is currently working.</li>
 <li><strong>Context drops from 80K to ~20K.</strong> Cost per turn falls 4×. Quality goes up because "lost in the middle" stops happening.</li>
 </ol>
 <p>Do this automatically at a threshold (e.g., whenever context crosses 30K tokens).</p>
@@ -329,10 +329,10 @@
 <div class="further-reading">
 <h2>Further reading</h2>
 <ul>
-<li><span class="resource-meta">Blog</span><a href="https://lilianweng.github.io/posts/2023-06-23-agent/#memory" target="_blank" rel="noopener nofollow">Lilian Weng — Agent memory types</a></li>
+<li><span class="resource-meta">Blog</span><a href="https://lilianweng.github.io/posts/2023-06-23-agent/#memory" target="_blank" rel="noopener nofollow">Lilian Weng - Agent memory types</a></li>
 <li><span class="resource-meta">Paper</span><a href="https://arxiv.org/abs/2310.08560" target="_blank" rel="noopener nofollow">MemGPT (paper)</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://langchain-ai.github.io/langgraph/concepts/memory/" target="_blank" rel="noopener nofollow">LangGraph — Memory</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://docs.letta.com/" target="_blank" rel="noopener nofollow">Letta (formerly MemGPT) — Docs</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://langchain-ai.github.io/langgraph/concepts/memory/" target="_blank" rel="noopener nofollow">LangGraph - Memory</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://docs.letta.com/" target="_blank" rel="noopener nofollow">Letta (formerly MemGPT) - Docs</a></li>
 </ul>
 </div>
 <div class="prev-next"><a href="../tools/tool-budgets.html" class="prev"><div class="label">← Previous</div><div class="title">Tool budgets</div></a><a href="long-term.html" class="next"><div class="label">Next →</div><div class="title">Long-term memory</div></a></div></div></div><footer><div class="container">
@@ -343,8 +343,8 @@
   if (!bar || bar.dataset.navInit) return;
   bar.dataset.navInit = '1';
 
-  const OPEN_DELAY = 120;   // ms — hover intent
-  const CLOSE_DELAY = 450;  // ms — forgiving close
+  const OPEN_DELAY = 120;   // ms - hover intent
+  const CLOSE_DELAY = 450;  // ms - forgiving close
   const isMobile = () => window.matchMedia('(max-width: 960px)').matches;
 
   const hamb = bar.querySelector('.hamburger');

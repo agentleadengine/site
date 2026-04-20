@@ -287,7 +287,7 @@
 <p>Track the <em>pass rate</em> for each flaky case over time. A flaky case that drops from 4/5 to 2/5 is a regression even if individual runs look inconsistent.</p>
 
 <h2>The cost problem</h2>
-<p>A 100-case regression suite running 3–5 times per case per change can cost real money. Strategies:</p>
+<p>A 100-case regression suite running 3-5 times per case per change can cost real money. Strategies:</p>
 <ul>
 <li><strong>Tiered runs.</strong> Fast 20-case smoke suite on every PR. Full 200-case suite on pre-release. Scheduled weekly run for drift detection.</li>
 <li><strong>Smart selection.</strong> If the change only affects the billing agent, only run billing-related cases at PR time.</li>
@@ -336,10 +336,10 @@
 <div class="further-reading">
 <h2>Further reading</h2>
 <ul>
-<li><span class="resource-meta">Repo</span><a href="https://github.com/openai/evals" target="_blank" rel="noopener nofollow">OpenAI Evals — Framework</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://docs.smith.langchain.com/evaluation" target="_blank" rel="noopener nofollow">LangSmith — Evaluation docs</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://www.braintrust.dev/docs/guides/evals" target="_blank" rel="noopener nofollow">Braintrust — Eval platform</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://www.trulens.org/" target="_blank" rel="noopener nofollow">TruLens — Agent evaluation</a></li>
+<li><span class="resource-meta">Repo</span><a href="https://github.com/openai/evals" target="_blank" rel="noopener nofollow">OpenAI Evals - Framework</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://docs.smith.langchain.com/evaluation" target="_blank" rel="noopener nofollow">LangSmith - Evaluation docs</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://www.braintrust.dev/docs/guides/evals" target="_blank" rel="noopener nofollow">Braintrust - Eval platform</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://www.trulens.org/" target="_blank" rel="noopener nofollow">TruLens - Agent evaluation</a></li>
 <li><span class="resource-meta">Blog</span><a href="https://hamel.dev/blog/posts/evals/" target="_blank" rel="noopener nofollow">Eval-driven prompt engineering (Hamel Husain)</a></li>
 </ul>
 </div>
@@ -351,8 +351,8 @@
   if (!bar || bar.dataset.navInit) return;
   bar.dataset.navInit = '1';
 
-  const OPEN_DELAY = 120;   // ms — hover intent
-  const CLOSE_DELAY = 450;  // ms — forgiving close
+  const OPEN_DELAY = 120;   // ms - hover intent
+  const CLOSE_DELAY = 450;  // ms - forgiving close
   const isMobile = () => window.matchMedia('(max-width: 960px)').matches;
 
   const hamb = bar.querySelector('.hamburger');

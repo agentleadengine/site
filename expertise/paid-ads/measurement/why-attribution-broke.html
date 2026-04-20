@@ -243,7 +243,7 @@
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
-  sketch.title(svg, 450, 30, 'What broke attribution in 2021–2024');
+  sketch.title(svg, 450, 30, 'What broke attribution in 2021-2024');
   sketch.table(svg, rc, {x: 40, y: 60, cols: [
     {title: 'Change', w: 240},
     {title: 'Impact', w: 560}
@@ -340,9 +340,9 @@
 <div class="further-reading">
 <h2>Further reading</h2>
 <ul>
-<li><span class="resource-meta">Docs</span><a href="https://developers.facebook.com/docs/marketing-api/conversions-api" target="_blank" rel="noopener nofollow">Meta — Conversions API</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://support.google.com/google-ads/answer/9888656" target="_blank" rel="noopener nofollow">Google — Enhanced conversions</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://support.google.com/analytics/answer/10596866" target="_blank" rel="noopener nofollow">GA4 — Attribution</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://developers.facebook.com/docs/marketing-api/conversions-api" target="_blank" rel="noopener nofollow">Meta - Conversions API</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://support.google.com/google-ads/answer/9888656" target="_blank" rel="noopener nofollow">Google - Enhanced conversions</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://support.google.com/analytics/answer/10596866" target="_blank" rel="noopener nofollow">GA4 - Attribution</a></li>
 </ul>
 </div>
 <div class="prev-next"><a href="../creative/hiring-creators.html" class="prev"><div class="label">← Previous</div><div class="title">Hiring creators</div></a><a href="platform-attribution.html" class="next"><div class="label">Next →</div><div class="title">Platform attribution</div></a></div></div></div><footer><div class="container">
@@ -353,8 +353,8 @@
   if (!bar || bar.dataset.navInit) return;
   bar.dataset.navInit = '1';
 
-  const OPEN_DELAY = 120;   // ms — hover intent
-  const CLOSE_DELAY = 450;  // ms — forgiving close
+  const OPEN_DELAY = 120;   // ms - hover intent
+  const CLOSE_DELAY = 450;  // ms - forgiving close
   const isMobile = () => window.matchMedia('(max-width: 960px)').matches;
 
   const hamb = bar.querySelector('.hamburger');

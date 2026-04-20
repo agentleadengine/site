@@ -240,7 +240,7 @@
 <h2>What "headless" actually means.</h2>
 <p>When you run <code>claude</code> normally, you get an interactive terminal session. You type things. The agent asks you for approvals. It waits when it's unsure. There's a human in the loop at every risky step.</p>
 
-<p>When you run claude headless, all of that is gone. There's no terminal to type into, no human to ask. The agent gets its prompt from stdin (or a file), runs, and emits output to stdout. Approval prompts don't happen — they either pre-approve automatically (because you set up a tight allow list) or the action is denied (because nobody's there to say yes).</p>
+<p>When you run claude headless, all of that is gone. There's no terminal to type into, no human to ask. The agent gets its prompt from stdin (or a file), runs, and emits output to stdout. Approval prompts don't happen - they either pre-approve automatically (because you set up a tight allow list) or the action is denied (because nobody's there to say yes).</p>
 
 <p>This is the mode you need when the agent is supposed to run when you're not at the computer.</p>
 
@@ -287,7 +287,7 @@ document.addEventListener('sketch:ready', function() {
 <ul>
   <li><code>--headless</code>, disable the interactive UI, read the prompt from stdin</li>
   <li><code>--print</code>, write the final response to stdout and exit (don't hang)</li>
-  <li><code>--max-turns N</code>, hard cap on agent turns — this is your cost cap. Always set it.</li>
+  <li><code>--max-turns N</code>, hard cap on agent turns - this is your cost cap. Always set it.</li>
   <li><code>--permission-mode auto</code>, use the allow/deny lists; don't prompt. Unknown actions get denied.</li>
   <li><code>--no-input</code>, never ask the user for anything. Fail loudly instead.</li>
 </ul>
@@ -363,7 +363,7 @@ EOF</code></pre>
   <li>Tokens consumed (for cost tracking)</li>
 </ul>
 
-<p>Logs should go somewhere you can search later — a file, a database, a logging service. The moment something goes wrong, the first thing you'll want is the log from that run. If it's not there, you're reverse-engineering from gut feel.</p>
+<p>Logs should go somewhere you can search later - a file, a database, a logging service. The moment something goes wrong, the first thing you'll want is the log from that run. If it's not there, you're reverse-engineering from gut feel.</p>
 
 <h2>The four pitfalls that will get you.</h2>
 
@@ -405,17 +405,17 @@ document.addEventListener('sketch:ready', function() {
 <div class="further-reading">
 <h2>Further reading</h2>
 <ul>
-<li><span class="resource-meta">Blog</span><a href="https://www.anthropic.com/news/claude-code" target="_blank" rel="noopener nofollow">Anthropic — Claude Code in the loop</a></li>
-<li><span class="resource-meta">Blog</span><a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener nofollow">Building effective agents — Patterns</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://www.swebench.com/" target="_blank" rel="noopener nofollow">SWE-bench — Agent benchmark</a></li>
-<li><span class="resource-meta">Paper</span><a href="https://arxiv.org/abs/2308.08155" target="_blank" rel="noopener nofollow">OpenAI — AutoGPT style evaluation</a></li>
-<li><span class="resource-meta">Repo</span><a href="https://github.com/sweepai/sweep" target="_blank" rel="noopener nofollow">Sweep — AI junior dev (GitHub)</a></li>
+<li><span class="resource-meta">Blog</span><a href="https://www.anthropic.com/news/claude-code" target="_blank" rel="noopener nofollow">Anthropic - Claude Code in the loop</a></li>
+<li><span class="resource-meta">Blog</span><a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener nofollow">Building effective agents - Patterns</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://www.swebench.com/" target="_blank" rel="noopener nofollow">SWE-bench - Agent benchmark</a></li>
+<li><span class="resource-meta">Paper</span><a href="https://arxiv.org/abs/2308.08155" target="_blank" rel="noopener nofollow">OpenAI - AutoGPT style evaluation</a></li>
+<li><span class="resource-meta">Repo</span><a href="https://github.com/sweepai/sweep" target="_blank" rel="noopener nofollow">Sweep - AI junior dev (GitHub)</a></li>
 </ul>
 <h3>Watch</h3>
 <div class="video-wrap">
-<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/l8pRSuU81PU" title="Andrej Karpathy — Let&#x27;s reproduce GPT-2 (124M)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/l8pRSuU81PU" title="Andrej Karpathy - Let&#x27;s reproduce GPT-2 (124M)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
-<p class="video-caption">Andrej Karpathy — Let&#x27;s reproduce GPT-2 (124M)</p>
+<p class="video-caption">Andrej Karpathy - Let&#x27;s reproduce GPT-2 (124M)</p>
 </div>
 <div class="prev-next"><a href="index.html" class="prev"><div class="label">← Previous</div><div class="title">Autonomous overview</div></a><a href="scheduling.html" class="next"><div class="label">Next →</div><div class="title">Scheduling</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../framework/index.html">Framework</a></p>
@@ -425,8 +425,8 @@ document.addEventListener('sketch:ready', function() {
   if (!bar || bar.dataset.navInit) return;
   bar.dataset.navInit = '1';
 
-  const OPEN_DELAY = 120;   // ms — hover intent
-  const CLOSE_DELAY = 450;  // ms — forgiving close
+  const OPEN_DELAY = 120;   // ms - hover intent
+  const CLOSE_DELAY = 450;  // ms - forgiving close
   const isMobile = () => window.matchMedia('(max-width: 960px)').matches;
 
   const hamb = bar.querySelector('.hamburger');

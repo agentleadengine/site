@@ -257,11 +257,11 @@
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'Typical B2B SaaS funnel rates');
   sketch.bars(svg, rc, {x: 40, y: 60, w: 820, labelW: 220, items: [
-    {label: 'MQL to SQL', value: 40, note: '~30–50%'},
-    {label: 'SQL to Opp', value: 60, note: '~50–70%'},
-    {label: 'Opp to Demo', value: 70, note: '~60–80%'},
-    {label: 'Demo to Proposal', value: 50, note: '~40–60%'},
-    {label: 'Proposal to Close', value: 35, note: '~25–40%'}
+    {label: 'MQL to SQL', value: 40, note: '~30-50%'},
+    {label: 'SQL to Opp', value: 60, note: '~50-70%'},
+    {label: 'Opp to Demo', value: 70, note: '~60-80%'},
+    {label: 'Demo to Proposal', value: 50, note: '~40-60%'},
+    {label: 'Proposal to Close', value: 35, note: '~25-40%'}
   ]});
 });</script>
 <p>Five conversion rates, one per stage transition. This is your funnel:</p>
@@ -351,9 +351,9 @@ If you double qualified→opp from 50% to 100%, you double total deals, that's t
 <div class="further-reading">
 <h2>Further reading</h2>
 <ul>
-<li><span class="resource-meta">Blog</span><a href="https://www.saastr.com/" target="_blank" rel="noopener nofollow">SaaStr — Blog</a></li>
-<li><span class="resource-meta">Blog</span><a href="https://www.gong.io/resources/" target="_blank" rel="noopener nofollow">Gong — Labs research</a></li>
-<li><span class="resource-meta">Blog</span><a href="https://predictablerevenue.com/blog" target="_blank" rel="noopener nofollow">Predictable Revenue — Aaron Ross</a></li>
+<li><span class="resource-meta">Blog</span><a href="https://www.saastr.com/" target="_blank" rel="noopener nofollow">SaaStr - Blog</a></li>
+<li><span class="resource-meta">Blog</span><a href="https://www.gong.io/resources/" target="_blank" rel="noopener nofollow">Gong - Labs research</a></li>
+<li><span class="resource-meta">Blog</span><a href="https://predictablerevenue.com/blog" target="_blank" rel="noopener nofollow">Predictable Revenue - Aaron Ross</a></li>
 </ul>
 </div>
 <div class="prev-next"><a href="../strategy/decision-frameworks.html" class="prev"><div class="label">← Previous</div><div class="title">Decision frameworks</div></a><a href="pipeline-design.html" class="next"><div class="label">Next →</div><div class="title">Pipeline design</div></a></div></div></div><footer><div class="container">
@@ -365,8 +365,8 @@ If you double qualified→opp from 50% to 100%, you double total deals, that's t
   if (!bar || bar.dataset.navInit) return;
   bar.dataset.navInit = '1';
 
-  const OPEN_DELAY = 120;   // ms — hover intent
-  const CLOSE_DELAY = 450;  // ms — forgiving close
+  const OPEN_DELAY = 120;   // ms - hover intent
+  const CLOSE_DELAY = 450;  // ms - forgiving close
   const isMobile = () => window.matchMedia('(max-width: 960px)').matches;
 
   const hamb = bar.querySelector('.hamburger');

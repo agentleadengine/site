@@ -332,11 +332,11 @@
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'Where the dollars go in prod RAG');
   sketch.bars(svg, rc, {x: 40, y: 60, w: 820, labelW: 240, items: [
-    {label: 'LLM generation', value: 95, note: '40–60% of total'},
-    {label: 'Embeddings', value: 40, note: '15–25%'},
-    {label: 'Vector DB', value: 30, note: '10–20%'},
-    {label: 'Reranker', value: 20, note: '5–15%'},
-    {label: 'Infrastructure', value: 15, note: '5–10%'}
+    {label: 'LLM generation', value: 95, note: '40-60% of total'},
+    {label: 'Embeddings', value: 40, note: '15-25%'},
+    {label: 'Vector DB', value: 30, note: '10-20%'},
+    {label: 'Reranker', value: 20, note: '5-15%'},
+    {label: 'Infrastructure', value: 15, note: '5-10%'}
   ]});
 });</script>
 <p>For a typical production RAG system at moderate scale, the cost breakdown looks like:</p>
@@ -357,7 +357,7 @@
 
 <h2>What to do with this</h2>
 <ul>
-<li>Optimize generation before anything else; it's 40–60% of spend.</li>
+<li>Optimize generation before anything else; it's 40-60% of spend.</li>
 <li>Always measure quality against an eval set before and after a cost cut.</li>
 <li>Skip retrieval for trivial queries; it's free savings.</li>
 </ul>
@@ -365,10 +365,10 @@
 <div class="further-reading">
 <h2>Further reading</h2>
 <ul>
-<li><span class="resource-meta">Docs</span><a href="https://docs.pinecone.io/" target="_blank" rel="noopener nofollow">Pinecone — Vector DB docs</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://qdrant.tech/documentation/" target="_blank" rel="noopener nofollow">Qdrant — Docs</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://weaviate.io/developers/weaviate" target="_blank" rel="noopener nofollow">Weaviate — Docs</a></li>
-<li><span class="resource-meta">Repo</span><a href="https://github.com/pgvector/pgvector" target="_blank" rel="noopener nofollow">pgvector — Postgres extension</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://docs.pinecone.io/" target="_blank" rel="noopener nofollow">Pinecone - Vector DB docs</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://qdrant.tech/documentation/" target="_blank" rel="noopener nofollow">Qdrant - Docs</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://weaviate.io/developers/weaviate" target="_blank" rel="noopener nofollow">Weaviate - Docs</a></li>
+<li><span class="resource-meta">Repo</span><a href="https://github.com/pgvector/pgvector" target="_blank" rel="noopener nofollow">pgvector - Postgres extension</a></li>
 <li><span class="resource-meta">Paper</span><a href="https://arxiv.org/abs/1603.09320" target="_blank" rel="noopener nofollow">HNSW (paper)</a></li>
 <li><span class="resource-meta">Docs</span><a href="https://ann-benchmarks.com/" target="_blank" rel="noopener nofollow">ANN-Benchmarks</a></li>
 </ul>
@@ -382,8 +382,8 @@
   if (!bar || bar.dataset.navInit) return;
   bar.dataset.navInit = '1';
 
-  const OPEN_DELAY = 120;   // ms — hover intent
-  const CLOSE_DELAY = 450;  // ms — forgiving close
+  const OPEN_DELAY = 120;   // ms - hover intent
+  const CLOSE_DELAY = 450;  // ms - forgiving close
   const isMobile = () => window.matchMedia('(max-width: 960px)').matches;
 
   const hamb = bar.querySelector('.hamburger');

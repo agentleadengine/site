@@ -293,7 +293,7 @@
 <ul>
 <li><strong>Page reliability.</strong> SPAs load async, elements appear and disappear, modals pop up. Agent must handle loading states explicitly.</li>
 <li><strong>Anti-bot protections.</strong> Captchas, fingerprinting, rate limits. Some sites hard-block automation; respect robots.txt and terms of service.</li>
-<li><strong>Latency.</strong> Every action is a few seconds. A 20-step browser session is 1–2 minutes of wall time.</li>
+<li><strong>Latency.</strong> Every action is a few seconds. A 20-step browser session is 1-2 minutes of wall time.</li>
 <li><strong>Cost.</strong> Vision tokens add up fast. DOM-first routing keeps cost reasonable.</li>
 <li><strong>Authentication.</strong> Logged-in tasks mean the agent has credentials, a huge security surface. Always run in a sandboxed profile.</li>
 <li><strong>Flakiness.</strong> The site changes, your agent breaks. Build robust element-finding (by label + context, not just CSS selectors).</li>
@@ -304,7 +304,7 @@
 <ul>
 <li><strong>Sandboxed profile.</strong> Separate browser profile with only the auth the agent needs.</li>
 <li><strong>Allowlist of domains.</strong> Agent can only navigate to approved sites.</li>
-<li><strong>Human approval for submit actions.</strong> Purchase, post, send — all require click-to-execute.</li>
+<li><strong>Human approval for submit actions.</strong> Purchase, post, send - all require click-to-execute.</li>
 <li><strong>Screenshot every irreversible step</strong> for audit.</li>
 <li><strong>Read-only mode</strong> is often safer. If you just need to extract data, disable typing and clicking of submit buttons entirely.</li>
 </ul>
@@ -337,9 +337,9 @@
 <div class="further-reading">
 <h2>Further reading</h2>
 <ul>
-<li><span class="resource-meta">Blog</span><a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener nofollow">Anthropic — Building effective agents</a></li>
+<li><span class="resource-meta">Blog</span><a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener nofollow">Anthropic - Building effective agents</a></li>
 <li><span class="resource-meta">Paper</span><a href="https://arxiv.org/abs/2305.04091" target="_blank" rel="noopener nofollow">Plan-and-Execute (paper)</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://langchain-ai.github.io/langgraph/tutorials/" target="_blank" rel="noopener nofollow">LangGraph — Prebuilt patterns</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://langchain-ai.github.io/langgraph/tutorials/" target="_blank" rel="noopener nofollow">LangGraph - Prebuilt patterns</a></li>
 </ul>
 </div>
 <div class="prev-next"><a href="data-analyst.html" class="prev"><div class="label">← Previous</div><div class="title">Data analyst agent</div></a><a href="email-agent.html" class="next"><div class="label">Next →</div><div class="title">Email agent</div></a></div></div></div><footer><div class="container">
@@ -350,8 +350,8 @@
   if (!bar || bar.dataset.navInit) return;
   bar.dataset.navInit = '1';
 
-  const OPEN_DELAY = 120;   // ms — hover intent
-  const CLOSE_DELAY = 450;  // ms — forgiving close
+  const OPEN_DELAY = 120;   // ms - hover intent
+  const CLOSE_DELAY = 450;  // ms - forgiving close
   const isMobile = () => window.matchMedia('(max-width: 960px)').matches;
 
   const hamb = bar.querySelector('.hamburger');

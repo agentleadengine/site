@@ -255,12 +255,12 @@
 
 <h2>Core tools</h2>
 <ul>
-<li><code>web_search(query)</code> — public web with recency filter.</li>
-<li><code>read_url(url)</code> — fetch + parse a page's main content.</li>
-<li><code>search_internal(query)</code> — internal KB or document store.</li>
-<li><code>search_academic(query)</code> — for research-heavy domains.</li>
-<li><code>summarize(text, focus)</code> — distill a long doc to the relevant claims.</li>
-<li><code>note_claim(text, source_url)</code> — scratch pad with source attribution.</li>
+<li><code>web_search(query)</code> - public web with recency filter.</li>
+<li><code>read_url(url)</code> - fetch + parse a page's main content.</li>
+<li><code>search_internal(query)</code> - internal KB or document store.</li>
+<li><code>search_academic(query)</code> - for research-heavy domains.</li>
+<li><code>summarize(text, focus)</code> - distill a long doc to the relevant claims.</li>
+<li><code>note_claim(text, source_url)</code> - scratch pad with source attribution.</li>
 </ul>
 
 <h2>Design choices</h2>
@@ -289,7 +289,7 @@
 <li><strong>Deep-read</strong> on the top 3: their product page, pricing, recent news.</li>
 <li><strong>Synthesize</strong>: 3-competitor brief with URLs for every claim.</li>
 </ol>
-<p>Took 12 tool calls, 4 LLM turns, ~60 seconds, ~$0.25. A human doing the same is 1–2 hours.</p>
+<p>Took 12 tool calls, 4 LLM turns, ~60 seconds, ~$0.25. A human doing the same is 1-2 hours.</p>
 
 <h2>Citation discipline</h2>
 <p>Citations are the difference between a research agent and a plausible-sounding bullshit generator. Hard rules:</p>
@@ -329,9 +329,9 @@
 <div class="further-reading">
 <h2>Further reading</h2>
 <ul>
-<li><span class="resource-meta">Blog</span><a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener nofollow">Anthropic — Building effective agents</a></li>
+<li><span class="resource-meta">Blog</span><a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener nofollow">Anthropic - Building effective agents</a></li>
 <li><span class="resource-meta">Paper</span><a href="https://arxiv.org/abs/2305.04091" target="_blank" rel="noopener nofollow">Plan-and-Execute (paper)</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://langchain-ai.github.io/langgraph/tutorials/" target="_blank" rel="noopener nofollow">LangGraph — Prebuilt patterns</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://langchain-ai.github.io/langgraph/tutorials/" target="_blank" rel="noopener nofollow">LangGraph - Prebuilt patterns</a></li>
 </ul>
 </div>
 <div class="prev-next"><a href="../prod/human-in-loop.html" class="prev"><div class="label">← Previous</div><div class="title">Human-in-the-loop</div></a><a href="coding-agent.html" class="next"><div class="label">Next →</div><div class="title">Coding agent</div></a></div></div></div><footer><div class="container">
@@ -342,8 +342,8 @@
   if (!bar || bar.dataset.navInit) return;
   bar.dataset.navInit = '1';
 
-  const OPEN_DELAY = 120;   // ms — hover intent
-  const CLOSE_DELAY = 450;  // ms — forgiving close
+  const OPEN_DELAY = 120;   // ms - hover intent
+  const CLOSE_DELAY = 450;  // ms - forgiving close
   const isMobile = () => window.matchMedia('(max-width: 960px)').matches;
 
   const hamb = bar.querySelector('.hamburger');

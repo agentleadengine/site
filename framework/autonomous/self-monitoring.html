@@ -235,7 +235,7 @@
 <a href="../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../what-is-autonomous-ai.html">What is autonomous AI</a></li><li><a href="../the-autonomy-spectrum.html">The autonomy spectrum</a></li><li><a href="../glossary.html">Glossary</a></li></ul><h4>Claude</h4><ul><li><a href="../claude/overview.html">Overview</a></li><li><a href="../claude/prompting-for-agents.html">Prompting for agents</a></li><li><a href="../claude/extended-thinking.html">Extended thinking</a></li><li><a href="../claude/tool-use.html">Tool use</a></li></ul><h4>MCP</h4><ul><li><a href="../mcp/index.html">Overview</a></li><li><a href="../mcp/what-is-mcp.html">What is MCP</a></li><li><a href="../mcp/anatomy.html">Anatomy</a></li><li><a href="../mcp/transports.html">Transports</a></li><li><a href="../mcp/servers.html">Servers</a></li><li><a href="../mcp/clients.html">Clients</a></li><li><a href="../mcp/security.html">Security</a></li><li><a href="../mcp/directory.html">Directory</a></li></ul><h4>Plugins</h4><ul><li><a href="../plugins/index.html">Overview</a></li><li><a href="../plugins/vs-mcp.html">Plugins vs MCP</a></li><li><a href="../plugins/marketplace.html">Marketplace</a></li></ul><h4>Claude Code</h4><ul><li><a href="../claude-code/index.html">Overview</a></li><li><a href="../claude-code/settings.html">Settings</a></li><li><a href="../claude-code/permissions.html">Permissions</a></li><li><a href="../claude-code/hooks.html">Hooks</a></li><li><a href="../claude-code/skills.html">Skills</a></li><li><a href="../claude-code/memory.html">Memory</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/index.html">Overview</a></li><li><a href="../patterns/react-loop.html">ReAct loop</a></li><li><a href="../patterns/plan-execute.html">Plan-execute</a></li><li><a href="../patterns/multi-agent.html">Multi-agent</a></li><li><a href="../patterns/evaluation.html">Evaluation</a></li><li><a href="../patterns/prompt-caching.html">Prompt caching</a></li></ul><h4>Autonomous</h4><ul><li><a href="../autonomous/index.html">Overview</a></li><li><a href="../autonomous/headless.html">Headless</a></li><li><a href="../autonomous/scheduling.html">Scheduling</a></li><li><a href="../autonomous/self-monitoring.html" class="active">Self-monitoring</a></li><li><a href="../autonomous/safety.html">Safety</a></li></ul><h4>Build Guides</h4><ul><li><a href="../build/index.html">Overview</a></li><li><a href="../build/first-agent.html">First agent (60 min)</a></li><li><a href="../build/voice-agent.html">Voice agent</a></li><li><a href="../build/research-agent.html">Research agent</a></li></ul><h4>Tools</h4><ul><li><a href="../tools/browser-automation.html">Browser automation</a></li><li><a href="../tools/desktop-control.html">Desktop control</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Framework</a><span class="sep">›</span><a href="../autonomous/index.html">Autonomous</a><span class="sep">›</span><span>Self-monitoring</span></div><h1 class="title" style="font-size:clamp(32px,4.5vw,42px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">Self-monitoring</h1><div class="article-meta"><span>📖 5 min read</span><span>Updated 2026-04-18</span></div>
-<p class="lede">Your autonomous agent is running somewhere without you. How do you actually know it's still doing its job? The answer is that it tells you — and the way it tells you is the difference between "the agent works" and "the agent worked until that Thursday four weeks ago and nobody noticed." Self-monitoring is what turns an agent from a demo into a reliable piece of infrastructure.</p>
+<p class="lede">Your autonomous agent is running somewhere without you. How do you actually know it's still doing its job? The answer is that it tells you - and the way it tells you is the difference between "the agent works" and "the agent worked until that Thursday four weeks ago and nobody noticed." Self-monitoring is what turns an agent from a demo into a reliable piece of infrastructure.</p>
 
 <h2>The six things you need to know about a running agent.</h2>
 
@@ -269,7 +269,7 @@ document.addEventListener('sketch:ready', function() {
 });
 </script>
 
-<p>All six matter. You can skip any one and it'll be fine — until one day it won't. The agents that run reliably for a year are the ones where all six signals are tracked from day one.</p>
+<p>All six matter. You can skip any one and it'll be fine - until one day it won't. The agents that run reliably for a year are the ones where all six signals are tracked from day one.</p>
 
 <h2>The three layers of monitoring.</h2>
 <p>Think of it as three checks, in order of how cheap and how noisy they are.</p>
@@ -288,9 +288,9 @@ document.addEventListener('sketch:ready', function() {
   sketch.stack(svg, rc, {
     x: 110, y: 25, w: 680, layerH: 70,
     layers: [
-      { label: '3. Quality',      sub: 'is the output any good? — LLM-as-judge, sampled',      color: '#fef3c7' },
-      { label: '2. Correctness',  sub: 'did it do the right thing? — per-run check',           color: '#fce7f3' },
-      { label: '1. Liveness',     sub: 'is it running? — dead-man\'s-switch heartbeat',        color: '#d1fae5' }
+      { label: '3. Quality',      sub: 'is the output any good? - LLM-as-judge, sampled',      color: '#fef3c7' },
+      { label: '2. Correctness',  sub: 'did it do the right thing? - per-run check',           color: '#fce7f3' },
+      { label: '1. Liveness',     sub: 'is it running? - dead-man\'s-switch heartbeat',        color: '#d1fae5' }
     ]
   });
 });
@@ -397,17 +397,17 @@ document.addEventListener('sketch:ready', function() {
 <div class="further-reading">
 <h2>Further reading</h2>
 <ul>
-<li><span class="resource-meta">Blog</span><a href="https://www.anthropic.com/news/claude-code" target="_blank" rel="noopener nofollow">Anthropic — Claude Code in the loop</a></li>
-<li><span class="resource-meta">Blog</span><a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener nofollow">Building effective agents — Patterns</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://www.swebench.com/" target="_blank" rel="noopener nofollow">SWE-bench — Agent benchmark</a></li>
-<li><span class="resource-meta">Paper</span><a href="https://arxiv.org/abs/2308.08155" target="_blank" rel="noopener nofollow">OpenAI — AutoGPT style evaluation</a></li>
-<li><span class="resource-meta">Repo</span><a href="https://github.com/sweepai/sweep" target="_blank" rel="noopener nofollow">Sweep — AI junior dev (GitHub)</a></li>
+<li><span class="resource-meta">Blog</span><a href="https://www.anthropic.com/news/claude-code" target="_blank" rel="noopener nofollow">Anthropic - Claude Code in the loop</a></li>
+<li><span class="resource-meta">Blog</span><a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener nofollow">Building effective agents - Patterns</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://www.swebench.com/" target="_blank" rel="noopener nofollow">SWE-bench - Agent benchmark</a></li>
+<li><span class="resource-meta">Paper</span><a href="https://arxiv.org/abs/2308.08155" target="_blank" rel="noopener nofollow">OpenAI - AutoGPT style evaluation</a></li>
+<li><span class="resource-meta">Repo</span><a href="https://github.com/sweepai/sweep" target="_blank" rel="noopener nofollow">Sweep - AI junior dev (GitHub)</a></li>
 </ul>
 <h3>Watch</h3>
 <div class="video-wrap">
-<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/l8pRSuU81PU" title="Andrej Karpathy — Let&#x27;s reproduce GPT-2 (124M)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/l8pRSuU81PU" title="Andrej Karpathy - Let&#x27;s reproduce GPT-2 (124M)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
-<p class="video-caption">Andrej Karpathy — Let&#x27;s reproduce GPT-2 (124M)</p>
+<p class="video-caption">Andrej Karpathy - Let&#x27;s reproduce GPT-2 (124M)</p>
 </div>
 <div class="prev-next"><a href="scheduling.html" class="prev"><div class="label">← Previous</div><div class="title">Scheduling</div></a><a href="safety.html" class="next"><div class="label">Next →</div><div class="title">Safety boundaries</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../framework/index.html">Framework</a></p>
@@ -417,8 +417,8 @@ document.addEventListener('sketch:ready', function() {
   if (!bar || bar.dataset.navInit) return;
   bar.dataset.navInit = '1';
 
-  const OPEN_DELAY = 120;   // ms — hover intent
-  const CLOSE_DELAY = 450;  // ms — forgiving close
+  const OPEN_DELAY = 120;   // ms - hover intent
+  const CLOSE_DELAY = 450;  // ms - forgiving close
   const isMobile = () => window.matchMedia('(max-width: 960px)').matches;
 
   const hamb = bar.querySelector('.hamburger');

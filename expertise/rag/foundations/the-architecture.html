@@ -298,13 +298,13 @@
   sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 186,
     left: {title: 'Data plane (offline)', items: [
       'Runs on a schedule',
-      'Stages 1–7 (parse, chunk, embed, index)',
+      'Stages 1-7 (parse, chunk, embed, index)',
       'Batch friendly; slow ok',
       'Different team, usually'
     ]},
     right: {title: 'Query plane (online)', items: [
       'Runs per user query',
-      'Stages 8–10 (retrieve, generate, trace)',
+      'Stages 8-10 (retrieve, generate, trace)',
       'Latency-sensitive',
       'Gets the ops attention']}
   });
@@ -360,16 +360,16 @@
 <div class="further-reading">
 <h2>Further reading</h2>
 <ul>
-<li><span class="resource-meta">Docs</span><a href="https://docs.llamaindex.ai/en/stable/understanding/rag/" target="_blank" rel="noopener nofollow">LlamaIndex — RAG docs</a></li>
-<li><span class="resource-meta">Blog</span><a href="https://www.pinecone.io/learn/retrieval-augmented-generation/" target="_blank" rel="noopener nofollow">Pinecone — RAG guide</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://docs.llamaindex.ai/en/stable/understanding/rag/" target="_blank" rel="noopener nofollow">LlamaIndex - RAG docs</a></li>
+<li><span class="resource-meta">Blog</span><a href="https://www.pinecone.io/learn/retrieval-augmented-generation/" target="_blank" rel="noopener nofollow">Pinecone - RAG guide</a></li>
 <li><span class="resource-meta">Paper</span><a href="https://arxiv.org/abs/2005.11401" target="_blank" rel="noopener nofollow">Retrieval-Augmented Generation (original paper)</a></li>
-<li><span class="resource-meta">Blog</span><a href="https://www.anthropic.com/news/contextual-retrieval" target="_blank" rel="noopener nofollow">Anthropic — Contextual retrieval</a></li>
+<li><span class="resource-meta">Blog</span><a href="https://www.anthropic.com/news/contextual-retrieval" target="_blank" rel="noopener nofollow">Anthropic - Contextual retrieval</a></li>
 </ul>
 <h3>Watch</h3>
 <div class="video-wrap">
-<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/eMlx5fFNoYc" title="3Blue1Brown — Attention in transformers, visually explained" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/eMlx5fFNoYc" title="3Blue1Brown - Attention in transformers, visually explained" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
-<p class="video-caption">3Blue1Brown — Attention in transformers, visually explained</p>
+<p class="video-caption">3Blue1Brown - Attention in transformers, visually explained</p>
 </div>
 <div class="prev-next"><a href="why-rag.html" class="prev"><div class="label">← Previous</div><div class="title">Why RAG over fine-tuning</div></a><a href="when-not-to-use.html" class="next"><div class="label">Next →</div><div class="title">When not to use RAG</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
@@ -380,8 +380,8 @@
   if (!bar || bar.dataset.navInit) return;
   bar.dataset.navInit = '1';
 
-  const OPEN_DELAY = 120;   // ms — hover intent
-  const CLOSE_DELAY = 450;  // ms — forgiving close
+  const OPEN_DELAY = 120;   // ms - hover intent
+  const CLOSE_DELAY = 450;  // ms - forgiving close
   const isMobile = () => window.matchMedia('(max-width: 960px)').matches;
 
   const hamb = bar.querySelector('.hamburger');

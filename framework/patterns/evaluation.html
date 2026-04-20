@@ -317,7 +317,7 @@ document.addEventListener('sketch:ready', function() {
 
 <ul>
   <li><strong>The judge should be different from (or stronger than) the agent being graded.</strong> Using Sonnet to grade Sonnet is better than using Sonnet to grade itself, and using Opus to grade Sonnet is better still.</li>
-  <li><strong>The rubric must be explicit.</strong> "Rate accuracy 1-5" is useless. "5 = every claim is directly supported by the cited source; 4 = one minor inference beyond sources; 3 = some unverified claims..." — define each level.</li>
+  <li><strong>The rubric must be explicit.</strong> "Rate accuracy 1-5" is useless. "5 = every claim is directly supported by the cited source; 4 = one minor inference beyond sources; 3 = some unverified claims..." - define each level.</li>
   <li><strong>Run the judge multiple times and average.</strong> Judges are noisy too. Three runs and an average is measurably more stable than one run.</li>
   <li><strong>Spot-check with human eval monthly.</strong> Is the judge agreeing with humans on the tough cases? If it's drifting, recalibrate the rubric or swap the judge model.</li>
 </ul>
@@ -362,7 +362,7 @@ document.addEventListener('sketch:ready', function() {
 </ol>
 
 <div class="callout insight">
-  <strong>The eval is the product.</strong> If your agent is hard to evaluate, it's probably too complex — simplify it. A better agent is one whose behavior you can measure. The teams that win ship simpler agents with tighter evals, not fancier agents with vibes-based testing.
+  <strong>The eval is the product.</strong> If your agent is hard to evaluate, it's probably too complex - simplify it. A better agent is one whose behavior you can measure. The teams that win ship simpler agents with tighter evals, not fancier agents with vibes-based testing.
 </div>
 
 <h2>One more thing: evals vs. eval-ops.</h2>
@@ -378,18 +378,18 @@ document.addEventListener('sketch:ready', function() {
 <div class="further-reading">
 <h2>Further reading</h2>
 <ul>
-<li><span class="resource-meta">Blog</span><a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener nofollow">Anthropic — Building effective agents</a></li>
-<li><span class="resource-meta">Paper</span><a href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener nofollow">ReAct — Reasoning + Acting (paper)</a></li>
-<li><span class="resource-meta">Paper</span><a href="https://arxiv.org/abs/2303.11366" target="_blank" rel="noopener nofollow">Reflexion — Language agents with verbal RL (paper)</a></li>
+<li><span class="resource-meta">Blog</span><a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener nofollow">Anthropic - Building effective agents</a></li>
+<li><span class="resource-meta">Paper</span><a href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener nofollow">ReAct - Reasoning + Acting (paper)</a></li>
+<li><span class="resource-meta">Paper</span><a href="https://arxiv.org/abs/2303.11366" target="_blank" rel="noopener nofollow">Reflexion - Language agents with verbal RL (paper)</a></li>
 <li><span class="resource-meta">Paper</span><a href="https://arxiv.org/abs/2305.10601" target="_blank" rel="noopener nofollow">Tree of Thoughts (paper)</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://langchain-ai.github.io/langgraph/" target="_blank" rel="noopener nofollow">LangGraph — State machines for agents</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://microsoft.github.io/autogen/" target="_blank" rel="noopener nofollow">AutoGen — Multi-agent framework</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://langchain-ai.github.io/langgraph/" target="_blank" rel="noopener nofollow">LangGraph - State machines for agents</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://microsoft.github.io/autogen/" target="_blank" rel="noopener nofollow">AutoGen - Multi-agent framework</a></li>
 </ul>
 <h3>Watch</h3>
 <div class="video-wrap">
-<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/zjkBMFhNj_g" title="Andrej Karpathy — Intro to Large Language Models (1 hour)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/zjkBMFhNj_g" title="Andrej Karpathy - Intro to Large Language Models (1 hour)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
-<p class="video-caption">Andrej Karpathy — Intro to Large Language Models (1 hour)</p>
+<p class="video-caption">Andrej Karpathy - Intro to Large Language Models (1 hour)</p>
 </div>
 <div class="prev-next"><a href="multi-agent.html" class="prev"><div class="label">← Previous</div><div class="title">Multi-agent</div></a><a href="prompt-caching.html" class="next"><div class="label">Next →</div><div class="title">Prompt caching</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../framework/index.html">Framework</a></p>
@@ -399,8 +399,8 @@ document.addEventListener('sketch:ready', function() {
   if (!bar || bar.dataset.navInit) return;
   bar.dataset.navInit = '1';
 
-  const OPEN_DELAY = 120;   // ms — hover intent
-  const CLOSE_DELAY = 450;  // ms — forgiving close
+  const OPEN_DELAY = 120;   // ms - hover intent
+  const CLOSE_DELAY = 450;  // ms - forgiving close
   const isMobile = () => window.matchMedia('(max-width: 960px)').matches;
 
   const hamb = bar.querySelector('.hamburger');

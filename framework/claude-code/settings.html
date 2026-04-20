@@ -255,7 +255,7 @@ document.addEventListener('sketch:ready', function() {
     x: 100, y: 25, w: 700, layerH: 70,
     layers: [
       { label: '3. Project-level: .claude/settings.json',     sub: 'checked into git, specific to this repo',  color: '#dbeafe' },
-      { label: '2. Machine-level: ~/.claude/settings.local.json', sub: 'gitignored — per-machine overrides',        color: '#fce7f3' },
+      { label: '2. Machine-level: ~/.claude/settings.local.json', sub: 'gitignored - per-machine overrides',        color: '#fce7f3' },
       { label: '1. Global: ~/.claude/settings.json',          sub: 'your defaults, applies everywhere',        color: '#fef3c7' }
     ]
   });
@@ -267,7 +267,7 @@ document.addEventListener('sketch:ready', function() {
 <h2>The fields you'll actually use.</h2>
 <p>The config has a bunch of fields. These are the ones that come up in real use, in rough order of importance.</p>
 
-<h3><code>permissions</code> — the most important field.</h3>
+<h3><code>permissions</code> - the most important field.</h3>
 <p>Controls what tools the agent can use without asking. Has three sub-fields:</p>
 
 <ul>
@@ -276,9 +276,9 @@ document.addEventListener('sketch:ready', function() {
   <li><code>deny</code>: array of patterns that are always rejected. <code>"Bash(sudo:*)"</code>, <code>"Bash(rm -rf:*)"</code>.</li>
 </ul>
 
-<p>See <a href="permissions.html">Permissions</a> for the full design guide — this is the single most important page in the framework.</p>
+<p>See <a href="permissions.html">Permissions</a> for the full design guide - this is the single most important page in the framework.</p>
 
-<h3><code>mcpServers</code> — your installed MCPs.</h3>
+<h3><code>mcpServers</code> - your installed MCPs.</h3>
 <p>A map of MCP server name → config. Each entry becomes a set of tools the agent can call. Two shapes:</p>
 
 <pre><code>// Local stdio server
@@ -294,19 +294,19 @@ document.addEventListener('sketch:ready', function() {
   "headers": { "Authorization": "Bearer ${GITHUB_TOKEN}" }
 }</code></pre>
 
-<h3><code>hooks</code> — run your code on agent events.</h3>
+<h3><code>hooks</code> - run your code on agent events.</h3>
 <p>Array of hook definitions. See <a href="hooks.html">Hooks</a> for when and why.</p>
 
-<h3><code>env</code> — set environment variables for every session.</h3>
+<h3><code>env</code> - set environment variables for every session.</h3>
 <p>Tokens, paths, feature flags. Available inside tools and MCP servers. Prefer <code>${VAR}</code> substitution over literal values so your config can be committed without leaking secrets.</p>
 
-<h3><code>enabledPlugins</code> — turn plugins on/off.</h3>
+<h3><code>enabledPlugins</code> - turn plugins on/off.</h3>
 <p>A map of plugin ID → boolean. Installed plugins default to enabled; use this to selectively disable.</p>
 
-<h3><code>skipAutoPermissionPrompt</code> — the danger flag.</h3>
+<h3><code>skipAutoPermissionPrompt</code> - the danger flag.</h3>
 <p>Boolean. If true, Claude Code does NOT pop an approval dialog for calls that aren't in the allow list. Instead, it uses its own judgment. Only use this with a very strict <code>deny</code> list. Otherwise you're handing full autonomy to the model, which is usually a mistake.</p>
 
-<h3><code>autoUpdaterStatus</code> — let it update itself.</h3>
+<h3><code>autoUpdaterStatus</code> - let it update itself.</h3>
 <p>Controls whether Claude Code auto-updates. Leave on default; updates ship often and you want them.</p>
 
 <h2>A minimal settings.json that actually works.</h2>
@@ -391,18 +391,18 @@ document.addEventListener('sketch:ready', function() {
 <div class="further-reading">
 <h2>Further reading</h2>
 <ul>
-<li><span class="resource-meta">Docs</span><a href="https://docs.claude.com/en/docs/claude-code/overview" target="_blank" rel="noopener nofollow">Claude Code — Official docs</a></li>
-<li><span class="resource-meta">Repo</span><a href="https://github.com/anthropics/claude-code" target="_blank" rel="noopener nofollow">Claude Code — GitHub</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://docs.claude.com/en/docs/claude-code/quickstart" target="_blank" rel="noopener nofollow">Claude Code — Quickstart</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://docs.claude.com/en/docs/claude-code/settings" target="_blank" rel="noopener nofollow">Claude Code — Settings reference</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://docs.claude.com/en/docs/claude-code/hooks" target="_blank" rel="noopener nofollow">Claude Code — Hooks reference</a></li>
-<li><span class="resource-meta">Repo</span><a href="https://github.com/anthropics/claude-agent-sdk-python" target="_blank" rel="noopener nofollow">Claude Agent SDK — Python</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://docs.claude.com/en/docs/claude-code/overview" target="_blank" rel="noopener nofollow">Claude Code - Official docs</a></li>
+<li><span class="resource-meta">Repo</span><a href="https://github.com/anthropics/claude-code" target="_blank" rel="noopener nofollow">Claude Code - GitHub</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://docs.claude.com/en/docs/claude-code/quickstart" target="_blank" rel="noopener nofollow">Claude Code - Quickstart</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://docs.claude.com/en/docs/claude-code/settings" target="_blank" rel="noopener nofollow">Claude Code - Settings reference</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://docs.claude.com/en/docs/claude-code/hooks" target="_blank" rel="noopener nofollow">Claude Code - Hooks reference</a></li>
+<li><span class="resource-meta">Repo</span><a href="https://github.com/anthropics/claude-agent-sdk-python" target="_blank" rel="noopener nofollow">Claude Agent SDK - Python</a></li>
 </ul>
 <h3>Watch</h3>
 <div class="video-wrap">
-<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/kCc8FmEb1nY" title="Andrej Karpathy — Let&#x27;s build GPT from scratch" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/kCc8FmEb1nY" title="Andrej Karpathy - Let&#x27;s build GPT from scratch" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
-<p class="video-caption">Andrej Karpathy — Let&#x27;s build GPT from scratch</p>
+<p class="video-caption">Andrej Karpathy - Let&#x27;s build GPT from scratch</p>
 </div>
 <div class="prev-next"><a href="index.html" class="prev"><div class="label">← Previous</div><div class="title">Claude Code overview</div></a><a href="permissions.html" class="next"><div class="label">Next →</div><div class="title">Permissions</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../framework/index.html">Framework</a></p>
@@ -412,8 +412,8 @@ document.addEventListener('sketch:ready', function() {
   if (!bar || bar.dataset.navInit) return;
   bar.dataset.navInit = '1';
 
-  const OPEN_DELAY = 120;   // ms — hover intent
-  const CLOSE_DELAY = 450;  // ms — forgiving close
+  const OPEN_DELAY = 120;   // ms - hover intent
+  const CLOSE_DELAY = 450;  // ms - forgiving close
   const isMobile = () => window.matchMedia('(max-width: 960px)').matches;
 
   const hamb = bar.querySelector('.hamburger');

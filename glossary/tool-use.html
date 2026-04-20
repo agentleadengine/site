@@ -272,7 +272,7 @@
 <p class="gloss-def">When an AI can call external functions to do things it can't do itself.</p>
 
 <h3 class="gloss-section-head">Explained simply.</h3>
-<p class="gloss-explain">An LLM on its own can only output text. It can't actually send an email, query a database, or check a calendar. Tool use is the mechanism by which the model says 'I want to use tool X with these arguments' — and your code runs the tool and gives the result back. The model then reads the result and decides what to do next. With tools, an LLM stops being a chat partner and becomes something much more capable.</p>
+<p class="gloss-explain">An LLM on its own can only output text. It can't actually send an email, query a database, or check a calendar. Tool use is the mechanism by which the model says 'I want to use tool X with these arguments' - and your code runs the tool and gives the result back. The model then reads the result and decides what to do next. With tools, an LLM stops being a chat partner and becomes something much more capable.</p>
 
 <h3 class="gloss-section-head">An example.</h3>
 <div class="gloss-example">You give Claude a 'search_database' tool. User asks 'what's our biggest account?'. Claude decides to call search_database(query="top accounts by revenue, limit 1"), reads the result, and replies: 'Your biggest account is Acme, with $1.2M in ARR.' Without tools, it would just guess or say it couldn't answer.</div>
@@ -284,10 +284,10 @@
 <div class="further-reading">
 <h2>Further reading</h2>
 <ul>
-<li><span class="resource-meta">Docs</span><a href="https://docs.claude.com/en/docs/build-with-claude/tool-use/overview" target="_blank" rel="noopener nofollow">Claude — Tool use docs</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://platform.openai.com/docs/guides/function-calling" target="_blank" rel="noopener nofollow">OpenAI — Function calling</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://docs.claude.com/en/docs/build-with-claude/tool-use/overview" target="_blank" rel="noopener nofollow">Claude - Tool use docs</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://platform.openai.com/docs/guides/function-calling" target="_blank" rel="noopener nofollow">OpenAI - Function calling</a></li>
 <li><span class="resource-meta">Paper</span><a href="https://arxiv.org/abs/2302.04761" target="_blank" rel="noopener nofollow">Toolformer (paper)</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://gorilla.cs.berkeley.edu/" target="_blank" rel="noopener nofollow">Gorilla — LLM with tools</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://gorilla.cs.berkeley.edu/" target="_blank" rel="noopener nofollow">Gorilla - LLM with tools</a></li>
 </ul>
 </div>
 </div>
@@ -299,8 +299,8 @@
   if (!bar || bar.dataset.navInit) return;
   bar.dataset.navInit = '1';
 
-  const OPEN_DELAY = 120;   // ms — hover intent
-  const CLOSE_DELAY = 450;  // ms — forgiving close
+  const OPEN_DELAY = 120;   // ms - hover intent
+  const CLOSE_DELAY = 450;  // ms - forgiving close
   const isMobile = () => window.matchMedia('(max-width: 960px)').matches;
 
   const hamb = bar.querySelector('.hamburger');

@@ -235,7 +235,7 @@
 <a href="../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../what-is-autonomous-ai.html">What is autonomous AI</a></li><li><a href="../the-autonomy-spectrum.html">The autonomy spectrum</a></li><li><a href="../glossary.html">Glossary</a></li></ul><h4>Claude</h4><ul><li><a href="../claude/overview.html">Overview</a></li><li><a href="../claude/prompting-for-agents.html">Prompting for agents</a></li><li><a href="../claude/extended-thinking.html">Extended thinking</a></li><li><a href="../claude/tool-use.html">Tool use</a></li></ul><h4>MCP</h4><ul><li><a href="../mcp/index.html">Overview</a></li><li><a href="../mcp/what-is-mcp.html">What is MCP</a></li><li><a href="../mcp/anatomy.html">Anatomy</a></li><li><a href="../mcp/transports.html">Transports</a></li><li><a href="../mcp/servers.html">Servers</a></li><li><a href="../mcp/clients.html">Clients</a></li><li><a href="../mcp/security.html">Security</a></li><li><a href="../mcp/directory.html">Directory</a></li></ul><h4>Plugins</h4><ul><li><a href="../plugins/index.html">Overview</a></li><li><a href="../plugins/vs-mcp.html">Plugins vs MCP</a></li><li><a href="../plugins/marketplace.html">Marketplace</a></li></ul><h4>Claude Code</h4><ul><li><a href="../claude-code/index.html">Overview</a></li><li><a href="../claude-code/settings.html">Settings</a></li><li><a href="../claude-code/permissions.html">Permissions</a></li><li><a href="../claude-code/hooks.html">Hooks</a></li><li><a href="../claude-code/skills.html">Skills</a></li><li><a href="../claude-code/memory.html">Memory</a></li></ul><h4>Patterns</h4><ul><li><a href="../patterns/index.html">Overview</a></li><li><a href="../patterns/react-loop.html">ReAct loop</a></li><li><a href="../patterns/plan-execute.html">Plan-execute</a></li><li><a href="../patterns/multi-agent.html">Multi-agent</a></li><li><a href="../patterns/evaluation.html">Evaluation</a></li><li><a href="../patterns/prompt-caching.html" class="active">Prompt caching</a></li></ul><h4>Autonomous</h4><ul><li><a href="../autonomous/index.html">Overview</a></li><li><a href="../autonomous/headless.html">Headless</a></li><li><a href="../autonomous/scheduling.html">Scheduling</a></li><li><a href="../autonomous/self-monitoring.html">Self-monitoring</a></li><li><a href="../autonomous/safety.html">Safety</a></li></ul><h4>Build Guides</h4><ul><li><a href="../build/index.html">Overview</a></li><li><a href="../build/first-agent.html">First agent (60 min)</a></li><li><a href="../build/voice-agent.html">Voice agent</a></li><li><a href="../build/research-agent.html">Research agent</a></li></ul><h4>Tools</h4><ul><li><a href="../tools/browser-automation.html">Browser automation</a></li><li><a href="../tools/desktop-control.html">Desktop control</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Framework</a><span class="sep">›</span><a href="../patterns/index.html">Patterns</a><span class="sep">›</span><span>Prompt caching</span></div><h1 class="title" style="font-size:clamp(32px,4.5vw,42px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">Prompt caching</h1><div class="article-meta"><span>📖 5 min read</span><span>Updated 2026-04-18</span></div>
-<p class="lede">Here's the trick that makes long-running agents economically viable: you can tell Claude's API "this part of the prompt won't change — don't recompute it every time." The API caches the precomputed version and serves it back at about 10% of the normal cost. On any agent with a stable system prompt, this cuts your bill by 90%. It's the single highest-leverage performance tweak you can make that doesn't change what the agent does at all.</p>
+<p class="lede">Here's the trick that makes long-running agents economically viable: you can tell Claude's API "this part of the prompt won't change - don't recompute it every time." The API caches the precomputed version and serves it back at about 10% of the normal cost. On any agent with a stable system prompt, this cuts your bill by 90%. It's the single highest-leverage performance tweak you can make that doesn't change what the agent does at all.</p>
 
 <h2>The intuition.</h2>
 <p>A typical agent prompt has a lot of stuff that's the same call after call. Your system prompt explaining what the agent is. Your list of tool definitions. Maybe a long document you pasted in for context. Only the user's latest message and the conversation history change turn-to-turn.</p>
@@ -260,9 +260,9 @@ document.addEventListener('sketch:ready', function() {
     layers: [
       { label: 'New user message',      sub: 'changes every call',            color: '#fecaca' },
       { label: 'Conversation history',  sub: 'grows every turn',              color: '#fed7aa' },
-      { label: 'Long context docs',     sub: 'stable per-session — CACHE',    color: '#fef3c7' },
-      { label: 'Tool definitions',      sub: 'stable across agent — CACHE',   color: '#d1fae5' },
-      { label: 'System prompt',         sub: 'stable forever — CACHE',        color: '#dbeafe' }
+      { label: 'Long context docs',     sub: 'stable per-session - CACHE',    color: '#fef3c7' },
+      { label: 'Tool definitions',      sub: 'stable across agent - CACHE',   color: '#d1fae5' },
+      { label: 'System prompt',         sub: 'stable forever - CACHE',        color: '#dbeafe' }
     ]
   });
 });
@@ -273,12 +273,12 @@ document.addEventListener('sketch:ready', function() {
 <h2>How the cache actually works.</h2>
 <p>You mark specific points in your prompt as "cache breakpoints." The first request computes the content up to each breakpoint and caches it. On subsequent requests, if your prompt matches the cached prefix EXACTLY (byte-for-byte), the cached version gets reused instead of being recomputed.</p>
 
-<p>Cache hits pay about 10% of the normal input cost. Cache writes (the first time) pay a small premium (~25% more than normal input). Cache lasts 5 minutes by default — but every hit refreshes the TTL, so an agent making frequent calls keeps its cache warm indefinitely.</p>
+<p>Cache hits pay about 10% of the normal input cost. Cache writes (the first time) pay a small premium (~25% more than normal input). Cache lasts 5 minutes by default - but every hit refreshes the TTL, so an agent making frequent calls keeps its cache warm indefinitely.</p>
 
 <p>You get up to 4 breakpoints per request. Use them for different stability tiers:</p>
 
 <ul>
-  <li><strong>Breakpoint 1</strong>: system prompt (most stable — changes rarely)</li>
+  <li><strong>Breakpoint 1</strong>: system prompt (most stable - changes rarely)</li>
   <li><strong>Breakpoint 2</strong>: tool definitions (changes with code releases)</li>
   <li><strong>Breakpoint 3</strong>: long reference docs (stable per-session)</li>
   <li><strong>Breakpoint 4</strong>: accumulated conversation (changes each turn)</li>
@@ -301,7 +301,7 @@ document.addEventListener('sketch:ready', function() {
     x: 30, y: 30, w: 840, barH: 40, gap: 22, labelW: 200,
     items: [
       { label: 'Without cache', value: 95, note: '$3.00 for the stable prefix × 100 calls' },
-      { label: 'With cache',    value: 12, note: '$0.34 — one write + 99 cheap reads' }
+      { label: 'With cache',    value: 12, note: '$0.34 - one write + 99 cheap reads' }
     ]
   });
 });
@@ -366,9 +366,9 @@ document.addEventListener('sketch:ready', function() {
 <h2>Gotchas that will trip you.</h2>
 
 <ul>
-  <li><strong>Exact-match, byte for byte.</strong> A stray space, a changed newline, a different Unicode variant — any of those misses the cache. If you're templating dynamically, be religious about keeping the stable sections byte-identical across calls.</li>
+  <li><strong>Exact-match, byte for byte.</strong> A stray space, a changed newline, a different Unicode variant - any of those misses the cache. If you're templating dynamically, be religious about keeping the stable sections byte-identical across calls.</li>
   <li><strong>Cache writes cost a little extra.</strong> Only mark things as cacheable if they'll be reused. Caching something that appears once actively costs you money.</li>
-  <li><strong>Ordering matters.</strong> Stable content MUST come before dynamic content. The cache matches by prefix — if the user's message appears before your stable tool definitions, nothing downstream of that message can be cached.</li>
+  <li><strong>Ordering matters.</strong> Stable content MUST come before dynamic content. The cache matches by prefix - if the user's message appears before your stable tool definitions, nothing downstream of that message can be cached.</li>
   <li><strong>Per-API-key, per-model.</strong> Cache entries don't transfer between different API keys or different models. Switching Sonnet → Opus means re-caching.</li>
   <li><strong>5-minute TTL.</strong> If your agent sleeps 10 minutes between calls, you'll pay the write premium twice for no benefit. Batch your work into bursts or keep a heartbeat request alive.</li>
 </ul>
@@ -376,31 +376,31 @@ document.addEventListener('sketch:ready', function() {
 <h2>The workflow.</h2>
 <ol>
   <li><strong>Identify the stable parts of your prompt.</strong> System prompt, tool definitions, long reference docs.</li>
-  <li><strong>Restructure so stable content comes first.</strong> If it doesn't already — fix the order. This is usually a small refactor.</li>
+  <li><strong>Restructure so stable content comes first.</strong> If it doesn't already - fix the order. This is usually a small refactor.</li>
   <li><strong>Add cache breakpoints.</strong> 1-2 at minimum (after system prompt, after tool definitions). More if you have multiple stability tiers.</li>
   <li><strong>Measure.</strong> Check your actual cost before and after. Cache-hit rate should be 95%+ on a warm agent.</li>
   <li><strong>Keep the stable sections stable.</strong> Audit your templating to make sure nothing mutates them accidentally.</li>
 </ol>
 
 <div class="callout insight">
-  <strong>Bottom line:</strong> if you have a stable prompt prefix and an agent making more than a handful of calls, prompt caching isn't optional — it's operational hygiene. Set it up once, and every future agent you build inherits the savings automatically.
+  <strong>Bottom line:</strong> if you have a stable prompt prefix and an agent making more than a handful of calls, prompt caching isn't optional - it's operational hygiene. Set it up once, and every future agent you build inherits the savings automatically.
 </div>
 <!-- further-reading -->
 <div class="further-reading">
 <h2>Further reading</h2>
 <ul>
-<li><span class="resource-meta">Blog</span><a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener nofollow">Anthropic — Building effective agents</a></li>
-<li><span class="resource-meta">Paper</span><a href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener nofollow">ReAct — Reasoning + Acting (paper)</a></li>
-<li><span class="resource-meta">Paper</span><a href="https://arxiv.org/abs/2303.11366" target="_blank" rel="noopener nofollow">Reflexion — Language agents with verbal RL (paper)</a></li>
+<li><span class="resource-meta">Blog</span><a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener nofollow">Anthropic - Building effective agents</a></li>
+<li><span class="resource-meta">Paper</span><a href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener nofollow">ReAct - Reasoning + Acting (paper)</a></li>
+<li><span class="resource-meta">Paper</span><a href="https://arxiv.org/abs/2303.11366" target="_blank" rel="noopener nofollow">Reflexion - Language agents with verbal RL (paper)</a></li>
 <li><span class="resource-meta">Paper</span><a href="https://arxiv.org/abs/2305.10601" target="_blank" rel="noopener nofollow">Tree of Thoughts (paper)</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://langchain-ai.github.io/langgraph/" target="_blank" rel="noopener nofollow">LangGraph — State machines for agents</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://microsoft.github.io/autogen/" target="_blank" rel="noopener nofollow">AutoGen — Multi-agent framework</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://langchain-ai.github.io/langgraph/" target="_blank" rel="noopener nofollow">LangGraph - State machines for agents</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://microsoft.github.io/autogen/" target="_blank" rel="noopener nofollow">AutoGen - Multi-agent framework</a></li>
 </ul>
 <h3>Watch</h3>
 <div class="video-wrap">
-<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/zjkBMFhNj_g" title="Andrej Karpathy — Intro to Large Language Models (1 hour)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/zjkBMFhNj_g" title="Andrej Karpathy - Intro to Large Language Models (1 hour)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
-<p class="video-caption">Andrej Karpathy — Intro to Large Language Models (1 hour)</p>
+<p class="video-caption">Andrej Karpathy - Intro to Large Language Models (1 hour)</p>
 </div>
 <div class="prev-next"><a href="evaluation.html" class="prev"><div class="label">← Previous</div><div class="title">Evaluation</div></a><a href="../autonomous/index.html" class="next"><div class="label">Next →</div><div class="title">Autonomous overview</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../framework/index.html">Framework</a></p>
@@ -410,8 +410,8 @@ document.addEventListener('sketch:ready', function() {
   if (!bar || bar.dataset.navInit) return;
   bar.dataset.navInit = '1';
 
-  const OPEN_DELAY = 120;   // ms — hover intent
-  const CLOSE_DELAY = 450;  // ms — forgiving close
+  const OPEN_DELAY = 120;   // ms - hover intent
+  const CLOSE_DELAY = 450;  // ms - forgiving close
   const isMobile = () => window.matchMedia('(max-width: 960px)').matches;
 
   const hamb = bar.querySelector('.hamburger');

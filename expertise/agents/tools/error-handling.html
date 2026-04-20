@@ -278,7 +278,7 @@
 <p>Permanent errors (bad args, wrong auth) are surfaced immediately. Retrying them wastes time. The model needs to see "this is a permanent error" and change tack.</p>
 
 <h2>Timeouts</h2>
-<p>Every tool call needs a timeout. A hung tool hangs the whole agent session. Set aggressive per-tool timeouts (5–30 seconds). When a timeout fires, return it as a structured error so the agent can respond.</p>
+<p>Every tool call needs a timeout. A hung tool hangs the whole agent session. Set aggressive per-tool timeouts (5-30 seconds). When a timeout fires, return it as a structured error so the agent can respond.</p>
 
 <h2>A worked example: data-lookup agent</h2>
 <p>User: "How many tickets did Acme file last quarter?"</p>
@@ -336,10 +336,10 @@
 <div class="further-reading">
 <h2>Further reading</h2>
 <ul>
-<li><span class="resource-meta">Docs</span><a href="https://docs.claude.com/en/docs/build-with-claude/tool-use/overview" target="_blank" rel="noopener nofollow">Claude — Tool use docs</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://platform.openai.com/docs/guides/function-calling" target="_blank" rel="noopener nofollow">OpenAI — Function calling</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://docs.claude.com/en/docs/build-with-claude/tool-use/overview" target="_blank" rel="noopener nofollow">Claude - Tool use docs</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://platform.openai.com/docs/guides/function-calling" target="_blank" rel="noopener nofollow">OpenAI - Function calling</a></li>
 <li><span class="resource-meta">Paper</span><a href="https://arxiv.org/abs/2302.04761" target="_blank" rel="noopener nofollow">Toolformer (paper)</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://gorilla.cs.berkeley.edu/" target="_blank" rel="noopener nofollow">Gorilla — LLM with tools</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://gorilla.cs.berkeley.edu/" target="_blank" rel="noopener nofollow">Gorilla - LLM with tools</a></li>
 </ul>
 </div>
 <div class="prev-next"><a href="tool-descriptions.html" class="prev"><div class="label">← Previous</div><div class="title">Tool descriptions matter</div></a><a href="parallel-tools.html" class="next"><div class="label">Next →</div><div class="title">Parallel tool calls</div></a></div></div></div><footer><div class="container">
@@ -350,8 +350,8 @@
   if (!bar || bar.dataset.navInit) return;
   bar.dataset.navInit = '1';
 
-  const OPEN_DELAY = 120;   // ms — hover intent
-  const CLOSE_DELAY = 450;  // ms — forgiving close
+  const OPEN_DELAY = 120;   // ms - hover intent
+  const CLOSE_DELAY = 450;  // ms - forgiving close
   const isMobile = () => window.matchMedia('(max-width: 960px)').matches;
 
   const hamb = bar.querySelector('.hamburger');

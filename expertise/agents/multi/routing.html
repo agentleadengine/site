@@ -257,7 +257,7 @@
 });</script>
 
 <h2>Rule-based: start here</h2>
-<p>Keyword or regex rules. "If message contains 'refund' or 'charge' or 'invoice' → billing agent." Takes 10 minutes to write. Runs in microseconds. Wrong 10–20% of the time on real user phrasings, but you know exactly when it's wrong and can add rules.</p>
+<p>Keyword or regex rules. "If message contains 'refund' or 'charge' or 'invoice' → billing agent." Takes 10 minutes to write. Runs in microseconds. Wrong 10-20% of the time on real user phrasings, but you know exactly when it's wrong and can add rules.</p>
 <p>Use rules for the top 60% of traffic that's easy. Use a smarter mechanism for the rest.</p>
 
 <h2>LLM classifier: flexible, modest cost</h2>
@@ -321,14 +321,14 @@
 <ul>
 <li>Start rule-based. Measure accuracy. Add LLM classifier once rules stop improving. Hybrid is where you want to end up.</li>
 <li>Read <a href="handoffs.html">agent handoffs</a> for what happens after routing (and what happens when routing was wrong).</li>
-<li>Read <a href="orchestrator-worker.html">orchestrator-worker</a> — your router is effectively a lightweight orchestrator.</li>
+<li>Read <a href="orchestrator-worker.html">orchestrator-worker</a> - your router is effectively a lightweight orchestrator.</li>
 </ul>
 <!-- further-reading -->
 <div class="further-reading">
 <h2>Further reading</h2>
 <ul>
-<li><span class="resource-meta">Docs</span><a href="https://microsoft.github.io/autogen/docs/tutorial/introduction" target="_blank" rel="noopener nofollow">AutoGen — Multi-agent conversation</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://docs.crewai.com/concepts/crews" target="_blank" rel="noopener nofollow">CrewAI — Crews</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://microsoft.github.io/autogen/docs/tutorial/introduction" target="_blank" rel="noopener nofollow">AutoGen - Multi-agent conversation</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://docs.crewai.com/concepts/crews" target="_blank" rel="noopener nofollow">CrewAI - Crews</a></li>
 <li><span class="resource-meta">Paper</span><a href="https://arxiv.org/abs/2308.00352" target="_blank" rel="noopener nofollow">MetaGPT (paper)</a></li>
 <li><span class="resource-meta">Paper</span><a href="https://arxiv.org/abs/2307.07924" target="_blank" rel="noopener nofollow">ChatDev (paper)</a></li>
 </ul>
@@ -341,8 +341,8 @@
   if (!bar || bar.dataset.navInit) return;
   bar.dataset.navInit = '1';
 
-  const OPEN_DELAY = 120;   // ms — hover intent
-  const CLOSE_DELAY = 450;  // ms — forgiving close
+  const OPEN_DELAY = 120;   // ms - hover intent
+  const CLOSE_DELAY = 450;  // ms - forgiving close
   const isMobile = () => window.matchMedia('(max-width: 960px)').matches;
 
   const hamb = bar.querySelector('.hamburger');

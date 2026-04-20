@@ -255,7 +255,7 @@
 <li>The question is posed.</li>
 <li>Agent A is assigned one side (e.g., "argue yes").</li>
 <li>Agent B is assigned the opposite side, or the "find the flaws" role.</li>
-<li>They exchange arguments for N rounds (usually 2–4).</li>
+<li>They exchange arguments for N rounds (usually 2-4).</li>
 <li>A judge reads the full transcript and either picks a side or synthesizes.</li>
 </ol>
 
@@ -286,7 +286,7 @@
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 266);
   const rc = sketch.rc(svg);
-  sketch.title(svg, 450, 30, 'Debate\'s 3–5× cost: when it\'s worth it');
+  sketch.title(svg, 450, 30, 'Debate\'s 3-5× cost: when it\'s worth it');
   sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 186,
     left: {title: 'Worth it', items: [
       'High-stakes decisions',
@@ -311,8 +311,8 @@
 <li><strong>Both agents converge.</strong> Models are trained to be compliant; if the "opposing" agent agrees instead of pushing back, you got no value. Fix: harden the personas, require each agent to find at least one flaw per round.</li>
 <li><strong>Shallow arguments.</strong> If the model doesn't have depth on the topic, both agents produce generic talking points. Fix: give them tools (search, retrieval) so they can find real evidence.</li>
 <li><strong>Weak judge.</strong> A judge that rubber-stamps one side undoes the entire mechanism. Fix: prompt the judge to explicitly weigh each argument and cite specific points.</li>
-<li><strong>Cost.</strong> 3–5× single-agent spend. Use only where warranted.</li>
-<li><strong>Endless debate.</strong> No stop condition; agents bicker forever. Fix: hard cap at 3–4 rounds.</li>
+<li><strong>Cost.</strong> 3-5× single-agent spend. Use only where warranted.</li>
+<li><strong>Endless debate.</strong> No stop condition; agents bicker forever. Fix: hard cap at 3-4 rounds.</li>
 </ul>
 
 <h2>Prompting notes</h2>
@@ -332,8 +332,8 @@
 <div class="further-reading">
 <h2>Further reading</h2>
 <ul>
-<li><span class="resource-meta">Docs</span><a href="https://microsoft.github.io/autogen/docs/tutorial/introduction" target="_blank" rel="noopener nofollow">AutoGen — Multi-agent conversation</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://docs.crewai.com/concepts/crews" target="_blank" rel="noopener nofollow">CrewAI — Crews</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://microsoft.github.io/autogen/docs/tutorial/introduction" target="_blank" rel="noopener nofollow">AutoGen - Multi-agent conversation</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://docs.crewai.com/concepts/crews" target="_blank" rel="noopener nofollow">CrewAI - Crews</a></li>
 <li><span class="resource-meta">Paper</span><a href="https://arxiv.org/abs/2308.00352" target="_blank" rel="noopener nofollow">MetaGPT (paper)</a></li>
 <li><span class="resource-meta">Paper</span><a href="https://arxiv.org/abs/2307.07924" target="_blank" rel="noopener nofollow">ChatDev (paper)</a></li>
 </ul>
@@ -346,8 +346,8 @@
   if (!bar || bar.dataset.navInit) return;
   bar.dataset.navInit = '1';
 
-  const OPEN_DELAY = 120;   // ms — hover intent
-  const CLOSE_DELAY = 450;  // ms — forgiving close
+  const OPEN_DELAY = 120;   // ms - hover intent
+  const CLOSE_DELAY = 450;  // ms - forgiving close
   const isMobile = () => window.matchMedia('(max-width: 960px)').matches;
 
   const hamb = bar.querySelector('.hamburger');

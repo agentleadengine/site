@@ -288,7 +288,7 @@
 <p>An agent can (and should) estimate its own confidence on any action: "I'm 95% sure this is the right refund" vs "I'm only 40% sure this is the right category." Route by threshold:</p>
 <ul>
 <li>&gt;90% confidence → auto-execute (if the action is reversible or low-stakes).</li>
-<li>50–90% confidence → queue for human approval.</li>
+<li>50-90% confidence → queue for human approval.</li>
 <li>&lt;50% confidence → return to user for clarification.</li>
 </ul>
 <p>Track the calibration: when the agent says 90%, how often is it actually right? Adjust thresholds with real production data.</p>
@@ -296,7 +296,7 @@
 <h2>A worked example: customer refunds</h2>
 <ul>
 <li><strong>Auto-approve</strong> refunds under $50 with clear policy match (70% of cases).</li>
-<li><strong>Pre-action approval</strong> for $50–$500 refunds (25% of cases; human clicks to execute).</li>
+<li><strong>Pre-action approval</strong> for $50-$500 refunds (25% of cases; human clicks to execute).</li>
 <li><strong>Async handoff to a human</strong> for refunds over $500 or policy-unclear cases (5% of cases).</li>
 </ul>
 <p>Agent handles 95% of volume with a human touching 30% of dollars. One human reviewer can keep up with thousands of tickets a day because most cases are pre-approved low-risk.</p>
@@ -330,10 +330,10 @@
 <div class="further-reading">
 <h2>Further reading</h2>
 <ul>
-<li><span class="resource-meta">Blog</span><a href="https://hamel.dev/blog/posts/field-guide/" target="_blank" rel="noopener nofollow">Hamel Husain — LLMs in production</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://docs.smith.langchain.com/" target="_blank" rel="noopener nofollow">LangSmith — Observability</a></li>
-<li><span class="resource-meta">Docs</span><a href="https://langfuse.com/docs" target="_blank" rel="noopener nofollow">Langfuse — Open source LLM observability</a></li>
-<li><span class="resource-meta">Repo</span><a href="https://github.com/traceloop/openllmetry" target="_blank" rel="noopener nofollow">OpenLLMetry — Telemetry</a></li>
+<li><span class="resource-meta">Blog</span><a href="https://hamel.dev/blog/posts/field-guide/" target="_blank" rel="noopener nofollow">Hamel Husain - LLMs in production</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://docs.smith.langchain.com/" target="_blank" rel="noopener nofollow">LangSmith - Observability</a></li>
+<li><span class="resource-meta">Docs</span><a href="https://langfuse.com/docs" target="_blank" rel="noopener nofollow">Langfuse - Open source LLM observability</a></li>
+<li><span class="resource-meta">Repo</span><a href="https://github.com/traceloop/openllmetry" target="_blank" rel="noopener nofollow">OpenLLMetry - Telemetry</a></li>
 </ul>
 </div>
 <div class="prev-next"><a href="safety.html" class="prev"><div class="label">← Previous</div><div class="title">Safety + guardrails</div></a><a href="../patterns/research-agent.html" class="next"><div class="label">Next →</div><div class="title">Research agent</div></a></div></div></div><footer><div class="container">
@@ -344,8 +344,8 @@
   if (!bar || bar.dataset.navInit) return;
   bar.dataset.navInit = '1';
 
-  const OPEN_DELAY = 120;   // ms — hover intent
-  const CLOSE_DELAY = 450;  // ms — forgiving close
+  const OPEN_DELAY = 120;   // ms - hover intent
+  const CLOSE_DELAY = 450;  // ms - forgiving close
   const isMobile = () => window.matchMedia('(max-width: 960px)').matches;
 
   const hamb = bar.querySelector('.hamburger');

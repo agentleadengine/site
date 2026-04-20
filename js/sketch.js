@@ -1,5 +1,5 @@
 /*
- * sketch.js — Blueprint × Purple Marker on Cream diagram library.
+ * sketch.js - Blueprint × Purple Marker on Cream diagram library.
  *
  * Usage inside any HTML page:
  *
@@ -417,7 +417,7 @@
   }
 
   // ---- createSvg: ensure/resize an SVG inside a wrapper -----------------
-  // If the wrapper already has a data-viewbox, that takes precedence — it lets
+  // If the wrapper already has a data-viewbox, that takes precedence - it lets
   // authors resize a diagram by changing only the wrapper attribute without
   // hunting down the createSvg() call in the inline script.
   function createSvg(wrapper, w, h) {
