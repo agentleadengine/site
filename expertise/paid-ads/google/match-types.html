@@ -274,6 +274,36 @@ window.addEventListener('sketch:ready', function(){
 
 <h2>The hybrid approach</h2>
 <p>Run exact match for your proven high-ROI keywords (tight control) + broad match with smart bidding for discovery (find new queries). Exact match gets priority when both could trigger.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Match types by role in the account');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Match type', w: 200},
+    {title: 'Role', w: 300},
+    {title: 'Risk', w: 300}
+  ], rows: [
+    ['Exact [brackets]', 'Proven winners, tight control', 'Low volume, plateau risk'],
+    ['Phrase "quotes"', 'Moderate control + variation', 'Can drift with query intent'],
+    ['Broad (no marks)', 'Discovery + smart bidding', 'Burns budget without negatives'],
+    ['Negative -term', 'Active pruning of broad', 'Requires weekly review']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Run exact match for proven high-ROI terms (tight control), broad match + smart bidding for discovery (find new queries the algorithm finds profitable)</li>
+<li>Never run broad match without active negative-keyword management, weekly search terms review is the price of broad's discovery upside</li>
+<li>Match the bid strategy to the match type, smart bidding compensates for broad's noise, manual doesn't, the combination matters</li>
+<li>Structure ad groups by match type + theme so your exact terms don't compete with your own broad terms in the auction</li>
+<li>When broad produces a winning query, promote it to phrase or exact in a separate ad group, that locks in the win at tighter control</li>
+</ul>
+
 <div class="prev-next"><a href="keyword-research.html" class="prev"><div class="label">← Previous</div><div class="title">Keyword research</div></a><a href="quality-score.html" class="next"><div class="label">Next →</div><div class="title">Quality Score</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

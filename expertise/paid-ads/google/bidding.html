@@ -280,6 +280,37 @@ window.addEventListener('sketch:ready', function(){
 
 <h2>Bid adjustments</h2>
 <p>Adjust bids by device, location, time of day, audience. Useful for narrowing or scaling. Less needed with smart bidding (it does this automatically).</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Which bid strategy for your data volume');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Conversions last 30d', w: 220},
+    {title: 'Strategy', w: 280},
+    {title: 'Why', w: 300}
+  ], rows: [
+    ['< 15', 'Manual CPC', 'Not enough data to train algorithm'],
+    ['15-30', 'Maximize Conversions', 'Volume first, cost second'],
+    ['30-100', 'Target CPA', 'Algorithm has signal to optimize'],
+    ['100+', 'Target ROAS', 'Rich data, revenue-weighted optimization'],
+    ['Portfolio + multiple campaigns', 'Portfolio bid strategies', 'Shared learning across campaigns']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Match bid strategy to conversion volume, below 30 conversions/month smart bidding can't optimize, forcing it wastes budget</li>
+<li>Start new campaigns on Maximize Conversions until you have 30+ conversions, then migrate to Target CPA or ROAS</li>
+<li>Don't change bid strategy more than once a month, each change resets the algorithm's learning phase</li>
+<li>For high-spend accounts, portfolio bid strategies let multiple campaigns share learning, use them once you have 3+ stable campaigns</li>
+<li>Use bid adjustments only for persistent patterns (this device under-performs, this geo over-performs), not for week-over-week noise</li>
+</ul>
+
 <div class="prev-next"><a href="rsa-copy.html" class="prev"><div class="label">← Previous</div><div class="title">Responsive Search Ad copy</div></a><a href="pmax.html" class="next"><div class="label">Next →</div><div class="title">Performance Max</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

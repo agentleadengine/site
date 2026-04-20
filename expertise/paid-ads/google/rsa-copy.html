@@ -290,6 +290,33 @@ window.addEventListener('sketch:ready', function(){
 <li>Missing CTA headlines</li>
 <li>No keyword match in any headline</li>
 </ul>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'RSA headline mix, 15 headlines covering 5 angles');
+  sketch.numberedSteps(svg, rc, {x: 40, y: 60, w: 820, stepH: 30, items: [
+    'Benefit: 3 variants ("Cut CS hours 60%", "Close 2x more deals")',
+    'Keyword-match: 3 variants (literal query back at the searcher)',
+    'Proof: 3 variants ("4,200+ teams", "Used by Stripe + Figma")',
+    'Differentiator: 3 variants ("Only CS tool for PLG")',
+    'CTA: 3 variants ("Start free trial", "Book a demo today")'
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Write 12-15 headlines per RSA, not 3-5, more headlines give the algorithm more combinations to test</li>
+<li>Cover 5 angles (benefit, keyword-match, proof, differentiator, CTA), all-benefit headlines leave the algorithm with nothing to mix</li>
+<li>Pin headline 1 to a keyword-match variant to anchor the relevance signal, let the others rotate freely</li>
+<li>Avoid headlines that only work with a specific description, every headline must stand alone because the algorithm mixes freely</li>
+<li>Review asset performance in the RSA report monthly, replace low-performance headlines, keep the stack fresh</li>
+</ul>
+
 <div class="prev-next"><a href="quality-score.html" class="prev"><div class="label">← Previous</div><div class="title">Quality Score</div></a><a href="bidding.html" class="next"><div class="label">Next →</div><div class="title">Bidding strategies</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

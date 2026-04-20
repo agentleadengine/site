@@ -282,6 +282,42 @@ window.addEventListener('sketch:ready', function(){
 <li>Slow mobile load time</li>
 <li>No ad extensions</li>
 </ul>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Low quality score vs high, cost impact');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'QS 3-4 (pay the tax)', items: [
+      'Generic landing page',
+      'Keyword not in headline',
+      'Slow mobile load',
+      'Mismatched copy/page',
+      'Effective CPC 2x higher'
+    ]},
+    right: {title: 'QS 8-10 (cheap + top position)', items: [
+      'Dedicated landing page per ad group',
+      'Keyword in headline, URL, body',
+      'Mobile loads under 2s',
+      'Ad → page message matches',
+      'Effective CPC 50% lower'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Create a dedicated landing page per ad group, sending everyone to your homepage is the single biggest quality score leak</li>
+<li>Include the main keyword in the page headline, URL, and first paragraph, Google rewards match between query and page</li>
+<li>Fix mobile load time first, it affects both quality score and real conversion, below 2 seconds is the target</li>
+<li>Group keywords tightly by theme (3-20 per ad group, not 50), tight groups let ad copy speak to the specific query intent</li>
+<li>Use all available ad extensions (sitelinks, callouts, structured snippets), they lift quality score and CTR without added cost</li>
+</ul>
+
 <div class="prev-next"><a href="match-types.html" class="prev"><div class="label">← Previous</div><div class="title">Match types</div></a><a href="rsa-copy.html" class="next"><div class="label">Next →</div><div class="title">Responsive Search Ad copy</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

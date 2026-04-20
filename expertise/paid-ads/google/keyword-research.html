@@ -269,6 +269,42 @@ window.addEventListener('sketch:ready', function(){
 
 <h2>Geographic modifiers</h2>
 <p>For local services, "[service] + [city]" or "[service] near me" are usually the highest ROI keywords. Bid on them specifically.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Volume vs intent, buy the right thing');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'High volume, low intent', items: [
+      '"project management" (generic)',
+      '50,000 monthly searches',
+      '1% conversion rate',
+      '$8 CPC',
+      'Burns budget, looks busy'
+    ]},
+    right: {title: 'Low volume, high intent', items: [
+      '"best project management for agencies 2026"',
+      '400 monthly searches',
+      '10% conversion rate',
+      '$12 CPC',
+      '4x cheaper per customer'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Buy intent, not volume, a high-volume generic keyword at 1% conversion costs more per customer than a niche 10%-conversion term</li>
+<li>Start with bottom-funnel queries (with "best", "review", "pricing", brand + competitor names), expand upward only after the basics profit</li>
+<li>Review the search terms report weekly, add negatives for irrelevant queries, broad match + smart bidding needs active negative-list management</li>
+<li>For local services, always include geographic modifiers as their own keywords, "[service] near me" and "[service] + [city]" are the highest ROI queries</li>
+<li>Don't run all keywords in one ad group, group by intent and theme so ad copy + landing page can match the query tightly</li>
+</ul>
+
 <div class="prev-next"><a href="search-vs-display.html" class="prev"><div class="label">← Previous</div><div class="title">Search vs Display vs Pmax</div></a><a href="match-types.html" class="next"><div class="label">Next →</div><div class="title">Match types</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

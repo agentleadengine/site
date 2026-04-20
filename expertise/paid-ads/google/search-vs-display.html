@@ -273,6 +273,37 @@ window.addEventListener('sketch:ready', function(){
 
 <h2>The Pmax warning</h2>
 <p>Performance Max is a black box. You lose granular control. Works when your product is clear and feed is good. Fails when your data is noisy or your product has complex positioning.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Which Google format for which business');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Business type', w: 260},
+    {title: 'Primary format', w: 300},
+    {title: 'Secondary / avoid', w: 240}
+  ], rows: [
+    ['B2B SaaS, services', 'Search (high intent)', 'Display = avoid initially'],
+    ['E-commerce with catalog', 'Pmax + Search brand', 'Standard Display = noise'],
+    ['Brand / reach goal', 'YouTube + Display', 'Search alone too narrow'],
+    ['Local service', 'Search + Local Services', 'Display = waste'],
+    ['High-consideration info', 'Search + YouTube TrueView', 'Display retargeting only']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>For B2B and services, start with Search only, Display and Pmax add noise before your Search is profitable</li>
+<li>Run Pmax only when your product feed is clean and conversion tracking is solid, garbage in guarantees garbage out on black-box algorithms</li>
+<li>Keep a Search brand-defense campaign live regardless of other campaigns, it's the cheapest ROI you'll ever run</li>
+<li>Use Display primarily for retargeting, not prospecting, cold Display traffic converts 3-5x worse than Search or Meta</li>
+<li>Evaluate each format's incremental contribution, if Display ROAS only looks good because it's taking credit for Search conversions, it's incremental zero</li>
+</ul>
+
 <div class="prev-next"><a href="overview.html" class="prev"><div class="label">← Previous</div><div class="title">Google Ads overview</div></a><a href="keyword-research.html" class="next"><div class="label">Next →</div><div class="title">Keyword research</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

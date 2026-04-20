@@ -282,6 +282,42 @@ window.addEventListener('sketch:ready', function(){
 <li>Starting before conversion tracking is solid</li>
 <li>Treating it like set-and-forget (it still needs iteration)</li>
 </ul>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Pmax: ready vs not ready');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Not ready (black-box burns cash)', items: [
+      'No validated feed quality',
+      'Conversion tracking noisy',
+      'Product positioning unclear',
+      'Fewer than 15 asset variations',
+      'No account-level negatives'
+    ]},
+    right: {title: 'Ready (black-box prints money)', items: [
+      'Clean product feed, all fields populated',
+      '30+ conversions/month baseline',
+      'Simple category, clear product',
+      '30+ headlines + descriptions + images',
+      'Negative list curated weekly'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Don't run Pmax as your first campaign, it's a black box that amplifies both wins and losses, run Search first to validate unit economics</li>
+<li>Feed Pmax 30+ asset variations (headlines, descriptions, images, video), under-feeding the algorithm caps its output</li>
+<li>Maintain account-level negative keywords aggressively, Pmax burns budget on brand + irrelevant queries without them</li>
+<li>Clean your product feed before launch, missing GTINs, bad titles, no images all directly cap Pmax performance</li>
+<li>Review Pmax insights weekly, it's "automated" not "set-and-forget", the algorithm drifts without supervision</li>
+</ul>
+
 <div class="prev-next"><a href="bidding.html" class="prev"><div class="label">← Previous</div><div class="title">Bidding strategies</div></a><a href="../tiktok/overview.html" class="next"><div class="label">Next →</div><div class="title">TikTok Ads overview</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
