@@ -284,6 +284,31 @@ window.addEventListener('sketch:ready', function(){
 </ul>
 
 <p style="margin-top:40px;">Related: <a href="pnl-literacy.html">P&amp;L literacy</a> · <a href="unit-economics.html">Unit economics</a> · <a href="../strategy/okrs.html">OKRs without the cult</a></p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'The 3 numbers every operator should know cold');
+  sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 42, layers: [
+    {label: 'Cash balance + runway months', sub: 'how long can you operate'},
+    {label: 'Gross margin + trend', sub: 'business model health'},
+    {label: 'Rev per head + trend', sub: 'operational leverage'}
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Know your 3 numbers cold without looking, leaders who need a spreadsheet to recall them can't operate from them</li>
+<li>Share the 3 numbers with the team monthly, shared understanding drives better decisions across functions</li>
+<li>Track month-over-month trends on all three, level tells you state, trend tells you direction</li>
+<li>Set targets for each that roll up to the annual plan, without targets the numbers are just observations</li>
+<li>When one number drifts, investigate before the quarterly review, delayed diagnosis compounds</li>
+</ul>
+
 <div class="prev-next"><a href="../people/firing-well.html" class="prev"><div class="label">← Previous</div><div class="title">Firing well</div></a><a href="pnl-literacy.html" class="next"><div class="label">Next →</div><div class="title">P&L literacy</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

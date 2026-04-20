@@ -296,6 +296,37 @@ window.addEventListener('sketch:ready', function(){
 </ul>
 
 <p style="margin-top:40px;">Related: <a href="../sales/negotiation.html">Pricing + negotiation</a> · <a href="unit-economics.html">Unit economics</a> · <a href="../sales/funnel-math.html">Funnel math</a></p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Pricing models, match to business type');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Model', w: 240},
+    {title: 'Fits', w: 280},
+    {title: 'Trade-offs', w: 280}
+  ], rows: [
+    ['Per-seat', 'Team SaaS, predictable usage', 'Caps expansion as team size hits ceiling'],
+    ['Usage-based', 'API, infrastructure, variable value', 'Revenue harder to forecast'],
+    ['Tiered flat', 'Simple products, price-sensitive market', 'Less expansion than usage-based'],
+    ['Outcome-based', 'Performance marketing, consulting', 'Requires measurement infra'],
+    ['Hybrid (seat + usage)', 'Modern PLG SaaS', 'More complex to explain']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Match pricing model to how value scales for the customer, per-seat breaks when value isn't per-user</li>
+<li>Raise prices for new customers before existing, price-test on new first, grandfather current customers</li>
+<li>Use hybrid pricing (base + usage) for modern PLG SaaS, it produces best-in-class NRR</li>
+<li>Review pricing annually, value delivered grows and pricing should reflect it</li>
+<li>Know your price elasticity, "can I double price and not double churn?", run small tests to find out</li>
+</ul>
+
 <div class="prev-next"><a href="unit-economics.html" class="prev"><div class="label">← Previous</div><div class="title">Unit economics</div></a><a href="cash-flow.html" class="next"><div class="label">Next →</div><div class="title">Cash flow forecasting</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

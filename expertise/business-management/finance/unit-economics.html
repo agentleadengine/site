@@ -303,6 +303,42 @@ where
 </ul>
 
 <p style="margin-top:40px;">Related: <a href="pricing.html">Pricing frameworks</a> · <a href="../sales/funnel-math.html">Funnel math</a> · <a href="../sales/churn-diagnostics.html">Churn diagnostics</a></p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Unit economics, healthy vs broken');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Broken', items: [
+      'LTV:CAC below 3:1',
+      'Payback period over 24 months',
+      'Gross margin below 50%',
+      'Churn masking true LTV',
+      'More revenue = more losses'
+    ]},
+    right: {title: 'Healthy', items: [
+      'LTV:CAC above 3:1',
+      'Payback period under 12 months',
+      'Gross margin above 70%',
+      'Observed LTV matches model',
+      'More revenue = more profit'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Measure unit economics per segment, not blended, segments can have 5-10x differences in LTV:CAC</li>
+<li>Fix unit economics before scaling, pouring spend into broken economics compounds the loss</li>
+<li>Use observed LTV, not projected, projections hide the math that breaks reality</li>
+<li>Review unit economics quarterly with the team, shared visibility drives better acquisition decisions</li>
+<li>Kill segments with permanently broken unit economics even when volume looks impressive, volume doesn't fix broken math</li>
+</ul>
+
 <div class="prev-next"><a href="pnl-literacy.html" class="prev"><div class="label">← Previous</div><div class="title">P&L literacy</div></a><a href="pricing.html" class="next"><div class="label">Next →</div><div class="title">Pricing frameworks</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

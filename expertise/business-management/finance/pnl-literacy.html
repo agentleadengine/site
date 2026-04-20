@@ -296,6 +296,33 @@ window.addEventListener('sketch:ready', function(){
 </ul>
 
 <p style="margin-top:40px;">Related: <a href="three-numbers.html">The three numbers</a> · <a href="unit-economics.html">Unit economics</a> · <a href="cash-flow.html">Cash flow forecasting</a></p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'P&L literacy, the 5 lines that matter most');
+  sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 34, layers: [
+    {label: 'Revenue', sub: 'top line, what customers paid'},
+    {label: 'Gross profit = Revenue − COGS', sub: 'margin on the core product'},
+    {label: 'Operating expenses', sub: 'people + tools + marketing'},
+    {label: 'Operating income', sub: 'gross profit − opex, the business'},
+    {label: 'Net income', sub: 'after interest + taxes, the bottom line'}
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Review your P&L monthly with the team, not just quarterly, drift shows up in months not quarters</li>
+<li>Understand gross margin vs operating margin separately, each tells you a different story about health</li>
+<li>Compare month-over-month and year-over-year, absolute numbers lie without trend</li>
+<li>Know what drives each line, "what would move revenue 10%, what would move opex 10%", those are your levers</li>
+<li>Teach P&L literacy to the whole team, leaders who can't read their own P&L make expensive mistakes</li>
+</ul>
+
 <div class="prev-next"><a href="three-numbers.html" class="prev"><div class="label">← Previous</div><div class="title">The three numbers</div></a><a href="unit-economics.html" class="next"><div class="label">Next →</div><div class="title">Unit economics</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

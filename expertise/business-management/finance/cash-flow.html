@@ -305,6 +305,42 @@ Ending cash:         610   640   590   960   ...
 </ul>
 
 <p style="margin-top:40px;">Related: <a href="pnl-literacy.html">P&amp;L literacy</a> · <a href="three-numbers.html">The three numbers</a> · <a href="../risk/risk-management.html">Risk management</a></p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Cash flow vs P&L, different stories');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Profitable P&L, bad cash flow', items: [
+      'Net income: $500K',
+      'Customers pay 60 days late',
+      'Inventory building up',
+      'Cash balance dropping',
+      'Can go bankrupt while "profitable"'
+    ]},
+    right: {title: 'Healthy cash flow', items: [
+      'Revenue collected in advance',
+      'Short receivables cycle',
+      'Low inventory tie-up',
+      'Cash balance growing',
+      'Can invest without borrowing'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Build a 13-week rolling cash flow forecast, weekly cadence catches problems before they become crises</li>
+<li>Monitor DSO (days sales outstanding), every day of DSO reduction frees working capital immediately</li>
+<li>Keep 6-12 months of operating expenses in reserve, more for volatile businesses, less at mature scale</li>
+<li>Model cash flow under stress scenarios (30% revenue drop, customer payment delay), know your breaking point</li>
+<li>Don't confuse profit with cash, profitable businesses go bankrupt from cash crunches, not from losses</li>
+</ul>
+
 <div class="prev-next"><a href="pricing.html" class="prev"><div class="label">← Previous</div><div class="title">Pricing frameworks</div></a><a href="../strategy/okrs.html" class="next"><div class="label">Next →</div><div class="title">OKRs without the cult</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>
