@@ -235,7 +235,44 @@ window.addEventListener('sketch:ready', function(){
     ['Geo-concentrated', 'Dense one city first; scale geo by geo']
   ]});
 });
-</script><ul><li>Pick a narrow niche</li><li>Fake one side if needed (manual concierge, curated inventory)</li><li>Grow one side first</li></ul><h2>Liquidity metrics</h2><ul><li>Match rate</li><li>Time to match</li><li>Supply/demand balance</li></ul><h2>Network effects</h2><p>Each new user makes the product more valuable for others, the moat.</p><div class="prev-next"></div></div></div><footer><div class="container">
+</script><ul><li>Pick a narrow niche</li><li>Fake one side if needed (manual concierge, curated inventory)</li><li>Grow one side first</li></ul><h2>Liquidity metrics</h2><ul><li>Match rate</li><li>Time to match</li><li>Supply/demand balance</li></ul><h2>Network effects</h2><p>Each new user makes the product more valuable for others, the moat.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Marketplace cold-start, pick a side to subsidize');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Common failure', items: [
+      'Try to balance both sides equally',
+      'Supply has nothing to serve',
+      'Demand has nothing to buy',
+      'Both sides churn fast',
+      'Marketplace never reaches liquidity'
+    ]},
+    right: {title: 'Winning approach', items: [
+      'Pick the hard side and subsidize aggressively',
+      'Supply-first: pay / incentivize supply',
+      'Create density in one geography first',
+      'Focus ruthlessly on a narrow segment',
+      'Liquidity compounds once critical mass hits'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Pick one side to subsidize heavily at launch, trying to balance both sides at once prevents either from reaching liquidity</li>
+<li>Focus on a narrow geography or segment, marketplace liquidity compounds locally, spreading thin kills density</li>
+<li>Measure liquidity (not signups), "% of demand matched within X time" is the metric that predicts marketplace survival</li>
+<li>Once one side has critical mass, the other side pulls in naturally, be patient through the cold-start phase</li>
+<li>Network effects are the moat, but only once you reach liquidity, pre-liquidity "marketplace" is just two sides of a chat app</li>
+</ul>
+
+<div class="prev-next"></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){
