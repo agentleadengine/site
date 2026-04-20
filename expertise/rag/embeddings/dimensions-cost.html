@@ -279,6 +279,24 @@ window.addEventListener('sketch:ready', function(){
 </ul>
 
 <h2>Quantization</h2>
+<div class="sketch" data-viewbox="0 0 900 240"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 240);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Quantization tiers');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Precision', w: 240},
+    {title: 'Storage / quality', w: 560}
+  ], rows: [
+    ['float32 (default)', 'Full; 4 bytes/dim'],
+    ['float16', '50% smaller; minimal quality loss'],
+    ['int8', '75% smaller; 1–5% quality loss'],
+    ['binary', '32× smaller; 5–15% loss, reranker recovers']
+  ]});
+});
+</script>
 <p>Beyond dimension reduction, you can reduce precision:</p>
 <ul>
   <li><strong>float32 → float16</strong>: 50% storage savings, minimal quality loss</li>
@@ -307,7 +325,12 @@ window.addEventListener('sketch:ready', function(){
 <h2>The operational cost</h2>
 <p>Re-embedding 100M vectors is not free. If you pick a 3072-dim model and later want to change, budget days of compute time. Build your pipeline so you can swap models without full reindexes where possible, store raw chunks separately from their vectors, so you can re-embed without re-parsing.</p>
 
-<p style="margin-top:40px;">Next: <a href="fine-tuning.html">Fine-tuning embeddings</a>.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>Below 1M vectors: skip this page; pick a decent default.</li>
+<li>At 10M+ vectors: test MRL truncation + int8 quantization.</li>
+<li>At 100M+: combine MRL + binary quantization + reranker recovery.</li>
+</ul>
 <div class="prev-next"><a href="closed-vs-open.html" class="prev"><div class="label">← Previous</div><div class="title">Closed vs open models</div></a><a href="fine-tuning.html" class="next"><div class="label">Next →</div><div class="title">Fine-tuning embeddings</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

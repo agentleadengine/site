@@ -270,6 +270,28 @@ window.addEventListener('sketch:ready', function(){
 <p>These failure modes are why pure vector search underperforms. Hybrid search (dense + sparse) exists specifically to cover embedding weaknesses.</p>
 
 <h2>Dense vs sparse</h2>
+<div class="sketch" data-viewbox="0 0 900 240"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 240);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Dense vs sparse embeddings');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 160,
+    left: {title: 'Dense (neural)', items: [
+      'Continuous vectors, ~384–3072 dims',
+      'Strong on semantic similarity',
+      'Weak on exact matches + rare terms',
+      'Model quality caps retrieval'
+    ]},
+    right: {title: 'Sparse (BM25, SPLADE)', items: [
+      'Mostly zeros, one dim per term',
+      'Strong on exact words + acronyms',
+      'Weak on synonyms / paraphrases',
+      'Free / computational']}
+  });
+});
+</script>
 <ul>
   <li><strong>Dense embeddings</strong> (what most people mean): continuous vectors from a neural model. Good at semantic similarity, weak at exact matches.</li>
   <li><strong>Sparse embeddings</strong> (BM25, SPLADE): high-dimensional vectors with mostly zero values, where each dimension corresponds to a term or learned token. Good at exact matches and keyword-heavy queries.</li>
@@ -311,7 +333,12 @@ window.addEventListener('sketch:ready', function(){
   <li>Are they missing entirely? The relevant chunk wasn't in your index (chunking or ingestion problem)</li>
 </ol>
 
-<p style="margin-top:40px;">Next: <a href="picking-a-model.html">Picking an embedding model</a>.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>Check which similarity metric your model expects and use that one.</li>
+<li>When retrieval fails, diagnose by looking at the top-k, not by swapping models randomly.</li>
+<li>Read <a href="picking-a-model.html">picking an embedding model</a> next.</li>
+</ul>
 <div class="prev-next"><a href="../chunking/chunking-code.html" class="prev"><div class="label">← Previous</div><div class="title">Chunking code</div></a><a href="picking-a-model.html" class="next"><div class="label">Next →</div><div class="title">Picking an embedding model</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

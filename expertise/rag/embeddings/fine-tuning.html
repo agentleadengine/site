@@ -276,6 +276,21 @@ window.addEventListener('sketch:ready', function(){
 <p>For most domain fine-tuning, you want at least 1000-10000 query-document pairs. More is better.</p>
 
 <h2>The synthetic data pipeline</h2>
+<div class="sketch" data-viewbox="0 0 900 240"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 240);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Synthetic query generation for fine-tuning');
+  sketch.numberedSteps(svg, rc, {direction: 'h', x: 30, y: 80, w: 840, items: [
+    {title: 'Sample chunks', sub: '5K–10K from corpus'},
+    {title: 'LLM generates queries', sub: '3 per chunk'},
+    {title: 'Pairs accumulated', sub: '15K–30K total'},
+    {title: 'Fine-tune', sub: 'on the pairs'}
+  ]});
+});
+</script>
 <p>Common approach when you don't have natural query data:</p>
 <ol>
   <li>Sample 5000-10000 chunks from your corpus</li>
@@ -331,6 +346,13 @@ window.addEventListener('sketch:ready', function(){
 </ol>
 
 <p>Don't fine-tune because it's cool. Fine-tune because measurement says you need to.</p>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Prove your baseline is underperforming on your eval set before fine-tuning.</li>
+<li>If you do fine-tune, start with a synthetic query dataset, then iterate with real logs.</li>
+<li>Use LoRA / PEFT to keep GPU costs reasonable.</li>
+</ul>
 
 <p style="margin-top:40px;">Next: <a href="../vectors/overview.html">Vector database overview</a>.</p>
 <div class="prev-next"><a href="dimensions-cost.html" class="prev"><div class="label">← Previous</div><div class="title">Dimensions, cost, and MRL</div></a><a href="../vectors/overview.html" class="next"><div class="label">Next →</div><div class="title">Vector database overview</div></a></div></div></div><footer><div class="container">

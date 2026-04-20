@@ -285,6 +285,23 @@ window.addEventListener('sketch:ready', function(){
 </ul>
 
 <h2>The cost break-even</h2>
+<div class="sketch" data-viewbox="0 0 900 240"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 240);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Closed vs open: the break-even');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Corpus size', w: 240},
+    {title: 'Usually cheaper', w: 560}
+  ], rows: [
+    ['< 10M chunks', 'API; not worth ops time'],
+    ['10M–100M chunks', 'Depends, model a 1-yr TCO'],
+    ['> 100M + frequent reindex', 'Self-hosted wins on cost']
+  ]});
+});
+</script>
 <p>Rough rule of thumb:</p>
 <ul>
   <li><strong>Below ~10M chunks total:</strong> API is almost always cheaper. You're spending $100-500/month; not worth ops time.</li>
@@ -326,7 +343,12 @@ window.addEventListener('sketch:ready', function(){
   <li>Regulated: commercial with dedicated deployment, or self-hosted open-source.</li>
 </ul>
 
-<p style="margin-top:40px;">Next: <a href="dimensions-cost.html">Dimensions, cost, and MRL</a>.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>Default to API until corpus size or compliance forces otherwise.</li>
+<li>Model 1-year TCO both ways before making the self-host call.</li>
+<li>Keep embedding_model_version in metadata so switching is possible later.</li>
+</ul>
 <div class="prev-next"><a href="picking-a-model.html" class="prev"><div class="label">← Previous</div><div class="title">Picking an embedding model</div></a><a href="dimensions-cost.html" class="next"><div class="label">Next →</div><div class="title">Dimensions, cost, and MRL</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

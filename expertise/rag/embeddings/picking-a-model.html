@@ -275,6 +275,26 @@ window.addEventListener('sketch:ready', function(){
 <p>General-purpose models work for general content. For code, law, medicine, or finance, domain-specific or domain-aware models (or fine-tuned ones) beat general models significantly.</p>
 
 <h2>My current default picks</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Default picks by use case');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Use case', w: 220},
+    {title: 'Default', w: 580}
+  ], rows: [
+    ['General prose, production', 'text-embedding-3-large (OpenAI)'],
+    ['Cost-sensitive', 'text-embedding-3-small'],
+    ['Multilingual', 'Cohere embed-v3 / BGE-M3'],
+    ['Self-hosted, strong', 'BGE-M3 or nomic-embed-v1.5'],
+    ['Code-heavy', 'Voyage Code'],
+    ['Legal / finance / medical', 'Voyage-law-2 / -finance-2 / BioBERT']
+  ]});
+});
+</script>
 
 <h3>For general prose, production</h3>
 <ul>
@@ -338,7 +358,12 @@ window.addEventListener('sketch:ready', function(){
 
 <p>Build the infrastructure to switch embedding models without rebuilding everything else. Treat embedding_model_version as first-class metadata.</p>
 
-<p style="margin-top:40px;">Next: <a href="closed-vs-open.html">Closed vs open embedding models</a>.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>Run the 30-query eval protocol before committing to a model; it's an afternoon that pays for itself.</li>
+<li>Track embedding_model_version on every chunk so future upgrades aren't blocked.</li>
+<li>Try 3-large before assuming 3-small is enough.</li>
+</ul>
 <div class="prev-next"><a href="what-are-embeddings.html" class="prev"><div class="label">← Previous</div><div class="title">What embeddings are</div></a><a href="closed-vs-open.html" class="next"><div class="label">Next →</div><div class="title">Closed vs open models</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>
