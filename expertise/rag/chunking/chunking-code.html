@@ -306,6 +306,24 @@ def process_refund(self, order_id: str, amount: Decimal) -&gt; RefundResult:
 </pre>
 
 <h2>Embedding models for code</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Code embedding models');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Model', w: 260},
+    {title: 'Notes', w: 540}
+  ], rows: [
+    ['Voyage Code', 'Best-in-class for code; commercial'],
+    ['OpenAI text-embedding-3-large', 'General + prompt tuning, good default'],
+    ['jina-embeddings-v2-base-code', 'Open-source, solid'],
+    ['CodeBERT / GraphCodeBERT', 'Research; less production-ready']
+  ]});
+});
+</script>
 <p>General-purpose text embeddings work for code but not optimally. Code-specific embedding models include:</p>
 <ul>
   <li><strong>Voyage Code</strong> - optimized for code retrieval</li>
@@ -343,7 +361,12 @@ def process_refund(self, order_id: str, amount: Decimal) -&gt; RefundResult:
   <li>Ignoring file structure (a function's meaning depends on what file it's in)</li>
 </ul>
 
-<p style="margin-top:40px;">Next: <a href="../embeddings/what-are-embeddings.html">What embeddings are</a>.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>Use tree-sitter or the native AST for your language. Don't fall back to character splitting.</li>
+<li>Always prepend file path + class signature as context.</li>
+<li>Use a code-specific embedding model if code retrieval is the primary job.</li>
+</ul>
 <div class="prev-next"><a href="structure-aware.html" class="prev"><div class="label">← Previous</div><div class="title">Structure-aware chunking</div></a><a href="../embeddings/what-are-embeddings.html" class="next"><div class="label">Next →</div><div class="title">What embeddings are</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

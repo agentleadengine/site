@@ -305,6 +305,21 @@ window.addEventListener('sketch:ready', function(){
 <p>PDFs don't have guaranteed structure, but good parsers (Docling, Unstructured, Llamaparse) return typed elements with heading levels inferred from font size, style, and position. Quality of structure-aware chunking depends heavily on parser quality, see <a href="../docs/parsing-pdfs.html">parsing PDFs</a>.</p>
 
 <h2>Why it outperforms fixed-size</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Why structure-aware wins');
+  sketch.bars(svg, rc, {x: 40, y: 60, w: 820, labelW: 240, items: [
+    {label: 'Semantic coherence', value: 95, note: 'section = one idea'},
+    {label: 'Heading context', value: 85, note: 'disambiguation free'},
+    {label: 'Citation clarity', value: 90, note: '"Section 3.2"'},
+    {label: 'User experience', value: 80, note: 'chunks look like explanations'}
+  ]});
+});
+</script>
 <ul>
   <li>Chunks align with semantic units (one section = one chunk)</li>
   <li>Heading context disambiguates ambiguous terms</li>
@@ -329,7 +344,12 @@ window.addEventListener('sketch:ready', function(){
 
 <p>For everything else, documentation, knowledge bases, reports, books, technical manuals, structure-aware chunking is worth the extra engineering.</p>
 
-<p style="margin-top:40px;">Next: <a href="chunking-code.html">Chunking code</a>.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>If your content has real structure, use it. Don't throw it away.</li>
+<li>Always prepend the heading path as context to each chunk.</li>
+<li>Combine with recursive chunking within big sections to stay within size limits.</li>
+</ul>
 <div class="prev-next"><a href="recursive.html" class="prev"><div class="label">← Previous</div><div class="title">Recursive chunking</div></a><a href="chunking-code.html" class="next"><div class="label">Next →</div><div class="title">Chunking code</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

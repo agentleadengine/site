@@ -265,7 +265,31 @@ window.addEventListener('sketch:ready', function(){
 <h3>Percentile-based thresholding</h3>
 <p>Instead of a fixed similarity threshold (which varies by embedding model), use the Nth percentile of all adjacent similarities in the document. E.g., split at the bottom 5% of similarities. Adapts to each document's intrinsic similarity distribution.</p>
 
-<h2>When semantic chunking wins</h2>
+<h2>When semantic chunking is worth it</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Semantic chunking: wins vs overkill');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Wins', items: [
+      'Long-form with shifting topics',
+      'Mixed explanation + examples',
+      'No reliable heading structure',
+      'Fixed-size is splitting mid-thought'
+    ]},
+    right: {title: 'Overkill', items: [
+      'Short docs (1–2 chunks total)',
+      'Clear headings already exist',
+      'Homogeneous FAQs / catalogs',
+      'Cost-sensitive at scale']}
+  });
+});
+</script>
+
+<h3>Wins</h3>
 <ul>
   <li>Long-form content with shifting topics (books, long articles, research papers)</li>
   <li>Mixed content where one part is explanation, another is examples, another is references</li>
@@ -273,7 +297,7 @@ window.addEventListener('sketch:ready', function(){
   <li>Cases where fixed-size chunking is demonstrably splitting mid-thought</li>
 </ul>
 
-<h2>When it's overkill</h2>
+<h3>Overkill</h3>
 <ul>
   <li>Short documents where one or two chunks cover the whole thing anyway</li>
   <li>Highly structured content (docs with clear headings), use structure-aware chunking instead</li>
@@ -304,7 +328,12 @@ window.addEventListener('sketch:ready', function(){
 <h2>The diminishing returns question</h2>
 <p>Semantic chunking usually beats fixed-size by 5-15% on retrieval metrics for long-form prose. For highly structured content, structure-aware chunking beats both. Before switching to semantic, ask: do my documents have structure I could use instead? If yes, use that. Semantic is the fallback for unstructured content.</p>
 
-<p style="margin-top:40px;">Next: <a href="recursive.html">Recursive chunking</a>.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>Reach for semantic when your content is long-form + unstructured and fixed-size is demonstrably splitting mid-thought.</li>
+<li>Use a cheap model for chunking-time embeddings to keep costs reasonable.</li>
+<li>Always clamp min/max chunk size to avoid degenerate outputs.</li>
+</ul>
 <div class="prev-next"><a href="fixed-size.html" class="prev"><div class="label">← Previous</div><div class="title">Fixed-size chunking</div></a><a href="recursive.html" class="next"><div class="label">Next →</div><div class="title">Recursive chunking</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

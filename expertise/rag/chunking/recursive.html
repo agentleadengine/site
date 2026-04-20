@@ -258,6 +258,24 @@ window.addEventListener('sketch:ready', function(){
 </ul>
 
 <h2>The separator list matters</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Custom separators by content type');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Content', w: 200},
+    {title: 'Separators', w: 600}
+  ], rows: [
+    ['Markdown', '[\\n# , \\n## , \\n### , \\n\\n, \\n, . , space]'],
+    ['Code', 'Language-aware (function, class boundaries)'],
+    ['HTML', 'Convert to Markdown first, then MD separators'],
+    ['Legal / technical', '[\\n\\n§, \\n\\n(, \\n\\n, \\n]']
+  ]});
+});
+</script>
 <p>Default separator lists are reasonable for generic prose. For specific content types, customize:</p>
 
 <ul>
@@ -299,7 +317,12 @@ window.addEventListener('sketch:ready', function(){
   <li>Using defaults on Markdown, which treats headings as regular text and fragments sections</li>
 </ul>
 
-<p style="margin-top:40px;">Next: <a href="structure-aware.html">Structure-aware chunking</a>.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>Use recursive as your default. Customize the separator list for your content type.</li>
+<li>Combine with structure-aware parsing for the strongest pragmatic chunker.</li>
+<li>If your content is heavily Markdown, override separators to respect headings first.</li>
+</ul>
 <div class="prev-next"><a href="semantic.html" class="prev"><div class="label">← Previous</div><div class="title">Semantic chunking</div></a><a href="structure-aware.html" class="next"><div class="label">Next →</div><div class="title">Structure-aware chunking</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

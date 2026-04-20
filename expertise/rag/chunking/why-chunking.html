@@ -317,6 +317,26 @@ window.addEventListener('sketch:ready', function(){
 <p>It's a reasonable zero-config starting point. It's a terrible final answer.</p>
 
 <h2>Chunking strategies by content type</h2>
+<div class="sketch" data-viewbox="0 0 900 300"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 300);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Strategy by content type');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Content type', w: 260},
+    {title: 'Best strategy', w: 540}
+  ], rows: [
+    ['Docs / knowledge bases', 'Structure-aware (by heading)'],
+    ['Prose / articles', 'Semantic chunking'],
+    ['Code', 'Function-level, language-aware'],
+    ['Legal / contracts', 'Clause-level'],
+    ['Chat logs / email', 'Per-message or per-thread'],
+    ['Fixed-format (tables)', 'Row-level']
+  ]});
+});
+</script>
 <ul>
   <li><strong>Documentation / knowledge bases:</strong> structure-aware, by heading sections</li>
   <li><strong>Long prose / books:</strong> semantic or recursive, 400-800 tokens</li>
@@ -330,7 +350,12 @@ window.addEventListener('sketch:ready', function(){
 <h2>The experiment mindset</h2>
 <p>Chunking is one of the easiest things to A/B test in RAG. Index the same corpus with different chunking strategies, run the same eval set against both, compare retrieval metrics. Most teams never do this. The teams that do typically find their chunking baseline was leaving 20-40% of retrieval quality on the table.</p>
 
-<p style="margin-top:40px;">Next: <a href="fixed-size.html">Fixed-size chunking</a>.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>Don't ship the default 1000-char splitter. Pick a strategy that matches your content type.</li>
+<li>Size chunks to the shape of user questions, not the shape of documents.</li>
+<li>A/B test two chunking strategies on your eval set before committing.</li>
+</ul>
 <div class="prev-next"><a href="../docs/metadata.html" class="prev"><div class="label">← Previous</div><div class="title">Metadata extraction</div></a><a href="fixed-size.html" class="next"><div class="label">Next →</div><div class="title">Fixed-size chunking</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>
