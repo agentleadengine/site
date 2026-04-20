@@ -322,6 +322,36 @@ window.addEventListener('sketch:ready', function(){
 </ul>
 
 <p style="margin-top:40px;">Related: <a href="accountability.html">Accountability without micromanagement</a> · <a href="../people/one-on-ones.html">One-on-ones</a> · <a href="../people/performance-reviews.html">Performance reviews</a></p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Radical candor quadrant');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Care about person', w: 260},
+    {title: 'Challenge directly', w: 260},
+    {title: 'Result', w: 280}
+  ], rows: [
+    ['High', 'High', 'Radical Candor (the goal)'],
+    ['High', 'Low', 'Ruinous Empathy (nice, unhelpful)'],
+    ['Low', 'High', 'Obnoxious Aggression (harsh, no caring)'],
+    ['Low', 'Low', 'Manipulative Insincerity (worst)']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Aim for radical candor, not ruinous empathy, caring without challenging isn't kind, it's avoidance</li>
+<li>Deliver feedback in private, praise in public, timing and setting matter as much as content</li>
+<li>Separate feedback from agenda (no 360-review mega-sessions), fresh feedback is more actionable</li>
+<li>Show you care before delivering hard feedback, the "care" has to be believable for the "candor" to land</li>
+<li>Model it at the top, leaders who never receive candor don't get candor from their team</li>
+</ul>
+
 <div class="prev-next"><a href="memo-culture.html" class="prev"><div class="label">← Previous</div><div class="title">Memo culture</div></a><a href="accountability.html" class="next"><div class="label">Next →</div><div class="title">Accountability without micromanagement</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

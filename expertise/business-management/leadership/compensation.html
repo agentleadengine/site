@@ -328,6 +328,37 @@ window.addEventListener('sketch:ready', function(){
 </ul>
 
 <p style="margin-top:40px;">Related: <a href="../people/role-scorecard.html">Role scorecard</a> · <a href="../people/performance-reviews.html">Performance reviews</a> · <a href="../people/hiring-signal-vs-noise.html">Hiring</a></p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Compensation structure by role');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Role type', w: 240},
+    {title: 'Base : variable split', w: 240},
+    {title: 'Equity', w: 320}
+  ], rows: [
+    ['Engineer / designer', '100% base (or 95/5)', 'Standard equity band for level'],
+    ['AE / quota-carrying sales', '50/50 OTE', 'Lower equity, higher cash'],
+    ['Customer success', '80/20', 'Moderate equity'],
+    ['Executive / founder-level', '60-80% base + LTI', 'Heavy equity / LTI grants'],
+    ['SDR', '70/30', 'Low equity, growth path']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Match comp structure to role outcomes, engineers paid on output quality need base-heavy, AEs paid on sales need variable-heavy</li>
+<li>Benchmark against comp surveys annually, drift below market produces silent attrition at your best people</li>
+<li>Weight variable comp on metrics employees actually influence, paying sales bonuses on company-wide revenue demotivates</li>
+<li>Review equity bands when comp bands change, equity should scale with role level consistently</li>
+<li>Communicate comp philosophy transparently, opaque comp systems produce resentment even when pay is fair</li>
+</ul>
+
 <div class="prev-next"><a href="accountability.html" class="prev"><div class="label">← Previous</div><div class="title">Accountability without micromanagement</div></a><a href="../risk/risk-management.html" class="next"><div class="label">Next →</div><div class="title">Risk management basics</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>
