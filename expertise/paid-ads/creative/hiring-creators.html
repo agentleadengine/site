@@ -305,6 +305,42 @@ window.addEventListener('sketch:ready', function(){
 
 <h2>The in-house option</h2>
 <p>Some brands hire full-time UGC creators. Trade flexibility for consistency. Makes sense at $50K+/month in creator costs.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Creator cost vs creator value, the real math');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Wrong economics', items: [
+      'Hire cheapest creator for $100/video',
+      'Generic performance, 20% win rate',
+      '$500 to find 1 winner',
+      'Winner fatigues in 4 weeks',
+      'Cycle repeats, progress doesn\'t compound'
+    ]},
+    right: {title: 'Right economics', items: [
+      'Hire creators with proven accounts ($400-800)',
+      'Strong performance, 50%+ win rate',
+      '$1,200 to find 2+ winners',
+      'Winners fatigue slower (8-12 weeks)',
+      'Relationship compounds over 6+ months'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Hire creators who run their own accounts in your niche, not generic talent, niche-native creators produce 2-3x the win rate at similar cost</li>
+<li>Pay for performance, not per video, top creators will take $400-800 per piece if they understand the account and expect repeat work</li>
+<li>Write briefs that include the hook, the pain point, and the ask, don't send "make an ad about our product" and hope</li>
+<li>Build a creator bench of 3-5 proven performers, single-creator dependency is fragile, the bench keeps you resilient when one drops off</li>
+<li>At $50K+/month in creator spend, consider in-house, the consistency + exclusivity + lower per-unit cost usually wins at scale</li>
+</ul>
+
 <div class="prev-next"><a href="creative-fatigue.html" class="prev"><div class="label">← Previous</div><div class="title">Creative fatigue</div></a><a href="../measurement/why-attribution-broke.html" class="next"><div class="label">Next →</div><div class="title">Why attribution broke</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

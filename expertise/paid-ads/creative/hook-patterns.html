@@ -299,6 +299,36 @@ window.addEventListener('sketch:ready', function(){
 
 <h2>Hook + first 10 seconds = the full promise</h2>
 <p>Your hook sets expectations. The next 10 seconds must pay them off, or viewers leave.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Hook temperature by audience stage');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Audience stage', w: 200},
+    {title: 'Hook pattern', w: 360},
+    {title: 'Example', w: 240}
+  ], rows: [
+    ['Cold', 'Pattern interrupt, problem reveal', '"If you spend $5K/mo on Meta..."'],
+    ['Warm', 'Specific number, personal confession', '"I used to close 3% of demos"'],
+    ['Hot', 'Direct CTA, offer-forward', '"Last 24 hours at this price"'],
+    ['Returning', 'Urgency + scarcity', '"Cart closes tonight"']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Write 10-20 hook variants per creative, swap the hook across the same video body, the hook is 80% of what determines scroll-stop</li>
+<li>Match hook temperature to audience stage, cold traffic needs pattern interrupt, hot retargeting needs direct offer</li>
+<li>Test the first 3 seconds of video aggressively, the platform's auto-thumbnail and first-frame decide whether anyone sees the rest</li>
+<li>Deliver on the hook's implicit promise inside 10 seconds, or viewers leave and Meta deprioritizes the ad</li>
+<li>Document every winning hook pattern in a library, over 12 months you'll identify repeatable templates that beat cold starts</li>
+</ul>
+
 <div class="prev-next"><a href="../youtube/vs-meta.html" class="prev"><div class="label">← Previous</div><div class="title">YouTube vs Meta</div></a><a href="ugc-vs-produced.html" class="next"><div class="label">Next →</div><div class="title">UGC vs produced</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

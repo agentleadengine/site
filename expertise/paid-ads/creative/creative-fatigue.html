@@ -294,6 +294,36 @@ window.addEventListener('sketch:ready', function(){
 
 <h2>The winner's ceiling</h2>
 <p>Even a great creative has a ceiling. At scale, winners cap out. More budget on the same ad = more fatigue, more frequency, worse ROAS. Diversify creative, diversify audiences, move past the ceiling.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Fatigue signals, what to watch before CAC tells you');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Signal', w: 220},
+    {title: 'What it means', w: 300},
+    {title: 'Response', w: 280}
+  ], rows: [
+    ['Frequency > 4', 'Same users seeing the ad repeatedly', 'Refresh creative this week'],
+    ['CTR dropping week over week', 'Audience pattern-matching the ad', 'Ship 3-5 variants now'],
+    ['CPM climbing', 'Auction saturation or rising frequency', 'Diversify audience + creative'],
+    ['CAC rising, conversions falling', 'Fatigue has already hit revenue', 'Should have refreshed 2 weeks ago']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Track frequency + CTR as leading indicators, they shift before CAC does, by the time CAC tells you, you've lost 2 weeks</li>
+<li>Retire creatives at frequency 4+ or after CTR drops 30% from peak, not "when the team has time to make new ones"</li>
+<li>Budget creative production around fatigue cycles, winning ads have 4-12 week shelf lives depending on spend, plan replacements accordingly</li>
+<li>When all ads drop simultaneously, check platform before assuming fatigue, algorithm updates and seasonal shifts can mimic fatigue</li>
+<li>At the winner's ceiling, diversify audiences + creative rather than dumping more budget into the same ad, ceilings are real and unmovable</li>
+</ul>
+
 <div class="prev-next"><a href="landing-pages.html" class="prev"><div class="label">← Previous</div><div class="title">Landing pages</div></a><a href="hiring-creators.html" class="next"><div class="label">Next →</div><div class="title">Hiring creators</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

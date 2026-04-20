@@ -294,6 +294,42 @@ window.addEventListener('sketch:ready', function(){
 
 <h2>Testing copy</h2>
 <p>Hold creative constant, test 3-5 copy variations. Each tests a different angle (price, outcome, pain, story).</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Weak vs strong ad copy, same product');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Weak (scrolled past)', items: [
+      '"Check out our new feature"',
+      '"Best-in-class solution"',
+      '"Transform your workflow today"',
+      'No specific number or outcome',
+      'Reads like a product page, not an ad'
+    ]},
+    right: {title: 'Strong (stops the scroll)', items: [
+      '"We cut our CS hours 60% in 14 days"',
+      '"The 3 subject lines that 10x\'d our opens"',
+      '"If you spend $5K+/mo on Meta, read this"',
+      'Specific number + specific outcome + named audience',
+      'Could only be written by someone who did it'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Write first-line hooks that stop the scroll, not setup paragraphs, the first line is 80% of whether anyone reads the rest</li>
+<li>Replace every adjective in ad copy with a number, a timeframe, or a named audience, "fast" becomes "14 days", "proven" becomes "41 customers"</li>
+<li>Add a PS line on longer-form ad copy (Meta body, LinkedIn Sponsored), it's the second most-read line and lifts CTR measurably</li>
+<li>Test 3-5 copy variations per winning creative, hold the creative constant, different angles (pain, price, outcome, story) expose different buyers</li>
+<li>Match copy length to platform, TikTok = tight, Meta = moderate, LinkedIn = longer, copying one platform's length to another loses the rhythm</li>
+</ul>
+
 <div class="prev-next"><a href="creative-volume.html" class="prev"><div class="label">← Previous</div><div class="title">Creative volume</div></a><a href="landing-pages.html" class="next"><div class="label">Next →</div><div class="title">Landing pages</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

@@ -312,6 +312,33 @@ window.addEventListener('sketch:ready', function(){
 <li>Form with 12 fields</li>
 <li>Mismatched ad-to-page messaging</li>
 </ul>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Landing page conversion killers, in rough impact order');
+  sketch.bars(svg, rc, {x: 40, y: 60, w: 820, labelW: 260, items: [
+    {label: 'Mismatched ad → page message', value: 90, note: 'biggest leak, fix first'},
+    {label: 'Slow load (> 3 seconds)', value: 70, note: 'each sec = 7% drop'},
+    {label: 'Form with too many fields', value: 60, note: 'each field drops conversion'},
+    {label: 'No social proof', value: 50, note: 'trust leak on cold traffic'},
+    {label: 'Stock photo hero / generic', value: 30, note: 'meaningful but subtler'}
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Match the page headline to the ad headline word-for-word, the biggest conversion leak is the visitor thinking they landed on the wrong page</li>
+<li>Measure and optimize page load, every second of load time costs 7% of conversions, cold traffic especially punishes slow pages</li>
+<li>Strip forms to the fields you actually need for the next step, each unnecessary field drops conversion 5-15%</li>
+<li>Put social proof above the fold (logos, customer count, testimonial), trust on cold traffic builds in the first 3 seconds</li>
+<li>Use real product screenshots or customer photos, never stock images, prospects detect stock imagery and mark you "fake" in 1 second</li>
+</ul>
+
 <div class="prev-next"><a href="ad-copy.html" class="prev"><div class="label">← Previous</div><div class="title">Ad copy</div></a><a href="creative-fatigue.html" class="next"><div class="label">Next →</div><div class="title">Creative fatigue</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

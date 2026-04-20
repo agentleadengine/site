@@ -298,6 +298,42 @@ window.addEventListener('sketch:ready', function(){
 
 <h2>The quality bar is shifting</h2>
 <p>UGC quality is rising. Creators know what works. The best UGC is nearly as polished as produced, but the casual feel is maintained. Find creators who understand the medium.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'UGC vs produced, when each wins');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'UGC wins', items: [
+      'Social-native feeds (Meta, TikTok)',
+      'Testimonial / story-driven pitches',
+      'Volume testing (100 variants for $5K)',
+      'Cold audiences who distrust polished ads',
+      'Speed-to-market campaigns'
+    ]},
+    right: {title: 'Produced wins', items: [
+      'Brand-building campaigns',
+      'YouTube pre-roll with narrative arc',
+      'B2B LinkedIn demonstrating authority',
+      'CTV + broadcast where polish is expected',
+      'Hero creative for a flagship launch'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Default to UGC for Meta + TikTok cold audiences, social-native feel outperforms polished production on these platforms in 2026</li>
+<li>Budget 10-20 UGC variants for the cost of 1 produced piece, volume testing is UGC's structural advantage</li>
+<li>Hire creators who understand the medium, not actors, a creator who's run their own account outperforms a polished actor on camera</li>
+<li>Use produced creative for YouTube pre-roll and brand-building moments where the format expects polish, don't waste UGC there</li>
+<li>Mix both in your creative library, sophisticated prospects develop pattern-blindness to any single format over time</li>
+</ul>
+
 <div class="prev-next"><a href="hook-patterns.html" class="prev"><div class="label">← Previous</div><div class="title">Hook patterns</div></a><a href="creative-volume.html" class="next"><div class="label">Next →</div><div class="title">Creative volume</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

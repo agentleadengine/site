@@ -307,6 +307,36 @@ window.addEventListener('sketch:ready', function(){
 <li>Scale winners, kill losers</li>
 <li>Feed learnings into next week's plan</li>
 </ol>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Creative volume by spend level');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Monthly ad spend', w: 240},
+    {title: 'New creatives per week', w: 260},
+    {title: 'Stack size to maintain', w: 280}
+  ], rows: [
+    ['$5K - $20K', '3-5', '8-12 running'],
+    ['$20K - $100K', '8-15', '20-30 running'],
+    ['$100K - $500K', '20-40', '60-100 running'],
+    ['$500K+', '50+', '150+ running']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Scale creative volume with ad spend, not with team comfort, starving a $100K/mo account of new creative is how you lose the channel</li>
+<li>Build the weekly pipeline as a process (brief → produce → launch → measure → iterate), operators who ad-hoc this fall behind fast</li>
+<li>Batch produce similar creative concepts, same creator in one session for 10 variants costs the same as 3 variants across 3 shoots</li>
+<li>Measure every creative against a fatigue curve, retire losers at week 2, don't keep them "for completeness" in the stack</li>
+<li>At $100K+/mo, hire or outsource creative production specifically, treating it as a volume operation is the only way to maintain cadence</li>
+</ul>
+
 <div class="prev-next"><a href="ugc-vs-produced.html" class="prev"><div class="label">← Previous</div><div class="title">UGC vs produced</div></a><a href="ad-copy.html" class="next"><div class="label">Next →</div><div class="title">Ad copy</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
