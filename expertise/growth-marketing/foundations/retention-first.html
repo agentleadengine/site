@@ -240,7 +240,44 @@ window.addEventListener('sketch:ready', function(){
       'Growth becomes exponential']}
   });
 });
-</script><p>If you retain 40% of users after month 1, you need to acquire constantly to grow. If you retain 70%, growth compounds.</p><h2>Measuring</h2><p>Cohort retention: what % of users who signed up in month X are active in month X+1, X+3, X+6?</p><h2>The curve shape</h2><ul><li>Declining-then-flattening: sustainable</li><li>Declining-to-zero: product-market-fit problem</li></ul><h2>Before investing in acquisition</h2><p>Get retention above benchmark for your category. Then scale acquisition.</p><div class="prev-next"></div></div></div><footer><div class="container">
+</script><p>If you retain 40% of users after month 1, you need to acquire constantly to grow. If you retain 70%, growth compounds.</p><h2>Measuring</h2><p>Cohort retention: what % of users who signed up in month X are active in month X+1, X+3, X+6?</p><h2>The curve shape</h2><ul><li>Declining-then-flattening: sustainable</li><li>Declining-to-zero: product-market-fit problem</li></ul><h2>Before investing in acquisition</h2><p>Get retention above benchmark for your category. Then scale acquisition.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Retention shape, leaky vs compound');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Leaky bucket (40% month-1)', items: [
+      'Acquire 1000, keep 400 at month 1',
+      'Keep acquiring to stay flat',
+      'CAC treadmill never ends',
+      'LTV caps low, unit economics fight',
+      'Scale impossible without retention fix'
+    ]},
+    right: {title: 'Retention curve (70%+ flatline)', items: [
+      'Acquire 1000, keep 700 at month 1',
+      'Curve flattens, not trending to zero',
+      'LTV compounds over years',
+      'Word-of-mouth kicks in at critical mass',
+      'Exponential growth becomes possible'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Fix retention before investing in acquisition, pouring leads into a leaky bucket is the most common early-stage marketing failure</li>
+<li>Measure cohort retention (month-1, month-3, month-6), aggregate "MAU" numbers hide the decline that should alarm you</li>
+<li>Target a flattening retention curve (not hitting zero), if it trends to zero, you have a product-market-fit problem not a marketing problem</li>
+<li>Benchmark against your category, 60% month-1 is great for B2C apps but weak for B2B SaaS, know your category's floor</li>
+<li>When retention improves 5-10%, acquisition economics transform, it's usually the highest-ROI investment a growth team can make</li>
+</ul>
+
+<div class="prev-next"></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

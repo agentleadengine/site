@@ -237,7 +237,44 @@ window.addEventListener('sketch:ready', function(){
     ['Amazon', 'Customer purchases per month']
   ]});
 });
-</script><ul><li>Airbnb: nights booked</li><li>Spotify: time listening</li><li>Slack: messages sent within teams</li><li>Amazon: monthly active buyers</li></ul><h2>How to pick</h2><p>Start with what customers actually do when they get value. Messages sent, photos shared, meetings booked. Not signups or logins.</p><h2>Avoiding vanity</h2><p>Signups, downloads, page views are vanity. North Star should be measurable engagement with the core value.</p><div class="prev-next"></div></div></div><footer><div class="container">
+</script><ul><li>Airbnb: nights booked</li><li>Spotify: time listening</li><li>Slack: messages sent within teams</li><li>Amazon: monthly active buyers</li></ul><h2>How to pick</h2><p>Start with what customers actually do when they get value. Messages sent, photos shared, meetings booked. Not signups or logins.</p><h2>Avoiding vanity</h2><p>Signups, downloads, page views are vanity. North Star should be measurable engagement with the core value.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Vanity metric vs North Star, same product');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Vanity (looks good)', items: [
+      '"Signups this week"',
+      '"Page views"',
+      '"Email subscribers"',
+      'Can rise while business dies',
+      'Team celebrates the wrong thing'
+    ]},
+    right: {title: 'North Star (truth)', items: [
+      '"Paid teams sending 2000+ messages/week"',
+      '"Monthly active buyers"',
+      '"Nights booked per active user"',
+      'Tied directly to value delivery',
+      'Can only rise if product is working'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Pick one North Star metric, not five, the whole point is alignment and five metrics give everyone an excuse</li>
+<li>Measure value delivered, not value promised, signups are promises, "messages sent" or "nights booked" are value</li>
+<li>Review the North Star weekly as a team, if the team doesn't know the number without looking, it's not really the North Star</li>
+<li>Re-examine the North Star annually, what measured value at $1M ARR may be the wrong metric at $10M, evolve it deliberately</li>
+<li>Align compensation with the North Star where possible, nothing drives behavior change faster than what's being rewarded</li>
+</ul>
+
+<div class="prev-next"></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

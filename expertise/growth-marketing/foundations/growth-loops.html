@@ -236,7 +236,44 @@ window.addEventListener('sketch:ready', function(){
 });
 </script>
 
-<h2>Viral loops</h2><p>One user invites others who become users who invite others. Dropbox referral program was the classic.</p><h2>Content loops</h2><p>Users create content, content attracts visitors, visitors convert to users who create more content. Pinterest, Quora, Stack Overflow.</p><h2>Paid loops</h2><p>Revenue from acquired customers funds acquisition of more customers. Only works when LTV:CAC is strong.</p><h2>Sales-led loops</h2><p>Sales close customers who refer more customers. B2B enterprise.</p><h2>Why they beat funnels</h2><p>A funnel's output is a fraction of its input (decay). A loop's output grows its own input (compound).</p><div class="prev-next"></div></div></div><footer><div class="container">
+<h2>Viral loops</h2><p>One user invites others who become users who invite others. Dropbox referral program was the classic.</p><h2>Content loops</h2><p>Users create content, content attracts visitors, visitors convert to users who create more content. Pinterest, Quora, Stack Overflow.</p><h2>Paid loops</h2><p>Revenue from acquired customers funds acquisition of more customers. Only works when LTV:CAC is strong.</p><h2>Sales-led loops</h2><p>Sales close customers who refer more customers. B2B enterprise.</p><h2>Why they beat funnels</h2><p>A funnel's output is a fraction of its input (decay). A loop's output grows its own input (compound).</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Funnel vs loop, why loops compound');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Funnel (one-shot)', items: [
+      'Input: 1000 visitors',
+      'Output: 50 customers',
+      'Customers do not feed back into visitors',
+      'Each campaign starts from zero',
+      'Scale = more marketing spend'
+    ]},
+    right: {title: 'Loop (compounds)', items: [
+      'Input: 1000 visitors',
+      'Output: 50 customers, 12 invite others',
+      'Each customer adds to next cycle input',
+      'Growth feeds itself, K-factor matters',
+      'Scale = product + mechanism design'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Map your current growth as a loop, not a funnel, if no output feeds back into input, you have a funnel pretending to be a loop</li>
+<li>Pick the one loop type that fits your product (viral, content, paid, sales-led), don't try to run all four at once</li>
+<li>Measure the loop's K-factor (customers produced per customer), below 1 means you still need paid acquisition on top</li>
+<li>Shorten the loop cycle time, shaving days off the invite-to-activation cycle compounds faster than raising K</li>
+<li>Instrument the loop end-to-end before claiming it works, most "viral" products have K under 1 on close measurement</li>
+</ul>
+
+<div class="prev-next"></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){
