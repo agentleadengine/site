@@ -236,7 +236,35 @@ window.addEventListener('sketch:ready', function(){
     ['ESP dashboards', 'Built-in bounce + complaint metrics']
   ]});
 });
-</script><ul><li>Google Postmaster Tools</li><li>Glock Apps inbox placement tests</li><li>Seed addresses (inbox accounts you check manually)</li></ul><h2>Signals to watch</h2><ul><li>Inbox placement rate</li><li>Gmail spam folder rate</li><li>Junk folder at Outlook</li></ul><h2>Actions</h2><ul><li>Placement below 90%? Fix before scaling</li><li>Sudden drop? Investigate recent sends</li><li>Quarterly audit</li></ul></div></div><footer><div class="container">
+</script><ul><li>Google Postmaster Tools</li><li>Glock Apps inbox placement tests</li><li>Seed addresses (inbox accounts you check manually)</li></ul><h2>Signals to watch</h2><ul><li>Inbox placement rate</li><li>Gmail spam folder rate</li><li>Junk folder at Outlook</li></ul><h2>Actions</h2><ul><li>Placement below 90%? Fix before scaling</li><li>Sudden drop? Investigate recent sends</li><li>Quarterly audit</li></ul>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Weekly 15-min deliverability check');
+  sketch.numberedSteps(svg, rc, {x: 40, y: 60, w: 820, stepH: 30, items: [
+    'Run GlockApps or MailerMeter inbox placement test',
+    'Check Gmail Postmaster (spam rate, reputation trend)',
+    'Verify bounce rate under 3%, complaint rate under 0.1%',
+    'Audit auto-replies + OOO vs actual opens',
+    'Red? Pause sending from affected domain, investigate'
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Schedule the 15-minute weekly check as a calendar block, skipping it catches problems 2-4 weeks late</li>
+<li>Set automated alerts in your ESP for thresholds (bounce, complaint, placement), alerts catch issues before your weekly review</li>
+<li>Test inbox placement from multiple seed lists, single-source monitoring misses provider-specific deliverability issues</li>
+<li>When metrics drift, pause that domain same-day, continuing to send through degradation compounds the reputation damage</li>
+<li>Quarterly deep audit: review all domains, segment send rates, and full authentication config, catches drift annual reviews miss</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

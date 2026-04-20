@@ -236,7 +236,44 @@ window.addEventListener('sketch:ready', function(){
     ['Tool comparison', 'Decision matrix / calculator']
   ]});
 });
-</script><ul><li>Blog post on keyword research + upgrade: 'keyword template'</li><li>Post on email copy + upgrade: '10 tested subject lines'</li></ul><h2>Implementation</h2><ul><li>Inline in the post</li><li>Modal triggered by click</li><li>Dedicated section near the CTA</li></ul><h2>Investment</h2><p>Each upgrade takes effort. Prioritize top-traffic posts.</p></div></div><footer><div class="container">
+</script><ul><li>Blog post on keyword research + upgrade: 'keyword template'</li><li>Post on email copy + upgrade: '10 tested subject lines'</li></ul><h2>Implementation</h2><ul><li>Inline in the post</li><li>Modal triggered by click</li><li>Dedicated section near the CTA</li></ul><h2>Investment</h2><p>Each upgrade takes effort. Prioritize top-traffic posts.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Generic site-wide opt-in vs contextual content upgrade');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Generic site-wide popup', items: [
+      '"Join our newsletter"',
+      '2-4% opt-in rate',
+      'Unrelated to what user is reading',
+      'Low intent, high churn',
+      'Easy to build, limited impact'
+    ]},
+    right: {title: 'Contextual content upgrade', items: [
+      '"Get the 12-point checklist from this post"',
+      '10-30% opt-in rate on specific pages',
+      'Directly tied to article they\'re reading',
+      'High intent, better retention',
+      'More effort per post, compound payoff'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Build content upgrades only on your top 10-20 traffic pages, effort doesn't scale to every post and compounds on top-traffic ones</li>
+<li>Match the upgrade to the post's exact topic, "checklist from this post" beats "general newsletter" consistently</li>
+<li>Track opt-in rate per upgrade, below 10% means the upgrade isn't specific enough or the post doesn't need it</li>
+<li>Use inline placement (mid-article, end-article), side-column upgrades get ignored compared to in-flow ones</li>
+<li>Deliver immediately after opt-in, content upgrade subscribers who wait for delivery often unsubscribe before the first email</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

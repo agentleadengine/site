@@ -236,7 +236,35 @@ window.addEventListener('sketch:ready', function(){
 });
 </script>
 
-<h2>Content triggers</h2><ul><li>ALL CAPS</li><li>Excessive exclamation!!!</li><li>Words: FREE, ACT NOW, GUARANTEED</li><li>Too many links</li><li>Large images with little text</li></ul><h2>Structure triggers</h2><ul><li>Image-only email</li><li>Shortened URLs</li><li>Weird formatting</li><li>Missing plain-text version</li></ul><h2>Sending triggers</h2><ul><li>Volume spikes</li><li>Sending too fast to unengaged</li><li>Purchased lists</li></ul><h2>Test before sending</h2><p>Send to Mail-tester.com, get score. Aim for 9+/10.</p></div></div><footer><div class="container">
+<h2>Content triggers</h2><ul><li>ALL CAPS</li><li>Excessive exclamation!!!</li><li>Words: FREE, ACT NOW, GUARANTEED</li><li>Too many links</li><li>Large images with little text</li></ul><h2>Structure triggers</h2><ul><li>Image-only email</li><li>Shortened URLs</li><li>Weird formatting</li><li>Missing plain-text version</li></ul><h2>Sending triggers</h2><ul><li>Volume spikes</li><li>Sending too fast to unengaged</li><li>Purchased lists</li></ul><h2>Test before sending</h2><p>Send to Mail-tester.com, get score. Aim for 9+/10.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Content spam triggers, in rough risk order');
+  sketch.bars(svg, rc, {x: 40, y: 60, w: 820, labelW: 260, items: [
+    {label: '"Free", "guarantee", "act now"', value: 85, note: 'classic filter triggers'},
+    {label: 'All-caps subject lines', value: 75, note: 'reads as shouty / template'},
+    {label: 'Excessive links + images', value: 70, note: 'signals promotional / phishing'},
+    {label: 'Attachments on marketing email', value: 65, note: 'triggers virus scan'},
+    {label: 'URL shorteners (bit.ly, t.co)', value: 55, note: 'pattern-matches to spam'}
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Avoid classic spam phrases especially in subject lines, "free", "guarantee", "act now", "limited time" all trip filters</li>
+<li>Keep image-to-text ratio balanced, image-only emails pattern-match to phishing and hit filters</li>
+<li>Never attach files to marketing email, attachments trigger virus scans and signal non-legitimate sending</li>
+<li>Use your own tracked domain for links instead of bit.ly, URL shorteners on mass sends look suspicious to filters</li>
+<li>Pre-check every campaign at mail-tester.com, 9+/10 score before sending is the minimum bar</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

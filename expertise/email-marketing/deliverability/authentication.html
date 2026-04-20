@@ -236,7 +236,34 @@ window.addEventListener('sketch:ready', function(){
 });
 </script>
 
-<h2>SPF</h2><p>Lists authorized IPs that can send from your domain. TXT record.</p><h2>DKIM</h2><p>Cryptographic signature on every email. Proves the message wasn't modified.</p><h2>DMARC</h2><p>Policy telling receivers what to do with unauthenticated mail. Also provides reporting.</p><h2>All three</h2><p>Gmail and Yahoo require all three for senders of 5000+ emails/day as of 2024. No exceptions.</p></div></div><footer><div class="container">
+<h2>SPF</h2><p>Lists authorized IPs that can send from your domain. TXT record.</p><h2>DKIM</h2><p>Cryptographic signature on every email. Proves the message wasn't modified.</p><h2>DMARC</h2><p>Policy telling receivers what to do with unauthenticated mail. Also provides reporting.</p><h2>All three</h2><p>Gmail and Yahoo require all three for senders of 5000+ emails/day as of 2024. No exceptions.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Authentication stack, the three records that matter');
+  sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 44, layers: [
+    {label: 'SPF', sub: 'which servers can send as you'},
+    {label: 'DKIM', sub: 'cryptographic signature on every message'},
+    {label: 'DMARC', sub: 'policy when SPF/DKIM fail (2024+ required)'},
+    {label: 'BIMI (optional)', sub: 'your logo in inbox, requires DMARC enforcement'}
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Configure SPF + DKIM + DMARC on every sending domain, missing any one drops deliverability hard post-2024 Gmail/Yahoo rules</li>
+<li>Start DMARC with p=none for monitoring, tighten to quarantine or reject only after 2-4 weeks of clean authentication data</li>
+<li>Test at mail-tester.com, require 9+/10 score before scaling to real sends</li>
+<li>Monitor Gmail Postmaster + Microsoft SNDS weekly, they're the canonical window into each mailbox provider's reputation view</li>
+<li>Keep DNS records in sync when you migrate ESPs, orphaned or wrong records tank deliverability silently</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

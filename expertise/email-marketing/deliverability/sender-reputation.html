@@ -241,7 +241,44 @@ window.addEventListener('sketch:ready', function(){
 });
 </script>
 
-<h2>Signals that help</h2><ul><li>Low bounce rate</li><li>High engagement</li><li>Low complaints</li><li>Consistent volume</li><li>Good content</li></ul><h2>Signals that hurt</h2><ul><li>Spike in volume</li><li>High bounce from bad addresses</li><li>Complaint rates above 0.1%</li><li>Sending to unengaged addresses</li></ul><h2>Monitoring</h2><ul><li>Google Postmaster Tools (Gmail)</li><li>Microsoft SNDS (Outlook)</li><li>Sender Score (general)</li></ul></div></div><footer><div class="container">
+<h2>Signals that help</h2><ul><li>Low bounce rate</li><li>High engagement</li><li>Low complaints</li><li>Consistent volume</li><li>Good content</li></ul><h2>Signals that hurt</h2><ul><li>Spike in volume</li><li>High bounce from bad addresses</li><li>Complaint rates above 0.1%</li><li>Sending to unengaged addresses</li></ul><h2>Monitoring</h2><ul><li>Google Postmaster Tools (Gmail)</li><li>Microsoft SNDS (Outlook)</li><li>Sender Score (general)</li></ul>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'What moves reputation, up vs down');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Kills reputation', items: [
+      'Spam complaints over 0.1%',
+      'Bounce rate over 3%',
+      'Engagement below threshold',
+      'Sudden volume spikes',
+      'Sending to unverified or purchased lists'
+    ]},
+    right: {title: 'Builds reputation', items: [
+      'Clean verified list, under 1% bounce',
+      'Consistent daily send volume',
+      'High engagement (opens + clicks + replies)',
+      'Authenticated sends (SPF/DKIM/DMARC)',
+      'Active list hygiene + suppression'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Check Gmail Postmaster Tools + Microsoft SNDS weekly, they are the direct view into what Gmail and Outlook think of your domain</li>
+<li>Keep spam complaint rate under 0.1%, above that reputation starts degrading and recovery takes weeks</li>
+<li>Never buy email lists, reputation damage from bad lists takes months to recover and sometimes requires new domains</li>
+<li>Maintain steady daily volume, reputation algorithms prefer consistency and treat volume spikes as suspicious</li>
+<li>When reputation drops, pause sending to that domain, continuing through degradation compounds the damage</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

@@ -236,7 +236,35 @@ window.addEventListener('sketch:ready', function(){
     ['Annually', 'Sunset lapsed unengaged users']
   ]});
 });
-</script><ul><li>Remove hard bounces immediately</li><li>Remove soft bounces after 3-5 attempts</li><li>Suppress unengaged (90+ days no open) or win-back first</li><li>Clean inactive subscribers quarterly</li></ul><h2>Verification</h2><p>Before sending to new lists or after long gaps, verify addresses with ZeroBounce, NeverBounce, etc.</p><h2>The tradeoff</h2><p>Removing subscribers feels like losing. It isn't. Engaged smaller list outperforms disengaged larger.</p></div></div><footer><div class="container">
+</script><ul><li>Remove hard bounces immediately</li><li>Remove soft bounces after 3-5 attempts</li><li>Suppress unengaged (90+ days no open) or win-back first</li><li>Clean inactive subscribers quarterly</li></ul><h2>Verification</h2><p>Before sending to new lists or after long gaps, verify addresses with ZeroBounce, NeverBounce, etc.</p><h2>The tradeoff</h2><p>Removing subscribers feels like losing. It isn't. Engaged smaller list outperforms disengaged larger.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Quarterly list hygiene, the 4-step ritual');
+  sketch.numberedSteps(svg, rc, {x: 40, y: 60, w: 820, stepH: 30, items: [
+    'Identify dormant: 90+ days no opens (DTC: 60 days)',
+    'Run re-engagement sequence (2-3 emails with specific offer)',
+    'Suppress non-responders from active campaigns',
+    'Monitor bounce + complaint rate for 30 days post-cleanup',
+    'Repeat quarterly, hygiene is ongoing not one-time'
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Schedule quarterly list hygiene as a standing ritual, skipping this degrades deliverability quietly until it's a crisis</li>
+<li>Run a re-engagement sequence before suppressing, catches some late-engagers and protects against over-removal</li>
+<li>Suppress unengaged subscribers even when it feels wasteful, deliverability benefit to active list outweighs lost potential</li>
+<li>Remove hard bounces immediately (not quarterly), continuing to send to bad addresses signals spammer behavior</li>
+<li>Track list quality score alongside size, a clean 30K list with 45% open rate beats a dirty 100K list with 12% open</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

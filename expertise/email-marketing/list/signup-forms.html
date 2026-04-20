@@ -241,7 +241,34 @@ window.addEventListener('sketch:ready', function(){
 });
 </script>
 
-<h2>Forms that work</h2><ul><li>Inline in content (after value delivered)</li><li>Exit-intent popups</li><li>Slide-ins after scroll %</li><li>Dedicated landing pages for lead magnets</li><li>Footer (last resort)</li></ul><h2>Forms that don't</h2><ul><li>Immediate popup on landing</li><li>Sidebar noisy sign-up</li><li>Forms with 8 fields</li><li>Generic 'subscribe to newsletter'</li></ul><h2>The offer</h2><p>Specific value: '7-day email series on X' beats 'subscribe to newsletter'.</p><h2>Fields</h2><p>Email only is the highest converter. Adding name drops conversion 5-10%. More fields, more drop.</p></div></div><footer><div class="container">
+<h2>Forms that work</h2><ul><li>Inline in content (after value delivered)</li><li>Exit-intent popups</li><li>Slide-ins after scroll %</li><li>Dedicated landing pages for lead magnets</li><li>Footer (last resort)</li></ul><h2>Forms that don't</h2><ul><li>Immediate popup on landing</li><li>Sidebar noisy sign-up</li><li>Forms with 8 fields</li><li>Generic 'subscribe to newsletter'</li></ul><h2>The offer</h2><p>Specific value: '7-day email series on X' beats 'subscribe to newsletter'.</p><h2>Fields</h2><p>Email only is the highest converter. Adding name drops conversion 5-10%. More fields, more drop.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Signup form fields, each drops conversion');
+  sketch.bars(svg, rc, {x: 40, y: 60, w: 820, labelW: 280, items: [
+    {label: 'Email only', value: 95, note: 'baseline, highest conversion'},
+    {label: 'Email + first name', value: 80, note: '-10-20% drop'},
+    {label: 'Email + name + role', value: 55, note: '-35-45% drop, lead quality better'},
+    {label: 'Email + name + role + company + size', value: 30, note: 'heavy qualification, low conversion'}
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Ask only for what you need to take the next step, every additional field costs 5-15% of conversions</li>
+<li>Match form length to offer value, high-ticket lead magnets can support more fields than newsletter signups</li>
+<li>Use progressive profiling, capture email first, enrich later via behavior or survey emails</li>
+<li>Test form placement (hero vs sidebar vs footer vs exit-intent), the same form can convert 3-5x differently by location</li>
+<li>Auto-prefill any fields you already have (return visitor), reducing typing burden lifts conversion meaningfully</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

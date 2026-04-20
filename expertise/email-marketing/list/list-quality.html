@@ -240,7 +240,44 @@ window.addEventListener('sketch:ready', function(){
       'Churn-high, revenue-low']}
   });
 });
-</script><ul><li>High open rates (35%+)</li><li>Click rates above 3%</li><li>Low unsubscribe rate</li><li>Low spam complaints</li></ul><h2>Building quality</h2><ul><li>Don't buy lists</li><li>No deceptive signup offers</li><li>Immediately deliver value</li><li>Segment to send relevant content</li></ul><h2>Maintaining</h2><ul><li>Regular list cleaning (remove unengaged 6+ months)</li><li>Win-back campaigns before suppression</li><li>Consistent value in every send</li></ul></div></div><footer><div class="container">
+</script><ul><li>High open rates (35%+)</li><li>Click rates above 3%</li><li>Low unsubscribe rate</li><li>Low spam complaints</li></ul><h2>Building quality</h2><ul><li>Don't buy lists</li><li>No deceptive signup offers</li><li>Immediately deliver value</li><li>Segment to send relevant content</li></ul><h2>Maintaining</h2><ul><li>Regular list cleaning (remove unengaged 6+ months)</li><li>Win-back campaigns before suppression</li><li>Consistent value in every send</li></ul>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Size vs quality, the real tradeoff');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Big unhygienic list', items: [
+      '100,000 subscribers',
+      '15% open rate, 1.2% click',
+      'High bounce + complaint rate',
+      'Deliverability degrading',
+      'Revenue per send: $0.04'
+    ]},
+    right: {title: 'Smaller clean list', items: [
+      '35,000 active subscribers',
+      '45% open rate, 9% click',
+      'Under 0.1% complaint rate',
+      'Inbox placement 95%+',
+      'Revenue per send: $0.35'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Measure revenue per send + per subscriber, not list size, large lists with bad quality hurt deliverability and revenue both</li>
+<li>Run quarterly list hygiene (remove unengaged 90+ days), cleaner smaller list outperforms bigger dirty one on every metric</li>
+<li>Suppress hard bounces immediately, continuing to send to them signals spammer behavior to mailbox providers</li>
+<li>Re-permission campaigns before mass suppression, "still want to hear from us?" catches some late-engagers before you remove them</li>
+<li>Deliver consistent value in every send, list quality degrades when subscribers feel the value dropping</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

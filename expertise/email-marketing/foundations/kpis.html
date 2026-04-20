@@ -237,7 +237,35 @@ window.addEventListener('sketch:ready', function(){
     ['Revenue / email', '$0.10–0.50 (ecomm)']
   ]});
 });
-</script><ul><li>Open rate (20-40% broadcast, 40-60% transactional)</li><li>Click-through rate (1-5% broadcast, 10%+ highly-targeted)</li><li>Conversion rate (varies wildly)</li><li>Unsubscribe rate (<0.5%)</li><li>Spam complaints (<0.1%)</li><li>List growth rate</li></ul><h2>Revenue KPIs</h2><ul><li>Revenue per email sent (RPES)</li><li>Revenue per subscriber per month</li><li>List LTV</li></ul><h2>Post-iOS 15 open rates</h2><p>Apple's Mail Privacy Protection pre-loads images, inflating opens by 20-40%. Open rates are less reliable than they were; click rate is truer.</p></div></div><footer><div class="container">
+</script><ul><li>Open rate (20-40% broadcast, 40-60% transactional)</li><li>Click-through rate (1-5% broadcast, 10%+ highly-targeted)</li><li>Conversion rate (varies wildly)</li><li>Unsubscribe rate (<0.5%)</li><li>Spam complaints (<0.1%)</li><li>List growth rate</li></ul><h2>Revenue KPIs</h2><ul><li>Revenue per email sent (RPES)</li><li>Revenue per subscriber per month</li><li>List LTV</li></ul><h2>Post-iOS 15 open rates</h2><p>Apple's Mail Privacy Protection pre-loads images, inflating opens by 20-40%. Open rates are less reliable than they were; click rate is truer.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Email KPI stack, optimize the bottom');
+  sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 34, layers: [
+    {label: 'Open rate (vanity post-iOS)', sub: 'inflated by pre-fetch'},
+    {label: 'Click rate', sub: 'true engagement signal'},
+    {label: 'Click-to-conversion', sub: 'copy + landing match'},
+    {label: 'Revenue per email (RPE)', sub: 'the metric that pays bills'},
+    {label: 'Revenue per subscriber', sub: 'list quality North Star'}
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Track revenue per email sent as the primary KPI, open rate is now inflated by iOS prefetching and no longer a reliable signal</li>
+<li>Measure click rate as your true engagement signal, subscribers clicking prove interest in a way opens no longer do</li>
+<li>Compute revenue per subscriber monthly, declining RPS means list quality is degrading even if list size grows</li>
+<li>Segment KPIs by campaign type (welcome vs broadcast vs promo), blending them hides which flows carry the revenue</li>
+<li>Set KPI targets vs industry benchmarks, not internal comparisons, internal improvement against bad baseline still loses to category average</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){
