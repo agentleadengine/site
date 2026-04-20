@@ -324,6 +324,21 @@ window.addEventListener('sketch:ready', function(){
 <p>Metadata filtering is essential. A query about employment law in California shouldn't retrieve New York precedents or pre-2020 rulings that have been overturned.</p>
 
 <h2>Hallucination risk is existential</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Guardrails against fake citations');
+  sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 44, layers: [
+    {label: 'Prompt: "only cite retrieved sources"', sub: 'first line of defense'},
+    {label: 'Post-process: verify every citation', sub: 'check against context'},
+    {label: 'Reject on unverifiable claims', sub: 'return no-answer instead'},
+    {label: 'Human lawyer review', sub: 'final accountability'}
+  ]});
+});
+</script>
 <p>A hallucinated citation (fake case, fake statute section) is malpractice. Mitigations:</p>
 <ul>
   <li>Strict prompt: "Only cite sources that appear in the retrieved context. If you cannot cite, say so."</li>
@@ -394,6 +409,15 @@ window.addEventListener('sketch:ready', function(){
 </ul>
 
 <p>For internal legal RAG, borrow these patterns. Don't ship a naive vector RAG over legal documents and call it done, the quality bar is categorically higher.</p>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Require citations on every generated claim, and verify each one against the retrieved source before returning the answer</li>
+<li>Add a refusal path: if the retriever cannot find grounding, the model says "I don't know" rather than guessing</li>
+<li>Route high-stakes outputs (contracts, court filings, compliance memos) through a human review queue before anything reaches the end user</li>
+<li>Pin jurisdiction, effective date, and document type into metadata so queries can filter by "California, 2025, employment law" instead of mixing regimes</li>
+<li>Log every query, retrieval, and generation for audit, legal teams will ask, and you need to be able to answer</li>
+</ul>
 
 <p style="margin-top:40px;">Next: <a href="multi-tenant.html">Multi-tenant RAG</a>.</p>
 <div class="prev-next"><a href="code-rag.html" class="prev"><div class="label">← Previous</div><div class="title">Code search + generation</div></a><a href="multi-tenant.html" class="next"><div class="label">Next →</div><div class="title">Multi-tenant RAG</div></a></div></div></div><footer><div class="container">

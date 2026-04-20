@@ -326,6 +326,30 @@ Never trust client-provided tenant_id. Always derive
 from authentication.
 </pre>
 
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Tenant_id always comes from the session, never the request');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 200,
+    left: {title: 'WRONG (trust client)', items: [
+      'Request body: { tenant_id: "acme", query: "..." }',
+      'Filter uses client-provided tenant_id',
+      'Attacker changes id → reads another tenant',
+      'One bug = multi-tenant breach'
+    ]},
+    right: {title: 'RIGHT (derive from auth)', items: [
+      'Session: user.tenant_id = "acme" (server-side)',
+      'Filter uses session tenant_id only',
+      'Request payload tenant_id is ignored',
+      'Client cannot influence isolation boundary'
+    ]}
+  });
+});
+</script>
+
 <h2>Embedding model choice</h2>
 <p>Multi-tenant systems usually use one embedding model across all tenants:</p>
 <ul>
@@ -426,6 +450,16 @@ from authentication.
 
 <h2>Closing thought</h2>
 <p>Multi-tenant RAG has all the challenges of single-tenant RAG plus isolation, scaling, and operational multi-tenancy concerns. The isolation concerns aren't optional, one leak is a reputational catastrophe. Build with isolation as a first-class property, not an afterthought.</p>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Derive tenant_id from the authenticated session on every request, never trust a client-supplied tenant identifier</li>
+<li>Start with shared-index + namespace filters for the long tail, graduate enterprise tenants to dedicated namespaces or indexes as they grow</li>
+<li>Attach per-user permission tags to every chunk, apply both tenant and permission filters at retrieval time</li>
+<li>Build automated tenant onboarding and offboarding flows from day one, including GDPR deletion paths</li>
+<li>Track per-tenant cost, query volume, and latency so you can identify unprofitable tenants and scaling hot spots before they break production</li>
+<li>Write an isolation test suite that actively tries to leak data across tenants, run it in CI</li>
+</ul>
 
 <p style="margin-top:40px;">Back to the <a href="../index.html">RAGS to Riches overview</a>.</p>
 <div class="prev-next"><a href="legal-compliance.html" class="prev"><div class="label">← Previous</div><div class="title">Legal and compliance</div></a></div></div></div><footer><div class="container">

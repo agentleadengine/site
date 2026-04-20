@@ -267,6 +267,23 @@ window.addEventListener('sketch:ready', function(){
 <p>The RAG system MUST propagate these permissions. Leaking a single confidential doc via search can be a career-limiting event.</p>
 
 <h2>Permission propagation patterns</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Permission sync strategies');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Pattern', w: 220},
+    {title: 'Tradeoff', w: 580}
+  ], rows: [
+    ['Static at ingest', 'Fast; stale when perms change'],
+    ['Dynamic at query', 'Always accurate; slower + source-dependent'],
+    ['Hybrid (daily re-sync + dynamic for sensitive)', 'Common compromise']
+  ]});
+});
+</script>
 
 <h3>Static at ingest</h3>
 <p>Capture permissions when ingesting each document. Store in chunk metadata. Filter at query time.</p>
@@ -404,7 +421,12 @@ window.addEventListener('sketch:ready', function(){
 
 <p>Ship with a narrow corpus first. Expand based on what users ask for.</p>
 
-<p style="margin-top:40px;">Next: <a href="code-rag.html">Code search and generation RAG</a>.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>Permissions aren't optional. Build static-at-ingest + daily re-sync from v1.</li>
+<li>Start narrow (one team, one source). Expand after you've proven the pattern.</li>
+<li>Always audit-log the query + retrieved docs; security and compliance will ask.</li>
+</ul>
 <div class="prev-next"><a href="customer-support.html" class="prev"><div class="label">← Previous</div><div class="title">Customer support RAG</div></a><a href="code-rag.html" class="next"><div class="label">Next →</div><div class="title">Code search + generation</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

@@ -287,6 +287,25 @@ window.addEventListener('sketch:ready', function(){
 </ul>
 
 <h2>Retrieval patterns</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Code retrieval patterns');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Pattern', w: 240},
+    {title: 'What it pulls', w: 560}
+  ]
+  , rows: [
+    ['Query-then-expand', 'Function + callers + tests + docs'],
+    ['Repo-aware filter', 'Scoped to user\'s current repo'],
+    ['Symbol lookup', 'Exact match on function/class name'],
+    ['Usage pattern', 'How is this function called elsewhere?']
+  ]});
+});
+</script>
 
 <h3>Query-then-expand</h3>
 <p>Initial query retrieves a function. Expand by pulling in:</p>
@@ -384,7 +403,12 @@ window.addEventListener('sketch:ready', function(){
 
 <p>These higher-order tasks compound the value of the underlying retrieval system. Good retrieval is the foundation; capabilities stack on top.</p>
 
-<p style="margin-top:40px;">Next: <a href="legal-compliance.html">Legal and compliance RAG</a>.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>Use a code-specific embedding model; it meaningfully outperforms generic text embeddings.</li>
+<li>Chunk on function / class boundaries. Fixed-size splits functions and destroys meaning.</li>
+<li>Filter secrets at ingestion. Never index credentials.</li>
+</ul>
 <div class="prev-next"><a href="internal-kb.html" class="prev"><div class="label">← Previous</div><div class="title">Internal knowledge RAG</div></a><a href="legal-compliance.html" class="next"><div class="label">Next →</div><div class="title">Legal and compliance</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>
