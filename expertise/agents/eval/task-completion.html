@@ -253,7 +253,7 @@
     ['Ground-truth compare', 'You have a known-good answer to compare against'],
     ['LLM-as-judge', 'Open-ended outputs where no single right answer exists']
   ]});
-}</script>
+});</script>
 
 <h2>Prefer binary when you can</h2>
 <p>Binary is cheap, reproducible, non-debatable. "Did the PR get merged? Yes/No." "Did the SQL return the right row count? Yes/No." If you can express success as a boolean, do. Graded scales introduce judge variance and make regressions harder to spot.</p>
@@ -303,7 +303,7 @@
     ['3/5 pass', 'Flaky. Reliability problem. Investigate.'],
     ['<= 2/5 pass', 'Broken. This case is unlikely to work in prod.']
   ]});
-}</script>
+});</script>
 
 <h2>LLM-as-judge: useful, biased</h2>
 <p>When outputs are free-form (writing, summaries, conversations), use a strong LLM to grade: "Does this output accomplish the task?" Judge outputs a score and rationale. This scales. But the judge has its own biases; validate every few weeks against human grading on a sample.</p>

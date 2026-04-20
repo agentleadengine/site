@@ -254,7 +254,7 @@
     {title: 'Score each', sub: 'cross-encoder reads query+doc together'},
     {title: 'Keep top-5', sub: 'pass to LLM'}
   ]});
-}</script>
+});</script>
 <pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
 1. Initial retrieval returns top-50 or top-100 candidates
 2. Reranker scores each (query, candidate) pair
@@ -305,7 +305,7 @@
     {label: 'Cohere Rerank 3', value: 45, note: '100–400ms (network+inference)'},
     {label: 'LLM-as-reranker (top-20)', value: 95, note: '500–2000ms'}
   ]});
-}</script>
+});</script>
 <ul>
   <li>ms-marco-MiniLM on top-50: 30-100ms on GPU</li>
   <li>bge-reranker-large on top-50: 100-300ms on GPU</li>

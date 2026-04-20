@@ -250,7 +250,7 @@
     {label: 'Tool / API costs', value: 25, note: 'paid APIs, compute'},
     {label: 'Memory / vector DB', value: 10, note: 'storage + queries'}
   ]});
-}</script>
+});</script>
 <p>LLM tokens dominate almost every agent's bill. Input tokens grow with context length; output tokens grow with how much reasoning + response the model produces. Optimize those first.</p>
 
 <h2>Six cost-reduction techniques (in order of ROI)</h2>
@@ -271,7 +271,7 @@
     ['Per-session budget', 'Caps worst-case cost; doesn\'t reduce average'],
     ['Tool result caching', '20–50% on repeat queries']
   ]});
-}</script>
+});</script>
 
 <h2>Prompt caching: do this first</h2>
 <p>Anthropic's Claude, Google's Gemini, and OpenAI all support caching stable parts of the prompt. Your system prompt is the same every turn; cache it. On Anthropic, a cached token is 10% of the normal input cost, and cache hits are typical on multi-turn sessions. For agents with a 2K-token system prompt and 15-turn sessions, this alone can cut your bill in half.</p>

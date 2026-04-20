@@ -268,7 +268,7 @@
     ['Team has no tracing / observability', 'Don\'t ship an agent until you do.'],
     ['Problem is ill-defined', 'Define the problem first. Agents don\'t save bad specs.']
   ]});
-}</script>
+});</script>
 
 <h2>Deterministic tasks: don't use an agent</h2>
 <p>"Parse this PDF, pull out the five fields, write a row to the database." The steps are known. The sequence never changes. A plain function with one LLM call for extraction is faster, cheaper, more reliable. Wrapping that in an agent adds nothing but variance.</p>
@@ -301,7 +301,7 @@
     {label: 'Bounded agent (6 turns avg)', value: 55, note: '~$550'},
     {label: 'Unbounded agent (20 turns)', value: 95, note: '~$2,000+'}
   ]});
-}</script>
+});</script>
 <p>At 10,000 runs a month, the gap between a workflow and an unbounded agent is the difference between a Netflix subscription and a car payment. If the agent buys you nothing the workflow couldn't, that's just money set on fire.</p>
 
 <h2>The "we should use an agent" trap</h2>

@@ -251,7 +251,7 @@
     {label: 'Tool calls + results', sub: 'everything done before'},
     {label: 'Scratch / reasoning', sub: 'the model\'s own notes'}
   ]});
-}</script>
+});</script>
 <p>Every LLM call includes all of the above. After 15 turns of tool use, that's 30+ blocks of content piling up. Which is where the problems start.</p>
 
 <h2>The long-session collapse</h2>
@@ -280,7 +280,7 @@
     ['Chunk', 'Break the task into sub-sessions. Each has its own bounded context.'],
     ['Retrieve', 'Store everything externally, pull only what the current step needs.']
   ]});
-}</script>
+});</script>
 
 <h2>Keep in full, trim the rest</h2>
 <p>The always-keep list, regardless of session length:</p>

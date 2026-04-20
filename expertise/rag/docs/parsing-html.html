@@ -250,7 +250,7 @@
     {title: 'Extract main', sub: 'content article'},
     {title: 'To markdown', sub: 'preserve headings'}
   ]});
-}</script>
+});</script>
 
 <h3>1. Fetch</h3>
 <p>HTTP GET (or a headless browser for JS-heavy sites). Handle redirects, cookies, user agents, rate limits. Respect robots.txt when applicable.</p>
@@ -284,7 +284,7 @@
     ['Firecrawl / Jina Reader', 'Managed; RAG-oriented scraping'],
     ['Playwright + extractor', 'SPAs requiring JS render']
   ]});
-}</script>
+});</script>
 
 <h3>Readability / trafilatura</h3>
 <p>Python libraries that heuristically extract "main content" from HTML. Trafilatura is my default, best signal-to-noise ratio on general-purpose web content. Handles blog posts, news articles, documentation pages well.</p>
@@ -341,7 +341,7 @@
     ['SPA needs JS render', 'Playwright or skip'],
     ['Rate limiting / bans', 'Polite delays, user-agent rotation']
   ]});
-}</script>
+});</script>
 
 <h3>Duplicate content</h3>
 <p>Many sites have print versions, AMP versions, paginated archives, and tag pages that duplicate core content. Deduplicate aggressively during ingestion.</p>

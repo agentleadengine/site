@@ -263,7 +263,7 @@
     ['Summarize each table', 'Huge tables, semantic query match'],
     ['Extract → query as data', 'Numerical / aggregable data']
   ]});
-}</script>
+});</script>
 
 <h3>1. Serialize as readable prose</h3>
 <p>Convert each row into a sentence: "In 2023, Revenue was $4.2M, COGS was $1.8M, Gross Margin was 57%." Preserves semantics in a format embeddings handle well. Loses compactness but gains retrievability.</p>
@@ -301,7 +301,7 @@
     ['"Find items where X between Y and Z"', 'Structured query'],
     ['"Summarize this financial table"', 'Pre-generated summary']
   ]});
-}</script>
+});</script>
 <p>Look at what questions users actually ask:</p>
 <ul>
   <li>"What was revenue in 2022?" → row-level retrieval works</li>
@@ -334,7 +334,7 @@
     ['Retrieve adjacent text', 'Free; often enough'],
     ['Multimodal embeddings', 'Emerging; strong for image-heavy content']
   ]});
-}</script>
+});</script>
 
 <h3>The captions-only baseline</h3>
 <p>Extract and embed just the figure caption. Fast, cheap, catches most user questions that reference figures by number or topic.</p>

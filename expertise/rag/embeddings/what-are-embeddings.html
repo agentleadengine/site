@@ -251,7 +251,7 @@
   sketch.note(svg, 290, 240, 'close = related meaning', {size: 13});
   sketch.note(svg, 680, 240, 'close = related meaning', {size: 13});
   sketch.note(svg, 460, 90, 'far apart = unrelated', {size: 13});
-}</script>
+});</script>
 <p>Embedding models map text into a high-dimensional space (typically 768, 1024, 1536, or 3072 dimensions). In this space:</p>
 <ul>
   <li>"Reset my password" and "I forgot my login" are close (similar meaning)</li>
@@ -303,7 +303,7 @@
       'Weak on synonyms / paraphrases',
       'Free / computational']}
   });
-}</script>
+});</script>
 <ul>
   <li><strong>Dense embeddings</strong> (what most people mean): continuous vectors from a neural model. Good at semantic similarity, weak at exact matches.</li>
   <li><strong>Sparse embeddings</strong> (BM25, SPLADE): high-dimensional vectors with mostly zero values, where each dimension corresponds to a term or learned token. Good at exact matches and keyword-heavy queries.</li>

@@ -281,7 +281,7 @@ Sitemap: https://yourdomain.com/sitemap.xml</code></pre>
       'Hide "secret" URLs (it\'s a roadmap)'
     ]}
   });
-}</script>
+});</script>
 
 <h2>Common patterns</h2>
 
@@ -331,7 +331,7 @@ Allow: /api/public/</code></pre>
       ['Leaving staging rules in prod', 'Prod site blocked from Google', 'Review before every deploy']
     ]
   });
-}</script>
+});</script>
 
 <p>The <code>Disallow: /</code> mistake is catastrophic. It's most often left over from staging environments accidentally deployed to production. The fix is fast (remove the line), but recovery in rankings takes weeks.</p>
 
@@ -364,7 +364,7 @@ Allow: /api/public/</code></pre>
       ['URL should disappear entirely', '410 Gone or 301', 'Clean removal']
     ]
   });
-}</script>
+});</script>
 
 <h2>What to do with this</h2>
 <p>Open <code>yourdomain.com/robots.txt</code> right now. Read every line. Is there anything there you don't recognize? Does anything say <code>Disallow: /</code>? Check. Any modern site should have a minimal, intentional robots.txt. If yours is long or weird, clean it up.</p>

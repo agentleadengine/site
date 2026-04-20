@@ -253,7 +253,7 @@
   sketch.arrow(svg, rc, {x1: 470, x2: 520, y1: 130, y2: 55, bidirectional: false});
   sketch.arrow(svg, rc, {x1: 470, x2: 520, y: 130, bidirectional: false});
   sketch.arrow(svg, rc, {x1: 470, x2: 520, y1: 130, y2: 195, bidirectional: false});
-}</script>
+});</script>
 <p>A classifier sits between the user and the retrieval pipeline. It looks at the query and decides:</p>
 <ul>
   <li>Does this even need retrieval? (many queries don't)</li>
@@ -307,7 +307,7 @@
     ['Heuristic (rules)', 'Free, fast; limited'],
     ['Embedding nearest-neighbor', 'Medium speed, medium quality']
   ]});
-}</script>
+});</script>
 
 <h3>LLM-based</h3>
 <p>Prompt a small fast model to classify the query. Simple, flexible, costs a call per query. Most common in production.</p>

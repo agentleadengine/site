@@ -253,7 +253,7 @@
     ['HNSW + PQ', 'Best-of-both at billion-scale'],
     ['Flat / brute force', 'Exact; fine under ~1M vectors']
   ]});
-}</script>
+});</script>
 
 <h2>HNSW (Hierarchical Navigable Small World)</h2>
 <p>The dominant algorithm for most production vector databases.</p>
@@ -357,7 +357,7 @@
     ['Fast + low memory', 'IVF-PQ aggressive compression'],
     ['High recall + low memory', 'Exhaustive search + patience']
   ]});
-}</script>
+});</script>
 <p>You get to pick two of three: recall, speed, memory. Tuning parameters move you along the frontier:</p>
 <ul>
   <li>High recall + fast: HNSW with large ef, lots of memory</li>

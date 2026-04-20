@@ -257,7 +257,7 @@
   sketch.arrow(svg, rc, {x1: 610, x2: 380, y1: 170, y2: 210, bidirectional: false, label: 'result'});
   sketch.arrow(svg, rc, {x1: 290, x2: 290, y1: 245, y2: 170, bidirectional: false, label: 'no, loop again'});
   sketch.note(svg, 720, 245, 'every loop → one more step', {size: 14});
-}</script>
+});</script>
 <p>Four moving parts. Goal goes in. The LLM picks what to do. A tool runs. The result comes back. The LLM checks whether the goal is done. If not, it loops. That's the whole shape.</p>
 
 <h2>The three components, precisely</h2>
@@ -290,7 +290,7 @@
       'great for: multi-step tasks'
     ]}
   });
-}</script>
+});</script>
 
 <h2>A worked example: "Book me a flight to Austin next Thursday"</h2>
 <p>Watch the loop run:</p>
@@ -321,7 +321,7 @@
     {label: 'Multi-agent', value: 75, note: 'specialists coordinate'},
     {label: 'Fully autonomous', value: 95, note: 'self-correcting, long-running'}
   ]});
-}</script>
+});</script>
 <p>Most production agents you'll build sit in the middle: a bounded loop with maybe 3–10 tools, running for 5–30 steps, with a timeout. The "fully autonomous agent that runs for days" is rare and hard. Don't start there.</p>
 
 <h2>When agents pay off</h2>

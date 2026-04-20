@@ -256,7 +256,7 @@
     {label: '9. Generation', sub: 'LLM with context'},
     {label: '10. Observability', sub: 'traces + feedback'}
   ]});
-}</script>
+});</script>
 
 <h3>1. Source integration</h3>
 <p>Where documents come from. Confluence, Google Drive, Notion, S3, SharePoint, databases, APIs, websites, Slack. Every source has its own auth model, rate limits, and permission system. Ingestion connectors are often the biggest single engineering cost.</p>
@@ -308,7 +308,7 @@
       'Latency-sensitive',
       'Gets the ops attention']}
   });
-}</script>
+});</script>
 <p>The split matters because they have different scaling profiles, different failure modes, and usually different engineering ownership. Teams that conflate them end up with systems where a re-ingestion job blocks live queries, or where a query optimization breaks the indexer.</p>
 
 <h2>The decisions I force teams to make explicit</h2>
@@ -347,7 +347,7 @@
     ['Top-10 → GPT-4, done', 'Hybrid search + reranker + tuned top-k'],
     ['No eval / observability', 'RAGAS eval + trace every query']
   ]});
-}</script>
+});</script>
 <p>It's the default path, and it's not terrible, but it's also the system that will plateau at "okay" and never get to "good." Everything in this section is the work of getting past that plateau.</p>
 
 <h2>What to do with this</h2>

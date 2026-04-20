@@ -255,7 +255,7 @@
     {label: 'Orchestration', sub: 'the loop + stop conditions'},
     {label: 'Safety + guardrails', sub: 'injection defenses, filters, rate limits'}
   ]});
-}</script>
+});</script>
 <p>Every layer is a separate design decision. Skip one and you get a specific failure mode: skip memory and you lose context between turns, skip guardrails and you ship an injection hole, skip orchestration limits and you get runaway bills.</p>
 
 <h2>The flow from click to answer</h2>
@@ -290,7 +290,7 @@
     ['Safety', 'Prompt injection, exfiltration via tool, harmful output'],
     ['Cost', 'Long session, no cap, one bad run costs $50']
   ]});
-}</script>
+});</script>
 
 <h2>Minimum viable production agent</h2>
 <p>The short list of things that have to exist before you ship. Missing any of these and the agent will fail silently in ways that are expensive to fix after the fact:</p>

@@ -250,7 +250,7 @@
     {label: 'Per-user', sub: 'max $X per user per day'},
     {label: 'Global', sub: 'max concurrent sessions, max $ per hour'}
   ]});
-}</script>
+});</script>
 <p>Each layer catches a different failure mode. Per-session catches a stuck agent. Per-tool catches overuse of an expensive operation. Per-user catches one runaway user. Global is the last line of defense when multiple of the above go wrong at once.</p>
 
 <h2>Per-session, the first thing you ship</h2>

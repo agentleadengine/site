@@ -261,7 +261,7 @@
     ['Per-tenant namespace', 'Better isolation; more indexes to manage'],
     ['Per-tenant full deployment', 'Maximum isolation; expensive']
   ]});
-}</script>
+});</script>
 
 <h3>Pattern 1: Shared index, tenant_id filter</h3>
 <p>All tenants' vectors in one index. Every query filters by tenant_id.</p>
@@ -360,7 +360,7 @@ from authentication.
       'Client cannot influence isolation boundary'
     ]}
   });
-}</script>
+});</script>
 
 <h2>Embedding model choice</h2>
 <p>Multi-tenant systems usually use one embedding model across all tenants:</p>

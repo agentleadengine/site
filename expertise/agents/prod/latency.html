@@ -250,7 +250,7 @@
     {label: 'Serial turns', value: 70, note: 'each adds full inference'},
     {label: 'Context processing', value: 30, note: 'grows with context size'}
   ]});
-}</script>
+});</script>
 
 <h2>The user-perception moves (biggest impact)</h2>
 <p>These don't reduce total latency. They make latency feel tolerable.</p>
@@ -287,7 +287,7 @@
     ['Long async task', 'Minutes fine; just tell user up front'],
     ['Background / batch', 'Minutes to hours; no UI blocking']
   ]});
-}</script>
+});</script>
 <p>Pick the UX mode that fits your agent's actual latency, not the other way around. Don't try to shoehorn a 30-second task into a chat UI; move to form-submit or async and save everyone the pain.</p>
 
 <h2>The p99 problem</h2>

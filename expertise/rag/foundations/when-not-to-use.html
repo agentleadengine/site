@@ -255,7 +255,7 @@
     ['Latency under 500ms needed', 'Precomputed context / caching'],
     ['No team to maintain index', 'Long-context, one-shot']
   ]});
-}</script>
+});</script>
 
 <h2>When the entire knowledge fits in a prompt</h2>
 <p>If your "knowledge base" is 30 pages of internal docs, put it in a system prompt and move on. Retrieval pipelines add latency, cost, and surface area. For small, bounded knowledge that rarely changes, a long system prompt beats RAG every time.</p>
@@ -294,7 +294,7 @@
     {label: 'LLM generation', value: 90, note: '500–2000ms+'},
     {label: 'Total (first token)', value: 75, note: '500ms–2s'}
   ]});
-}</script>
+});</script>
 <p>Full RAG adds 200-1500ms of latency (embedding + search + rerank + generation). If you're building something real-time (voice, streaming autocomplete), RAG may be too slow. Consider:</p>
 <ul>
   <li>Preloading common context into the prompt</li>

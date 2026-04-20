@@ -266,7 +266,7 @@ top_k: 10
     ['Post-filter', 'Top-k vector search, then filter results'],
     ['Integrated', 'DB walks the index with filter in mind (best)']
   ]});
-}</script>
+});</script>
 
 <h3>Pre-filter</h3>
 <p>Narrow the candidate set to matching metadata first, then search only those. Exact: returns only filter-matching documents.</p>
@@ -336,7 +336,7 @@ top_k: 10
     ['Namespace per tenant', 'Physical separation; better perf'],
     ['Collection per tenant', 'Maximum isolation; high overhead for many small tenants']
   ]});
-}</script>
+});</script>
 <p>In multi-tenant RAG, tenant_id filter runs on every query. Options:</p>
 
 <h3>Single index, filter on tenant_id</h3>

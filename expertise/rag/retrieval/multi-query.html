@@ -255,7 +255,7 @@
   sketch.arrow(svg, rc, {x1: 470, x2: 560, y1: 55, y2: 110, bidirectional: false});
   sketch.arrow(svg, rc, {x1: 470, x2: 560, y: 125, bidirectional: false});
   sketch.arrow(svg, rc, {x1: 470, x2: 560, y1: 195, y2: 140, bidirectional: false});
-}</script>
+});</script>
 <ol>
   <li>Take the user's original query</li>
   <li>Use an LLM to generate N variations (paraphrases, sub-questions, step-back questions, HyDE passages)</li>
@@ -368,7 +368,7 @@ Sort documents by rrf_score. Take top-K.
     ['Vague / ambiguous', 'Multi-query'],
     ['Specific terminology', 'Single-query']
   ]});
-}</script>
+});</script>
 <p>Not every query benefits. A lightweight classifier or prompt can decide:</p>
 <ul>
   <li>Short queries (&lt; 5 words): use multi-query</li>

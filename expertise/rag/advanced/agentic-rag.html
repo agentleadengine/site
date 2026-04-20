@@ -254,7 +254,7 @@
   sketch.arrow(svg, rc, {x1: 220, x2: 280, y1: 130, y2: 200, bidirectional: true});
   sketch.arrow(svg, rc, {x1: 440, x2: 540, y: 130, bidirectional: false});
   sketch.arrow(svg, rc, {x1: 620, x2: 140, y1: 160, y2: 160, bidirectional: false, label: 'loop until done'});
-}</script>
+});</script>
 <p>Instead of hardcoded retrieve-then-generate, you expose retrieval as a tool the LLM can call:</p>
 
 <pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
@@ -332,7 +332,7 @@
     ['Under-retrieval (hallucinate)', 'System prompt: retrieve before answering'],
     ['Wrong tool choice', 'Clear tool descriptions + examples']
   ]});
-}</script>
+});</script>
 
 <h3>Infinite loops</h3>
 <p>Agent keeps retrieving without terminating. Mitigation: max steps, max cost budget, timeout.</p>

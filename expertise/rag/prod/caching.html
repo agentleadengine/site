@@ -250,7 +250,7 @@
     {label: 'Query embedding cache', sub: 'repeat queries skip embedding'},
     {label: 'Prompt cache (LLM)', sub: 'system prompt cached by provider'}
   ]});
-}</script>
+});</script>
 
 <h3>Layer 1: Query embedding cache</h3>
 <p>Cache the embedding of each query. Keyed by exact query text + embedding model version.</p>
@@ -336,7 +336,7 @@
     ['Event-based', 'Docs update → invalidate; complex but accurate'],
     ['Lazy / versioned', 'Compare version at read; regenerate on mismatch']
   ]});
-}</script>
+});</script>
 
 <h3>Time-based</h3>
 <p>TTL on every entry. Simple, acceptable for many use cases.</p>

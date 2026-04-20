@@ -252,7 +252,7 @@
     ['Answer relevance', 'Does the answer actually address the question?'],
     ['Context relevance', 'Is the retrieved context relevant to the question?']
   ]});
-}</script>
+});</script>
 
 <h3>Faithfulness</h3>
 <p>Does the answer only say things supported by the retrieved context? Or does it hallucinate?</p>
@@ -372,7 +372,7 @@ composite = α × faithfulness + β × relevance + γ × correctness
     ['Low on both', 'Pipeline broken; check retrieval first'],
     ['High both, low correctness', 'Bad data in corpus itself']
   ]});
-}</script>
+});</script>
 
 <h3>High faithfulness, low relevance</h3>
 <p>The model is citing retrieved context accurately but answering the wrong question. Usually means the retrieved context didn't contain what was needed, and the generator faithfully summarized it.</p>

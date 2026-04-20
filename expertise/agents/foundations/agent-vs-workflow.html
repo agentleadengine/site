@@ -262,7 +262,7 @@
   sketch.arrow(svg, rc, {x1: 800, x2: 630, y1: 150, y2: 150, bidirectional: false, label: 'loop'});
   sketch.note(svg, 180, 230, 'steps fixed ahead of time', {size: 13, color: '#8b5cf6'});
   sketch.note(svg, 700, 230, 'steps emerge at runtime', {size: 13, color: '#8b5cf6'});
-}</script>
+});</script>
 
 <h2>When a workflow wins</h2>
 <ul>
@@ -310,7 +310,7 @@
       'Surprise bills when stuck in loops'
     ]}
   });
-}</script>
+});</script>
 
 <h2>The anti-pattern: agent wrapping a fixed sequence</h2>
 <p>You built an "agent" and its trace always looks like this: call tool A, call tool B, answer. Every time. That's not an agent, it's a workflow with extra steps. You're paying for the LLM to re-decide a decision you already know. Refactor it into a workflow and save 60% on cost and latency.</p>

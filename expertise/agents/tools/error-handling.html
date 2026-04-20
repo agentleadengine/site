@@ -271,7 +271,7 @@
     ['Empty result', 'Query returned nothing', 'Broaden query, or conclude'],
     ['Ambiguous', 'Multiple matches', 'Ask user, or pick best']
   ]});
-}</script>
+});</script>
 
 <h2>Where retries belong</h2>
 <p>Transient errors should be retried by your orchestrator, not by the model. You don't want to spend three LLM turns retrying a rate limit. The orchestrator does 3 retries with exponential backoff internally, and only if those fail does the model see the error. That keeps the agent's context clean and its reasoning focused.</p>
