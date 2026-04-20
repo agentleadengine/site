@@ -311,6 +311,37 @@ window.addEventListener('sketch:ready', function(){
 </ol>
 <p>If you can't answer any of these clearly, you don't have a starving crowd yet. Find one before you write the first ad.</p>
 
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Starving-crowd scorecard, score 0-2 each, ship only if 8+');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Dimension', w: 360},
+    {title: '0 (no)', w: 200},
+    {title: '1', w: 100},
+    {title: '2 (yes)', w: 140}
+  ], rows: [
+    ['Pain is already felt, not invented', 'Have to educate', 'Some awareness', 'Actively hurting'],
+    ['Money already flowing to solutions', 'Nobody pays', 'Some do', 'Competitors profit'],
+    ['Reachable at sane cost', 'Mass market', 'Specialty lists', 'Named + targetable'],
+    ['Close rate on qualified leads', 'Under 5%', '5-15%', '20%+'],
+    ['Organic referrals happen', 'Never', 'Rarely', 'Regularly']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Before you write a single ad, answer the 5 decision-framework questions in writing, if you can't, don't ship yet</li>
+<li>Score your market on the 5-dimension card above, if the total is under 8, you have a product problem not a marketing problem</li>
+<li>Hunt for markets that already pay for bad solutions, a thriving competitor with a mediocre product is proof of starvation</li>
+<li>Stop falling in love with your product, fall in love with a crowd first, then build what they're already trying to buy</li>
+<li>If you find yourself educating prospects on the problem, pause, you're earlier in the market than you can profitably serve</li>
+</ul>
+
 <p style="margin-top:40px;">Related: <a href="sophistication.html">Market sophistication</a> · <a href="dream-customer.html">The dream customer</a> · <a href="market-selection.html">Picking a market</a></p>
 <div class="prev-next"><a href="../foundations/ten-rules.html" class="prev"><div class="label">← Previous</div><div class="title">The 10 rules</div></a><a href="sophistication.html" class="next"><div class="label">Next →</div><div class="title">Market sophistication</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>

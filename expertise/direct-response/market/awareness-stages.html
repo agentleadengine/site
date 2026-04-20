@@ -319,6 +319,39 @@ window.addEventListener('sketch:ready', function(){
 </ol>
 <p>One campaign, one prospect, five pieces of copy. This is why one-ad-fits-all strategies underperform well-constructed sequences.</p>
 
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Wrong-stage copy, the two most common leaks');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 200,
+    left: {title: 'Leak #1: stage-5 copy to stage-1 audience', items: [
+      'Running "30% off today!" on cold paid social',
+      'They don\'t know you, don\'t feel the pain',
+      'Discount is irrelevant, they scroll past',
+      'Fix: lead with the symptom, not the offer'
+    ]},
+    right: {title: 'Leak #2: stage-1 copy to stage-5 audience', items: [
+      'Sending long education emails to existing customers',
+      'They already bought, already know the problem',
+      'The lecture feels patronizing, they unsubscribe',
+      'Fix: short CTA email with the offer, ship it'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Before writing any ad, ask "what stage is this prospect in", then write for that stage only, don't mix</li>
+<li>Build a 5-piece copy ladder per campaign, one piece per stage, then connect them with retargeting or email</li>
+<li>Match copy length to stage, long at stage 1-2, medium at stage 3-4, short at stage 5, length is a stage signal, not a preference</li>
+<li>On cold paid social, assume stage 1-2 unless targeting says otherwise, stage-5 discount ads on cold traffic underperform 10x</li>
+<li>On your email list, assume stage 4-5, they opted in, skip the education and get to the offer</li>
+</ul>
+
 <p style="margin-top:40px;">Related: <a href="sophistication.html">Market sophistication</a> · <a href="../copy/headlines.html">Headlines</a> · <a href="../followup/email-sequences.html">Email sequences</a></p>
 <div class="prev-next"><a href="sophistication.html" class="prev"><div class="label">← Previous</div><div class="title">Market sophistication</div></a><a href="dream-customer.html" class="next"><div class="label">Next →</div><div class="title">The dream customer</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
