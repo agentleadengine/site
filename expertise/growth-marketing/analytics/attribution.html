@@ -237,7 +237,34 @@ window.addEventListener('sketch:ready', function(){
     ['Data-driven', 'ML-weighted (needs volume)']
   ]});
 });
-</script><ul><li>Last-click (simple, biased toward bottom of funnel)</li><li>First-click (biased toward top)</li><li>Linear (equal across all touches)</li><li>Data-driven (algorithmic)</li></ul><h2>Tools</h2><ul><li>Platform self-report (biased)</li><li>GA4 data-driven</li><li>MMM for macro view</li><li>Holdout tests for ground truth</li></ul><h2>Pragmatic approach</h2><p>Use platform data directionally, MER for truth, holdouts for validation.</p><div class="prev-next"></div></div></div><footer><div class="container">
+</script><ul><li>Last-click (simple, biased toward bottom of funnel)</li><li>First-click (biased toward top)</li><li>Linear (equal across all touches)</li><li>Data-driven (algorithmic)</li></ul><h2>Tools</h2><ul><li>Platform self-report (biased)</li><li>GA4 data-driven</li><li>MMM for macro view</li><li>Holdout tests for ground truth</li></ul><h2>Pragmatic approach</h2><p>Use platform data directionally, MER for truth, holdouts for validation.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Attribution stack, three layers, different jobs');
+  sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 40, layers: [
+    {label: 'Platform attribution (daily tactical)', sub: 'which creative, which campaign'},
+    {label: 'Blended MER (weekly truth)', sub: 'total revenue / total spend'},
+    {label: 'Incrementality holdouts (quarterly)', sub: 'real channel contribution'},
+    {label: 'MMM (annual strategic)', sub: 'portfolio-level allocation'}
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Stack attribution methods, each answers a different question, using one alone is how teams get misled</li>
+<li>Use platform attribution for tactical daily decisions only, treat its absolute numbers as directional not truth</li>
+<li>Make MER your weekly North Star, it's noisy but it's the truth platform dashboards can't give you</li>
+<li>Run a channel holdout test quarterly, actual revenue drop is the only way to calibrate platform claims</li>
+<li>Skip MMM until you have 12+ months of clean data + $100K+/mo spend, under that it produces noise</li>
+</ul>
+
+<div class="prev-next"></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

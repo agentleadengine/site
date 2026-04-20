@@ -237,7 +237,44 @@ window.addEventListener('sketch:ready', function(){
     ['Churn', 'subscription_canceled, account_deleted']
   ]});
 });
-</script><ul><li>Core value events (the aha moment)</li><li>Conversion events (signup, upgrade)</li><li>Retention events (returning actions)</li><li>Friction events (errors, abandonment)</li></ul><h2>Naming conventions</h2><ul><li>Verb-noun (create_project, send_message)</li><li>Consistent casing</li><li>Avoid future-tense or vague names</li></ul><h2>Properties matter</h2><p>Attach properties to events: plan, device, source. Filter and segment later.</p><h2>Don't overtrack</h2><p>Tracking everything is noise. Track purposefully.</p><div class="prev-next"></div></div></div><footer><div class="container">
+</script><ul><li>Core value events (the aha moment)</li><li>Conversion events (signup, upgrade)</li><li>Retention events (returning actions)</li><li>Friction events (errors, abandonment)</li></ul><h2>Naming conventions</h2><ul><li>Verb-noun (create_project, send_message)</li><li>Consistent casing</li><li>Avoid future-tense or vague names</li></ul><h2>Properties matter</h2><p>Attach properties to events: plan, device, source. Filter and segment later.</p><h2>Don't overtrack</h2><p>Tracking everything is noise. Track purposefully.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Event tracking, purposeful vs noise');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Overtracking (noise)', items: [
+      '500+ events fired across product',
+      'Nobody knows which are trusted',
+      'Events rename every release, break reports',
+      'Dashboards become unreliable',
+      'Team stops trusting analytics'
+    ]},
+    right: {title: 'Purposeful tracking', items: [
+      '30-60 core events with naming convention',
+      'Each event tied to a known question',
+      'Event schema versioned like code',
+      'Dashboards update, reports stay reliable',
+      'Analytics drives decisions'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Start with 30-60 events that answer specific questions, not "track everything in case we need it"</li>
+<li>Version your event schema like code, renaming events without migration breaks every historical report</li>
+<li>Standardize naming (e.g., object_action_verb: user_signed_up, lead_created), ad-hoc naming produces unusable data</li>
+<li>Review events quarterly, delete events nobody queries, they add analytics noise and engineering maintenance</li>
+<li>Document each event's trigger conditions in a single canonical doc, no shared doc = inconsistent event usage across team</li>
+</ul>
+
+<div class="prev-next"></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

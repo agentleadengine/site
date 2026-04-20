@@ -233,7 +233,36 @@ window.addEventListener('sketch:ready', function(){
     {label: 'Segment cut', sub: 'by plan / geo / channel'}
   ]});
 });
-</script><ul><li>North Star value (current)</li><li>7-day and 30-day trend</li><li>Supporting leading indicators (what drives it)</li><li>Segment breakdowns</li></ul><h2>Keep it simple</h2><p>10 tiles max. More than that and no one reads it.</p><h2>Display publicly</h2><p>Team room display or always-open tab builds shared awareness.</p><div class="prev-next"></div></div></div><footer><div class="container">
+</script><ul><li>North Star value (current)</li><li>7-day and 30-day trend</li><li>Supporting leading indicators (what drives it)</li><li>Segment breakdowns</li></ul><h2>Keep it simple</h2><p>10 tiles max. More than that and no one reads it.</p><h2>Display publicly</h2><p>Team room display or always-open tab builds shared awareness.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Dashboard with purpose, 6-8 tiles max');
+  sketch.numberedSteps(svg, rc, {x: 40, y: 60, w: 820, stepH: 28, items: [
+    'North Star metric + trend (center of the dashboard)',
+    'Inputs driving the North Star (3-4 supporting metrics)',
+    'Leading indicators (weekly, predict next month)',
+    'Concerning changes highlighted (auto-alerted)',
+    'Action log: what we did last week, what we ship this week',
+    'Always-visible, not buried in a BI tool nobody opens'
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Build a dashboard around the North Star + its 3-4 inputs, dashboards with 30 metrics are ignored within a month</li>
+<li>Display the dashboard publicly (TV in office, pinned tab, Slack digest), hidden dashboards stop working in 3 weeks</li>
+<li>Add alerts for significant changes (up or down), the dashboard should pull you in when something shifts, not require you to visit</li>
+<li>Review the dashboard as a team Monday morning, without a review ritual the dashboard becomes wallpaper</li>
+<li>Attach an action log, dashboards that show numbers without the "what we did" story lose their power to drive behavior</li>
+</ul>
+
+<div class="prev-next"></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

@@ -235,7 +235,40 @@ window.addEventListener('sketch:ready', function(){
     ['Ease', 'How hard is it to execute?']
   ]});
 });
-</script><ul><li>Impact: how big if it works</li><li>Confidence: how sure you are it'll work</li><li>Ease: how simple to build and test</li></ul><h2>Usage</h2><p>Backlog every week. Rank by ICE. Top-scoring tests go first.</p><h2>Critiques</h2><p>Subjective scoring. Use for ranking relative priority, not absolute decisions.</p><div class="prev-next"></div></div></div><footer><div class="container">
+</script><ul><li>Impact: how big if it works</li><li>Confidence: how sure you are it'll work</li><li>Ease: how simple to build and test</li></ul><h2>Usage</h2><p>Backlog every week. Rank by ICE. Top-scoring tests go first.</p><h2>Critiques</h2><p>Subjective scoring. Use for ranking relative priority, not absolute decisions.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'ICE score, how to rank experiments');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Experiment', w: 240},
+    {title: 'Impact (1-10)', w: 160},
+    {title: 'Confidence (1-10)', w: 180},
+    {title: 'Ease (1-10) = ICE', w: 220}
+  ], rows: [
+    ['New headline test', '6', '8', '9 = 432'],
+    ['Onboarding rewrite', '10', '7', '3 = 210'],
+    ['Email subject test', '4', '7', '10 = 280'],
+    ['Full-page rebrand', '7', '4', '2 = 56'],
+    ['Rank: highest score first']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Score every experiment in the backlog before starting the next one, intuition picks the flashy tests, ICE picks the valuable ones</li>
+<li>Use ICE for relative ranking, not absolute decisions, the math is subjective but comparison across items still produces signal</li>
+<li>Weight Confidence carefully, teams often inflate confidence to justify favorite ideas, honest confidence shifts the ranking</li>
+<li>Review ICE weekly, as context changes (new data, failed prior test) scores shift and priority order changes</li>
+<li>Don't rank alone, discussing ICE scores with team surfaces different perspectives on impact and confidence</li>
+</ul>
+
+<div class="prev-next"></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

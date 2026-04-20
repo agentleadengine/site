@@ -236,7 +236,35 @@ window.addEventListener('sketch:ready', function(){
     ['Friday', 'Demo, write learnings, plan next week']
   ]});
 });
-</script><ul><li>Monday: review last week, plan this week</li><li>Tuesday-Thursday: ship tests</li><li>Friday: measure running tests, write up learnings</li></ul><h2>Growth retrospective</h2><p>Monthly or quarterly: what worked, what didn't, what's next.</p><div class="prev-next"></div></div></div><footer><div class="container">
+</script><ul><li>Monday: review last week, plan this week</li><li>Tuesday-Thursday: ship tests</li><li>Friday: measure running tests, write up learnings</li></ul><h2>Growth retrospective</h2><p>Monthly or quarterly: what worked, what didn't, what's next.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Weekly growth sprint ritual');
+  sketch.numberedSteps(svg, rc, {x: 40, y: 60, w: 820, stepH: 30, items: [
+    'Monday: review last week\'s test results + update backlog scores',
+    'Tuesday: prioritize 2-3 tests to ship this week',
+    'Wed-Thu: ship tests, instrument tracking, launch to traffic',
+    'Friday: document outcomes, feed learning into next backlog',
+    'Monthly retro: what themes are working, what to change'
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Set a recurring weekly calendar block for sprint planning + retro, without ritual the process drifts</li>
+<li>Ship 2-3 tests per week, fewer means low velocity, more means poorly-instrumented tests</li>
+<li>End each week by documenting outcomes, undocumented tests become undiscoverable learnings inside 3 months</li>
+<li>Run monthly retros to spot patterns, individual test results are noisy but monthly themes show what's really working</li>
+<li>Protect the ritual from other meetings, growth teams that sacrifice sprint rhythm to meeting creep lose the compound effect</li>
+</ul>
+
+<div class="prev-next"></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

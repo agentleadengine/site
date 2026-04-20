@@ -234,7 +234,35 @@ window.addEventListener('sketch:ready', function(){
     {label: 'Upgrade paid', value: 7, note: '7%'}
   ]});
 });
-</script><p>Visit → Signup → Activate → Paid = drop-off at each step.</p><h2>Funnel insights</h2><ul><li>Which step loses most users?</li><li>Do different segments have different conversion?</li><li>How has it changed over time?</li></ul><h2>Optimize the worst step first</h2><p>Biggest loss = biggest opportunity.</p><h2>Multi-step paths</h2><p>Real user journeys aren't linear. Supplement funnels with path analysis.</p><div class="prev-next"></div></div></div><footer><div class="container">
+</script><p>Visit → Signup → Activate → Paid = drop-off at each step.</p><h2>Funnel insights</h2><ul><li>Which step loses most users?</li><li>Do different segments have different conversion?</li><li>How has it changed over time?</li></ul><h2>Optimize the worst step first</h2><p>Biggest loss = biggest opportunity.</p><h2>Multi-step paths</h2><p>Real user journeys aren't linear. Supplement funnels with path analysis.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Funnel view + path analysis together');
+  sketch.numberedSteps(svg, rc, {x: 40, y: 60, w: 820, stepH: 30, items: [
+    'Funnel: sequence of expected steps, shows drop-off points',
+    'Path analysis: what users actually do (linear + non-linear)',
+    'Use funnel to find WHERE users drop off',
+    'Use path analysis to find WHY (skipping, looping, bouncing)',
+    'Fix the highest-drop step, re-measure, iterate'
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Build the funnel once and review it weekly, the biggest drop-off is usually where the product or flow is broken</li>
+<li>Complement funnels with path analysis, real users rarely go through linear funnels, path analysis shows actual behavior</li>
+<li>Fix the highest-drop step first, shoring up small leaks while the main one is broken produces no measurable lift</li>
+<li>Segment the funnel by source + user type, different cohorts drop at different steps and need different fixes</li>
+<li>Track conversion rate step-by-step, not just start-to-finish, end-to-end alone hides where you're losing people</li>
+</ul>
+
+<div class="prev-next"></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

@@ -234,7 +234,35 @@ window.addEventListener('sketch:ready', function(){
     {title: 'Retention %', sub: 'active → stay'}
   ]});
 });
-</script><ul><li>Inputs: traffic, conversion rates, retention, LTV, CAC</li><li>Formulas linking them</li><li>Outputs: MRR, revenue, users</li></ul><h2>Simple version</h2><p>Even a 20-cell spreadsheet showing channels → visitors → signups → activations → paid → MRR is valuable.</p><div class="prev-next"></div></div></div><footer><div class="container">
+</script><ul><li>Inputs: traffic, conversion rates, retention, LTV, CAC</li><li>Formulas linking them</li><li>Outputs: MRR, revenue, users</li></ul><h2>Simple version</h2><p>Even a 20-cell spreadsheet showing channels → visitors → signups → activations → paid → MRR is valuable.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Growth model, input → output in a spreadsheet');
+  sketch.numberedSteps(svg, rc, {x: 40, y: 60, w: 820, stepH: 30, items: [
+    'Visitors per channel (input, paid + organic)',
+    '× Visitor-to-signup conversion (product quality)',
+    '× Signup-to-paid conversion (activation + offer)',
+    '× Retention curve (LTV multiplier)',
+    '= MRR / ARR output, each stage tuneable'
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Build a spreadsheet-based growth model with each stage as a variable, running scenarios exposes which lever matters most</li>
+<li>Update the model monthly with actuals, the delta between model and reality tells you what assumptions to revisit</li>
+<li>Use the model to size bets, "if conversion improves 10%, revenue grows $X" makes prioritization obvious</li>
+<li>Don't over-engineer the model, a simple Sheet with 10 variables beats a complex consulting-style deck nobody updates</li>
+<li>Share the model with the team, shared visibility into the growth machine aligns everyone on what to optimize</li>
+</ul>
+
+<div class="prev-next"></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

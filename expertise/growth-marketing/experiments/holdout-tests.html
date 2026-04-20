@@ -233,7 +233,44 @@ window.addEventListener('sketch:ready', function(){
     {title: 'Incrementality', sub: 'true lift from X'}
   ]});
 });
-</script><ul><li>Geo holdout for paid ads</li><li>User holdout for a retention email</li><li>Feature holdout for rollouts</li></ul><h2>Why better than A/B</h2><p>Can measure incrementality, what wouldn't have happened without the treatment.</p><h2>Cost</h2><p>Holdout group gets worse experience (no new feature). Minimize duration.</p><div class="prev-next"></div></div></div><footer><div class="container">
+</script><ul><li>Geo holdout for paid ads</li><li>User holdout for a retention email</li><li>Feature holdout for rollouts</li></ul><h2>Why better than A/B</h2><p>Can measure incrementality, what wouldn't have happened without the treatment.</p><h2>Cost</h2><p>Holdout group gets worse experience (no new feature). Minimize duration.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'A/B test vs holdout test, different questions');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'A/B test', items: [
+      'Compare two variants (A vs B)',
+      'Both get a treatment',
+      'Measures relative lift',
+      'Daily / weekly cadence',
+      'Answers: "which creative is better?"'
+    ]},
+    right: {title: 'Holdout test', items: [
+      'Treatment vs no-treatment',
+      'Small % gets no change',
+      'Measures absolute incremental value',
+      'Quarterly / annual cadence',
+      'Answers: "is this feature / channel working?"'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Use A/B for daily optimization, holdouts for quarterly truth, they answer different questions</li>
+<li>Size the holdout to 5-10% of the population, smaller holdouts don't produce significance, larger costs too much revenue</li>
+<li>Limit holdout duration, longer holdouts produce better data but cost more in deprived users, balance by test priority</li>
+<li>Run holdouts on channels, features, and campaigns periodically, "does this work" is a different question than "which variant wins"</li>
+<li>Document the ethical tradeoff clearly, holdout users get worse experience, teams need to agree the learning is worth it</li>
+</ul>
+
+<div class="prev-next"></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

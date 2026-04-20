@@ -237,7 +237,37 @@ window.addEventListener('sketch:ready', function(){
     ['Designer / creative', 'Visual / copy for tests']
   ]});
 });
-</script><ul><li>Head of Growth / VP Growth</li><li>Growth PM</li><li>Growth marketer</li><li>Growth engineer</li><li>Data analyst</li></ul><h2>Models</h2><ul><li>Standalone team (owns full funnel)</li><li>Embedded in product (activation/retention)</li><li>Embedded in marketing (acquisition)</li><li>Matrix (reports into both)</li></ul><h2>Early stage</h2><p>Single full-stack person. As scale grows, split into specialties.</p><div class="prev-next"></div></div></div><footer><div class="container">
+</script><ul><li>Head of Growth / VP Growth</li><li>Growth PM</li><li>Growth marketer</li><li>Growth engineer</li><li>Data analyst</li></ul><h2>Models</h2><ul><li>Standalone team (owns full funnel)</li><li>Embedded in product (activation/retention)</li><li>Embedded in marketing (acquisition)</li><li>Matrix (reports into both)</li></ul><h2>Early stage</h2><p>Single full-stack person. As scale grows, split into specialties.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Growth team evolution by stage');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Stage', w: 240},
+    {title: 'Team shape', w: 560}
+  ], rows: [
+    ['Seed / early', 'Single full-stack growth marketer (or founder)'],
+    ['Post-PMF (~$1M ARR)', 'Growth lead + 1 engineer + 1 marketer'],
+    ['Scale (~$10M ARR)', 'Channel leads (paid, content, lifecycle) + growth engineer + analyst'],
+    ['Mature (~$50M+)', 'Full growth pod structure: PMs, engineers, designers, analysts per function']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Don't hire a "growth team of 5" before PMF, early-stage growth is a single full-stack operator, not a team</li>
+<li>Split into specialties only when volume demands it, hiring paid + content + lifecycle too early creates coordination overhead without output</li>
+<li>Match the team structure to growth model leverage, if retention is the biggest lever, invest in product-growth engineers not more paid specialists</li>
+<li>Embed growth marketers with product, separated growth teams can't run experiments that require product changes</li>
+<li>Re-evaluate team shape every 12 months, the right team at $1M ARR is the wrong team at $20M ARR and vice versa</li>
+</ul>
+
+<div class="prev-next"></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

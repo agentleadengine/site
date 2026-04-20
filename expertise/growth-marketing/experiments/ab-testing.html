@@ -233,7 +233,35 @@ window.addEventListener('sketch:ready', function(){
     {title: 'Decide', sub: 'stat sig + business sig'}
   ]});
 });
-</script><ul><li>Clear hypothesis before running</li><li>Single variable changed</li><li>Sufficient sample size</li><li>Fixed duration</li></ul><h2>Sample size</h2><p>Use calculator (VWO, Optimizely). Below-significance results are noise.</p><h2>Run time</h2><p>At least one full week to cover weekly cycles.</p><div class="prev-next"></div></div></div><footer><div class="container">
+</script><ul><li>Clear hypothesis before running</li><li>Single variable changed</li><li>Sufficient sample size</li><li>Fixed duration</li></ul><h2>Sample size</h2><p>Use calculator (VWO, Optimizely). Below-significance results are noise.</p><h2>Run time</h2><p>At least one full week to cover weekly cycles.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'A/B test discipline, 5 rules');
+  sketch.numberedSteps(svg, rc, {x: 40, y: 60, w: 820, stepH: 30, items: [
+    'One variable per test (change A OR B, not both)',
+    'Required sample size computed before launch',
+    'Minimum 1 week runtime to cover day-of-week effects',
+    '95% confidence before calling a winner',
+    'Document result + learning, even inconclusive tests'
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Never change more than one variable per test, changing two contaminates the learning and invalidates the result</li>
+<li>Compute required sample size before starting, tests called on 500 visitors when 5,000 were needed produce false positives</li>
+<li>Run tests through at least one full week cycle, Mon-Wed-only tests miss the weekend that shifts buyer behavior</li>
+<li>Don't peek at results before significance, "clear winners" at 25% of sample size flip outcome 30% of the time</li>
+<li>Document even inconclusive tests, "flat" results are valuable knowledge, they tell you where to stop testing</li>
+</ul>
+
+<div class="prev-next"></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

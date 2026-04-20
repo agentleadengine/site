@@ -236,7 +236,44 @@ window.addEventListener('sketch:ready', function(){
     ['Feature adoption over time', 'When do users adopt X?']
   ]});
 });
-</script><ul><li>Retention by cohort</li><li>Revenue per user by cohort</li><li>Feature adoption by cohort</li><li>LTV cumulative by cohort</li></ul><h2>What to look for</h2><ul><li>Improvement cohort-over-cohort</li><li>Anomalies (sudden drop)</li><li>Segment differences</li></ul><div class="prev-next"></div></div></div><footer><div class="container">
+</script><ul><li>Retention by cohort</li><li>Revenue per user by cohort</li><li>Feature adoption by cohort</li><li>LTV cumulative by cohort</li></ul><h2>What to look for</h2><ul><li>Improvement cohort-over-cohort</li><li>Anomalies (sudden drop)</li><li>Segment differences</li></ul>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'What cohort analysis reveals that aggregate hides');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Aggregate view (hides truth)', items: [
+      'MAU growing 8% MoM',
+      'Revenue growing 12% MoM',
+      'Dashboard green across the board',
+      'Exec team confident',
+      'Quietly masks declining cohort quality'
+    ]},
+    right: {title: 'Cohort view (honest)', items: [
+      'Jan cohort month-6 retention: 52%',
+      'Apr cohort month-6 retention: 41%',
+      'Jul cohort month-6 retention: 34%',
+      'Decline visible 6 months before MAU catches it',
+      'Time to investigate root cause'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Track cohort retention, not aggregate MAU, the aggregate number hides declining cohort quality for 6-12 months</li>
+<li>Compare cohort curves across months, if newer cohorts retain worse, investigate product or acquisition channel drift</li>
+<li>Segment cohorts by acquisition source, organic cohorts often retain 2-3x better than paid, budget decisions follow</li>
+<li>Review cohort analysis weekly, not quarterly, cohort drift is a leading indicator that becomes terminal if ignored</li>
+<li>Build cohort charts into your standing dashboard, if cohort analysis requires a SQL query nobody runs, nobody will see the drift</li>
+</ul>
+
+<div class="prev-next"></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

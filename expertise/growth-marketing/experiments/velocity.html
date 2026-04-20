@@ -236,7 +236,44 @@ window.addEventListener('sketch:ready', function(){
     ['Amazon / Booking-tier', '100+']
   ]});
 });
-</script><ul><li>Early stage: 1-2 tests per week</li><li>Mature growth team: 5-10+ per week</li><li>Top teams: 20+ per week</li></ul><h2>Building velocity</h2><ul><li>Templates for common test types</li><li>Experimentation infrastructure (Optimizely, Split, LaunchDarkly)</li><li>Backlog of hypotheses</li><li>Regular planning cadence</li></ul><h2>Quality vs quantity</h2><p>Bad tests at high velocity is wasted effort. Good hypotheses + discipline beat noise.</p><div class="prev-next"></div></div></div><footer><div class="container">
+</script><ul><li>Early stage: 1-2 tests per week</li><li>Mature growth team: 5-10+ per week</li><li>Top teams: 20+ per week</li></ul><h2>Building velocity</h2><ul><li>Templates for common test types</li><li>Experimentation infrastructure (Optimizely, Split, LaunchDarkly)</li><li>Backlog of hypotheses</li><li>Regular planning cadence</li></ul><h2>Quality vs quantity</h2><p>Bad tests at high velocity is wasted effort. Good hypotheses + discipline beat noise.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Low velocity vs high velocity, same team size');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Low velocity', items: [
+      '1-2 tests per month',
+      '~15 tests / year',
+      '10% win rate = 1-2 wins/year',
+      'Team loses momentum between tests',
+      'Learning compounds slowly'
+    ]},
+    right: {title: 'High velocity', items: [
+      '3-5 tests per week',
+      '~150 tests / year',
+      '10% win rate = 15 wins/year',
+      'Rapid feedback, team stays engaged',
+      'Learning + intuition compound fast'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Aim for 3-5 tests per week, not one heroic test per quarter, compound of small wins beats rare big ones</li>
+<li>Treat every test as a learning, not just a pass/fail, even inconclusive tests narrow the next hypothesis</li>
+<li>Reduce cycle time, automation (feature flags, test tooling) removes friction between "idea" and "live test"</li>
+<li>Quality + velocity are both required, 200 random tests produce noise, 20 disciplined tests per quarter beat both</li>
+<li>Track velocity as a leading indicator, teams shipping 1 test per week usually outperform teams shipping 1 per month by 3-5x annually</li>
+</ul>
+
+<div class="prev-next"></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

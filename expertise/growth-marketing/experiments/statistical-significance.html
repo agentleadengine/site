@@ -237,7 +237,39 @@ window.addEventListener('sketch:ready', function(){
     ['Confidence interval', 'Range the true effect likely falls in']
   ]});
 });
-</script><ul><li>p-value: probability the result is random</li><li>Confidence interval: range of likely true values</li><li>Sample size: larger = narrower confidence</li></ul><h2>Common mistakes</h2><ul><li>Stopping tests early (p-hacking)</li><li>Running too many tests without correction</li><li>Interpreting non-significance as 'no effect'</li></ul><h2>Pragmatic threshold</h2><p>95% confidence, minimum sample size for effect size of interest.</p><div class="prev-next"></div></div></div><footer><div class="container">
+</script><ul><li>p-value: probability the result is random</li><li>Confidence interval: range of likely true values</li><li>Sample size: larger = narrower confidence</li></ul><h2>Common mistakes</h2><ul><li>Stopping tests early (p-hacking)</li><li>Running too many tests without correction</li><li>Interpreting non-significance as 'no effect'</li></ul><h2>Pragmatic threshold</h2><p>95% confidence, minimum sample size for effect size of interest.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Sample size you actually need');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Baseline conversion', w: 220},
+    {title: 'Target lift', w: 220},
+    {title: 'Sample per variant', w: 360}
+  ], rows: [
+    ['5%', '10% relative', '~31,000'],
+    ['5%', '20% relative', '~7,700'],
+    ['10%', '10% relative', '~15,000'],
+    ['10%', '20% relative', '~3,700'],
+    ['2% (typical ecom)', '15% relative', '~17,000']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Compute required sample size before starting any test, "we'll see how it goes" produces false positives in 30% of tests</li>
+<li>Target larger effect sizes (20%+ relative lift) when traffic is limited, small-effect tests require massive sample size you don't have</li>
+<li>Use 95% confidence as minimum, anything lower produces too many false positives to trust your roadmap</li>
+<li>Use a proper calculator (VWO, Optimizely, Evan Miller's calc), don't eyeball it</li>
+<li>At low traffic, prioritize big-change tests over small-optimization tests, the statistical math forces you to</li>
+</ul>
+
+<div class="prev-next"></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){
