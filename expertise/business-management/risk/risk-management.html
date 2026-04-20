@@ -289,6 +289,24 @@ Regulatory change |   Medium   | Medium |  6    |  COO  | Monitor, counsel      
 </ul>
 
 <h2>The four responses to risk</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Four responses to risk');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Response', w: 200},
+    {title: 'Meaning', w: 600}
+  ], rows: [
+    ['Avoid', 'Don\'t do the thing'],
+    ['Reduce / mitigate', 'Make it less likely or less harmful'],
+    ['Transfer', 'Buy insurance, outsource'],
+    ['Accept', 'Known risk, budgeted']
+  ]});
+});
+</script>
 <p>For each risk, pick one:</p>
 <ol>
   <li><strong>Accept</strong>, the risk is low enough or the mitigation too expensive. Document the acceptance.</li>

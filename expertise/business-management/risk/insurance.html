@@ -222,6 +222,25 @@
 <p class="lede">Insurance is the part of the business most operators ignore until they're in a situation where they wish they hadn't. Insurance isn't about expecting to collect, it's about ensuring that one bad event doesn't end the company. A few standard policies prevent nearly all catastrophic outcomes. Get them in place early; adjust limits as the company grows.</p>
 
 <h2>The essential policies</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Business insurance, must-haves');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Policy', w: 240},
+    {title: 'Covers', w: 560}
+  ], rows: [
+    ['General liability', 'Bodily injury + property damage claims'],
+    ['Professional liability (E&O)', 'Mistakes in services delivered'],
+    ['Cyber / data breach', 'Breach costs, ransomware'],
+    ['D&O', 'Executive personal liability'],
+    ['Workers comp', 'Employee injury; often required by law']
+  ]});
+});
+</script>
 
 <h3>General Liability (GL)</h3>
 <p>Covers bodily injury and property damage claims. Customer slips in your office. Visitor gets injured. Someone sues claiming your booth at a conference damaged their equipment. Usually $1M per occurrence / $2M aggregate is the starting point.</p>

@@ -234,6 +234,25 @@
 <p>Whether you actually own all of it depends on whether the paper trail says so.</p>
 
 <h2>The foundational IP documents</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'IP documents every company needs');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Document', w: 240},
+    {title: 'What it does', w: 560}
+  ], rows: [
+    ['IP assignment (employees)', 'Work-for-hire IP transferred to company'],
+    ['Contractor IP assignment', 'Same, for outside developers'],
+    ['Confidentiality / NDA', 'Protects trade secrets'],
+    ['Trademark registration', 'Defends brand names / logos'],
+    ['Copyright marks', 'Identifies ownership']
+  ]});
+});
+</script>
 
 <h3>1. IP assignment agreements</h3>
 <p>Every employee and contractor must sign an agreement assigning IP they create to the company. Without this, an employee technically owns what they built, and they can take it with them.</p>
