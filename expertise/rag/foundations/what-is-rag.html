@@ -248,23 +248,33 @@ window.addEventListener('sketch:ready', function(){
 
 <p>That's vanilla RAG. Everything in this section is what you do once you realize vanilla RAG produces a good demo and a mediocre product.</p>
 
-<h2>What RAG gives you</h2>
-<ul>
-  <li><strong>Grounded answers.</strong> The model responds with your data, not its pretraining.</li>
-  <li><strong>Citations.</strong> Because the retrieval step returns specific chunks, you can link answers to source documents.</li>
-  <li><strong>Freshness.</strong> Update the index, update the answers. No retraining required.</li>
-  <li><strong>Access control.</strong> Filter retrieved documents by user, tenant, or permission before generation.</li>
-  <li><strong>Cost control.</strong> You only pay for the tokens you actually pass into the context window.</li>
-  <li><strong>Auditable behavior.</strong> Logs of what was retrieved let you debug why a model said what it said.</li>
-</ul>
-
-<h2>What RAG doesn't give you</h2>
-<ul>
-  <li><strong>Reasoning you don't already have.</strong> RAG can't teach a model to solve a problem it didn't learn in pretraining. It only makes facts available.</li>
-  <li><strong>Style or tone changes.</strong> Those come from fine-tuning or prompting, not retrieval.</li>
-  <li><strong>Magical "search your docs" quality.</strong> Retrieval quality is capped by chunking, embedding, and reranking choices, and vanilla setups leave most of that ceiling unclaimed.</li>
-  <li><strong>Guaranteed factuality.</strong> The model can still hallucinate over retrieved context if the context is noisy, contradictory, or incomplete.</li>
-</ul>
+<h2>What RAG gives and doesn't give</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'RAG: gives vs doesn\'t give');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 200,
+    left: {title: 'RAG gives', items: [
+      'Grounded answers from your data',
+      'Citations + source links',
+      'Freshness without retraining',
+      'Per-user access control',
+      'Cheap updates (re-embed, done)',
+      'Auditable behavior'
+    ]},
+    right: {title: 'RAG doesn\'t give', items: [
+      'Reasoning the model lacks',
+      'Tone or style changes',
+      'Magical doc-search quality',
+      'Guaranteed factuality',
+      'Replacement for good prompts',
+      'Performance that fine-tuning gives']}
+  });
+});
+</script>
 
 <h2>The surface is small. The depth is enormous.</h2>
 <p>A naive RAG system fits on one whiteboard. But each of those three steps has its own sub-discipline:</p>
@@ -281,9 +291,31 @@ window.addEventListener('sketch:ready', function(){
 <h2>The mental model</h2>
 <p>Think of RAG as a pipeline where information flows from documents to answers. The quality of the final answer is bounded by the <em>worst</em> stage of that pipeline. You can have world-class embeddings and a terrible chunking strategy, and you'll get poor answers. You can have perfect retrieval and a weak generator, and you'll get poor answers. The job of a RAG engineer is to keep all stages strong enough that the overall product is good.</p>
 
+<div class="sketch" data-viewbox="0 0 900 240"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[2];
+  const svg = sketch.createSvg(el, 900, 240);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Weakest link sets the quality ceiling');
+  sketch.bars(svg, rc, {x: 40, y: 60, w: 820, labelW: 200, items: [
+    {label: 'Parsing', value: 95, note: 'great'},
+    {label: 'Chunking', value: 35, note: 'weak'},
+    {label: 'Embedding', value: 90, note: 'great'},
+    {label: 'Retrieval', value: 85, note: 'great'},
+    {label: 'Overall quality', value: 35, note: 'capped by chunking'}
+  ]});
+});
+</script>
+
 <p>Call it the minimum-weak-link law. It's the single most useful frame for debugging a bad RAG system.</p>
 
-<p style="margin-top:40px;">Next: <a href="why-rag.html">Why RAG over fine-tuning</a>.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>Before diving into any sub-topic, figure out which layer is your weakest link. Fix that first.</li>
+<li>Read <a href="why-rag.html">why RAG over fine-tuning</a> to confirm RAG is the right tool.</li>
+<li>Read <a href="the-architecture.html">the RAG architecture map</a> for the full stack.</li>
+</ul>
 <div class="prev-next"><a href="../index.html" class="prev"><div class="label">← Previous</div><div class="title">Overview</div></a><a href="why-rag.html" class="next"><div class="label">Next →</div><div class="title">Why RAG over fine-tuning</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

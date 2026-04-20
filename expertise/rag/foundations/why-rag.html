@@ -276,6 +276,22 @@ window.addEventListener('sketch:ready', function(){
 </ul>
 
 <h2>The economics are not close</h2>
+<div class="sketch" data-viewbox="0 0 900 240"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 240);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Per-update economics');
+  sketch.bars(svg, rc, {x: 40, y: 60, w: 820, labelW: 240, items: [
+    {label: 'RAG: add 1000 docs', value: 15, note: '~pennies, seconds'},
+    {label: 'Fine-tune: full retrain', value: 90, note: '$hundreds–$thousands, hours'},
+    {label: 'RAG: daily updates', value: 10, note: 'trivial'},
+    {label: 'Fine-tune: daily updates', value: 95, note: 'unaffordable at scale'}
+  ]});
+});
+</script>
+
 <p>Fine-tuning a serious model costs anywhere from a few hundred to tens of thousands of dollars per run. Updating a RAG index costs pennies. When your knowledge base changes, which it does constantly, the RAG system is updated in seconds. The fine-tuned model is a stale artifact until the next training run.</p>
 
 <p>For any system where facts update more than once a quarter, RAG wins on cost alone.</p>
@@ -291,11 +307,31 @@ window.addEventListener('sketch:ready', function(){
 <p>This is the architecture most serious production systems converge on. Not "RAG or fine-tuning" but "fine-tuning for behavior, RAG for facts."</p>
 
 <h2>A quick test</h2>
-<p>Ask yourself: if a new fact is added to our knowledge base tomorrow, do we need the system to answer about it?</p>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[2];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'If facts change, you want RAG');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Facts change...', w: 260},
+    {title: 'Pick', w: 540}
+  ], rows: [
+    ['Daily', 'Pure RAG, maybe real-time indexing'],
+    ['Weekly / monthly', 'RAG or hybrid'],
+    ['Quarterly+', 'RAG still wins usually'],
+    ['Never (stable behavior)', 'Fine-tuning might be enough'],
+    ['Mix (stable voice + fresh facts)', 'Hybrid — FT for voice, RAG for facts']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
 <ul>
-  <li>Yes → RAG (or hybrid)</li>
-  <li>No, and the behavior is stable → fine-tuning might be enough</li>
-  <li>The answer changes daily → pure RAG, and probably with real-time indexing</li>
+<li>Run the "facts change" test for your use case. Most teams land on RAG.</li>
+<li>If you're tempted to fine-tune on your docs, revisit this page first.</li>
+<li>Read <a href="the-architecture.html">the RAG architecture map</a> for the full pipeline.</li>
 </ul>
 
 <h2>Long context isn't a replacement</h2>

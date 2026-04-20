@@ -275,11 +275,28 @@ window.addEventListener('sketch:ready', function(){
 <p>Logging queries, retrieved chunks, and final answers. Collecting user feedback. Building evaluation datasets. Without this layer the system silently degrades.</p>
 
 <h2>The data plane vs the query plane</h2>
-<p>These ten stages split into two workflows:</p>
-<ul>
-  <li><strong>Data plane (offline):</strong> stages 1-7. Runs on a schedule or in response to document updates. Builds and maintains the index.</li>
-  <li><strong>Query plane (online):</strong> stages 8-10. Runs on every user query. Latency-sensitive.</li>
-</ul>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Data plane (offline) vs query plane (online)');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Data plane (offline)', items: [
+      'Runs on a schedule',
+      'Stages 1–7 (parse, chunk, embed, index)',
+      'Batch friendly; slow ok',
+      'Different team, usually'
+    ]},
+    right: {title: 'Query plane (online)', items: [
+      'Runs per user query',
+      'Stages 8–10 (retrieve, generate, trace)',
+      'Latency-sensitive',
+      'Gets the ops attention']}
+  });
+});
+</script>
 <p>The split matters because they have different scaling profiles, different failure modes, and usually different engineering ownership. Teams that conflate them end up with systems where a re-ingestion job blocks live queries, or where a query optimization breaks the indexer.</p>
 
 <h2>The decisions I force teams to make explicit</h2>
@@ -301,18 +318,34 @@ window.addEventListener('sketch:ready', function(){
 <p>Ten questions. Most teams have answers for 3-4. The rest becomes "we'll figure that out later", and "later" is when the system breaks in production.</p>
 
 <h2>The common anti-architecture</h2>
-<p>A surprising number of production RAG systems look like this:</p>
-<ul>
-  <li>LangChain default PDF loader</li>
-  <li>1000-character chunks with 200-character overlap</li>
-  <li>OpenAI text-embedding-3-small</li>
-  <li>Chroma running in-memory</li>
-  <li>Top-10 retrieval passed to GPT-4</li>
-  <li>No eval, no observability, no reranker</li>
-</ul>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[2];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'The default RAG that plateaus at "okay"');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Default choice', w: 280},
+    {title: 'Upgrade path', w: 520}
+  ], rows: [
+    ['LangChain default PDF loader', 'Structure-aware parser (unstructured.io / pdfplumber)'],
+    ['1000-char chunks + 200 overlap', 'Structure or semantic chunking'],
+    ['text-embedding-3-small only', 'Test 3-large or domain-tuned model'],
+    ['Chroma in-memory', 'Production vector DB; persistence'],
+    ['Top-10 → GPT-4, done', 'Hybrid search + reranker + tuned top-k'],
+    ['No eval / observability', 'RAGAS eval + trace every query']
+  ]});
+});
+</script>
 <p>It's the default path, and it's not terrible, but it's also the system that will plateau at "okay" and never get to "good." Everything in this section is the work of getting past that plateau.</p>
 
-<p style="margin-top:40px;">Next: <a href="when-not-to-use.html">When not to use RAG</a>.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>Write your project's 10-question one-pager. Circle the layers you haven't decided on.</li>
+<li>Audit your current system against the anti-architecture table. Pick the cheapest upgrade first.</li>
+<li>Read <a href="when-not-to-use.html">when not to use RAG</a> before you build.</li>
+</ul>
 <div class="prev-next"><a href="why-rag.html" class="prev"><div class="label">← Previous</div><div class="title">Why RAG over fine-tuning</div></a><a href="when-not-to-use.html" class="next"><div class="label">Next →</div><div class="title">When not to use RAG</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

@@ -267,6 +267,22 @@ window.addEventListener('sketch:ready', function(){
 <p>Text-to-SQL or tool-calling agents are the right pattern here. RAG over a database export is usually worse than querying the database directly.</p>
 
 <h2>When latency matters more than quality</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Full-RAG latency bucket');
+  sketch.bars(svg, rc, {x: 40, y: 60, w: 820, labelW: 240, items: [
+    {label: 'Embed query', value: 20, note: '30–150ms'},
+    {label: 'Vector search', value: 15, note: '20–100ms'},
+    {label: 'Rerank', value: 40, note: '100–400ms'},
+    {label: 'LLM generation', value: 90, note: '500–2000ms+'},
+    {label: 'Total (first token)', value: 75, note: '500ms–2s'}
+  ]});
+});
+</script>
 <p>Full RAG adds 200-1500ms of latency (embedding + search + rerank + generation). If you're building something real-time (voice, streaming autocomplete), RAG may be too slow. Consider:</p>
 <ul>
   <li>Preloading common context into the prompt</li>
@@ -291,7 +307,12 @@ window.addEventListener('sketch:ready', function(){
 <h2>The red-flag phrase</h2>
 <p>Whenever a team says "we want to use RAG for...", I ask them to complete the sentence without the word RAG. "We want to ground answers in our product docs." "We want users to ask questions about their uploaded files." "We want to search across internal wikis with a natural-language interface." Those are real use cases. "We want to use RAG" is architecture looking for a problem.</p>
 
-<p style="margin-top:40px;">Next: <a href="../docs/ingestion-pipeline.html">The ingestion pipeline</a>.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>Before building, restate your goal without the word "RAG". If it's still a real use case, proceed.</li>
+<li>Check the skip-table and signal check at the top.</li>
+<li>If RAG fits, start at <a href="../docs/ingestion-pipeline.html">the ingestion pipeline</a>.</li>
+</ul>
 <div class="prev-next"><a href="the-architecture.html" class="prev"><div class="label">← Previous</div><div class="title">The RAG architecture map</div></a><a href="../docs/ingestion-pipeline.html" class="next"><div class="label">Next →</div><div class="title">The ingestion pipeline</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>
