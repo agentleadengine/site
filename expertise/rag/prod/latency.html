@@ -322,6 +322,24 @@ window.addEventListener('sketch:ready', function(){
 <p>First-token latency is the UX-critical number. Total latency matters for backend cost and throughput.</p>
 
 <h2>Caching layers</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Four cache layers for latency');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Cache layer', w: 220},
+    {title: 'Hit rate / impact', w: 580}
+  ], rows: [
+    ['Query embedding', '20–40% hit rate on common patterns'],
+    ['Retrieval top-k', 'Huge win for popular queries'],
+    ['Full response', 'Rarely applicable; FAQ systems'],
+    ['Provider prompt cache', '30–50% save on repeated prompts']
+  ]});
+});
+</script>
 
 <h3>Query embedding cache</h3>
 <p>Hash the query, cache the embedding for 24 hours. Hit rate can be 20-40% on common query patterns. See <a href="caching.html">caching</a>.</p>
@@ -384,6 +402,13 @@ window.addEventListener('sketch:ready', function(){
 </ul>
 
 <p>Much faster, users won't notice. Much slower, users will leave.</p>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Turn on streaming first. Biggest perceived-latency win for zero real cost.</li>
+<li>Instrument per-stage latency so optimization isn't guessing.</li>
+<li>Cap tail latency with per-stage timeouts and graceful fallbacks.</li>
+</ul>
 
 <p style="margin-top:40px;">Next: <a href="caching.html">Caching strategies</a>.</p>
 <div class="prev-next"><a href="../eval/building-eval-datasets.html" class="prev"><div class="label">← Previous</div><div class="title">Building eval datasets</div></a><a href="caching.html" class="next"><div class="label">Next →</div><div class="title">Caching strategies</div></a></div></div></div><footer><div class="container">

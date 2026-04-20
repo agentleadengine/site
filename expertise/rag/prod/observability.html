@@ -355,6 +355,24 @@ Total: 1513ms
 </ul>
 
 <h2>Debugging workflows</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Triage workflow by symptom');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Symptom', w: 260},
+    {title: 'Start here', w: 540}
+  ], rows: [
+    ['Bad answer on one query', 'Trace: were retrieved chunks relevant?'],
+    ['Latency spiked', 'Per-stage p95; identify regressed stage'],
+    ['Retrieval quality dropping', 'Sample + run eval; check index freshness'],
+    ['Cost jumping', 'Token counts + cache hit rate per layer']
+  ]});
+});
+</script>
 
 <h3>"This query gave a bad answer"</h3>
 <ol>
@@ -414,7 +432,12 @@ Total: 1513ms
 
 <p>The loop: production → observability → sample queries for labeling → eval set expansion → next iteration.</p>
 
-<p style="margin-top:40px;">Next: <a href="cost.html">Cost management</a>.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>Trace every query end-to-end. Spans at each stage, sampled at low rates.</li>
+<li>Always trace errors and slow queries at 100%.</li>
+<li>Feed production traces back into your eval set monthly.</li>
+</ul>
 <div class="prev-next"><a href="caching.html" class="prev"><div class="label">← Previous</div><div class="title">Caching strategies</div></a><a href="cost.html" class="next"><div class="label">Next →</div><div class="title">Cost management</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

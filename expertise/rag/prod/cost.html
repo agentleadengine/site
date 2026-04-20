@@ -296,6 +296,22 @@ Total:                                          ~$0.015 per query
 <p>At 100K queries/day: $1,500/day = ~$45,000/month.</p>
 
 <h2>The optimization frontier</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Biggest cost-optimization wins');
+  sketch.bars(svg, rc, {x: 40, y: 60, w: 820, labelW: 240, items: [
+    {label: 'Model routing', value: 85, note: '70% queries → cheap model'},
+    {label: 'Prompt caching', value: 70, note: '30–90% on repeated prompts'},
+    {label: 'Context trimming', value: 55, note: 'every 100 tokens counts'},
+    {label: 'Batch APIs (async)', value: 50, note: '50% discount'},
+    {label: 'Caching + dedup', value: 45, note: 'popular queries'}
+  ]});
+});
+</script>
 
 <h3>Model routing</h3>
 <p>Use cheap models where possible. Classify queries, 70% can use gpt-4o-mini or haiku. Saves 80-90% on those queries.</p>
@@ -388,7 +404,12 @@ Total:                                          ~$0.015 per query
 
 <p>Measurement first. Cost decisions second.</p>
 
-<p style="margin-top:40px;">Next: <a href="security.html">Security and prompt injection</a>.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>At &lt;$500/mo, ship. Optimization first is premature. Track trend.</li>
+<li>Biggest lever: model routing. Most queries don't need your premium model.</li>
+<li>Always A/B optimization changes against your eval set.</li>
+</ul>
 <div class="prev-next"><a href="observability.html" class="prev"><div class="label">← Previous</div><div class="title">Observability and tracing</div></a><a href="security.html" class="next"><div class="label">Next →</div><div class="title">Security and prompt injection</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

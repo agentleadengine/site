@@ -278,6 +278,21 @@ window.addEventListener('sketch:ready', function(){
 <p>When source system permissions change, propagate to the index. Stale permissions are a leak waiting to happen.</p>
 
 <h2>Defense: prompt injection</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Prompt injection defenses, layered');
+  sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 42, layers: [
+    {label: 'Capability limits (tools)', sub: 'hardest layer'},
+    {label: 'Output filter / policy check', sub: 'catch leaks before send'},
+    {label: 'Structural prompt framing', sub: 'label untrusted blocks'},
+    {label: 'Input sanitization', sub: 'strip obvious patterns'}
+  ]});
+});
+</script>
 
 <h3>Input sanitization (limited)</h3>
 <p>Strip instruction-like patterns from retrieved content before inserting into prompts. Not reliable, attackers will find ways around heuristic filters.</p>
@@ -406,7 +421,12 @@ USER: [question]
 
 <p>None of these are optional. They're the floor.</p>
 
-<p style="margin-top:40px;">Next: <a href="../cases/customer-support.html">Customer support RAG</a>.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>Filter by user / tenant at retrieval, never at display. Missing filters leak.</li>
+<li>Treat retrieved content as untrusted. Structural prompt framing + output filters.</li>
+<li>Log every query + retrieved chunks for audit; review anomalies weekly.</li>
+</ul>
 <div class="prev-next"><a href="cost.html" class="prev"><div class="label">← Previous</div><div class="title">Cost management</div></a><a href="../cases/customer-support.html" class="next"><div class="label">Next →</div><div class="title">Customer support RAG</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

@@ -308,6 +308,23 @@ window.addEventListener('sketch:ready', function(){
 <p>"What's our refund policy?" and "what's our refund policy" should hit the same cache entry.</p>
 
 <h2>Cache invalidation</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Three invalidation strategies');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Strategy', w: 220},
+    {title: 'How it works', w: 580}
+  ], rows: [
+    ['Time-based (TTL)', 'Simple; entries expire after N minutes'],
+    ['Event-based', 'Docs update → invalidate; complex but accurate'],
+    ['Lazy / versioned', 'Compare version at read; regenerate on mismatch']
+  ]});
+});
+</script>
 
 <h3>Time-based</h3>
 <p>TTL on every entry. Simple, acceptable for many use cases.</p>
@@ -388,7 +405,12 @@ window.addEventListener('sketch:ready', function(){
 
 <p>At scale, effective caching can reduce total cost and latency by 40-70%.</p>
 
-<p style="margin-top:40px;">Next: <a href="observability.html">Observability and tracing</a>.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>Turn on provider prompt caching first. Biggest savings for the least work.</li>
+<li>Always scope keys to user + permissions to prevent cross-user leaks.</li>
+<li>Dashboard hit rate per layer; kill layers below 5%.</li>
+</ul>
 <div class="prev-next"><a href="latency.html" class="prev"><div class="label">← Previous</div><div class="title">Latency optimization</div></a><a href="observability.html" class="next"><div class="label">Next →</div><div class="title">Observability and tracing</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>
