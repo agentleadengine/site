@@ -236,7 +236,35 @@ window.addEventListener('sketch:ready', function(){
     ['Content', 'User makes public output, links back to you']
   ]});
 });
-</script><ul><li>Incentive-based (refer-a-friend rewards)</li><li>Utility-based (Dropbox, need to share files)</li><li>Social (WhatsApp, need the other person to receive)</li><li>Content-based (Reddit posts drive more users)</li></ul><h2>Rarely K > 1</h2><p>Most products claiming virality have sub-1 K-factors. They still benefit (lower CAC) but don't grow on their own.</p><h2>Building</h2><ul><li>Make sharing the natural path</li><li>Reward both sides (sender + receiver)</li><li>Shorten the cycle (time from invite to active)</li><li>Track K-factor explicitly</li></ul><h2>Common failure</h2><p>Adding a referral program to a product nobody shares organically. Fix the product first.</p><div class="prev-next"></div></div></div><footer><div class="container">
+</script><ul><li>Incentive-based (refer-a-friend rewards)</li><li>Utility-based (Dropbox, need to share files)</li><li>Social (WhatsApp, need the other person to receive)</li><li>Content-based (Reddit posts drive more users)</li></ul><h2>Rarely K > 1</h2><p>Most products claiming virality have sub-1 K-factors. They still benefit (lower CAC) but don't grow on their own.</p><h2>Building</h2><ul><li>Make sharing the natural path</li><li>Reward both sides (sender + receiver)</li><li>Shorten the cycle (time from invite to active)</li><li>Track K-factor explicitly</li></ul><h2>Common failure</h2><p>Adding a referral program to a product nobody shares organically. Fix the product first.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'K-factor math, what virality actually produces');
+  sketch.bars(svg, rc, {x: 40, y: 60, w: 820, labelW: 220, items: [
+    {label: 'K = 0.1 (weak)', value: 15, note: 'marginal CAC reduction'},
+    {label: 'K = 0.3 (decent)', value: 35, note: 'meaningful acquisition boost'},
+    {label: 'K = 0.6 (strong)', value: 65, note: 'dramatic CAC reduction'},
+    {label: 'K = 0.9 (great)', value: 85, note: 'near-zero paid needed'},
+    {label: 'K > 1 (rare)', value: 100, note: 'exponential, very few products'}
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Measure actual K-factor instrument-based, not self-reported, most "viral" products have K under 0.3 on close measurement</li>
+<li>Make sharing the natural path of value delivery, not a bolted-on referral program, products that require sharing to work have real K</li>
+<li>Reward both sides (sender + receiver) when incentivizing, one-sided referrals produce lower uptake than two-sided</li>
+<li>Shorten the loop cycle time, cutting invite-to-active from 14 days to 3 days is often higher ROI than raising K</li>
+<li>Don't count on K over 1 to scale the business, even strong viral products stack paid + content on top of virality for most of their growth</li>
+</ul>
+
+<div class="prev-next"></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

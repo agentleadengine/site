@@ -237,7 +237,44 @@ window.addEventListener('sketch:ready', function(){
     ['Shareable output', 'User creates artifact → promotes for you']
   ]});
 });
-</script><ul><li>Freemium (Slack, Notion)</li><li>Free trial (most SaaS)</li><li>Open-core (many dev tools)</li><li>Viral invites (Zoom, Calendly)</li></ul><h2>Requires</h2><ul><li>Self-serve onboarding</li><li>Clear aha moment in free tier</li><li>Natural expansion paths</li><li>Sticky usage patterns</li></ul><h2>PLG metrics</h2><ul><li>Time to aha</li><li>Freemium to paid conversion</li><li>Self-serve revenue %</li><li>Expansion MRR</li></ul><h2>Not for everyone</h2><p>PLG works for horizontal tools used by many. Doesn't fit enterprise with committee buying or complex custom needs.</p><div class="prev-next"></div></div></div><footer><div class="container">
+</script><ul><li>Freemium (Slack, Notion)</li><li>Free trial (most SaaS)</li><li>Open-core (many dev tools)</li><li>Viral invites (Zoom, Calendly)</li></ul><h2>Requires</h2><ul><li>Self-serve onboarding</li><li>Clear aha moment in free tier</li><li>Natural expansion paths</li><li>Sticky usage patterns</li></ul><h2>PLG metrics</h2><ul><li>Time to aha</li><li>Freemium to paid conversion</li><li>Self-serve revenue %</li><li>Expansion MRR</li></ul><h2>Not for everyone</h2><p>PLG works for horizontal tools used by many. Doesn't fit enterprise with committee buying or complex custom needs.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'PLG fit, when product-led acquisition works');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Fits PLG', items: [
+      'Horizontal tool, used by many roles',
+      'Fast aha moment (< 10 min)',
+      'Self-serve onboarding possible',
+      'Natural workspace virality',
+      'Individual buying decisions'
+    ]},
+    right: {title: 'Skip PLG (use sales-led)', items: [
+      'Committee buying / procurement-heavy',
+      'Custom implementation required',
+      'Complex pricing requiring negotiation',
+      'Long sales cycles (6+ months)',
+      'Security/compliance dominates decision'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Measure time-to-aha and freemium-to-paid conversion as your two PLG north stars, both must improve together</li>
+<li>Design viral workspace mechanics (invite teammates, shared artifacts) into the core flow, bolted-on virality rarely works</li>
+<li>Keep the free tier generous enough to reach real aha, stingy free tiers produce lots of signups and no conversions</li>
+<li>Don't force PLG on enterprise sales motions, committee buying doesn't convert from a signup flow and you'll burn engineering effort</li>
+<li>Layer PLG on top of sales-led for hybrid motions, self-serve for individuals + sales-led for expansion into teams is the emerging playbook</li>
+</ul>
+
+<div class="prev-next"></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

@@ -237,7 +237,44 @@ window.addEventListener('sketch:ready', function(){
     ['Prosumer tools', 'PLG + community + content']
   ]});
 });
-</script><ul><li>Consumer visual: Meta, TikTok, Pinterest</li><li>B2B with role targeting: LinkedIn, Google</li><li>Local services: Google Search, Nextdoor</li><li>Creator / audience-based: YouTube, podcasts</li><li>Developer tools: GitHub, Hacker News, Reddit</li></ul><h2>Order of operations</h2><p>Pick the single most-obvious channel, validate, scale, then add second.</p><h2>Avoid</h2><p>Being on every channel with weak presence. Focus beats spread.</p><div class="prev-next"></div></div></div><footer><div class="container">
+</script><ul><li>Consumer visual: Meta, TikTok, Pinterest</li><li>B2B with role targeting: LinkedIn, Google</li><li>Local services: Google Search, Nextdoor</li><li>Creator / audience-based: YouTube, podcasts</li><li>Developer tools: GitHub, Hacker News, Reddit</li></ul><h2>Order of operations</h2><p>Pick the single most-obvious channel, validate, scale, then add second.</p><h2>Avoid</h2><p>Being on every channel with weak presence. Focus beats spread.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Scattered spend vs focused channel');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Scattered (weak presence)', items: [
+      '6 channels with $2K each',
+      'No channel hits learning threshold',
+      'Team stretched thin',
+      'Reports look "diversified"',
+      'Net result: nothing works'
+    ]},
+    right: {title: 'Focused (validated channel)', items: [
+      '1 channel with $12K',
+      'Past learning threshold, data compounds',
+      'Team gets good at one system',
+      'Winning creative emerges',
+      'Net result: real CAC data, then scale'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Pick one channel first based on where your buyer actually is, spreading a small budget across 4-6 channels almost always produces zero signal</li>
+<li>Commit the budget needed to pass the channel's learning threshold (varies by channel), half-committing wastes every dollar</li>
+<li>Add the second channel only after the first is stable and generating known CAC, diversifying too early means 3 mediocre channels</li>
+<li>Kill a channel after 90 days of spend with no CAC trend, continuing past that is sunk-cost fallacy</li>
+<li>Re-evaluate channel fit annually, buyer behavior shifts, what worked in 2023 doesn't guarantee 2026 will be the same</li>
+</ul>
+
+<div class="prev-next"></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){
