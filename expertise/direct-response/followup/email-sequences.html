@@ -388,6 +388,41 @@ window.addEventListener('sketch:ready', function(){
 </ul>
 <p>Pick the one that fits your volume and use case. Don't over-buy, most small operations can run on ConvertKit for years.</p>
 
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Single-send vs 8-email welcome sequence, same offer');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Single send (loses revenue)', items: [
+      '1 email with offer',
+      '22% open, 3% click, 0.4% buy',
+      'Prospect never hears from you again',
+      'Leaves 60-90% of revenue on the table',
+      'Most common operator mistake'
+    ]},
+    right: {title: '8-email welcome (compounds)', items: [
+      'Welcome + story + problem + mechanism + proof + offer + FAQ + deadline',
+      'Compounds 4-8% total conversion',
+      'Every step closes a different segment',
+      'Same ad spend, 10x revenue',
+      'The whole point of a list'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>If you only build one sequence, build the 8-email welcome, it's where most list-based revenue actually comes from</li>
+<li>Write plain-text emails for sales, not designed HTML, 90% of the time plain text outperforms because it reads like a personal note</li>
+<li>One idea, one CTA per email, cramming three topics into one email splits attention and kills the click-through</li>
+<li>Segment by engagement after 30 days, hot gets offers, warm gets nurture, cold gets re-engagement then culled, blanket sending hurts deliverability</li>
+<li>Stop panicking about unsubscribes from non-buyers, they're free, the metric that matters is revenue per email sent</li>
+</ul>
+
 <p style="margin-top:40px;">Related: <a href="soap-opera.html">The soap opera sequence</a> · <a href="indoctrination.html">Customer indoctrination</a> · <a href="direct-mail.html">Direct mail</a></p>
 <div class="prev-next"><a href="direct-mail.html" class="prev"><div class="label">← Previous</div><div class="title">Direct mail that still works</div></a><a href="soap-opera.html" class="next"><div class="label">Next →</div><div class="title">The soap opera sequence</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>

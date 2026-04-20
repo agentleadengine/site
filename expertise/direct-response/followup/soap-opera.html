@@ -335,6 +335,41 @@ window.addEventListener('sketch:ready', function(){
 <h2>Integrating with other sequences</h2>
 <p>A soap opera sequence usually runs as your <em>welcome sequence</em>, the first experience of your brand. After it ends, subscribers move into your ongoing broadcast. Don't run concurrent soap operas; they compete with each other for attention.</p>
 
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Weak cliffhanger vs strong cliffhanger');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Weak (reader bounces)', items: [
+      '"I learned a lot from that"',
+      '"Tomorrow I\'ll share more"',
+      '"Stay tuned for the next email"',
+      'No open loop, no tension',
+      'Reader forgets by tomorrow'
+    ]},
+    right: {title: 'Strong (reader can\'t skip)', items: [
+      '"The next 48 hours flipped everything I believed"',
+      '"That\'s when I discovered the 3 things nobody tells you"',
+      '"Then I got the call that made it all click"',
+      'Open loop, specific tension',
+      'Reader opens tomorrow\'s email on sight'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Plan the 5-email arc as one story before writing any individual email, know the ending before you write the beginning, or the beats drift</li>
+<li>End every email with a cliffhanger that opens a specific loop, vague "stay tuned" language kills the pull-through rate</li>
+<li>Use real moments, not manufactured drama, sophisticated readers spot fake stakes immediately, and one fake moment poisons the whole sequence</li>
+<li>Run the soap opera as the welcome sequence specifically, it's where attention is highest and trust is lowest, narrative solves both</li>
+<li>Maintain 2-3 open loops at any moment, close one by opening another, the compounding tension is what makes the sequence unmissable</li>
+</ul>
+
 <p style="margin-top:40px;">Related: <a href="email-sequences.html">Email sequences</a> · <a href="indoctrination.html">Customer indoctrination</a> · <a href="../letters/story-selling.html">Story selling</a></p>
 <div class="prev-next"><a href="email-sequences.html" class="prev"><div class="label">← Previous</div><div class="title">Email sequences</div></a><a href="indoctrination.html" class="next"><div class="label">Next →</div><div class="title">Customer indoctrination</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
