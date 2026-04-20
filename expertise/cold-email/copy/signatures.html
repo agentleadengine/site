@@ -320,6 +320,42 @@ San Francisco, CA</pre>
 
 <h2>The recipient's test</h2>
 <p>Read your signature as a recipient. Does it look like a peer emailed you, or does it look like a marketing email? If there's any question, trim.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Signature: marketing vs peer');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Marketing (pattern-matches to ad)', items: [
+      'Logo image',
+      'Banner ad',
+      '4+ social links',
+      'Credential list + awards',
+      'Legal disclaimer wall'
+    ]},
+    right: {title: 'Peer (reads as human)', items: [
+      '"Sam"',
+      'Title + company (one line)',
+      'Optional: one relevant link',
+      'No images, no banners',
+      'Unsubscribe footer in small text'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Strip your signature to name + title + company + one optional link, more than that reads as marketing and triggers filters</li>
+<li>Never attach a logo image on cold email 1, images contribute to spam scores and pattern-match to promotional emails</li>
+<li>Match signature tone to the email tone, a peer-style email with a corporate-branded signature reads dissonant</li>
+<li>Include the unsubscribe in small footer text, legal requirement + signals legitimacy to recipients</li>
+<li>Test your signature visually in GMail, Outlook, and mobile, signatures that look fine on desktop often break on phones</li>
+</ul>
+
 <div class="prev-next"><a href="ctas.html" class="prev"><div class="label">← Previous</div><div class="title">CTAs for cold</div></a><a href="personalization.html" class="next"><div class="label">Next →</div><div class="title">Personalization at scale</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

@@ -326,6 +326,36 @@ Sam</pre>
 <li>Not iterating → same email for 6 months, reply rate decays</li>
 <li>Ignoring deliverability → great copy in spam folder</li>
 </ul>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'B2B SaaS cold email, winning trigger library');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Trigger', w: 280},
+    {title: 'Opening line template', w: 520}
+  ], rows: [
+    ['New hire (VP Growth)', '"Saw you just brought on [name] as VP Growth"'],
+    ['Fundraise', '"Congrats on the Series [X]"'],
+    ['Tech stack change', '"Noticed you moved from [A] to [B]"'],
+    ['New office / expansion', '"Saw the [city] office announcement"'],
+    ['Public roadmap commitment', '"Saw your tweet on [feature] plans"']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Pick one trigger type per campaign and lead the first line with it, triggers outperform generic opens 3-5x on reply rate</li>
+<li>Sell the meeting, not the product, B2B SaaS buyers don't pick vendors from email, they pick them from sales calls</li>
+<li>Lead with one specific pain + one specific proof point, "we helped [similar SaaS] cut churn 18%" beats feature lists</li>
+<li>Budget 4-8 weeks to find the winning angle, SaaS cold email takes multiple iterations before the right pain + offer combo clicks</li>
+<li>Track deliverability religiously, B2B SaaS inboxes are noise-filtered more aggressively than consumer inboxes, great copy in spam = zero pipeline</li>
+</ul>
+
 <div class="prev-next"><a href="../testing/iteration.html" class="prev"><div class="label">← Previous</div><div class="title">The iteration loop</div></a><a href="agency.html" class="next"><div class="label">Next →</div><div class="title">Agency + services outbound</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

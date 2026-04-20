@@ -352,6 +352,42 @@ Founder, [Company]</pre>
 <li>Not responding personally to replies (spoils the whole dynamic)</li>
 <li>Treating it like SDR volume play (doesn't scale)</li>
 </ul>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Founder-led vs SDR-led, pick the right one for your stage');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Founder-led (early, high-ACV)', items: [
+      '20-50 messages/week, hand-written',
+      '10-25% reply rate, 3-8% positive',
+      'Founder answers every reply personally',
+      'Scales until founder is bottleneck (~30 deals/yr)',
+      'Best for first $1-5M ARR'
+    ]},
+    right: {title: 'SDR-led (after ACV + volume)', items: [
+      '500-3000+ messages/week',
+      '2-5% reply rate, 1-2% positive',
+      'Dedicated SDR handles replies',
+      'Scales with headcount + process',
+      'Best after validated offer + repeatable sale'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Use founder-led outbound for the first $1-5M ARR, the reply-rate advantage and trust transfer is the founder's unfair advantage</li>
+<li>Hand-write every email when sending from the founder address, automation gives the game away instantly to sophisticated prospects</li>
+<li>Have the founder personally respond to every reply for the first call, swapping to a junior rep breaks the founder-led magic</li>
+<li>Transition to SDR-led only after the offer is validated and conversion is repeatable, premature scaling loses the founder's edge</li>
+<li>Don't mix models, founder-led for top-20 targets + SDR-led for volume is fine, but they shouldn't touch the same prospect</li>
+</ul>
+
 <div class="prev-next"><a href="agency.html" class="prev"><div class="label">← Previous</div><div class="title">Agency + services outbound</div></a><a href="sdr-led.html" class="next"><div class="label">Next →</div><div class="title">SDR-led outbound</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

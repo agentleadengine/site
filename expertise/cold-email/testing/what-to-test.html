@@ -323,6 +323,34 @@ window.addEventListener('sketch:ready', function(){
 </ol>
 
 <p>Faster than formal testing. Good for early-stage campaigns where you're still figuring out the pitch.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Cold email test priorities, by expected lift');
+  sketch.bars(svg, rc, {x: 40, y: 60, w: 820, labelW: 260, items: [
+    {label: 'ICP / segmentation', value: 95, note: 'wrong audience = nothing else matters'},
+    {label: 'Subject line', value: 75, note: '10-30% reply delta'},
+    {label: 'First line (personalization)', value: 70, note: '2-3x reply delta vs generic'},
+    {label: 'Pitch angle', value: 60, note: '30-100% reply delta'},
+    {label: 'CTA style', value: 40, note: '10-30% reply delta'},
+    {label: 'Sequence length + cadence', value: 30, note: 'marginal after 4+ touches'}
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Test ICP and segmentation first, wrong-audience problems pose as copy problems and no copy test fixes them</li>
+<li>Once the audience is tight, test subject line + first line, they produce the biggest reply-rate swings per hour of work</li>
+<li>Test pitch angles (pain-led vs outcome-led vs insight-led) as separate campaigns, not as one-line edits within a campaign</li>
+<li>Use fast directional tests (200 sends per variant) early, formal statistical tests once a pitch is stable</li>
+<li>Never test more than 1 variable per campaign, multi-variable tests teach you nothing about the cause of the delta</li>
+</ul>
+
 <div class="prev-next"><a href="methodology.html" class="prev"><div class="label">← Previous</div><div class="title">Testing methodology</div></a><a href="reply-metrics.html" class="next"><div class="label">Next →</div><div class="title">Reply rate vs positive reply</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

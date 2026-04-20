@@ -283,6 +283,34 @@ Sam</pre>
 </ul>
 
 <p>The anatomy works. The rest of this section: how to write each part well.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Cold email anatomy, 6 parts each with a job');
+  sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 30, layers: [
+    {label: 'Subject line', sub: 'earn the open'},
+    {label: 'First line (personalization)', sub: 'prove it\'s not a blast'},
+    {label: 'Pitch (80 words)', sub: 'the specific value + proof'},
+    {label: 'CTA (single, low-friction)', sub: 'one clear next step'},
+    {label: 'Sign-off + signature', sub: 'peer-style, not marketing'},
+    {label: 'Unsubscribe footer', sub: 'legal + respectful'}
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Audit every cold email against the 6-part anatomy, missing parts (especially personalization and clear CTA) leak response rate</li>
+<li>Keep the pitch under 80 words, longer emails rarely outperform shorter ones on cold traffic, density beats length</li>
+<li>One CTA per email, multiple CTAs split attention and drop conversion, "book a call OR check site OR reply" picks nothing</li>
+<li>Plain-text formatting wins on cold, HTML styling + images pattern-match to "marketing" and trigger filters</li>
+<li>Read every draft aloud, if it sounds templated, it reads templated, the biggest single leak is generic copy the recipient has seen 100 times</li>
+</ul>
+
 <div class="prev-next"><a href="../lists/segmentation.html" class="prev"><div class="label">← Previous</div><div class="title">Segmentation strategy</div></a><a href="subject-lines.html" class="next"><div class="label">Next →</div><div class="title">Subject lines</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

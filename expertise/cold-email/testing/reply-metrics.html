@@ -342,6 +342,42 @@ Output just the category name.</pre>
 </ul>
 
 <p>Feed these insights into the next campaign's copy. The prospects' own words outperform anything you invent.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Reply rate vs positive reply rate, what they tell you');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Total reply rate (misleading)', items: [
+      'Includes unsubscribes + autoreplies + "not me"',
+      'Looks great at 12%',
+      'Says nothing about pipeline',
+      'Can rise while pipeline drops',
+      'Vanity metric'
+    ]},
+    right: {title: 'Positive reply rate (honest)', items: [
+      'Only interested / meeting-booked replies',
+      'Realistic 1-3% on cold',
+      'Correlates directly to pipeline',
+      'Driven by ICP fit + offer fit',
+      'North Star for campaign quality'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Track positive reply rate as the primary metric, total reply rate hides unsubscribes and auto-replies that drive no pipeline</li>
+<li>Build a reply classification system (positive / neutral / negative / unsubscribe / auto-reply), manual tagging on the first 100 per campaign</li>
+<li>Harvest prospects' objections from negative replies and feed them into the next campaign's copy, their language beats yours</li>
+<li>Measure positive reply rate by segment + by touch number, some segments convert on touch 1, others on touch 3, plan accordingly</li>
+<li>Target 1-3% positive reply rate on cold sequences, above 3% usually means great fit, below 0.5% means ICP or offer is off</li>
+</ul>
+
 <div class="prev-next"><a href="what-to-test.html" class="prev"><div class="label">← Previous</div><div class="title">What to test</div></a><a href="iteration.html" class="next"><div class="label">Next →</div><div class="title">The iteration loop</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

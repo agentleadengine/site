@@ -318,6 +318,42 @@ Just the subject lines, numbered.</pre>
 <p>With iOS 15+ inflating open rates through prefetching, treat opens as directional not absolute. Reply rate is the truer signal.</p>
 
 <p>Related: <a href="../../direct-response/copy/headlines.html">headlines in direct response</a>, the same principles scale from email subjects to landing pages.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Subject line patterns, what works in 2026');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Spammy (skipped / filtered)', items: [
+      '"Boost your ROI today"',
+      '"[COMPANY] — special offer"',
+      '"Quick question" (overused)',
+      'All caps or "!!!"',
+      '"Free" / "Guarantee" / "Act now"'
+    ]},
+    right: {title: 'Conversational (opens)', items: [
+      '"re: [their recent project]"',
+      '"[first_name], quick Q on [specific]"',
+      '"saw your post on [X]"',
+      'Lowercase, 3-6 words',
+      'Reads like a peer email'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Write subject lines like a peer emailing a peer, "re: your post on X" beats "boost your ROI with our solution"</li>
+<li>Keep subjects at 3-6 words, longer subjects get truncated on mobile and pattern-match to marketing emails</li>
+<li>Avoid classic spam phrases ("free", "guarantee", "act now"), filters and humans both flag them faster than any content</li>
+<li>Reference a specific detail (their role, company, recent event), generic "quick question" feels fake at scale and reply rate shows it</li>
+<li>Test 3-5 subject lines per campaign, subject lines produce 10-30% of reply rate variance and are the cheapest variable to swap</li>
+</ul>
+
 <div class="prev-next"><a href="anatomy.html" class="prev"><div class="label">← Previous</div><div class="title">Cold email anatomy</div></a><a href="first-lines.html" class="next"><div class="label">Next →</div><div class="title">First lines</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

@@ -305,6 +305,42 @@ PROSPECTS:
 
 <h2>The craft</h2>
 <p>Great first lines take 2-5 minutes of research per prospect. For high-value targets, worth every minute. At scale, AI-enriched data brings this down to seconds. But the underlying principle holds: specificity is the only thing that proves "this isn't a blast."</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Generic vs specific first line, same prospect');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Generic (skipped)', items: [
+      '"Hope this finds you well"',
+      '"Noticed your company on LinkedIn"',
+      '"Saw you work in [industry]"',
+      '"Wanted to reach out"',
+      'Reads identical to 100 other emails'
+    ]},
+    right: {title: 'Specific (read)', items: [
+      '"Saw your post yesterday on CAC attribution, the part about killing bottom 3 ad sets resonated"',
+      '"Noticed you just hired a 2nd AE, saw your job post for a 3rd"',
+      '"Your Q3 investor update mentioned 40% ARR growth, congrats"',
+      'Drawn from actual research or signals',
+      'Can only be sent to this specific person'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Invest 2-5 minutes of research per prospect for high-value targets, the reply-rate lift pays back easily at $5K+ ACV</li>
+<li>At scale, use AI personalization from verified data (LinkedIn posts, job changes, company news), never from fabricated observations</li>
+<li>If you can't say something specific, say something honest and brief ("I don't know you, here's why I'm reaching out") rather than fake personalization</li>
+<li>Test first lines in batches of 100, track which data source (LinkedIn post, funding, role change) yields the highest reply rate by segment</li>
+<li>For your top 20 monthly targets, write first lines by hand, AI beats nothing but human beats AI for the prospects that matter most</li>
+</ul>
+
 <div class="prev-next"><a href="subject-lines.html" class="prev"><div class="label">← Previous</div><div class="title">Subject lines</div></a><a href="the-pitch.html" class="next"><div class="label">Next →</div><div class="title">The pitch</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

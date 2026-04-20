@@ -349,6 +349,42 @@ Sam</pre>
 <li>No comp range: candidates filter these out as low-signal</li>
 <li>Following up too much: aggressive recruiters damage company brand</li>
 </ul>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Recruiting outreach, weak vs strong first message');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Weak (ignored)', items: [
+      '"Are you open to new opportunities?"',
+      'No role, no comp, no context',
+      'Generic enough to fit any candidate',
+      'Candidate has seen this 20x this month',
+      '0.5% reply, tanks employer brand'
+    ]},
+    right: {title: 'Strong (read)', items: [
+      'Specific: role, team, mission, comp range',
+      'References their actual work (GitHub, post, paper)',
+      'Why them specifically, in one sentence',
+      'Low-friction ask: "15 min to share context?"',
+      '8-20% reply, builds brand even for noes'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Include comp range in the first message, candidates filter out no-comp outreach as low-signal regardless of how good the role is</li>
+<li>Reference the candidate's specific work (repo, post, paper) in the first line, generic "your profile caught my eye" reads as template</li>
+<li>Cap follow-ups at 2, over-recruiting damages employer brand, and candidates talk to each other</li>
+<li>Coordinate across recruiters at the same company, multiple cold emails from the same company to the same candidate kills the brand fast</li>
+<li>Optimize for reply + first-call quality, not volume, one great hire pays back 100 lost candidates in lifetime value</li>
+</ul>
+
 <div class="prev-next"><a href="link-building.html" class="prev"><div class="label">← Previous</div><div class="title">Cold email for SEO</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

@@ -342,6 +342,36 @@ window.addEventListener('sketch:ready', function(){
 </ul>
 
 <p>Variable should weight meetings-held and meetings-converting, not just bookings (prevents booking junk meetings to hit quota).</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'SDR comp design, what to weight');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Metric', w: 240},
+    {title: 'Weight', w: 200},
+    {title: 'Why', w: 360}
+  ], rows: [
+    ['Meetings booked', '20%', 'Top of funnel signal, easy to game alone'],
+    ['Meetings held (actually happen)', '30%', 'Filters out junk bookings'],
+    ['Meetings converted to SQL', '30%', 'Quality signal, matches AE downstream'],
+    ['Closed-won attribution', '20%', 'Long feedback, binds SDR to revenue']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Weight SDR comp toward held + converted meetings, not just booked, pure booking quotas produce junk meetings that burn AE time</li>
+<li>Set up Lead Gen Forms or meeting auto-booking so SDR doesn't manually schedule, reduces the friction that kills reply-to-meeting conversion</li>
+<li>Cap SDR at 1 campaign per week maximum, more than that fragments attention and quality drops fast</li>
+<li>Review call recordings weekly with each SDR, copy + cadence tweaks come from what prospects actually say on the first call</li>
+<li>Don't launch SDR-led until you have validated offer, predictable conversion, and a documented playbook, otherwise you're paying someone to replicate a broken process</li>
+</ul>
+
 <div class="prev-next"><a href="founder-led.html" class="prev"><div class="label">← Previous</div><div class="title">Founder-led outbound</div></a><a href="link-building.html" class="next"><div class="label">Next →</div><div class="title">Cold email for SEO</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
