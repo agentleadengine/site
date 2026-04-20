@@ -235,7 +235,35 @@ window.addEventListener('sketch:ready', function(){
 });
 </script>
 
-<h2>High-impact tests</h2><ul><li>Headlines</li><li>Hero images</li><li>CTA copy</li><li>Pricing structure</li><li>Form length</li><li>Page structure (radical changes)</li></ul><h2>Lower-impact</h2><ul><li>Button color</li><li>Microcopy</li><li>Font choices</li><li>Minor visual tweaks</li></ul><h2>Skip</h2><ul><li>Things with tiny traffic</li><li>Changes you can't measure</li><li>A/B tests driven by opinion not data</li></ul></div></div><footer><div class="container">
+<h2>High-impact tests</h2><ul><li>Headlines</li><li>Hero images</li><li>CTA copy</li><li>Pricing structure</li><li>Form length</li><li>Page structure (radical changes)</li></ul><h2>Lower-impact</h2><ul><li>Button color</li><li>Microcopy</li><li>Font choices</li><li>Minor visual tweaks</li></ul><h2>Skip</h2><ul><li>Things with tiny traffic</li><li>Changes you can't measure</li><li>A/B tests driven by opinion not data</li></ul>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'CRO test priority, by expected lift');
+  sketch.bars(svg, rc, {x: 40, y: 60, w: 820, labelW: 260, items: [
+    {label: 'Offer / pricing structure', value: 95, note: '30-100% potential'},
+    {label: 'Headline + value prop', value: 75, note: '10-40% lift'},
+    {label: 'Form / CTA / checkout flow', value: 70, note: '10-30% lift'},
+    {label: 'Trust signals + social proof', value: 55, note: '5-20% lift'},
+    {label: 'Button color / microcopy', value: 15, note: '1-5% lift, skip early'}
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Test the offer and headline before testing buttons, the 30-100% lift potential is where real gains come from</li>
+<li>Prioritize tests by expected lift × traffic, a 30% lift on low-traffic page may be less valuable than a 10% lift on high-traffic page</li>
+<li>Generate hypotheses from research (analytics + heatmaps + interviews), opinion-driven tests produce noise</li>
+<li>Keep a backlog scored with ICE or PXL, picking tests from a ranked backlog beats picking from intuition</li>
+<li>Don't test changes you can't measure, vague hypotheses produce vague results</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

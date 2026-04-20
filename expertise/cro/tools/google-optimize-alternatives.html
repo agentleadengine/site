@@ -238,7 +238,39 @@ window.addEventListener('sketch:ready', function(){
 });
 </script>
 
-<h2>VWO</h2><p>Full-featured CRO platform. Testing, heatmaps, surveys. Most popular alternative.</p><h2>Optimizely</h2><p>Enterprise-tier. Expensive but deep features.</p><h2>GA4 Experiments</h2><p>Google's partial replacement. Limited vs Optimize.</p><h2>Convert.com, AB Tasty</h2><p>Mid-tier alternatives.</p><h2>Statsig, Split, LaunchDarkly</h2><p>Engineering-heavy feature flag + experimentation tools.</p></div></div><footer><div class="container">
+<h2>VWO</h2><p>Full-featured CRO platform. Testing, heatmaps, surveys. Most popular alternative.</p><h2>Optimizely</h2><p>Enterprise-tier. Expensive but deep features.</p><h2>GA4 Experiments</h2><p>Google's partial replacement. Limited vs Optimize.</p><h2>Convert.com, AB Tasty</h2><p>Mid-tier alternatives.</p><h2>Statsig, Split, LaunchDarkly</h2><p>Engineering-heavy feature flag + experimentation tools.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Google Optimize alternatives, by team fit');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Tool', w: 240},
+    {title: 'Best for', w: 280},
+    {title: 'Price tier', w: 280}
+  ], rows: [
+    ['VWO', 'Mid-market marketing-led CRO', '$200-1500/mo'],
+    ['Convert', 'Privacy-focused + GDPR', '$200-500/mo'],
+    ['Optimizely', 'Enterprise + server-side', '$2000+/mo'],
+    ['LaunchDarkly / Statsig', 'Engineering-heavy teams', '$500-3000/mo'],
+    ['PostHog', 'Self-hosted + open-source', 'Free tier + scale']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Pick a tool based on team composition, marketing-led goes VWO/Convert, engineering-led goes LaunchDarkly/Statsig</li>
+<li>Run a 30-day trial on 1-2 tools before committing long-term, tool lock-in is real and switching is painful later</li>
+<li>Prioritize GDPR compliance for EU traffic, Convert is the most privacy-forward option</li>
+<li>Consider PostHog's self-hosted option if data ownership matters, it's free at smaller scale and matures well</li>
+<li>Budget training time for any tool, CRO tools only produce value when the team actually uses them weekly</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

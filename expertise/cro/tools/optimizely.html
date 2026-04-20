@@ -241,7 +241,44 @@ window.addEventListener('sketch:ready', function(){
 });
 </script>
 
-<h2>Strengths</h2><ul><li>Feature breadth</li><li>Performance at scale</li><li>Feature flags + experimentation in one</li></ul><h2>Weaknesses</h2><ul><li>Expensive</li><li>Overkill for most sites</li><li>Requires significant setup</li></ul></div></div><footer><div class="container">
+<h2>Strengths</h2><ul><li>Feature breadth</li><li>Performance at scale</li><li>Feature flags + experimentation in one</li></ul><h2>Weaknesses</h2><ul><li>Expensive</li><li>Overkill for most sites</li><li>Requires significant setup</li></ul>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Optimizely fit, enterprise-first tool');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Optimizely fits', items: [
+      'Enterprise scale (1M+ visitors/month)',
+      'Full-stack experimentation program',
+      'Engineering team implementing server-side tests',
+      'Need advanced targeting + segmentation',
+      'Budget for $2K+/month'
+    ]},
+    right: {title: 'Skip Optimizely', items: [
+      'Under 500K visitors/month',
+      'Marketing-led CRO without engineering support',
+      'Budget sensitive',
+      'Simple A/B needs',
+      'Prefer visual-editor-only workflows'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Use Optimizely if you have enterprise scale + engineering capacity, its full-stack server-side testing is the differentiator</li>
+<li>Skip Optimizely at sub-enterprise scale, simpler tools produce equivalent results at a fraction of cost</li>
+<li>Budget for the implementation time, Optimizely's setup is non-trivial and requires engineering integration</li>
+<li>Pair with a dedicated experimentation lead, the tool's depth requires specialist attention</li>
+<li>Consider cheaper alternatives (VWO, Convert) first if budget matters, Optimizely's premium price targets a specific buyer profile</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

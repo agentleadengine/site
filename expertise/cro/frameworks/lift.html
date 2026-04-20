@@ -239,7 +239,36 @@ window.addEventListener('sketch:ready', function(){
 });
 </script>
 
-<h2>Value</h2><p>Is the promise clear and compelling?</p><h2>Relevance</h2><p>Does the page match what the visitor expected (from ad or link)?</p><h2>Clarity</h2><p>Is it instantly clear what you're offering and what to do?</p><h2>Distraction</h2><p>Is there anything pulling attention away from the conversion?</p><h2>Urgency</h2><p>Is there a reason to act now?</p><h2>Anxiety</h2><p>What fears or doubts might block completion? Trust signals, guarantees.</p></div></div><footer><div class="container">
+<h2>Value</h2><p>Is the promise clear and compelling?</p><h2>Relevance</h2><p>Does the page match what the visitor expected (from ad or link)?</p><h2>Clarity</h2><p>Is it instantly clear what you're offering and what to do?</p><h2>Distraction</h2><p>Is there anything pulling attention away from the conversion?</p><h2>Urgency</h2><p>Is there a reason to act now?</p><h2>Anxiety</h2><p>What fears or doubts might block completion? Trust signals, guarantees.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'LIFT framework, 6 factors to audit');
+  sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 30, layers: [
+    {label: 'Value proposition', sub: 'the core promise visible'},
+    {label: 'Relevance', sub: 'does page match their intent'},
+    {label: 'Clarity', sub: 'obvious what to do'},
+    {label: 'Urgency', sub: 'reason to act now'},
+    {label: 'Distraction', sub: 'anything stealing focus'},
+    {label: 'Anxiety', sub: 'fears that block completion'}
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Audit every page against LIFT's 6 factors, each factor reveals different types of friction</li>
+<li>Weight Value Proposition + Clarity first, they drive the majority of early-stage lifts</li>
+<li>Remove distractions aggressively, each visible element on a conversion page should serve the primary goal</li>
+<li>Add trust signals to reduce anxiety, fear-based objections are often the biggest silent barrier</li>
+<li>Use LIFT for rapid audits, pair with ICE or PXL for prioritization of which factor to test first</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

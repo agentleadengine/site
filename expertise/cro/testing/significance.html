@@ -237,7 +237,38 @@ window.addEventListener('sketch:ready', function(){
 });
 </script>
 
-<h2>P-value</h2><p>Probability the result is random. Lower is better.</p><h2>Common mistakes</h2><ul><li>Stopping early (p-hacking)</li><li>Ignoring base rates</li><li>Running many tests without correction</li><li>Interpreting non-significance as 'no effect'</li></ul><h2>Practical threshold</h2><p>95% confidence + minimum sample size. Lower confidence on low-stakes, higher on high-stakes.</p></div></div><footer><div class="container">
+<h2>P-value</h2><p>Probability the result is random. Lower is better.</p><h2>Common mistakes</h2><ul><li>Stopping early (p-hacking)</li><li>Ignoring base rates</li><li>Running many tests without correction</li><li>Interpreting non-significance as 'no effect'</li></ul><h2>Practical threshold</h2><p>95% confidence + minimum sample size. Lower confidence on low-stakes, higher on high-stakes.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Confidence level vs stakes');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Stakes', w: 240},
+    {title: 'Confidence', w: 200},
+    {title: 'Why', w: 340}
+  ], rows: [
+    ['Low (button copy)', '90%', 'Fast feedback, low risk if wrong'],
+    ['Medium (landing page)', '95%', 'Standard, good balance'],
+    ['High (checkout, pricing)', '99%', 'Mistakes cost revenue at scale'],
+    ['Launching a new product', '99%', 'Full-stack validation']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Match confidence level to stakes, 99% on checkout pricing, 90% on button microcopy</li>
+<li>Default to 95% for most tests, it's the balance between speed and reliability for typical CRO work</li>
+<li>Don't confuse significance with importance, a statistically significant 2% lift might not be worth the engineering cost</li>
+<li>Report both the point estimate and confidence interval, ranges communicate uncertainty better than single numbers</li>
+<li>Pre-register your significance threshold in the test hypothesis, changing it after seeing data is p-hacking</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

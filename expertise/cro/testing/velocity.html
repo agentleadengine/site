@@ -236,7 +236,42 @@ window.addEventListener('sketch:ready', function(){
     ['Giant e-comm', '50+']
   ]});
 });
-</script><ul><li>Early: 1-2 tests/month</li><li>Growing: 3-5 tests/month</li><li>Mature: 2-3 tests/week</li></ul><h2>Building velocity</h2><ul><li>Documented test queue</li><li>Templated test design</li><li>Dedicated CRO infrastructure</li><li>Regular planning cadence</li></ul><h2>Quality still matters</h2><p>Bad tests at high velocity is waste. Balance speed and rigor.</p></div></div><footer><div class="container">
+</script><ul><li>Early: 1-2 tests/month</li><li>Growing: 3-5 tests/month</li><li>Mature: 2-3 tests/week</li></ul><h2>Building velocity</h2><ul><li>Documented test queue</li><li>Templated test design</li><li>Dedicated CRO infrastructure</li><li>Regular planning cadence</li></ul><h2>Quality still matters</h2><p>Bad tests at high velocity is waste. Balance speed and rigor.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Test velocity: slow vs disciplined-fast');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Slow (1 test/month)', items: [
+      '12 tests per year',
+      '1-2 winners at 10% win rate',
+      'Team loses momentum between tests',
+      'Learning compounds slowly'
+    ]},
+    right: {title: 'Disciplined fast (3-5/week)', items: [
+      '150 tests per year',
+      '15 winners at same 10% win rate',
+      'Rapid feedback keeps team engaged',
+      'Learning + intuition compound'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Target 3-5 tests per week at meaningful traffic, fewer means slow learning, more means poorly-designed tests</li>
+<li>Balance velocity with rigor, 10 noisy tests per week produces no actionable learning</li>
+<li>Use feature flags + testing tools that reduce friction, velocity is capped by how painful it is to ship a test</li>
+<li>Track winners per month, if win rate drops below 10%, the hypothesis quality is the problem, not the test count</li>
+<li>Document everything in a rolling doc, the velocity advantage is lost if learnings don't compound</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

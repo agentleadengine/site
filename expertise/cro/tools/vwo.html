@@ -241,7 +241,44 @@ window.addEventListener('sketch:ready', function(){
 });
 </script>
 
-<h2>Strengths</h2><ul><li>All-in-one (testing + analytics + research)</li><li>Visual editor for non-devs</li><li>Good analytics</li><li>Reasonable pricing</li></ul><h2>Weaknesses</h2><ul><li>Enterprise tier gets expensive</li><li>UI can be overwhelming</li></ul></div></div><footer><div class="container">
+<h2>Strengths</h2><ul><li>All-in-one (testing + analytics + research)</li><li>Visual editor for non-devs</li><li>Good analytics</li><li>Reasonable pricing</li></ul><h2>Weaknesses</h2><ul><li>Enterprise tier gets expensive</li><li>UI can be overwhelming</li></ul>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'VWO fit check');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'VWO fits', items: [
+      'Mid-market + enterprise CRO program',
+      'Want integrated heatmaps + recordings + testing',
+      'Need multivariate testing support',
+      'Team comfortable with fuller feature surface',
+      'Budget $300+/mo'
+    ]},
+    right: {title: 'Skip VWO', items: [
+      'Solo operators or very small teams',
+      'Only need simple A/B tests',
+      'Limited traffic (needs scale)',
+      'Engineering-heavy team (use LaunchDarkly)',
+      'Tight budget'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Choose VWO if you want testing + heatmaps + recordings in one platform, the integration saves tool-switching overhead</li>
+<li>Skip VWO at small scale, simpler tools or free alternatives work fine under 50K visitors/month</li>
+<li>Budget for the full enterprise tier as you grow, starter plans get limiting fast</li>
+<li>Train the team on VWO's editor, the visual editor is powerful but has a learning curve</li>
+<li>Pair VWO with a dedicated CRO operator, the tool's depth is wasted on part-time attention</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

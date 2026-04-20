@@ -236,7 +236,44 @@ window.addEventListener('sketch:ready', function(){
 });
 </script>
 
-<h2>Evidence</h2><p>What data supports this test? (user research, analytics, prior tests, expert opinion)</p><h2>Impact</h2><p>Above/below fold? Key page? Revenue-adjacent?</p><h2>Ease</h2><p>How much engineering and design time?</p><h2>Output</h2><p>Similar to ICE but with explicit weights for evidence quality.</p></div></div><footer><div class="container">
+<h2>Evidence</h2><p>What data supports this test? (user research, analytics, prior tests, expert opinion)</p><h2>Impact</h2><p>Above/below fold? Key page? Revenue-adjacent?</p><h2>Ease</h2><p>How much engineering and design time?</p><h2>Output</h2><p>Similar to ICE but with explicit weights for evidence quality.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'PXL vs ICE, when to use which');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'ICE (simple)', items: [
+      'Impact × Confidence × Ease',
+      'Fast to score',
+      'Good for early-stage teams',
+      'Subjective confidence inflation risk',
+      'Works for small test backlog'
+    ]},
+    right: {title: 'PXL (rigorous)', items: [
+      'Weighted checklist of evidence sources',
+      'Heatmap data, surveys, analytics each weighted',
+      'More objective than ICE',
+      'Better for mature teams with multiple data sources',
+      'Scales to large backlog'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Start with ICE on early CRO programs, graduate to PXL as you have more evidence sources to weight</li>
+<li>Match framework to team maturity, PXL's rigor is wasted on a team with no heatmaps or surveys</li>
+<li>Document which evidence is cited per experiment, the PXL checklist forces explicit backing for each score</li>
+<li>Re-weight PXL criteria quarterly, the evidence sources that matter most to your test outcomes shift over time</li>
+<li>Use PXL to filter "feels important" tests without real evidence, the checklist surfaces where data is missing</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){
