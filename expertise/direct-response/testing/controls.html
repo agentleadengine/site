@@ -324,6 +324,35 @@ window.addEventListener('sketch:ready', function(){
 </ul>
 <p>Don't retire a control just because you're tired of it. Retire it because the data says so.</p>
 
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Pick the right split for your challenger risk profile');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Split (control/chal.)', w: 200},
+    {title: 'When to use', w: 380},
+    {title: 'Trade-off', w: 220}
+  ], rows: [
+    ['50/50', 'High confidence challenger, big potential win', 'Fastest to significance'],
+    ['70/30', 'Moderate confidence, contained downside', 'Hedged exposure'],
+    ['80/20', 'Control performing well, cautious test', 'Slower to call'],
+    ['90/10', 'Risky / experimental challenger', 'Longest test, lowest downside']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Require a written hypothesis for every challenger before it runs, "try something new" isn't a hypothesis, "problem-led headline will pull problem-aware prospects who currently bounce" is</li>
+<li>Match the split to the risk, 50/50 for confident tests, 90/10 for experimental ones, the split is itself a decision, not a default</li>
+<li>Don't peek at results before hitting statistical significance, a 3-day "clear winner" is usually noise, wait for the math</li>
+<li>Treat control-beating as a team game, leaderboard of challengers designed, wins credited publicly, compounds organizational creativity</li>
+<li>Keep a control graveyard doc, archive every past control with full context, over years this becomes proprietary IP no competitor has</li>
+</ul>
+
 <p style="margin-top:40px;">Related: <a href="scientific.html">Scientific testing</a> · <a href="what-to-test.html">What to test</a> · <a href="measurement.html">Measurement</a></p>
 <div class="prev-next"><a href="what-to-test.html" class="prev"><div class="label">← Previous</div><div class="title">What to test</div></a><a href="measurement.html" class="next"><div class="label">Next →</div><div class="title">Measurement</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>

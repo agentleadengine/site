@@ -342,6 +342,33 @@ window.addEventListener('sketch:ready', function(){
 </ul>
 <p>The direct-response discipline doesn't change at scale, only the numbers do. Teams that let the discipline slip get overtaken by competitors who don't.</p>
 
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Pre-scale checklist, ship only if all 6 pass');
+  sketch.numberedSteps(svg, rc, {x: 40, y: 60, w: 820, stepH: 30, items: [
+    'CAC stable or declining over last 90 days',
+    'LTV:CAC above 3:1 on observed data, not modeled',
+    'Payback period under 12 months',
+    'Retention + return rate meeting targets',
+    'Results repeatable across 3+ cohorts, not one lucky week',
+    'Fulfillment + team ready for 10x volume'
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Run the 6-point pre-scale checklist before increasing any budget, investing into a false winner is the most common way operators burn cash</li>
+<li>Scale spend by 20-30% every 2-3 days, not 10x overnight, algorithms punish sudden budget jumps with higher CAC and worse delivery</li>
+<li>Follow the scaling pyramid (spend → creative → audience → channel → offer), don't skip levels, fragmentation costs more than it produces</li>
+<li>Scale fulfillment and team capacity before marketing, not after, breaking onboarding at 10x volume kills retention and undoes the win</li>
+<li>Keep the discipline that got you here, weekly tests, customer conversations, measurement cadence, the fundamentals don't change at scale, only the numbers do</li>
+</ul>
+
 <p style="margin-top:40px;">Related: <a href="value-ladder.html">The value ladder</a> · <a href="high-ticket.html">High ticket</a> · <a href="info-products.html">Info products</a></p>
 <div class="prev-next"><a href="../testing/measurement.html" class="prev"><div class="label">← Previous</div><div class="title">Measurement</div></a><a href="value-ladder.html" class="next"><div class="label">Next →</div><div class="title">The value ladder</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
