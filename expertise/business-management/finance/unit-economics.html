@@ -222,6 +222,25 @@
 <p class="lede">If you can't explain how one more customer makes you more profitable or less, you don't have a business model, you have a pile of transactions. Unit economics is the discipline of reducing the entire business down to what happens with one additional customer, one additional job, one additional unit sold. Everything else, fundraising, hiring, strategy, is downstream of this.</p>
 
 <h2>The core equation</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Unit economics: the core metrics');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Metric', w: 220},
+    {title: 'Formula / meaning', w: 580}
+  ], rows: [
+    ['LTV', 'Average rev per customer × gross margin × lifespan'],
+    ['CAC', 'Total sales + marketing ÷ new customers'],
+    ['LTV:CAC', 'Target 3:1 minimum'],
+    ['Payback', 'Months until CAC recovered'],
+    ['Contribution margin', 'Revenue − variable costs']
+  ]});
+});
+</script>
 <p>For a subscription business:</p>
 <pre style="background:#f5f5f7; padding:16px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:14px;">LTV / CAC
 

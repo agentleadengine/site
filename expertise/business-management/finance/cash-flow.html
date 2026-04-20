@@ -231,6 +231,24 @@
 <p>All three distort the relationship between what's "earned" and what's in the bank. A cash flow forecast is how you translate between them.</p>
 
 <h2>The 13-week cash flow</h2>
+<div class="sketch" data-viewbox="0 0 900 240"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 240);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, '13-week cash flow components');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Row', w: 220},
+    {title: 'What', w: 580}
+  ], rows: [
+    ['Opening cash', 'Start of week balance'],
+    ['Cash in (receipts)', 'When customers actually pay'],
+    ['Cash out (disbursements)', 'Payroll + AP + debt'],
+    ['Ending cash', 'Opening + in − out']
+  ]});
+});
+</script>
 <p>The standard operator tool. A rolling weekly forecast of cash in, cash out, and ending balance for the next 13 weeks (one quarter). Updated every Monday.</p>
 
 <pre style="background:#f5f5f7; padding:16px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px; overflow-x:auto;">

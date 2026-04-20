@@ -222,6 +222,23 @@
 <p class="lede">Most companies price like they're afraid of their customers. Pricing is the highest-leverage lever in a business, a 1% improvement in price typically hits EBITDA harder than a 1% improvement in volume and harder than a 1% reduction in cost. Every operator should spend more time on pricing than they do. Almost none do.</p>
 
 <h2>The three ways to price</h2>
+<div class="sketch" data-viewbox="0 0 900 240"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 240);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Three pricing approaches');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Approach', w: 240},
+    {title: 'When it works', w: 560}
+  ], rows: [
+    ['Cost-plus', 'Commodity / capacity-constrained'],
+    ['Competitor-based', 'Established category'],
+    ['Value-based', 'Unique value; biggest upside']
+  ]});
+});
+</script>
 
 <h3>1. Cost-plus</h3>
 <p>Figure out what it costs, add a margin. Simple. Almost always wrong. Cost-plus pricing leaves value on the table whenever the customer would pay more than your margin target, which is most of the time.</p>

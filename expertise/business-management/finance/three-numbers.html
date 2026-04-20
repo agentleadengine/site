@@ -222,6 +222,23 @@
 <p class="lede">Most operators can't tell you their three most important numbers in under ten seconds. If you can't, you don't run the business, it runs you. The job of an operator is to find the three numbers that matter most this quarter and make them visible enough that every decision flows downstream from them.</p>
 
 <h2>Why three</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[0];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'The three-numbers framework');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Number type', w: 260},
+    {title: 'Example (SaaS)', w: 540}
+  ], rows: [
+    ['Top-line (growth)', 'Net new ARR this quarter'],
+    ['Efficiency', 'Magic number, gross margin'],
+    ['Cash', 'Runway in months, burn multiple']
+  ]});
+});
+</script>
 <p>Not one, one number hides trade-offs. Not ten, ten is a dashboard, not a priority. Three is the number a team can hold in their head during a hallway conversation. Three is enough to triangulate (you move one, the other two move in response). Three forces you to cut.</p>
 
 <h2>The three-numbers framework</h2>
