@@ -265,6 +265,33 @@ window.addEventListener('sketch:ready', function(){
 </ul>
 <p>Everything in this section is built on those six ideas. From here on, I'll mostly stop name-dropping and just teach.</p>
 
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'The six shared non-negotiables, in priority order');
+  sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 34, layers: [
+    {label: 'Market > Product', sub: 'sell aspirin to people with headaches'},
+    {label: 'Offer > Copy', sub: 'best copy cannot fix a weak offer'},
+    {label: 'Copy > Design', sub: 'prospects buy words, not logos'},
+    {label: 'Measurement > Opinion', sub: 'track every response'},
+    {label: 'Write to one person', sub: 'not a market, a reader'},
+    {label: 'Always a reason to act now', sub: 'deadline, bonus, quantity'}
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Read Hopkins first, it's 90 pages and free, everything else builds on top of it</li>
+<li>Subscribe to thegaryhalbertletter.com archive and read one letter a week, it's a free copywriting masterclass</li>
+<li>When a campaign is failing, diagnose in this order: market, then offer, then copy, then design, fix the highest-leverage layer first</li>
+<li>Before writing any ad, write the offer on a single line, if you cannot, the offer isn't strong enough yet</li>
+<li>When you sit down to write copy, picture one specific person and write to them, not to "a market"</li>
+</ul>
+
 <p style="margin-top:40px;">Next: <a href="scientific-advertising.html">Scientific advertising</a>, the testing discipline that underwrites everything else.</p>
 <div class="prev-next"><a href="what-is-direct-response.html" class="prev"><div class="label">← Previous</div><div class="title">What is direct response?</div></a><a href="scientific-advertising.html" class="next"><div class="label">Next →</div><div class="title">Scientific advertising</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>

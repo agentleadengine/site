@@ -291,6 +291,41 @@ window.addEventListener('sketch:ready', function(){
  <li><strong>Pre-empt.</strong> What's true about your product that everyone else does but doesn't say? Say it first.</li>
 </ol>
 
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Generic vs specific claim, same product');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Generic (weak)', items: [
+      '"Our mattress is great"',
+      '"Shoots sand far"',
+      '"Best toothpaste"',
+      '"Improve your health"',
+      '"Fast delivery"'
+    ]},
+    right: {title: 'Specific (strong)', items: [
+      '"100 nights at home, return it free"',
+      '"Shoots sand 58 feet"',
+      '"Removes the film on your teeth"',
+      '"Lose 15 lbs in 90 days"',
+      '"At your door in 8 hours or free"'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Replace every adjective in your ad copy with a number, a timeframe, or a concrete before/after, "fast" becomes "8 hours", "proven" becomes "41,000 customers"</li>
+<li>Look at what every competitor does but nobody says, write the pre-emptive ad that claims it first, you don't need a new feature, you need a new claim</li>
+<li>Never run a single-variant test, if you're only running one headline, one offer, one creative, you're buying lottery tickets without reading the numbers</li>
+<li>After every claim, ask "because what?", if you can't finish the sentence, the claim isn't earning its space</li>
+<li>Read Hopkins' 90 pages once a year, the vocabulary ages, the principles don't</li>
+</ul>
+
 <p style="margin-top:40px;">Related: <a href="../testing/scientific.html">Scientific testing</a> · <a href="../copy/the-stack.html">The copywriting stack</a> · <a href="ten-rules.html">the 10 rules I write about campaigns by</a></p>
 <div class="prev-next"><a href="four-horsemen.html" class="prev"><div class="label">← Previous</div><div class="title">Influences</div></a><a href="ten-rules.html" class="next"><div class="label">Next →</div><div class="title">The 10 rules</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
