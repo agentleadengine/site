@@ -322,6 +322,35 @@ window.addEventListener('sketch:ready', function(){
  <li>If they pull out a credit card in the conversation, it's a grand slam</li>
 </ul>
 
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Anatomy of the stack, each layer solves one objection');
+  sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 28, layers: [
+    {label: 'Core product', sub: 'the actual deliverable'},
+    {label: 'Bonus 1', sub: 'neutralizes objection #1 (time)'},
+    {label: 'Bonus 2', sub: 'neutralizes objection #2 (skill)'},
+    {label: 'Bonus 3', sub: 'accelerates first result'},
+    {label: 'Bonus 4', sub: 'removes implementation burden'},
+    {label: 'Fast-action bonus', sub: 'only if signed by deadline'},
+    {label: 'Guarantee', sub: 'shifts risk from prospect to you'},
+    {label: 'Urgency', sub: 'real scarcity, not manufactured'}
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>List the top 5 objections prospects give on sales calls, build one bonus per objection, each bonus solves one specific friction</li>
+<li>Write the stack on one page with dollar values next to each line, total stack value should be 3-4x the asking price, minimum</li>
+<li>Attach a guarantee strong enough that you feel slightly uncomfortable, if it doesn't scare you a little, prospects won't believe it</li>
+<li>Test the offer on 5 ICP prospects before scaling, if nobody pulls out a card in conversation, the offer isn't grand slam yet</li>
+<li>Review the offer quarterly, as competitors catch up to your stack, yours needs to grow in value or fall back to commodity</li>
+</ul>
+
 <p style="margin-top:40px;">Related: <a href="value-equation.html">Value equation</a> · <a href="bonuses.html">Bonuses that stack</a> · <a href="guarantees.html">Guarantees</a> · <a href="pricing-psychology.html">Pricing psychology</a></p>
 <div class="prev-next"><a href="value-equation.html" class="prev"><div class="label">← Previous</div><div class="title">The value equation</div></a><a href="bonuses.html" class="next"><div class="label">Next →</div><div class="title">Bonuses that stack</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>

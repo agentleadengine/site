@@ -326,6 +326,32 @@ The decoy doesn't have to sell. It has to make the intended option look like the
 </ol>
 <p>The reader's first emotional response to Y is "wait, that's a lot less than X." That's the effect you want.</p>
 
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Price reveal sequence, value first, then price');
+  sketch.numberedSteps(svg, rc, {x: 40, y: 60, w: 820, stepH: 36, items: [
+    'Describe the cost of not solving ("this leak costs $5K/mo")',
+    'Anchor against alternatives ("hiring in-house = $8K/mo")',
+    'Walk the stack with dollar value on every line',
+    'State the total value ("$42K if you bought it piece by piece")',
+    'Reveal your price as a concession ("your price: $12K")'
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Raise prices for new customers by 20% this quarter, if conversion holds, raise again in 90 days, most operators are underpriced by 2-3x</li>
+<li>Structure every offer as three tiers (good/better/best), price the middle to carry profit, the top makes the middle feel reasonable</li>
+<li>Before the price appears anywhere, anchor against the cost of not solving and the cost of alternatives, prospects who see price first skip the value story</li>
+<li>Swap discounts for bonuses, discounts train buyers to wait, bonuses train buyers to act now</li>
+<li>Audit close rate on qualified leads, if it's above 50%, you're underpriced, if it's below 15%, fix the offer before touching price</li>
+</ul>
+
 <p style="margin-top:40px;">Related: <a href="value-equation.html">Value equation</a> · <a href="grand-slam.html">Grand slam offers</a> · <a href="urgency-scarcity.html">Urgency + scarcity</a></p>
 <div class="prev-next"><a href="guarantees.html" class="prev"><div class="label">← Previous</div><div class="title">Guarantees</div></a><a href="urgency-scarcity.html" class="next"><div class="label">Next →</div><div class="title">Urgency + scarcity</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>

@@ -336,6 +336,41 @@ window.addEventListener('sketch:ready', function(){
 </ol>
 <p>A well-handled refund often converts into a future customer or a referral. A poorly handled one generates online complaints that cost 10x the refund amount in lost future sales.</p>
 
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'The guarantee math, a strong one usually nets more');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Weak guarantee (30-day refund)', items: [
+      '100 sales at $1,000 = $100K gross',
+      '3% refund rate = -$3K',
+      'Net revenue: $97K',
+      'Conversion held back by buyer risk',
+      'Competitors match easily'
+    ]},
+    right: {title: 'Strong guarantee (90 days, result-based)', items: [
+      '160 sales at $1,000 = $160K gross',
+      '5% refund rate = -$8K',
+      'Net revenue: $152K',
+      '+57% net from risk-reversal',
+      'Hard for competitors to match'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Upgrade your guarantee from generic "30-day satisfaction" to a specific result-based one, "if you don't hit X by day Y, full refund", the specificity is what converts</li>
+<li>Extend the guarantee window past the point it feels comfortable, counterintuitively this usually lowers refund rates, not raises them</li>
+<li>Post the guarantee on the offer page, in the cart, in the confirmation email, and in the first onboarding message, prospects forget a guarantee they only see once</li>
+<li>Kill every asterisk in your guarantee copy, if the guarantee needs caveats, it's not a guarantee, rewrite it until it's clean</li>
+<li>Process refunds same-day with no interrogation, one well-handled refund generates referrals, one fought refund generates reviews that cost 10x the refund</li>
+</ul>
+
 <p style="margin-top:40px;">Related: <a href="value-equation.html">Value equation</a> · <a href="grand-slam.html">Grand slam offers</a> · <a href="pricing-psychology.html">Pricing psychology</a></p>
 <div class="prev-next"><a href="bonuses.html" class="prev"><div class="label">← Previous</div><div class="title">Bonuses that stack</div></a><a href="pricing-psychology.html" class="next"><div class="label">Next →</div><div class="title">Pricing psychology</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>

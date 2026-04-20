@@ -339,6 +339,41 @@ window.addEventListener('sketch:ready', function(){
 </ol>
 <p>If yes to both, the urgency is real. If no to either, you're manufacturing, and the short-term lift isn't worth the long-term brand cost.</p>
 
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Manufactured vs honest urgency, prospects can tell');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Manufactured (burns trust)', items: [
+      'Countdown timer that resets',
+      '"Only 3 left" for months',
+      'Price "rises Monday" every week',
+      'Fake stock counters on SaaS',
+      'Short-term lift, long-term brand damage'
+    ]},
+    right: {title: 'Honest (compounds trust)', items: [
+      'Cohort opens 4x/year, real cadence',
+      'Capacity limit tied to real onboarding hours',
+      'Price rises because product added features',
+      'Bonus expires because it has a real cost',
+      'Answerable out loud if a prospect asks why'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Before running any urgency, write out the reason in one sentence, if you can't say it out loud to a prospect's face, kill the deadline</li>
+<li>Actually honor the deadline, the first time you break it for a late buyer, every future deadline stops working, your word is the mechanism</li>
+<li>Replace "limited time" vague language with specific dates and times, "Friday 5pm EST" converts multiples better than "this week only"</li>
+<li>Build a real 5-touch urgency sequence for every offer (announce, remind, 24hr, 6hr, final hour), most of the revenue closes in the last 24</li>
+<li>Audit your site for fake scarcity widgets (resetting counters, fake stock numbers), remove them, they hurt conversion with sophisticated prospects</li>
+</ul>
+
 <p style="margin-top:40px;">Related: <a href="grand-slam.html">Grand slam offers</a> · <a href="guarantees.html">Guarantees</a> · <a href="../foundations/ten-rules.html">the 10 rules I write about campaigns by</a></p>
 <div class="prev-next"><a href="pricing-psychology.html" class="prev"><div class="label">← Previous</div><div class="title">Pricing psychology</div></a><a href="../copy/the-stack.html" class="next"><div class="label">Next →</div><div class="title">The copywriting stack</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
