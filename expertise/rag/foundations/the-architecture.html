@@ -222,11 +222,10 @@
 <p class="lede">A RAG system isn't one thing. It's a pipeline with 8-10 distinct stages, each of which has its own design space. Understanding the full map is how you move from "we're using RAG" to "we're making specific defensible choices at each layer." Here's the map I use.</p>
 
 <h2>The ten stages</h2>
-<div class="sketch" data-viewbox="0 0 900 420"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 480"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
-  const svg = sketch.createSvg(el, 900, 420);
+  const svg = sketch.createSvg(el, 900, 430);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'The RAG stack, top to bottom');
   sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 34, layers: [
@@ -241,8 +240,7 @@ window.addEventListener('sketch:ready', function(){
     {label: '9. Generation', sub: 'LLM with context'},
     {label: '10. Observability', sub: 'traces + feedback'}
   ]});
-});
-</script>
+}</script>
 
 <h3>1. Source integration</h3>
 <p>Where documents come from. Confluence, Google Drive, Notion, S3, SharePoint, databases, APIs, websites, Slack. Every source has its own auth model, rate limits, and permission system. Ingestion connectors are often the biggest single engineering cost.</p>
@@ -275,14 +273,13 @@ window.addEventListener('sketch:ready', function(){
 <p>Logging queries, retrieved chunks, and final answers. Collecting user feedback. Building evaluation datasets. Without this layer the system silently degrades.</p>
 
 <h2>The data plane vs the query plane</h2>
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 266"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
-  const svg = sketch.createSvg(el, 900, 260);
+  const svg = sketch.createSvg(el, 900, 266);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'Data plane (offline) vs query plane (online)');
-  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 186,
     left: {title: 'Data plane (offline)', items: [
       'Runs on a schedule',
       'Stages 1–7 (parse, chunk, embed, index)',
@@ -295,8 +292,7 @@ window.addEventListener('sketch:ready', function(){
       'Latency-sensitive',
       'Gets the ops attention']}
   });
-});
-</script>
+}</script>
 <p>The split matters because they have different scaling profiles, different failure modes, and usually different engineering ownership. Teams that conflate them end up with systems where a re-ingestion job blocks live queries, or where a query optimization breaks the indexer.</p>
 
 <h2>The decisions I force teams to make explicit</h2>
@@ -318,9 +314,8 @@ window.addEventListener('sketch:ready', function(){
 <p>Ten questions. Most teams have answers for 3-4. The rest becomes "we'll figure that out later", and "later" is when the system breaks in production.</p>
 
 <h2>The common anti-architecture</h2>
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 350"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[2];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -336,8 +331,7 @@ window.addEventListener('sketch:ready', function(){
     ['Top-10 → GPT-4, done', 'Hybrid search + reranker + tuned top-k'],
     ['No eval / observability', 'RAGAS eval + trace every query']
   ]});
-});
-</script>
+}</script>
 <p>It's the default path, and it's not terrible, but it's also the system that will plateau at "okay" and never get to "good." Everything in this section is the work of getting past that plateau.</p>
 
 <h2>What to do with this</h2>

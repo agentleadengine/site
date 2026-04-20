@@ -240,8 +240,7 @@
 
 <h2>The four error categories</h2>
 <div class="sketch" data-viewbox="0 0 900 300"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 300);
   const rc = sketch.rc(svg);
@@ -256,8 +255,7 @@ window.addEventListener('sketch:ready', function(){
     ['Empty result', 'Query returned nothing', 'Broaden query, or conclude'],
     ['Ambiguous', 'Multiple matches', 'Ask user, or pick best']
   ]});
-});
-</script>
+}</script>
 
 <h2>Where retries belong</h2>
 <p>Transient errors should be retried by your orchestrator, not by the model. You don't want to spend three LLM turns retrying a rate limit. The orchestrator does 3 retries with exponential backoff internally, and only if those fail does the model see the error. That keeps the agent's context clean and its reasoning focused.</p>

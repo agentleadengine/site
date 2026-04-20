@@ -238,9 +238,8 @@
 <p>Structured, not free-form. The receiving agent parses the payload and starts with full context. No "wait, what were we doing again?"</p>
 
 <h2>When to hand off</h2>
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -254,8 +253,7 @@ window.addEventListener('sketch:ready', function(){
     ['Escalation to a bigger model', 'Cheap model out of its depth; escalate to premium'],
     ['Human-in-the-loop', 'Crosses a safety or authorization threshold']
   ]});
-});
-</script>
+}</script>
 
 <h2>The user experience</h2>
 <p>From the user's perspective, handoff should be invisible. No "transferring you to a different department" moments. The receiving agent picks up naturally: "I'll take over the code implementation. I see the research worker found that Y is the right library. Starting there."</p>

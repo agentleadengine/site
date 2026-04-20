@@ -228,8 +228,7 @@
 
 <h2>The flow</h2>
 <div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -240,8 +239,7 @@ window.addEventListener('sketch:ready', function(){
     {title: 'Embed the draft', sub: 'not the query'},
     {title: 'Search index', sub: 'returns real docs'}
   ]});
-});
-</script>
+}</script>
 <pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
 1. User query: "How do I set up OAuth with Google?"
 2. LLM prompt: "Write a short passage that would answer this question"
@@ -263,14 +261,13 @@ window.addEventListener('sketch:ready', function(){
 </ul>
 
 <h2>When HyDE helps vs doesn't</h2>
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 266"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
-  const svg = sketch.createSvg(el, 900, 260);
+  const svg = sketch.createSvg(el, 900, 266);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'HyDE: helps vs doesn\'t help');
-  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 186,
     left: {title: 'Helps', items: [
       'Short / noisy queries',
       'Answer-shaped corpus',
@@ -283,8 +280,7 @@ window.addEventListener('sketch:ready', function(){
       'Tight latency budget',
       'LLM can\'t hallucinate the domain']}
   });
-});
-</script>
+}</script>
 <ul>
   <li>Queries are already detailed and verbose</li>
   <li>Corpus has strong BM25-friendly keyword overlap with queries</li>

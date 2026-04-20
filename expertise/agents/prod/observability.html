@@ -222,9 +222,8 @@
 <p class="lede">Agents fail in ways traditional apps don't. Non-deterministic reasoning, cascading tool errors, quality drift you only spot statistically. Without deep tracing, these failures are invisible until a customer complains, and by then you're debugging blind. Observability is the difference between "we have an agent in production" and "we operate an agent in production." Don't ship without it.</p>
 
 <h2>What to log, per session</h2>
-<div class="sketch" data-viewbox="0 0 900 340"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 420"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 340);
   const rc = sketch.rc(svg);
@@ -242,8 +241,7 @@ window.addEventListener('sketch:ready', function(){
     ['Final output', 'Compare to expected'],
     ['Termination reason', 'Completed, budget, timeout, error']
   ]});
-});
-</script>
+}</script>
 
 <h2>Traces are replayable debugging artifacts</h2>
 <p>A good trace is not just logs. It's structured, timestamped, correlated with a session ID, and complete enough that you can:</p>
@@ -268,9 +266,8 @@ window.addEventListener('sketch:ready', function(){
 
 <h2>Sampling strategy</h2>
 <p>Full tracing at high throughput is expensive. Sample:</p>
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 320"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -285,8 +282,7 @@ window.addEventListener('sketch:ready', function(){
     ['User-reported issues', '100% (trigger on a support webhook)'],
     ['Sessions over N seconds', '100% (latency outliers are bugs)']
   ]});
-});
-</script>
+}</script>
 
 <h2>The alerts you need</h2>
 <ul>

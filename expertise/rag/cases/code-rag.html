@@ -222,9 +222,8 @@
 <p class="lede">RAG over codebases powers modern coding assistants, internal code search, and automated code generation. Code has different structure, different retrieval patterns, and different quality metrics than prose. Here's what's specific.</p>
 
 <h2>What code RAG does</h2>
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -238,8 +237,7 @@ window.addEventListener('sketch:ready', function(){
     ['"How do we handle Y elsewhere?"', 'Similar patterns in the codebase'],
     ['"What does this test cover?"', 'Tests + code under test']
   ]});
-});
-</script>
+}</script>
 <ul>
   <li><strong>Semantic code search</strong>: "find the function that handles refunds"</li>
   <li><strong>Code generation with context</strong>: "write a function like this one but for products"</li>
@@ -287,9 +285,8 @@ window.addEventListener('sketch:ready', function(){
 </ul>
 
 <h2>Retrieval patterns</h2>
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -304,8 +301,7 @@ window.addEventListener('sketch:ready', function(){
     ['Symbol lookup', 'Exact match on function/class name'],
     ['Usage pattern', 'How is this function called elsewhere?']
   ]});
-});
-</script>
+}</script>
 
 <h3>Query-then-expand</h3>
 <p>Initial query retrieves a function. Expand by pulling in:</p>

@@ -223,8 +223,7 @@
 
 <h2>The first question: Type 1 or Type 2?</h2>
 <div class="sketch" data-viewbox="0 0 900 240"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 240);
   const rc = sketch.rc(svg);
@@ -241,8 +240,7 @@ window.addEventListener('sketch:ready', function(){
       'Experiment cheaply',
       'Most daily operational calls']}
   });
-});
-</script>
+}</script>
 <p>Bezos's framing. Two categories:</p>
 <ul>
   <li><strong>Type 1, one-way door.</strong> Irreversible or nearly so. Hiring a senior exec. Selling the company. Signing a 5-year lease. Deliberate, analytical, high-conviction.</li>
@@ -317,14 +315,13 @@ Now: are we doing any of those?
 
 <p style="margin-top:40px;">Related: <a href="pre-mortems.html">Pre-mortems</a> · <a href="what-to-kill.html">What to kill</a> · <a href="../operating-systems/decision-logs.html">Decision logs</a></p>
 
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 292"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
-  const svg = sketch.createSvg(el, 900, 260);
+  const svg = sketch.createSvg(el, 900, 292);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'Reversible vs one-way-door decisions');
-  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 212,
     left: {title: 'Type 1 (one-way door)', items: [
       'Hard or impossible to reverse',
       'Examples: acquisition, firing exec, pricing change',
@@ -340,8 +337,7 @@ window.addEventListener('sketch:ready', function(){
       'Cost of delay > cost of being wrong'
     ]}
   });
-});
-</script>
+}</script>
 
 <h2>What to do with this</h2>
 <ul>

@@ -223,8 +223,7 @@
 
 <h2>The three kinds of PDFs</h2>
 <div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -237,8 +236,7 @@ window.addEventListener('sketch:ready', function(){
     ['Scanned image', 'Copy-paste returns nothing; needs OCR'],
     ['Born-digital with layout', 'Text works but columns / tables are the challenge']
   ]});
-});
-</script>
+}</script>
 
 <h3>1. Born-digital with clean text layer</h3>
 <p>Generated from Word, LaTeX, or pandoc. Text is extractable with basic tools. Usually has a coherent reading order. Still may have headers/footers/page numbers that pollute text.</p>
@@ -250,9 +248,8 @@ window.addEventListener('sketch:ready', function(){
 <p>No text layer. Just pixels. Requires OCR. See <a href="ocr.html">OCR</a>.</p>
 
 <h2>The library landscape</h2>
-<div class="sketch" data-viewbox="0 0 900 320"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 350"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 320);
   const rc = sketch.rc(svg);
@@ -268,8 +265,7 @@ window.addEventListener('sketch:ready', function(){
     ['LLM vision models', 'Hardest docs, expensive per page'],
     ['Mathpix / Llamaparse', 'Commercial; specialized']
   ]});
-});
-</script>
+}</script>
 
 <h3>PyPDF / pdfplumber</h3>
 <p>Good for clean, simple PDFs. Fast and free. Fails on multi-column layouts, tables, and scanned content. My baseline for quick prototyping.</p>
@@ -291,8 +287,7 @@ window.addEventListener('sketch:ready', function(){
 
 <h2>The parsing decision tree</h2>
 <div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[2];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -304,8 +299,7 @@ window.addEventListener('sketch:ready', function(){
     {title: 'Math / figures?', sub: 'Mathpix / vision'},
     {title: 'Accuracy > cost?', sub: 'LLM parser'}
   ]});
-});
-</script>
+}</script>
 <ol>
   <li>Is the PDF text-selectable in Preview/Acrobat? If no → OCR pipeline.</li>
   <li>Is it a single-column, simple layout? pdfplumber or PyMuPDF.</li>

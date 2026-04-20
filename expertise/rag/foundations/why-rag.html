@@ -223,14 +223,13 @@
 
 <h2>The clean split</h2>
 
-<div class="sketch" data-viewbox="0 0 900 280"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 292"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
-  const svg = sketch.createSvg(el, 900, 280);
+  const svg = sketch.createSvg(el, 900, 292);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'RAG vs fine-tuning: the split');
-  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 200,
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 212,
     left: {title: 'RAG (facts)', items: [
       'Grounded in your data',
       'Citations + auditability',
@@ -246,8 +245,7 @@ window.addEventListener('sketch:ready', function(){
       'Hundreds to thousands per run'
     ]}
   });
-});
-</script>
+}</script>
 
 <h3>Use RAG when you need</h3>
 <ul>
@@ -276,11 +274,10 @@ window.addEventListener('sketch:ready', function(){
 </ul>
 
 <h2>The economics are not close</h2>
-<div class="sketch" data-viewbox="0 0 900 240"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 270"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
-  const svg = sketch.createSvg(el, 900, 240);
+  const svg = sketch.createSvg(el, 900, 250);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'Per-update economics');
   sketch.bars(svg, rc, {x: 40, y: 60, w: 820, labelW: 240, items: [
@@ -289,8 +286,7 @@ window.addEventListener('sketch:ready', function(){
     {label: 'RAG: daily updates', value: 10, note: 'trivial'},
     {label: 'Fine-tune: daily updates', value: 95, note: 'unaffordable at scale'}
   ]});
-});
-</script>
+}</script>
 
 <p>Fine-tuning a serious model costs anywhere from a few hundred to tens of thousands of dollars per run. Updating a RAG index costs pennies. When your knowledge base changes, which it does constantly, the RAG system is updated in seconds. The fine-tuned model is a stale artifact until the next training run.</p>
 
@@ -307,9 +303,8 @@ window.addEventListener('sketch:ready', function(){
 <p>This is the architecture most serious production systems converge on. Not "RAG or fine-tuning" but "fine-tuning for behavior, RAG for facts."</p>
 
 <h2>A quick test</h2>
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 320"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[2];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -324,8 +319,7 @@ window.addEventListener('sketch:ready', function(){
     ['Never (stable behavior)', 'Fine-tuning might be enough'],
     ['Mix (stable voice + fresh facts)', 'Hybrid — FT for voice, RAG for facts']
   ]});
-});
-</script>
+}</script>
 
 <h2>What to do with this</h2>
 <ul>

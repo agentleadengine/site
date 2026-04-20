@@ -222,11 +222,10 @@
 <p class="lede">In a diagram an agent is three boxes: LLM, tools, loop. In production it's a dozen components you have to build, operate, and debug. This page is the map. Once you can see the whole stack, it becomes obvious why your first agent broke and what you need to add to make the next one survive.</p>
 
 <h2>The full stack</h2>
-<div class="sketch" data-viewbox="0 0 900 460"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 530"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
-  const svg = sketch.createSvg(el, 900, 460);
+  const svg = sketch.createSvg(el, 900, 486);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'The production agent stack');
   sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 44, layers: [
@@ -240,8 +239,7 @@ window.addEventListener('sketch:ready', function(){
     {label: 'Orchestration', sub: 'the loop + stop conditions'},
     {label: 'Safety + guardrails', sub: 'injection defenses, filters, rate limits'}
   ]});
-});
-</script>
+}</script>
 <p>Every layer is a separate design decision. Skip one and you get a specific failure mode: skip memory and you lose context between turns, skip guardrails and you ship an injection hole, skip orchestration limits and you get runaway bills.</p>
 
 <h2>The flow from click to answer</h2>
@@ -258,9 +256,8 @@ window.addEventListener('sketch:ready', function(){
 </ol>
 
 <h2>Where production agents actually break</h2>
-<div class="sketch" data-viewbox="0 0 900 320"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 390"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 320);
   const rc = sketch.rc(svg);
@@ -277,8 +274,7 @@ window.addEventListener('sketch:ready', function(){
     ['Safety', 'Prompt injection, exfiltration via tool, harmful output'],
     ['Cost', 'Long session, no cap, one bad run costs $50']
   ]});
-});
-</script>
+}</script>
 
 <h2>Minimum viable production agent</h2>
 <p>The short list of things that have to exist before you ship. Missing any of these and the agent will fail silently in ways that are expensive to fix after the fact:</p>

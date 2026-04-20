@@ -229,8 +229,7 @@
 </ol>
 
 <div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -243,20 +242,18 @@ window.addEventListener('sketch:ready', function(){
   sketch.arrow(svg, rc, {x1: 440, x2: 480, y: 130, bidirectional: false, label: 'search'});
   sketch.arrow(svg, rc, {x1: 660, x2: 700, y: 130, bidirectional: false, label: 'paste'});
   sketch.note(svg, 460, 210, 'offline: steps 1-2 | online: steps 3-4', {size: 13});
-});
-</script>
+}</script>
 
 <p>That's vanilla RAG. Everything in this section is what you do once you realize vanilla RAG produces a good demo and a mediocre product.</p>
 
 <h2>What RAG gives and doesn't give</h2>
-<div class="sketch" data-viewbox="0 0 900 280"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 318"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
-  const svg = sketch.createSvg(el, 900, 280);
+  const svg = sketch.createSvg(el, 900, 318);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'RAG: gives vs doesn\'t give');
-  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 200,
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 238,
     left: {title: 'RAG gives', items: [
       'Grounded answers from your data',
       'Citations + source links',
@@ -273,8 +270,7 @@ window.addEventListener('sketch:ready', function(){
       'Replacement for good prompts',
       'Performance that fine-tuning gives']}
   });
-});
-</script>
+}</script>
 
 <h2>The surface is small. The depth is enormous.</h2>
 <p>A naive RAG system fits on one whiteboard. But each of those three steps has its own sub-discipline:</p>
@@ -291,11 +287,10 @@ window.addEventListener('sketch:ready', function(){
 <h2>The mental model</h2>
 <p>Think of RAG as a pipeline where information flows from documents to answers. The quality of the final answer is bounded by the <em>worst</em> stage of that pipeline. You can have world-class embeddings and a terrible chunking strategy, and you'll get poor answers. You can have perfect retrieval and a weak generator, and you'll get poor answers. The job of a RAG engineer is to keep all stages strong enough that the overall product is good.</p>
 
-<div class="sketch" data-viewbox="0 0 900 240"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 310"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[2];
-  const svg = sketch.createSvg(el, 900, 240);
+  const svg = sketch.createSvg(el, 900, 290);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'Weakest link sets the quality ceiling');
   sketch.bars(svg, rc, {x: 40, y: 60, w: 820, labelW: 200, items: [
@@ -305,8 +300,7 @@ window.addEventListener('sketch:ready', function(){
     {label: 'Retrieval', value: 85, note: 'great'},
     {label: 'Overall quality', value: 35, note: 'capped by chunking'}
   ]});
-});
-</script>
+}</script>
 
 <p>Call it the minimum-weak-link law. It's the single most useful frame for debugging a bad RAG system.</p>
 

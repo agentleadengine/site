@@ -223,8 +223,7 @@
 
 <h2>Where the cost actually goes</h2>
 <div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -235,14 +234,12 @@ window.addEventListener('sketch:ready', function(){
     {label: 'Tool / API costs', value: 25, note: 'paid APIs, compute'},
     {label: 'Memory / vector DB', value: 10, note: 'storage + queries'}
   ]});
-});
-</script>
+}</script>
 <p>LLM tokens dominate almost every agent's bill. Input tokens grow with context length; output tokens grow with how much reasoning + response the model produces. Optimize those first.</p>
 
 <h2>Six cost-reduction techniques (in order of ROI)</h2>
-<div class="sketch" data-viewbox="0 0 900 320"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 350"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 320);
   const rc = sketch.rc(svg);
@@ -258,8 +255,7 @@ window.addEventListener('sketch:ready', function(){
     ['Per-session budget', 'Caps worst-case cost; doesn\'t reduce average'],
     ['Tool result caching', '20–50% on repeat queries']
   ]});
-});
-</script>
+}</script>
 
 <h2>Prompt caching: do this first</h2>
 <p>Anthropic's Claude, Google's Gemini, and OpenAI all support caching stable parts of the prompt. Your system prompt is the same every turn; cache it. On Anthropic, a cached token is 10% of the normal input cost, and cache hits are typical on multi-turn sessions. For agents with a 2K-token system prompt and 15-turn sessions, this alone can cut your bill in half.</p>

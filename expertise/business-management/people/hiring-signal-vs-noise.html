@@ -222,11 +222,10 @@
 <p class="lede">Hiring is the single highest-leverage activity in a company, and the one most managers do worst. The cost of a bad hire is 3-5x their salary when you count ramp, lost output, team drag, and eventual severance. Yet most interview processes measure charisma, not performance.</p>
 
 <h2>What predicts job performance (validated research)</h2>
-<div class="sketch" data-viewbox="0 0 900 300"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 360"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
-  const svg = sketch.createSvg(el, 900, 300);
+  const svg = sketch.createSvg(el, 900, 330);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'What actually predicts performance');
   sketch.bars(svg, rc, {x: 40, y: 60, w: 820, labelW: 260, items: [
@@ -237,8 +236,7 @@ window.addEventListener('sketch:ready', function(){
     {label: 'Years of experience', value: 20, note: 'weak'},
     {label: 'Unstructured chat', value: 10, note: 'essentially noise'}
   ]});
-});
-</script>
+}</script>
 <p>Meta-analyses of hiring-success predictors, ranked by correlation with actual performance:</p>
 <ul>
   <li><strong>Work sample tests</strong>, having them do the actual job (r ≈ 0.54)</li>
@@ -321,11 +319,10 @@ window.addEventListener('sketch:ready', function(){
 <h2>The most underrated signal</h2>
 <p>How do they treat the receptionist, coordinator, and anyone not in the interview? The real personality shows up when nobody's "watching."</p>
 
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 310"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
-  const svg = sketch.createSvg(el, 900, 260);
+  const svg = sketch.createSvg(el, 900, 290);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'Hiring signal vs noise, what to weight');
   sketch.bars(svg, rc, {x: 40, y: 60, w: 820, labelW: 260, items: [
@@ -335,8 +332,7 @@ window.addEventListener('sketch:ready', function(){
     {label: 'Brainteasers / abstract puzzles', value: 20, note: 'low correlation with job performance'},
     {label: "Cultural 'vibes' check alone", value: 15, note: 'bias-heavy, unreliable'}
   ]});
-});
-</script>
+}</script>
 
 <h2>What to do with this</h2>
 <ul>

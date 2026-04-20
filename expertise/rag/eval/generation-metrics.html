@@ -223,8 +223,7 @@
 
 <h2>The three metrics</h2>
 <div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -237,8 +236,7 @@ window.addEventListener('sketch:ready', function(){
     ['Answer relevance', 'Does the answer actually address the question?'],
     ['Context relevance', 'Is the retrieved context relevant to the question?']
   ]});
-});
-</script>
+}</script>
 
 <h3>Faithfulness</h3>
 <p>Does the answer only say things supported by the retrieved context? Or does it hallucinate?</p>
@@ -344,8 +342,7 @@ composite = α × faithfulness + β × relevance + γ × correctness
 
 <h2>Common failure patterns</h2>
 <div class="sketch" data-viewbox="0 0 900 280"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 280);
   const rc = sketch.rc(svg);
@@ -359,8 +356,7 @@ window.addEventListener('sketch:ready', function(){
     ['Low on both', 'Pipeline broken; check retrieval first'],
     ['High both, low correctness', 'Bad data in corpus itself']
   ]});
-});
-</script>
+}</script>
 
 <h3>High faithfulness, low relevance</h3>
 <p>The model is citing retrieved context accurately but answering the wrong question. Usually means the retrieved context didn't contain what was needed, and the generator faithfully summarized it.</p>

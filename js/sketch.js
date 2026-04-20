@@ -416,6 +416,33 @@
     return rough.svg(svg);
   }
 
+  // ---- createSvg: ensure/resize an SVG inside a wrapper -----------------
+  // If the wrapper already has a data-viewbox, that takes precedence — it lets
+  // authors resize a diagram by changing only the wrapper attribute without
+  // hunting down the createSvg() call in the inline script.
+  function createSvg(wrapper, w, h) {
+    let svg = wrapper.querySelector('svg');
+    if (!svg) {
+      svg = el('svg');
+      wrapper.appendChild(svg);
+    }
+    const existingVb = wrapper.dataset.viewbox;
+    const vb = existingVb || ('0 0 ' + w + ' ' + h);
+    svg.setAttribute('viewBox', vb);
+    svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+    svg.setAttribute('class', 'sketch-svg');
+    if (!existingVb) wrapper.dataset.viewbox = vb;
+    return svg;
+  }
+
+  // ---- title: a big headline at top of a diagram ------------------------
+  function title(svg, x, y, s, opts) {
+    opts = opts || {};
+    return text(svg, x, y, s, Object.assign({
+      size: 24, weight: 700, color: COLORS.text
+    }, opts));
+  }
+
   // ---- Auto-setup on DOM load -------------------------------------------
   function setupWrappers() {
     document.querySelectorAll('.sketch').forEach(wrap => {
@@ -443,6 +470,7 @@
     setupWrappers();
     loadRough(() => {
       document.dispatchEvent(new Event('sketch:ready'));
+      window.dispatchEvent(new Event('sketch:ready'));
     });
   }
 
@@ -455,6 +483,7 @@
   // Expose API
   window.sketch = {
     COLORS, el, text, crosshair, box, circle, arrow, note, rc,
-    stack, numberedSteps, bars, compare, annotate, venn, table
+    stack, numberedSteps, bars, compare, annotate, venn, table,
+    createSvg, title
   };
 })();

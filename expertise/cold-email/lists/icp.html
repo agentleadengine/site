@@ -227,11 +227,10 @@
 <p>A real ICP answers: "Who has this problem acutely right now, has the budget to solve it, and can make the decision?"</p>
 
 <h2>The layered definition</h2>
-<div class="sketch" data-viewbox="0 0 900 320"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 350"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
-  const svg = sketch.createSvg(el, 900, 320);
+  const svg = sketch.createSvg(el, 900, 330);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'ICP layers, narrowest to widest');
   sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 48, layers: [
@@ -241,8 +240,7 @@ window.addEventListener('sketch:ready', function(){
     {label: 'Company firmographics', sub: 'size, stage, geo, industry'},
     {label: 'Firmographics alone', sub: 'widest; weakest filter'}
   ]});
-});
-</script>
+}</script>
 
 <h3>Layer 1: Firmographics</h3>
 <ul>
@@ -347,14 +345,13 @@ window.addEventListener('sketch:ready', function(){
 
 <p>Review the ICP quarterly. Update based on actual data. The post-launch ICP is almost always different from the pre-launch hypothesis.</p>
 
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 292"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
-  const svg = sketch.createSvg(el, 900, 260);
+  const svg = sketch.createSvg(el, 900, 292);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'Vague ICP vs precise ICP, same market');
-  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 212,
     left: {title: 'Vague ICP (burns budget)', items: [
       '"SaaS companies"',
       'Any role, any size',
@@ -370,8 +367,7 @@ window.addEventListener('sketch:ready', function(){
       '5-10% reply rate, clean pipeline'
     ]}
   });
-});
-</script>
+}</script>
 
 <h2>What to do with this</h2>
 <ul>

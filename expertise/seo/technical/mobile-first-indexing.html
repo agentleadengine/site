@@ -231,8 +231,7 @@
 <h2>What can break</h2>
 
 <div class="sketch" data-viewbox="0 0 900 340"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 340);
   const rc = sketch.rc(svg);
@@ -253,14 +252,12 @@ window.addEventListener('sketch:ready', function(){
       ['Performance', 'Mobile 3-5x slower', 'Hit CWV targets on mobile']
     ]
   });
-});
-</script>
+}</script>
 
 <h2>Responsive vs separate mobile site vs dynamic serving</h2>
 
 <div class="sketch" data-viewbox="0 0 900 280"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 280);
   const rc = sketch.rc(svg);
@@ -278,8 +275,7 @@ window.addEventListener('sketch:ready', function(){
       ['Dynamic serving', 'Same URL, different HTML by UA', 'Works but error-prone']
     ]
   });
-});
-</script>
+}</script>
 
 <p>Go responsive. One HTML, one codebase, one source of truth. The historical reasons people built separate mobile sites no longer apply.</p>
 

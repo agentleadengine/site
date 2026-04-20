@@ -233,8 +233,7 @@
 
 <h2>Four strategies for tables</h2>
 <div class="sketch" data-viewbox="0 0 900 280"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 280);
   const rc = sketch.rc(svg);
@@ -248,8 +247,7 @@ window.addEventListener('sketch:ready', function(){
     ['Summarize each table', 'Huge tables, semantic query match'],
     ['Extract → query as data', 'Numerical / aggregable data']
   ]});
-});
-</script>
+}</script>
 
 <h3>1. Serialize as readable prose</h3>
 <p>Convert each row into a sentence: "In 2023, Revenue was $4.2M, COGS was $1.8M, Gross Margin was 57%." Preserves semantics in a format embeddings handle well. Loses compactness but gains retrievability.</p>
@@ -272,9 +270,8 @@ window.addEventListener('sketch:ready', function(){
 <p>Works for: large financial statements, time series, anything with a lot of numeric comparison.</p>
 
 <h2>Picking a strategy</h2>
-<div class="sketch" data-viewbox="0 0 900 240"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 240);
   const rc = sketch.rc(svg);
@@ -288,8 +285,7 @@ window.addEventListener('sketch:ready', function(){
     ['"Find items where X between Y and Z"', 'Structured query'],
     ['"Summarize this financial table"', 'Pre-generated summary']
   ]});
-});
-</script>
+}</script>
 <p>Look at what questions users actually ask:</p>
 <ul>
   <li>"What was revenue in 2022?" → row-level retrieval works</li>
@@ -307,9 +303,8 @@ window.addEventListener('sketch:ready', function(){
 </ul>
 
 <h2>Figures and images</h2>
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[2];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -323,8 +318,7 @@ window.addEventListener('sketch:ready', function(){
     ['Retrieve adjacent text', 'Free; often enough'],
     ['Multimodal embeddings', 'Emerging; strong for image-heavy content']
   ]});
-});
-</script>
+}</script>
 
 <h3>The captions-only baseline</h3>
 <p>Extract and embed just the figure caption. Fast, cheap, catches most user questions that reference figures by number or topic.</p>

@@ -223,8 +223,7 @@
 
 <h2>Four grading approaches</h2>
 <div class="sketch" data-viewbox="0 0 900 280"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 280);
   const rc = sketch.rc(svg);
@@ -238,8 +237,7 @@ window.addEventListener('sketch:ready', function(){
     ['Ground-truth compare', 'You have a known-good answer to compare against'],
     ['LLM-as-judge', 'Open-ended outputs where no single right answer exists']
   ]});
-});
-</script>
+}</script>
 
 <h2>Prefer binary when you can</h2>
 <p>Binary is cheap, reproducible, non-debatable. "Did the PR get merged? Yes/No." "Did the SQL return the right row count? Yes/No." If you can express success as a boolean, do. Graded scales introduce judge variance and make regressions harder to spot.</p>
@@ -274,9 +272,8 @@ window.addEventListener('sketch:ready', function(){
 
 <h2>Non-determinism: always run multiple times</h2>
 <p>Agents are stochastic. The same eval case can pass once, fail twice, pass again. Single-run pass/fail is noisy. Always run each case 3–5 times:</p>
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -290,8 +287,7 @@ window.addEventListener('sketch:ready', function(){
     ['3/5 pass', 'Flaky. Reliability problem. Investigate.'],
     ['<= 2/5 pass', 'Broken. This case is unlikely to work in prod.']
   ]});
-});
-</script>
+}</script>
 
 <h2>LLM-as-judge: useful, biased</h2>
 <p>When outputs are free-form (writing, summaries, conversations), use a strong LLM to grade: "Does this output accomplish the task?" Judge outputs a score and rationale. This scales. But the judge has its own biases; validate every few weeks against human grading on a sample.</p>

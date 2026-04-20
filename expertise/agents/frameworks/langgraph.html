@@ -225,9 +225,8 @@
 <p>Old LangChain was built around linear chains. They worked for pipelines but choked on branching logic, loops, and multi-agent handoff. Graph-based lets you express: "after this LLM call, if state.X is Y go to node A, else go to node B." Explicit, testable, loopable. It's more verbose, and that verbosity pays off when your agent logic gets complex.</p>
 
 <h2>What LangGraph provides</h2>
-<div class="sketch" data-viewbox="0 0 900 280"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 350"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 280);
   const rc = sketch.rc(svg);
@@ -243,8 +242,7 @@ window.addEventListener('sketch:ready', function(){
     ['Streaming', 'Token-level + step-level'],
     ['LangSmith integration', 'Tracing + eval tooling']
   ]});
-});
-</script>
+}</script>
 
 <h2>When LangGraph is the right call</h2>
 <ul>

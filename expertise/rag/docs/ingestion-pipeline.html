@@ -223,8 +223,7 @@
 
 <h2>The canonical pipeline</h2>
 <div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -236,8 +235,7 @@ window.addEventListener('sketch:ready', function(){
     {title: 'Chunk', sub: 'split units'},
     {title: 'Embed + store', sub: 'index-ready'}
   ]});
-});
-</script>
+}</script>
 <ol>
   <li><strong>Connect to source</strong> (API, filesystem, storage bucket, database)</li>
   <li><strong>Detect changes</strong> (full, delta, or event-driven)</li>
@@ -253,8 +251,7 @@ window.addEventListener('sketch:ready', function(){
 
 <h2>Full vs delta vs event-driven</h2>
 <div class="sketch" data-viewbox="0 0 900 280"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 280);
   const rc = sketch.rc(svg);
@@ -268,8 +265,7 @@ window.addEventListener('sketch:ready', function(){
     ['Event-driven', 'Freshness in minutes; full CDC / webhooks'],
     ['Hybrid', 'Delta + weekly full; common compromise']
   ]});
-});
-</script>
+}</script>
 
 <h3>Full reindex</h3>
 <p>Simplest. Rebuild the entire index from scratch on a schedule. Safe, easy to reason about. Expensive and slow for large corpora. Okay up to ~100K documents or whenever the corpus fits in a nightly rebuild window.</p>

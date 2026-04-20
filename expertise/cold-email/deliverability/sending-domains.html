@@ -229,8 +229,7 @@
 
 <h2>The domain architecture</h2>
 <div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -243,8 +242,7 @@ window.addEventListener('sketch:ready', function(){
     ['Cold sending domains (look-alikes)', 'Outbound sequences; isolated reputation'],
     ['Per-rep subdomains', 'Scale without cross-contamination']
   ]});
-});
-</script>
+}</script>
 
 <h3>Primary domain</h3>
 <p>Your brand: <code>yourcompany.com</code>. Used for:</p>
@@ -386,14 +384,13 @@ window.addEventListener('sketch:ready', function(){
   <li>Monitor Postmaster Tools and mail-tester scores</li>
 </ol>
 
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 292"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
-  const svg = sketch.createSvg(el, 900, 260);
+  const svg = sketch.createSvg(el, 900, 292);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'Primary domain vs dedicated outbound domains');
-  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 212,
     left: {title: 'Sending from primary (risky)', items: [
       'company.com receives all business email',
       'Cold volume burns primary reputation',
@@ -409,8 +406,7 @@ window.addEventListener('sketch:ready', function(){
       'Primary business email unaffected'
     ]}
   });
-});
-</script>
+}</script>
 
 <h2>What to do with this</h2>
 <ul>

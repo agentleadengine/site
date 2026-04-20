@@ -240,9 +240,8 @@
 <p>User says "login not working"; docs say "authentication failures." Rewriting to include synonyms bridges the gap.</p>
 
 <h2>The rewriting patterns</h2>
-<div class="sketch" data-viewbox="0 0 900 280"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 320"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 280);
   const rc = sketch.rc(svg);
@@ -257,8 +256,7 @@ window.addEventListener('sketch:ready', function(){
     ['Specify', 'Add domain context the user left implicit'],
     ['Normalize', 'Rephrase colloquial to formal']
   ]});
-});
-</script>
+}</script>
 
 <h3>1. Contextualization</h3>
 <p>Rewrite the query to resolve pronouns and implicit context from conversation history.</p>
@@ -315,14 +313,13 @@ USER: [raw query]
 <p>Generate multiple rewrites and run retrieval for each. Union and dedupe. More coverage, more cost. See <a href="multi-query.html">multi-query + fusion</a>.</p>
 
 <h2>When to skip query rewriting</h2>
-<div class="sketch" data-viewbox="0 0 900 240"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 266"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
-  const svg = sketch.createSvg(el, 900, 240);
+  const svg = sketch.createSvg(el, 900, 266);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'Query rewriting: use vs skip');
-  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 160,
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 186,
     left: {title: 'Use rewriting', items: [
       'Conversational / multi-turn',
       'Short ambiguous queries',
@@ -335,8 +332,7 @@ window.addEventListener('sketch:ready', function(){
       'Corpus matches user vocab',
       'Already have strong retrieval']}
   });
-});
-</script>
+}</script>
 <ul>
   <li>Very short queries with clear intent ("reset password")</li>
   <li>Latency-critical applications where the extra LLM call is too expensive</li>

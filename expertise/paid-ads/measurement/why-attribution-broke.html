@@ -222,9 +222,8 @@
 <p class="lede">Ad attribution in 2026 is less accurate than it was in 2020. iOS 14, cookie deprecation, and privacy regulation broke the old model. Advertisers who didn't adapt are operating blind. Those who did have new tools and frameworks.</p>
 
 <h2>What broke</h2>
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 320"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -239,8 +238,7 @@ window.addEventListener('sketch:ready', function(){
     ['Chrome third-party cookies', 'Gradually phased out'],
     ['Google consent mode', 'Requires explicit opt-in data']
   ]});
-});
-</script>
+}</script>
 
 <h3>iOS 14.5 (2021)</h3>
 <p>App Tracking Transparency gave users a choice to opt out of tracking. Most chose opt out. Pixel data from iOS users became incomplete.</p>
@@ -289,14 +287,13 @@ window.addEventListener('sketch:ready', function(){
 <li>Build relationships with customers for data-sharing consent</li>
 </ul>
 
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 292"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
-  const svg = sketch.createSvg(el, 900, 260);
+  const svg = sketch.createSvg(el, 900, 292);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'Attribution then vs attribution now');
-  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 212,
     left: {title: 'Pre-2020 (traceable)', items: [
       '1:1 user tracking across apps',
       '3rd party cookies + pixels everywhere',
@@ -312,8 +309,7 @@ window.addEventListener('sketch:ready', function(){
       'Budget allocated on portfolio, not per ad'
     ]}
   });
-});
-</script>
+}</script>
 
 <h2>What to do with this</h2>
 <ul>

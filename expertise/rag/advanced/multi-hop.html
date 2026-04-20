@@ -233,14 +233,13 @@
 <p>One-shot retrieval on the original query retrieves either Alice-related docs or refund-related docs, not the specific intersection.</p>
 
 <h2>The two approaches</h2>
-<div class="sketch" data-viewbox="0 0 900 240"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 266"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
-  const svg = sketch.createSvg(el, 900, 240);
+  const svg = sketch.createSvg(el, 900, 266);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'Multi-hop: decompose or iterate');
-  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 160,
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 186,
     left: {title: 'Decompose first', items: [
       'Split into sub-questions up front',
       'Parallel search each',
@@ -254,8 +253,7 @@ window.addEventListener('sketch:ready', function(){
       'Slower but handles discovery'
     ]}
   });
-});
-</script>
+}</script>
 
 <h3>Decomposition</h3>
 <p>Break the query into sub-questions, retrieve for each, combine.</p>
@@ -329,9 +327,8 @@ Retrieved: [docs from round 1]
 <p>Plans are easier to debug than free-form iterative loops and cheaper than full agent-based orchestration.</p>
 
 <h2>The common failure modes</h2>
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -345,8 +342,7 @@ window.addEventListener('sketch:ready', function(){
     ['Runaway iteration', 'Max 3–5 iterations, cost cap'],
     ['Sub-questions answered wrong', 'Check intermediate retrievals, not just final']
   ]});
-});
-</script>
+}</script>
 
 <h3>Bad decomposition</h3>
 <p>LLM produces sub-questions that don't actually decompose the problem. Retrievals don't answer what's needed.</p>

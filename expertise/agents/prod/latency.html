@@ -223,8 +223,7 @@
 
 <h2>Where the seconds go</h2>
 <div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -235,8 +234,7 @@ window.addEventListener('sketch:ready', function(){
     {label: 'Serial turns', value: 70, note: 'each adds full inference'},
     {label: 'Context processing', value: 30, note: 'grows with context size'}
   ]});
-});
-</script>
+}</script>
 
 <h2>The user-perception moves (biggest impact)</h2>
 <p>These don't reduce total latency. They make latency feel tolerable.</p>
@@ -258,9 +256,8 @@ window.addEventListener('sketch:ready', function(){
 </ul>
 
 <h2>The latency budget by UX mode</h2>
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -274,8 +271,7 @@ window.addEventListener('sketch:ready', function(){
     ['Long async task', 'Minutes fine; just tell user up front'],
     ['Background / batch', 'Minutes to hours; no UI blocking']
   ]});
-});
-</script>
+}</script>
 <p>Pick the UX mode that fits your agent's actual latency, not the other way around. Don't try to shoehorn a 30-second task into a chat UI; move to form-submit or async and save everyone the pain.</p>
 
 <h2>The p99 problem</h2>

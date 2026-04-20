@@ -226,8 +226,7 @@
 
 <h2>The shape</h2>
 <div class="sketch" data-viewbox="0 0 900 320"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 320);
   const rc = sketch.rc(svg);
@@ -239,8 +238,7 @@ window.addEventListener('sketch:ready', function(){
   sketch.arrow(svg, rc, {x1: 505, x2: 595, y: 140, bidirectional: true});
   sketch.arrow(svg, rc, {x1: 280, x2: 620, y1: 200, y2: 200, bidirectional: true, label: 'shared blackboard'});
   sketch.note(svg, 450, 280, 'agents exchange messages directly', {size: 13});
-});
-</script>
+}</script>
 
 <h2>When peer structure actually fits</h2>
 <ul>
@@ -250,9 +248,8 @@ window.addEventListener('sketch:ready', function(){
 </ul>
 
 <h2>Coordination mechanisms</h2>
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -266,8 +263,7 @@ window.addEventListener('sketch:ready', function(){
     ['Shared blackboard', 'All agents read/write a shared state. Others react.'],
     ['Voting / consensus', 'Agents reach agreement through explicit protocol.']
   ]});
-});
-</script>
+}</script>
 
 <h2>The complexity tax</h2>
 <p>Peer systems pay a real cost:</p>

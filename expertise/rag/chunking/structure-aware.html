@@ -222,9 +222,8 @@
 <p class="lede">Structure-aware chunking uses the document's own organization as the chunk boundary: headings, sections, lists, tables. For any corpus that has real structure (technical docs, wikis, legal documents, Markdown, HTML), this is the highest-performing chunking strategy. It's also the most underused.</p>
 
 <h2>The core idea</h2>
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -238,8 +237,7 @@ window.addEventListener('sketch:ready', function(){
     ['List', 'Keep together if short; split otherwise'],
     ['Code block', 'Never split mid-block']
   ]});
-});
-</script>
+}</script>
 <p>Authors already decided where ideas begin and end, that's what headings and paragraphs are. Respect their decisions.</p>
 
 <p>Chunk boundaries come from:</p>
@@ -306,8 +304,7 @@ window.addEventListener('sketch:ready', function(){
 
 <h2>Why it outperforms fixed-size</h2>
 <div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -318,8 +315,7 @@ window.addEventListener('sketch:ready', function(){
     {label: 'Citation clarity', value: 90, note: '"Section 3.2"'},
     {label: 'User experience', value: 80, note: 'chunks look like explanations'}
   ]});
-});
-</script>
+}</script>
 <ul>
   <li>Chunks align with semantic units (one section = one chunk)</li>
   <li>Heading context disambiguates ambiguous terms</li>

@@ -223,8 +223,7 @@
 
 <h2>Four patterns in order of autonomy</h2>
 <div class="sketch" data-viewbox="0 0 900 300"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 300);
   const rc = sketch.rc(svg);
@@ -238,8 +237,7 @@ window.addEventListener('sketch:ready', function(){
     ['Auto-reply (narrow)', 'Sends for known categories (FAQ, vendor forms).'],
     ['Scheduling', 'Negotiates meeting times across threads, with calendar.']
   ]});
-});
-</script>
+}</script>
 <p>Almost every production email agent starts at triage or draft and moves toward auto-reply only for well-bounded categories. Don't start at auto-reply.</p>
 
 <h2>Core tools</h2>

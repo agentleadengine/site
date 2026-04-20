@@ -223,8 +223,7 @@
 
 <h2>The architecture</h2>
 <div class="sketch" data-viewbox="0 0 900 280"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 280);
   const rc = sketch.rc(svg);
@@ -239,8 +238,7 @@ window.addEventListener('sketch:ready', function(){
   sketch.arrow(svg, rc, {x1: 460, x2: 540, y1: 75, y2: 130, bidirectional: false});
   sketch.arrow(svg, rc, {x1: 460, x2: 540, y1: 205, y2: 145, bidirectional: false});
   sketch.arrow(svg, rc, {x1: 700, x2: 770, y: 140, bidirectional: false});
-});
-</script>
+}</script>
 <pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
               query
               /    \
@@ -342,8 +340,7 @@ final = α × norm(dense_score) + (1-α) × norm(sparse_score)
 
 <h2>The diagnostic workflow</h2>
 <div class="sketch" data-viewbox="0 0 900 240"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 240);
   const rc = sketch.rc(svg);
@@ -354,8 +351,7 @@ window.addEventListener('sketch:ready', function(){
     {title: 'Hybrid', sub: 'did fusion hurt or help?'},
     {title: 'Adjust', sub: 'tune weights or routing'}
   ]});
-});
-</script>
+}</script>
 <p>When a query is failing:</p>
 <ol>
   <li>Run dense-only: did it return the right answer?</li>

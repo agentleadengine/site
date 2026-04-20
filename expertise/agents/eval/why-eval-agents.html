@@ -233,8 +233,7 @@
 
 <h2>Five dimensions to measure</h2>
 <div class="sketch" data-viewbox="0 0 900 300"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 300);
   const rc = sketch.rc(svg);
@@ -249,8 +248,7 @@ window.addEventListener('sketch:ready', function(){
     ['Latency', 'Wall-clock from request to response'],
     ['Safety', 'Any forbidden tool use? Data leaks? Unsafe outputs?']
   ]});
-});
-</script>
+}</script>
 <p>Task completion is the headline. The other four are how you catch silent regressions.</p>
 
 <h2>What to put in the eval set</h2>

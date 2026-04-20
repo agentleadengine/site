@@ -222,11 +222,10 @@
 <p class="lede">Short-term memory is everything that's in the model's context window right now. Not some exotic abstraction. Just: the system prompt, the user's question, the conversation so far, the tool calls made, the results that came back. That's what the model reads every time it takes a step. If you don't manage it, long sessions get slow, expensive, and, worst, wrong. The model starts forgetting what it was doing.</p>
 
 <h2>What's actually in short-term</h2>
-<div class="sketch" data-viewbox="0 0 900 280"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 320"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
-  const svg = sketch.createSvg(el, 900, 280);
+  const svg = sketch.createSvg(el, 900, 300);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'What the model sees on turn N');
   sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 42, layers: [
@@ -236,8 +235,7 @@ window.addEventListener('sketch:ready', function(){
     {label: 'Tool calls + results', sub: 'everything done before'},
     {label: 'Scratch / reasoning', sub: 'the model\'s own notes'}
   ]});
-});
-</script>
+}</script>
 <p>Every LLM call includes all of the above. After 15 turns of tool use, that's 30+ blocks of content piling up. Which is where the problems start.</p>
 
 <h2>The long-session collapse</h2>
@@ -252,8 +250,7 @@ window.addEventListener('sketch:ready', function(){
 
 <h2>Four strategies for keeping it lean</h2>
 <div class="sketch" data-viewbox="0 0 900 300"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 300);
   const rc = sketch.rc(svg);
@@ -267,8 +264,7 @@ window.addEventListener('sketch:ready', function(){
     ['Chunk', 'Break the task into sub-sessions. Each has its own bounded context.'],
     ['Retrieve', 'Store everything externally, pull only what the current step needs.']
   ]});
-});
-</script>
+}</script>
 
 <h2>Keep in full, trim the rest</h2>
 <p>The always-keep list, regardless of session length:</p>

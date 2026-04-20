@@ -223,8 +223,7 @@
 
 <h2>The pattern</h2>
 <div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -239,8 +238,7 @@ window.addEventListener('sketch:ready', function(){
   sketch.arrow(svg, rc, {x1: 220, x2: 280, y1: 130, y2: 200, bidirectional: true});
   sketch.arrow(svg, rc, {x1: 440, x2: 540, y: 130, bidirectional: false});
   sketch.arrow(svg, rc, {x1: 620, x2: 140, y1: 160, y2: 160, bidirectional: false, label: 'loop until done'});
-});
-</script>
+}</script>
 <p>Instead of hardcoded retrieve-then-generate, you expose retrieval as a tool the LLM can call:</p>
 
 <pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
@@ -303,9 +301,8 @@ window.addEventListener('sketch:ready', function(){
 <p>Models trained with tool-use support (GPT-4, Claude, Gemini) do ReAct-style reasoning natively.</p>
 
 <h2>The failure modes</h2>
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -319,8 +316,7 @@ window.addEventListener('sketch:ready', function(){
     ['Under-retrieval (hallucinate)', 'System prompt: retrieve before answering'],
     ['Wrong tool choice', 'Clear tool descriptions + examples']
   ]});
-});
-</script>
+}</script>
 
 <h3>Infinite loops</h3>
 <p>Agent keeps retrieving without terminating. Mitigation: max steps, max cost budget, timeout.</p>

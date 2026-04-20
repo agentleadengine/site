@@ -223,11 +223,10 @@
 
 <h2>The problem at scale</h2>
 
-<div class="sketch" data-viewbox="0 0 900 240"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 320"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
-  const svg = sketch.createSvg(el, 900, 240);
+  const svg = sketch.createSvg(el, 900, 300);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'Why faceted navigation explodes');
   sketch.bars(svg, rc, {
@@ -240,8 +239,7 @@ window.addEventListener('sketch:ready', function(){
       {label: '+ 5 price tiers', value: 0.90, note: '1,200+ URLs per category'}
     ]
   });
-});
-</script>
+}</script>
 
 <p>Across 100 categories that's 120,000+ URLs, most of them near-duplicates. Google burns crawl budget on them and may penalize the whole site for thin content.</p>
 

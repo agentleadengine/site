@@ -223,8 +223,7 @@
 
 <h2>Four categories to measure</h2>
 <div class="sketch" data-viewbox="0 0 900 300"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 300);
   const rc = sketch.rc(svg);
@@ -238,8 +237,7 @@ window.addEventListener('sketch:ready', function(){
     ['Reasoning quality', 'Logical steps, no circular loops, uncertainty acknowledged'],
     ['Error recovery', 'Sensible response to failures, tried alternatives, didn\'t loop']
   ]});
-});
-</script>
+}</script>
 
 <h2>Efficiency: usually the first regression</h2>
 <p>The most common silent regression is efficiency. Completion rate stays at 95%. Nobody notices anything. But the average task now takes 12 tool calls instead of 5, and your bill doubled. Efficiency metrics catch this immediately:</p>

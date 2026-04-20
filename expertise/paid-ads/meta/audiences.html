@@ -223,8 +223,7 @@
 
 <h2>Audience types</h2>
 <div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -237,8 +236,7 @@ window.addEventListener('sketch:ready', function(){
     ['Custom', 'Your data — customer list, site visitors, engagement'],
     ['Lookalike (LLA)', 'Meta finds people similar to a seed custom audience']
   ]});
-});
-</script>
+}</script>
 
 <h3>Broad</h3>
 <p>Country + age range. Let Meta's AI find the conversions. Post-iOS 14 best practice for most advertisers.</p>
@@ -278,14 +276,13 @@ window.addEventListener('sketch:ready', function(){
 <h2>Placements</h2>
 <p>Let Meta choose automatic placements 90% of the time. Manual placement selection usually limits the algorithm for no good reason.</p>
 
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 292"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
-  const svg = sketch.createSvg(el, 900, 260);
+  const svg = sketch.createSvg(el, 900, 292);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'Narrow vs broad targeting in 2026');
-  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 212,
     left: {title: 'Narrow interest targeting (2018 playbook)', items: [
       '"Women 25-34, interested in yoga + running"',
       'High CPMs from compressed audience',
@@ -301,8 +298,7 @@ window.addEventListener('sketch:ready', function(){
       'Top-performing accounts do this now'
     ]}
   });
-});
-</script>
+}</script>
 
 <h2>What to do with this</h2>
 <ul>

@@ -223,8 +223,7 @@
 
 <h2>The basic flow</h2>
 <div class="sketch" data-viewbox="0 0 900 240"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 240);
   const rc = sketch.rc(svg);
@@ -234,8 +233,7 @@ window.addEventListener('sketch:ready', function(){
     {title: 'Search index', sub: 'find nearest-k'},
     {title: 'Return chunks', sub: 'with scores'}
   ]});
-});
-</script>
+}</script>
 <ol>
   <li>User submits query</li>
   <li>Embed query with the same model used for the corpus</li>
@@ -260,8 +258,7 @@ window.addEventListener('sketch:ready', function(){
 
 <h2>Similarity metrics</h2>
 <div class="sketch" data-viewbox="0 0 900 240"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 240);
   const rc = sketch.rc(svg);
@@ -274,8 +271,7 @@ window.addEventListener('sketch:ready', function(){
     ['Dot product', 'When vectors are normalized, = cosine, faster'],
     ['Euclidean', 'Rare for text; sensitive to magnitude']
   ]});
-});
-</script>
+}</script>
 
 <h3>Cosine similarity</h3>
 <p>Measures angle between vectors, ignores magnitude. Most common. Ranges from -1 (opposite) to 1 (identical).</p>

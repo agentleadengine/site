@@ -223,8 +223,7 @@
 
 <h2>The cost math</h2>
 <div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -235,8 +234,7 @@ window.addEventListener('sketch:ready', function(){
     {label: '1536d', value: 88, note: 'noticeable gains for hard corpora'},
     {label: '3072d', value: 92, note: 'diminishing returns; 2× storage'}
   ]});
-});
-</script>
+}</script>
 
 <p>Every vector is stored as 32-bit floats (or 16-bit, or quantized). Storage per vector:</p>
 <ul>
@@ -279,9 +277,8 @@ window.addEventListener('sketch:ready', function(){
 </ul>
 
 <h2>Quantization</h2>
-<div class="sketch" data-viewbox="0 0 900 240"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 240);
   const rc = sketch.rc(svg);
@@ -295,8 +292,7 @@ window.addEventListener('sketch:ready', function(){
     ['int8', '75% smaller; 1–5% quality loss'],
     ['binary', '32× smaller; 5–15% loss, reranker recovers']
   ]});
-});
-</script>
+}</script>
 <p>Beyond dimension reduction, you can reduce precision:</p>
 <ul>
   <li><strong>float32 → float16</strong>: 50% storage savings, minimal quality loss</li>

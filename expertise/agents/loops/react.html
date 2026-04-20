@@ -226,8 +226,7 @@
 
 <h2>The loop, drawn out</h2>
 <div class="sketch" data-viewbox="0 0 900 300"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 300);
   const rc = sketch.rc(svg);
@@ -240,8 +239,7 @@ window.addEventListener('sketch:ready', function(){
   sketch.arrow(svg, rc, {x1: 630, x2: 150, y1: 160, y2: 230, bidirectional: false, label: 'back to thought'});
   sketch.box(svg, rc, {x: 60, y: 200, w: 180, h: 70, title: 'Done?', sub: 'yes → final answer'});
   sketch.note(svg, 760, 110, 'loop 3–10×', {size: 14});
-});
-</script>
+}</script>
 
 <h2>What a trace actually looks like</h2>
 <pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
@@ -254,9 +252,8 @@ Final answer: Apple (AAPL) is trading at $178.42, up 0.8% today.</pre>
 
 <h2>Stop conditions (you must set these)</h2>
 <p>A ReAct loop will happily run forever if you let it. Real production loops have multiple stop conditions:</p>
-<div class="sketch" data-viewbox="0 0 900 280"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 320"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 280);
   const rc = sketch.rc(svg);
@@ -271,8 +268,7 @@ window.addEventListener('sketch:ready', function(){
     ['Timeout', '60 seconds max. User won\'t wait forever.'],
     ['Same-action loop detected', 'If model calls same tool with same args 3× → halt.']
   ]});
-});
-</script>
+}</script>
 
 <h2>A worked example: "What's the weather in my meeting city?"</h2>
 <ol>

@@ -237,8 +237,7 @@
 
 <h2>The evaluation stack</h2>
 <div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -248,8 +247,7 @@ window.addEventListener('sketch:ready', function(){
     {label: 'Generation quality', sub: 'faithfulness, relevance, completeness'},
     {label: 'Retrieval quality', sub: 'are right chunks retrieved at all?'}
   ]});
-});
-</script>
+}</script>
 <p>A production RAG evaluation stack has three layers:</p>
 
 <h3>1. Component eval</h3>
@@ -283,8 +281,7 @@ window.addEventListener('sketch:ready', function(){
 
 <h2>What to measure</h2>
 <div class="sketch" data-viewbox="0 0 900 300"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 300);
   const rc = sketch.rc(svg);
@@ -298,8 +295,7 @@ window.addEventListener('sketch:ready', function(){
     ['End-to-end', 'Thumbs, NPS, task completion'],
     ['Production', 'Latency, error rate, cost per query']
   ]});
-});
-</script>
+}</script>
 
 <h3>Retrieval</h3>
 <ul>

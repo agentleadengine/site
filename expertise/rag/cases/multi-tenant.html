@@ -232,8 +232,7 @@
 
 <h2>Isolation patterns</h2>
 <div class="sketch" data-viewbox="0 0 900 280"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 280);
   const rc = sketch.rc(svg);
@@ -246,8 +245,7 @@ window.addEventListener('sketch:ready', function(){
     ['Per-tenant namespace', 'Better isolation; more indexes to manage'],
     ['Per-tenant full deployment', 'Maximum isolation; expensive']
   ]});
-});
-</script>
+}</script>
 
 <h3>Pattern 1: Shared index, tenant_id filter</h3>
 <p>All tenants' vectors in one index. Every query filters by tenant_id.</p>
@@ -327,8 +325,7 @@ from authentication.
 </pre>
 
 <div class="sketch" data-viewbox="0 0 900 280"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 280);
   const rc = sketch.rc(svg);
@@ -347,8 +344,7 @@ window.addEventListener('sketch:ready', function(){
       'Client cannot influence isolation boundary'
     ]}
   });
-});
-</script>
+}</script>
 
 <h2>Embedding model choice</h2>
 <p>Multi-tenant systems usually use one embedding model across all tenants:</p>

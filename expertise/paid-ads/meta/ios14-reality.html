@@ -222,14 +222,13 @@
 <p class="lede">Apple's App Tracking Transparency (iOS 14.5, 2021) was the biggest disruption Meta advertising has ever faced. Pixel data became incomplete, attribution noisier, targeting less precise. In 2026 we have strategies that work despite this.</p>
 
 <h2>What broke</h2>
-<div class="sketch" data-viewbox="0 0 900 240"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 266"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
-  const svg = sketch.createSvg(el, 900, 240);
+  const svg = sketch.createSvg(el, 900, 266);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'iOS 14 changed the rules');
-  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 160,
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 186,
     left: {title: 'Before iOS 14', items: [
       'Pixel data flowed freely',
       'Precise attribution',
@@ -242,8 +241,7 @@ window.addEventListener('sketch:ready', function(){
       'CAPI server-side required',
       'Broader audiences + creative win']}
   });
-});
-</script>
+}</script>
 <ul>
 <li>Pixel events from iOS users who opted out of tracking stop flowing to Meta</li>
 <li>Lookalike audiences built on partial data are less precise</li>
@@ -280,14 +278,13 @@ window.addEventListener('sketch:ready', function(){
 <li>Blended measurement over platform-specific</li>
 </ul>
 
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 292"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
-  const svg = sketch.createSvg(el, 900, 260);
+  const svg = sketch.createSvg(el, 900, 292);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'Pre-iOS 14 vs post, what changed');
-  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 212,
     left: {title: 'Pre-iOS 14 (2019)', items: [
       'Precise retargeting pixels',
       'Narrow interest targeting worked',
@@ -303,8 +300,7 @@ window.addEventListener('sketch:ready', function(){
       'Blended CAC + incrementality tests'
     ]}
   });
-});
-</script>
+}</script>
 
 <h2>What to do with this</h2>
 <ul>

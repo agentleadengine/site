@@ -231,9 +231,8 @@
 <p>All three distort the relationship between what's "earned" and what's in the bank. A cash flow forecast is how you translate between them.</p>
 
 <h2>The 13-week cash flow</h2>
-<div class="sketch" data-viewbox="0 0 900 240"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 240);
   const rc = sketch.rc(svg);
@@ -247,8 +246,7 @@ window.addEventListener('sketch:ready', function(){
     ['Cash out (disbursements)', 'Payroll + AP + debt'],
     ['Ending cash', 'Opening + in − out']
   ]});
-});
-</script>
+}</script>
 <p>The standard operator tool. A rolling weekly forecast of cash in, cash out, and ending balance for the next 13 weeks (one quarter). Updated every Monday.</p>
 
 <pre style="background:#f5f5f7; padding:16px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px; overflow-x:auto;">
@@ -306,14 +304,13 @@ Ending cash:         610   640   590   960   ...
 
 <p style="margin-top:40px;">Related: <a href="pnl-literacy.html">P&amp;L literacy</a> · <a href="three-numbers.html">The three numbers</a> · <a href="../risk/risk-management.html">Risk management</a></p>
 
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 292"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
-  const svg = sketch.createSvg(el, 900, 260);
+  const svg = sketch.createSvg(el, 900, 292);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'Cash flow vs P&L, different stories');
-  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 212,
     left: {title: 'Profitable P&L, bad cash flow', items: [
       'Net income: $500K',
       'Customers pay 60 days late',
@@ -329,8 +326,7 @@ window.addEventListener('sketch:ready', function(){
       'Can invest without borrowing'
     ]}
   });
-});
-</script>
+}</script>
 
 <h2>What to do with this</h2>
 <ul>

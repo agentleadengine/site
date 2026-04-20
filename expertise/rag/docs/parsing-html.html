@@ -223,8 +223,7 @@
 
 <h2>The extraction stack</h2>
 <div class="sketch" data-viewbox="0 0 900 240"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 240);
   const rc = sketch.rc(svg);
@@ -235,8 +234,7 @@ window.addEventListener('sketch:ready', function(){
     {title: 'Extract main', sub: 'content article'},
     {title: 'To markdown', sub: 'preserve headings'}
   ]});
-});
-</script>
+}</script>
 
 <h3>1. Fetch</h3>
 <p>HTTP GET (or a headless browser for JS-heavy sites). Handle redirects, cookies, user agents, rate limits. Respect robots.txt when applicable.</p>
@@ -254,9 +252,8 @@ window.addEventListener('sketch:ready', function(){
 <p>Absolute-ize relative URLs. Keep link targets as metadata if they matter for your use case.</p>
 
 <h2>The library landscape</h2>
-<div class="sketch" data-viewbox="0 0 900 280"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 320"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 280);
   const rc = sketch.rc(svg);
@@ -271,8 +268,7 @@ window.addEventListener('sketch:ready', function(){
     ['Firecrawl / Jina Reader', 'Managed; RAG-oriented scraping'],
     ['Playwright + extractor', 'SPAs requiring JS render']
   ]});
-});
-</script>
+}</script>
 
 <h3>Readability / trafilatura</h3>
 <p>Python libraries that heuristically extract "main content" from HTML. Trafilatura is my default, best signal-to-noise ratio on general-purpose web content. Handles blog posts, news articles, documentation pages well.</p>
@@ -313,9 +309,8 @@ window.addEventListener('sketch:ready', function(){
 </ul>
 
 <h2>The hidden problems</h2>
-<div class="sketch" data-viewbox="0 0 900 280"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 320"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[2];
   const svg = sketch.createSvg(el, 900, 280);
   const rc = sketch.rc(svg);
@@ -330,8 +325,7 @@ window.addEventListener('sketch:ready', function(){
     ['SPA needs JS render', 'Playwright or skip'],
     ['Rate limiting / bans', 'Polite delays, user-agent rotation']
   ]});
-});
-</script>
+}</script>
 
 <h3>Duplicate content</h3>
 <p>Many sites have print versions, AMP versions, paginated archives, and tag pages that duplicate core content. Deduplicate aggressively during ingestion.</p>

@@ -222,9 +222,8 @@
 <p class="lede">CrewAI is a popular framework for multi-agent systems built around the metaphor of a crew: you define agents with roles, goals, and backstories, give them tasks, and they collaborate. It's the fastest way to prototype a multi-agent idea. The role metaphor is the signature feature and also the main source of debate: it helps or hurts depending on your use case.</p>
 
 <h2>Core concepts</h2>
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -238,8 +237,7 @@ window.addEventListener('sketch:ready', function(){
     ['Crew', 'A group of agents working together'],
     ['Process', 'How tasks execute: sequential or hierarchical']
   ]});
-});
-</script>
+}</script>
 
 <h2>The role metaphor</h2>
 <p>CrewAI's core idea: each agent is a character. "You are a senior market researcher with 15 years of experience. You are thorough and skeptical." This can make LLM outputs more in-character and more focused. It can also inflate prompts without clear benefit. Measure on your specific use case. Generic role prompts (generic "researcher") rarely help. Specific, grounded ones ("you're a quantitative analyst focused on B2B SaaS pricing") sometimes do.</p>

@@ -223,8 +223,7 @@
 
 <h2>The shape</h2>
 <div class="sketch" data-viewbox="0 0 900 340"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 340);
   const rc = sketch.rc(svg);
@@ -237,8 +236,7 @@ window.addEventListener('sketch:ready', function(){
   sketch.arrow(svg, rc, {x1: 460, x2: 460, y1: 140, y2: 200, bidirectional: true});
   sketch.arrow(svg, rc, {x1: 520, x2: 750, y1: 140, y2: 200, bidirectional: true});
   sketch.note(svg, 460, 300, 'workers run in parallel when independent', {size: 13});
-});
-</script>
+}</script>
 
 <h2>Why split the work</h2>
 <ul>
@@ -250,14 +248,13 @@ window.addEventListener('sketch:ready', function(){
 </ul>
 
 <h2>When it's worth it vs overkill</h2>
-<div class="sketch" data-viewbox="0 0 900 240"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 266"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
-  const svg = sketch.createSvg(el, 900, 240);
+  const svg = sketch.createSvg(el, 900, 266);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'Is orchestrator-worker right for this task?');
-  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 160,
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 186,
     left: {title: 'Reach for it', items: [
       'Distinct, parallelizable subtasks',
       'Workers benefit from different tools',
@@ -271,8 +268,7 @@ window.addEventListener('sketch:ready', function(){
       'Simple enough to debug as one loop'
     ]}
   });
-});
-</script>
+}</script>
 
 <h2>Workers are just agents with narrower scope</h2>
 <p>Every worker is itself a small ReAct agent:</p>

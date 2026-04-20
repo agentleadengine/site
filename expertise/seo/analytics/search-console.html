@@ -223,11 +223,10 @@
 
 <h2>The reports ranked by ROI</h2>
 
-<div class="sketch" data-viewbox="0 0 900 320"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 420"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
-  const svg = sketch.createSvg(el, 900, 320);
+  const svg = sketch.createSvg(el, 900, 380);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'GSC reports ranked by value');
   sketch.bars(svg, rc, {
@@ -242,8 +241,7 @@ window.addEventListener('sketch:ready', function(){
       {label: 'Manual actions', value: 0.95, note: 'Check weekly, rare but critical'}
     ]
   });
-});
-</script>
+}</script>
 
 <h2>Setup</h2>
 

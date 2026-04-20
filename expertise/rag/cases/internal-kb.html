@@ -222,9 +222,8 @@
 <p class="lede">Internal knowledge RAG gives employees a natural-language interface to company docs, wiki, Drive, Confluence, Notion, Slack. It's the most common enterprise RAG use case and one of the hardest to get right because of access control, data freshness, and content heterogeneity.</p>
 
 <h2>The content sources</h2>
-<div class="sketch" data-viewbox="0 0 900 280"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 320"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 280);
   const rc = sketch.rc(svg);
@@ -239,8 +238,7 @@ window.addEventListener('sketch:ready', function(){
     ['Engineering wikis / GitHub', 'Repo permissions'],
     ['HR / policy systems', 'Often role-based access']
   ]});
-});
-</script>
+}</script>
 <p>Typical enterprise corpus:</p>
 <ul>
   <li>Wiki (Confluence, Notion)</li>
@@ -268,8 +266,7 @@ window.addEventListener('sketch:ready', function(){
 
 <h2>Permission propagation patterns</h2>
 <div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -282,8 +279,7 @@ window.addEventListener('sketch:ready', function(){
     ['Dynamic at query', 'Always accurate; slower + source-dependent'],
     ['Hybrid (daily re-sync + dynamic for sensitive)', 'Common compromise']
   ]});
-});
-</script>
+}</script>
 
 <h3>Static at ingest</h3>
 <p>Capture permissions when ingesting each document. Store in chunk metadata. Filter at query time.</p>

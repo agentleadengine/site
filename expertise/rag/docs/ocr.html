@@ -233,8 +233,7 @@
 
 <h2>OCR tools</h2>
 <div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -245,8 +244,7 @@ window.addEventListener('sketch:ready', function(){
     {label: 'AWS Textract / Azure', value: 75, note: 'paid, strong layout'},
     {label: 'Vision LLMs', value: 90, note: 'priciest, handles weird cases'}
   ]});
-});
-</script>
+}</script>
 
 <h3>Tesseract</h3>
 <p>The open-source baseline. Decades of development. Good on clean printed text, weak on complex layouts, handwriting, and poor scans. Free. Run in Docker to avoid install pain.</p>
@@ -270,9 +268,8 @@ window.addEventListener('sketch:ready', function(){
 <p>Newer specialized models for academic papers, scientific documents, and math. Marker and Nougat are particularly strong on technical content.</p>
 
 <h2>The quality tiers</h2>
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -286,8 +283,7 @@ window.addEventListener('sketch:ready', function(){
     ['Tier 3 (Vision LLM)', 'Hard docs: tables, handwriting, 99%+'],
     ['Specialized', 'Math / papers: Marker, Nougat']
   ]});
-});
-</script>
+}</script>
 <ol>
   <li><strong>Tier 1 (freebie):</strong> Tesseract on clean English print. 95%+ accuracy. Good for most scanned business documents.</li>
   <li><strong>Tier 2 (commercial):</strong> Textract / Azure DI. 98%+ on clean, handles layouts well.</li>

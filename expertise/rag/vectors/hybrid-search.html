@@ -232,8 +232,7 @@
 
 <h2>The two components</h2>
 <div class="sketch" data-viewbox="0 0 900 280"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 280);
   const rc = sketch.rc(svg);
@@ -244,8 +243,7 @@ window.addEventListener('sketch:ready', function(){
   sketch.arrow(svg, rc, {x1: 260, x2: 640, y: 130, bidirectional: false});
   sketch.arrow(svg, rc, {x1: 550, x2: 640, y: 130, bidirectional: false});
   sketch.note(svg, 460, 210, 'RRF or weighted combination', {size: 13});
-});
-</script>
+}</script>
 
 <h3>Dense (vector) retrieval</h3>
 <p>Embed query, find nearest neighbors. Covered throughout this section.</p>
@@ -282,8 +280,7 @@ final_score = α * dense_score + (1 - α) * sparse_score
 
 <h2>Implementation patterns</h2>
 <div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -296,8 +293,7 @@ window.addEventListener('sketch:ready', function(){
     ['Two DBs, fused at query', 'Max flexibility, more ops'],
     ['Single DB, manual fusion', 'Works, less optimized']
   ]});
-});
-</script>
+}</script>
 
 <h3>Single database that supports both</h3>
 <p>Weaviate, Qdrant, OpenSearch, Elasticsearch, Vespa, and Pinecone (with sparse vectors) all support hybrid natively. Cleanest architecture.</p>

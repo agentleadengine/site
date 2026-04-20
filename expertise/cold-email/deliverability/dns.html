@@ -222,8 +222,7 @@
 <p class="lede">SPF, DKIM, and DMARC are DNS records that prove your email is actually from your domain. Without them, modern email providers treat your messages as suspicious. Proper configuration is a 20-minute task that most teams do wrong or not at all.</p>
 
 <div class="sketch" data-viewbox="0 0 900 280"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 280);
   const rc = sketch.rc(svg);
@@ -237,8 +236,7 @@ window.addEventListener('sketch:ready', function(){
     ['DMARC', 'What to do if SPF or DKIM fail (reject / quarantine)'],
     ['BIMI', 'Optional: shows your logo in inbox']
   ]});
-});
-</script>
+}</script>
 
 <h2>SPF (Sender Policy Framework)</h2>
 
@@ -346,11 +344,10 @@ v=DMARC1; p=none; rua=mailto:dmarc-reports@yourdomain.com; pct=100
 
 <p>Also check at Google Postmaster Tools (postmaster.google.com) after you've sent some volume. Provides spam rate, domain reputation, IP reputation, and authentication pass rates for Gmail specifically.</p>
 
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
-  const svg = sketch.createSvg(el, 900, 260);
+  const svg = sketch.createSvg(el, 900, 266);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'The three DNS records that let you send');
   sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 44, layers: [
@@ -359,8 +356,7 @@ window.addEventListener('sketch:ready', function(){
     {label: 'DMARC', sub: 'what receivers do when SPF/DKIM fail'},
     {label: 'MX record', sub: 'where replies go'}
   ]});
-});
-</script>
+}</script>
 
 <h2>What to do with this</h2>
 <ul>

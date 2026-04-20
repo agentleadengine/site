@@ -232,9 +232,8 @@
 </ol>
 
 <h2>The metadata I always include</h2>
-<div class="sketch" data-viewbox="0 0 900 300"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 350"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 300);
   const rc = sketch.rc(svg);
@@ -250,8 +249,7 @@ window.addEventListener('sketch:ready', function(){
     ['permissions / acl', 'Multi-tenant isolation'],
     ['tags / category', 'Scoped retrieval']
   ]});
-});
-</script>
+}</script>
 
 <h3>Provenance</h3>
 <ul>
@@ -290,8 +288,7 @@ window.addEventListener('sketch:ready', function(){
 
 <h2>Where metadata comes from</h2>
 <div class="sketch" data-viewbox="0 0 900 240"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 240);
   const rc = sketch.rc(svg);
@@ -304,8 +301,7 @@ window.addEventListener('sketch:ready', function(){
     ['Document itself', 'Title, section path, structure'],
     ['LLM / NER inference', 'Topics, entities, summaries']
   ]});
-});
-</script>
+}</script>
 
 <h3>From the source system</h3>
 <p>Confluence gives you author, labels, space, creation date. Drive gives you owner, sharing settings, MIME type. APIs usually return more metadata than you think, capture it all, decide what to use later.</p>
@@ -338,14 +334,13 @@ window.addEventListener('sketch:ready', function(){
 </ol>
 
 <h2>Pre-filter vs post-filter</h2>
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 266"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[2];
-  const svg = sketch.createSvg(el, 900, 260);
+  const svg = sketch.createSvg(el, 900, 266);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'Pre-filter vs post-filter');
-  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 186,
     left: {title: 'Pre-filter', items: [
       'Narrow candidates first',
       'Exact + guaranteed k results',
@@ -358,8 +353,7 @@ window.addEventListener('sketch:ready', function(){
       'Fast on broad filters',
       'Use for language, content-type']}
   });
-});
-</script>
+}</script>
 <p>Vector DBs handle metadata filtering in one of two ways:</p>
 
 <h3>Pre-filter</h3>

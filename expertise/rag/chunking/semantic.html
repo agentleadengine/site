@@ -223,8 +223,7 @@
 
 <h2>The core idea</h2>
 <div class="sketch" data-viewbox="0 0 900 240"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 240);
   const rc = sketch.rc(svg);
@@ -235,8 +234,7 @@ window.addEventListener('sketch:ready', function(){
     {title: 'Find dips', sub: 'topic shifts'},
     {title: 'Cut there', sub: 'chunk boundaries'}
   ]});
-});
-</script>
+}</script>
 <ol>
   <li>Split the document into candidate boundaries (sentences or paragraphs)</li>
   <li>Embed each candidate</li>
@@ -266,14 +264,13 @@ window.addEventListener('sketch:ready', function(){
 <p>Instead of a fixed similarity threshold (which varies by embedding model), use the Nth percentile of all adjacent similarities in the document. E.g., split at the bottom 5% of similarities. Adapts to each document's intrinsic similarity distribution.</p>
 
 <h2>When semantic chunking is worth it</h2>
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 266"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
-  const svg = sketch.createSvg(el, 900, 260);
+  const svg = sketch.createSvg(el, 900, 266);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'Semantic chunking: wins vs overkill');
-  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 186,
     left: {title: 'Wins', items: [
       'Long-form with shifting topics',
       'Mixed explanation + examples',
@@ -286,8 +283,7 @@ window.addEventListener('sketch:ready', function(){
       'Homogeneous FAQs / catalogs',
       'Cost-sensitive at scale']}
   });
-});
-</script>
+}</script>
 
 <h3>Wins</h3>
 <ul>

@@ -222,8 +222,7 @@
 <p class="lede">There are hundreds of things you could test. Most aren't worth the effort. The highest-leverage tests come from the top of a specific list, market, offer, headline, and decay from there. This page is the checklist, ordered by expected impact.</p>
 
 <div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -234,8 +233,7 @@ window.addEventListener('sketch:ready', function(){
     {label: 'Landing page structure', value: 40, note: '10–30% lift'},
     {label: 'Button color / font / trim', value: 10, note: '1–5% lift at best'}
   ]});
-});
-</script>
+}</script>
 
 <h2>Tier 1. Offer-level tests (5, 200% lift possible)</h2>
 
@@ -363,9 +361,8 @@ window.addEventListener('sketch:ready', function(){
 <h2>Multi-armed bandit vs. A/B</h2>
 <p>Advanced: multi-armed bandit algorithms dynamically shift traffic toward winners during the test. Good for long-running optimization where you value ongoing performance over clean A/B comparisons. Most teams are better off with straight A/B until they've exhausted obvious tests.</p>
 
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -380,8 +377,7 @@ window.addEventListener('sketch:ready', function(){
     ['5-10%', 'Only if cheap', 'Email subject line tweaks'],
     ['< 5%', 'Skip', 'Button color, font family, sub-headline tweak']
   ]});
-});
-</script>
+}</script>
 
 <h2>What to do with this</h2>
 <ul>

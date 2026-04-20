@@ -219,8 +219,7 @@
 <a href="../../../contact.html" class="nav-link">Contact</a>
 </div>
 </div></nav><div class="framework-layout"><aside class="framework-sidebar"><h4>Email Marketing (37 pages)</h4><h4>Foundations</h4><ul><li><a href="../index.html">Overview</a></li><li><a href="../foundations/why-email.html">Why email still wins</a></li><li><a href="../foundations/list-vs-channel.html">Owned list vs rented audience</a></li><li><a href="../foundations/kpis.html">Email marketing KPIs</a></li></ul><h4>List Building</h4><ul><li><a href="../list/signup-forms.html">Signup forms</a></li><li><a href="../list/lead-magnets.html">Lead magnets</a></li><li><a href="../list/exit-intent.html">Exit-intent popups</a></li><li><a href="../list/content-upgrades.html">Content upgrades</a></li><li><a href="../list/list-quality.html">List quality</a></li></ul><h4>Deliverability</h4><ul><li><a href="../deliverability/authentication.html" class="active">SPF, DKIM, DMARC</a></li><li><a href="../deliverability/sender-reputation.html">Sender reputation</a></li><li><a href="../deliverability/list-hygiene.html">List hygiene</a></li><li><a href="../deliverability/spam-triggers.html">Spam triggers</a></li><li><a href="../deliverability/monitoring.html">Monitoring placement</a></li></ul><h4>Automations</h4><ul><li><a href="../automations/welcome-series.html">Welcome series</a></li><li><a href="../automations/abandoned-cart.html">Abandoned cart</a></li><li><a href="../automations/win-back.html">Win-back</a></li><li><a href="../automations/post-purchase.html">Post-purchase</a></li><li><a href="../automations/behavioral.html">Behavioral triggers</a></li></ul><h4>Broadcasts</h4><ul><li><a href="../broadcasts/cadence.html">Broadcast cadence</a></li><li><a href="../broadcasts/subject-lines.html">Subject lines</a></li><li><a href="../broadcasts/content-types.html">Content types</a></li><li><a href="../broadcasts/segmentation.html">Segmentation</a></li></ul><h4>Commerce Email</h4><ul><li><a href="../commerce/abandoned-browse.html">Abandoned browse</a></li><li><a href="../commerce/product-launches.html">Product launches</a></li><li><a href="../commerce/vip-loyalty.html">VIP + loyalty</a></li></ul><h4>SaaS Email</h4><ul><li><a href="../saas/onboarding.html">Onboarding sequences</a></li><li><a href="../saas/feature-education.html">Feature education</a></li><li><a href="../saas/trial-nudges.html">Trial nudges</a></li><li><a href="../saas/churn-prevention.html">Churn prevention</a></li></ul><h4>Testing + Analytics</h4><ul><li><a href="../testing/ab-tests.html">Email A/B tests</a></li><li><a href="../testing/benchmarks.html">Benchmarks</a></li><li><a href="../testing/cohort-analysis.html">Cohort analysis</a></li></ul><h4>Tools</h4><ul><li><a href="../tools/klaviyo.html">Klaviyo</a></li><li><a href="../tools/convertkit.html">ConvertKit</a></li><li><a href="../tools/mailchimp.html">Mailchimp</a></li><li><a href="../tools/tool-fit.html">Picking a tool</a></li></ul></aside><div class="framework-content"><div class="breadcrumbs"><a href="../../../index.html">Home</a><span class="sep">›</span><a href="../index.html">Expertise</a><span class="sep">›</span><a href="../index.html">Email Marketing</a><span class="sep">›</span><span>SPF, DKIM, DMARC</span></div><h1 class="title">SPF, DKIM, DMARC</h1><div class="article-meta"><span>📖 3 min read</span><span>Updated 2026-04-19</span></div><p class="lede">Authentication records tell receiving servers your email is actually from you. Required for deliverability in 2026.</p><div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -233,16 +232,14 @@ window.addEventListener('sketch:ready', function(){
     ['DKIM', 'Message not tampered with'],
     ['DMARC', 'What to do on failure']
   ]});
-});
-</script>
+}</script>
 
 <h2>SPF</h2><p>Lists authorized IPs that can send from your domain. TXT record.</p><h2>DKIM</h2><p>Cryptographic signature on every email. Proves the message wasn't modified.</p><h2>DMARC</h2><p>Policy telling receivers what to do with unauthenticated mail. Also provides reporting.</p><h2>All three</h2><p>Gmail and Yahoo require all three for senders of 5000+ emails/day as of 2024. No exceptions.</p>
 
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
-  const svg = sketch.createSvg(el, 900, 260);
+  const svg = sketch.createSvg(el, 900, 266);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'Authentication stack, the three records that matter');
   sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 44, layers: [
@@ -251,8 +248,7 @@ window.addEventListener('sketch:ready', function(){
     {label: 'DMARC', sub: 'policy when SPF/DKIM fail (2024+ required)'},
     {label: 'BIMI (optional)', sub: 'your logo in inbox, requires DMARC enforcement'}
   ]});
-});
-</script>
+}</script>
 
 <h2>What to do with this</h2>
 <ul>

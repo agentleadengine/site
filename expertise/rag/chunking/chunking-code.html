@@ -251,9 +251,8 @@
 </ul>
 
 <h2>The chunking strategy by code type</h2>
-<div class="sketch" data-viewbox="0 0 900 280"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 320"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 280);
   const rc = sketch.rc(svg);
@@ -268,8 +267,7 @@ window.addEventListener('sketch:ready', function(){
     ['Test file', 'One test case per chunk; include fixtures'],
     ['Config file', 'Keep whole unless >1K lines']
   ]});
-});
-</script>
+}</script>
 
 <h3>Small file (&lt; 500 tokens)</h3>
 <p>One chunk for the whole file.</p>
@@ -306,9 +304,8 @@ def process_refund(self, order_id: str, amount: Decimal) -&gt; RefundResult:
 </pre>
 
 <h2>Embedding models for code</h2>
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -322,8 +319,7 @@ window.addEventListener('sketch:ready', function(){
     ['jina-embeddings-v2-base-code', 'Open-source, solid'],
     ['CodeBERT / GraphCodeBERT', 'Research; less production-ready']
   ]});
-});
-</script>
+}</script>
 <p>General-purpose text embeddings work for code but not optimally. Code-specific embedding models include:</p>
 <ul>
   <li><strong>Voyage Code</strong> - optimized for code retrieval</li>

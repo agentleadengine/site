@@ -223,11 +223,10 @@
 
 <h2>What product schema unlocks</h2>
 
-<div class="sketch" data-viewbox="0 0 900 280"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 320"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
-  const svg = sketch.createSvg(el, 900, 280);
+  const svg = sketch.createSvg(el, 900, 300);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'What product schema gets you');
   sketch.bars(svg, rc, {
@@ -240,8 +239,7 @@ window.addEventListener('sketch:ready', function(){
       {label: 'Rich result qualification', value: 0.90, note: 'vs plain blue link'}
     ]
   });
-});
-</script>
+}</script>
 
 <h2>Required fields</h2>
 <p>For a product page to qualify for rich results, it needs:</p>

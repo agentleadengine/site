@@ -244,15 +244,14 @@ Sitemap: https://yourdomain.com/sitemap.xml</code></pre>
 
 <h2>What robots.txt does and doesn't do</h2>
 
-<div class="sketch" data-viewbox="0 0 900 280"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 318"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
-  const svg = sketch.createSvg(el, 900, 280);
+  const svg = sketch.createSvg(el, 900, 318);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'Robots.txt, what it actually does');
   sketch.compare(svg, rc, {
-    x: 40, y: 60, w: 820, h: 200,
+    x: 40, y: 60, w: 820, h: 238,
     left: {title: 'What it does', items: [
       'Tells well-behaved bots which URLs to skip',
       'Helps manage crawl budget',
@@ -266,8 +265,7 @@ window.addEventListener('sketch:ready', function(){
       'Hide "secret" URLs (it\'s a roadmap)'
     ]}
   });
-});
-</script>
+}</script>
 
 <h2>Common patterns</h2>
 
@@ -297,8 +295,7 @@ Allow: /api/public/</code></pre>
 <h2>Common mistakes that wipe out sites</h2>
 
 <div class="sketch" data-viewbox="0 0 900 320"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 320);
   const rc = sketch.rc(svg);
@@ -318,8 +315,7 @@ window.addEventListener('sketch:ready', function(){
       ['Leaving staging rules in prod', 'Prod site blocked from Google', 'Review before every deploy']
     ]
   });
-});
-</script>
+}</script>
 
 <p>The <code>Disallow: /</code> mistake is catastrophic. It's most often left over from staging environments accidentally deployed to production. The fix is fast (remove the line), but recovery in rankings takes weeks.</p>
 
@@ -333,8 +329,7 @@ window.addEventListener('sketch:ready', function(){
 <h2>The decision tree: robots.txt vs noindex vs canonical</h2>
 
 <div class="sketch" data-viewbox="0 0 900 280"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[2];
   const svg = sketch.createSvg(el, 900, 280);
   const rc = sketch.rc(svg);
@@ -353,8 +348,7 @@ window.addEventListener('sketch:ready', function(){
       ['URL should disappear entirely', '410 Gone or 301', 'Clean removal']
     ]
   });
-});
-</script>
+}</script>
 
 <h2>What to do with this</h2>
 <p>Open <code>yourdomain.com/robots.txt</code> right now. Read every line. Is there anything there you don't recognize? Does anything say <code>Disallow: /</code>? Check. Any modern site should have a minimal, intentional robots.txt. If yours is long or weird, clean it up.</p>

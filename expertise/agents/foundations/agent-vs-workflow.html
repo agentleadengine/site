@@ -228,8 +228,7 @@
 
 <h2>Picture it</h2>
 <div class="sketch" data-viewbox="0 0 900 320"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 320);
   const rc = sketch.rc(svg);
@@ -247,8 +246,7 @@ window.addEventListener('sketch:ready', function(){
   sketch.arrow(svg, rc, {x1: 800, x2: 630, y1: 150, y2: 150, bidirectional: false, label: 'loop'});
   sketch.note(svg, 180, 230, 'steps fixed ahead of time', {size: 13, color: '#8b5cf6'});
   sketch.note(svg, 700, 230, 'steps emerge at runtime', {size: 13, color: '#8b5cf6'});
-});
-</script>
+}</script>
 
 <h2>When a workflow wins</h2>
 <ul>
@@ -274,14 +272,13 @@ window.addEventListener('sketch:ready', function(){
 <p>That hybrid is the shape of most good production AI systems: a workflow with a tiny bounded agent at the decision points that actually need it.</p>
 
 <h2>Cost and latency, side by side</h2>
-<div class="sketch" data-viewbox="0 0 900 280"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 292"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
-  const svg = sketch.createSvg(el, 900, 280);
+  const svg = sketch.createSvg(el, 900, 292);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'Why workflow-first matters');
-  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 200,
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 212,
     left: {title: 'Workflow cost', items: [
       '3 LLM calls × $0.01 = $0.03',
       'Takes 4–6 seconds',
@@ -297,8 +294,7 @@ window.addEventListener('sketch:ready', function(){
       'Surprise bills when stuck in loops'
     ]}
   });
-});
-</script>
+}</script>
 
 <h2>The anti-pattern: agent wrapping a fixed sequence</h2>
 <p>You built an "agent" and its trace always looks like this: call tool A, call tool B, answer. Every time. That's not an agent, it's a workflow with extra steps. You're paying for the LLM to re-decide a decision you already know. Refactor it into a workflow and save 60% on cost and latency.</p>

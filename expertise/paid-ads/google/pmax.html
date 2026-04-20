@@ -223,8 +223,7 @@
 
 <h2>How it works</h2>
 <div class="sketch" data-viewbox="0 0 900 240"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 240);
   const rc = sketch.rc(svg);
@@ -235,8 +234,7 @@ window.addEventListener('sketch:ready', function(){
     {title: 'Google mixes', sub: 'places across all inventory'},
     {title: 'Optimizes to goal', sub: 'CPA / ROAS target'}
   ]});
-});
-</script>
+}</script>
 <p>You provide: conversion goal, budget, asset groups (headlines, images, videos, descriptions), audience signals (optional). Pmax does the rest.</p>
 
 <h2>When Pmax wins</h2>
@@ -283,14 +281,13 @@ window.addEventListener('sketch:ready', function(){
 <li>Treating it like set-and-forget (it still needs iteration)</li>
 </ul>
 
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 292"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
-  const svg = sketch.createSvg(el, 900, 260);
+  const svg = sketch.createSvg(el, 900, 292);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'Pmax: ready vs not ready');
-  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 212,
     left: {title: 'Not ready (black-box burns cash)', items: [
       'No validated feed quality',
       'Conversion tracking noisy',
@@ -306,8 +303,7 @@ window.addEventListener('sketch:ready', function(){
       'Negative list curated weekly'
     ]}
   });
-});
-</script>
+}</script>
 
 <h2>What to do with this</h2>
 <ul>

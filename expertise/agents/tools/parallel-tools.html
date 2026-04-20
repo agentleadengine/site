@@ -226,8 +226,7 @@
 
 <h2>The latency math</h2>
 <div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -236,14 +235,12 @@ window.addEventListener('sketch:ready', function(){
     {label: 'Sequential', value: 90, note: '~1500ms'},
     {label: 'Parallel', value: 30, note: '~500ms (slowest one)'}
   ]});
-});
-</script>
+}</script>
 <p>At three calls the gap is ~1 second. At ten calls it's multiple seconds. Over an entire agent run with dozens of parallelizable moments, you routinely shave half the wall-clock. Users notice.</p>
 
 <h2>When parallel is the right shape</h2>
 <div class="sketch" data-viewbox="0 0 900 240"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 240);
   const rc = sketch.rc(svg);
@@ -260,8 +257,7 @@ window.addEventListener('sketch:ready', function(){
       'Find PR → get its CI status'
     ]}
   });
-});
-</script>
+}</script>
 
 <h2>A worked example: customer lookup</h2>
 <p>User: "Give me the full picture on customer 1234."</p>

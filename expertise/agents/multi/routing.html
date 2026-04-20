@@ -223,8 +223,7 @@
 
 <h2>Four approaches, each with tradeoffs</h2>
 <div class="sketch" data-viewbox="0 0 900 300"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 300);
   const rc = sketch.rc(svg);
@@ -239,8 +238,7 @@ window.addEventListener('sketch:ready', function(){
     ['Embedding-based', 'Semantic similarity to agent description', 'Fast + no LLM call'],
     ['Hybrid', 'Rules for obvious, LLM for ambiguous', 'Best all-around']
   ]});
-});
-</script>
+}</script>
 
 <h2>Rule-based: start here</h2>
 <p>Keyword or regex rules. "If message contains 'refund' or 'charge' or 'invoice' → billing agent." Takes 10 minutes to write. Runs in microseconds. Wrong 10–20% of the time on real user phrasings, but you know exactly when it's wrong and can add rules.</p>
@@ -277,9 +275,8 @@ window.addEventListener('sketch:ready', function(){
 </ul>
 
 <h2>Measuring routing quality</h2>
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -293,8 +290,7 @@ window.addEventListener('sketch:ready', function(){
     ['Ambiguous-route rate', 'Track; classifier should flag low confidence'],
     ['User re-route / correction rate', 'Users asking to be transferred']
   ]});
-});
-</script>
+}</script>
 
 <h2>Pitfalls</h2>
 <ul>

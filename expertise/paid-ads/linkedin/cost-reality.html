@@ -223,8 +223,7 @@
 
 <h2>The CPC ranges</h2>
 <div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -235,8 +234,7 @@ window.addEventListener('sketch:ready', function(){
     {label: 'Cost per lead', value: 70, note: '$50–200 typical'},
     {label: 'CAC (B2B SaaS)', value: 90, note: '$500–5000+ depending on ACV'}
   ]});
-});
-</script>
+}</script>
 <ul>
 <li>Broad targeting (large audience): $3-8 CPC</li>
 <li>Targeted mid-level professional: $8-15 CPC</li>
@@ -285,14 +283,13 @@ window.addEventListener('sketch:ready', function(){
 <h2>Alternative: Sales Navigator + cold email</h2>
 <p>For some B2B, using Sales Navigator for targeting + cold email or LinkedIn DM outreach (manual or automated) produces similar quality leads at a fraction of the cost. LinkedIn Ads is for when you need scale.</p>
 
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 292"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
-  const svg = sketch.createSvg(el, 900, 260);
+  const svg = sketch.createSvg(el, 900, 292);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'LinkedIn vs cold email + Sales Nav, for B2B leads');
-  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 212,
     left: {title: 'LinkedIn Ads', items: [
       '$150-300 CPL typical',
       'Scales to hundreds/month',
@@ -308,8 +305,7 @@ window.addEventListener('sketch:ready', function(){
       'Works when you have outbound capacity'
     ]}
   });
-});
-</script>
+}</script>
 
 <h2>What to do with this</h2>
 <ul>

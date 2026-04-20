@@ -232,8 +232,7 @@
 
 <h2>The lifecycle</h2>
 <div class="sketch" data-viewbox="0 0 900 240"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 240);
   const rc = sketch.rc(svg);
@@ -244,8 +243,7 @@ window.addEventListener('sketch:ready', function(){
     {title: 'Run test', sub: 'enough sample'},
     {title: 'Crown winner', sub: 'new control'}
   ]});
-});
-</script>
+}</script>
 <ol>
  <li>A challenger is designed based on a hypothesis about why it'll beat control</li>
  <li>It runs against the control at, say, 30/70 split</li>
@@ -324,9 +322,8 @@ window.addEventListener('sketch:ready', function(){
 </ul>
 <p>Don't retire a control just because you're tired of it. Retire it because the data says so.</p>
 
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -341,8 +338,7 @@ window.addEventListener('sketch:ready', function(){
     ['80/20', 'Control performing well, cautious test', 'Slower to call'],
     ['90/10', 'Risky / experimental challenger', 'Longest test, lowest downside']
   ]});
-});
-</script>
+}</script>
 
 <h2>What to do with this</h2>
 <ul>

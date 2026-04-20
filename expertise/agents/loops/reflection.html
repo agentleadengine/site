@@ -223,8 +223,7 @@
 
 <h2>The pattern</h2>
 <div class="sketch" data-viewbox="0 0 900 280"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 280);
   const rc = sketch.rc(svg);
@@ -235,8 +234,7 @@ window.addEventListener('sketch:ready', function(){
     {title: 'Revise', sub: 'fix them'},
     {title: 'Done', sub: 'or loop again'}
   ]});
-});
-</script>
+}</script>
 <ol>
 <li><strong>Draft:</strong> the agent produces whatever it would normally produce.</li>
 <li><strong>Critique:</strong> a second LLM call gets the draft and a critique prompt. It lists problems.</li>
@@ -264,14 +262,13 @@ def get_avg(nums: list[float]) -> float:
 <p>Same model, same problem. First draft is fragile. Second draft ships. The difference is the middle step.</p>
 
 <h2>When reflection pays off</h2>
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 292"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
-  const svg = sketch.createSvg(el, 900, 260);
+  const svg = sketch.createSvg(el, 900, 292);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'Is it worth 2× the cost?');
-  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 212,
     left: {title: 'Worth it', items: [
       'code you\'ll ship',
       'complex multi-step reasoning',
@@ -287,8 +284,7 @@ window.addEventListener('sketch:ready', function(){
       'tasks the model nails first try'
     ]}
   });
-});
-</script>
+}</script>
 
 <h2>Self vs separate critic</h2>
 <p>Two flavors of reflection:</p>

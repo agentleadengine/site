@@ -231,11 +231,10 @@
 </ul>
 
 <h2>The standard memo structure</h2>
-<div class="sketch" data-viewbox="0 0 900 280"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 320"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
-  const svg = sketch.createSvg(el, 900, 280);
+  const svg = sketch.createSvg(el, 900, 300);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'Standard memo structure');
   sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 42, layers: [
@@ -245,8 +244,7 @@ window.addEventListener('sketch:ready', function(){
     {label: 'Recommendation', sub: 'the answer + why'},
     {label: 'Open questions', sub: 'what needs input'}
   ]});
-});
-</script>
+}</script>
 <ol>
   <li><strong>Context</strong>, what's the situation, why now?</li>
   <li><strong>Problem / opportunity</strong>, what are we trying to decide?</li>
@@ -319,14 +317,13 @@ window.addEventListener('sketch:ready', function(){
 
 <p style="margin-top:40px;">Related: <a href="../operating-systems/decision-logs.html">Decision logs</a> · <a href="../strategy/decision-frameworks.html">Decision frameworks</a> · <a href="../operating-systems/meetings.html">Meetings that don't waste time</a></p>
 
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 292"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
-  const svg = sketch.createSvg(el, 900, 260);
+  const svg = sketch.createSvg(el, 900, 292);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'Memo culture vs slide-deck culture');
-  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 212,
     left: {title: 'Slide-deck culture', items: [
       'Presenters skate over weak logic',
       'Bullet points hide missing reasoning',
@@ -342,8 +339,7 @@ window.addEventListener('sketch:ready', function(){
       'Memo becomes artifact for future'
     ]}
   });
-});
-</script>
+}</script>
 
 <h2>What to do with this</h2>
 <ul>

@@ -228,8 +228,7 @@
 <h2>The three metrics, in plain English</h2>
 
 <div class="sketch" data-viewbox="0 0 900 320"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 320);
   const rc = sketch.rc(svg);
@@ -248,8 +247,7 @@ window.addEventListener('sketch:ready', function(){
       ['CLS', 'How much the page jumps around while loading', 'under 0.1', 'over 0.25']
     ]
   });
-});
-</script>
+}</script>
 
 <h3>LCP. Largest Contentful Paint</h3>
 <p>How long until the biggest visible element on the page has finished rendering. Usually that's a hero image, a big headline, or the main content block. It's Google's proxy for "how long until the page looks done."</p>
@@ -285,9 +283,8 @@ window.addEventListener('sketch:ready', function(){
 
 <h2>The fixes that actually move the numbers</h2>
 
-<div class="sketch" data-viewbox="0 0 900 360"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 420"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 360);
   const rc = sketch.rc(svg);
@@ -310,8 +307,7 @@ window.addEventListener('sketch:ready', function(){
       ['CLS', 'Web fonts causing FOUT', 'Use font-display: optional or swap + size-adjust']
     ]
   });
-});
-</script>
+}</script>
 
 <h2>The 80/20 of Core Web Vitals work</h2>
 <p>Don't try to chase perfect scores everywhere. The returns are wildly diminishing past "Good."</p>

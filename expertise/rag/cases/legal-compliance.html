@@ -222,9 +222,8 @@
 <p class="lede">Legal and compliance RAG are the strictest RAG use cases. Hallucinations aren't just embarrassing, they're legal exposure. Citations aren't optional, they're required by procedure. The bar for quality is higher, and the acceptable failure modes are narrower.</p>
 
 <h2>What makes it different</h2>
-<div class="sketch" data-viewbox="0 0 900 280"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 320"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 280);
   const rc = sketch.rc(svg);
@@ -239,8 +238,7 @@ window.addEventListener('sketch:ready', function(){
     ['Audit trail', 'Regulators ask what was retrieved'],
     ['Human-in-loop by default', 'Liability stays with lawyers']
   ]});
-});
-</script>
+}</script>
 <ul>
   <li>Accuracy is regulatory, not just aesthetic</li>
   <li>Citations are required and must be verifiable</li>
@@ -324,11 +322,10 @@ window.addEventListener('sketch:ready', function(){
 <p>Metadata filtering is essential. A query about employment law in California shouldn't retrieve New York precedents or pre-2020 rulings that have been overturned.</p>
 
 <h2>Hallucination risk is existential</h2>
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
-  const svg = sketch.createSvg(el, 900, 260);
+  const svg = sketch.createSvg(el, 900, 266);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'Guardrails against fake citations');
   sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 44, layers: [
@@ -337,8 +334,7 @@ window.addEventListener('sketch:ready', function(){
     {label: 'Reject on unverifiable claims', sub: 'return no-answer instead'},
     {label: 'Human lawyer review', sub: 'final accountability'}
   ]});
-});
-</script>
+}</script>
 <p>A hallucinated citation (fake case, fake statute section) is malpractice. Mitigations:</p>
 <ul>
   <li>Strict prompt: "Only cite sources that appear in the retrieved context. If you cannot cite, say so."</li>

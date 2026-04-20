@@ -222,11 +222,10 @@
 <p class="lede">A cold list of 10,000 people in your ICP has maybe 200 people actively thinking about your category right now. The other 9,800 aren't wrong, they're just not in-market. Intent signals help you find the in-market 200 before the competition does. It's the highest-leverage targeting upgrade available.</p>
 
 <h2>What counts as intent</h2>
-<div class="sketch" data-viewbox="0 0 900 300"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 360"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
-  const svg = sketch.createSvg(el, 900, 300);
+  const svg = sketch.createSvg(el, 900, 330);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'Intent signals ranked');
   sketch.bars(svg, rc, {x: 40, y: 60, w: 820, labelW: 240, items: [
@@ -237,8 +236,7 @@ window.addEventListener('sketch:ready', function(){
     {label: 'Tech stack signals', value: 50, note: 'using your competitor or adjacent'},
     {label: 'Content engagement', value: 40, note: 'opened pricing page, etc'}
   ]});
-});
-</script>
+}</script>
 <p>Any observable event that suggests a prospect is thinking about the problem you solve. Categories:</p>
 
 <h3>Hiring signals</h3>
@@ -365,14 +363,13 @@ Signal-based: 500 emails/week to prospects with active signals.</p>
 
 <p>Same or better pipeline, lower volume, much higher reputation, less infrastructure needed. This is where advanced cold operators are heading.</p>
 
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 292"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
-  const svg = sketch.createSvg(el, 900, 260);
+  const svg = sketch.createSvg(el, 900, 292);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'Volume-based vs signal-based outbound');
-  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 212,
     left: {title: 'Volume-based (old)', items: [
       '3,000 emails/week to broad list',
       '2% reply rate',
@@ -388,8 +385,7 @@ window.addEventListener('sketch:ready', function(){
       'Reputation stays clean'
     ]}
   });
-});
-</script>
+}</script>
 
 <h2>What to do with this</h2>
 <ul>

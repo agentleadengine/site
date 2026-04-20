@@ -222,8 +222,7 @@
 <p class="lede">Retrieval metrics measure whether your system found the right chunks. They don't tell you if the generator used them well, that's a separate measurement, but they tell you the upstream quality gate. If retrieval metrics are bad, nothing downstream can save you.</p>
 
 <div class="sketch" data-viewbox="0 0 900 300"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 300);
   const rc = sketch.rc(svg);
@@ -238,8 +237,7 @@ window.addEventListener('sketch:ready', function(){
     ['Precision @ k', 'What fraction of top-k chunks were actually relevant?'],
     ['nDCG @ k', 'Are highly-relevant chunks ranked above less-relevant ones?']
   ]});
-});
-</script>
+}</script>
 
 <h2>Hit rate @ k</h2>
 <p>Simplest metric: did the relevant chunk appear anywhere in the top-k results?</p>
@@ -303,9 +301,8 @@ NDCG@k = DCG@k / ideal_DCG@k
 <p>When to use: when relevance is graded (not binary) and you care about ranking quality.</p>
 
 <h2>What metrics to start with</h2>
-<div class="sketch" data-viewbox="0 0 900 240"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 240);
   const rc = sketch.rc(svg);
@@ -319,8 +316,7 @@ window.addEventListener('sketch:ready', function(){
     ['Precision @ 5', 'How clean the gen context is'],
     ['Per-segment breakdown', 'Where you\'re silently failing']
   ]});
-});
-</script>
+}</script>
 <p>For most RAG projects:</p>
 <ul>
   <li>Hit rate @ 10: overall retrieval health</li>

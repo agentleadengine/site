@@ -230,8 +230,7 @@
 <p>Every one of Google's hundreds of signals falls into one of four buckets. Master the buckets, then zoom in where you need to.</p>
 
 <div class="sketch" data-viewbox="0 0 900 320"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 320);
   const rc = sketch.rc(svg);
@@ -250,8 +249,7 @@ window.addEventListener('sketch:ready', function(){
       ['Behavior', 'Do real searchers stick around', 'Clicks, dwell time, pogo-stick']
     ]
   });
-});
-</script>
+}</script>
 
 <h3>Bucket 1: Relevance</h3>
 <p>Is the page about the thing the user searched for. Early Google answered this with keyword matching. Today it uses entity understanding and semantic analysis, which is a fancy way of saying "it knows what you mean, not just what you typed."</p>
@@ -276,11 +274,10 @@ window.addEventListener('sketch:ready', function(){
 <h2>What actually moves rankings in 2026</h2>
 <p>After years of Google shifting what it weights, here's what the current machine cares about most. Ranked roughly by leverage, based on what correlational studies and Google's own patents confirm.</p>
 
-<div class="sketch" data-viewbox="0 0 900 400"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 460"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
-  const svg = sketch.createSvg(el, 900, 400);
+  const svg = sketch.createSvg(el, 900, 420);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'Leverage of individual ranking factors (2026)');
   sketch.bars(svg, rc, {
@@ -296,8 +293,7 @@ window.addEventListener('sketch:ready', function(){
       {label: 'Exact-match keyword density', value: 0.15, note: 'nearly useless now', color: '#8b5cf6'}
     ]
   });
-});
-</script>
+}</script>
 
 <h2>Myths that still waste time</h2>
 <ul>

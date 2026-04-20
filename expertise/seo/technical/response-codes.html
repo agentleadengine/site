@@ -224,9 +224,8 @@
 <h2>The mental model</h2>
 <p>A response code is your server's one-sentence answer to "what happened?" 200 means "here's the page." 301 means "that page moved permanently, here's the new home." 404 means "that page doesn't exist." Each code sends a specific signal to Google. Wrong code = wrong signal.</p>
 
-<div class="sketch" data-viewbox="0 0 900 340"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 420"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 340);
   const rc = sketch.rc(svg);
@@ -249,8 +248,7 @@ window.addEventListener('sketch:ready', function(){
       ['503', 'Service unavailable', 'Scheduled maintenance with Retry-After']
     ]
   });
-});
-</script>
+}</script>
 
 <h2>2xx. Success</h2>
 

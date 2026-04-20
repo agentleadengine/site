@@ -228,8 +228,7 @@
 <h2>How Google processes JavaScript</h2>
 
 <div class="sketch" data-viewbox="0 0 900 220"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 220);
   const rc = sketch.rc(svg);
@@ -244,16 +243,14 @@ window.addEventListener('sketch:ready', function(){
       {title: 'Re-index', sub: 'Index rendered DOM'}
     ]
   });
-});
-</script>
+}</script>
 
 <p>The key issue: the render step is delayed and uses more resources than plain HTML crawling. Google processes static HTML sites faster and more thoroughly than JS-rendered ones. A heavy SPA can wait days to get its full content indexed.</p>
 
 <h2>The five rendering strategies</h2>
 
 <div class="sketch" data-viewbox="0 0 900 360"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 360);
   const rc = sketch.rc(svg);
@@ -273,8 +270,7 @@ window.addEventListener('sketch:ready', function(){
       ['Client-Side Rendering (CSR)', 'Browser only', 'Fragile and slow']
     ]
   });
-});
-</script>
+}</script>
 
 <h3>Static Site Generation (SSG)</h3>
 <p>HTML pre-generated at build time. Deployed as static files. Fastest possible delivery, cheapest hosting, best SEO. Requires a rebuild when content changes. Frameworks: Astro, Next.js (SSG mode), Hugo, Jekyll.</p>

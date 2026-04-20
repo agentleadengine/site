@@ -222,14 +222,13 @@
 <p class="lede">Long-term memory is what the agent remembers <em>across</em> sessions. Without it, every conversation starts fresh and the agent feels like an amnesiac intern. With it, the agent knows your preferences, recalls past decisions, builds context over time. But long-term memory is also where agents get weird: they remember wrong things, forget important things, or leak info across users. Design it deliberately or don't ship it.</p>
 
 <h2>What belongs in long-term vs what doesn't</h2>
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 318"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
-  const svg = sketch.createSvg(el, 900, 260);
+  const svg = sketch.createSvg(el, 900, 318);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'Long-term memory: save vs skip');
-  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 238,
     left: {title: 'Save', items: [
       'User preferences ("always metric units")',
       'Persistent facts ("allergic to peanuts")',
@@ -245,13 +244,11 @@ window.addEventListener('sketch:ready', function(){
       'Context that\'s already in the codebase / docs'
     ]}
   });
-});
-</script>
+}</script>
 
 <h2>Four storage models</h2>
 <div class="sketch" data-viewbox="0 0 900 300"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 300);
   const rc = sketch.rc(svg);
@@ -266,8 +263,7 @@ window.addEventListener('sketch:ready', function(){
     ['Document', 'Free-form agent notes', 'Scan or summarize'],
     ['Graph', 'People, projects, relationships', 'Traversal queries']
   ]});
-});
-</script>
+}</script>
 <p>Most production agents use two stores: a key-value for stable facts (loaded on every session) and a vector store for rich history (queried on demand).</p>
 
 <h2>What to write, when</h2>

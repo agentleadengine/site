@@ -223,8 +223,7 @@
 
 <h2>The idea</h2>
 <div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -235,8 +234,7 @@ window.addEventListener('sketch:ready', function(){
     {title: 'Generate', sub: 'with or without'},
     {title: 'Critique', sub: 'self-rate faithfulness'}
   ]});
-});
-</script>
+}</script>
 <p>Traditional RAG has fixed orchestration: retrieve-then-generate. Self-RAG inserts reflection tokens throughout:</p>
 <ul>
   <li><code>[Retrieve]</code> or <code>[No Retrieve]</code>: the model decides at each step whether to retrieve</li>
@@ -291,14 +289,13 @@ refunds are processed within 5-7 business days [doc1].
 <p>If self-reflection flags issues, either regenerate or lower confidence in the answer.</p>
 
 <h2>Strengths vs weaknesses</h2>
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 266"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
-  const svg = sketch.createSvg(el, 900, 260);
+  const svg = sketch.createSvg(el, 900, 266);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'Self-RAG at a glance');
-  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 186,
     left: {title: 'Strengths', items: [
       'Adaptive retrieval (skip when unneeded)',
       'Explicit grounding + citations',
@@ -311,8 +308,7 @@ window.addEventListener('sketch:ready', function(){
       'Pure paper version needs custom training',
       'Over-thinks simple queries']}
   });
-});
-</script>
+}</script>
 <ul>
   <li>Adaptive retrieval (skips retrieval when not needed)</li>
   <li>Explicit grounding (every claim tied to evidence)</li>

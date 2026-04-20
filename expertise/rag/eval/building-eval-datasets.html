@@ -231,9 +231,8 @@
 </ol>
 
 <h2>Where queries come from</h2>
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -247,8 +246,7 @@ window.addEventListener('sketch:ready', function(){
     ['LLM-generated synthetic', 'Fast coverage; validate with humans'],
     ['Customer support history', 'Real user phrasings + known answers']
   ]});
-});
-</script>
+}</script>
 
 <h3>Production logs (best)</h3>
 <p>If you have any production traffic, real user queries are gold. They show actual phrasing, actual intent, actual edge cases.</p>
@@ -282,9 +280,8 @@ window.addEventListener('sketch:ready', function(){
 <p>Public datasets for specific domains (BEIR, MS MARCO, HotpotQA) can provide a baseline. Limited applicability to your specific corpus but useful for sanity checking.</p>
 
 <h2>How many queries</h2>
-<div class="sketch" data-viewbox="0 0 900 240"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 240);
   const rc = sketch.rc(svg);
@@ -298,8 +295,7 @@ window.addEventListener('sketch:ready', function(){
     ['Serious eval', '500–2000 (statistical power)'],
     ['Research-grade', '10,000+ (benchmarks)']
   ]});
-});
-</script>
+}</script>
 <ul>
   <li><strong>Minimum viable</strong>: 30 queries. Enough to catch obvious regressions.</li>
   <li><strong>Reasonable baseline</strong>: 100-200 queries. Enough to detect meaningful improvements.</li>

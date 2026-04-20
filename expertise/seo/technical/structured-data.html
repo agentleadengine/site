@@ -225,11 +225,10 @@
 <p>Schema is machine-readable metadata. Humans don't see it. Search engines and other automated systems read it to understand your page without having to infer from visible text. Done right, it makes your page easier for Google to represent correctly in rich results.</p>
 <p>Done wrong, it sits there doing nothing, or worse, disqualifies you for rich results because Google can't validate it.</p>
 
-<div class="sketch" data-viewbox="0 0 900 240"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 320"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
-  const svg = sketch.createSvg(el, 900, 240);
+  const svg = sketch.createSvg(el, 900, 300);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'JSON-LD implementation priorities');
   sketch.bars(svg, rc, {
@@ -242,8 +241,7 @@ window.addEventListener('sketch:ready', function(){
       {label: 'FAQ (restricted 2023)', value: 0.30, note: 'Limited rich result qualification'}
     ]
   });
-});
-</script>
+}</script>
 
 <h2>JSON-LD placement</h2>
 <p>JSON-LD goes in the <code>&lt;head&gt;</code> in a <code>&lt;script type="application/ld+json"&gt;</code> tag. Can also go in <code>&lt;body&gt;</code>, but head is convention.</p>

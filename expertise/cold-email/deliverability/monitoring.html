@@ -265,9 +265,8 @@
 <p>Track hard bounce rate per campaign. Above 3% = list quality problem. Above 5% = actively damaging your reputation. Stop and fix.</p>
 
 <h2>Key metrics and thresholds</h2>
-<div class="sketch" data-viewbox="0 0 900 280"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 320"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 280);
   const rc = sketch.rc(svg);
@@ -282,8 +281,7 @@ window.addEventListener('sketch:ready', function(){
     ['Unsub rate', '< 0.5%'],
     ['Inbox placement (via seeds)', '> 80% is good']
   ]});
-});
-</script>
+}</script>
 
 <h3>Spam rate (Gmail Postmaster)</h3>
 <ul>
@@ -384,11 +382,10 @@ window.addEventListener('sketch:ready', function(){
 
 <p>Even this minimum catches the majority of deliverability emergencies before they become disasters.</p>
 
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 270"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
-  const svg = sketch.createSvg(el, 900, 260);
+  const svg = sketch.createSvg(el, 900, 270);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'Weekly deliverability monitor, 15 min cadence');
   sketch.numberedSteps(svg, rc, {x: 40, y: 60, w: 820, stepH: 30, items: [
@@ -399,8 +396,7 @@ window.addEventListener('sketch:ready', function(){
     'Audit reply quality — positives, negatives, unsubscribes',
     'Any red? Pause sends from that domain, investigate before resuming'
   ]});
-});
-</script>
+}</script>
 
 <h2>What to do with this</h2>
 <ul>

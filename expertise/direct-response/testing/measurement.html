@@ -223,8 +223,7 @@
 
 <h2>The metrics hierarchy</h2>
 <div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -235,8 +234,7 @@ window.addEventListener('sketch:ready', function(){
     {label: 'CVR / sales volume', sub: 'leads → customers'},
     {label: 'CAC / ROAS / LTV', sub: 'the metric that matters'}
   ]});
-});
-</script>
+}</script>
 
 <h3>Revenue metrics (the truth)</h3>
 <ul>
@@ -363,14 +361,13 @@ window.addEventListener('sketch:ready', function(){
 <p>You start a test Friday. By Monday, the challenger is "clearly winning" by 40%. Do you declare victory?</p>
 <p>No. Small samples produce false early leads. In 30% of A/B tests, the variant that's leading at 25% of sample size ends up losing by the end. Run the test to its full sample size.</p>
 
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 292"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
-  const svg = sketch.createSvg(el, 900, 260);
+  const svg = sketch.createSvg(el, 900, 292);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'High CTR vs high revenue, don\'t confuse them');
-  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 212,
     left: {title: 'Clickbait ad (CTR winner)', items: [
       '8% CTR, "you won\'t believe this"',
       '10,000 clicks',
@@ -386,8 +383,7 @@ window.addEventListener('sketch:ready', function(){
       '7.5x more revenue at 4x fewer clicks'
     ]}
   });
-});
-</script>
+}</script>
 
 <h2>What to do with this</h2>
 <ul>

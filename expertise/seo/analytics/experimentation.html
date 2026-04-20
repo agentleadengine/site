@@ -223,15 +223,14 @@
 
 <h2>The core constraint</h2>
 
-<div class="sketch" data-viewbox="0 0 900 240"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 266"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
-  const svg = sketch.createSvg(el, 900, 240);
+  const svg = sketch.createSvg(el, 900, 266);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'Why SEO testing is different');
   sketch.compare(svg, rc, {
-    x: 40, y: 60, w: 820, h: 160,
+    x: 40, y: 60, w: 820, h: 186,
     left: {title: 'Standard A/B test', items: [
       'Split visitors 50/50',
       'Same URL, two variants',
@@ -245,8 +244,7 @@ window.addEventListener('sketch:ready', function(){
       'Weeks to see results'
     ]}
   });
-});
-</script>
+}</script>
 
 <h2>Why SEO testing is hard</h2>
 <ul>

@@ -234,8 +234,7 @@
 
 <h2>The GraphRAG pipeline</h2>
 <div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -246,8 +245,7 @@ window.addEventListener('sketch:ready', function(){
     {title: 'Cluster', sub: 'community detection'},
     {title: 'Query', sub: 'traverse + summarize'}
   ]});
-});
-</script>
+}</script>
 
 <h3>Indexing phase</h3>
 <ol>
@@ -270,14 +268,13 @@ window.addEventListener('sketch:ready', function(){
 <p>For corpus-wide questions. The LLM processes each community summary, generates partial answers, then aggregates them into a final response. Best for "themes," "patterns," "summarize across."</p>
 
 <h2>Strengths vs weaknesses</h2>
-<div class="sketch" data-viewbox="0 0 900 280"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 292"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
-  const svg = sketch.createSvg(el, 900, 280);
+  const svg = sketch.createSvg(el, 900, 292);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'GraphRAG: strengths vs weaknesses');
-  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 200,
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 212,
     left: {title: 'Strengths', items: [
       'Corpus-wide synthesis',
       'Explicit entity relationships',
@@ -292,8 +289,7 @@ window.addEventListener('sketch:ready', function(){
       'Summaries can drift from source',
       'Most teams don\'t need it']}
   });
-});
-</script>
+}</script>
 
 <h3>Strengths</h3>
 <ul>

@@ -223,8 +223,7 @@
 
 <h2>The core idea</h2>
 <div class="sketch" data-viewbox="0 0 900 280"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 280);
   const rc = sketch.rc(svg);
@@ -238,8 +237,7 @@ window.addEventListener('sketch:ready', function(){
   sketch.arrow(svg, rc, {x1: 470, x2: 520, y1: 130, y2: 55, bidirectional: false});
   sketch.arrow(svg, rc, {x1: 470, x2: 520, y: 130, bidirectional: false});
   sketch.arrow(svg, rc, {x1: 470, x2: 520, y1: 130, y2: 195, bidirectional: false});
-});
-</script>
+}</script>
 <p>A classifier sits between the user and the retrieval pipeline. It looks at the query and decides:</p>
 <ul>
   <li>Does this even need retrieval? (many queries don't)</li>
@@ -278,9 +276,8 @@ window.addEventListener('sketch:ready', function(){
 <p>Query unrelated to your domain, decline or deflect.</p>
 
 <h2>Classifier options</h2>
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -294,8 +291,7 @@ window.addEventListener('sketch:ready', function(){
     ['Heuristic (rules)', 'Free, fast; limited'],
     ['Embedding nearest-neighbor', 'Medium speed, medium quality']
   ]});
-});
-</script>
+}</script>
 
 <h3>LLM-based</h3>
 <p>Prompt a small fast model to classify the query. Simple, flexible, costs a call per query. Most common in production.</p>

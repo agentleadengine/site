@@ -222,9 +222,8 @@
 <p class="lede">The vector DB decision gets over-engineered. Most of the time the right answer is "the one your team can operate" plus "it supports hybrid search and metadata filtering." Everything else is second-order. Here's how I actually pick.</p>
 
 <h2>The decision matrix</h2>
-<div class="sketch" data-viewbox="0 0 900 280"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 320"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 280);
   const rc = sketch.rc(svg);
@@ -239,8 +238,7 @@ window.addEventListener('sketch:ready', function(){
     ['> 100M vectors, heavy ops', 'Milvus'],
     ['Embedded / local / prototype', 'Chroma or FAISS']
   ]});
-});
-</script>
+}</script>
 
 <h3>Prototype / &lt; 1M vectors / low traffic</h3>
 <ul>
@@ -278,14 +276,13 @@ window.addEventListener('sketch:ready', function(){
 <p>Use their vector support. The integration with your existing BM25 + filtering infrastructure is worth more than a slightly better dedicated vector DB.</p>
 
 <h2>The features that actually matter</h2>
-<div class="sketch" data-viewbox="0 0 900 280"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 292"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
-  const svg = sketch.createSvg(el, 900, 280);
+  const svg = sketch.createSvg(el, 900, 292);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'Must-have vs nice-to-have DB features');
-  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 200,
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 212,
     left: {title: 'Must-have', items: [
       'Hybrid search (dense + sparse)',
       'Metadata filtering at query time',
@@ -300,8 +297,7 @@ window.addEventListener('sketch:ready', function(){
       'Built-in observability',
       'Zero-downtime reindexing']}
   });
-});
-</script>
+}</script>
 
 <h3>Must-have</h3>
 <ul>
@@ -362,9 +358,8 @@ window.addEventListener('sketch:ready', function(){
 <p>The performance differences between top-tier vector DBs at reasonable scale are usually less than the differences between chunking strategies. Pick a reasonable DB and move on.</p>
 
 <h2>My current defaults</h2>
-<div class="sketch" data-viewbox="0 0 900 240"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[2];
   const svg = sketch.createSvg(el, 900, 240);
   const rc = sketch.rc(svg);
@@ -378,8 +373,7 @@ window.addEventListener('sketch:ready', function(){
     ['Production, managed', 'Pinecone'],
     ['Hybrid-search heavy', 'Weaviate']
   ]});
-});
-</script>
+}</script>
 <ul>
   <li>Prototype: Chroma or pgvector</li>
   <li>Production, self-hosted leaning: Qdrant</li>

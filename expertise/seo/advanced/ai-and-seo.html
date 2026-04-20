@@ -224,8 +224,7 @@
 <h2>Traffic impact by query type</h2>
 
 <div class="sketch" data-viewbox="0 0 900 280"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 280);
   const rc = sketch.rc(svg);
@@ -239,8 +238,7 @@ window.addEventListener('sketch:ready', function(){
       {label: 'Branded', value: 0.95, note: 'Minimal impact'}
     ]
   });
-});
-</script>
+}</script>
 
 <h2>The shift</h2>
 <p>Traditional search: user types query → engine returns list of relevant pages → user picks one.</p>

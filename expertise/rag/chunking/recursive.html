@@ -223,8 +223,7 @@
 
 <h2>The algorithm</h2>
 <div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -236,8 +235,7 @@ window.addEventListener('sketch:ready', function(){
     {title: 'Try space', sub: 'word boundaries'},
     {title: 'Char split', sub: 'last resort'}
   ]});
-});
-</script>
+}</script>
 <ol>
   <li>Define a list of separators in order of preference: typically ["\n\n", "\n", ". ", " ", ""]</li>
   <li>Try to split the text on the first separator</li>
@@ -258,9 +256,8 @@ window.addEventListener('sketch:ready', function(){
 </ul>
 
 <h2>The separator list matters</h2>
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -274,8 +271,7 @@ window.addEventListener('sketch:ready', function(){
     ['HTML', 'Convert to Markdown first, then MD separators'],
     ['Legal / technical', '[\\n\\n§, \\n\\n(, \\n\\n, \\n]']
   ]});
-});
-</script>
+}</script>
 <p>Default separator lists are reasonable for generic prose. For specific content types, customize:</p>
 
 <ul>

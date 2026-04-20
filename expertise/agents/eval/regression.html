@@ -234,9 +234,8 @@
 <p>If pass rate drops, don't ship. Investigate.</p>
 
 <h2>What belongs in the regression set</h2>
-<div class="sketch" data-viewbox="0 0 900 280"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 320"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 280);
   const rc = sketch.rc(svg);
@@ -251,8 +250,7 @@ window.addEventListener('sketch:ready', function(){
     ['Safety-critical cases', 'Never-do-this boundaries held'],
     ['Cost / latency cases', 'Catch efficiency regressions']
   ]});
-});
-</script>
+}</script>
 
 <h2>The CI loop</h2>
 <ol>

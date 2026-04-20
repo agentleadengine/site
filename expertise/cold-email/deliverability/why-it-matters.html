@@ -233,11 +233,10 @@
 <p>A naive team thinks their campaign produces 2% reply rate. In reality it's 2% reply rate on the 30% that actually reached the inbox. The underlying offer may produce 6% on the full audience.</p>
 
 <h2>The four layers of deliverability</h2>
-<div class="sketch" data-viewbox="0 0 900 300"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 320"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
-  const svg = sketch.createSvg(el, 900, 300);
+  const svg = sketch.createSvg(el, 900, 306);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'Four layers between you and the inbox');
   sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 54, layers: [
@@ -246,8 +245,7 @@ window.addEventListener('sketch:ready', function(){
     {label: '3. Content (copy + structure)', sub: 'spam triggers'},
     {label: '4. Engagement (opens, replies, not-spam)', sub: 'behavioral signal'}
   ]});
-});
-</script>
+}</script>
 
 <h3>1. Technical setup</h3>
 <p>DNS records (SPF, DKIM, DMARC). Sending domains separated from your primary domain. Proper MX and reverse DNS.</p>
@@ -343,14 +341,13 @@ window.addEventListener('sketch:ready', function(){
 
 <p>If any of these fail, you have a deliverability problem. Stop sending cold email until you fix it.</p>
 
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 292"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
-  const svg = sketch.createSvg(el, 900, 260);
+  const svg = sketch.createSvg(el, 900, 292);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'Open rate without inbox placement lies');
-  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 212,
     left: {title: 'High open rate, low inbox', items: [
       'Platform reports 45% open rate',
       'But 80% of "opens" are spam-box previews',
@@ -366,8 +363,7 @@ window.addEventListener('sketch:ready', function(){
       'Dashboard honest, pipeline real'
     ]}
   });
-});
-</script>
+}</script>
 
 <h2>What to do with this</h2>
 <ul>

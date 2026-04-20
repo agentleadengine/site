@@ -223,8 +223,7 @@
 
 <h2>The threat model</h2>
 <div class="sketch" data-viewbox="0 0 900 300"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 300);
   const rc = sketch.rc(svg);
@@ -239,8 +238,7 @@ window.addEventListener('sketch:ready', function(){
     ['Runaway behavior', 'Agent loops, exhausts budgets or resources'],
     ['Tool escalation', 'Agent uses a tool outside its intended scope']
   ]});
-});
-</script>
+}</script>
 
 <h2>Principle 1: Least privilege</h2>
 <p>Give the agent exactly the tools it needs. No extras. A Q&amp;A agent doesn't need send_email. A research agent doesn't need DB write access. A customer-support agent shouldn't have the full admin API. Split agents by trust level and give each only what its job requires.</p>

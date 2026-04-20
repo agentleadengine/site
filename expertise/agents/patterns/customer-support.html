@@ -223,8 +223,7 @@
 
 <h2>The flow</h2>
 <div class="sketch" data-viewbox="0 0 900 280"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 280);
   const rc = sketch.rc(svg);
@@ -236,8 +235,7 @@ window.addEventListener('sketch:ready', function(){
     {title: 'Escalate?', sub: 'if low-confidence / out-of-scope'},
     {title: 'Log', sub: 'trace for review'}
   ]});
-});
-</script>
+}</script>
 
 <h2>Core tools</h2>
 <ul>
@@ -250,8 +248,7 @@ window.addEventListener('sketch:ready', function(){
 
 <h2>Key design choices</h2>
 <div class="sketch" data-viewbox="0 0 900 280"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 280);
   const rc = sketch.rc(svg);
@@ -265,8 +262,7 @@ window.addEventListener('sketch:ready', function(){
     ['Personalization', 'Scope strictly by user_id. Cross-user leaks are the worst bug.'],
     ['Auto-send vs draft', 'Draft-first for anything policy-sensitive; auto-send for FAQ']
   ]});
-});
-</script>
+}</script>
 
 <h2>Retrieval quality drives everything</h2>
 <p>A customer support agent is mostly a retrieval system with an LLM on top. If retrieval returns the wrong articles, no amount of prompting fixes the answer. Invest here first:</p>

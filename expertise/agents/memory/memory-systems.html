@@ -222,9 +222,8 @@
 <p class="lede">You've got four memory types: short-term, long-term facts, episodic, procedural. A real agent uses all of them, layered. The art is picking what to pull in when, and what to write out, so the agent has the right context at the right moment without drowning in its own history. This page is the architecture.</p>
 
 <h2>The layered stack</h2>
-<div class="sketch" data-viewbox="0 0 900 360"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 380"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 360);
   const rc = sketch.rc(svg);
@@ -236,8 +235,7 @@ window.addEventListener('sketch:ready', function(){
     {label: 'Episodic log', sub: 'past session summaries, queryable'},
     {label: 'Procedure library', sub: 'named how-to recipes'}
   ]});
-});
-</script>
+}</script>
 <p>Most production agents don't need all five. The minimum useful system has short-term + user profile. Add vector and episodic when you want "remembers past conversations." Add procedures when you want the agent to get better at recurring tasks.</p>
 
 <h2>The retrieval stack: what gets pulled in when</h2>
@@ -252,9 +250,8 @@ window.addEventListener('sketch:ready', function(){
 
 <h2>Writes: deliberate, not automatic</h2>
 <p>Writing is where memory systems rot if you're not careful. Default rules:</p>
-<div class="sketch" data-viewbox="0 0 900 280"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 350"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 280);
   const rc = sketch.rc(svg);
@@ -270,8 +267,7 @@ window.addEventListener('sketch:ready', function(){
     ['Transient chatter / one-off', 'Don\'t write'],
     ['PII without explicit consent', 'Never write']
   ]});
-});
-</script>
+}</script>
 
 <h2>Expose memory as tools</h2>
 <p>The cleanest way to give the agent access to memory is to expose it as tools the model can call:</p>

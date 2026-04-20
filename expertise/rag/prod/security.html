@@ -223,8 +223,7 @@
 
 <h2>The threat model</h2>
 <div class="sketch" data-viewbox="0 0 900 300"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 300);
   const rc = sketch.rc(svg);
@@ -239,8 +238,7 @@ window.addEventListener('sketch:ready', function(){
     ['Exfiltration via responses', 'Scan outputs for PII; block unusual tool calls'],
     ['Unauthorized document access', 'ACL enforced at retrieval, not just at display']
   ]});
-});
-</script>
+}</script>
 
 <h3>Prompt injection</h3>
 <p>An attacker embeds instructions in content that the RAG system retrieves. When included in the LLM prompt, these instructions hijack the generation.</p>
@@ -279,8 +277,7 @@ window.addEventListener('sketch:ready', function(){
 
 <h2>Defense: prompt injection</h2>
 <div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -291,8 +288,7 @@ window.addEventListener('sketch:ready', function(){
     {label: 'Structural prompt framing', sub: 'label untrusted blocks'},
     {label: 'Input sanitization', sub: 'strip obvious patterns'}
   ]});
-});
-</script>
+}</script>
 
 <h3>Input sanitization (limited)</h3>
 <p>Strip instruction-like patterns from retrieved content before inserting into prompts. Not reliable, attackers will find ways around heuristic filters.</p>

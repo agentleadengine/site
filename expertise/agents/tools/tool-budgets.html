@@ -222,11 +222,10 @@
 <p class="lede">Without budgets, a single stuck agent can make 200 tool calls in three minutes, exhaust your API quota, run up $50 in LLM spend, and produce nothing useful. Budgets are the circuit breakers that stop this. They're not optional for production: they're the line between "tried an agent once" and "can actually run agents at scale."</p>
 
 <h2>The four layers of budget</h2>
-<div class="sketch" data-viewbox="0 0 900 300"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 320"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
-  const svg = sketch.createSvg(el, 900, 300);
+  const svg = sketch.createSvg(el, 900, 306);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'Four budgets, from inner to outer');
   sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 54, layers: [
@@ -235,8 +234,7 @@ window.addEventListener('sketch:ready', function(){
     {label: 'Per-user', sub: 'max $X per user per day'},
     {label: 'Global', sub: 'max concurrent sessions, max $ per hour'}
   ]});
-});
-</script>
+}</script>
 <p>Each layer catches a different failure mode. Per-session catches a stuck agent. Per-tool catches overuse of an expensive operation. Per-user catches one runaway user. Global is the last line of defense when multiple of the above go wrong at once.</p>
 
 <h2>Per-session, the first thing you ship</h2>

@@ -240,8 +240,7 @@
 
 <h2>Rate ranges</h2>
 <div class="sketch" data-viewbox="0 0 900 280"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 280);
   const rc = sketch.rc(svg);
@@ -255,8 +254,7 @@ window.addEventListener('sketch:ready', function(){
     ['Full-service UGC agency', '$1k–5k per video'],
     ['Influencer with following', '$1k–20k per post']
   ]});
-});
-</script>
+}</script>
 <ul>
 <li>Marketplace creators: $50-300 per video</li>
 <li>Mid-tier direct: $200-1000 per video</li>
@@ -306,14 +304,13 @@ window.addEventListener('sketch:ready', function(){
 <h2>The in-house option</h2>
 <p>Some brands hire full-time UGC creators. Trade flexibility for consistency. Makes sense at $50K+/month in creator costs.</p>
 
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 292"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
-  const svg = sketch.createSvg(el, 900, 260);
+  const svg = sketch.createSvg(el, 900, 292);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'Creator cost vs creator value, the real math');
-  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 212,
     left: {title: 'Wrong economics', items: [
       'Hire cheapest creator for $100/video',
       'Generic performance, 20% win rate',
@@ -329,8 +326,7 @@ window.addEventListener('sketch:ready', function(){
       'Relationship compounds over 6+ months'
     ]}
   });
-});
-</script>
+}</script>
 
 <h2>What to do with this</h2>
 <ul>

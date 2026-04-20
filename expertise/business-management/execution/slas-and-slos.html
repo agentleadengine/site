@@ -223,8 +223,7 @@
 
 <h2>The vocabulary</h2>
 <div class="sketch" data-viewbox="0 0 900 240"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 240);
   const rc = sketch.rc(svg);
@@ -237,8 +236,7 @@ window.addEventListener('sketch:ready', function(){
     ['SLO', 'Service Level Objective: your internal target'],
     ['SLA', 'Service Level Agreement: contractual commitment to customers']
   ]});
-});
-</script>
+}</script>
 <ul>
   <li><strong>SLI</strong> (Service Level Indicator), the actual metric. "Request latency p95." "Uptime %." "First-response time."</li>
   <li><strong>SLO</strong> (Service Level Objective), your internal target. "p95 latency &lt; 300ms." "Uptime ≥ 99.9%." "First-response &lt; 1 business hour."</li>
@@ -321,14 +319,13 @@ Gap: ~3 hours of cushion per month. That's your error budget.
 
 <p style="margin-top:40px;">Related: <a href="vendor-management.html">Vendor management</a> · <a href="../risk/risk-management.html">Risk management</a> · <a href="../sales/customer-success-ops.html">Customer success ops</a></p>
 
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 292"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
-  const svg = sketch.createSvg(el, 900, 260);
+  const svg = sketch.createSvg(el, 900, 292);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'SLA vs SLO, different purposes');
-  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 212,
     left: {title: 'SLA (external commitment)', items: [
       'Contract with customer / vendor',
       'Breach = penalty or refund',
@@ -344,8 +341,7 @@ window.addEventListener('sketch:ready', function(){
       'Iterates based on measurement'
     ]}
   });
-});
-</script>
+}</script>
 
 <h2>What to do with this</h2>
 <ul>

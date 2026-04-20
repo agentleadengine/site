@@ -227,8 +227,7 @@
 
 <h2>Anatomy of a tool</h2>
 <div class="sketch" data-viewbox="0 0 900 300"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 300);
   const rc = sketch.rc(svg);
@@ -242,8 +241,7 @@ window.addEventListener('sketch:ready', function(){
     ['input schema', 'JSON schema: types, required fields, enums.'],
     ['return shape', 'Not in the spec, but implied. Keep it consistent.']
   ]});
-});
-</script>
+}</script>
 <pre style="background:#f5f5f7; padding:14px; border-radius:6px; font-family:'JetBrains Mono', monospace; font-size:13px;">
 {
   "name": "search_web",
@@ -260,8 +258,7 @@ window.addEventListener('sketch:ready', function(){
 
 <h2>The five-step tool-use loop</h2>
 <div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -273,13 +270,11 @@ window.addEventListener('sketch:ready', function(){
     {title: 'You execute', sub: 'run the function'},
     {title: 'Send result back', sub: 'as tool_result'}
   ]});
-});
-</script>
+}</script>
 
 <h2>What the big three APIs look like</h2>
 <div class="sketch" data-viewbox="0 0 900 240"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[2];
   const svg = sketch.createSvg(el, 900, 240);
   const rc = sketch.rc(svg);
@@ -292,8 +287,7 @@ window.addEventListener('sketch:ready', function(){
     ['OpenAI', 'tools param, function calling, assistant emits tool_calls, you return tool role messages'],
     ['Google Gemini', 'FunctionDeclarations, model emits function_call parts, you send function_response']
   ]});
-});
-</script>
+}</script>
 <p>Different names, same pattern. Write your orchestrator against a thin adapter and you can swap providers without rewriting the loop.</p>
 
 <h2>Parallel tool calls</h2>

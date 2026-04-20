@@ -222,14 +222,13 @@
 <p class="lede">A browser agent drives a real web browser: navigates, clicks, types, scrolls, reads the page. It exists to do things with websites that don't expose an API. Powerful, because every website is a surface. Slow, because each action takes seconds. Fragile, because the web changes under you and anti-bot systems fight back. Use it when you must. Skip it when an API exists.</p>
 
 <h2>When this pattern fits</h2>
-<div class="sketch" data-viewbox="0 0 900 240"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 266"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
-  const svg = sketch.createSvg(el, 900, 240);
+  const svg = sketch.createSvg(el, 900, 266);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'Browser agent: use vs skip');
-  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 160,
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 186,
     left: {title: 'Good fit', items: [
       'Site has no API',
       'Task is high-value per run',
@@ -243,8 +242,7 @@ window.addEventListener('sketch:ready', function(){
       'You don\'t control the environment'
     ]}
   });
-});
-</script>
+}</script>
 
 <h2>Tooling landscape</h2>
 <ul>

@@ -223,8 +223,7 @@
 
 <h2>The geometry</h2>
 <div class="sketch" data-viewbox="0 0 900 280"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 280);
   const rc = sketch.rc(svg);
@@ -236,8 +235,7 @@ window.addEventListener('sketch:ready', function(){
   sketch.note(svg, 290, 240, 'close = related meaning', {size: 13});
   sketch.note(svg, 680, 240, 'close = related meaning', {size: 13});
   sketch.note(svg, 460, 90, 'far apart = unrelated', {size: 13});
-});
-</script>
+}</script>
 <p>Embedding models map text into a high-dimensional space (typically 768, 1024, 1536, or 3072 dimensions). In this space:</p>
 <ul>
   <li>"Reset my password" and "I forgot my login" are close (similar meaning)</li>
@@ -270,14 +268,13 @@ window.addEventListener('sketch:ready', function(){
 <p>These failure modes are why pure vector search underperforms. Hybrid search (dense + sparse) exists specifically to cover embedding weaknesses.</p>
 
 <h2>Dense vs sparse</h2>
-<div class="sketch" data-viewbox="0 0 900 240"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 266"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
-  const svg = sketch.createSvg(el, 900, 240);
+  const svg = sketch.createSvg(el, 900, 266);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'Dense vs sparse embeddings');
-  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 160,
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 186,
     left: {title: 'Dense (neural)', items: [
       'Continuous vectors, ~384–3072 dims',
       'Strong on semantic similarity',
@@ -290,8 +287,7 @@ window.addEventListener('sketch:ready', function(){
       'Weak on synonyms / paraphrases',
       'Free / computational']}
   });
-});
-</script>
+}</script>
 <ul>
   <li><strong>Dense embeddings</strong> (what most people mean): continuous vectors from a neural model. Good at semantic similarity, weak at exact matches.</li>
   <li><strong>Sparse embeddings</strong> (BM25, SPLADE): high-dimensional vectors with mostly zero values, where each dimension corresponds to a term or learned token. Good at exact matches and keyword-heavy queries.</li>

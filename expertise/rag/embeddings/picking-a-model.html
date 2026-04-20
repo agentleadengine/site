@@ -232,9 +232,8 @@
 </ul>
 
 <h2>The five decision dimensions</h2>
-<div class="sketch" data-viewbox="0 0 900 280"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 320"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 280);
   const rc = sketch.rc(svg);
@@ -249,8 +248,7 @@ window.addEventListener('sketch:ready', function(){
     ['Closed vs open', 'API convenience vs self-host control'],
     ['Cost at your scale', '$ per million tokens × reindex cadence']
   ]});
-});
-</script>
+}</script>
 
 <h3>1. Quality</h3>
 <p>Proxy: MTEB score, or better, your own eval set. Test 2-3 candidate models against a held-out set of real queries.</p>
@@ -275,9 +273,8 @@ window.addEventListener('sketch:ready', function(){
 <p>General-purpose models work for general content. For code, law, medicine, or finance, domain-specific or domain-aware models (or fine-tuned ones) beat general models significantly.</p>
 
 <h2>My current default picks</h2>
-<div class="sketch" data-viewbox="0 0 900 280"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 350"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 280);
   const rc = sketch.rc(svg);
@@ -293,8 +290,7 @@ window.addEventListener('sketch:ready', function(){
     ['Code-heavy', 'Voyage Code'],
     ['Legal / finance / medical', 'Voyage-law-2 / -finance-2 / BioBERT']
   ]});
-});
-</script>
+}</script>
 
 <h3>For general prose, production</h3>
 <ul>

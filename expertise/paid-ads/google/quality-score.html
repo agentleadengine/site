@@ -223,8 +223,7 @@
 
 <h2>The three components</h2>
 <div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -237,8 +236,7 @@ window.addEventListener('sketch:ready', function(){
     ['Ad relevance', 'Ad copy mirrors the keyword'],
     ['Landing page experience', 'Fast, matching, useful landing page']
   ]});
-});
-</script>
+}</script>
 <ul>
 <li><strong>Expected CTR</strong>: will people click this ad?</li>
 <li><strong>Ad Relevance</strong>: does the ad match the keyword?</li>
@@ -283,14 +281,13 @@ window.addEventListener('sketch:ready', function(){
 <li>No ad extensions</li>
 </ul>
 
-<div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 292"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
-  const svg = sketch.createSvg(el, 900, 260);
+  const svg = sketch.createSvg(el, 900, 292);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'Low quality score vs high, cost impact');
-  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 212,
     left: {title: 'QS 3-4 (pay the tax)', items: [
       'Generic landing page',
       'Keyword not in headline',
@@ -306,8 +303,7 @@ window.addEventListener('sketch:ready', function(){
       'Effective CPC 50% lower'
     ]}
   });
-});
-</script>
+}</script>
 
 <h2>What to do with this</h2>
 <ul>

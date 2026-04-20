@@ -226,8 +226,7 @@
 
 <h2>The six principles</h2>
 <div class="sketch" data-viewbox="0 0 900 340"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 340);
   const rc = sketch.rc(svg);
@@ -243,8 +242,7 @@ window.addEventListener('sketch:ready', function(){
     ['Sensible defaults', 'Every optional param has a reasonable fallback'],
     ['Bounded output', 'Truncate long results, return what matters']
   ]});
-});
-</script>
+}</script>
 
 <h3>One tool, one job</h3>
 <p>A tool with 15 optional parameters is really 15 tools pretending to be one. The model has to figure out which combination of parameters corresponds to the job at hand. That's harder than picking from 4 specific tools. Split them.</p>
@@ -266,8 +264,7 @@ window.addEventListener('sketch:ready', function(){
 
 <h2>Granularity, the Goldilocks problem</h2>
 <div class="sketch" data-viewbox="0 0 900 260"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 260);
   const rc = sketch.rc(svg);
@@ -281,8 +278,7 @@ window.addEventListener('sketch:ready', function(){
     ['Too fine', 'start_tx, insert_row, commit_tx', 'Too many calls to finish'],
     ['Just right', 'save_customer, find_orders_for(customer)', 'One call = one intent']
   ]});
-});
-</script>
+}</script>
 <p>The right granularity is <em>intent-level</em>: each tool maps to one thing a user would actually want to do. Not "manipulate the database" and not the individual SQL primitives. Intents.</p>
 
 <h2>A worked example: redesigning a bad tool</h2>

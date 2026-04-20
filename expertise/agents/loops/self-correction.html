@@ -227,8 +227,7 @@
 
 <h2>The correction loop</h2>
 <div class="sketch" data-viewbox="0 0 900 300"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 300);
   const rc = sketch.rc(svg);
@@ -242,8 +241,7 @@ window.addEventListener('sketch:ready', function(){
   sketch.arrow(svg, rc, {x1: 630, x2: 390, y1: 160, y2: 200, bidirectional: false});
   sketch.arrow(svg, rc, {x1: 390, x2: 390, y1: 200, y2: 160, bidirectional: false, label: 'retry'});
   sketch.note(svg, 760, 110, 'stop after 3–5', {size: 13});
-});
-</script>
+}</script>
 
 <h2>The triggers</h2>
 <ul>
@@ -266,9 +264,8 @@ window.addEventListener('sketch:ready', function(){
 <p>This is why coding agents work: the test suite is a near-perfect verifier, and the error message is a rich signal that tells the agent exactly what to change. Take away the tests and you take away the feedback loop; the agent starts fumbling.</p>
 
 <h2>Self-correction by task type</h2>
-<div class="sketch" data-viewbox="0 0 900 280"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 350"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
   const svg = sketch.createSvg(el, 900, 280);
   const rc = sketch.rc(svg);
@@ -285,8 +282,7 @@ window.addEventListener('sketch:ready', function(){
     ['Prose writing', 'LLM-as-judge (weaker signal)', 'Moderate'],
     ['Creative tasks', 'Usually no verifier', 'Skip self-correction']
   ]});
-});
-</script>
+}</script>
 
 <h2>Stop conditions</h2>
 <p>Self-correction can spiral. A model that can't fix a problem will iterate on the same wrong answer forever. Hard limits:</p>

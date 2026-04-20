@@ -251,11 +251,10 @@
 <h2>The click-through rate math nobody shows you</h2>
 <p>Ad blindness is real. The #1 organic listing on a typical commercial query gets about four times as many clicks as the top ad, even though the ad sits above it visually. People have trained themselves to skip the sponsored stuff.</p>
 
-<div class="sketch" data-viewbox="0 0 900 340"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 420"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
-  const svg = sketch.createSvg(el, 900, 340);
+  const svg = sketch.createSvg(el, 900, 380);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'Average click-through rate by SERP position');
   sketch.bars(svg, rc, {
@@ -270,8 +269,7 @@ window.addEventListener('sketch:ready', function(){
       {label: 'Page 2+', value: 0.005, note: 'less than 1% combined'}
     ]
   });
-});
-</script>
+}</script>
 
 <p>That math flips for some query types. On urgent, high-intent commercial queries ("plumber near me right now"), ads win more clicks. On informational queries ("how does a heat pump work"), organic demolishes ads. The lesson is that you can't paste one number across every keyword. The mix changes by intent.</p>
 

@@ -223,8 +223,7 @@
 
 <h2>The setup</h2>
 <div class="sketch" data-viewbox="0 0 900 300"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[0];
   const svg = sketch.createSvg(el, 900, 300);
   const rc = sketch.rc(svg);
@@ -235,8 +234,7 @@ window.addEventListener('sketch:ready', function(){
   sketch.arrow(svg, rc, {x1: 260, x2: 350, y: 130, bidirectional: true, label: 'N rounds'});
   sketch.arrow(svg, rc, {x1: 550, x2: 640, y: 130, bidirectional: false});
   sketch.note(svg, 450, 230, 'each debater sees prior arguments + responds', {size: 13});
-});
-</script>
+}</script>
 <ol>
 <li>The question is posed.</li>
 <li>Agent A is assigned one side (e.g., "argue yes").</li>
@@ -267,14 +265,13 @@ window.addEventListener('sketch:ready', function(){
 <p>A single agent would likely have taken the press releases at face value. Debate caught the soft evidence chain.</p>
 
 <h2>Is it worth the cost?</h2>
-<div class="sketch" data-viewbox="0 0 900 240"></div>
-<script>
-window.addEventListener('sketch:ready', function(){
+<div class="sketch" data-viewbox="0 0 900 266"></div>
+<script>window.addEventListener('sketch:ready', function(){
   const el = document.querySelectorAll('.sketch')[1];
-  const svg = sketch.createSvg(el, 900, 240);
+  const svg = sketch.createSvg(el, 900, 266);
   const rc = sketch.rc(svg);
   sketch.title(svg, 450, 30, 'Debate\'s 3–5× cost: when it\'s worth it');
-  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 160,
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 186,
     left: {title: 'Worth it', items: [
       'High-stakes decisions',
       'Fact-checking published content',
@@ -288,8 +285,7 @@ window.addEventListener('sketch:ready', function(){
       'Problems with one clear right answer'
     ]}
   });
-});
-</script>
+}</script>
 
 <h2>The empirical picture</h2>
 <p>Published benchmarks show debate-based agents outperforming single-agent baselines on math, logic, fact-checking, and multi-step reasoning tasks. The gains are biggest where single-agent outputs are inconsistent run-to-run. For tasks the model nails the first time, debate is just expensive noise.</p>
