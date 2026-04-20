@@ -233,7 +233,35 @@ window.addEventListener('sketch:ready', function(){
     {title: 'Last chance', sub: 'sunset if no action'}
   ]});
 });
-</script><ul><li>Email 1: 'We miss you' + value reminder</li><li>Email 2: specific offer or incentive</li><li>Email 3: 'Last email', explicit choice to stay</li></ul><h2>Measurement</h2><p>% re-engage within 14 days. Those who don't get suppressed to protect deliverability.</p><h2>Don't over-invest</h2><p>Most win-back attempts fail. That's fine. Cleaning the list is the other goal.</p></div></div><footer><div class="container">
+</script><ul><li>Email 1: 'We miss you' + value reminder</li><li>Email 2: specific offer or incentive</li><li>Email 3: 'Last email', explicit choice to stay</li></ul><h2>Measurement</h2><p>% re-engage within 14 days. Those who don't get suppressed to protect deliverability.</p><h2>Don't over-invest</h2><p>Most win-back attempts fail. That's fine. Cleaning the list is the other goal.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Win-back sequence, dormancy → re-engage or remove');
+  sketch.numberedSteps(svg, rc, {x: 40, y: 60, w: 820, stepH: 30, items: [
+    'Identify dormant (90+ days no opens, 60 days for DTC)',
+    'Email 1: "miss you" with genuine benefit + fresh angle',
+    'Email 2 (5 days): specific offer or incentive',
+    'Email 3 (10 days): breakup with "reply to stay, or we\'ll remove you"',
+    'Remove non-responders, protect deliverability'
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Run a win-back sequence on 90+ day dormant subscribers, continuing to send them hurts deliverability and rarely converts</li>
+<li>Offer a real reason to return (new feature, exclusive content, discount), generic "we miss you" emails rarely work</li>
+<li>End with an explicit breakup, "reply to stay or we'll remove you" catches late engagement and cleans the list</li>
+<li>Remove non-responders from active campaigns, the deliverability benefit of a clean list outweighs the lost potential</li>
+<li>Segment win-back by past behavior, lapsed customers need a different message than never-purchased subscribers</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

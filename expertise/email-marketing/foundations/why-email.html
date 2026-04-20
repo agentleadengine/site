@@ -241,7 +241,35 @@ window.addEventListener('sketch:ready', function(){
 });
 </script>
 
-<h2>You own it</h2><p>Your email list is an owned asset. Platform algorithms can't throttle it. You decide what to send and when.</p><h2>Intent of opening</h2><p>Inbox is a personal space. Users who open have some level of intent.</p><h2>Measurable</h2><p>Opens, clicks, conversions, all trackable.</p><h2>High ROI</h2><p>Average: $36-42 in revenue per $1 spent, depending on industry and report.</p><h2>Compounds</h2><p>List grows over time; each subscriber is durable until they unsubscribe.</p></div></div><footer><div class="container">
+<h2>You own it</h2><p>Your email list is an owned asset. Platform algorithms can't throttle it. You decide what to send and when.</p><h2>Intent of opening</h2><p>Inbox is a personal space. Users who open have some level of intent.</p><h2>Measurable</h2><p>Opens, clicks, conversions, all trackable.</p><h2>High ROI</h2><p>Average: $36-42 in revenue per $1 spent, depending on industry and report.</p><h2>Compounds</h2><p>List grows over time; each subscriber is durable until they unsubscribe.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Email ROI vs other channels, $ per $1 spent');
+  sketch.bars(svg, rc, {x: 40, y: 60, w: 820, labelW: 240, items: [
+    {label: 'Email (owned list)', value: 95, note: '$36-42 per $1 spent'},
+    {label: 'SEO content', value: 70, note: 'compounds over 24+ months'},
+    {label: 'Paid search', value: 50, note: '$2-5 per $1 typical'},
+    {label: 'Paid social', value: 35, note: 'fatigue + iOS headwinds'},
+    {label: 'Display / banner', value: 15, note: 'rare profitability'}
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Treat email as your highest-ROI channel and staff it accordingly, the $36-42 per $1 ratio isn't hype, it's industry benchmark</li>
+<li>Build the list as an owned asset from day one, anything that lives on rented platforms (Meta, TikTok) can be taken away tomorrow</li>
+<li>Measure full-funnel email revenue, not just "opens", the revenue per sent / per subscriber is the only number that matters</li>
+<li>Invest in list quality over list size, 10K engaged subscribers outperform 100K tire-kickers on every metric</li>
+<li>Maintain email as the compound asset, social algorithms shift but email's structural advantages don't change</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

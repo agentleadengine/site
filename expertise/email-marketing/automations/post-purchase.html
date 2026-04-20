@@ -237,7 +237,35 @@ window.addEventListener('sketch:ready', function(){
     ['Day 30', 'Cross-sell / loyalty']
   ]});
 });
-</script><ul><li>Email 1 (immediate): Order confirmation</li><li>Email 2 (on ship): tracking</li><li>Email 3 (on delivery): 'Here's how to use it'</li><li>Email 4 (7-14 days): How's it going?</li><li>Email 5 (30 days): Review request</li><li>Email 6 (60+ days): 'You might like...'</li></ul><h2>Educational content</h2><p>Guides for using the product increase satisfaction and reduce returns.</p><h2>Review requests</h2><p>Timing matters. Ask after they've had enough time to experience the product.</p></div></div><footer><div class="container">
+</script><ul><li>Email 1 (immediate): Order confirmation</li><li>Email 2 (on ship): tracking</li><li>Email 3 (on delivery): 'Here's how to use it'</li><li>Email 4 (7-14 days): How's it going?</li><li>Email 5 (30 days): Review request</li><li>Email 6 (60+ days): 'You might like...'</li></ul><h2>Educational content</h2><p>Guides for using the product increase satisfaction and reduce returns.</p><h2>Review requests</h2><p>Timing matters. Ask after they've had enough time to experience the product.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Post-purchase flow, 4 touches over 60 days');
+  sketch.numberedSteps(svg, rc, {x: 40, y: 60, w: 820, stepH: 30, items: [
+    'Email 1 (order confirm): thank + what to expect + shipping ETA',
+    'Email 2 (on delivery): usage tips + first-step guide',
+    'Email 3 (day 14): review request + UGC ask',
+    'Email 4 (day 30-45): cross-sell related product + referral ask',
+    'Avoid: push for review before user has experienced product'
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Ship the order-confirmation email immediately, missing it makes customers call support asking if the order went through</li>
+<li>Delay the review request until day 14+, asking before product experience produces negative reviews from impatient buyers</li>
+<li>Use the delivery email for usage tips, this reduces return rate and increases repeat purchase probability</li>
+<li>Include a referral ask at day 30+, customers who've experienced value refer at 3-5x baseline rate</li>
+<li>Cross-sell related products in email 4, not the generic "here's our store", specific related items convert 3x</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

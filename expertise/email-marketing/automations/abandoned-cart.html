@@ -232,7 +232,34 @@ window.addEventListener('sketch:ready', function(){
     {title: '48h', sub: 'last chance / small discount'}
   ]});
 });
-</script><ul><li>Email 1 (1-2 hours later): 'You forgot something' + items</li><li>Email 2 (24 hours): Social proof / reviews</li><li>Email 3 (48-72 hours): Urgency / limited offer</li></ul><h2>Conversion</h2><p>10-30% of abandoned carts recover. $$$.</p><h2>SMS vs email</h2><p>SMS has higher open rates but lower per-message revenue. Use together for max lift.</p><h2>Don't over-discount</h2><p>Training customers to abandon for a discount. Use sparingly.</p></div></div><footer><div class="container">
+</script><ul><li>Email 1 (1-2 hours later): 'You forgot something' + items</li><li>Email 2 (24 hours): Social proof / reviews</li><li>Email 3 (48-72 hours): Urgency / limited offer</li></ul><h2>Conversion</h2><p>10-30% of abandoned carts recover. $$$.</p><h2>SMS vs email</h2><p>SMS has higher open rates but lower per-message revenue. Use together for max lift.</p><h2>Don't over-discount</h2><p>Training customers to abandon for a discount. Use sparingly.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Abandoned cart sequence, 3-email cadence');
+  sketch.numberedSteps(svg, rc, {x: 40, y: 60, w: 820, stepH: 34, items: [
+    'Email 1 (1 hr): "left something behind" + item reminder',
+    'Email 2 (24 hr): handle objection (shipping, size, comparison)',
+    'Email 3 (48 hr): scarcity / discount as last resort',
+    'Stop after 3, longer sequences train buyers to abandon'
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Ship the first email within 1 hour of abandonment, recovery rates collapse after 24 hours</li>
+<li>Keep the sequence at 3 emails max, longer sequences train buyers to abandon expecting discounts</li>
+<li>Lead with the item, not a generic "you left something behind", specific product image + name converts 2x</li>
+<li>Save discount codes for email 3, offering discounts in email 1 trains everyone to abandon first</li>
+<li>Segment by cart value, high-value carts warrant a human follow-up, not just automation</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){
