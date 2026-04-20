@@ -336,6 +336,42 @@ LOW VARIABILITY  │  Automate            │  Contract / offshore │
 </ul>
 
 <p style="margin-top:40px;">Related: <a href="process-mapping.html">Process mapping</a> · <a href="vendor-management.html">Vendor management</a> · <a href="../people/hiring-signal-vs-noise.html">Hiring, signal vs noise</a></p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Automate vs hire, which wins when');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Automate first', items: [
+      'Repetitive, rules-based work',
+      'High-volume, low-variance tasks',
+      'Doesn\'t need human judgment',
+      'Tool available + cheap',
+      'Examples: data entry, notifications, reporting'
+    ]},
+    right: {title: 'Hire first', items: [
+      'Complex judgment calls',
+      'Customer-facing empathy required',
+      'Novel problems without playbooks',
+      'Rapidly changing context',
+      'Examples: strategic partnerships, complex sales'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>List every recurring task and tag it automate-first vs hire-first, the mix reveals where you're over- or under-investing</li>
+<li>Automate before hiring for repetitive rules-based work, one-time tool setup compounds vs permanent salary</li>
+<li>Hire for judgment-heavy roles, automation is bad at empathy + novel problems</li>
+<li>Track ratios like revenue per employee quarterly, it tells you if automation leverage is working</li>
+<li>Re-audit annually, tools get better and tasks that needed humans last year may be automatable this year</li>
+</ul>
+
 <div class="prev-next"><a href="process-mapping.html" class="prev"><div class="label">← Previous</div><div class="title">Process mapping</div></a><a href="vendor-management.html" class="next"><div class="label">Next →</div><div class="title">Vendor management</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

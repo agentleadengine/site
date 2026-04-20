@@ -320,6 +320,42 @@ Gap: ~3 hours of cushion per month. That's your error budget.
 </ul>
 
 <p style="margin-top:40px;">Related: <a href="vendor-management.html">Vendor management</a> · <a href="../risk/risk-management.html">Risk management</a> · <a href="../sales/customer-success-ops.html">Customer success ops</a></p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'SLA vs SLO, different purposes');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'SLA (external commitment)', items: [
+      'Contract with customer / vendor',
+      'Breach = penalty or refund',
+      'Conservative target (leave buffer)',
+      'Legal review required',
+      'Changes slowly, expensive to renegotiate'
+    ]},
+    right: {title: 'SLO (internal target)', items: [
+      'Internal operational goal',
+      'Breach = investigation, not penalty',
+      'Aggressive target (drives improvement)',
+      'Owned by engineering / ops',
+      'Iterates based on measurement'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Set SLOs tighter than SLAs, internal targets should drive above-the-commitment performance</li>
+<li>Measure against both weekly, if SLO is breaching, address before it becomes an SLA breach</li>
+<li>Don't set SLAs you can't measure, unverifiable commitments create disputes later</li>
+<li>Review SLAs annually, performance capabilities shift and under-tight SLAs leave money on the table</li>
+<li>Communicate SLO breaches to the team without finger-pointing, blame-free learning keeps SLOs accurate</li>
+</ul>
+
 <div class="prev-next"><a href="vendor-management.html" class="prev"><div class="label">← Previous</div><div class="title">Vendor management</div></a><a href="../leadership/memo-culture.html" class="next"><div class="label">Next →</div><div class="title">Memo culture</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

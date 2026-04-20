@@ -329,6 +329,36 @@ The contract auto-renews 60 days before the anniversary. The vendor emails a 10%
 </ul>
 
 <p style="margin-top:40px;">Related: <a href="automate-vs-hire.html">Automate vs hire</a> · <a href="slas-and-slos.html">SLAs + SLOs</a> · <a href="../risk/risk-management.html">Risk management</a></p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Vendor selection, score before signing');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Dimension', w: 240},
+    {title: 'What to check', w: 560}
+  ], rows: [
+    ['Capability fit', 'Can they do what you need, with examples'],
+    ['Contract terms', 'Exit clause, price caps, SLA teeth'],
+    ['Reference checks', 'Talk to 3+ current customers similar to you'],
+    ['Financial health', 'Public filings, funding runway, reputation'],
+    ['Cultural fit', 'How they handle conflict, responsiveness, bad news']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Check references from 3+ current customers before signing, the vendor's sales pitch is always the best version</li>
+<li>Negotiate exit terms upfront, lock-in without clean exit is the most common vendor regret</li>
+<li>Build SLA teeth (credits, refunds), SLAs without consequences are just documentation</li>
+<li>Review vendor performance quarterly, drift happens and vendors test the ceiling of what you'll tolerate</li>
+<li>Have a backup vendor identified for critical services, single-vendor dependency is operational risk</li>
+</ul>
+
 <div class="prev-next"><a href="automate-vs-hire.html" class="prev"><div class="label">← Previous</div><div class="title">Automate vs hire</div></a><a href="slas-and-slos.html" class="next"><div class="label">Next →</div><div class="title">SLAs + SLOs</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>
