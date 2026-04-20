@@ -332,6 +332,36 @@ window.addEventListener('sketch:ready', function(){
 </ul>
 
 <p style="margin-top:40px;">Related: <a href="risk-management.html">Risk management basics</a> · <a href="data-and-ip.html">Data + IP protection</a> · <a href="../finance/cash-flow.html">Cash flow forecasting</a></p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Business insurance basics, what each covers');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Coverage', w: 240},
+    {title: 'Protects against', w: 560}
+  ], rows: [
+    ['General liability', 'Third-party claims (slips, injuries, property damage)'],
+    ['Professional liability (E&O)', 'Errors in services you provide'],
+    ['Cyber / data breach', 'Hack response, customer notification, legal fees'],
+    ['D&O (directors + officers)', 'Lawsuits against executives personally'],
+    ['EPLI', 'Employment practice claims (harassment, discrimination)']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Get general liability + E&O at minimum before first customer, basic coverage is cheap and non-negotiable</li>
+<li>Add cyber insurance once you handle customer data, breach response without coverage bankrupts small companies</li>
+<li>Buy D&O before accepting investors, board seats + outside capital require executive protection</li>
+<li>Review coverage annually as the business scales, policies written for $500K revenue won't cover $5M revenue</li>
+<li>Read the exclusions carefully, insurance declines happen on exclusions more often than on denied claims</li>
+</ul>
+
 <div class="prev-next"><a href="data-and-ip.html" class="prev"><div class="label">← Previous</div><div class="title">Data + IP protection</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

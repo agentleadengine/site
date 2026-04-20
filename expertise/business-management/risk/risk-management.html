@@ -358,6 +358,37 @@ Any two simultaneously → escalate to CEO for intervention.
 </ul>
 
 <p style="margin-top:40px;">Related: <a href="data-and-ip.html">Data + IP protection</a> · <a href="insurance.html">Business insurance</a> · <a href="../strategy/pre-mortems.html">Pre-mortems</a></p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Risk register, 2-axis prioritization');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Risk', w: 260},
+    {title: 'Likelihood × Impact', w: 260},
+    {title: 'Action', w: 280}
+  ], rows: [
+    ['Key customer churn', 'High × High', 'Diversify + retention investment'],
+    ['Data breach', 'Low × High', 'Insurance + security controls'],
+    ['Vendor fails SLA', 'Medium × Medium', 'Backup vendor + SLA teeth'],
+    ['Key employee leaves', 'Medium × High', 'Documented SOPs + succession'],
+    ['Minor regulatory change', 'High × Low', 'Monitor, plan if triggered']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Maintain a living risk register with likelihood × impact scoring, review quarterly not just during audits</li>
+<li>Address high-likelihood + high-impact risks first, those are business-ending if they fire</li>
+<li>Don't over-invest on low-likelihood risks even with high impact, transfer them (insurance) rather than mitigate</li>
+<li>Run pre-mortems on major initiatives, asking "how does this fail" surfaces risks a register misses</li>
+<li>Communicate top 3 risks to the team + board, unshared risk awareness puts the founder alone in the boat</li>
+</ul>
+
 <div class="prev-next"><a href="../leadership/compensation.html" class="prev"><div class="label">← Previous</div><div class="title">Compensation design</div></a><a href="data-and-ip.html" class="next"><div class="label">Next →</div><div class="title">Data + IP protection</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

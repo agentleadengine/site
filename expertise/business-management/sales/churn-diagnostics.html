@@ -317,6 +317,37 @@ window.addEventListener('sketch:ready', function(){
 </ul>
 
 <p style="margin-top:40px;">Related: <a href="customer-success-ops.html">Customer success ops</a> · <a href="../finance/unit-economics.html">Unit economics</a> · <a href="funnel-math.html">Funnel math</a></p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Churn diagnosis by type');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Churn type', w: 200},
+    {title: 'Root cause', w: 280},
+    {title: 'Action', w: 320}
+  ], rows: [
+    ['Week-1 churn', 'Wrong fit / bad onboarding', 'Tighten ICP, rebuild onboarding'],
+    ['Month-3 churn', 'Failed to reach aha / value', 'Improve activation flow'],
+    ['Year-1 churn', 'Feature gap / competitor better', 'Product roadmap response'],
+    ['Involuntary (payment)', 'Card expired, dunning failed', 'Dunning improvement'],
+    ['Voluntary (cancel)', 'Various, survey to learn', 'Address top 2 reasons']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Diagnose churn by cohort and tenure, week-1 churn and year-1 churn need completely different fixes</li>
+<li>Survey every cancellation within 48 hours, real reason captured while fresh beats reason given at exit interview later</li>
+<li>Separate voluntary from involuntary churn, dunning optimization can recover 30-50% of involuntary with no product changes</li>
+<li>Fix the top 2 churn causes before scoping others, addressing the long tail of 1-off reasons produces no lift</li>
+<li>Review churn monthly with exec team, churn drift is usually fixable when caught early and terminal when ignored</li>
+</ul>
+
 <div class="prev-next"><a href="negotiation.html" class="prev"><div class="label">← Previous</div><div class="title">Pricing + negotiation</div></a><a href="customer-success-ops.html" class="next"><div class="label">Next →</div><div class="title">Customer success ops</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

@@ -308,6 +308,33 @@ If you double qualified→opp from 50% to 100%, you double total deals, that's t
 </ul>
 
 <p style="margin-top:40px;">Related: <a href="pipeline-design.html">Pipeline design</a> · <a href="../finance/unit-economics.html">Unit economics</a> · <a href="churn-diagnostics.html">Churn diagnostics</a></p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Work backwards from revenue target');
+  sketch.numberedSteps(svg, rc, {x: 40, y: 60, w: 820, stepH: 30, items: [
+    '$500K new ARR target this quarter',
+    '÷ $25K ACV = 20 closed deals needed',
+    '÷ 20% close rate = 100 SQLs needed',
+    '÷ 30% MQL→SQL = 333 MQLs needed',
+    '÷ 5% visitor→MQL = 6,660 qualified visitors needed'
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Work backwards from revenue target to required top-of-funnel, missing any stage's conversion rate makes the math fiction</li>
+<li>Review conversion rates per stage monthly, drift in one stage compounds through the funnel</li>
+<li>Tie marketing's MQL quota to sales' actual capacity, unmatched lead volume burns out sales without producing revenue</li>
+<li>Separate funnel math by segment, enterprise conversion rates differ wildly from SMB and blended averages mislead</li>
+<li>When target is unrealistic given historical rates, flag it before the quarter starts, surprise misses are worst</li>
+</ul>
+
 <div class="prev-next"><a href="../strategy/decision-frameworks.html" class="prev"><div class="label">← Previous</div><div class="title">Decision frameworks</div></a><a href="pipeline-design.html" class="next"><div class="label">Next →</div><div class="title">Pipeline design</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

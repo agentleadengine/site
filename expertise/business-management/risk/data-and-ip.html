@@ -344,6 +344,33 @@ window.addEventListener('sketch:ready', function(){
 </ul>
 
 <p style="margin-top:40px;">Related: <a href="risk-management.html">Risk management basics</a> · <a href="insurance.html">Business insurance</a> · <a href="../execution/vendor-management.html">Vendor management</a></p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Data + IP protection, the essentials');
+  sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 34, layers: [
+    {label: 'IP assignment from employees + contractors', sub: 'signed at offer + project start'},
+    {label: 'Trademarks on brand + product names', sub: 'register early, fight dilution'},
+    {label: 'Data security basics', sub: 'SSO, MFA, encryption at rest + transit'},
+    {label: 'Access controls by role', sub: 'least privilege, offboarding discipline'},
+    {label: 'Backup + recovery', sub: 'tested restore, not just backup'}
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Require IP assignment agreements from every employee + contractor before they start work, retroactive assignment is legally messy</li>
+<li>Trademark brand names early, waiting until you're big invites squatters and costly disputes</li>
+<li>Implement SSO + MFA across every business-critical tool, credential breaches are the most common cause of data incidents</li>
+<li>Test backup restore quarterly, backups that were never restored don't actually protect you</li>
+<li>Review access controls at every offboarding, ex-employee access is one of the biggest data leak vectors</li>
+</ul>
+
 <div class="prev-next"><a href="risk-management.html" class="prev"><div class="label">← Previous</div><div class="title">Risk management basics</div></a><a href="insurance.html" class="next"><div class="label">Next →</div><div class="title">Business insurance</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

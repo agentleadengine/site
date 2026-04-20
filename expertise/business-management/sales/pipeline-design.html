@@ -316,6 +316,33 @@ window.addEventListener('sketch:ready', function(){
 </ul>
 
 <p style="margin-top:40px;">Related: <a href="funnel-math.html">Funnel math</a> · <a href="negotiation.html">Pricing + negotiation</a> · <a href="customer-success-ops.html">Customer success ops</a></p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Pipeline stages, clear exit criteria per stage');
+  sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 34, layers: [
+    {label: 'Lead (MQL)', sub: 'fits ICP, opted in / contacted'},
+    {label: 'SQL', sub: 'discovery completed, pain confirmed'},
+    {label: 'Opportunity', sub: 'decision-maker engaged, budget verified'},
+    {label: 'Proposal / negotiation', sub: 'proposal sent, objections surfaced'},
+    {label: 'Closed-won / closed-lost', sub: 'decision made + documented'}
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Define explicit exit criteria per stage, "gut feel" stage progression produces pipeline theater</li>
+<li>Force rep to document progression evidence, unverifiable pipeline numbers lie consistently</li>
+<li>Track conversion rate per stage + time per stage, the bottleneck is usually one stage not the whole funnel</li>
+<li>Clean out stale deals quarterly, pipeline that hasn't moved in 90 days is usually dead but inflates forecasts</li>
+<li>Align marketing + sales definitions, MQL disagreements are where handoffs and accountability break</li>
+</ul>
+
 <div class="prev-next"><a href="funnel-math.html" class="prev"><div class="label">← Previous</div><div class="title">Funnel math</div></a><a href="negotiation.html" class="next"><div class="label">Next →</div><div class="title">Pricing + negotiation</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

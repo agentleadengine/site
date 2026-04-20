@@ -314,6 +314,36 @@ window.addEventListener('sketch:ready', function(){
 </ul>
 
 <p style="margin-top:40px;">Related: <a href="../finance/pricing.html">Pricing frameworks</a> · <a href="pipeline-design.html">Pipeline design</a> · <a href="../finance/unit-economics.html">Unit economics</a></p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Discount requests, what to trade for what');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Buyer asks for', w: 200},
+    {title: 'Trade for (don\'t give free)', w: 280},
+    {title: 'Why', w: 320}
+  ], rows: [
+    ['10% discount', 'Annual upfront vs monthly', 'Cash flow + retention'],
+    ['20% discount', 'Multi-year commit + case study', 'LTV lock + marketing asset'],
+    ['Lower starting price', 'Usage-based escalator', 'Revenue grows with them'],
+    ['Extended terms', 'Deposit + milestone payments', 'Risk management']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Never discount without a trade, every discount should earn the company something in return</li>
+<li>Train AEs on trade-based negotiation, "what would make this work for you" + "here's what I need from you"</li>
+<li>Know your walk-away number before entering any negotiation, emotional negotiation is where margin disappears</li>
+<li>Document approved discount bands, without approval rules AEs discount to whatever closes the deal</li>
+<li>Review discount patterns monthly, consistent discounting at similar levels usually means list prices are wrong</li>
+</ul>
+
 <div class="prev-next"><a href="pipeline-design.html" class="prev"><div class="label">← Previous</div><div class="title">Pipeline design</div></a><a href="churn-diagnostics.html" class="next"><div class="label">Next →</div><div class="title">Churn diagnostics</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>
