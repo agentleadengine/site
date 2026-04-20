@@ -286,6 +286,26 @@ window.addEventListener('sketch:ready', function(){
 <p>In-memory BM25 for small corpora or prototyping. Not production-scale.</p>
 
 <h2>Tokenization matters</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'BM25 tokenization knobs');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Knob', w: 220},
+    {title: 'Effect', w: 580}
+  ], rows: [
+    ['Lowercase', 'Default; always on'],
+    ['Stopword removal', 'Can hurt precision on short queries'],
+    ['Stemming', 'Helps recall; hurts precision on rare terms'],
+    ['Lemmatization', 'Better than stemming; more compute'],
+    ['N-grams', 'Enable phrase matching'],
+    ['Language-specific', 'Required for non-English']
+  ]});
+});
+</script>
 <p>BM25 quality depends heavily on tokenization:</p>
 <ul>
   <li>Lowercase normalization</li>
@@ -327,7 +347,12 @@ window.addEventListener('sketch:ready', function(){
 <h2>The old-school lesson</h2>
 <p>BM25 is fast, predictable, debuggable, and free of GPU dependencies. When your vector search is broken, your metrics are confusing, or your embeddings go stale, BM25 still works. Keep it in the stack as a fallback if nothing else.</p>
 
-<p style="margin-top:40px;">Next: <a href="hybrid.html">Hybrid retrieval</a>.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>Keep BM25 in your stack even if you have dense. The blind spots are asymmetric.</li>
+<li>For specialized domains, tune the tokenizer; defaults will miss technical terms.</li>
+<li>Try SPLADE if you want learned sparse without running two retrievers.</li>
+</ul>
 <div class="prev-next"><a href="vector-search.html" class="prev"><div class="label">← Previous</div><div class="title">Vector similarity search</div></a><a href="hybrid.html" class="next"><div class="label">Next →</div><div class="title">Hybrid retrieval</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

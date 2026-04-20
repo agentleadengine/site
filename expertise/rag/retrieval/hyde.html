@@ -262,7 +262,29 @@ window.addEventListener('sketch:ready', function(){
   <li>No labeled query-doc pairs are available to fine-tune an embedding model</li>
 </ul>
 
-<h2>When HyDE doesn't help</h2>
+<h2>When HyDE helps vs doesn't</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'HyDE: helps vs doesn\'t help');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Helps', items: [
+      'Short / noisy queries',
+      'Answer-shaped corpus',
+      'Vocab mismatch query vs doc',
+      'No labeled data to fine-tune'
+    ]},
+    right: {title: 'Doesn\'t help', items: [
+      'Already detailed queries',
+      'Strong BM25 keyword overlap',
+      'Tight latency budget',
+      'LLM can\'t hallucinate the domain']}
+  });
+});
+</script>
 <ul>
   <li>Queries are already detailed and verbose</li>
   <li>Corpus has strong BM25-friendly keyword overlap with queries</li>
@@ -313,7 +335,12 @@ ASSISTANT: [hypothetical passage]
 <h2>The mental model</h2>
 <p>Dense retrieval matches "the shape of what you're asking for" to "the shape of documents in the corpus." A short query is a poor shape-match. An answer passage is a great shape-match. HyDE manufactures the latter from the former. That's it.</p>
 
-<p style="margin-top:40px;">Next: <a href="multi-query.html">Multi-query + fusion</a>.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>HyDE is a quick win for short-query corpora; add one LLM call upstream.</li>
+<li>Use a cheap fast model for the hypothetical; accuracy doesn't matter, shape does.</li>
+<li>Never show the hypothetical to the user or pass it to final generation.</li>
+</ul>
 <div class="prev-next"><a href="query-rewriting.html" class="prev"><div class="label">← Previous</div><div class="title">Query rewriting</div></a><a href="multi-query.html" class="next"><div class="label">Next →</div><div class="title">Multi-query + fusion</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

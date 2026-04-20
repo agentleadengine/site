@@ -259,6 +259,23 @@ window.addEventListener('sketch:ready', function(){
 <p>The reranker lets you cast a wider net at retrieval, then filter precisely. Without one, you're stuck relying on the embedding model's own ranking, which is noisier.</p>
 
 <h2>Similarity metrics</h2>
+<div class="sketch" data-viewbox="0 0 900 240"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 240);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Similarity metrics');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Metric', w: 220},
+    {title: 'When to use', w: 580}
+  ], rows: [
+    ['Cosine', 'Default; scale-invariant'],
+    ['Dot product', 'When vectors are normalized, = cosine, faster'],
+    ['Euclidean', 'Rare for text; sensitive to magnitude']
+  ]});
+});
+</script>
 
 <h3>Cosine similarity</h3>
 <p>Measures angle between vectors, ignores magnitude. Most common. Ranges from -1 (opposite) to 1 (identical).</p>
@@ -308,7 +325,12 @@ window.addEventListener('sketch:ready', function(){
 
 <p>Vector search is the foundation. Everything after it is where the quality wins come from.</p>
 
-<p style="margin-top:40px;">Next: <a href="bm25-sparse.html">BM25 and sparse retrieval</a>.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>Always match the similarity metric your embedding model expects.</li>
+<li>Retrieve wide (top-50+), rerank narrow (top-5–10). Not top-5 alone.</li>
+<li>Set a score threshold to distinguish "nothing found" from "something weak."</li>
+</ul>
 <div class="prev-next"><a href="../vectors/choosing-a-db.html" class="prev"><div class="label">← Previous</div><div class="title">Choosing a vector DB</div></a><a href="bm25-sparse.html" class="next"><div class="label">Next →</div><div class="title">BM25 and sparse retrieval</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

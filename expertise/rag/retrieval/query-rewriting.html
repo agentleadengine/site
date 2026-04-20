@@ -315,6 +315,28 @@ USER: [raw query]
 <p>Generate multiple rewrites and run retrieval for each. Union and dedupe. More coverage, more cost. See <a href="multi-query.html">multi-query + fusion</a>.</p>
 
 <h2>When to skip query rewriting</h2>
+<div class="sketch" data-viewbox="0 0 900 240"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 240);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Query rewriting: use vs skip');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 160,
+    left: {title: 'Use rewriting', items: [
+      'Conversational / multi-turn',
+      'Short ambiguous queries',
+      'Vocab mismatch (colloquial vs formal)',
+      'Domain with many synonyms'
+    ]},
+    right: {title: 'Skip rewriting', items: [
+      'Short queries, clear intent',
+      'Latency-critical (under 500ms)',
+      'Corpus matches user vocab',
+      'Already have strong retrieval']}
+  });
+});
+</script>
 <ul>
   <li>Very short queries with clear intent ("reset password")</li>
   <li>Latency-critical applications where the extra LLM call is too expensive</li>
@@ -339,7 +361,12 @@ USER: [raw query]
   <li>A/B testing rewriter prompts against held-out evaluation queries</li>
 </ul>
 
-<p style="margin-top:40px;">Next: <a href="hyde.html">HyDE</a>.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>Use a cheap fast model (Haiku / 4o-mini) for rewriting; don't spend generator budget here.</li>
+<li>Log both raw and rewritten queries so you can diagnose intent drift.</li>
+<li>A/B test: does rewriting actually help your eval set?</li>
+</ul>
 <div class="prev-next"><a href="reranking.html" class="prev"><div class="label">← Previous</div><div class="title">Reranking</div></a><a href="hyde.html" class="next"><div class="label">Next →</div><div class="title">HyDE</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

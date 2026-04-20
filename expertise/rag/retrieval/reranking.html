@@ -279,7 +279,21 @@ window.addEventListener('sketch:ready', function(){
 <p>Pass the top-20 candidates to a small LLM with a prompt to re-rank. Highest quality in some cases, but slower and more expensive per query. Worth trying when nothing else works.</p>
 
 <h2>Latency</h2>
-<p>Cross-encoder reranking adds latency:</p>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Reranker latency on top-50');
+  sketch.bars(svg, rc, {x: 40, y: 60, w: 820, labelW: 240, items: [
+    {label: 'MiniLM cross-encoder', value: 15, note: '30–100ms GPU'},
+    {label: 'bge-reranker-large', value: 35, note: '100–300ms GPU'},
+    {label: 'Cohere Rerank 3', value: 45, note: '100–400ms (network+inference)'},
+    {label: 'LLM-as-reranker (top-20)', value: 95, note: '500–2000ms'}
+  ]});
+});
+</script>
 <ul>
   <li>ms-marco-MiniLM on top-50: 30-100ms on GPU</li>
   <li>bge-reranker-large on top-50: 100-300ms on GPU</li>
@@ -344,7 +358,12 @@ window.addEventListener('sketch:ready', function(){
 
 <p>This stack handles the 80% case well. It's also what I'd A/B test against any naive "just vector search" baseline.</p>
 
-<p style="margin-top:40px;">Next: <a href="query-rewriting.html">Query rewriting</a>.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>Default: hybrid retrieve top-50 + cross-encoder rerank to top-10.</li>
+<li>Match reranker to latency budget. Not every query needs an LLM reranker.</li>
+<li>Chain rerankers (fast→slow) when candidate sets are huge.</li>
+</ul>
 <div class="prev-next"><a href="hybrid.html" class="prev"><div class="label">← Previous</div><div class="title">Hybrid retrieval</div></a><a href="query-rewriting.html" class="next"><div class="label">Next →</div><div class="title">Query rewriting</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

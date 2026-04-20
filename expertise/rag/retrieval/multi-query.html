@@ -339,6 +339,24 @@ Sort documents by rrf_score. Take top-K.
 <p>This adds about 150-300ms of latency and roughly 4x retrieval cost. For queries that benefited from it, quality is noticeably better. For queries that didn't, you've paid the cost without improvement.</p>
 
 <h2>Routing: when to use multi-query</h2>
+<div class="sketch" data-viewbox="0 0 900 240"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 240);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Route by query shape');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Query shape', w: 320},
+    {title: 'Strategy', w: 480}
+  ], rows: [
+    ['Short (< 5 words)', 'Multi-query'],
+    ['Long + detailed', 'Single-query'],
+    ['Vague / ambiguous', 'Multi-query'],
+    ['Specific terminology', 'Single-query']
+  ]});
+});
+</script>
 <p>Not every query benefits. A lightweight classifier or prompt can decide:</p>
 <ul>
   <li>Short queries (&lt; 5 words): use multi-query</li>
@@ -349,7 +367,12 @@ Sort documents by rrf_score. Take top-K.
 
 <p>Skip multi-query when it doesn't help. Use it when it does. Measurement tells you which is which.</p>
 
-<p style="margin-top:40px;">Next: <a href="../advanced/agentic-rag.html">Agentic RAG</a>.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>Parallelize query variations. Latency stays manageable if you do.</li>
+<li>Route by query shape rather than applying multi-query to everything.</li>
+<li>Rerank the fused output; the extra recall is wasted without it.</li>
+</ul>
 <div class="prev-next"><a href="hyde.html" class="prev"><div class="label">← Previous</div><div class="title">HyDE</div></a><a href="../advanced/agentic-rag.html" class="next"><div class="label">Next →</div><div class="title">Agentic RAG</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

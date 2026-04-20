@@ -341,6 +341,21 @@ final = α × norm(dense_score) + (1-α) × norm(sparse_score)
 <p>Hybrid is a reliable default, not a universal solution.</p>
 
 <h2>The diagnostic workflow</h2>
+<div class="sketch" data-viewbox="0 0 900 240"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 240);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Hybrid debugging: isolate the signal');
+  sketch.numberedSteps(svg, rc, {direction: 'h', x: 30, y: 80, w: 840, items: [
+    {title: 'Dense-only', sub: 'is the answer here?'},
+    {title: 'Sparse-only', sub: 'is the answer here?'},
+    {title: 'Hybrid', sub: 'did fusion hurt or help?'},
+    {title: 'Adjust', sub: 'tune weights or routing'}
+  ]});
+});
+</script>
 <p>When a query is failing:</p>
 <ol>
   <li>Run dense-only: did it return the right answer?</li>
@@ -357,7 +372,12 @@ final = α × norm(dense_score) + (1-α) × norm(sparse_score)
 
 <p>Some queries do best on dense only. Some do best on sparse only. Hybrid averages them, which is usually, but not always, a win. Diagnostic data helps you decide when to override hybrid with a routing strategy.</p>
 
-<p style="margin-top:40px;">Next: <a href="reranking.html">Reranking</a>.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>Default to RRF. Weighted sum is a tuning rabbit hole.</li>
+<li>Retrieve deeper than your final k from each side to give fusion more signal.</li>
+<li>When hybrid underperforms a single retriever, route by query type instead.</li>
+</ul>
 <div class="prev-next"><a href="bm25-sparse.html" class="prev"><div class="label">← Previous</div><div class="title">BM25 and sparse retrieval</div></a><a href="reranking.html" class="next"><div class="label">Next →</div><div class="title">Reranking</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>
