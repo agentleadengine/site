@@ -289,6 +289,23 @@ window.addEventListener('sketch:ready', function(){
 </ul>
 
 <h2>Where metadata comes from</h2>
+<div class="sketch" data-viewbox="0 0 900 240"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 240);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Three sources of metadata');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Source', w: 220},
+    {title: 'What you get', w: 580}
+  ], rows: [
+    ['Source system API', 'Author, labels, created_at, permissions'],
+    ['Document itself', 'Title, section path, structure'],
+    ['LLM / NER inference', 'Topics, entities, summaries']
+  ]});
+});
+</script>
 
 <h3>From the source system</h3>
 <p>Confluence gives you author, labels, space, creation date. Drive gives you owner, sharing settings, MIME type. APIs usually return more metadata than you think, capture it all, decide what to use later.</p>
@@ -321,6 +338,28 @@ window.addEventListener('sketch:ready', function(){
 </ol>
 
 <h2>Pre-filter vs post-filter</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[2];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Pre-filter vs post-filter');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Pre-filter', items: [
+      'Narrow candidates first',
+      'Exact + guaranteed k results',
+      'Slower on selective filters',
+      'Use for tenant_id, user_id'
+    ]},
+    right: {title: 'Post-filter', items: [
+      'Vector search first, filter after',
+      'May return fewer than k',
+      'Fast on broad filters',
+      'Use for language, content-type']}
+  });
+});
+</script>
 <p>Vector DBs handle metadata filtering in one of two ways:</p>
 
 <h3>Pre-filter</h3>
@@ -348,7 +387,12 @@ window.addEventListener('sketch:ready', function(){
   <li><strong>No embedding_model_version.</strong> When you upgrade embedding models, you can't tell which chunks need reprocessing.</li>
 </ul>
 
-<p style="margin-top:40px;">Next: <a href="../chunking/why-chunking.html">Why chunking matters</a>.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>Write down the metadata schema before you ingest anything. It's harder to add later.</li>
+<li>Capture permissions as a list from day one.</li>
+<li>Include embedding_model_version so upgrades don't orphan chunks.</li>
+</ul>
 <div class="prev-next"><a href="ocr.html" class="prev"><div class="label">← Previous</div><div class="title">OCR for scanned documents</div></a><a href="../chunking/why-chunking.html" class="next"><div class="label">Next →</div><div class="title">Why chunking matters</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

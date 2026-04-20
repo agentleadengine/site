@@ -250,6 +250,26 @@ window.addEventListener('sketch:ready', function(){
 <p>No text layer. Just pixels. Requires OCR. See <a href="ocr.html">OCR</a>.</p>
 
 <h2>The library landscape</h2>
+<div class="sketch" data-viewbox="0 0 900 320"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 320);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'PDF parsers ranked by capability');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Tool', w: 240},
+    {title: 'Sweet spot', w: 560}
+  ], rows: [
+    ['PyPDF / pdfplumber', 'Simple PDFs, fast, free'],
+    ['PyMuPDF (fitz)', 'Better layout handling, AGPL'],
+    ['Unstructured.io', 'Structure-preserving, many formats'],
+    ['Docling (IBM)', 'Strong on complex docs, current default'],
+    ['LLM vision models', 'Hardest docs, expensive per page'],
+    ['Mathpix / Llamaparse', 'Commercial; specialized']
+  ]});
+});
+</script>
 
 <h3>PyPDF / pdfplumber</h3>
 <p>Good for clean, simple PDFs. Fast and free. Fails on multi-column layouts, tables, and scanned content. My baseline for quick prototyping.</p>
@@ -270,6 +290,22 @@ window.addEventListener('sketch:ready', function(){
 <p>Mathpix for math-heavy PDFs. Llamaparse for general high-quality parsing. Azure and AWS are decent general-purpose. All charge per page.</p>
 
 <h2>The parsing decision tree</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[2];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Parser by PDF type');
+  sketch.numberedSteps(svg, rc, {direction: 'h', x: 30, y: 80, w: 840, items: [
+    {title: 'Text-selectable?', sub: 'no → OCR'},
+    {title: 'Simple layout?', sub: 'pdfplumber'},
+    {title: 'Tables / structure?', sub: 'Docling / Unstructured'},
+    {title: 'Math / figures?', sub: 'Mathpix / vision'},
+    {title: 'Accuracy > cost?', sub: 'LLM parser'}
+  ]});
+});
+</script>
 <ol>
   <li>Is the PDF text-selectable in Preview/Acrobat? If no → OCR pipeline.</li>
   <li>Is it a single-column, simple layout? pdfplumber or PyMuPDF.</li>
@@ -317,7 +353,12 @@ window.addEventListener('sketch:ready', function(){
 <h2>The commercial reality</h2>
 <p>For any serious business-critical RAG system, I recommend budgeting for LLM-based parsing or a commercial service on difficult documents. Over a full corpus, paying $0.05-0.20/page for quality parsing is often cheaper than debugging retrieval failures caused by bad text extraction.</p>
 
-<p style="margin-top:40px;">Next: <a href="parsing-html.html">Parsing HTML + web pages</a>.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>Run the ground-truth test on 10 random PDFs from your corpus before picking a parser.</li>
+<li>Budget for a tier-up on hard documents; don't one-size-fits-all.</li>
+<li>Read <a href="ocr.html">OCR</a> if any of your PDFs are scanned.</li>
+</ul>
 <div class="prev-next"><a href="ingestion-pipeline.html" class="prev"><div class="label">← Previous</div><div class="title">The ingestion pipeline</div></a><a href="parsing-html.html" class="next"><div class="label">Next →</div><div class="title">Parsing HTML + web pages</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

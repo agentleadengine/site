@@ -272,6 +272,24 @@ window.addEventListener('sketch:ready', function(){
 <p>Works for: large financial statements, time series, anything with a lot of numeric comparison.</p>
 
 <h2>Picking a strategy</h2>
+<div class="sketch" data-viewbox="0 0 900 240"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 240);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Strategy by question type');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'User question shape', w: 360},
+    {title: 'Strategy', w: 440}
+  ], rows: [
+    ['"What was X in [year]?"', 'Row-level retrieval'],
+    ['"How did X change over time?"', 'Serialize whole table'],
+    ['"Find items where X between Y and Z"', 'Structured query'],
+    ['"Summarize this financial table"', 'Pre-generated summary']
+  ]});
+});
+</script>
 <p>Look at what questions users actually ask:</p>
 <ul>
   <li>"What was revenue in 2022?" → row-level retrieval works</li>
@@ -289,6 +307,24 @@ window.addEventListener('sketch:ready', function(){
 </ul>
 
 <h2>Figures and images</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[2];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Four approaches to figures');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Approach', w: 260},
+    {title: 'Cost vs quality', w: 540}
+  ], rows: [
+    ['Captions-only baseline', 'Cheap, okay on 70% of queries'],
+    ['Vision-model descriptions', 'Pricey; best quality'],
+    ['Retrieve adjacent text', 'Free; often enough'],
+    ['Multimodal embeddings', 'Emerging; strong for image-heavy content']
+  ]});
+});
+</script>
 
 <h3>The captions-only baseline</h3>
 <p>Extract and embed just the figure caption. Fast, cheap, catches most user questions that reference figures by number or topic.</p>
@@ -314,7 +350,12 @@ window.addEventListener('sketch:ready', function(){
 
 <p>This is significantly more work than "dump text into a vector DB" but it's the difference between a RAG system that handles technical docs and one that handles "some docs."</p>
 
-<p style="margin-top:40px;">Next: <a href="ocr.html">OCR for scanned documents</a>.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>Identify what fraction of your corpus contains tables or figures. If &gt;10%, budget for proper handling.</li>
+<li>Match strategy to user-question shape, not to what parser defaults provide.</li>
+<li>For high-stakes numeric docs, consider structured-query hybrid.</li>
+</ul>
 <div class="prev-next"><a href="parsing-html.html" class="prev"><div class="label">← Previous</div><div class="title">Parsing HTML + web pages</div></a><a href="ocr.html" class="next"><div class="label">Next →</div><div class="title">OCR for scanned documents</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

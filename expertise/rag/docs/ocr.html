@@ -270,6 +270,24 @@ window.addEventListener('sketch:ready', function(){
 <p>Newer specialized models for academic papers, scientific documents, and math. Marker and Nougat are particularly strong on technical content.</p>
 
 <h2>The quality tiers</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'OCR tier by use case');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Tier', w: 200},
+    {title: 'When to use', w: 600}
+  ], rows: [
+    ['Tier 1 (Tesseract)', 'Clean English print, free, 95%+'],
+    ['Tier 2 (Textract / Azure)', 'Enterprise docs with layout, 98%+'],
+    ['Tier 3 (Vision LLM)', 'Hard docs: tables, handwriting, 99%+'],
+    ['Specialized', 'Math / papers: Marker, Nougat']
+  ]});
+});
+</script>
 <ol>
   <li><strong>Tier 1 (freebie):</strong> Tesseract on clean English print. 95%+ accuracy. Good for most scanned business documents.</li>
   <li><strong>Tier 2 (commercial):</strong> Textract / Azure DI. 98%+ on clean, handles layouts well.</li>
@@ -316,7 +334,12 @@ window.addEventListener('sketch:ready', function(){
 
 <p>Garbage-in still compounds. OCR'd text quality bounds retrieval quality.</p>
 
-<p style="margin-top:40px;">Next: <a href="metadata.html">Metadata extraction</a>.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>Detect text layer first; don't OCR docs that don't need it.</li>
+<li>Tier-route by document quality: cheap OCR for easy, expensive for hard.</li>
+<li>Always run a post-OCR cleanup pass before embedding.</li>
+</ul>
 <div class="prev-next"><a href="tables-figures.html" class="prev"><div class="label">← Previous</div><div class="title">Tables and figures</div></a><a href="metadata.html" class="next"><div class="label">Next →</div><div class="title">Metadata extraction</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

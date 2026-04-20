@@ -252,6 +252,24 @@ window.addEventListener('sketch:ready', function(){
 </ol>
 
 <h2>Full vs delta vs event-driven</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Three ingestion patterns by complexity');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Pattern', w: 200},
+    {title: 'When to use', w: 600}
+  ], rows: [
+    ['Full reindex', '< 100K docs, nightly rebuild window works'],
+    ['Delta sync', 'Medium scale; change-detection is reliable'],
+    ['Event-driven', 'Freshness in minutes; full CDC / webhooks'],
+    ['Hybrid', 'Delta + weekly full; common compromise']
+  ]});
+});
+</script>
 
 <h3>Full reindex</h3>
 <p>Simplest. Rebuild the entire index from scratch on a schedule. Safe, easy to reason about. Expensive and slow for large corpora. Okay up to ~100K documents or whenever the corpus fits in a nightly rebuild window.</p>
@@ -322,7 +340,12 @@ window.addEventListener('sketch:ready', function(){
 <h2>The build-vs-buy trap</h2>
 <p>Commercial "RAG-as-a-service" ingestion tools (Vectara, Superlinked, etc.) save time on the happy path and cost you when your data has edge cases, which it will. For a serious system, expect to own the ingestion pipeline end-to-end. The question isn't whether to build, it's whether to build now or after you've outgrown a vendor.</p>
 
-<p style="margin-top:40px;">Next: <a href="parsing-pdfs.html">Parsing PDFs</a>.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>Draw your own ingestion pipeline end-to-end. Mark which steps you own vs which you outsource.</li>
+<li>Pick the simplest pattern (full / delta / event) that meets your freshness SLA.</li>
+<li>Read <a href="parsing-pdfs.html">parsing PDFs</a> for the step that trips up most projects.</li>
+</ul>
 <div class="prev-next"><a href="../foundations/when-not-to-use.html" class="prev"><div class="label">← Previous</div><div class="title">When not to use RAG</div></a><a href="parsing-pdfs.html" class="next"><div class="label">Next →</div><div class="title">Parsing PDFs</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

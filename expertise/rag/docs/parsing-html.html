@@ -254,6 +254,25 @@ window.addEventListener('sketch:ready', function(){
 <p>Absolute-ize relative URLs. Keep link targets as metadata if they matter for your use case.</p>
 
 <h2>The library landscape</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'HTML extraction tools');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Tool', w: 220},
+    {title: 'Sweet spot', w: 580}
+  ], rows: [
+    ['Trafilatura', 'General-purpose articles; default'],
+    ['Readability.js', 'Article-style content; reader mode'],
+    ['BeautifulSoup + selectors', 'Known structure; brittle but precise'],
+    ['Firecrawl / Jina Reader', 'Managed; RAG-oriented scraping'],
+    ['Playwright + extractor', 'SPAs requiring JS render']
+  ]});
+});
+</script>
 
 <h3>Readability / trafilatura</h3>
 <p>Python libraries that heuristically extract "main content" from HTML. Trafilatura is my default, best signal-to-noise ratio on general-purpose web content. Handles blog posts, news articles, documentation pages well.</p>
@@ -294,6 +313,25 @@ window.addEventListener('sketch:ready', function(){
 </ul>
 
 <h2>The hidden problems</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[2];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Hidden HTML problems that trip up RAG');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Problem', w: 220},
+    {title: 'Fix', w: 580}
+  ], rows: [
+    ['Duplicate content', 'Dedupe by content hash + canonical URL'],
+    ['Stale + evergreen mixed', 'Capture publish date; boost recency'],
+    ['Paywall / auth wall', 'Check what scraper sees, not the URL'],
+    ['SPA needs JS render', 'Playwright or skip'],
+    ['Rate limiting / bans', 'Polite delays, user-agent rotation']
+  ]});
+});
+</script>
 
 <h3>Duplicate content</h3>
 <p>Many sites have print versions, AMP versions, paginated archives, and tag pages that duplicate core content. Deduplicate aggressively during ingestion.</p>
@@ -313,7 +351,12 @@ window.addEventListener('sketch:ready', function(){
 <h2>The quality check</h2>
 <p>Same as for PDFs: sample 10 pages randomly from your extracted corpus. Look at the raw extracted text. Is it the article? Is it the article plus ten lines of nav menu? Is it empty because the extraction failed silently? Fix the extraction before embedding.</p>
 
-<p style="margin-top:40px;">Next: <a href="tables-figures.html">Tables and figures</a>.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>Default to Trafilatura → Markdown unless your corpus needs something specialized.</li>
+<li>Run the quality check on 10 pages before trusting the output.</li>
+<li>Add publish date + canonical URL as metadata on every chunk.</li>
+</ul>
 <div class="prev-next"><a href="parsing-pdfs.html" class="prev"><div class="label">← Previous</div><div class="title">Parsing PDFs</div></a><a href="tables-figures.html" class="next"><div class="label">Next →</div><div class="title">Tables and figures</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>
