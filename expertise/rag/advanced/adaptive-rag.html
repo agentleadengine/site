@@ -278,6 +278,24 @@ window.addEventListener('sketch:ready', function(){
 <p>Query unrelated to your domain, decline or deflect.</p>
 
 <h2>Classifier options</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Four ways to classify the query');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Classifier', w: 240},
+    {title: 'Cost / quality', w: 560}
+  ], rows: [
+    ['LLM-based', 'Flexible; 50–200ms per query'],
+    ['Fine-tuned classifier', 'Fast + cheap; needs labeled data'],
+    ['Heuristic (rules)', 'Free, fast; limited'],
+    ['Embedding nearest-neighbor', 'Medium speed, medium quality']
+  ]});
+});
+</script>
 
 <h3>LLM-based</h3>
 <p>Prompt a small fast model to classify the query. Simple, flexible, costs a call per query. Most common in production.</p>
@@ -361,7 +379,12 @@ OUTPUT: [classification] + reasoning
 
 <p>Each step: build the route, measure the quality and cost impact, keep what helps.</p>
 
-<p style="margin-top:40px;">Next: <a href="corrective-rag.html">Corrective RAG (CRAG)</a>.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>Start simple, add routes as failure modes surface. Don't build v5 from scratch.</li>
+<li>Lowest-effort win: route trivial queries to no-retrieval.</li>
+<li>Track routing distribution; if 90% go to one route, the classifier isn't earning its cost.</li>
+</ul>
 <div class="prev-next"><a href="graph-rag.html" class="prev"><div class="label">← Previous</div><div class="title">GraphRAG</div></a><a href="corrective-rag.html" class="next"><div class="label">Next →</div><div class="title">Corrective RAG (CRAG)</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

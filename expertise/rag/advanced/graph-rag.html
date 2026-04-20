@@ -269,7 +269,33 @@ window.addEventListener('sketch:ready', function(){
 <h4>Global search</h4>
 <p>For corpus-wide questions. The LLM processes each community summary, generates partial answers, then aggregates them into a final response. Best for "themes," "patterns," "summarize across."</p>
 
-<h2>Strengths</h2>
+<h2>Strengths vs weaknesses</h2>
+<div class="sketch" data-viewbox="0 0 900 280"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 280);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'GraphRAG: strengths vs weaknesses');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 200,
+    left: {title: 'Strengths', items: [
+      'Corpus-wide synthesis',
+      'Explicit entity relationships',
+      'Community summaries for abstract queries',
+      'Coherent multi-hop answers',
+      'Handles "themes" + "patterns" queries'
+    ]},
+    right: {title: 'Weaknesses', items: [
+      'Indexing 10–100× more expensive',
+      'Graph updates complex',
+      'Over-engineered for simple Q&A',
+      'Summaries can drift from source',
+      'Most teams don\'t need it']}
+  });
+});
+</script>
+
+<h3>Strengths</h3>
 <ul>
   <li>Handles corpus-wide synthesis better than any vector-only approach</li>
   <li>Explicit entity and relationship modeling enables traversal queries</li>
@@ -277,7 +303,7 @@ window.addEventListener('sketch:ready', function(){
   <li>Output tends to be more coherent on complex queries</li>
 </ul>
 
-<h2>Weaknesses</h2>
+<h3>Weaknesses</h3>
 <ul>
   <li>Indexing is expensive: LLM calls for every chunk (entity + relationship extraction)</li>
   <li>Graph maintenance is complex when documents update</li>
@@ -332,7 +358,12 @@ window.addEventListener('sketch:ready', function(){
 
 <p>GraphRAG is impressive and genuinely useful for the right use case. It's also often over-adopted by teams who would do better with well-tuned vanilla RAG.</p>
 
-<p style="margin-top:40px;">Next: <a href="adaptive-rag.html">Adaptive RAG</a>.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>Exhaust vanilla RAG tuning before reaching for GraphRAG. It's expensive.</li>
+<li>If you go GraphRAG, hybrid with vector RAG. Don't replace, augment.</li>
+<li>Budget for significant indexing cost; extraction is where the LLM calls pile up.</li>
+</ul>
 <div class="prev-next"><a href="agentic-rag.html" class="prev"><div class="label">← Previous</div><div class="title">Agentic RAG</div></a><a href="adaptive-rag.html" class="next"><div class="label">Next →</div><div class="title">Adaptive RAG</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

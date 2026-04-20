@@ -273,6 +273,24 @@ Documents: [doc1, doc2, doc3]
 <p>Score-based first pass (fast). For borderline cases, LLM evaluator.</p>
 
 <h2>Fallback strategies</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'CRAG fallbacks when retrieval is weak');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Fallback', w: 240},
+    {title: 'Use when', w: 560}
+  ], rows: [
+    ['Web search', 'Current events, general knowledge'],
+    ['Query rewrite + retry', 'Vocab mismatch suspected'],
+    ['Broader knowledge base', 'Parent-org or encyclopedic'],
+    ['"I don\'t know"', 'No fallback beats honesty']
+  ]});
+});
+</script>
 
 <h3>Web search</h3>
 <p>When internal corpus lacks info, search the web (via Serper, Tavily, Brave Search, etc.). Append web results to context. Useful for current events, general knowledge, questions outside your corpus.</p>
@@ -352,7 +370,12 @@ def corrective_rag(query):
 
 <p>This simple version already stops most hallucination failures in production RAG.</p>
 
-<p style="margin-top:40px;">Next: <a href="self-rag.html">Self-RAG</a>.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>Start with the simple score-threshold version. It catches most hallucinations.</li>
+<li>Add an "I don't know" branch; it's the underrated answer.</li>
+<li>Add web search fallback only when closed-domain isn't the right constraint.</li>
+</ul>
 <div class="prev-next"><a href="adaptive-rag.html" class="prev"><div class="label">← Previous</div><div class="title">Adaptive RAG</div></a><a href="self-rag.html" class="next"><div class="label">Next →</div><div class="title">Self-RAG</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

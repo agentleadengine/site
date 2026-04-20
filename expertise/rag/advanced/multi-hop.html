@@ -329,6 +329,24 @@ Retrieved: [docs from round 1]
 <p>Plans are easier to debug than free-form iterative loops and cheaper than full agent-based orchestration.</p>
 
 <h2>The common failure modes</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Multi-hop failure modes');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Failure', w: 240},
+    {title: 'Fix', w: 560}
+  ], rows: [
+    ['Bad decomposition', 'Few-shot examples in the prompt'],
+    ['Lost context between hops', 'Thread round-1 findings into round-2 query'],
+    ['Runaway iteration', 'Max 3–5 iterations, cost cap'],
+    ['Sub-questions answered wrong', 'Check intermediate retrievals, not just final']
+  ]});
+});
+</script>
 
 <h3>Bad decomposition</h3>
 <p>LLM produces sub-questions that don't actually decompose the problem. Retrievals don't answer what's needed.</p>
@@ -367,7 +385,12 @@ Retrieved: [docs from round 1]
 
 <p>The adaptive pattern (classify first, route to multi-hop only when needed) keeps cost reasonable across a mixed query distribution.</p>
 
-<p style="margin-top:40px;">Next: <a href="../eval/why-eval.html">Why evaluation is critical</a>.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>Don't multi-hop everything. Route by query shape.</li>
+<li>Prefer decomposition when sub-questions are independent (parallel).</li>
+<li>Cap iterations hard; runaway agent loops are the dominant failure mode.</li>
+</ul>
 <div class="prev-next"><a href="self-rag.html" class="prev"><div class="label">← Previous</div><div class="title">Self-RAG</div></a><a href="../eval/why-eval.html" class="next"><div class="label">Next →</div><div class="title">Why evaluation is critical</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

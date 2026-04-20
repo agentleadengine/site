@@ -290,20 +290,34 @@ refunds are processed within 5-7 business days [doc1].
 
 <p>If self-reflection flags issues, either regenerate or lower confidence in the answer.</p>
 
-<h2>Strengths</h2>
+<h2>Strengths vs weaknesses</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Self-RAG at a glance');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Strengths', items: [
+      'Adaptive retrieval (skip when unneeded)',
+      'Explicit grounding + citations',
+      'Self-critique reduces hallucinations',
+      'Better "I don\'t know" behavior'
+    ]},
+    right: {title: 'Weaknesses', items: [
+      'Multiple LLM calls per query',
+      'More moving parts to debug',
+      'Pure paper version needs custom training',
+      'Over-thinks simple queries']}
+  });
+});
+</script>
 <ul>
   <li>Adaptive retrieval (skips retrieval when not needed)</li>
   <li>Explicit grounding (every claim tied to evidence)</li>
   <li>Self-assessment reduces hallucinations</li>
   <li>Better at knowing what it doesn't know</li>
-</ul>
-
-<h2>Weaknesses</h2>
-<ul>
-  <li>Multiple LLM calls per query (retrieval decision, relevance judgment, self-critique)</li>
-  <li>Complexity compounds, more moving parts, more debugging</li>
-  <li>The pure Self-RAG paper approach requires custom training most teams skip</li>
-  <li>Can over-think simple queries</li>
 </ul>
 
 <h2>Practical adoption</h2>
@@ -327,7 +341,12 @@ refunds are processed within 5-7 business days [doc1].
 
 <p>Log these. Review them. They point to different parts of the pipeline that need fixing.</p>
 
-<p style="margin-top:40px;">Next: <a href="multi-hop.html">Multi-hop RAG</a>.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>Skip the custom-training version. Prompt-based Self-RAG captures 80% of the benefit.</li>
+<li>Ask for explicit per-claim citations. Makes evaluation and debugging trivial.</li>
+<li>Log reflection outputs as observability; they point to the failing layer.</li>
+</ul>
 <div class="prev-next"><a href="corrective-rag.html" class="prev"><div class="label">← Previous</div><div class="title">Corrective RAG (CRAG)</div></a><a href="multi-hop.html" class="next"><div class="label">Next →</div><div class="title">Multi-hop RAG</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

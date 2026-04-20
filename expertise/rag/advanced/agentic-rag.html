@@ -303,6 +303,24 @@ window.addEventListener('sketch:ready', function(){
 <p>Models trained with tool-use support (GPT-4, Claude, Gemini) do ReAct-style reasoning natively.</p>
 
 <h2>The failure modes</h2>
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Agentic RAG failure modes');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Failure', w: 240},
+    {title: 'Fix', w: 560}
+  ], rows: [
+    ['Infinite loop', 'Max steps + cost cap + timeout'],
+    ['Over-retrieval (too many calls)', 'Instruct: retrieve only when necessary'],
+    ['Under-retrieval (hallucinate)', 'System prompt: retrieve before answering'],
+    ['Wrong tool choice', 'Clear tool descriptions + examples']
+  ]});
+});
+</script>
 
 <h3>Infinite loops</h3>
 <p>Agent keeps retrieving without terminating. Mitigation: max steps, max cost budget, timeout.</p>
@@ -357,7 +375,12 @@ window.addEventListener('sketch:ready', function(){
   <li>When one-shot retrieval is already giving good results on eval</li>
 </ul>
 
-<p style="margin-top:40px;">Next: <a href="graph-rag.html">GraphRAG</a>.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>Start one-shot. Go agentic only when one-shot demonstrably fails on your eval.</li>
+<li>Route by query complexity; don't pay agentic cost on simple queries.</li>
+<li>Cap steps + cost from day one. Agentic without caps is a runaway bill.</li>
+</ul>
 <div class="prev-next"><a href="../retrieval/multi-query.html" class="prev"><div class="label">← Previous</div><div class="title">Multi-query + fusion</div></a><a href="graph-rag.html" class="next"><div class="label">Next →</div><div class="title">GraphRAG</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>
