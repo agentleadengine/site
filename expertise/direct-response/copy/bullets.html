@@ -337,6 +337,41 @@ window.addEventListener('sketch:ready', function(){
 <h2>Where the classic bullets went</h2>
 <p> Used bullets in everything, newsletter subscription pitches, coat-of-arms letters, copywriter training programs. His bullets were often long lists. 30, 50 at a time, each carrying its own weight. A reader could fail to be convinced by any single bullet but still be pulled forward by the sheer density of specificity. That's the structural power of the bullet list.</p>
 
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Vague bullet vs fascination bullet, same content');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Vague (competitor could use)', items: [
+      '"Learn how to write better emails"',
+      '"Improve your hiring process"',
+      '"Close more deals"',
+      '"Grow your business"',
+      'Reader skims and forgets'
+    ]},
+    right: {title: 'Fascination (curiosity loop)', items: [
+      '"The 8-word opener that earns the rest of the read"',
+      '"The 4-question reference check that exposed 38%"',
+      '"The one question at minute 23 that doubles close rate"',
+      '"Kevin: 40 demos → 12 demos, 2 closes → 8 closes"',
+      'Reader stops, leans in, wants the answer'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>For every bullet in your current copy, apply the specificity test, if it could appear unchanged on a competitor's page, rewrite with a number or named thing</li>
+<li>Write 3x more bullets than you'll use, draft 30, ship 10, the extras usually include your strongest one</li>
+<li>Open a curiosity loop in every bullet that the reader can only close by opening the product, revealing the answer kills the bullet</li>
+<li>Reorder bullets so the strongest sit top and bottom, skimmers read first and last, middle bullets must still earn their place</li>
+<li>Study classic copywriters' bullet lists (Halbert, Bencivenga, Schwartz), read 50 bullets a week, pattern recognition is the only way to get good fast</li>
+</ul>
+
 <p style="margin-top:40px;">Related: <a href="the-stack.html">The copywriting stack</a> · <a href="body-copy.html">Body copy</a> · <a href="headlines.html">Headlines</a></p>
 <div class="prev-next"><a href="formulas.html" class="prev"><div class="label">← Previous</div><div class="title">AIDA, PAS, PASTOR</div></a><a href="../leads/core-four.html" class="next"><div class="label">Next →</div><div class="title">The core four</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>

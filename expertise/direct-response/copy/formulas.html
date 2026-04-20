@@ -335,6 +335,31 @@ window.addEventListener('sketch:ready', function(){
 <h2>The formulas don't replace thinking</h2>
 <p>A formula-filled piece of copy with a weak offer or a wrong market still fails. The formula organizes persuasion; it doesn't create persuasion out of nothing. If you're hitting a wall on the copy, the problem is usually upstream, offer, market, or dream customer, not the formula.</p>
 
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Same underlying structure, three levels of depth');
+  sketch.stack(svg, rc, {x: 150, y: 60, w: 600, layerH: 40, layers: [
+    {label: 'AIDA (short ads, impulse)', sub: '4 beats, 100-500 words'},
+    {label: 'PAS (email, cold outreach)', sub: '3 beats, 200-800 words'},
+    {label: 'PASTOR (VSLs, sales letters)', sub: '6 beats, 2000-8000 words'},
+    {label: 'Same core: attention → belief → action', sub: 'different depths, same physics'}
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Pick the formula before you start drafting, AIDA for short ads, PAS for cold email, PASTOR for long-form, don't mix mid-draft</li>
+<li>For PAS, spend at least half the copy on agitation, write the consequences of not solving until the reader feels tension, only then reveal the solution</li>
+<li>For PASTOR, the Story beat is load-bearing, a specific founder or customer journey outperforms generic proof every time</li>
+<li>Map your current sales page to one of the formulas, if you can't identify the beats, the structure is broken, rewrite against the scaffold</li>
+<li>When copy fails, the problem is almost never the formula, diagnose upstream first: wrong market, weak offer, fuzzy dream customer</li>
+</ul>
+
 <p style="margin-top:40px;">Related: <a href="the-stack.html">The copywriting stack</a> · <a href="headlines.html">Headlines</a> · <a href="bullets.html">Fascination bullets</a></p>
 <div class="prev-next"><a href="ctas.html" class="prev"><div class="label">← Previous</div><div class="title">Calls to action</div></a><a href="bullets.html" class="next"><div class="label">Next →</div><div class="title">Fascination bullets</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>

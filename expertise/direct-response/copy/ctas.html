@@ -340,6 +340,35 @@ window.addEventListener('sketch:ready', function(){
  <li><strong>No subtext.</strong> Button alone without risk-reversal or friction-removal language nearby.</li>
 </ul>
 
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Match CTA weight to prospect temperature');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Prospect stage', w: 220},
+    {title: 'Right CTA weight', w: 280},
+    {title: 'Wrong CTA', w: 300}
+  ], rows: [
+    ['Cold (problem-aware)', 'Watch 2-min video, read article', 'Book a demo (too heavy)'],
+    ['Warm (solution-aware)', 'Download guide, take quiz', 'Submit (too vague)'],
+    ['Hot (product-aware)', 'Start free trial, book a call', 'Watch video (too slow)'],
+    ['Most aware (ready)', 'Buy now, claim my seat', 'Subscribe to newsletter']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Replace every "Submit", "Click here", and "Learn more" button on your site with benefit-led first-person copy, "Send me the playbook" beats "Submit" measurably</li>
+<li>Match CTA weight to prospect temperature, cold traffic sees low-commitment asks, hot traffic sees the buy button directly</li>
+<li>Add subtext under every primary button, "no credit card required", "cancel anytime", "90-day guarantee", the micro-copy closes hesitation</li>
+<li>Place CTAs every 500-1000 words on long pages, don't make the convinced reader hunt for the button</li>
+<li>Audit every form field, any field not needed for the next step is dropping conversion, kill it</li>
+</ul>
+
 <p style="margin-top:40px;">Related: <a href="body-copy.html">Body copy</a> · <a href="../offer/grand-slam.html">Grand slam offers</a> · <a href="../foundations/ten-rules.html">the 10 rules I write about campaigns by</a></p>
 <div class="prev-next"><a href="body-copy.html" class="prev"><div class="label">← Previous</div><div class="title">Body copy</div></a><a href="formulas.html" class="next"><div class="label">Next →</div><div class="title">AIDA, PAS, PASTOR</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>

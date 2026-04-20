@@ -336,6 +336,41 @@ window.addEventListener('sketch:ready', function(){
 <h2>The best headline is boring if the market is sophisticated</h2>
 <p>At <a href="../market/sophistication.html">stage 5 markets</a>, clever headlines look desperate. The winning move is often quieter: identification, tribal language, understatement. "For operators who've already tried the usual [tactics]." Let the headline qualify hard and the body do the selling.</p>
 
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Generic vs specific headlines, same product');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Generic (scroll-past)', items: [
+      '"Grow your business"',
+      '"Introducing FlowPilot v2"',
+      '"Elevate your revenue"',
+      '"Unlock your potential"',
+      'Competitor could run the exact same line'
+    ]},
+    right: {title: 'Specific (stops the scroll)', items: [
+      '"From $400K to $1.5M without adding trucks"',
+      '"The 3 subject lines that 10x\'d our open rate"',
+      '"If you spend $5K/mo on Meta, read this"',
+      '"Why we stopped cold-calling in Q2"',
+      'Only you could credibly make this claim'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Draft 20 headlines for every new campaign, pick the top 3, test them against each other, don't ship with the first one</li>
+<li>Run the specificity test, if a direct competitor could run the same headline, rewrite it with a number, a timeframe, or a named tribe</li>
+<li>Spend an hour a week reading classic headline archives (Caples, Halbert, Schwartz), pattern recognition is the core skill</li>
+<li>Read every headline aloud before shipping, if it doesn't make you want to read the next line, neither will a prospect</li>
+<li>At stage 5 markets, lead with identification over benefit, "for operators who've tried everything" converts better than "grow 10x"</li>
+</ul>
+
 <p style="margin-top:40px;">Related: <a href="the-stack.html">The copywriting stack</a> · <a href="the-lead.html">The lead</a> · <a href="formulas.html">AIDA, PAS, PASTOR</a></p>
 <div class="prev-next"><a href="the-stack.html" class="prev"><div class="label">← Previous</div><div class="title">The copywriting stack</div></a><a href="the-lead.html" class="next"><div class="label">Next →</div><div class="title">The lead (first 100 words)</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>

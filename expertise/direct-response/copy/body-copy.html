@@ -348,6 +348,32 @@ window.addEventListener('sketch:ready', function(){
  <li>Have someone who fits the ICP read it. Watch where they skim, where they slow down, where they leave.</li>
 </ol>
 
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Feature → benefit → outcome chain');
+  sketch.numberedSteps(svg, rc, {x: 40, y: 60, w: 820, stepH: 36, items: [
+    'Feature: "Automatic transcription of every meeting"',
+    'Benefit: "So you never lose the insights from meetings you missed"',
+    'Outcome: "So you make decisions from what was actually said, not memory"',
+    'Proof: "41 product teams cut re-meetings by 60% this way"',
+    'CTA: "Connect your calendar, first transcript ships tonight"'
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Audit every claim in your body copy for a "because", any claim without one needs a mechanism or proof attached before shipping</li>
+<li>Convert every feature statement into feature + benefit + outcome, features alone are inert, outcomes are what prospects pay for</li>
+<li>Replace every "we" and "us" in the body with "you" where the sentence supports it, prospects skim for themselves, not your company</li>
+<li>Embed objections inside the body before prospects raise them, "what about X?", then handle it on the page, not on a sales call</li>
+<li>Design for skim, bold the key phrases so the reader who scans still gets the sales message, not just the reader who reads every word</li>
+</ul>
+
 <p style="margin-top:40px;">Related: <a href="the-stack.html">The copywriting stack</a> · <a href="the-lead.html">The lead</a> · <a href="bullets.html">Fascination bullets</a> · <a href="formulas.html">AIDA, PAS, PASTOR</a></p>
 <div class="prev-next"><a href="the-lead.html" class="prev"><div class="label">← Previous</div><div class="title">The lead (first 100 words)</div></a><a href="ctas.html" class="next"><div class="label">Next →</div><div class="title">Calls to action</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>

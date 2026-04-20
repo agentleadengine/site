@@ -327,6 +327,41 @@ window.addEventListener('sketch:ready', function(){
  <li>Read aloud. If you'd skim past it as a reader, rewrite again.</li>
 </ol>
 
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Weak vs strong lead on the same pitch');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Weak lead (skipped)', items: [
+      '"In today\'s fast-paced world..."',
+      '"We have helped 500 companies..."',
+      '"Marketing is important."',
+      'Starts with "I" or "we" or market context',
+      'Reader bails inside 10 seconds'
+    ]},
+    right: {title: 'Strong lead (read)', items: [
+      '"At 2:14am Tuesday, Kevin\'s phone buzzed..."',
+      '"If you\'ve tried 3+ tactics and nothing stuck..."',
+      '"Your CRM at 5pm Friday is lying to you."',
+      'Starts with "you" or a specific scene',
+      'Reader slides into paragraph 2'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>After drafting any lead, cut the first paragraph entirely, 80% of leads start at paragraph 2, shipping paragraph 1 is leaving conversion behind</li>
+<li>Audit sentence 1 against the rule, "the only job of sentence 1 is to make them read sentence 2", if it doesn't, rewrite</li>
+<li>Pick one of the 6 lead types before writing, don't blend them, a confused reader scrolls</li>
+<li>Replace every "we" and "I" in the first 100 words with "you" where possible, prospects care about themselves, not your company</li>
+<li>Read the lead aloud before shipping, if you skim past a sentence as the author, the reader will definitely skim past it</li>
+</ul>
+
 <p style="margin-top:40px;">Related: <a href="headlines.html">Headlines</a> · <a href="body-copy.html">Body copy</a> · <a href="formulas.html">AIDA, PAS, PASTOR</a> · <a href="../letters/story-selling.html">Story selling</a></p>
 <div class="prev-next"><a href="headlines.html" class="prev"><div class="label">← Previous</div><div class="title">Headlines</div></a><a href="body-copy.html" class="next"><div class="label">Next →</div><div class="title">Body copy</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>

@@ -328,6 +328,36 @@ window.addEventListener('sketch:ready', function(){
  <li>Revise. Ship.</li>
 </ol>
 
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Where each stack layer leaks money when it fails');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Weak layer', w: 220},
+    {title: 'Symptom you see', w: 280},
+    {title: 'The fix', w: 300}
+  ], rows: [
+    ['Headline', 'Low click-through from ad to page', 'Draft 10, test 3, ship the winner'],
+    ['Lead', 'High bounce rate, short time on page', 'Hook with a specific moment, not general intro'],
+    ['Body', 'People read but don\'t buy', 'Add mechanism, case studies, reason-why'],
+    ['Offer', 'Leads, not sales', 'Stack bonuses + guarantee + urgency'],
+    ['CTA', 'Abandonment at checkout', 'One specific action, imperative voice']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Audit your current best-selling page layer by layer, score each on a 1-10, the lowest score is what to rewrite first</li>
+<li>Never ship copy without a PS, it's the second most-read element after the headline, use it to restate the offer and deadline</li>
+<li>Draft 10 headlines before committing to one, the first headline is almost never the strongest, the 7th usually is</li>
+<li>Read every new piece of copy aloud before shipping, if you cringe at any sentence, the reader will too, cut it</li>
+<li>Show drafts to one real ICP prospect before launch, listen for where they skim vs where they read, that's your weak layer map</li>
+</ul>
+
 <p style="margin-top:40px;">Related: <a href="headlines.html">Headlines</a> · <a href="the-lead.html">The lead</a> · <a href="body-copy.html">Body copy</a> · <a href="formulas.html">AIDA, PAS, PASTOR</a></p>
 <div class="prev-next"><a href="../offer/urgency-scarcity.html" class="prev"><div class="label">← Previous</div><div class="title">Urgency + scarcity</div></a><a href="headlines.html" class="next"><div class="label">Next →</div><div class="title">Headlines</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
