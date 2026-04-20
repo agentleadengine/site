@@ -270,6 +270,42 @@ window.addEventListener('sketch:ready', function(){
 <li>Team capable of weekly creative iteration</li>
 <li>Enough budget to get through 60-90 days of learning</li>
 </ul>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Premature paid vs ready paid, same offer');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Premature (burns cash)', items: [
+      'No organic validation yet',
+      'LTV unknown, CAC target a guess',
+      'Conversion tracking not wired',
+      'No creative iteration cadence',
+      'Paid becomes expensive market research'
+    ]},
+    right: {title: 'Ready (scales profitably)', items: [
+      'Organic + warm have converted',
+      'LTV:CAC > 3:1 on observed data',
+      'Pixels, UTMs, attribution in place',
+      'Weekly creative testing scheduled',
+      'Budget covers 60-90 days of learning'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Wait to run paid until the offer has converted organically, paid is the scale lever, not the validation lever</li>
+<li>Budget at minimum 60-90 days of spend, algorithms need time to train, killing a channel in 2 weeks produces zero learning</li>
+<li>Set up conversion tracking, UTM discipline, and attribution before the first ad goes live, not after</li>
+<li>Match team capacity to paid demands, weekly creative iteration is non-negotiable, without that cadence CAC drifts up silently</li>
+<li>Know your LTV and target CAC before launch, running paid without those numbers is gambling at the auction level</li>
+</ul>
+
 <div class="prev-next"><a href="channel-fit.html" class="prev"><div class="label">← Previous</div><div class="title">Channel-market fit</div></a><a href="../meta/overview.html" class="next"><div class="label">Next →</div><div class="title">Meta Ads overview</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

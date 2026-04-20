@@ -251,6 +251,42 @@ window.addEventListener('sketch:ready', function(){
 
 <h2>The modern shift: creative over targeting</h2>
 <p>Post-iOS 14 and signal loss, targeting is less precise. Platforms have shifted to creative-first: the creative itself does the targeting by resonating with the right audience. Broad targeting + great creative often beats narrow targeting + mediocre creative.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Bid × quality, why the cheaper ad often wins');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Advertiser A (expensive)', items: [
+      'Bid: $5 per click',
+      'CTR: 1% (mediocre creative)',
+      'Expected revenue to platform: $0.05',
+      'Loses auction despite high bid',
+      'Spends $500 for 100 clicks'
+    ]},
+    right: {title: 'Advertiser B (cheap)', items: [
+      'Bid: $2 per click',
+      'CTR: 4% (strong hook)',
+      'Expected revenue to platform: $0.08',
+      'Wins auction at lower bid',
+      'Spends $200 for 100 clicks'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Invest in creative quality over bid increases, a 3x CTR bump beats a 2x bid bump every time at the auction level</li>
+<li>Feed the algorithm conversions fast in new campaigns, early undertrained algorithms produce inflated CACs that scare operators off working channels</li>
+<li>Don't jump budgets 10x overnight, scale 20-30% every 2-3 days to keep the algorithm stable</li>
+<li>For most platforms in 2026, default to broad targeting with great creative, the creative does the targeting now that signals are thin</li>
+<li>Measure the platform as a system (bid + quality + relevance), not just bid alone, understanding the auction changes how you spend</li>
+</ul>
+
 <div class="prev-next"><a href="../index.html" class="prev"><div class="label">← Previous</div><div class="title">Overview</div></a><a href="unit-economics.html" class="next"><div class="label">Next →</div><div class="title">Unit economics</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

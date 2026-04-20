@@ -272,6 +272,37 @@ window.addEventListener('sketch:ready', function(){
 <li>Creative iterations (10+) haven't moved the needle</li>
 <li>Your team doesn't know why it works when it does (unrepeatable)</li>
 </ul>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Match channel to audience intent');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'If your buyer...', w: 280},
+    {title: 'Primary channel', w: 260},
+    {title: 'Why', w: 260}
+  ], rows: [
+    ['Actively searches for solution', 'Google Search', 'High intent, pay for pull'],
+    ['Scrolls feeds, discovers via interest', 'Meta / TikTok', 'Interruption, creative sells'],
+    ['Researches on professional network', 'LinkedIn', 'B2B targeting + formats'],
+    ['Watches long-form video', 'YouTube', 'Pre-roll + host reads'],
+    ['Consumes podcast', 'Podcast host-reads', 'Trust transfers from host']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Pick one channel first based on where your buyer actually is, don't spread a small budget across 4 channels to "diversify" before validating</li>
+<li>Add the second channel only after the first is stable and repeatable, diversifying too early usually means 3 mediocre channels instead of 1 strong one</li>
+<li>Kill a channel after 90 days of spend with no CAC trend and 10+ failed creative iterations, continuing past that is sunk-cost fallacy</li>
+<li>Require your team to explain why the channel works when it works, unrepeatable wins aren't a channel, they're lucky quarters</li>
+<li>When buyer behavior shifts, channel fit shifts too, re-evaluate annually, what worked in 2023 doesn't guarantee 2026</li>
+</ul>
+
 <div class="prev-next"><a href="unit-economics.html" class="prev"><div class="label">← Previous</div><div class="title">Unit economics</div></a><a href="when-to-run-paid.html" class="next"><div class="label">Next →</div><div class="title">When to run paid</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>

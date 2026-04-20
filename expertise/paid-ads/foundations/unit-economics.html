@@ -260,6 +260,42 @@ window.addEventListener('sketch:ready', function(){
 
 <h2>Unit economics by segment</h2>
 <p>One tenant or product segment can have 10:1 LTV:CAC while another has 1.5:1. Blended looks fine; the mix hides a dying segment. Segment by acquisition channel, geography, product, cohort. Kill the losers.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Unhealthy vs healthy paid economics');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Unhealthy (cash trap)', items: [
+      'LTV:CAC = 4:1 over 5 years',
+      'Payback period: 26 months',
+      'Needs 4 years of capital to scale',
+      'One segment hides another at 1.2:1',
+      'Looks good on paper, dies on cash flow'
+    ]},
+    right: {title: 'Healthy (fundable)', items: [
+      'LTV:CAC = 3:1 over 18 months',
+      'Payback period: 9 months',
+      'Each segment above 2.5:1',
+      'Marginal CAC monitored, not just blended',
+      'Self-funds growth from month 10'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Compute LTV:CAC per segment, not blended, one 1.2:1 segment can eat the margin of 3 profitable ones while the average looks fine</li>
+<li>Track payback period as rigorously as LTV:CAC, a 4:1 ratio with 30-month payback is a cash trap, not a growth engine</li>
+<li>Use observed LTV, never modeled, until you have 18+ months of data, projected LTV is where bad unit economics hide</li>
+<li>Watch marginal CAC as you scale, blended looks fine while the next dollar loses money, that's how operators overspend into decline</li>
+<li>Kill unprofitable segments even when they feel emotionally hard, the capital reallocation to healthy segments is where real growth comes from</li>
+</ul>
+
 <div class="prev-next"><a href="how-paid-works.html" class="prev"><div class="label">← Previous</div><div class="title">How paid ads work</div></a><a href="channel-fit.html" class="next"><div class="label">Next →</div><div class="title">Channel-market fit</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
