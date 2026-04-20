@@ -303,6 +303,24 @@ NDCG@k = DCG@k / ideal_DCG@k
 <p>When to use: when relevance is graded (not binary) and you care about ranking quality.</p>
 
 <h2>What metrics to start with</h2>
+<div class="sketch" data-viewbox="0 0 900 240"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 240);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Starter metric set for RAG retrieval');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Metric', w: 220},
+    {title: 'Tells you', w: 580}
+  ], rows: [
+    ['Hit rate @ 10', 'Overall retrieval health'],
+    ['MRR', 'Rank quality; high ranks matter'],
+    ['Precision @ 5', 'How clean the gen context is'],
+    ['Per-segment breakdown', 'Where you\'re silently failing']
+  ]});
+});
+</script>
 <p>For most RAG projects:</p>
 <ul>
   <li>Hit rate @ 10: overall retrieval health</li>
@@ -362,7 +380,12 @@ NDCG@k = DCG@k / ideal_DCG@k
 
 <p>Segmented metrics surface specific problems that aggregate hides.</p>
 
-<p style="margin-top:40px;">Next: <a href="generation-metrics.html">Generation metrics</a>.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>Measure at the k your production pipeline actually uses, not a convenient number.</li>
+<li>Segment by query type and source. Aggregates hide systematic failures.</li>
+<li>On small eval sets, treat small wins with skepticism. 2% of 100 = 2 queries.</li>
+</ul>
 <div class="prev-next"><a href="why-eval.html" class="prev"><div class="label">← Previous</div><div class="title">Why evaluation is critical</div></a><a href="generation-metrics.html" class="next"><div class="label">Next →</div><div class="title">Generation metrics</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

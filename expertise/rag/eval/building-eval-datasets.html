@@ -282,6 +282,24 @@ window.addEventListener('sketch:ready', function(){
 <p>Public datasets for specific domains (BEIR, MS MARCO, HotpotQA) can provide a baseline. Limited applicability to your specific corpus but useful for sanity checking.</p>
 
 <h2>How many queries</h2>
+<div class="sketch" data-viewbox="0 0 900 240"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 240);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Eval set size by stage');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Stage', w: 240},
+    {title: 'Queries', w: 560}
+  ], rows: [
+    ['Minimum viable', '30 (catches obvious regressions)'],
+    ['Reasonable baseline', '100–200 (detects meaningful improvements)'],
+    ['Serious eval', '500–2000 (statistical power)'],
+    ['Research-grade', '10,000+ (benchmarks)']
+  ]});
+});
+</script>
 <ul>
   <li><strong>Minimum viable</strong>: 30 queries. Enough to catch obvious regressions.</li>
   <li><strong>Reasonable baseline</strong>: 100-200 queries. Enough to detect meaningful improvements.</li>
@@ -386,6 +404,13 @@ window.addEventListener('sketch:ready', function(){
 </ol>
 
 <p>Replace with real production queries as they become available. The synthetic set is a bootstrap, not a final answer.</p>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Bootstrap with synthetic queries; replace with real production data as soon as possible.</li>
+<li>Add every production bug as a new eval case so regressions get caught.</li>
+<li>Segment your eval set by query shape so aggregate metrics don't hide blind spots.</li>
+</ul>
 
 <p style="margin-top:40px;">Next: <a href="../prod/latency.html">Latency optimization</a>.</p>
 <div class="prev-next"><a href="ragas-and-frameworks.html" class="prev"><div class="label">← Previous</div><div class="title">RAGAS, TruLens, ARES</div></a><a href="../prod/latency.html" class="next"><div class="label">Next →</div><div class="title">Latency optimization</div></a></div></div></div><footer><div class="container">

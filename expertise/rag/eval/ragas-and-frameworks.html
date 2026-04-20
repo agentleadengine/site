@@ -334,6 +334,23 @@ window.addEventListener('sketch:ready', function(){
 <p>Commercial platform for LLM evaluation with RAG support.</p>
 
 <h2>The common pattern</h2>
+<div class="sketch" data-viewbox="0 0 900 240"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 240);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Framework choice by stage');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Stage', w: 240},
+    {title: 'Stack', w: 560}
+  ], rows: [
+    ['Early', 'RAGAS; cheap, off-the-shelf'],
+    ['Production', 'TruLens or Phoenix; observability + eval'],
+    ['High-stakes', 'Human review + automated']
+  ]});
+});
+</script>
 <p>Most production RAG teams end up with:</p>
 <ol>
   <li>A custom eval harness for the metrics that matter most to them</li>
@@ -365,7 +382,12 @@ window.addEventListener('sketch:ready', function(){
 
 <p>Spot-check the judge's outputs against your own judgment periodically. If the framework says "this answer scored 0.9 faithfulness" but you can see the answer hallucinates, the framework is wrong. Recalibrate.</p>
 
-<p style="margin-top:40px;">Next: <a href="building-eval-datasets.html">Building eval datasets</a>.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>Start with RAGAS. It's the cheapest way to get comprehensive metrics.</li>
+<li>Layer in TruLens or Phoenix when you need observability alongside eval.</li>
+<li>Spot-check the judge against human review once a month.</li>
+</ul>
 <div class="prev-next"><a href="generation-metrics.html" class="prev"><div class="label">← Previous</div><div class="title">Generation metrics</div></a><a href="building-eval-datasets.html" class="next"><div class="label">Next →</div><div class="title">Building eval datasets</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>

@@ -282,6 +282,24 @@ window.addEventListener('sketch:ready', function(){
 <p>See <a href="building-eval-datasets.html">building eval datasets</a>.</p>
 
 <h2>What to measure</h2>
+<div class="sketch" data-viewbox="0 0 900 300"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 300);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Three evaluation layers, each with its metrics');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Layer', w: 200},
+    {title: 'Key metrics', w: 600}
+  ], rows: [
+    ['Retrieval', 'Hit rate@k, MRR, Recall@k, NDCG'],
+    ['Generation', 'Faithfulness, answer relevance, correctness'],
+    ['End-to-end', 'Thumbs, NPS, task completion'],
+    ['Production', 'Latency, error rate, cost per query']
+  ]});
+});
+</script>
 
 <h3>Retrieval</h3>
 <ul>
@@ -341,7 +359,12 @@ window.addEventListener('sketch:ready', function(){
 <h2>The one-week eval investment</h2>
 <p>Teams that spend one focused week building an eval harness ship dramatically better RAG. The investment pays back in fewer regressions, faster iteration, and clearer decision-making. It's the single highest-leverage engineering investment in a RAG project.</p>
 
-<p style="margin-top:40px;">Next: <a href="retrieval-metrics.html">Retrieval metrics</a>.</p>
+<h2>What to do with this</h2>
+<ul>
+<li>Block a full week for the eval harness before shipping prod changes.</li>
+<li>Measure all three layers (retrieval, generation, end-to-end). One alone misleads.</li>
+<li>Calibrate LLM-as-judge against human judgment periodically.</li>
+</ul>
 <div class="prev-next"><a href="../advanced/multi-hop.html" class="prev"><div class="label">← Previous</div><div class="title">Multi-hop RAG</div></a><a href="retrieval-metrics.html" class="next"><div class="label">Next →</div><div class="title">Retrieval metrics</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
 <a href="../../../playbooks/index.html">Playbooks</a></p>
