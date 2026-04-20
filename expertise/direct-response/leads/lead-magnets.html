@@ -342,6 +342,41 @@ window.addEventListener('sketch:ready', function(){
 </ul>
 <p>Treat lead magnets like any other creative, test new ones, rotate out dying ones.</p>
 
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Generic magnet vs qualifying magnet, same market');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Generic (fills list with tire-kickers)', items: [
+      '"Marketing tips for entrepreneurs"',
+      '40% download rate',
+      '0.3% conversion to paid',
+      'LTV per lead: $18',
+      'Feels productive, earns little'
+    ]},
+    right: {title: 'Specific (qualifies on the way in)', items: [
+      '"The 8-email sequence for ecommerce signups"',
+      '22% download rate',
+      '4.1% conversion to paid',
+      'LTV per lead: $340',
+      'Smaller list, bigger business'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Rename your current lead magnet to pass the specificity test, if a competitor could use the same title, the magnet is attracting the wrong leads</li>
+<li>Build the post-download sequence before launching the magnet, silence after download is where most pipelines leak</li>
+<li>Track conversion-to-paid as the primary metric, not download count, a lead magnet that downloads 10x more but converts 10x less is worse</li>
+<li>Keep the magnet consumable in under 15 minutes, longer magnets have lower consumption, low consumption kills the downstream sequence</li>
+<li>Retire magnets with 3 consecutive months of declining conversion, ship a new one in parallel, don't wait for the old one to die</li>
+</ul>
+
 <p style="margin-top:40px;">Related: <a href="core-four.html">The core four</a> · <a href="../followup/email-sequences.html">Email sequences</a> · <a href="../copy/the-stack.html">The copywriting stack</a></p>
 <div class="prev-next"><a href="core-four.html" class="prev"><div class="label">← Previous</div><div class="title">The core four</div></a><a href="warm-outreach.html" class="next"><div class="label">Next →</div><div class="title">Warm outreach</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>

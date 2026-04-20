@@ -363,6 +363,41 @@ window.addEventListener('sketch:ready', function(){
 </ul>
 <p>Without the cadence, paid drifts. Creatives go stale, CAC drifts up, and by the time you notice, you've burned $50K.</p>
 
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Paid ads: ready vs not ready to spend');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Not ready (burn money)', items: [
+      'No validated offer yet',
+      'LTV unknown or under 3x expected CAC',
+      'Conversion tracking not set up',
+      'No operator to iterate creative weekly',
+      'Paid becomes expensive "market research"'
+    ]},
+    right: {title: 'Ready (scale profitably)', items: [
+      'Offer proven through warm + cold outreach',
+      'LTV > 3x CAC, payback period known',
+      'Pixels, UTMs, attribution wired up',
+      'Dedicated creative tester, weekly cadence',
+      'Winning creative identified in 2-4 weeks'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Don't touch paid ads until warm + cold outreach have proven the offer converts, paid is the scale lever, not the validation lever</li>
+<li>Budget $5K-$25K for the first real test, less than that and you won't hit statistical significance before deciding</li>
+<li>Set up conversion tracking, UTMs, and LTV reporting before launching the first ad, not after</li>
+<li>Ship 3-5 hook variants in week 1, not one ad, creative is the channel's single biggest lever</li>
+<li>Run the Monday/Tuesday/Wed-Thu/Friday weekly cadence from day one, without it, CAC drifts up silently until you notice $50K gone</li>
+</ul>
+
 <p style="margin-top:40px;">Related: <a href="core-four.html">The core four</a> · <a href="../testing/scientific.html">Scientific testing</a> · <a href="../copy/headlines.html">Headlines</a></p>
 <div class="prev-next"><a href="cold-outreach.html" class="prev"><div class="label">← Previous</div><div class="title">Cold outreach</div></a><a href="../letters/structure.html" class="next"><div class="label">Next →</div><div class="title">Sales letter structure</div></a></div></div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a>
