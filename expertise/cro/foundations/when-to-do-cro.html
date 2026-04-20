@@ -240,7 +240,44 @@ window.addEventListener('sketch:ready', function(){
       'Biggest problem isn\'t conversion']}
   });
 });
-</script><p>10K unique visitors/month per tested page, roughly. Lower scale = longer tests = less learning.</p><h2>When to prioritize</h2><ul><li>High traffic, low conversion (CRO wins big)</li><li>High-spend paid ads (every conversion matters)</li><li>Stable product (testing isn't chasing a moving target)</li></ul><h2>When to delay</h2><ul><li>Pre-product-market-fit (fix the product first)</li><li>Very low traffic</li><li>Radical site redesign planned anyway</li></ul></div></div><footer><div class="container">
+</script><p>10K unique visitors/month per tested page, roughly. Lower scale = longer tests = less learning.</p><h2>When to prioritize</h2><ul><li>High traffic, low conversion (CRO wins big)</li><li>High-spend paid ads (every conversion matters)</li><li>Stable product (testing isn't chasing a moving target)</li></ul><h2>When to delay</h2><ul><li>Pre-product-market-fit (fix the product first)</li><li>Very low traffic</li><li>Radical site redesign planned anyway</li></ul>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'When CRO is worth it, the threshold test');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Wait on CRO', items: [
+      'Under 1K visitors/week',
+      'No consistent conversion events',
+      'Pre-PMF product (shipping still daily)',
+      'About to redesign the whole site',
+      'No team capacity for weekly test shipping'
+    ]},
+    right: {title: 'CRO pays back now', items: [
+      '10K+ visitors/month stable',
+      'Clear conversion event tracked reliably',
+      'Product mature, flow settled',
+      'Paid acquisition costs rising',
+      'Dedicated capacity for testing'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Don't start CRO below 10K monthly visitors, statistical tests require volume to produce signal</li>
+<li>Hold on CRO during product rebuilds, you'll invalidate any tests when the underlying flow changes</li>
+<li>Start CRO when paid acquisition CAC hits your ceiling, conversion lift is the cheaper lever at that point</li>
+<li>Pair CRO with a dedicated weekly tester, ad-hoc CRO produces no compounding</li>
+<li>Re-evaluate readiness quarterly, most teams who say "we'll do CRO later" stay in that phase longer than needed</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

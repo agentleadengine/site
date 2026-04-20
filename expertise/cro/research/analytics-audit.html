@@ -237,7 +237,35 @@ window.addEventListener('sketch:ready', function(){
     ['Search queries on site', 'What users looked for (and didn\'t find)']
   ]});
 });
-</script><ul><li>Top entry pages</li><li>Page-by-page bounce rates</li><li>Funnel drop-offs</li><li>Conversion rates by segment (new vs returning, mobile vs desktop, channel)</li><li>Search terms if on-site search</li></ul><h2>Tools</h2><ul><li>Google Analytics 4</li><li>Mixpanel / Amplitude for product analytics</li><li>Custom dashboards (Looker, etc.)</li></ul><h2>Output</h2><p>Ranked list of pages and flows with highest leverage, where a conversion improvement moves the needle most.</p></div></div><footer><div class="container">
+</script><ul><li>Top entry pages</li><li>Page-by-page bounce rates</li><li>Funnel drop-offs</li><li>Conversion rates by segment (new vs returning, mobile vs desktop, channel)</li><li>Search terms if on-site search</li></ul><h2>Tools</h2><ul><li>Google Analytics 4</li><li>Mixpanel / Amplitude for product analytics</li><li>Custom dashboards (Looker, etc.)</li></ul><h2>Output</h2><p>Ranked list of pages and flows with highest leverage, where a conversion improvement moves the needle most.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Analytics audit, the 5-step opening pass');
+  sketch.numberedSteps(svg, rc, {x: 40, y: 60, w: 820, stepH: 30, items: [
+    'Map the funnel: every step from landing to conversion',
+    'Measure step-by-step drop-off, find the biggest leak',
+    'Segment by source + device, different cohorts drop differently',
+    'Identify highest-leverage step (most traffic × biggest drop)',
+    'Generate hypotheses to test, prioritize by ICE score'
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Start every CRO program with a full analytics audit, skipping it means you're optimizing guesses not data</li>
+<li>Map the funnel end-to-end before testing, testing one page in isolation misses the interaction effects</li>
+<li>Find the highest-leverage step (traffic × drop-off), fixing a 20% drop on 10K visits beats fixing a 50% drop on 500 visits</li>
+<li>Segment the funnel by source + device, mobile checkout usually differs dramatically from desktop</li>
+<li>Turn audit findings into a prioritized test backlog before shipping anything, the audit isn't the deliverable, the roadmap is</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

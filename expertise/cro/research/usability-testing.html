@@ -233,7 +233,35 @@ window.addEventListener('sketch:ready', function(){
     {title: 'Debrief', sub: 'what confused them?'}
   ]});
 });
-</script><p>Give user a specific task ('find a product for X and buy it'), have them narrate, observe and note.</p><h2>Sample size</h2><p>5 users reveals 80% of usability issues (Nielsen research).</p><h2>Tools</h2><ul><li>UserTesting, Usertesting.com, Maze, Userlytics, moderated or unmoderated</li></ul><h2>ROI</h2><p>Few hours of testing often reveals glaring issues you'd never catch yourself.</p></div></div><footer><div class="container">
+</script><p>Give user a specific task ('find a product for X and buy it'), have them narrate, observe and note.</p><h2>Sample size</h2><p>5 users reveals 80% of usability issues (Nielsen research).</p><h2>Tools</h2><ul><li>UserTesting, Usertesting.com, Maze, Userlytics, moderated or unmoderated</li></ul><h2>ROI</h2><p>Few hours of testing often reveals glaring issues you'd never catch yourself.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Usability test cadence, 5 users per round');
+  sketch.numberedSteps(svg, rc, {x: 40, y: 60, w: 820, stepH: 30, items: [
+    'Recruit 5 users matching ICP (UserTesting, Maze, guerilla recruiting)',
+    'Assign specific tasks (not "explore the site")',
+    'Record sessions, observers take notes in real time',
+    'Debrief same-day with team, pattern emerges across 3-5 sessions',
+    'Ship fixes + run next round in 2-3 weeks'
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Test with 5 users per round, not 50, pattern emerges across 5 fast and additional users rarely add new insights</li>
+<li>Run usability testing before A/B testing, you'll know which hypotheses to test rather than blindly A/B-ing</li>
+<li>Assign specific tasks, "explore the site" produces useless observations, task-based testing reveals real friction</li>
+<li>Watch live with the team when possible, recordings lose context the team would catch watching in-person</li>
+<li>Ship fixes within 2 weeks of testing, insights go stale fast, long gaps between testing and shipping kill the loop</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

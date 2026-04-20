@@ -232,7 +232,38 @@ window.addEventListener('sketch:ready', function(){
     {title: 'Prospects who said no', sub: 'what stopped them?'}
   ]});
 });
-</script><ul><li>New customers (what convinced you?)</li><li>Non-converters (what stopped you?)</li><li>Long-term users (what keeps you?)</li></ul><h2>Question patterns</h2><ul><li>Walk me through your signup process</li><li>What made you hesitate?</li><li>What almost made you not complete?</li><li>What else were you considering?</li></ul><h2>Volume</h2><p>5-10 interviews per segment. Patterns emerge at 5-7 for most topics.</p><h2>Output</h2><p>Qualitative insights that generate hypotheses for testing.</p></div></div><footer><div class="container">
+</script><ul><li>New customers (what convinced you?)</li><li>Non-converters (what stopped you?)</li><li>Long-term users (what keeps you?)</li></ul><h2>Question patterns</h2><ul><li>Walk me through your signup process</li><li>What made you hesitate?</li><li>What almost made you not complete?</li><li>What else were you considering?</li></ul><h2>Volume</h2><p>5-10 interviews per segment. Patterns emerge at 5-7 for most topics.</p><h2>Output</h2><p>Qualitative insights that generate hypotheses for testing.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Interview question types that surface CRO hypotheses');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Question type', w: 240},
+    {title: 'Example', w: 560}
+  ], rows: [
+    ['Decision story', '"Walk me through the day you decided to buy"'],
+    ['Alternative evaluation', '"What other options did you consider?"'],
+    ['Hesitation', '"What almost made you walk away?"'],
+    ['Language', '"How would you describe this to a friend?"'],
+    ['Expectation gap', '"What did you expect that didn\'t happen?"']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Run interviews on both converters + non-converters, each reveals different insights about what works and what broke</li>
+<li>Ask about specific moments ("walk me through the day you signed up"), story-based questions surface decision triggers</li>
+<li>Record the exact language customers use, their phrases become better copy than anything your team writes</li>
+<li>Conduct 8-15 interviews per research question, patterns stabilize around 10-12 and more adds diminishing returns</li>
+<li>Turn interview insights into testable hypotheses within a week, stale interviews don't drive test velocity</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

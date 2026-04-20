@@ -237,7 +237,44 @@ window.addEventListener('sketch:ready', function(){
 });
 </script>
 
-<h2>Heatmap insights</h2><ul><li>Do users see the CTA? (fold test)</li><li>Are they clicking non-clickable elements?</li><li>Are they scrolling?</li><li>Where attention goes</li></ul><h2>Recording insights</h2><ul><li>Rage clicks (frustration)</li><li>Dead clicks</li><li>Form abandonment mid-field</li><li>Navigation confusion</li></ul><h2>Tools</h2><ul><li>Hotjar, Microsoft Clarity (free), Fullstory, Mouseflow</li></ul><h2>Time investment</h2><p>Watch 15-30 recordings per feature. Patterns emerge fast.</p></div></div><footer><div class="container">
+<h2>Heatmap insights</h2><ul><li>Do users see the CTA? (fold test)</li><li>Are they clicking non-clickable elements?</li><li>Are they scrolling?</li><li>Where attention goes</li></ul><h2>Recording insights</h2><ul><li>Rage clicks (frustration)</li><li>Dead clicks</li><li>Form abandonment mid-field</li><li>Navigation confusion</li></ul><h2>Tools</h2><ul><li>Hotjar, Microsoft Clarity (free), Fullstory, Mouseflow</li></ul><h2>Time investment</h2><p>Watch 15-30 recordings per feature. Patterns emerge fast.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Heatmaps vs recordings, different insights');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Heatmaps (aggregate)', items: [
+      'Where users click/scroll/rage-click',
+      'Shows patterns across many sessions',
+      'Fast to consume',
+      'Good for finding outliers',
+      'Misses individual journey context'
+    ]},
+    right: {title: 'Recordings (individual)', items: [
+      'Full session replay per user',
+      'Reveals hesitation + workflow',
+      '5-15 minutes per recording',
+      'Good for diagnosing specific friction',
+      'Use after heatmap to dig deeper'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Use heatmaps first to find anomalies (rage clicks, dead clicks, unexpected scroll patterns), recordings second for diagnosis</li>
+<li>Watch 15-30 recordings per feature or page, patterns emerge fast and more than that has diminishing returns</li>
+<li>Prioritize recordings of users who drop off, not users who convert, you learn more from failures than successes</li>
+<li>Tag recordings with observed friction points as you watch, unstructured watching produces no takeaways</li>
+<li>Refresh heatmaps quarterly, user behavior shifts over time and old heatmaps become stale insights</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

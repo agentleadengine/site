@@ -233,7 +233,44 @@ window.addEventListener('sketch:ready', function(){
     {title: 'Learn + ship', sub: 'winner rolls out'}
   ]});
 });
-</script><ul><li>Research: find the problems</li><li>Hypothesize: what to change</li><li>Test: A/B the change</li><li>Measure: did it move the metric?</li><li>Learn and iterate</li></ul><h2>What counts as conversion</h2><ul><li>Purchase</li><li>Signup</li><li>Demo booking</li><li>Add-to-cart</li><li>Email capture</li></ul><h2>The compound effect</h2><p>Small lifts compound. 5% lift every quarter → 22% annual, 85% over 3 years.</p><h2>Not just for e-commerce</h2><p>SaaS signup conversion, B2B lead form completion, content site subscription, all benefit from CRO.</p></div></div><footer><div class="container">
+</script><ul><li>Research: find the problems</li><li>Hypothesize: what to change</li><li>Test: A/B the change</li><li>Measure: did it move the metric?</li><li>Learn and iterate</li></ul><h2>What counts as conversion</h2><ul><li>Purchase</li><li>Signup</li><li>Demo booking</li><li>Add-to-cart</li><li>Email capture</li></ul><h2>The compound effect</h2><p>Small lifts compound. 5% lift every quarter → 22% annual, 85% over 3 years.</p><h2>Not just for e-commerce</h2><p>SaaS signup conversion, B2B lead form completion, content site subscription, all benefit from CRO.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'CRO impact vs acquisition spend, at same traffic');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Without CRO', items: [
+      '100K visitors/month',
+      '2% conversion = 2,000 leads',
+      'Need paid acquisition to scale',
+      'CAC rises as you buy more traffic',
+      'Revenue grows linearly with spend'
+    ]},
+    right: {title: 'With CRO discipline', items: [
+      'Same 100K visitors',
+      '3.5% conversion = 3,500 leads (+75%)',
+      'Same acquisition spend',
+      'CAC effectively drops with conversion lift',
+      'Compounds across every campaign'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Treat CRO as a force-multiplier on every traffic dollar, small conversion lifts compound across the entire funnel</li>
+<li>Don't start CRO before you have meaningful traffic, under 1K visitors/week tests produce noise, not signal</li>
+<li>Measure revenue per visitor, not just conversion rate, a "higher conversion" at lower AOV can be net negative</li>
+<li>Apply CRO discipline to every page type (landing, product, checkout), each has different optimal levers</li>
+<li>Budget CRO as ongoing investment, not one-time project, conversion drift is real and competitors catch up fast</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

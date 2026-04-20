@@ -236,7 +236,39 @@ window.addEventListener('sketch:ready', function(){
     ['NPS + follow-up', 'Loyalty + drivers']
   ]});
 });
-</script><ul><li>Single question exit survey: 'What stopped you from completing?'</li><li>Rating + follow-up: 'How useful was this page?' (1-5) + why</li><li>NPS: recommend likelihood</li></ul><h2>When to show</h2><ul><li>Exit intent</li><li>After action (post-purchase)</li><li>After scrolling 50%+ (engaged users)</li></ul><h2>Tools</h2><ul><li>Hotjar, Qualaroo, Typeform, Intercom, in-product surveys</li></ul><h2>Avoid</h2><p>Long surveys. Users bail.</p></div></div><footer><div class="container">
+</script><ul><li>Single question exit survey: 'What stopped you from completing?'</li><li>Rating + follow-up: 'How useful was this page?' (1-5) + why</li><li>NPS: recommend likelihood</li></ul><h2>When to show</h2><ul><li>Exit intent</li><li>After action (post-purchase)</li><li>After scrolling 50%+ (engaged users)</li></ul><h2>Tools</h2><ul><li>Hotjar, Qualaroo, Typeform, Intercom, in-product surveys</li></ul><h2>Avoid</h2><p>Long surveys. Users bail.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Survey placement, where to ask what');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Trigger point', w: 260},
+    {title: 'Question', w: 260},
+    {title: 'Goal', w: 280}
+  ], rows: [
+    ['Post-purchase', '"What almost stopped you?"', 'Find friction to remove'],
+    ['Exit intent', '"What held you back?"', 'Recover lost conversions'],
+    ['Mid-checkout', '"Any concerns?"', 'Real-time objection handling'],
+    ['Post-signup', '"What made you pick us?"', 'Understand winning angles'],
+    ['Cancellation', '"What led to this?"', 'Churn reduction']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Keep surveys at 1-2 questions max, longer surveys drop completion below 10% and produce biased data</li>
+<li>Trigger surveys at meaningful moments, post-purchase + exit-intent + cancellation are the highest-signal trigger points</li>
+<li>Ask one specific question per trigger, "what almost stopped you?" beats generic "how was your experience?"</li>
+<li>Feed survey insights into copy rewrites, the exact phrases customers use outperform phrases your team invents</li>
+<li>Rotate survey questions quarterly, same question every week gets the same answer, rotation surfaces new insights</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

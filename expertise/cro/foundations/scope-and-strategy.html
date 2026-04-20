@@ -233,7 +233,44 @@ window.addEventListener('sketch:ready', function(){
     {label: 'Button color / micro-tests', value: 10, note: 'skip'}
   ]});
 });
-</script><ul><li>Pages with highest traffic × lowest conversion</li><li>Revenue-per-visit impact potential</li><li>Strategic importance</li></ul><h2>Don't test</h2><ul><li>Small traffic pages (no significance)</li><li>Ideological preferences ('I like green buttons')</li><li>Things your data says are already working</li></ul><h2>Strategic vs tactical</h2><ul><li>Strategic: rebuild pricing page, re-architect onboarding</li><li>Tactical: A/B headlines, CTA copy, images</li><li>Both matter; strategic changes drive bigger lifts</li></ul></div></div><footer><div class="container">
+</script><ul><li>Pages with highest traffic × lowest conversion</li><li>Revenue-per-visit impact potential</li><li>Strategic importance</li></ul><h2>Don't test</h2><ul><li>Small traffic pages (no significance)</li><li>Ideological preferences ('I like green buttons')</li><li>Things your data says are already working</li></ul><h2>Strategic vs tactical</h2><ul><li>Strategic: rebuild pricing page, re-architect onboarding</li><li>Tactical: A/B headlines, CTA copy, images</li><li>Both matter; strategic changes drive bigger lifts</li></ul>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Strategic vs tactical CRO changes');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Tactical (small lifts)', items: [
+      'Button color tweak',
+      'Headline word change',
+      'Image swap',
+      '2-10% conversion lift',
+      'Fast to ship, quick feedback'
+    ]},
+    right: {title: 'Strategic (big lifts)', items: [
+      'Offer structure change',
+      'Page layout rewrite',
+      'Pricing page restructure',
+      '20-100% conversion lift',
+      'Slower to ship, bigger payoff'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Balance 70% tactical + 30% strategic tests in your sprint backlog, both matter but the ratio shifts based on maturity</li>
+<li>Ship strategic tests less frequently but size them for 20%+ lift, small strategic changes aren't worth the disruption</li>
+<li>Use tactical tests to train the team on process, rapid cycles build CRO muscle even when each test is small</li>
+<li>Save the biggest strategic tests for high-traffic pages, small-traffic strategic tests take forever to validate</li>
+<li>Document strategic rewrites with before/after screenshots, over time the portfolio of "big moves" becomes the team's playbook</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){
