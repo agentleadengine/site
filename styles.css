@@ -1313,11 +1313,14 @@ footer p { margin: 0; letter-spacing: 0.02em; }
 
     /* Mega on mobile: flat accordion - cats stack, each with its subpages */
     nav.topbar .nav-mega {
-        display: block;
+        display: none;
         grid-template-columns: 1fr;
         gap: 0;
         padding: 12px 16px 14px;
         width: 100%;
+    }
+    nav.topbar .nav-group.is-open > .nav-mega {
+        display: block;
     }
     nav.topbar .nav-mega-cats {
         background: transparent;
@@ -1357,11 +1360,42 @@ footer p { margin: 0; letter-spacing: 0.02em; }
     }
     .framework-sidebar {
         position: static;
-        max-height: none;
-        padding-right: 0;
-        padding-bottom: 24px;
-        border-bottom: 1px solid var(--gray-200);
+        padding: 0;
+        border: 1px solid var(--gray-200);
+        border-radius: 12px;
+        background: #f9f9fb;
+        overflow: hidden;
     }
+    .framework-sidebar.is-collapsed > :not(.framework-sidebar-toggle) {
+        display: none;
+    }
+    .framework-sidebar-toggle {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        background: none;
+        border: none;
+        padding: 14px 16px;
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--primary-purple);
+        cursor: pointer;
+        text-align: left;
+        font-family: inherit;
+    }
+    .framework-sidebar-toggle::after {
+        content: '▾';
+        font-size: 16px;
+        transition: transform 0.2s ease;
+    }
+    .framework-sidebar.is-collapsed .framework-sidebar-toggle::after {
+        transform: rotate(-90deg);
+    }
+    .framework-sidebar h4:first-of-type { margin-top: 0; }
+    .framework-sidebar h4 { padding: 0 16px; }
+    .framework-sidebar ul { padding: 0 16px 8px; }
+    .framework-sidebar a { padding: 8px 12px; }
     .hero { padding: 100px 0 80px; }
     .hero h1 { font-size: 48px; }
     .hero .tagline { font-size: 18px; }

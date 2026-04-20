@@ -487,3 +487,49 @@
     createSvg, title
   };
 })();
+
+// Framework sidebar mobile collapse toggle.
+// On viewports <=960px, wrap the sidebar in a collapsible toggle so it doesn't
+// push article content below the fold.
+(function() {
+  function initFrameworkSidebarToggle() {
+    const sidebar = document.querySelector('.framework-sidebar');
+    if (!sidebar || sidebar.dataset.collapseInit) return;
+    sidebar.dataset.collapseInit = '1';
+
+    const mql = window.matchMedia('(max-width: 960px)');
+
+    const toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'framework-sidebar-toggle';
+    const activeText = sidebar.querySelector('a.active');
+    const label = activeText ? `On this page: ${activeText.textContent}` : 'On this page';
+    toggle.textContent = label;
+    toggle.setAttribute('aria-expanded', 'false');
+    sidebar.insertBefore(toggle, sidebar.firstChild);
+
+    function apply() {
+      if (mql.matches) {
+        sidebar.classList.add('is-collapsed');
+        toggle.setAttribute('aria-expanded', 'false');
+      } else {
+        sidebar.classList.remove('is-collapsed');
+        toggle.setAttribute('aria-expanded', 'true');
+      }
+    }
+
+    toggle.addEventListener('click', function() {
+      sidebar.classList.toggle('is-collapsed');
+      toggle.setAttribute('aria-expanded', sidebar.classList.contains('is-collapsed') ? 'false' : 'true');
+    });
+
+    mql.addEventListener ? mql.addEventListener('change', apply) : mql.addListener(apply);
+    apply();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFrameworkSidebarToggle);
+  } else {
+    initFrameworkSidebarToggle();
+  }
+})();
