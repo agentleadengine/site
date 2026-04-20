@@ -237,7 +237,38 @@ window.addEventListener('sketch:ready', function(){
 });
 </script>
 
-<h2>DTC</h2><p>Weekly or more. 2-5/week for active brands is normal.</p><h2>B2B SaaS</h2><p>Monthly newsletter + occasional product update. Don't overdo.</p><h2>Newsletter</h2><p>Weekly or biweekly. Your subscribers signed up for regular content.</p><h2>Testing</h2><p>Gradually increase frequency and watch unsubscribe/spam rate.</p></div></div><footer><div class="container">
+<h2>DTC</h2><p>Weekly or more. 2-5/week for active brands is normal.</p><h2>B2B SaaS</h2><p>Monthly newsletter + occasional product update. Don't overdo.</p><h2>Newsletter</h2><p>Weekly or biweekly. Your subscribers signed up for regular content.</p><h2>Testing</h2><p>Gradually increase frequency and watch unsubscribe/spam rate.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Cadence by category, typical healthy range');
+  sketch.table(svg, rc, {x: 40, y: 60, cols: [
+    {title: 'Category', w: 240},
+    {title: 'Typical cadence', w: 260},
+    {title: 'Warning signs', w: 300}
+  ], rows: [
+    ['DTC ecom', '2-4 per week', 'Unsub over 0.5% per send'],
+    ['B2B SaaS', '1-2 per week', 'Unsub over 0.3%, reply rate drops'],
+    ['Newsletter / creator', '1 per week (consistent)', 'Engagement drops post-skip'],
+    ['Enterprise / high-ACV', '1-2 per month', 'Unsub low but opens drift']
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Test cadence on a 20% holdout, rather than ramping for the whole list, the holdout tells you the true frequency ceiling</li>
+<li>Watch unsubscribe + spam rate as leading indicators, they rise before revenue drops</li>
+<li>Prioritize consistency over frequency, a weekly sender who skips produces worse retention than a twice-a-month consistent sender</li>
+<li>Segment frequency by engagement tier, high-engagers can tolerate more, low-engagers need less or get moved to sunset</li>
+<li>Re-evaluate cadence quarterly, market norms shift with season and audience maturity</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

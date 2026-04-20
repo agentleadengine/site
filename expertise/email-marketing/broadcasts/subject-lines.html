@@ -240,7 +240,44 @@ window.addEventListener('sketch:ready', function(){
       'Over-used re: or fwd: tricks']}
   });
 });
-</script><ul><li>Question</li><li>Specific number / detail</li><li>Curiosity gap</li><li>Direct value promise</li><li>Personal / conversational</li></ul><h2>Anti-patterns</h2><ul><li>All caps</li><li>Multiple exclamations</li><li>Marketing buzzwords ('Don't miss!')</li><li>Clickbait without payoff</li></ul><h2>Length</h2><p>30-50 chars optimal. Mobile cuts off at ~30-40.</p><h2>A/B test</h2><p>Always test 2 variants. Small changes can swing open rate 5-20%.</p></div></div><footer><div class="container">
+</script><ul><li>Question</li><li>Specific number / detail</li><li>Curiosity gap</li><li>Direct value promise</li><li>Personal / conversational</li></ul><h2>Anti-patterns</h2><ul><li>All caps</li><li>Multiple exclamations</li><li>Marketing buzzwords ('Don't miss!')</li><li>Clickbait without payoff</li></ul><h2>Length</h2><p>30-50 chars optimal. Mobile cuts off at ~30-40.</p><h2>A/B test</h2><p>Always test 2 variants. Small changes can swing open rate 5-20%.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Broadcast subject line patterns that work');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Weak (skipped)', items: [
+      '"Weekly newsletter #47"',
+      '"Updates and news"',
+      '"ALL CAPS SALE TODAY"',
+      'Generic enough for any brand',
+      'Reads as broadcast'
+    ]},
+    right: {title: 'Strong (opens)', items: [
+      '"The one hook that cut our CAC 40%"',
+      '"Why I killed 3 campaigns last week"',
+      '"Your Q3 numbers just came in"',
+      'Specific + curious + personal tone',
+      'Reads as one-to-one'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Write subject lines like a peer emailing a peer, "your Q3 numbers" beats "weekly newsletter #47"</li>
+<li>Keep subjects at 30-50 characters, longer gets truncated on mobile and loses punch</li>
+<li>Test 2-3 subject line variants per broadcast, the subject is where the biggest open-rate swings happen</li>
+<li>Avoid promotional trigger words (FREE, SALE, $) especially in all caps, they tank deliverability faster than open rate</li>
+<li>Use preview text deliberately, the preview line alongside subject is often what decides the open</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

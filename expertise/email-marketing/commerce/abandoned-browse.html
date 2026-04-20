@@ -232,7 +232,44 @@ window.addEventListener('sketch:ready', function(){
     {title: '24h', sub: 'social proof + related items'}
   ]});
 });
-</script><ul><li>Email 1 (12-24 hrs): product reminder + similar items</li><li>Email 2 (3-5 days): social proof / reviews</li><li>Email 3 (7 days): final reminder or stop</li></ul><h2>Conversion</h2><p>Lower than cart abandonment (shoppers had lower intent). Still 5-15% lift.</p><h2>Don't spam</h2><p>Once or twice per product view cycle. Otherwise users unsubscribe.</p></div></div><footer><div class="container">
+</script><ul><li>Email 1 (12-24 hrs): product reminder + similar items</li><li>Email 2 (3-5 days): social proof / reviews</li><li>Email 3 (7 days): final reminder or stop</li></ul><h2>Conversion</h2><p>Lower than cart abandonment (shoppers had lower intent). Still 5-15% lift.</p><h2>Don't spam</h2><p>Once or twice per product view cycle. Otherwise users unsubscribe.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Abandoned cart vs abandoned browse, different intent');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Cart abandon (high intent)', items: [
+      'User added to cart, ready-to-buy',
+      'Recovery rate: 8-20%',
+      'Send 1 hr, 24 hr, 48 hr',
+      'Discount as last resort',
+      'Most valuable automation to build'
+    ]},
+    right: {title: 'Browse abandon (medium intent)', items: [
+      'User viewed product 2+ times, no cart',
+      'Recovery rate: 1-4%',
+      'Send 24 hr after last view',
+      'Show the products + related items',
+      'Lower priority than cart abandon'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Build cart-abandon before browse-abandon, the intent delta means cart-abandon pays back first</li>
+<li>Require 2+ views of the same product to trigger browse-abandon, single views produce noise</li>
+<li>Show the product in the email, not generic "come back to our store", users don't remember what they viewed</li>
+<li>Cap frequency to avoid annoying casual browsers, 1-2 browse-abandon emails max or unsubscribes spike</li>
+<li>Measure browse-abandon revenue separately, if it's less than 5% of cart-abandon revenue, invest elsewhere first</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

@@ -237,7 +237,44 @@ window.addEventListener('sketch:ready', function(){
     ['Plan tier / persona', 'Upgrade vs retention messaging']
   ]});
 });
-</script><ul><li>By signup source</li><li>By engagement level</li><li>By past purchase</li><li>By geographic</li><li>By product category interest</li></ul><h2>Behavioral segments</h2><p>Users who clicked X topic, bought Y product, visited Z page, more relevant than demographic segments.</p><h2>Start simple</h2><p>3-5 segments is enough. Don't build 20 and get lost in management.</p></div></div><footer><div class="container">
+</script><ul><li>By signup source</li><li>By engagement level</li><li>By past purchase</li><li>By geographic</li><li>By product category interest</li></ul><h2>Behavioral segments</h2><p>Users who clicked X topic, bought Y product, visited Z page, more relevant than demographic segments.</p><h2>Start simple</h2><p>3-5 segments is enough. Don't build 20 and get lost in management.</p>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Over-segmentation vs useful segmentation');
+  sketch.compare(svg, rc, {x: 40, y: 60, w: 820, h: 180,
+    left: {title: 'Over-segmented (management hell)', items: [
+      '20 segments × 4 weekly sends',
+      'Team burns out on content production',
+      'No segment gets enough copy quality',
+      'Metrics fragment, learning stalls',
+      'Looks strategic, produces little'
+    ]},
+    right: {title: 'Useful segmentation (5-7 segments)', items: [
+      '5-7 meaningful segments',
+      'Each segment gets quality copy',
+      'Metrics clean, learning compounds',
+      'Revenue per send rises by segment',
+      'Sustainable long-term'
+    ]}
+  });
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Limit segments to 5-7 meaningful ones, 20+ segments sound sophisticated but fragment your content capacity</li>
+<li>Segment on behavior over demographics, "clicked last 30 days" beats "female, age 25-34" for email performance</li>
+<li>Build segments you can actually act on differently, if two segments get the same email, merge them</li>
+<li>Review segment performance monthly, retire segments that don't show meaningful lift over the baseline broadcast</li>
+<li>Scale segments gradually, start with 2-3 and add only when content capacity supports it</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){

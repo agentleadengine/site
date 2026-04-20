@@ -234,7 +234,36 @@ window.addEventListener('sketch:ready', function(){
 });
 </script>
 
-<h2>Pre-launch</h2><ul><li>Teasers 14-30 days out</li><li>Waitlist signup</li><li>Behind-the-scenes content</li></ul><h2>Launch day</h2><ul><li>Morning announcement</li><li>Afternoon follow-up (most opens happen later)</li></ul><h2>Post-launch</h2><ul><li>Social proof emails (reviews come in)</li><li>Restock / last-chance emails</li><li>Post-mortem offer (if not selling through)</li></ul></div></div><footer><div class="container">
+<h2>Pre-launch</h2><ul><li>Teasers 14-30 days out</li><li>Waitlist signup</li><li>Behind-the-scenes content</li></ul><h2>Launch day</h2><ul><li>Morning announcement</li><li>Afternoon follow-up (most opens happen later)</li></ul><h2>Post-launch</h2><ul><li>Social proof emails (reviews come in)</li><li>Restock / last-chance emails</li><li>Post-mortem offer (if not selling through)</li></ul>
+
+<div class="sketch" data-viewbox="0 0 900 260"></div>
+<script>
+window.addEventListener('sketch:ready', function(){
+  const el = document.querySelectorAll('.sketch')[1];
+  const svg = sketch.createSvg(el, 900, 260);
+  const rc = sketch.rc(svg);
+  sketch.title(svg, 450, 30, 'Product launch email sequence, 10-14 days');
+  sketch.numberedSteps(svg, rc, {x: 40, y: 60, w: 820, stepH: 28, items: [
+    'Day -7: teaser, no link yet, build anticipation',
+    'Day -3: announcement with story behind the launch',
+    'Day 0 (launch): live announcement with CTA',
+    'Day 2: social proof + early reviews',
+    'Day 5: objection handling + FAQ',
+    'Day 7-10: last-chance + closing urgency'
+  ]});
+});
+</script>
+
+<h2>What to do with this</h2>
+<ul>
+<li>Build anticipation for 7-10 days before launch, the warm-up emails produce 30-40% of launch week sales</li>
+<li>Segment the launch list, VIPs get early access + a different send cadence than cold traffic</li>
+<li>Include social proof starting day 2 (reviews, customer stories), proof compounds through the sequence</li>
+<li>Run the last-chance email with genuine scarcity (closing date, limited inventory), manufactured urgency is detected and unsubscribes spike</li>
+<li>Send a post-launch recap + secondary offer if sell-through was weak, catches late movers</li>
+</ul>
+
+</div></div><footer><div class="container">
 <p>&copy; 2026 Samuel Ochoa &middot; <a href="https://www.linkedin.com/in/samuelochoa" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="../../../expertise/index.html">Expertise</a></p>
 </div></footer><script>
 (function(){
